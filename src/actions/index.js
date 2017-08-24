@@ -1,0 +1,106 @@
+import fetch from 'isomorphic-fetch'
+
+export const REQUEST_ODD = 'REQUEST_ODD'
+export const RECEIVE_ODD = 'RECEIVE_ODD'
+export const SELECT_ODD = 'SELECT_ODD'
+export const REQUEST_LOCAL_SOURCE = 'REQUEST_LOCAL_SOURCE'
+export const RECEIVE_LOCAL_SOURCE = 'RECEIVE_LOCAL_SOURCE'
+export const REQUEST_OXGARAGE_TRANSFORM = 'REQUEST_OXGARAGE_TRANSFORM'
+export const RECEIVE_FROM_OXGARAGE = 'RECEIVE_FROM_OXGARAGE'
+
+export function selectOdd(oddUrl) {
+  return {
+    type: SELECT_ODD,
+    oddUrl
+  }
+}
+
+function requestOdd(odd) {
+  return {
+    type: REQUEST_ODD,
+    odd
+  }
+}
+
+function receiveOdd(string) {
+  return {
+    type: RECEIVE_ODD,
+    xml: string,
+    receivedAt: Date.now()
+  }
+}
+
+function requestLocalSource(url) {
+  return {
+    type: REQUEST_LOCAL_SOURCE,
+    url
+  }
+}
+
+function receiveLocalSource(json) {
+  return {
+    type: RECEIVE_LOCAL_SOURCE,
+    json,
+    receivedAt: Date.now()
+  }
+}
+
+function receiveFromOxGarage(json) {
+  return {
+    type: RECEIVE_FROM_OXGARAGE,
+    json,
+    receivedAt: Date.now()
+  }
+}
+
+function requestOxGarageTransform(input, endpoint) {
+  return {
+    type: REQUEST_OXGARAGE_TRANSFORM,
+    input,
+    endpoint
+  }
+}
+
+/** ********
+ * thunks *
+ ******** **/
+export function fetchOdd(odd) {
+  return dispatch => {
+    dispatch(requestOdd(odd))
+    return new Promise((res)=>{
+      fetch(odd)
+        .then(response => response.text())
+        .then((xml) => {
+          res(dispatch(receiveOdd(xml)))
+        })
+    })
+  }
+}
+
+export function fetchLocalSource(url) {
+  return dispatch => {
+    dispatch(requestLocalSource(url))
+    return fetch(url)
+      .then(response => response.json())
+      .then(json => dispatch(receiveLocalSource(json)))
+  }
+}
+
+export function postToOxGarage(input, endpoint) {
+  return dispatch => {
+    dispatch(requestOxGarageTransform(input, endpoint))
+    const fd = new FormData()
+    fd.append('fileToConvert', new Blob([input], {'type': 'application\/octet-stream'}), 'file.odd')
+    return new Promise((res)=>{
+      fetch(endpoint, {
+        mode: 'cors',
+        method: 'post',
+        body: fd
+      })
+        .then(response => {return response.text()})
+        .then((json) => {
+          return res(dispatch(receiveFromOxGarage(JSON.parse(json))))
+        })
+    })
+  }
+}

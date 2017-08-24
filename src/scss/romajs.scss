@@ -1,0 +1,147 @@
+/* Set Roma theme colors */
+$mdc-theme-primary: #225688;
+$mdc-theme-accent: #d2aa28;
+$mdc-theme-background: #fff;
+$romajs-theme-yes: #1b8c64;
+$romajs-theme-no: #802900;
+
+@import "material-design-lite/src/chip/_chip";
+
+@import "@material/animation/mdc-animation";
+@import "@material/button/mdc-button";
+@import "@material/card/mdc-card";
+@import "@material/checkbox/mdc-checkbox";
+@import "@material/dialog/mdc-dialog";
+@import "@material/drawer/mdc-drawer";
+@import "@material/elevation/mdc-elevation";
+@import "@material/fab/mdc-fab";
+@import "@material/form-field/mdc-form-field";
+@import "@material/grid-list/mdc-grid-list";
+@import "@material/icon-toggle/mdc-icon-toggle";
+@import "@material/layout-grid/mdc-layout-grid";
+@import "@material/list/mdc-list";
+@import "@material/menu/mdc-menu";
+@import "@material/radio/mdc-radio";
+@import "@material/ripple/mdc-ripple";
+@import "@material/select/mdc-select";
+@import "@material/snackbar/mdc-snackbar";
+@import "@material/switch/mdc-switch";
+@import "@material/textfield/mdc-textfield";
+@import "@material/theme/mdc-theme";
+@import "@material/toolbar/mdc-toolbar";
+@import "@material/typography/mdc-typography";
+
+/* COLORS */
+.romajs-color-no {
+  color: $romajs-theme-no;
+}
+
+.romajs-color-yes {
+  color: $romajs-theme-yes;
+}
+
+/* Ensure layout covers the entire screen. */
+html {
+  height: 100%;
+}
+
+/* Place drawer and content side by side. */
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
+#romajs > div {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Stack toolbar and main on top of each other. */
+.romajs-content {
+  display: inline-flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 130px 0 0 0;
+}
+
+.romajs-main {
+  padding-left: 16px;
+}
+
+/* TOOLBAR */
+.romajs-toolbar {
+  .mdc-toolbar__section--align-end .material-icons {
+    padding-right: 20px;
+    cursor: pointer;
+  }
+}
+
+/* SECONDARY TOOLBAR */
+.romajs-toolbar2 {
+  padding: 10px 20px 20px 30px;
+
+  .mdl-chip {
+    margin-right: 10px;
+  }
+
+  .romajs-itemtype-selected {
+    background-color: $mdc-theme-accent;
+  }
+
+}
+
+/* SEARCHBAR */
+.romajs-searchbar{
+  .mdl-chip__action {
+    margin: 0 0 10px 0;
+  }
+}
+
+/* ITEMS */
+.romajs-itemlist {
+  .mdc-list-item__text {
+    padding-right: 20px;
+    width: 85%;
+  }
+  .mdc-list-item__end-detail {
+    margin-right: 15px;
+    width: 10%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* CARDS */
+.romajs-card {
+  max-height: 300px;
+  min-height: 300px;
+  justify-content: flex-start;
+
+  .mdc-card__supporting-text {
+    overflow-y: auto;
+    margin-bottom: 24px;
+  }
+
+  .mdc-card__title--large {
+    padding-top: 3px;
+  }
+
+  h1 {
+    float:left;
+  }
+
+  .mdc-form-field {
+    float: right;
+  }
+
+  .romajs-elementIdent {
+    padding-top: 20px;
+  }
+
+}
