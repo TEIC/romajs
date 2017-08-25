@@ -19,22 +19,32 @@ export function oddModules(state, action) {
   switch (action.type) {
     case INCLUDE_MODULES:
       const modulesToInclude = action.modules.filter(x => (currentModules.indexOf(x) === -1))
-      modulesToInclude.map(ident => {
+      for (const ident of modulesToInclude) {
         const localMod = localsource.modules.filter(x => (x.ident === ident))[0]
         customization.modules.push({
           ident,
           id: localMod.id,
           desc: localMod.desc
         })
-      })
+        // Include all elements from this module
+        for (const m of localsource.members) {
+          if (m.type === 'elementSpec' && m.module === ident) {
+            // if not in custom, add.
+            if (!customization.members.filter(x => (x.ident === m.ident))[0]) {
+              customization.members.push(m)
+            }
+          }
+        }
+      }
       return Object.assign(state, customizationObj)
     case EXCLUDE_MODULES:
-      customization.modules = customization.modules.reduce((acc, m) => {
-        if (action.modules.indexOf(m.ident) === -1) {
-          acc.push(m)
-        }
-        return acc
-      }, [])
+      customization.modules = customization.modules.filter(m => {
+        return (action.modules.indexOf(m.ident) === -1)
+      })
+      // Exclude all elements from this module
+      customization.members = customization.members.filter(m => {
+        return action.modules.indexOf(m.module) === -1
+      })
       return Object.assign(state, customizationObj)
     case INCLUDE_ELEMENTS:
       for (const el of action.elements) {

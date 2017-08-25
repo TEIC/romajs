@@ -23,6 +23,23 @@ describe('ODD modules operation reducers', () => {
     ).length).toEqual(2)
   })
 
+  it('should handle INCLUDE_MODULES and include all module elements', () => {
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customization },
+        localsource: { isFetching: false, json: localsource }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'INCLUDE_MODULES',
+      modules: ['linking']
+    })
+
+    expect(state.odd.customization.json.members.filter(
+      x => (x.ident === 'ab')
+    ).length).toEqual(1)
+  })
+
   it('should handle EXCLUDE_MODULES', () => {
     const state = romajsApp({
       odd: {
@@ -37,6 +54,23 @@ describe('ODD modules operation reducers', () => {
 
     expect(state.odd.customization.json.modules.filter(
       x => (x.ident === 'analysis' || x.ident === 'header')
+    ).length).toEqual(0)
+  })
+
+  it('should handle EXCLUDE_MODULES and exclude all module elements', () => {
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customization },
+        localsource: { isFetching: false, json: localsource }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'EXCLUDE_MODULES',
+      modules: ['header']
+    })
+
+    expect(state.odd.customization.json.members.filter(
+      x => (x.ident === 'fileDesc')
     ).length).toEqual(0)
   })
 

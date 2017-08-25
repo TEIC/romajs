@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
-// import SingleModule from '../containers/SingleModule'
+import SingleModule from '../containers/SingleModule'
 
 export default class Member extends Component {
   render() {
@@ -22,7 +22,11 @@ export default class Member extends Component {
           <span className="mdc-list-item__text__secondary">{this.props.desc}
           </span>
         </span>
-        <span className="mdc-list-item__end-detail"/>
+        <span className="mdc-list-item__end-detail">
+          <SingleModule
+            selected={this.props.module_selected}
+            ident={this.props.module} />
+        </span>
       </li>
     )
   }
@@ -33,5 +37,6 @@ Member.propTypes = {
   selected: PropTypes.bool.isRequired,
   ident: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
-  module: PropTypes.string.isRequired
+  module: PropTypes.string.isRequired,
+  module_selected: PropTypes.bool.isRequired
 }
