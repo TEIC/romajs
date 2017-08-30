@@ -1,12 +1,12 @@
 import {
   SELECT_ODD, REQUEST_ODD, RECEIVE_ODD, REQUEST_LOCAL_SOURCE, RECEIVE_LOCAL_SOURCE,
-  REQUEST_OXGARAGE_TRANSFORM, RECEIVE_FROM_OXGARAGE
+  REQUEST_OXGARAGE_TRANSFORM, RECEIVE_FROM_OXGARAGE, UPDATE_CUSTOMIZATION_ODD
 } from '../actions'
 import {
   INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS
 } from '../actions/modules'
 import { oddModules } from './modules'
-
+import { updateOdd } from './updateOdd'
 import { combineReducers } from 'redux'
 // import { routerReducer } from 'react-router-redux'
 
@@ -68,6 +68,10 @@ function customization(state = {
 
 function odd(state = {}, action) {
   switch (action.type) {
+    case UPDATE_CUSTOMIZATION_ODD:
+      const xml = Object.assign({}, state.customization,
+        {xml: updateOdd(state.localsource, state.customization)})
+      return Object.assign({}, state, {customization: xml})
     case RECEIVE_LOCAL_SOURCE:
     case REQUEST_LOCAL_SOURCE:
       return Object.assign({}, state,

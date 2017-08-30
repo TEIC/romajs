@@ -83,15 +83,15 @@ describe('ODD modules operation reducers', () => {
       selectedOdd: ''
     }, {
       type: 'INCLUDE_ELEMENTS',
-      elements: ['msDesc', 'p']
+      elements: ['camera', 'p']
     })
 
     expect(state.odd.customization.json.members.filter(
-      x => (x.ident === 'msDesc' || x.ident === 'p')
-    ).length).toEqual(2)
+      x => (x.ident === 'p')
+    ).length).toEqual(1)
 
     expect(state.odd.customization.json.modules.filter(
-      x => (x.ident === 'msdescription')
+      x => (x.ident === 'drama')
     ).length).toEqual(1)
   })
 

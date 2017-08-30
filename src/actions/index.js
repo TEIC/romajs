@@ -8,6 +8,9 @@ export const RECEIVE_LOCAL_SOURCE = 'RECEIVE_LOCAL_SOURCE'
 export const REQUEST_OXGARAGE_TRANSFORM = 'REQUEST_OXGARAGE_TRANSFORM'
 export const RECEIVE_FROM_OXGARAGE = 'RECEIVE_FROM_OXGARAGE'
 
+export const UPDATE_CUSTOMIZATION_ODD = 'UPDATE_CUSTOMIZATION_ODD'
+export const EXPORT_ODD = 'EXPORT_ODD'
+
 export function selectOdd(oddUrl) {
   return {
     type: SELECT_ODD,
@@ -58,6 +61,12 @@ function requestOxGarageTransform(input, endpoint) {
     type: REQUEST_OXGARAGE_TRANSFORM,
     input,
     endpoint
+  }
+}
+
+export function updateCustomizationOdd() {
+  return {
+    type: UPDATE_CUSTOMIZATION_ODD
   }
 }
 

@@ -1,5 +1,5 @@
 {"title": "TEI Absolutely Bare","edition": "","generator": "odd2json",
-    "date":"2017-08-24T15:25:59Z","modules": [{"ident":"core","id":"CO","desc":""},
+    "date":"2017-08-29T17:35:11Z","modules": [{"ident":"core","id":"CO","desc":""},
 {"ident":"header","id":"HD","desc":""},
 {"ident":"tei","id":"ST","desc":""},
 {"ident":"textstructure","id":"DS","desc":""}
