@@ -1,14 +1,20 @@
 import {
   SELECT_ODD, REQUEST_ODD, RECEIVE_ODD, REQUEST_LOCAL_SOURCE, RECEIVE_LOCAL_SOURCE,
-  REQUEST_OXGARAGE_TRANSFORM, RECEIVE_FROM_OXGARAGE, UPDATE_CUSTOMIZATION_ODD
+  REQUEST_OXGARAGE_TRANSFORM, RECEIVE_FROM_OXGARAGE, UPDATE_CUSTOMIZATION_ODD, EXPORT_ODD
 } from '../actions'
 import {
   INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS
 } from '../actions/modules'
+import {
+  UPDATE_ELEMENT_DOCS, ELEMENT_ADD_MEMBEROF, ELEMENT_REMOVE_MEMBEROF
+} from '../actions/elements'
 import { oddModules } from './modules'
+import { oddElements } from './elements'
 import { updateOdd } from './updateOdd'
+import { ui } from  './interface'
 import { combineReducers } from 'redux'
-// import { routerReducer } from 'react-router-redux'
+import * as fileSaver from 'file-saver'
+import { routerReducer } from 'react-router-redux'
 
 function selectedOdd(state = '', action) {
   switch (action.type) {
@@ -49,7 +55,8 @@ function customization(state = {
     case RECEIVE_ODD:
       return Object.assign({}, state, {
         isFetching: false,
-        xml: action.xml
+        xml: action.xml,
+        lastUpdated: Date.now()
       })
     case REQUEST_OXGARAGE_TRANSFORM:
       return Object.assign({}, state, {
@@ -70,8 +77,14 @@ function odd(state = {}, action) {
   switch (action.type) {
     case UPDATE_CUSTOMIZATION_ODD:
       const xml = Object.assign({}, state.customization,
-        {xml: updateOdd(state.localsource, state.customization)})
+        {
+          xml: updateOdd(state.localsource, state.customization),
+          lastUpdated: Date.now()
+        })
       return Object.assign({}, state, {customization: xml})
+    case EXPORT_ODD:
+      fileSaver.saveAs(new Blob([state.customization.xml], {'type': 'text\/xml'}), 'new_odd.xml')
+      return state
     case RECEIVE_LOCAL_SOURCE:
     case REQUEST_LOCAL_SOURCE:
       return Object.assign({}, state,
@@ -88,9 +101,11 @@ function odd(state = {}, action) {
     case EXCLUDE_MODULES:
     case INCLUDE_ELEMENTS:
     case EXCLUDE_ELEMENTS:
-      return Object.assign({}, state,
-        {customization: oddModules(state, action)}
-      )
+      return Object.assign({}, oddModules(state, action))
+    case UPDATE_ELEMENT_DOCS:
+    case ELEMENT_ADD_MEMBEROF:
+    case ELEMENT_REMOVE_MEMBEROF:
+      return Object.assign({}, oddElements(state, action))
     default:
       return state
   }
@@ -98,7 +113,9 @@ function odd(state = {}, action) {
 
 const romajsApp = combineReducers({
   selectedOdd,
-  odd
+  odd,
+  ui,
+  router: routerReducer
 })
 
 export default romajsApp

@@ -4,16 +4,16 @@ import MembersList from '../components/MembersList'
 
 const mapStateToProps = (state) => {
   console.log('state changed!', state)
+  let elements = []
   if (state.odd.customization && state.odd.localsource) {
     if (!state.odd.customization.isFetching && !state.odd.localsource.isFetching) {
       const customization = state.odd.customization.json
       const localsource = state.odd.localsource.json
 
       // If a filterTerm is set, use it to filter results
-      // ACTUALLY I want to do this within the component's state, without using redux
-      // const filter = state.ui.filterTerm ? state.ui.filterTerm : false
+      const filter = state.ui.filterTerm ? state.ui.filterTerm : false
 
-      const elements = localsource.members.reduce((acc, localMember) => {
+      elements = localsource.members.reduce((acc, localMember) => {
         if (localMember.type === 'elementSpec') {
           let element = Object.assign({}, localMember)
           const customMember = customization.members.filter(m => (m.ident === localMember.ident))[0]
@@ -34,6 +34,17 @@ const mapStateToProps = (state) => {
         }
         return acc
       }, [])
+      // apply filter
+      if (filter) {
+        elements = elements.map(el => {
+          if (el.ident.toLowerCase().match(filter.toLowerCase())) {
+            el.visible = true
+          } else {
+            el.visible = false
+          }
+          return el
+        })
+      }
       // Finally, sort alphabetically
       elements.sort((a, b) => {
         if (a.ident.toLowerCase() > b.ident.toLowerCase()) {
@@ -42,9 +53,9 @@ const mapStateToProps = (state) => {
           return (b.ident.toLowerCase() > a.ident.toLowerCase()) ? -1 : 0
         }
       })
-      return {elements}
-    } else return {elements: []}
-  } else return {elements: []}
+    }
+  }
+  return {elements}
   // else return {elements: [], classes: [], datatypes: [], macros: []}
 }
 

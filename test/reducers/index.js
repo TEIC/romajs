@@ -1,7 +1,7 @@
 import expect from 'expect'
 import romajsApp from '../../src/reducers'
 
-const initialState = { selectedOdd: '', odd: {} }
+const initialState = { selectedOdd: '', odd: {}, ui: {} }
 
 describe('Input ODD reducers', () => {
   it('should handle initial state', () => {

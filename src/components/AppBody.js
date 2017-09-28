@@ -1,19 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
-// import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Header from './Header'
 import Members from '../containers/Members'
-// import FilterSearch from '../containers/FilterSearch'
-// import ElementPage from '../containers/ElementPage'
+import ElementPage from '../containers/ElementPage'
 
 class AppBody extends Component {
   render() {
     return (<div>
-      <Header uploadCustomization={this.props.uploadCustomization} onDownloadClick={this.props.onDownloadClick} odd={this.props.odd}/>
+      <Header uploadCustomization={this.props.uploadCustomization} downloadCustomization={this.props.downloadCustomization} odd={this.props.odd}/>
       <div className="romajs-content">
         <main className="romajs-main">
-          <Members/>
+          <Route exact path="/" component={Members} />
+          <Route exact path="/element/:el" component={ElementPage} />
         </main>
       </div>
     </div>)
@@ -22,7 +22,7 @@ class AppBody extends Component {
 
 AppBody.propTypes = {
   uploadCustomization: PropTypes.func.isRequired,
-  onDownloadClick: PropTypes.func.isRequired,
+  downloadCustomization: PropTypes.func.isRequired,
   odd: PropTypes.object
 }
 

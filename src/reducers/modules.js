@@ -36,7 +36,7 @@ export function oddModules(state, action) {
           }
         }
       }
-      return Object.assign(state, customizationObj)
+      return Object.assign(state, {customization: customizationObj})
     case EXCLUDE_MODULES:
       customization.modules = customization.modules.filter(m => {
         return (action.modules.indexOf(m.ident) === -1)
@@ -45,7 +45,7 @@ export function oddModules(state, action) {
       customization.members = customization.members.filter(m => {
         return action.modules.indexOf(m.module) === -1
       })
-      return Object.assign(state, customizationObj)
+      return Object.assign(state, {customization: customizationObj})
     case INCLUDE_ELEMENTS:
       for (const el of action.elements) {
         const localEl = getElementByIdent(localsource, el)
@@ -58,7 +58,7 @@ export function oddModules(state, action) {
           customization.modules.push(localMod)
         }
       }
-      return Object.assign(state, customizationObj)
+      return Object.assign(state, {customization: customizationObj})
     case EXCLUDE_ELEMENTS:
       for (const el of action.elements) {
         const localEl = getElementByIdent(localsource, el)
@@ -81,7 +81,7 @@ export function oddModules(state, action) {
           }, [])
         }
       }
-      return Object.assign(state, customizationObj)
+      return Object.assign(state, {customization: customizationObj})
     default:
       return state
   }

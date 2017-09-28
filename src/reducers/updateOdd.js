@@ -200,7 +200,7 @@ function mergeElements(localsource, customization, odd) {
 
 export function updateOdd(localsourceObj, customizationObj) {
   // NB: localsource and customization are READ ONLY
-  //     odd XML gets cloned every time to keep sub-routines purpose
+  //     odd XML gets cloned every time to keep sub-routines pure
   //     and minimize errors. This will slow the export down a bit,
   //     but since it's a one-off operation, it should be ok.
   const localsource = localsourceObj.json

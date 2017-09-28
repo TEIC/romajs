@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
+import FilterSearch from '../containers/FilterSearch'
 
 export default class Header extends Component {
   render() {
@@ -13,7 +14,7 @@ export default class Header extends Component {
           <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
             <input type="file" id="files"/>
             <a className="material-icons" title="Upload ODD" onClick={this.props.uploadCustomization}>file_upload</a>
-            <a className="material-icons" title="Download ODD" onClick={()=>{this.props.onDownloadClick(this.props.odd.customization.json)}}>file_download</a>
+            <a className="material-icons" title="Download ODD" onClick={()=>{this.props.downloadCustomization()}}>file_download</a>
           </section>
         </div>
         <div className="mdc-toolbar__row romajs-toolbar2">
@@ -22,16 +23,10 @@ export default class Header extends Component {
               <span className="mdl-chip__text">Elements</span>
               <button type="button" className="mdl-chip__action"><i className="material-icons">cancel</i></button>
             </span>
-            <span className="mdl-chip mdl-chip--deletable">
-              <span className="mdl-chip__text">Classes</span>
-              <button type="button" className="mdl-chip__action"><i className="material-icons">add_circle</i></button>
-            </span>
-            <span className="mdl-chip mdl-chip--deletable">
-              <span className="mdl-chip__text">Datatypes</span>
-              <button type="button" className="mdl-chip__action"><i className="material-icons">add_circle</i></button>
-            </span>
           </section>
-          <section className="mdc-toolbar__section mdc-toolbar__section--align-end"/>
+          <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
+            <FilterSearch/>
+          </section>
         </div>
       </header>
     )
@@ -40,6 +35,6 @@ export default class Header extends Component {
 
 Header.propTypes = {
   uploadCustomization: PropTypes.func.isRequired,
-  onDownloadClick: PropTypes.func.isRequired,
+  downloadCustomization: PropTypes.func.isRequired,
   odd: PropTypes.object
 }

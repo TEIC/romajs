@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
-import { postToOxGarage, fetchLocalSource } from '../actions'
+import { receiveOdd, postToOxGarage, fetchLocalSource, updateCustomizationOdd, exportOdd } from '../actions'
 import AppBody from '../components/AppBody'
-// import saveAs from 'save-as'
 
 const mapStateToProps = (state) => { return state }
 
@@ -13,12 +12,16 @@ const mapDispatchToProps = (dispatch) => {
       const reader = new FileReader()
       reader.readAsText(files[0])
       reader.onload = (e) => {
-        dispatch(postToOxGarage(e.target.result, 'http://www.tei-c.org/ege-webservice//Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/oddjson%3Aapplication%3Ajson/'))
+        dispatch(receiveOdd(e.target.result))
+        dispatch(postToOxGarage(e.target.result, `${window.location.protocol}//www.tei-c.org/ege-webservice//Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/oddjson%3Aapplication%3Ajson/`))
         dispatch(fetchLocalSource('fakeData/p5subset.json'))
       }
     },
-    onDownloadClick: () => {
-      // saveAs(new Blob([xmlString], {'type': 'text\/xml'}), 'new_odd.xml')
+    downloadCustomization: () => {
+      dispatch(updateCustomizationOdd())
+      // TODO: keep an eye on this;
+      // you don't want it to fire before the customization update is completed.
+      dispatch(exportOdd())
     }
   }
 }

@@ -25,7 +25,7 @@ function requestOdd(odd) {
   }
 }
 
-function receiveOdd(string) {
+export function receiveOdd(string) {
   return {
     type: RECEIVE_ODD,
     xml: string,
@@ -67,6 +67,12 @@ function requestOxGarageTransform(input, endpoint) {
 export function updateCustomizationOdd() {
   return {
     type: UPDATE_CUSTOMIZATION_ODD
+  }
+}
+
+export function exportOdd() {
+  return {
+    type: EXPORT_ODD
   }
 }
 

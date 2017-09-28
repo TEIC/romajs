@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
 import SingleModule from '../containers/SingleModule'
+import { Link } from 'react-router-dom'
 
 export default class Member extends Component {
   render() {
@@ -18,7 +19,7 @@ export default class Member extends Component {
           </span>
         </span>
         <span className="mdc-list-item__text">
-          {this.props.ident}
+          <Link to={'element/' + this.props.ident}>{this.props.ident}</Link>
           <span className="mdc-list-item__text__secondary">{this.props.desc}
           </span>
         </span>
@@ -38,5 +39,6 @@ Member.propTypes = {
   ident: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
   module: PropTypes.string.isRequired,
-  module_selected: PropTypes.bool.isRequired
+  module_selected: PropTypes.bool.isRequired,
+  visible: PropTypes.bool.isRequired
 }
