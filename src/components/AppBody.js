@@ -8,7 +8,7 @@ import ElementPage from '../containers/ElementPage'
 
 class AppBody extends Component {
   render() {
-    return (<div>
+    return (<div className="mdc-typography">
       <Header uploadCustomization={this.props.uploadCustomization} downloadCustomization={this.props.downloadCustomization} odd={this.props.odd}/>
       <div className="romajs-content">
         <main className="romajs-main">

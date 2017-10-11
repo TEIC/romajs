@@ -26,7 +26,8 @@ MembersList.propTypes = {
     selected: PropTypes.bool.isRequired,
     visible: PropTypes.bool.isRequired,
     ident: PropTypes.string.isRequired,
-    desc: PropTypes.string.isRequired,
+    shortDesc: PropTypes.string.isRequired,
+    desc: PropTypes.array.isRequired,
     module: PropTypes.string.isRequired,
     module_selected: PropTypes.bool.isRequired
   }).isRequired).isRequired,

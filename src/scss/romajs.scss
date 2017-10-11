@@ -7,7 +7,7 @@ $romajs-theme-no: #802900;
 
 @import "material-design-lite/src/chip/_chip";
 
-@import "@material/animation/mdc-animation";
+// @import "@material/animation/mdc-animation";
 @import "@material/button/mdc-button";
 @import "@material/card/mdc-card";
 @import "@material/checkbox/mdc-checkbox";
@@ -144,4 +144,16 @@ body {
     padding-top: 20px;
   }
 
+}
+
+/* TEXTFIELDS */
+
+.romajs-form {
+  label {
+    display: block;
+  }
+  .mdc-textfield--upgraded:not(.mdc-textfield--fullwidth):not(.mdc-textfield--box):not(.mdc-textfield--textarea) {
+    margin-top:0px !important;
+    height: 40px !important;
+  }
 }

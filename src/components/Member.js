@@ -20,7 +20,7 @@ export default class Member extends Component {
         </span>
         <span className="mdc-list-item__text">
           <Link to={'element/' + this.props.ident}>{this.props.ident}</Link>
-          <span className="mdc-list-item__text__secondary">{this.props.desc}
+          <span className="mdc-list-item__text__secondary">{this.props.shortDesc}
           </span>
         </span>
         <span className="mdc-list-item__end-detail">
@@ -37,7 +37,8 @@ Member.propTypes = {
   toggleItem: PropTypes.func.isRequired,
   selected: PropTypes.bool.isRequired,
   ident: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
+  shortDesc: PropTypes.string.isRequired,
+  desc: PropTypes.array.isRequired,
   module: PropTypes.string.isRequired,
   module_selected: PropTypes.bool.isRequired,
   visible: PropTypes.bool.isRequired
