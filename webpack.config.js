@@ -85,10 +85,15 @@ const rules = [
     ]
   },
   {
-    test: /\.(png|gif|jpg|svg)$/,
-    include: imgPath,
-    use: 'url-loader?limit=20480&name=assets/[name]-[hash].[ext]',
-  },
+    test:  /\.(png|jpg|ttf|eot|gif)$/,
+    exclude: /node_modules/,
+    use: [
+      {
+        loader: 'url-loader',
+        options: {limit: 10000}
+      }
+    ]
+  }
 ];
 
 if (isProduction) {
