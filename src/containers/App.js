@@ -1,34 +1,40 @@
 import { connect } from 'react-redux'
-import { receiveOdd, postToOxGarage, fetchLocalSource, updateCustomizationOdd, exportOdd } from '../actions'
+import { updateCustomizationOdd, exportOdd, exportSchema } from '../actions'
+import { withRouter } from 'react-router'
 import AppBody from '../components/AppBody'
 
-const mapStateToProps = (state) => { return state }
+const mapStateToProps = (state) => {
+  console.log('state', state)
+  return { location: state.router.location.pathname }
+}
+
+// http://www.tei-c.org/ege-webservice//Conversions/ODDC%3Atext%3Axml/relaxng%3Aapplication%3Axml-relaxng/
+// http://www.tei-c.org/ege-webservice//Conversions/ODDC%3Atext%3Axml/xsd%3Aapplication%3Axml-xsd/
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    uploadCustomization: () => {
-      // TODO: this is wrong, find way of passing it to function instead:
-      const files = document.getElementById('files').files
-      const reader = new FileReader()
-      reader.readAsText(files[0])
-      reader.onload = (e) => {
-        dispatch(receiveOdd(e.target.result))
-        dispatch(postToOxGarage(e.target.result, `${window.location.protocol}//www.tei-c.org/ege-webservice//Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/oddjson%3Aapplication%3Ajson/`))
-        dispatch(fetchLocalSource('fakeData/p5subset.json'))
-      }
-    },
     downloadCustomization: () => {
       dispatch(updateCustomizationOdd())
       // TODO: keep an eye on this;
       // you don't want it to fire before the customization update is completed.
       dispatch(exportOdd())
+    },
+    downloadRng: () => {
+      console.log('rng')
+      dispatch(updateCustomizationOdd())
+      dispatch(exportSchema('rng'))
+    },
+    downloadW3c: () => {
+      console.log('xml')
+      dispatch(updateCustomizationOdd())
+      dispatch(exportSchema('xml'))
     }
   }
 }
 
-const App = connect(
+const App = withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(AppBody)
+)(AppBody))
 
 export default App

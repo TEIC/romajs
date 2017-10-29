@@ -10,6 +10,7 @@ export const RECEIVE_FROM_OXGARAGE = 'RECEIVE_FROM_OXGARAGE'
 
 export const UPDATE_CUSTOMIZATION_ODD = 'UPDATE_CUSTOMIZATION_ODD'
 export const EXPORT_ODD = 'EXPORT_ODD'
+export const EXPORT_SCHEMA = 'EXPORT_SCHEMA'
 
 export function selectOdd(oddUrl) {
   return {
@@ -73,6 +74,13 @@ export function updateCustomizationOdd() {
 export function exportOdd() {
   return {
     type: EXPORT_ODD
+  }
+}
+
+export function exportSchema(format) {
+  return {
+    type: EXPORT_SCHEMA,
+    format
   }
 }
 

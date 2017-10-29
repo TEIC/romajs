@@ -30,6 +30,8 @@ $romajs-theme-no: #802900;
 @import "@material/theme/mdc-theme";
 @import "@material/toolbar/mdc-toolbar";
 @import "@material/typography/mdc-typography";
+@import "@material/tabs/mdc-tabs.scss";
+@import "@material/linear-progress/mdc-linear-progress";
 
 /* COLORS */
 .romajs-color-no {
@@ -156,4 +158,33 @@ body {
     margin-top:0px !important;
     height: 40px !important;
   }
+}
+
+/* HOMEBOX */
+.romajs-homebox {
+  width: 75%;
+}
+
+.romajs-hero {
+  display: flex;
+  justify-content: center;
+}
+
+/* LOADER */
+.romajs-loader {
+  img {
+    width: 5%;
+    vertical-align: middle;
+  }
+  font-size: 110%;
+  font-weight: bold;
+}
+
+/* DOWNLOAD MENU */
+.romajs-download-menu {
+  position: absolute;
+  transform-origin: right top 0px;
+  right: 0px;
+  top: 0px;
+  transform: scale(0, 0);
 }

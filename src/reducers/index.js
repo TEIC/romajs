@@ -1,6 +1,6 @@
 import {
   SELECT_ODD, REQUEST_ODD, RECEIVE_ODD, REQUEST_LOCAL_SOURCE, RECEIVE_LOCAL_SOURCE,
-  REQUEST_OXGARAGE_TRANSFORM, RECEIVE_FROM_OXGARAGE, UPDATE_CUSTOMIZATION_ODD, EXPORT_ODD
+  REQUEST_OXGARAGE_TRANSFORM, RECEIVE_FROM_OXGARAGE, UPDATE_CUSTOMIZATION_ODD, EXPORT_ODD, EXPORT_SCHEMA
 } from '../actions'
 import {
   INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS
@@ -15,6 +15,22 @@ import { ui } from  './interface'
 import { combineReducers } from 'redux'
 import * as fileSaver from 'file-saver'
 import { routerReducer } from 'react-router-redux'
+import oxgarage from '../utils/oxgarage'
+
+export function postToOxGarage(input, endpoint) {
+  const fd = new FormData()
+  fd.append('fileToConvert', new Blob([input], {'type': 'application\/octet-stream'}), 'file.odd')
+  return new Promise((res)=>{
+    fetch(endpoint, {
+      mode: 'cors',
+      method: 'post',
+      body: fd
+    })
+      .then(response => {
+        res(response.text())
+      })
+  })
+}
 
 function selectedOdd(state = '', action) {
   switch (action.type) {
@@ -84,6 +100,14 @@ function odd(state = {}, action) {
       return Object.assign({}, state, {customization: xml})
     case EXPORT_ODD:
       fileSaver.saveAs(new Blob([state.customization.xml], {'type': 'text\/xml'}), 'new_odd.xml')
+      return state
+    case EXPORT_SCHEMA:
+      postToOxGarage(state.customization.xml, oxgarage.compile).then((compiled) => {
+        postToOxGarage(compiled, oxgarage[action.format])
+          .then((res) => {
+            fileSaver.saveAs(new Blob([res], {'type': 'text\/xml'}), 'schema.' + action.format)
+          })
+      })
       return state
     case RECEIVE_LOCAL_SOURCE:
     case REQUEST_LOCAL_SOURCE:

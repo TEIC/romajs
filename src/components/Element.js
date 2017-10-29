@@ -47,7 +47,7 @@ export default class Element extends Component {
         <textarea id="textarea" className="mdc-textfield__input" rows="8" cols="40" value={this.props.element.desc[0]}/>
       </div>
 
-      <div><Link to="/">Back</Link></div>
+      <div><Link to="/members">Back</Link></div>
     </div>)
   }
 }

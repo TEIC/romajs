@@ -3,7 +3,6 @@ import { includeElements, excludeElements } from '../actions/modules'
 import MembersList from '../components/MembersList'
 
 const mapStateToProps = (state) => {
-  console.log('state changed!', state)
   let elements = []
   if (state.odd.customization && state.odd.localsource) {
     if (!state.odd.customization.isFetching && !state.odd.localsource.isFetching) {
