@@ -1,18 +1,36 @@
 import { DOMParser, XMLSerializer } from 'xmldom'
 
 function mergeModules(localsource, customization, odd) {
+  // This function compares the original ODD and the customization to locate
+  // changes in modules. It applies those changes and returns a new ODD.
+  // NB It operates on the FIRST schemaSpec; this could be an issue.
   const schemaSpec = odd.getElementsByTagName('schemaSpec')[0]
-  const oddModules = odd.getElementsByTagName('moduleRef')
+  const oddModules = schemaSpec.getElementsByTagName('moduleRef')
   const customModuleNames = customization.modules.map(m => m.ident)
 
   const oddModuleNames = Array.from(oddModules).reduce((acc, m) => {
-    acc.push(m.getAttribute('key'))
+    acc.add(m.getAttribute('key'))
+    return acc
+  }, new Set())
+  // Add modules based on elementRef classRef dataRef macroRef (attRef?)
+  // NB wish I could use querySelectorAll()!
+  const memberRefs = Array.from(schemaSpec.childNodes).reduce((acc, child) => {
+    if (child.localName === 'elementRef'
+     || child.localName === 'classRef'
+     || child.localName === 'dataRef'
+     || child.localName === 'macroRef') {
+      acc.push(child)
+    }
     return acc
   }, [])
+  memberRefs.map(el => {
+    const ident = el.getAttribute('key')
+    oddModuleNames.add(localsource.members.filter(m => m.ident === ident)[0].module)
+  })
 
   // Determine new modules and add them appropriately
   for (const m of customization.modules) {
-    if (oddModuleNames.indexOf(m.ident) === -1) {
+    if (!oddModuleNames.has(m.ident)) {
       // before adding the module, make sure it's meant to be added in full.
       let moduleElementsCount = 0
       let selectedElementsCount = 0
@@ -36,10 +54,13 @@ function mergeModules(localsource, customization, odd) {
   }
 
   // Determine unselected modules, remove them
-  for (const oddModuleName of oddModuleNames) {
+  for (const oddModuleName of Array.from(oddModuleNames)) {
     if (customModuleNames.indexOf(oddModuleName) === -1) {
       const nodeToRemove = Array.from(oddModules).filter(om => (om.getAttribute('key') === oddModuleName))[0]
-      nodeToRemove.parentNode.removeChild(nodeToRemove)
+      // A moduleRef may not always be present (e.g. a module is selected via elementRef)
+      if (nodeToRemove) {
+        nodeToRemove.parentNode.removeChild(nodeToRemove)
+      }
     }
   }
 
@@ -58,9 +79,9 @@ function mergeElements(localsource, customization, odd) {
     const include = mod.getAttribute('include')
     const except = mod.getAttribute('except')
     if (include) {
-      includedElements.push(...include.split(/\s/))
+      includedElements.push(...include.match(/\S+/g))
     } else if (except) {
-      const excludedElements = except.split(/\s/)
+      const excludedElements = except.match(/\S+/g)
       localsource.members.map(mem => {
         if (mem.type === 'elementSpec' && mem.module === moduleName && excludedElements.indexOf(mem.ident) === -1) {
           includedElements.push(mem.ident)
@@ -90,11 +111,13 @@ function mergeElements(localsource, customization, odd) {
   allOddElements = allOddElements.concat(Array.from(elementRefs).map(el => el.getAttribute('key')))
   // Also pick up any stray elementSpecs
   allOddElements = allOddElements.concat(Array.from(elementSpecs).reduce((acc, el) => {
-    if (el.getAttribute('mode') !== 'delete') {
+    // TODO: temporarily muting elements in new namespace
+    if (el.getAttribute('mode') !== 'delete' && !el.getAttribute('ns')) {
       acc.push(el.getAttribute('ident'))
     }
     return acc
   }, []))
+  allOddElements = new Set(allOddElements)
 
   // Get all elemnets from the state for comparison
   const customizationElements = customization.members.reduce((acc, x) => {
@@ -105,7 +128,7 @@ function mergeElements(localsource, customization, odd) {
   }, [])
 
   // remove elements
-  for (const el of allOddElements) {
+  for (const el of Array.from(allOddElements)) {
     if (customizationElements.indexOf(el) === -1) {
       console.log('removing ' + el)
       const mod = localsource.members.filter(x => (x.ident === el))[0].module
@@ -118,7 +141,7 @@ function mergeElements(localsource, customization, odd) {
         const include = moduleRef.getAttribute('include')
         const except = moduleRef.getAttribute('except')
         if (include) {
-          const includeParts = include.split(/\s/)
+          const includeParts = include.match(/\S+/g)
           includeParts.splice(includeParts.indexOf(el), 1)
           const includeString = includeParts.join(' ')
           if (includeString) {
@@ -145,7 +168,7 @@ function mergeElements(localsource, customization, odd) {
 
   // add elements
   for (const el of customizationElements) {
-    if (allOddElements.indexOf(el) === -1) {
+    if (!allOddElements.has(el)) {
       console.log('adding ' + el)
       const mod = localsource.members.filter(x => (x.ident === el))[0].module
       // adjust @include or @except
@@ -159,7 +182,7 @@ function mergeElements(localsource, customization, odd) {
         if (include) {
           moduleRef.setAttribute('include', `${include} ${el}`)
         } else if (except) {
-          const exceptParts = except.split(/\s/)
+          const exceptParts = except.match(/\S+/g)
           exceptParts.splice(exceptParts.indexOf(el), 1)
           const exceptString = exceptParts.join(' ')
           if (exceptString) {
@@ -190,8 +213,8 @@ function mergeElements(localsource, customization, odd) {
     }
   }
 
-  const elementsToRemove = allOddElements.filter(x => (customizationElements.indexOf(x) === -1))
-  const elementsToAdd = customizationElements.filter(x => (allOddElements.indexOf(x) === -1))
+  const elementsToRemove = Array.from(allOddElements).filter(x => (customizationElements.indexOf(x) === -1))
+  const elementsToAdd = customizationElements.filter(x => (!allOddElements.has(x)))
   elementsToRemove
   elementsToAdd
   // console.log(elementsToRemove)
