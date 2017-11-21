@@ -9,6 +9,8 @@ var DIST_DIR = path.join(__dirname, 'dist'),
 module.exports = {
   context: CLIENT_DIR,
 
+  devtool: 'inline-source-map',
+
   entry: ['./index', "webpack-hot-middleware/client"],
 
   output: {
