@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 // import {MDCTextfield} from '@material/textfield'
+import AceEditor from 'react-ace'
+
+import 'brace/mode/xml'
+import 'brace/theme/tomorrow'
 
 export default class Element extends Component {
   constructor(props) {
@@ -16,10 +20,16 @@ export default class Element extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   const textfield = new MDCTextfield(this.refs.textfield)
-  //   textfield
-  // }
+  componentDidMount() {
+    // const textfield = new MDCTextfield(this.refs.textfield)
+    // textfield
+    const reactAceComponent = this.refs.ace_desc
+    const editor = reactAceComponent.editor
+    editor.setOption('wrap', true)
+    // editor.$blockScrolling = Infinity
+    // editor.moveCursorTo(1, 1)
+    window.editor = editor
+  }
 
   changeIdent(event) {
     this.setState({altIdent: event.target.value})
@@ -43,9 +53,19 @@ export default class Element extends Component {
       </p>
 
       <label htmlFor="textarea">Description</label>
-      <div className="romajs-textfield mdc-textfield mdc-textfield--textarea mdc-textfield--upgraded">
-        <textarea id="textarea" className="mdc-textfield__input" rows="8" cols="40" value={this.props.element.desc[0]}/>
-      </div>
+      <AceEditor
+        ref="ace_desc"
+        mode="xml"
+        theme="tomorrow"
+        name="ace_desc"
+        fontSize={14}
+        showPrintMargin={false}
+        showGutter={true}
+        highlightActiveLine={true}
+        value={this.props.element.desc[0]}
+        editorProps={{
+          $blockScrolling: Infinity
+        }}/>
 
       <div><Link to="/members">Back</Link></div>
     </div>)

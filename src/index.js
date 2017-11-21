@@ -11,6 +11,8 @@ import createHistory from 'history/createBrowserHistory'
 import romajsApp from './reducers'
 import App from './containers/App'
 
+// const history = createHistory({ basename: '/romajs' })
+console.log('h')
 const history = createHistory()
 
 const store = createStore(
