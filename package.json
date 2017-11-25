@@ -4,10 +4,10 @@
   "description": "Javascript implementation of Roma in React-Redux",
   "main": "index.js",
   "scripts": {
-    "test": "npm run eslint && mocha --recursive --compilers js:babel-core/register --require ./test/setup.js",
+    "test": "npm run eslint && mocha --recursive --require babel-core/register --require ./test/setup.js",
     "test:watch": "npm test -- --watch",
     "start": "node server.js",
-    "build": "rm -rf ./build && NODE_ENV=\"production\" webpack",
+    "build": "rimraf ./build && cross-env NODE_ENV=\"production\" webpack",
     "lint-break-on-errors": "eslint ./source/js ./webpack.config.js -f table --ext .js --ext .jsx",
     "eslint": "eslint src test"
   },
@@ -36,6 +36,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "brace": "^0.10.0",
+    "cross-env": "^5.1.1",
     "css-loader": "^0.28.5",
     "es6-promise": "^4.1.1",
     "eslint": "^4.5.0",
@@ -65,6 +66,7 @@
     "redux": "^3.7.2",
     "redux-mock-store": "^1.2.3",
     "redux-thunk": "^2.2.0",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "url-loader": "^0.6.2",

@@ -9,9 +9,7 @@ var DIST_DIR = path.join(__dirname, 'dist'),
 module.exports = {
   context: CLIENT_DIR,
 
-  devtool: 'inline-source-map',
-
-  entry: ['./index', "webpack-hot-middleware/client"],
+  entry: ['./index'],
 
   output: {
     path:   DIST_DIR,
@@ -26,7 +24,6 @@ module.exports = {
       inject: 'body',
       filename: 'index.html'
     }),
-    new webpack.HotModuleReplacementPlugin()
   ],
 
   module: {
@@ -48,7 +45,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[name]---[local]---[hash:base64:5]'
+              localIdentName: '[local]'
             }
           }
         ]

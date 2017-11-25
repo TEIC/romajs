@@ -11,11 +11,14 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 const express = require('express')
 const app = express()
 const port = 3000
-const compiler = webpack(config)
 
 app.use('/fakeData', express.static('test/fakeData'))
 
 if (isDevelopment) {
+  config.devtool = 'inline-source-map'
+  config.entry.push(`webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr&reload=true`)
+  config.plugins.push(new webpack.HotModuleReplacementPlugin())
+  const compiler = webpack(config)
   app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath
