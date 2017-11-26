@@ -12,7 +12,6 @@ import { oddModules } from './modules'
 import { oddElements } from './elements'
 import { updateOdd } from './updateOdd'
 import { ui } from  './interface'
-import { combineReducers } from 'redux'
 import * as fileSaver from 'file-saver'
 import { routerReducer } from 'react-router-redux'
 import oxgarage from '../utils/oxgarage'
@@ -135,11 +134,11 @@ function odd(state = {}, action) {
   }
 }
 
-const romajsApp = combineReducers({
+const reducers = {
   selectedOdd,
   odd,
   ui,
   router: routerReducer
-})
+}
 
-export default romajsApp
+export default reducers

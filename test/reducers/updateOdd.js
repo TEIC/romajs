@@ -1,7 +1,7 @@
 import expect from 'expect'
 import fs from 'fs'
 import { DOMParser, XMLSerializer } from 'xmldom'
-import romajsApp from '../../src/reducers'
+import romajsApp from './combinedReducers'
 
 const customization = fs.readFileSync('test/fakeData/bare.json', 'utf-8')
 const customizationXMLString = fs.readFileSync('test/fakeData/bare.odd', 'utf-8')

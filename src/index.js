@@ -8,13 +8,21 @@ import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
 import { routerMiddleware, ConnectedRouter } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
-import romajsApp from './reducers'
+import { persistStore, persistCombineReducers } from 'redux-persist'
+import storage from 'redux-persist/es/storage'
+import { PersistGate } from 'redux-persist/es/integration/react'
+import reducers from './reducers'
 import App from './containers/App'
 
 // const history = createHistory({ basename: '/romajs' })
-console.log('h')
 const history = createHistory()
 
+const persistConf = {
+  key: 'root',
+  storage
+}
+
+const romajsApp = persistCombineReducers(persistConf, reducers)
 const store = createStore(
   romajsApp,
   applyMiddleware(
@@ -23,11 +31,15 @@ const store = createStore(
   )
 )
 
+const persistor = persistStore(store)
+
 render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <App/>
-    </ConnectedRouter>
+    <PersistGate persistor={persistor}>
+      <ConnectedRouter history={history}>
+        <App/>
+      </ConnectedRouter>
+    </PersistGate>
   </Provider>,
   document.getElementById('romajs')
 )

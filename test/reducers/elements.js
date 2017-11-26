@@ -1,6 +1,6 @@
 import expect from 'expect'
 import fs from 'fs'
-import romajsApp from '../../src/reducers'
+import romajsApp from './combinedReducers'
 
 const customization = JSON.parse(fs.readFileSync('test/fakeData/bare.json', 'utf-8'))
 const localsource = JSON.parse(fs.readFileSync('test/fakeData/p5subset.json', 'utf-8'))

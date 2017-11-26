@@ -1,5 +1,5 @@
 import expect from 'expect'
-import romajsApp from '../../src/reducers'
+import romajsApp from './combinedReducers'
 
 const initialState = { selectedOdd: '', odd: {}, ui: {}, router: { 'location': null } }
 
