@@ -1,5 +1,6 @@
 /* Set Roma theme colors */
 $mdc-theme-primary: #225688;
+$mdc-theme-secondary: #3572ad;
 $mdc-theme-accent: #d2aa28;
 $mdc-theme-background: #fff;
 $romajs-theme-yes: #1b8c64;
@@ -42,6 +43,11 @@ $romajs-theme-no: #802900;
   color: $romajs-theme-yes;
 }
 
+/* Typography overrides */
+.mdc-typography--headline {
+  margin-left: 20px;
+}
+
 /* Ensure layout covers the entire screen. */
 html {
   height: 100%;
@@ -68,15 +74,16 @@ body {
   flex-grow: 1;
   height: 100%;
   box-sizing: border-box;
-  margin: 130px 0 0 0;
+  margin: 64px 0 0 0;
 }
 
-.romajs-main {
-  padding-left: 16px;
+main {
+  margin-top: 70px;
 }
 
 /* TOOLBAR */
 .romajs-toolbar {
+  z-index: 99 !important;
   .mdc-toolbar__section--align-end .material-icons {
     padding-right: 20px;
     cursor: pointer;
@@ -85,7 +92,9 @@ body {
 
 /* SECONDARY TOOLBAR */
 .romajs-toolbar2 {
-  padding: 10px 20px 20px 30px;
+  padding: 10px 10px 10px 20px;
+  background-color: $mdc-theme-secondary;
+  top: auto;
 
   .mdl-chip {
     margin-right: 10px;
@@ -160,6 +169,12 @@ body {
   }
 }
 
+.romajs-formrow {
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+}
+
 /* HOMEBOX */
 .romajs-homebox {
   width: 75%;
@@ -187,4 +202,14 @@ body {
   right: 0px;
   top: 0px;
   transform: scale(0, 0);
+}
+
+/* Ace editor */
+.ace_editor {
+  border: 1px solid lightgrey;
+}
+
+/* Utils */
+.romajs-clickable {
+  cursor: pointer;
 }

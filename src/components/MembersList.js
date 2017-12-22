@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
+import FilterSearch from '../containers/FilterSearch'
 import Member from './Member'
 
 export default class MembersList extends Component {
   render() {
-    // let content = (<span className="romajs-loader"><img src={loading}/> Loading ODD data...</span>)
     let content = (
       <figure>
         <div role="progressbar" className="mdc-linear-progress mdc-linear-progress--indeterminate">
@@ -21,19 +21,32 @@ export default class MembersList extends Component {
         <figcaption>Loading ODD data...</figcaption>
       </figure>)
     if (this.props.elements.length > 0) {
-      content = (<ul key="list" className="mdc-list mdc-list--two-line romajs-itemlist">
-        {this.props.elements.map(element => {
-          if (element.visible) {
-            return (<Member
-              key={element.ident}
-              {...element}
-              toggleItem={this.props.toggleItem}
-            />)
+      content = [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
+        <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
+          <span className="mdl-chip mdl-chip--deletable romajs-itemtype-selected">
+            <span className="mdl-chip__text">Elements</span>
+            <button type="button" className="mdl-chip__action"><i className="material-icons">cancel</i></button>
+          </span>
+        </section>
+        <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
+          <FilterSearch/>
+        </section>
+      </div>,
+      <main key="main">
+        <ul key="list" className="mdc-list mdc-list--two-line romajs-itemlist">
+          {this.props.elements.map(element => {
+            if (element.visible) {
+              return (<Member
+                key={element.ident}
+                {...element}
+                toggleItem={this.props.toggleItem}
+              />)
+            }
+            return ''
           }
-          return ''
-        }
-        )}
-      </ul>)
+          )}
+        </ul>
+      </main>]
     }
     return content
   }

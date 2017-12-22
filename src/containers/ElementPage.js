@@ -28,7 +28,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return { redirect: () => dispatch(push('/')) }
+  return { navigateTo: (place) => dispatch(push(place)) }
 }
 
 const ElementPage = connect(

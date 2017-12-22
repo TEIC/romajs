@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { fetchOdd, receiveOdd, postToOxGarage, fetchLocalSource } from '../actions'
+import { clearUiData } from '../actions/interface'
 import { push } from 'react-router-redux'
 import Home from '../components/Home'
 import oxgarage from '../utils/oxgarage'
@@ -24,6 +25,9 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(fetchLocalSource('fakeData/p5subset.json'))
         dispatch(push('/members'))
       }
+    },
+    clearUiData: () => {
+      dispatch(clearUiData())
     }
   }
 }

@@ -1,4 +1,3 @@
-require('babel-register')()
 const path = require('path')
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
@@ -16,7 +15,7 @@ app.use('/fakeData', express.static('test/fakeData'))
 
 if (isDevelopment) {
   config.devtool = 'inline-source-map'
-  config.entry.push(`webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr&reload=true`)
+  config.entry.push('webpack-hot-middleware/client')
   config.plugins.push(new webpack.HotModuleReplacementPlugin())
   const compiler = webpack(config)
   app.use(webpackDevMiddleware(compiler, {

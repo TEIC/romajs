@@ -1,4 +1,4 @@
-import { SET_FILTER_TERM } from '../actions/interface'
+import { SET_FILTER_TERM, CLEAR_UI_DATA } from '../actions/interface'
 
 export function ui(state = {}, action) {
   switch (action.type) {
@@ -6,6 +6,8 @@ export function ui(state = {}, action) {
       return Object.assign({}, state,
         {filterTerm: action.term}
       )
+    case CLEAR_UI_DATA:
+      return Object.assign({})
     default:
       return state
   }

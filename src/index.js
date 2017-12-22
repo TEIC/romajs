@@ -12,7 +12,11 @@ import { persistStore, persistCombineReducers } from 'redux-persist'
 import storage from 'redux-persist/es/storage'
 import { PersistGate } from 'redux-persist/es/integration/react'
 import reducers from './reducers'
-import App from './containers/App'
+import App from './components/App'
+
+if (module.hot) {
+  module.hot.accept()
+}
 
 // const history = createHistory({ basename: '/romajs' })
 const history = createHistory()

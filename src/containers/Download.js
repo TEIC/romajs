@@ -1,15 +1,8 @@
 import { connect } from 'react-redux'
 import { updateCustomizationOdd, exportOdd, exportSchema } from '../actions'
-import { withRouter } from 'react-router'
-import AppBody from '../components/AppBody'
+import DownloadButton from '../components/DownloadButton'
 
-const mapStateToProps = (state) => {
-  console.log('state', state)
-  return { location: state.router.location.pathname }
-}
-
-// http://www.tei-c.org/ege-webservice//Conversions/ODDC%3Atext%3Axml/relaxng%3Aapplication%3Axml-relaxng/
-// http://www.tei-c.org/ege-webservice//Conversions/ODDC%3Atext%3Axml/xsd%3Aapplication%3Axml-xsd/
+const mapStateToProps = () => { return {} }
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -32,9 +25,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const App = withRouter(connect(
+const Download = connect(
   mapStateToProps,
   mapDispatchToProps
-)(AppBody))
+)(DownloadButton)
 
-export default App
+export default Download
