@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-// import {MDCTextfield} from '@material/textfield'
-// import { Link } from 'react-router-dom'
 import YesNoDialog from './dialogs/YesNo'
 import AceEditor from 'react-ace'
 
@@ -13,6 +11,7 @@ export default class Element extends Component {
     super(props)
     this.state = {
       altIdent: props.element.altIdent,
+      desc: props.element.desc[0],
       changed: false,
       isSaveDialogOpen: false
     }
@@ -29,14 +28,16 @@ export default class Element extends Component {
     const editor = reactAceComponent.editor
     editor.setOption('wrap', true)
     // This is for testing in browser, remove:
-    window.editor = editor
+    // window.editor = editor
   }
 
-  changeIdent = (event) => {
-    if (event.target.value !== this.state.altIdent) {
+  changeDescEl = (text, el) => {
+    if (text !== this.state[el]) {
       this.setState({changed: true})
+      const newState = {}
+      newState[el] = text
+      this.setState(newState)
     }
-    this.setState({altIdent: event.target.value})
   }
 
   goBack = (event) => {
@@ -45,6 +46,15 @@ export default class Element extends Component {
       this.setState({isSaveDialogOpen: true})
     } else {
       this.props.navigateTo('/members')
+    }
+  }
+
+  save = (event) => {
+    event.preventDefault()
+    if (this.state.changed) {
+      this.props.updateElementDocs(this.props.element.ident, 'altIdent', this.state.altIdent)
+      this.props.updateElementDocs(this.props.element.ident, 'desc', [this.state.desc])
+      this.setState({changed: false})
     }
   }
 
@@ -68,11 +78,11 @@ export default class Element extends Component {
             <i className="material-icons">undo</i>
           </button>
         </span>
-        <span className="mdl-chip mdl-chip--deletable">
+        <span className="mdl-chip mdl-chip--deletable romajs-clickable" onClick={this.save}>
           <span className="mdl-chip__text">Save changes</span>
-          <button type="button" className="mdl-chip__action">
+          <span className="mdl-chip__action">
             <i className="material-icons">save</i>
-          </button>
+          </span>
         </span>
       </section>
     </div>,
@@ -94,7 +104,8 @@ export default class Element extends Component {
             </div>
             <div className="mdc-layout-grid__cell--span-8">
               <div className="mdc-textfield mdc-textfield--upgraded">
-                <input id="fouc" type="text" className="mdc-textfield__input" value={this.state.altIdent} onChange={this.changeIdent}/>
+                <input id="fouc" type="text" className="mdc-textfield__input" value={this.state.altIdent}
+                  onChange={(e) => this.changeDescEl(e.target.value, 'altIdent')}/>
                 <div className="mdc-textfield__bottom-line" style={{transformOrigin: '145px center'}}/>
               </div>
               <p className="mdc-textfield-helptext mdc-textfield-helptext--persistent">
@@ -117,7 +128,8 @@ export default class Element extends Component {
                 showPrintMargin={false}
                 showGutter={true}
                 highlightActiveLine={true}
-                value={this.props.element.desc[0]}
+                value={this.state.desc}
+                onChange={(text) => this.changeDescEl(text, 'desc')}
                 height="100px"
                 width="80%"
                 editorProps={{
@@ -134,5 +146,6 @@ export default class Element extends Component {
 Element.propTypes = {
   success: PropTypes.bool,
   element: PropTypes.object,
-  navigateTo: PropTypes.func
+  navigateTo: PropTypes.func,
+  updateElementDocs: PropTypes.func
 }

@@ -1,10 +1,12 @@
 import { connect } from 'react-redux'
 import Element from '../components/Element'
 import { push } from 'react-router-redux'
+import { updateElementDocs } from '../actions/elements'
 
 const mapStateToProps = (state, ownProps) => {
   let element = null
   let success = false
+  // TODO: Also don't set success to true if the element hasn't been selected
   if (state.odd.customization && state.odd.localsource) {
     if (!state.odd.customization.isFetching && !state.odd.localsource.isFetching) {
       const customEl = state.odd.customization.json.members.filter(x => {
@@ -28,7 +30,10 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return { navigateTo: (place) => dispatch(push(place)) }
+  return {
+    navigateTo: (place) => dispatch(push(place)),
+    updateElementDocs: (element, docEl, content) => dispatch(updateElementDocs(element, docEl, content))
+  }
 }
 
 const ElementPage = connect(

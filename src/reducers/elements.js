@@ -5,13 +5,18 @@ import {
 export function oddElements(state, action) {
   const customizationObj = Object.assign({}, state.customization)
   const customization = customizationObj.json
-  const localsource = state.localsource.json
-  localsource
+  // const localsource = state.localsource.json
   switch (action.type) {
     case UPDATE_ELEMENT_DOCS:
       customization.members.forEach(m => {
         if (m.ident === action.element && m.type === 'elementSpec') {
-          m[action.docEl] = action.content
+          if (action.place === 'unshift') {
+            m[action.docEl].unshift(action.content)
+          } else if (action.place === 'push') {
+            m[action.docEl].push(action.content)
+          } else {
+            m[action.docEl][action.place] = action.content
+          }
         }
       })
       return Object.assign(state, {customization: customizationObj})

@@ -5,11 +5,13 @@ export const ELEMENT_REMOVE_MEMBEROF = 'ELEMENT_REMOVE_MEMBEROF'
 // THERE CAN BE MULTIPLE desc and glos ELEMENTS, SO THERE SHOULD BE actions
 // FOR ADDING AND REMOVING THEM.
 
-export function updateElementDocs(element, docEl, content) {
+export function updateElementDocs(element, docEl, place, content) {
+  // Place can be 'unshift', 'push', or Int.
   return {
     type: UPDATE_ELEMENT_DOCS,
     element,
     docEl,
+    place,
     content
   }
 }

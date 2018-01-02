@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom'
 
 export default class Member extends Component {
   render() {
+    let ident = this.props.ident
+    if (this.props.selected) {
+      ident = <Link to={'element/' + this.props.ident}>{this.props.ident}</Link>
+    }
     return (
       <li className="mdc-list-item mdc-elevation--z1">
         <span className="mdc-checkbox">
@@ -19,7 +23,7 @@ export default class Member extends Component {
           </span>
         </span>
         <span className="mdc-list-item__text">
-          <Link to={'element/' + this.props.ident}>{this.props.ident}</Link>
+          {ident}
           <span className="mdc-list-item__text__secondary">{this.props.shortDesc}
           </span>
         </span>
