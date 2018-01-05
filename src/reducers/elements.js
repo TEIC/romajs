@@ -1,3 +1,4 @@
+import { ReducerException } from '../utils/exceptions'
 import {
   UPDATE_ELEMENT_DOCS, ELEMENT_ADD_MEMBEROF, ELEMENT_REMOVE_MEMBEROF
 } from '../actions/elements'
@@ -10,12 +11,10 @@ export function oddElements(state, action) {
     case UPDATE_ELEMENT_DOCS:
       customization.members.forEach(m => {
         if (m.ident === action.element && m.type === 'elementSpec') {
-          if (action.place === 'unshift') {
-            m[action.docEl].unshift(action.content)
-          } else if (action.place === 'push') {
-            m[action.docEl].push(action.content)
+          if (Array.isArray(m[action.docEl]) && Array.isArray(action.content)) {
+            m[action.docEl] = action.content
           } else {
-            m[action.docEl][action.place] = action.content
+            throw new ReducerException(`Description element content does not match ${action.content}.`)
           }
         }
       })

@@ -71,10 +71,7 @@ removed, as is the <att>level</att> attribute on the <gi>title</gi>
 element. Other attributes are also removed as a consequence of the
 class modifications described below.</p>
         <p>The following specification group deletes the unwanted attributes:
-<specGrp xml:id="bodyfixes">
-        <elementSpec ident="title" mode="change" module="core"><attList><attDef ident="level" mode="delete"/></attList></elementSpec>
-        <elementSpec ident="TEI" mode="change" module="textstructure"><attList><attDef ident="version" mode="delete"/></attList></elementSpec>
-</specGrp>
+
 </p>
       </div>
       <div>
@@ -88,11 +85,7 @@ within it is the <gi>fileDesc</gi>, which contains only the following elements:
 	within the other two elements only a <gi>p</gi> is permitted.
 	The <att>default</att> attribute on the <gi>sourceDesc</gi> element is
 	also removed.
-	<specGrp xml:id="hdrfixes">
-	  <elementSpec ident="sourceDesc"  mode="change" module="header">
-	    <attList><attDef ident="default" mode="delete"/></attList>
-	  </elementSpec>
-	</specGrp>
+
 	</p>
       </div>
       <div>
@@ -112,23 +105,7 @@ the following attributes: <att>xml:id</att>,
 The attribute class <ident>att.declaring</ident> is deleted
 completely, so that none of its members inherit the <att>decls</att>
 attribute defined in the unmodified TEI.</p>
-        <specGrp xml:id="classmods">
-          <classSpec ident="att.global" mode="change" module="tei" type="atts">
-            <attList>
-              <attDef ident="xml:space" mode="delete"/>
-              <attDef ident="rend" mode="delete"/>
-              <attDef ident="xml:base" mode="delete"/>
-            </attList>
-          </classSpec>
-        <classSpec ident="att.fragmentable" mode="delete" module="tei" type="atts"/>
-          <classSpec ident="att.divLike" mode="change" module="tei" type="atts">
-            <attList>
-              <attDef ident="org" mode="delete"/>
-              <attDef ident="sample" mode="delete"/>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.declaring" mode="delete" module="tei" type="atts"/>
-        </specGrp>
+
       </div>
       <div>
         <head>Formal declaration</head>
@@ -137,9 +114,26 @@ attribute defined in the unmodified TEI.</p>
           <moduleRef key="tei"/>
           <moduleRef key="header" include="teiHeader fileDesc titleStmt publicationStmt sourceDesc"/>
           <moduleRef key="textstructure" include="TEI text body div front back"/>
-          <specGrpRef target="#classmods"/>
-          <specGrpRef target="#bodyfixes"/>
-          <specGrpRef target="#hdrfixes"/>
+            <classSpec ident="att.global" mode="change" module="tei" type="atts">
+              <attList>
+                <attDef ident="xml:space" mode="delete"/>
+                <attDef ident="rend" mode="delete"/>
+                <attDef ident="xml:base" mode="delete"/>
+              </attList>
+            </classSpec>
+            <classSpec ident="att.fragmentable" mode="delete" module="tei" type="atts"/>
+            <classSpec ident="att.divLike" mode="change" module="tei" type="atts">
+              <attList>
+                <attDef ident="org" mode="delete"/>
+                <attDef ident="sample" mode="delete"/>
+              </attList>
+            </classSpec>
+            <classSpec ident="att.declaring" mode="delete" module="tei" type="atts"/>
+            <elementSpec ident="title" mode="change" module="core"><attList><attDef ident="level" mode="delete"/></attList></elementSpec>
+            <elementSpec ident="TEI" mode="change" module="textstructure"><attList><attDef ident="version" mode="delete"/></attList></elementSpec>
+            <elementSpec ident="sourceDesc"  mode="change" module="header">
+              <attList><attDef ident="default" mode="delete"/></attList>
+            </elementSpec>
         </schemaSpec>
       </div>
     </body>

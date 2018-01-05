@@ -23,7 +23,7 @@ export default class MembersList extends Component {
     if (this.props.elements.length > 0) {
       content = [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
         <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-          <span className="mdl-chip mdl-chip--deletable romajs-itemtype-selected">
+          <span className="mdl-chip mdl-chip--deletable romajs-active">
             <span className="mdl-chip__text">Elements</span>
             <button type="button" className="mdl-chip__action"><i className="material-icons">cancel</i></button>
           </span>

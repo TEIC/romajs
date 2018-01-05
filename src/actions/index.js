@@ -49,7 +49,7 @@ function receiveLocalSource(json) {
   }
 }
 
-function receiveFromOxGarage(json) {
+export function receiveFromOxGarage(json) {
   return {
     type: RECEIVE_FROM_OXGARAGE,
     json,

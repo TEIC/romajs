@@ -1,9 +1,11 @@
 import { connect } from 'react-redux'
-import { fetchOdd, receiveOdd, postToOxGarage, fetchLocalSource } from '../actions'
+import { fetchOdd, receiveOdd, postToOxGarage, fetchLocalSource, receiveFromOxGarage } from '../actions'
 import { clearUiData } from '../actions/interface'
 import { push } from 'react-router-redux'
 import Home from '../components/Home'
 import oxgarage from '../utils/oxgarage'
+// Test while OxGarage doesn't support XLST3:
+import fetch from 'isomorphic-fetch'
 
 const mapStateToProps = () => { return {} }
 
@@ -28,6 +30,17 @@ const mapDispatchToProps = (dispatch) => {
     },
     clearUiData: () => {
       dispatch(clearUiData())
+    },
+    loadTestData: () => {
+      dispatch(fetchOdd('fakeData/bare.odd')).then(() => {
+        fetch('fakeData/bare.json')
+          .then(response => response.text())
+          .then((json) => {
+            dispatch(receiveFromOxGarage(JSON.parse(json)))
+            dispatch(fetchLocalSource('fakeData/p5subset.json'))
+            dispatch(push('/members'))
+          })
+      })
     }
   }
 }

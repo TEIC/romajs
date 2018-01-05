@@ -114,6 +114,7 @@ export default class Home extends Component {
             </section>
             <section className="mdc-card__actions">
               <button className="mdc-button mdc-button--compact mdc-card__action" onClick={this.state.start} {...disabled}>Start</button>
+              <button className="mdc-button mdc-button--compact mdc-card__action" onClick={this.props.loadTestData} {...disabled}>(Test: Skip OxGarage)</button>
             </section>
           </div>
         </div>
@@ -125,5 +126,6 @@ export default class Home extends Component {
 Home.propTypes = {
   uploadCustomization: PropTypes.func,
   getCustomization: PropTypes.func,
-  clearUiData: PropTypes.func
+  clearUiData: PropTypes.func,
+  loadTestData: PropTypes.func
 }
