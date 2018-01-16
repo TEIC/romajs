@@ -3,9 +3,7 @@ import {
 } from '../actions/modules'
 
 function getElementByIdent(source, ident) {
-  return source.members.filter(m => {
-    return m.type === 'elementSpec' && m.ident === ident
-  })[0]
+  return source.elements.filter(m => { return m.ident === ident })[0]
 }
 
 export function oddModules(state, action) {
@@ -27,11 +25,11 @@ export function oddModules(state, action) {
           desc: localMod.desc
         })
         // Include all elements from this module
-        for (const m of localsource.members) {
-          if (m.type === 'elementSpec' && m.module === ident) {
+        for (const m of localsource.elements) {
+          if (m.module === ident) {
             // if not in custom, add.
-            if (!customization.members.filter(x => (x.ident === m.ident))[0]) {
-              customization.members.push(m)
+            if (!customization.elements.filter(x => (x.ident === m.ident))[0]) {
+              customization.elements.push(m)
             }
           }
         }
@@ -42,7 +40,7 @@ export function oddModules(state, action) {
         return (action.modules.indexOf(m.ident) === -1)
       })
       // Exclude all elements from this module
-      customization.members = customization.members.filter(m => {
+      customization.elements = customization.elements.filter(m => {
         return action.modules.indexOf(m.module) === -1
       })
       return Object.assign(state, {customization: customizationObj})
@@ -50,7 +48,7 @@ export function oddModules(state, action) {
       for (const el of action.elements) {
         const localEl = getElementByIdent(localsource, el)
         if (!getElementByIdent(customization, el)) {
-          customization.members.push(localEl)
+          customization.elements.push(localEl)
         }
         // If the module for the added element was not selected, do it now.
         if (customization.modules.filter(x => (x.ident === localEl.module)).length === 0) {
@@ -62,15 +60,15 @@ export function oddModules(state, action) {
     case EXCLUDE_ELEMENTS:
       for (const el of action.elements) {
         const localEl = getElementByIdent(localsource, el)
-        customization.members = customization.members.reduce((acc, m) => {
+        customization.elements = customization.elements.reduce((acc, m) => {
           if (m.ident !== el) {
             acc.push(m)
           }
           return acc
         }, [])
         // If there are no more elements belonging to the module, remove it
-        const moduleElements = customization.members.filter(x => {
-          return x.type === 'elementSpec' && x.module === localEl.module
+        const moduleElements = customization.elements.filter(x => {
+          return x.module === localEl.module
         })
         if (moduleElements.length === 0) {
           customization.modules = customization.modules.reduce((acc, m) => {

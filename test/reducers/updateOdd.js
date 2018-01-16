@@ -84,8 +84,8 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     customJson.modules.push(
       localJson.modules.filter(x => (x.ident === 'msdescription'))[0]
     )
-    customJson.members.push(
-      localJson.members.filter(x => (x.ident === 'msDesc'))[0]
+    customJson.elements.push(
+      localJson.elements.filter(x => (x.ident === 'msDesc'))[0]
     )
 
     const firstState = romajsApp({
@@ -126,8 +126,8 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     customJson.modules.push(
       localJson.modules.filter(x => (x.ident === 'gaiji'))[0]
     )
-    customJson.members.push(
-      localJson.members.filter(x => (x.ident === 'char'))[0]
+    customJson.elements.push(
+      localJson.elements.filter(x => (x.ident === 'char'))[0]
     )
 
     const firstState = romajsApp({
@@ -189,8 +189,8 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     customJson.modules.push(
       localJson.modules.filter(x => (x.ident === 'gaiji'))[0]
     )
-    customJson.members.push(
-      ...localJson.members.filter(x => {
+    customJson.elements.push(
+      ...localJson.elements.filter(x => {
         return x.module === 'gaiji' && x.ident !== 'charDecl' && x.ident !== 'charName'
       })
     )
@@ -230,8 +230,8 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     customJson.modules.push(
       localJson.modules.filter(x => (x.ident === 'gaiji'))[0]
     )
-    customJson.members.push(
-      ...localJson.members.filter(x => {
+    customJson.elements.push(
+      ...localJson.elements.filter(x => {
         return x.module === 'gaiji' && x.ident !== 'charDecl'
       })
     )
@@ -274,8 +274,8 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     customJson.modules.push(
       localJson.modules.filter(x => (x.ident === 'gaiji'))[0]
     )
-    customJson.members.push(
-      ...localJson.members.filter(x => {
+    customJson.elements.push(
+      ...localJson.elements.filter(x => {
         return x.module === 'gaiji' && x.ident !== 'char'
       })
     )

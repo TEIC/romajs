@@ -1,6 +1,6 @@
 export const UPDATE_ELEMENT_DOCS = 'UPDATE_ELEMENT_DOCS'
-export const ELEMENT_ADD_MEMBEROF = 'ELEMENT_ADD_MEMBEROF'
-export const ELEMENT_REMOVE_MEMBEROF = 'ELEMENT_REMOVE_MEMBEROF'
+export const UPDATE_ELEMENT_MODEL_CLASSES = 'UPDATE_ELEMENT_MODEL_CLASSES'
+export const UPDATE_ELEMENT_ATTRIBUTE_CLASSES = 'UPDATE_ELEMENT_ATTRIBUTE_CLASSES'
 
 export function updateElementDocs(element, docEl, content) {
   // content can be string or array depending on element and documentation element (docEl).
@@ -12,18 +12,18 @@ export function updateElementDocs(element, docEl, content) {
   }
 }
 
-export function elementAddMemberof(element, className) {
+export function updateElementModelClasses(element, classNames) {
   return {
-    type: ELEMENT_ADD_MEMBEROF,
+    type: UPDATE_ELEMENT_MODEL_CLASSES,
     element,
-    className
+    classNames
   }
 }
 
-export function elementRemoveMemberof(element, className) {
+export function updateElementAttributeClasses(element, classNames) {
   return {
-    type: ELEMENT_REMOVE_MEMBEROF,
+    type: UPDATE_ELEMENT_ATTRIBUTE_CLASSES,
     element,
-    className
+    classNames
   }
 }

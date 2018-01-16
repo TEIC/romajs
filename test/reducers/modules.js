@@ -35,7 +35,7 @@ describe('ODD modules operation reducers', () => {
       modules: ['linking']
     })
 
-    expect(state.odd.customization.json.members.filter(
+    expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'ab')
     ).length).toEqual(1)
   })
@@ -69,7 +69,7 @@ describe('ODD modules operation reducers', () => {
       modules: ['header']
     })
 
-    expect(state.odd.customization.json.members.filter(
+    expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'fileDesc')
     ).length).toEqual(0)
   })
@@ -86,7 +86,7 @@ describe('ODD modules operation reducers', () => {
       elements: ['camera', 'p']
     })
 
-    expect(state.odd.customization.json.members.filter(
+    expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'p')
     ).length).toEqual(1)
 
@@ -107,7 +107,7 @@ describe('ODD modules operation reducers', () => {
       elements: ['TEI', 'back', 'body', 'div', 'front', 'text']
     })
 
-    expect(state.odd.customization.json.members.filter(
+    expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'tei')
     ).length).toEqual(0)
 

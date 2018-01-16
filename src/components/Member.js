@@ -24,7 +24,7 @@ export default class Member extends Component {
         </span>
         <span className="mdc-list-item__text">
           {ident}
-          <span className="mdc-list-item__text__secondary">{this.props.shortDesc}
+          <span className="mdc-list-item__secondary-text">{this.props.shortDesc}
           </span>
         </span>
         <span className="mdc-list-item__end-detail">

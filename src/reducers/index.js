@@ -6,7 +6,7 @@ import {
   INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS
 } from '../actions/modules'
 import {
-  UPDATE_ELEMENT_DOCS, ELEMENT_ADD_MEMBEROF, ELEMENT_REMOVE_MEMBEROF
+  UPDATE_ELEMENT_DOCS, UPDATE_ELEMENT_MODEL_CLASSES, UPDATE_ELEMENT_ATTRIBUTE_CLASSES
 } from '../actions/elements'
 import { oddModules } from './modules'
 import { oddElements } from './elements'
@@ -126,8 +126,8 @@ function odd(state = {}, action) {
     case EXCLUDE_ELEMENTS:
       return Object.assign({}, oddModules(state, action))
     case UPDATE_ELEMENT_DOCS:
-    case ELEMENT_ADD_MEMBEROF:
-    case ELEMENT_REMOVE_MEMBEROF:
+    case UPDATE_ELEMENT_MODEL_CLASSES:
+    case UPDATE_ELEMENT_ATTRIBUTE_CLASSES:
       return Object.assign({}, oddElements(state, action))
     default:
       return state

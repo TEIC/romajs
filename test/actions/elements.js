@@ -10,4 +10,20 @@ describe('Element actions', () => {
       content: ['new desc']
     })
   })
+
+  it('updateElementModelClasses should update an element\'s membership to model classes', () =>{
+    expect(actions.updateElementModelClasses('div', ['model.divLike'])).toEqual({
+      type: 'UPDATE_ELEMENT_MODEL_CLASSES',
+      element: 'div',
+      classNames: ['model.divLike']
+    })
+  })
+
+  it('updateElementAttributeClasses should update an element\'s membership to model classes', () =>{
+    expect(actions.updateElementAttributeClasses('div', ['att.divLike', 'att.typed', 'att.written'])).toEqual({
+      type: 'UPDATE_ELEMENT_ATTRIBUTE_CLASSES',
+      element: 'div',
+      classNames: ['att.divLike', 'att.typed', 'att.written']
+    })
+  })
 })

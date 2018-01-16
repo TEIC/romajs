@@ -7,6 +7,11 @@ function mergeModules(localsource, customization, odd) {
   const schemaSpec = odd.getElementsByTagName('schemaSpec')[0]
   const oddModules = schemaSpec.getElementsByTagName('moduleRef')
   const customModuleNames = customization.modules.map(m => m.ident)
+  const allLocalMembers = localsource.elements
+    .concat(localsource.classes.models)
+    .concat(localsource.classes.attributes)
+    .concat(localsource.macros)
+    .concat(localsource.datatypes)
 
   const oddModuleNames = Array.from(oddModules).reduce((acc, m) => {
     acc.add(m.getAttribute('key'))
@@ -14,6 +19,8 @@ function mergeModules(localsource, customization, odd) {
   }, new Set())
   // Add modules based on elementRef classRef dataRef macroRef (attRef?)
   // NB wish I could use querySelectorAll()!
+  // TODO: you MAY use querySelectorAll when this code runs in the browser.
+  // Change this to inject a polyfill when testing with node and you should be good to go.
   const memberRefs = Array.from(schemaSpec.childNodes).reduce((acc, child) => {
     if (child.localName === 'elementRef'
      || child.localName === 'classRef'
@@ -25,7 +32,7 @@ function mergeModules(localsource, customization, odd) {
   }, [])
   memberRefs.map(el => {
     const ident = el.getAttribute('key')
-    oddModuleNames.add(localsource.members.filter(m => m.ident === ident)[0].module)
+    oddModuleNames.add(allLocalMembers.filter(m => m.ident === ident)[0].module)
   })
 
   // Determine new modules and add them appropriately
@@ -34,13 +41,13 @@ function mergeModules(localsource, customization, odd) {
       // before adding the module, make sure it's meant to be added in full.
       let moduleElementsCount = 0
       let selectedElementsCount = 0
-      for (const mem of localsource.members) {
-        if (mem.type === 'elementSpec' && mem.module === m.ident) {
+      for (const mem of localsource.elements) {
+        if (mem.module === m.ident) {
           moduleElementsCount++
         }
       }
-      for (const mem of customization.members) {
-        if (mem.type === 'elementSpec' && mem.module === m.ident) {
+      for (const mem of customization.elements) {
+        if (mem.module === m.ident) {
           selectedElementsCount++
         }
       }
@@ -82,8 +89,8 @@ function mergeElements(localsource, customization, odd) {
       includedElements.push(...include.match(/\S+/g))
     } else if (except) {
       const excludedElements = except.match(/\S+/g)
-      localsource.members.map(mem => {
-        if (mem.type === 'elementSpec' && mem.module === moduleName && excludedElements.indexOf(mem.ident) === -1) {
+      localsource.elements.map(mem => {
+        if (mem.module === moduleName && excludedElements.indexOf(mem.ident) === -1) {
           includedElements.push(mem.ident)
         }
       })
@@ -92,7 +99,7 @@ function mergeElements(localsource, customization, odd) {
       const deletedEls = Array.from(elementSpecs).reduce((acc, es) => {
         if (es.getAttribute('mode') === 'delete') {
           const el = es.getAttribute('ident')
-          const elMod = localsource.members.filter(x => (x.ident === el))[0].module
+          const elMod = localsource.elements.filter(x => (x.ident === el))[0].module
           if (moduleName === elMod) {
             acc.push(el)
           }
@@ -100,8 +107,8 @@ function mergeElements(localsource, customization, odd) {
         return acc
       }, [])
       // console.log('full module ', mod.getAttribute('key'))
-      localsource.members.map(mem => {
-        if (mem.type === 'elementSpec' && mem.module === moduleName && deletedEls.indexOf(mem.ident) === -1) {
+      localsource.elements.map(mem => {
+        if (mem.module === moduleName && deletedEls.indexOf(mem.ident) === -1) {
           includedElements.push(mem.ident)
         }
       })
@@ -120,10 +127,8 @@ function mergeElements(localsource, customization, odd) {
   allOddElements = new Set(allOddElements)
 
   // Get all elemnets from the state for comparison
-  const customizationElements = customization.members.reduce((acc, x) => {
-    if (x.type === 'elementSpec') {
-      acc.push(x.ident)
-    }
+  const customizationElements = customization.elements.reduce((acc, x) => {
+    acc.push(x.ident)
     return acc
   }, [])
 
@@ -131,7 +136,7 @@ function mergeElements(localsource, customization, odd) {
   for (const el of Array.from(allOddElements)) {
     if (customizationElements.indexOf(el) === -1) {
       console.log('removing ' + el)
-      const mod = localsource.members.filter(x => (x.ident === el))[0].module
+      const mod = localsource.elements.filter(x => (x.ident === el))[0].module
       // adjust @include or @except
       const moduleRef = Array.from(moduleRefs).filter(m => (m.getAttribute('key') === mod))[0]
       const elementRef = Array.from(elementRefs).filter(er => (er.getAttribute('key') === el))[0]
@@ -170,7 +175,7 @@ function mergeElements(localsource, customization, odd) {
   for (const el of customizationElements) {
     if (!allOddElements.has(el)) {
       console.log('adding ' + el)
-      const mod = localsource.members.filter(x => (x.ident === el))[0].module
+      const mod = localsource.elements.filter(x => (x.ident === el))[0].module
       // adjust @include or @except
       const moduleRef = Array.from(moduleRefs).filter(m => (m.getAttribute('key') === mod))[0]
       const elementRef = Array.from(elementRefs).filter(er => (er.getAttribute('key') === el))[0]

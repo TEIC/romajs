@@ -1,6 +1,6 @@
 import { ReducerException } from '../utils/exceptions'
 import {
-  UPDATE_ELEMENT_DOCS, ELEMENT_ADD_MEMBEROF, ELEMENT_REMOVE_MEMBEROF
+  UPDATE_ELEMENT_DOCS, UPDATE_ELEMENT_MODEL_CLASSES, UPDATE_ELEMENT_ATTRIBUTE_CLASSES
 } from '../actions/elements'
 
 export function oddElements(state, action) {
@@ -9,8 +9,8 @@ export function oddElements(state, action) {
   // const localsource = state.localsource.json
   switch (action.type) {
     case UPDATE_ELEMENT_DOCS:
-      customization.members.forEach(m => {
-        if (m.ident === action.element && m.type === 'elementSpec') {
+      customization.elements.forEach(m => {
+        if (m.ident === action.element) {
           if (Array.isArray(m[action.docEl]) && Array.isArray(action.content)) {
             m[action.docEl] = action.content
           } else {
@@ -19,8 +19,20 @@ export function oddElements(state, action) {
         }
       })
       return Object.assign(state, {customization: customizationObj})
-    case ELEMENT_ADD_MEMBEROF:
-    case ELEMENT_REMOVE_MEMBEROF:
+    case UPDATE_ELEMENT_MODEL_CLASSES:
+      customization.elements.forEach(m => {
+        if (m.ident === action.element) {
+          m.classes.model = action.classNames
+        }
+      })
+      return Object.assign(state, {customization: customizationObj})
+    case UPDATE_ELEMENT_ATTRIBUTE_CLASSES:
+      customization.elements.forEach(m => {
+        if (m.ident === action.element) {
+          m.classes.atts = action.classNames
+        }
+      })
+      return Object.assign(state, {customization: customizationObj})
     default:
       return state
   }

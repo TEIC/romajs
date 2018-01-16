@@ -12,25 +12,23 @@ const mapStateToProps = (state) => {
       // If a filterTerm is set, use it to filter results
       const filter = state.ui.filterTerm ? state.ui.filterTerm : false
 
-      elements = localsource.members.reduce((acc, localMember) => {
-        if (localMember.type === 'elementSpec') {
-          let element = Object.assign({}, localMember)
-          const customMember = customization.members.filter(m => (m.ident === localMember.ident))[0]
-          if (customMember) {
-            element = Object.assign({}, customMember)
-            element.selected = true
+      elements = localsource.elements.reduce((acc, localMember) => {
+        let element = Object.assign({}, localMember)
+        const customMember = customization.elements.filter(m => (m.ident === localMember.ident))[0]
+        if (customMember) {
+          element = Object.assign({}, customMember)
+          element.selected = true
+          element.module_selected = true
+        } else {
+          element.selected = false
+          if (customization.modules.filter(m => (m.ident === element.module))[0]) {
             element.module_selected = true
           } else {
-            element.selected = false
-            if (customization.modules.filter(m => (m.ident === element.module))[0]) {
-              element.module_selected = true
-            } else {
-              element.module_selected = false
-            }
+            element.module_selected = false
           }
-          element.visible = true
-          acc.push(element)
         }
+        element.visible = true
+        acc.push(element)
         return acc
       }, [])
       // apply filter

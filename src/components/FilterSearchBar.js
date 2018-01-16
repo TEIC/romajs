@@ -6,9 +6,9 @@ export default class FilterSearchBar extends Component {
     return (
       <span className="mdl-chip mdl-chip--deletable romajs-searchbar">
         <span className="mdl-chip__text">
-          <div className="mdc-textfield">
-            <input type="text" className="mdc-textfield__input"
-              id="search-textfield" placeholder="filter items"
+          <div className="mdc-text-field">
+            <input type="text" className="mdc-text-field__input"
+              id="search-text-field" placeholder="filter items"
               onChange={(e)=>{this.props.setFilterTerm(e.target.value)}}/>
           </div>
         </span>

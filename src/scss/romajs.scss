@@ -27,7 +27,7 @@ $romajs-theme-no: #802900;
 @import "@material/select/mdc-select";
 @import "@material/snackbar/mdc-snackbar";
 @import "@material/switch/mdc-switch";
-@import "@material/textfield/mdc-textfield";
+@import "@material/textfield/mdc-text-field";
 @import "@material/theme/mdc-theme";
 @import "@material/toolbar/mdc-toolbar";
 @import "@material/typography/mdc-typography";
@@ -95,6 +95,7 @@ main {
   padding: 10px 10px 10px 20px;
   background-color: $mdc-theme-secondary;
   top: auto;
+  z-index: 99;
 
   .mdl-chip {
     margin-right: 10px;
@@ -163,7 +164,7 @@ main {
   label {
     display: block;
   }
-  .mdc-textfield--upgraded:not(.mdc-textfield--fullwidth):not(.mdc-textfield--box):not(.mdc-textfield--textarea) {
+  .mdc-text-field--upgraded:not(.mdc-text-field--fullwidth):not(.mdc-text-field--box):not(.mdc-text-field--textarea) {
     margin-top:0px !important;
     height: 40px !important;
   }
@@ -209,7 +210,26 @@ main {
   border: 1px solid lightgrey;
 }
 
+/* EDITABLE LISTS */
+.romajs-editable-list {
+  min-width: 0; // FFOX fix
+  .romajs-editable-list-add {
+    padding: 16px 0 0 16px;
+  }
+}
+
 /* Utils */
 .romajs-clickable {
   cursor: pointer;
+}
+
+/* Picker */
+.romajs-picker {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+/* Blockly */
+.romajs-blockly {
+  height: 300px;
 }

@@ -80,7 +80,7 @@ describe('I/O ODD actions', () => {
   //         return act.type === 'RECEIVE_FROM_OXGARAGE'
   //       })
   //       if (receiveAct) {
-  //         expect(receiveAct.json.members.length).toBeGreaterThan(0)
+  //         expect(receiveAct.json.elements.length).toBeGreaterThan(0)
   //         done()
   //       }
   //     })

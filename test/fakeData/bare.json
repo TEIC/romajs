@@ -2,7 +2,7 @@
   { "title" : "TEI Absolutely Bare",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2018-01-05T15:58:05Z",
+    "date" : "2018-01-15T22:39:53Z",
     "modules" : 
     [ 
       { "ident" : "core",
@@ -46,7 +46,7 @@
         [  ] } ],
     "moduleRefs" : 
     [  ],
-    "members" : 
+    "elements" : 
     [ 
       { "ident" : "TEI",
         "type" : "elementSpec",
@@ -59,12 +59,9 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        [ 
-          { "att.global" : 
-            [ "atts" ] },
-          
-          { "att.typed" : 
-            [ "atts" ] } ],
+        { "atts" : 
+          [ "att.global",
+            "att.typed" ] },
         "attributes" : 
         [ 
           { "ident" : "version",
@@ -73,456 +70,18 @@
             "shortDesc" : "",
             "gloss" : 
             [  ] } ],
-        "classattributes" : 
+        "content" : 
         [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "TEI" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.typed",
-            "module" : "tei",
-            "usedBy" : "TEI" } ] },
-      
-      { "ident" : "att.canonical",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">provides attributes which can be used to associate a representation such as a name or title\n    with canonical information about the object being named or referenced.<\/desc>" ],
-        "shortDesc" : "provides attributes which can be used to associate a representation such as a name or title\n    with canonical information about the object being named or referenced.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "attributes" : 
-        [ 
-          { "ident" : "key",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">provides an externally-defined means of identifying the entity (or entities) being\n        named, using a coded value of some kind.<\/desc>" ],
-            "shortDesc" : "provides an externally-defined means of identifying the entity (or entities) being\n        named, using a coded value of some kind.",
-            "gloss" : 
-            [  ] },
-          
-          { "ident" : "ref",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">provides an explicit means of locating a full definition or identity for the entity being named by\n        means of one or more URIs.<\/desc>" ],
-            "shortDesc" : "(reference) provides an explicit means of locating a full definition or identity for the entity being named by\n        means of one or more URIs.",
-            "gloss" : 
-            [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">reference<\/gloss>" ] } ] },
-      
-      { "ident" : "att.datable",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-06-12\" xml:lang=\"en\">provides attributes for normalization of elements that contain\n  dates, times, or datable events.<\/desc>" ],
-        "shortDesc" : "provides attributes for normalization of elements that contain\n  dates, times, or datable events.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "classes" : 
-        [ 
-          { "att.datable.w3c" : 
-            [ "atts" ] } ],
-        "attributes" : 
-        [ 
-          { "ident" : "calendar",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-25\" xml:lang=\"en\">indicates the system or calendar to which the date represented by the content of this\n        element belongs.<\/desc>" ],
-            "shortDesc" : "indicates the system or calendar to which the date represented by the content of this\n        element belongs.",
-            "gloss" : 
-            [  ] },
-          
-          { "ident" : "period",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-25\" xml:lang=\"en\">supplies a pointer to some location defining a named\n        period of time within which the datable item is understood to\n        have occurred.<\/desc>" ],
-            "shortDesc" : "supplies a pointer to some location defining a named\n        period of time within which the datable item is understood to\n        have occurred.",
-            "gloss" : 
-            [  ] } ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.datable.w3c",
-            "module" : "tei",
-            "usedBy" : "att.datable" } ] },
-      
-      { "ident" : "att.datable.w3c",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-11-22\" xml:lang=\"en\">provides attributes for normalization of elements that contain\n  datable events  conforming to the W3C\n  <title ref=\"#XSD2\">XML Schema Part 2: Datatypes Second Edition<\/title>.<\/desc>" ],
-        "shortDesc" : "provides attributes for normalization of elements that contain\n  datable events  conforming to the W3C\n  XML Schema Part 2: Datatypes Second Edition.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "attributes" : 
-        [ 
-          { "ident" : "when",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-07-23\" xml:lang=\"en\">supplies the value of the date or time in a standard form,\n        e.g. yyyy-mm-dd.<\/desc>" ],
-            "shortDesc" : "supplies the value of the date or time in a standard form,\n        e.g. yyyy-mm-dd.",
-            "gloss" : 
-            [  ] },
-          
-          { "ident" : "notBefore",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-09\" xml:lang=\"en\">specifies the earliest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.<\/desc>" ],
-            "shortDesc" : "specifies the earliest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.",
-            "gloss" : 
-            [  ] },
-          
-          { "ident" : "notAfter",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-09\" xml:lang=\"en\">specifies the latest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.<\/desc>" ],
-            "shortDesc" : "specifies the latest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.",
-            "gloss" : 
-            [  ] },
-          
-          { "ident" : "from",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-02-10\" xml:lang=\"en\">indicates the starting point of the period in standard form, e.g. yyyy-mm-dd.<\/desc>" ],
-            "shortDesc" : "indicates the starting point of the period in standard form, e.g. yyyy-mm-dd.",
-            "gloss" : 
-            [  ] },
-          
-          { "ident" : "to",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-02-10\" xml:lang=\"en\">indicates the ending point of the period in standard\n        form, e.g. yyyy-mm-dd.<\/desc>" ],
-            "shortDesc" : "indicates the ending point of the period in standard\n        form, e.g. yyyy-mm-dd.",
-            "gloss" : 
-            [  ] } ] },
-      
-      { "ident" : "att.declarable",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-02-02\" xml:lang=\"en\">provides attributes for those elements in the TEI header which\n  may be independently selected by means of  the special purpose <att>decls<\/att> attribute.<\/desc>" ],
-        "shortDesc" : "provides attributes for those elements in the TEI header which\n  may be independently selected by means of  the special purpose decls attribute.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "attributes" : 
-        [ 
-          { "ident" : "default",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">indicates whether or not this element is selected by default when\nits parent is selected.<\/desc>" ],
-            "shortDesc" : "indicates whether or not this element is selected by default when\nits parent is selected.",
-            "gloss" : 
-            [  ],
-            "values" : 
-            [ "true",
-              "false" ] } ] },
-      
-      { "ident" : "att.divLike",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">provides attributes common to all elements which behave in the same way as divisions.<\/desc>" ],
-        "shortDesc" : "provides attributes common to all elements which behave in the same way as divisions.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "classes" : 
-        [  ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [  ] },
-      
-      { "ident" : "att.global",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">provides attributes common to all elements in the TEI encoding scheme.<\/desc>" ],
-        "shortDesc" : "provides attributes common to all elements in the TEI encoding scheme.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "classes" : 
-        [ 
-          { "att.global.rendition" : 
-            [ "atts" ] },
-          
-          { "att.global.responsibility" : 
-            [ "atts" ] },
-          
-          { "att.global.source" : 
-            [ "atts" ] } ],
-        "attributes" : 
-        [ 
-          { "ident" : "rend",
-            "desc" : 
-            [  ],
-            "shortDesc" : "",
-            "gloss" : 
-            [  ] },
-          
-          { "ident" : "xml:id",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">provides a unique identifier for the element bearing the attribute.<\/desc>" ],
-            "shortDesc" : "(identifier) provides a unique identifier for the element bearing the attribute.",
-            "gloss" : 
-            [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">identifier<\/gloss>" ] },
-          
-          { "ident" : "n",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">gives a number (or other label) for an element, which is not necessarily unique within\n        the document.<\/desc>" ],
-            "shortDesc" : "(number) gives a number (or other label) for an element, which is not necessarily unique within\n        the document.",
-            "gloss" : 
-            [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">number<\/gloss>" ] },
-          
-          { "ident" : "xml:lang",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-01-07\" xml:lang=\"en\">indicates the language of the element content using a <soCalled>tag<\/soCalled> generated\n        according to <ref target=\"http:\/\/www.rfc-editor.org\/rfc\/bcp\/bcp47.txt\">BCP 47<\/ref>.<\/desc>" ],
-            "shortDesc" : "(language) indicates the language of the element content using a tag generated\n        according to BCP 47.",
-            "gloss" : 
-            [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">language<\/gloss>" ] } ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" } ] },
-      
-      { "ident" : "att.global.rendition",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-12-02\" xml:lang=\"en\">provides rendering attributes common to all elements in the TEI encoding scheme.<\/desc>" ],
-        "shortDesc" : "provides rendering attributes common to all elements in the TEI encoding scheme.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "classes" : 
-        [  ],
-        "attributes" : 
-        [ 
-          { "ident" : "rend",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">indicates how the element in question was rendered or presented in the source text.<\/desc>" ],
-            "shortDesc" : "(rendition) indicates how the element in question was rendered or presented in the source text.",
-            "gloss" : 
-            [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">rendition<\/gloss>" ] },
-          
-          { "ident" : "style",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-10-05\" xml:lang=\"en\">contains an expression in some formal style definition language\nwhich defines the rendering or presentation\nused for this element in the source text<\/desc>" ],
-            "shortDesc" : "contains an expression in some formal style definition language\nwhich defines the rendering or presentation\nused for this element in the source text",
-            "gloss" : 
-            [  ] },
-          
-          { "ident" : "rendition",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-09-22\" xml:lang=\"en\">points to a description of the rendering or presentation used for this element in the\n        source text.<\/desc>" ],
-            "shortDesc" : "points to a description of the rendering or presentation used for this element in the\n        source text.",
-            "gloss" : 
-            [  ] } ],
-        "classattributes" : 
-        [  ] },
-      
-      { "ident" : "att.global.responsibility",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-12-10\" xml:lang=\"en\">provides attributes indicating the agent\n    responsible for some aspect of the text, the markup or \n    something asserted by the markup, and the degree of certainty \n    associated with it.<\/desc>" ],
-        "shortDesc" : "provides attributes indicating the agent\n    responsible for some aspect of the text, the markup or \n    something asserted by the markup, and the degree of certainty \n    associated with it.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "classes" : 
-        [  ],
-        "attributes" : 
-        [ 
-          { "ident" : "cert",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">signifies the degree of certainty associated with the intervention or interpretation.<\/desc>" ],
-            "shortDesc" : "(certainty) signifies the degree of certainty associated with the intervention or interpretation.",
-            "gloss" : 
-            [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">certainty<\/gloss>" ] },
-          
-          { "ident" : "resp",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">indicates the agency responsible for the intervention or interpretation, for example an\n        editor or transcriber.<\/desc>" ],
-            "shortDesc" : "(responsible party) indicates the agency responsible for the intervention or interpretation, for example an\n        editor or transcriber.",
-            "gloss" : 
-            [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">responsible party<\/gloss>" ] } ],
-        "classattributes" : 
-        [  ] },
-      
-      { "ident" : "att.global.source",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-02-15\" xml:lang=\"en\">provides an attribute used by elements to point to an\n    external source.<\/desc>" ],
-        "shortDesc" : "provides an attribute used by elements to point to an\n    external source.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "attributes" : 
-        [ 
-          { "ident" : "source",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2010-05-09\" xml:lang=\"en\">specifies the source from which some aspect of\n        this element is drawn.<\/desc>" ],
-            "shortDesc" : "specifies the source from which some aspect of\n        this element is drawn.",
-            "gloss" : 
-            [  ] } ] },
-      
-      { "ident" : "att.naming",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2006-01-05\" xml:lang=\"en\">provides attributes common to elements which refer to named persons, places, organizations etc.<\/desc>" ],
-        "shortDesc" : "provides attributes common to elements which refer to named persons, places, organizations etc.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "classes" : 
-        [ 
-          { "att.canonical" : 
-            [ "atts" ] } ],
-        "attributes" : 
-        [ 
-          { "ident" : "role",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-10-12\" xml:lang=\"en\">may be used to specify further information about the entity referenced by\nthis name in the form of a set of whitespace-separated values, for example the occupation of a person, or the status of a place.<\/desc>" ],
-            "shortDesc" : "may be used to specify further information about the entity referenced by\nthis name in the form of a set of whitespace-separated values, for example the occupation of a person, or the status of a place.",
-            "gloss" : 
-            [  ] },
-          
-          { "ident" : "nymRef",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-05-22\" xml:lang=\"en\">provides a means of locating the canonical form\n      (<term>nym<\/term>) of the names associated with the object\n       named by\n      the element bearing it.<\/desc>" ],
-            "shortDesc" : "(reference to the canonical name) provides a means of locating the canonical form\n      (nym) of the names associated with the object\n       named by\n      the element bearing it.",
-            "gloss" : 
-            [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">reference to the canonical name<\/gloss>" ] } ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.canonical",
-            "module" : "tei",
-            "usedBy" : "att.naming" } ] },
-      
-      { "ident" : "att.placement",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2006-06-08\" xml:lang=\"en\">provides attributes for describing where on the source page or\n  object a textual element appears.<\/desc>" ],
-        "shortDesc" : "provides attributes for describing where on the source page or\n  object a textual element appears.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "attributes" : 
-        [ 
-          { "ident" : "place",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-10-07\" xml:lang=\"en\">specifies where this item is placed.<\/desc>" ],
-            "shortDesc" : "specifies where this item is placed.",
-            "gloss" : 
-            [  ],
-            "values" : 
-            [ "below",
-              "bottom",
-              "margin",
-              "top",
-              "opposite",
-              "overleaf",
-              "above",
-              "end",
-              "inline",
-              "inspace" ] } ] },
-      
-      { "ident" : "att.sortable",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-06\" xml:lang=\"en\">provides attributes for elements in lists or groups that are sortable, but whose sorting key cannot be derived mechanically from the element content.<\/desc>" ],
-        "shortDesc" : "provides attributes for elements in lists or groups that are sortable, but whose sorting key cannot be derived mechanically from the element content.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "attributes" : 
-        [ 
-          { "ident" : "sortKey",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-06\" xml:lang=\"en\">supplies the sort key for this element in an index, list or group which contains it.<\/desc>" ],
-            "shortDesc" : "supplies the sort key for this element in an index, list or group which contains it.",
-            "gloss" : 
-            [  ] } ] },
-      
-      { "ident" : "att.typed",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">provides attributes which can be used to classify or subclassify elements in any way.<\/desc>" ],
-        "shortDesc" : "provides attributes which can be used to classify or subclassify elements in any way.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "attributes" : 
-        [ 
-          { "ident" : "type",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">characterizes the element in some sense, using any convenient\n classification scheme or typology.<\/desc>" ],
-            "shortDesc" : "characterizes the element in some sense, using any convenient\n classification scheme or typology.",
-            "gloss" : 
-            [  ] },
-          
-          { "ident" : "subtype",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">provides a sub-categorization of the element, if needed<\/desc>" ],
-            "shortDesc" : "provides a sub-categorization of the element, if needed",
-            "gloss" : 
-            [  ] } ] },
-      
-      { "ident" : "att.written",
-        "type" : "classSpec",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-01-10\" xml:lang=\"en\">provides an attribute to indicate the hand in which\n  \tthe textual content of an element was written in the source being transcribed.<\/desc>" ],
-        "shortDesc" : "provides an attribute to indicate the hand in which\n  \tthe textual content of an element was written in the source being transcribed.",
-        "gloss" : 
-        [  ],
-        "altIdent" : 
-        [  ],
-        "classes" : 
-        [  ],
-        "attributes" : 
-        [ 
-          { "ident" : "hand",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-02-19\" xml:lang=\"en\">points to a <gi>handNote<\/gi> element describing the hand considered responsible for the\n  \t\t\ttextual content of the element concerned.<\/desc>" ],
-            "shortDesc" : "points to a handNote element describing the hand considered responsible for the\n  \t\t\ttextual content of the element concerned.",
-            "gloss" : 
-            [  ] } ],
-        "classattributes" : 
-        [  ] },
+          { "type" : "sequence",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "elementRef",
+                "key" : "teiHeader" },
+              
+              { "type" : "classRef",
+                "key" : "model.resourceLike" } ] } ] },
       
       { "ident" : "author",
         "type" : "elementSpec",
@@ -535,42 +94,15 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global",
+            "att.naming" ],
+          "model" : 
+          [ "model.respLike" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] },
-          
-          { "att.naming" : 
-            [ "atts" ] },
-          
-          { "model.respLike" : 
-            [ "model" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "author" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.naming",
-            "module" : "tei",
-            "usedBy" : "author" },
-          
-          { "class" : "att.canonical",
-            "module" : "tei",
-            "usedBy" : "att.naming" } ] },
+          { "type" : "macroRef",
+            "key" : "macro.phraseSeq" } ] },
       
       { "ident" : "back",
         "type" : "elementSpec",
@@ -583,28 +115,102 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "back" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" } ] },
+          { "type" : "sequence",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "alternate",
+                "minOccurs" : "0",
+                "maxOccurs" : "unbounded",
+                "content" : 
+                [ 
+                  { "type" : "classRef",
+                    "key" : "model.frontPart" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.pLike.front" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.pLike" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.listLike" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.global" } ] },
+              
+              { "type" : "alternate",
+                "minOccurs" : "0",
+                "maxOccurs" : "1",
+                "content" : 
+                [ 
+                  { "type" : "sequence",
+                    "minOccurs" : "1",
+                    "maxOccurs" : "1",
+                    "content" : 
+                    [ 
+                      { "type" : "classRef",
+                        "key" : "model.div1Like" },
+                      
+                      { "type" : "alternate",
+                        "minOccurs" : "0",
+                        "maxOccurs" : "unbounded",
+                        "content" : 
+                        [ 
+                          { "type" : "classRef",
+                            "key" : "model.frontPart" },
+                          
+                          { "type" : "classRef",
+                            "key" : "model.div1Like" },
+                          
+                          { "type" : "classRef",
+                            "key" : "model.global" } ] } ] },
+                  
+                  { "type" : "sequence",
+                    "minOccurs" : "1",
+                    "maxOccurs" : "1",
+                    "content" : 
+                    [ 
+                      { "type" : "classRef",
+                        "key" : "model.divLike" },
+                      
+                      { "type" : "alternate",
+                        "minOccurs" : "0",
+                        "maxOccurs" : "unbounded",
+                        "content" : 
+                        [ 
+                          { "type" : "classRef",
+                            "key" : "model.frontPart" },
+                          
+                          { "type" : "classRef",
+                            "key" : "model.divLike" },
+                          
+                          { "type" : "classRef",
+                            "key" : "model.global" } ] } ] } ] },
+              
+              { "type" : "sequence",
+                "minOccurs" : "0",
+                "maxOccurs" : "1",
+                "content" : 
+                [ 
+                  { "type" : "classRef",
+                    "key" : "model.divBottomPart" },
+                  
+                  { "type" : "alternate",
+                    "minOccurs" : "0",
+                    "maxOccurs" : "unbounded",
+                    "content" : 
+                    [ 
+                      { "type" : "classRef",
+                        "key" : "model.divBottomPart" },
+                      
+                      { "type" : "classRef",
+                        "key" : "model.global" } ] } ] } ] } ] },
       
       { "ident" : "body",
         "type" : "elementSpec",
@@ -617,28 +223,168 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "body" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" } ] },
+          { "type" : "sequence",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "classRef",
+                "key" : "model.global" },
+              
+              { "type" : "sequence",
+                "minOccurs" : "0",
+                "maxOccurs" : "1",
+                "content" : 
+                [ 
+                  { "type" : "classRef",
+                    "key" : "model.divTop" },
+                  
+                  { "type" : "alternate",
+                    "minOccurs" : "0",
+                    "maxOccurs" : "unbounded",
+                    "content" : 
+                    [ 
+                      { "type" : "classRef",
+                        "key" : "model.global" },
+                      
+                      { "type" : "classRef",
+                        "key" : "model.divTop" } ] } ] },
+              
+              { "type" : "sequence",
+                "minOccurs" : "0",
+                "maxOccurs" : "1",
+                "content" : 
+                [ 
+                  { "type" : "classRef",
+                    "key" : "model.divGenLike" },
+                  
+                  { "type" : "alternate",
+                    "minOccurs" : "0",
+                    "maxOccurs" : "unbounded",
+                    "content" : 
+                    [ 
+                      { "type" : "classRef",
+                        "key" : "model.global" },
+                      
+                      { "type" : "classRef",
+                        "key" : "model.divGenLike" } ] } ] },
+              
+              { "type" : "alternate",
+                "minOccurs" : "1",
+                "maxOccurs" : "1",
+                "content" : 
+                [ 
+                  { "type" : "sequence",
+                    "minOccurs" : "1",
+                    "maxOccurs" : "unbounded",
+                    "content" : 
+                    [ 
+                      { "type" : "classRef",
+                        "key" : "model.divLike" },
+                      
+                      { "type" : "alternate",
+                        "minOccurs" : "0",
+                        "maxOccurs" : "unbounded",
+                        "content" : 
+                        [ 
+                          { "type" : "classRef",
+                            "key" : "model.global" },
+                          
+                          { "type" : "classRef",
+                            "key" : "model.divGenLike" } ] } ] },
+                  
+                  { "type" : "sequence",
+                    "minOccurs" : "1",
+                    "maxOccurs" : "unbounded",
+                    "content" : 
+                    [ 
+                      { "type" : "classRef",
+                        "key" : "model.div1Like" },
+                      
+                      { "type" : "alternate",
+                        "minOccurs" : "0",
+                        "maxOccurs" : "unbounded",
+                        "content" : 
+                        [ 
+                          { "type" : "classRef",
+                            "key" : "model.global" },
+                          
+                          { "type" : "classRef",
+                            "key" : "model.divGenLike" } ] } ] },
+                  
+                  { "type" : "sequence",
+                    "minOccurs" : "1",
+                    "maxOccurs" : "1",
+                    "content" : 
+                    [ 
+                      { "type" : "sequence",
+                        "minOccurs" : "1",
+                        "maxOccurs" : "unbounded",
+                        "content" : 
+                        [ 
+                          { "type" : "classRef",
+                            "key" : "model.common" },
+                          
+                          { "type" : "classRef",
+                            "key" : "model.global" } ] },
+                      
+                      { "type" : "alternate",
+                        "minOccurs" : "0",
+                        "maxOccurs" : "1",
+                        "content" : 
+                        [ 
+                          { "type" : "sequence",
+                            "minOccurs" : "1",
+                            "maxOccurs" : "unbounded",
+                            "content" : 
+                            [ 
+                              { "type" : "classRef",
+                                "key" : "model.divLike" },
+                              
+                              { "type" : "alternate",
+                                "minOccurs" : "0",
+                                "maxOccurs" : "unbounded",
+                                "content" : 
+                                [ 
+                                  { "type" : "classRef",
+                                    "key" : "model.global" },
+                                  
+                                  { "type" : "classRef",
+                                    "key" : "model.divGenLike" } ] } ] },
+                          
+                          { "type" : "sequence",
+                            "minOccurs" : "1",
+                            "maxOccurs" : "unbounded",
+                            "content" : 
+                            [ 
+                              { "type" : "classRef",
+                                "key" : "model.div1Like" },
+                              
+                              { "type" : "alternate",
+                                "minOccurs" : "0",
+                                "maxOccurs" : "unbounded",
+                                "content" : 
+                                [ 
+                                  { "type" : "classRef",
+                                    "key" : "model.global" },
+                                  
+                                  { "type" : "classRef",
+                                    "key" : "model.divGenLike" } ] } ] } ] } ] } ] },
+              
+              { "type" : "sequence",
+                "minOccurs" : "0",
+                "maxOccurs" : "unbounded",
+                "content" : 
+                [ 
+                  { "type" : "classRef",
+                    "key" : "model.divBottom" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.global" } ] } ] } ] },
       
       { "ident" : "div",
         "type" : "elementSpec",
@@ -651,52 +397,105 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global",
+            "att.divLike",
+            "att.typed",
+            "att.written" ],
+          "model" : 
+          [ "model.divLike" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] },
-          
-          { "att.divLike" : 
-            [ "atts" ] },
-          
-          { "att.typed" : 
-            [ "atts" ] },
-          
-          { "att.written" : 
-            [ "atts" ] },
-          
-          { "model.divLike" : 
-            [ "model" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "div" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.divLike",
-            "module" : "tei",
-            "usedBy" : "div" },
-          
-          { "class" : "att.typed",
-            "module" : "tei",
-            "usedBy" : "div" },
-          
-          { "class" : "att.written",
-            "module" : "tei",
-            "usedBy" : "div" } ] },
+          { "type" : "sequence",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "alternate",
+                "minOccurs" : "0",
+                "maxOccurs" : "unbounded",
+                "content" : 
+                [ 
+                  { "type" : "classRef",
+                    "key" : "model.divTop" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.global" } ] },
+              
+              { "type" : "sequence",
+                "minOccurs" : "0",
+                "maxOccurs" : "1",
+                "content" : 
+                [ 
+                  { "type" : "alternate",
+                    "minOccurs" : "1",
+                    "maxOccurs" : "1",
+                    "content" : 
+                    [ 
+                      { "type" : "sequence",
+                        "minOccurs" : "1",
+                        "maxOccurs" : "unbounded",
+                        "content" : 
+                        [ 
+                          { "type" : "alternate",
+                            "minOccurs" : "1",
+                            "maxOccurs" : "1",
+                            "content" : 
+                            [ 
+                              { "type" : "classRef",
+                                "key" : "model.divLike" },
+                              
+                              { "type" : "classRef",
+                                "key" : "model.divGenLike" } ] },
+                          
+                          { "type" : "classRef",
+                            "key" : "model.global" } ] },
+                      
+                      { "type" : "sequence",
+                        "minOccurs" : "1",
+                        "maxOccurs" : "1",
+                        "content" : 
+                        [ 
+                          { "type" : "sequence",
+                            "minOccurs" : "1",
+                            "maxOccurs" : "unbounded",
+                            "content" : 
+                            [ 
+                              { "type" : "classRef",
+                                "key" : "model.common" },
+                              
+                              { "type" : "classRef",
+                                "key" : "model.global" } ] },
+                          
+                          { "type" : "sequence",
+                            "minOccurs" : "0",
+                            "maxOccurs" : "unbounded",
+                            "content" : 
+                            [ 
+                              { "type" : "alternate",
+                                "minOccurs" : "1",
+                                "maxOccurs" : "1",
+                                "content" : 
+                                [ 
+                                  { "type" : "classRef",
+                                    "key" : "model.divLike" },
+                                  
+                                  { "type" : "classRef",
+                                    "key" : "model.divGenLike" } ] },
+                              
+                              { "type" : "classRef",
+                                "key" : "model.global" } ] } ] } ] },
+                  
+                  { "type" : "sequence",
+                    "minOccurs" : "0",
+                    "maxOccurs" : "unbounded",
+                    "content" : 
+                    [ 
+                      { "type" : "classRef",
+                        "key" : "model.divBottom" },
+                      
+                      { "type" : "classRef",
+                        "key" : "model.global" } ] } ] } ] } ] },
       
       { "ident" : "fileDesc",
         "type" : "elementSpec",
@@ -709,28 +508,40 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "fileDesc" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" } ] },
+          { "type" : "sequence",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "sequence",
+                "minOccurs" : "1",
+                "maxOccurs" : "1",
+                "content" : 
+                [ 
+                  { "type" : "elementRef",
+                    "key" : "titleStmt" },
+                  
+                  { "type" : "elementRef",
+                    "key" : "editionStmt" },
+                  
+                  { "type" : "elementRef",
+                    "key" : "extent" },
+                  
+                  { "type" : "elementRef",
+                    "key" : "publicationStmt" },
+                  
+                  { "type" : "elementRef",
+                    "key" : "seriesStmt" },
+                  
+                  { "type" : "elementRef",
+                    "key" : "notesStmt" } ] },
+              
+              { "type" : "elementRef",
+                "key" : "sourceDesc" } ] } ] },
       
       { "ident" : "front",
         "type" : "elementSpec",
@@ -743,28 +554,104 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "front" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" } ] },
+          { "type" : "sequence",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "alternate",
+                "minOccurs" : "0",
+                "maxOccurs" : "unbounded",
+                "content" : 
+                [ 
+                  { "type" : "classRef",
+                    "key" : "model.frontPart" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.pLike" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.pLike.front" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.global" } ] },
+              
+              { "type" : "sequence",
+                "minOccurs" : "0",
+                "maxOccurs" : "1",
+                "content" : 
+                [ 
+                  { "type" : "alternate",
+                    "minOccurs" : "1",
+                    "maxOccurs" : "1",
+                    "content" : 
+                    [ 
+                      { "type" : "sequence",
+                        "minOccurs" : "1",
+                        "maxOccurs" : "1",
+                        "content" : 
+                        [ 
+                          { "type" : "classRef",
+                            "key" : "model.div1Like" },
+                          
+                          { "type" : "alternate",
+                            "minOccurs" : "0",
+                            "maxOccurs" : "unbounded",
+                            "content" : 
+                            [ 
+                              { "type" : "classRef",
+                                "key" : "model.div1Like" },
+                              
+                              { "type" : "classRef",
+                                "key" : "model.frontPart" },
+                              
+                              { "type" : "classRef",
+                                "key" : "model.global" } ] } ] },
+                      
+                      { "type" : "sequence",
+                        "minOccurs" : "1",
+                        "maxOccurs" : "1",
+                        "content" : 
+                        [ 
+                          { "type" : "classRef",
+                            "key" : "model.divLike" },
+                          
+                          { "type" : "alternate",
+                            "minOccurs" : "0",
+                            "maxOccurs" : "unbounded",
+                            "content" : 
+                            [ 
+                              { "type" : "classRef",
+                                "key" : "model.divLike" },
+                              
+                              { "type" : "classRef",
+                                "key" : "model.frontPart" },
+                              
+                              { "type" : "classRef",
+                                "key" : "model.global" } ] } ] } ] },
+                  
+                  { "type" : "sequence",
+                    "minOccurs" : "0",
+                    "maxOccurs" : "1",
+                    "content" : 
+                    [ 
+                      { "type" : "classRef",
+                        "key" : "model.divBottom" },
+                      
+                      { "type" : "alternate",
+                        "minOccurs" : "0",
+                        "maxOccurs" : "unbounded",
+                        "content" : 
+                        [ 
+                          { "type" : "classRef",
+                            "key" : "model.divBottom" },
+                          
+                          { "type" : "classRef",
+                            "key" : "model.global" } ] } ] } ] } ] } ] },
       
       { "ident" : "head",
         "type" : "elementSpec",
@@ -777,55 +664,40 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global",
+            "att.typed",
+            "att.placement",
+            "att.written" ],
+          "model" : 
+          [ "model.headLike",
+            "model.pLike.front" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] },
-          
-          { "att.typed" : 
-            [ "atts" ] },
-          
-          { "att.placement" : 
-            [ "atts" ] },
-          
-          { "att.written" : 
-            [ "atts" ] },
-          
-          { "model.headLike" : 
-            [ "model" ] },
-          
-          { "model.pLike.front" : 
-            [ "model" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "head" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.typed",
-            "module" : "tei",
-            "usedBy" : "head" },
-          
-          { "class" : "att.placement",
-            "module" : "tei",
-            "usedBy" : "head" },
-          
-          { "class" : "att.written",
-            "module" : "tei",
-            "usedBy" : "head" } ] },
+          { "type" : "alternate",
+            "minOccurs" : "0",
+            "maxOccurs" : "unbounded",
+            "content" : 
+            [ 
+              { "type" : "textNode" },
+              
+              { "type" : "elementRef",
+                "key" : "lg" },
+              
+              { "type" : "classRef",
+                "key" : "model.gLike" },
+              
+              { "type" : "classRef",
+                "key" : "model.phrase" },
+              
+              { "type" : "classRef",
+                "key" : "model.inter" },
+              
+              { "type" : "classRef",
+                "key" : "model.lLike" },
+              
+              { "type" : "classRef",
+                "key" : "model.global" } ] } ] },
       
       { "ident" : "item",
         "type" : "elementSpec",
@@ -838,35 +710,13 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global",
+            "att.sortable" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] },
-          
-          { "att.sortable" : 
-            [ "atts" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "item" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.sortable",
-            "module" : "tei",
-            "usedBy" : "item" } ] },
+          { "type" : "macroRef",
+            "key" : "macro.specialPara" } ] },
       
       { "ident" : "label",
         "type" : "elementSpec",
@@ -879,52 +729,17 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global",
+            "att.typed",
+            "att.placement",
+            "att.written" ],
+          "model" : 
+          [ "model.labelLike" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] },
-          
-          { "att.typed" : 
-            [ "atts" ] },
-          
-          { "att.placement" : 
-            [ "atts" ] },
-          
-          { "att.written" : 
-            [ "atts" ] },
-          
-          { "model.labelLike" : 
-            [ "model" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "label" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.typed",
-            "module" : "tei",
-            "usedBy" : "label" },
-          
-          { "class" : "att.placement",
-            "module" : "tei",
-            "usedBy" : "label" },
-          
-          { "class" : "att.written",
-            "module" : "tei",
-            "usedBy" : "label" } ] },
+          { "type" : "macroRef",
+            "key" : "macro.phraseSeq" } ] },
       
       { "ident" : "list",
         "type" : "elementSpec",
@@ -937,18 +752,12 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        [ 
-          { "att.global" : 
-            [ "atts" ] },
-          
-          { "att.sortable" : 
-            [ "atts" ] },
-          
-          { "att.typed" : 
-            [ "atts" ] },
-          
-          { "model.listLike" : 
-            [ "model" ] } ],
+        { "atts" : 
+          [ "att.global",
+            "att.sortable",
+            "att.typed" ],
+          "model" : 
+          [ "model.listLike" ] },
         "attributes" : 
         [ 
           { "ident" : "type",
@@ -963,31 +772,78 @@
               "instructions",
               "litany",
               "syllogism" ] } ],
-        "classattributes" : 
+        "content" : 
         [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "list" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.sortable",
-            "module" : "tei",
-            "usedBy" : "list" },
-          
-          { "class" : "att.typed",
-            "module" : "tei",
-            "usedBy" : "list" } ] },
+          { "type" : "sequence",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "alternate",
+                "minOccurs" : "0",
+                "maxOccurs" : "unbounded",
+                "content" : 
+                [ 
+                  { "type" : "classRef",
+                    "key" : "model.divTop" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.global" } ] },
+              
+              { "type" : "alternate",
+                "minOccurs" : "1",
+                "maxOccurs" : "1",
+                "content" : 
+                [ 
+                  { "type" : "sequence",
+                    "minOccurs" : "1",
+                    "maxOccurs" : "unbounded",
+                    "content" : 
+                    [ 
+                      { "type" : "elementRef",
+                        "key" : "item" },
+                      
+                      { "type" : "classRef",
+                        "key" : "model.global" } ] },
+                  
+                  { "type" : "sequence",
+                    "minOccurs" : "1",
+                    "maxOccurs" : "1",
+                    "content" : 
+                    [ 
+                      { "type" : "elementRef",
+                        "key" : "headLabel" },
+                      
+                      { "type" : "elementRef",
+                        "key" : "headItem" },
+                      
+                      { "type" : "sequence",
+                        "minOccurs" : "1",
+                        "maxOccurs" : "unbounded",
+                        "content" : 
+                        [ 
+                          { "type" : "elementRef",
+                            "key" : "label" },
+                          
+                          { "type" : "classRef",
+                            "key" : "model.global" },
+                          
+                          { "type" : "elementRef",
+                            "key" : "item" },
+                          
+                          { "type" : "classRef",
+                            "key" : "model.global" } ] } ] } ] },
+              
+              { "type" : "sequence",
+                "minOccurs" : "0",
+                "maxOccurs" : "unbounded",
+                "content" : 
+                [ 
+                  { "type" : "classRef",
+                    "key" : "model.divBottom" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.global" } ] } ] } ] },
       
       { "ident" : "p",
         "type" : "elementSpec",
@@ -1000,38 +856,15 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global",
+            "att.written" ],
+          "model" : 
+          [ "model.pLike" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] },
-          
-          { "model.pLike" : 
-            [ "model" ] },
-          
-          { "att.written" : 
-            [ "atts" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "p" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.written",
-            "module" : "tei",
-            "usedBy" : "p" } ] },
+          { "type" : "macroRef",
+            "key" : "macro.paraContent" } ] },
       
       { "ident" : "publicationStmt",
         "type" : "elementSpec",
@@ -1044,28 +877,28 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "publicationStmt" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" } ] },
+          { "type" : "alternate",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "sequence",
+                "minOccurs" : "1",
+                "maxOccurs" : "unbounded",
+                "content" : 
+                [ 
+                  { "type" : "classRef",
+                    "key" : "model.publicationStmtPart.agency" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.publicationStmtPart.detail" } ] },
+              
+              { "type" : "classRef",
+                "key" : "model.pLike" } ] } ] },
       
       { "ident" : "sourceDesc",
         "type" : "elementSpec",
@@ -1078,12 +911,9 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        [ 
-          { "att.global" : 
-            [ "atts" ] },
-          
-          { "att.declarable" : 
-            [ "atts" ] } ],
+        { "atts" : 
+          [ "att.global",
+            "att.declarable" ] },
         "attributes" : 
         [ 
           { "ident" : "default",
@@ -1092,27 +922,29 @@
             "shortDesc" : "",
             "gloss" : 
             [  ] } ],
-        "classattributes" : 
+        "content" : 
         [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "sourceDesc" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.declarable",
-            "module" : "tei",
-            "usedBy" : "sourceDesc" } ] },
+          { "type" : "alternate",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "classRef",
+                "key" : "model.pLike" },
+              
+              { "type" : "alternate",
+                "minOccurs" : "1",
+                "maxOccurs" : "unbounded",
+                "content" : 
+                [ 
+                  { "type" : "classRef",
+                    "key" : "model.biblLike" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.sourceDescPart" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.listLike" } ] } ] } ] },
       
       { "ident" : "teiHeader",
         "type" : "elementSpec",
@@ -1125,28 +957,23 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "teiHeader" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" } ] },
+          { "type" : "sequence",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "elementRef",
+                "key" : "fileDesc" },
+              
+              { "type" : "classRef",
+                "key" : "model.teiHeaderPart" },
+              
+              { "type" : "elementRef",
+                "key" : "revisionDesc" } ] } ] },
       
       { "ident" : "text",
         "type" : "elementSpec",
@@ -1159,45 +986,57 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global",
+            "att.typed",
+            "att.written" ],
+          "model" : 
+          [ "model.resourceLike" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] },
-          
-          { "att.typed" : 
-            [ "atts" ] },
-          
-          { "att.written" : 
-            [ "atts" ] },
-          
-          { "model.resourceLike" : 
-            [ "model" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "text" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.typed",
-            "module" : "tei",
-            "usedBy" : "text" },
-          
-          { "class" : "att.written",
-            "module" : "tei",
-            "usedBy" : "text" } ] },
+          { "type" : "sequence",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "classRef",
+                "key" : "model.global" },
+              
+              { "type" : "sequence",
+                "minOccurs" : "0",
+                "maxOccurs" : "1",
+                "content" : 
+                [ 
+                  { "type" : "elementRef",
+                    "key" : "front" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.global" } ] },
+              
+              { "type" : "alternate",
+                "minOccurs" : "1",
+                "maxOccurs" : "1",
+                "content" : 
+                [ 
+                  { "type" : "elementRef",
+                    "key" : "body" },
+                  
+                  { "type" : "elementRef",
+                    "key" : "group" } ] },
+              
+              { "type" : "classRef",
+                "key" : "model.global" },
+              
+              { "type" : "sequence",
+                "minOccurs" : "0",
+                "maxOccurs" : "1",
+                "content" : 
+                [ 
+                  { "type" : "elementRef",
+                    "key" : "back" },
+                  
+                  { "type" : "classRef",
+                    "key" : "model.global" } ] } ] } ] },
       
       { "ident" : "title",
         "type" : "elementSpec",
@@ -1210,21 +1049,13 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        [ 
-          { "att.global" : 
-            [ "atts" ] },
-          
-          { "model.emphLike" : 
-            [ "model" ] },
-          
-          { "att.canonical" : 
-            [ "atts" ] },
-          
-          { "att.typed" : 
-            [ "atts" ] },
-          
-          { "att.datable" : 
-            [ "atts" ] } ],
+        { "atts" : 
+          [ "att.global",
+            "att.canonical",
+            "att.typed",
+            "att.datable" ],
+          "model" : 
+          [ "model.emphLike" ] },
         "attributes" : 
         [ 
           { "ident" : "level",
@@ -1246,39 +1077,10 @@
               "alt",
               "short",
               "desc" ] } ],
-        "classattributes" : 
+        "content" : 
         [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "title" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.canonical",
-            "module" : "tei",
-            "usedBy" : "title" },
-          
-          { "class" : "att.typed",
-            "module" : "tei",
-            "usedBy" : "title" },
-          
-          { "class" : "att.datable",
-            "module" : "tei",
-            "usedBy" : "title" },
-          
-          { "class" : "att.datable.w3c",
-            "module" : "tei",
-            "usedBy" : "att.datable" } ] },
+          { "type" : "macroRef",
+            "key" : "macro.paraContent" } ] },
       
       { "ident" : "titleStmt",
         "type" : "elementSpec",
@@ -1291,519 +1093,1225 @@
         "altIdent" : 
         [  ],
         "classes" : 
+        { "atts" : 
+          [ "att.global" ] },
+        "content" : 
         [ 
-          { "att.global" : 
-            [ "atts" ] } ],
-        "attributes" : 
-        [  ],
-        "classattributes" : 
-        [ 
-          { "class" : "att.global",
-            "module" : "tei",
-            "usedBy" : "titleStmt" },
-          
-          { "class" : "att.global.rendition",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.responsibility",
-            "module" : "tei",
-            "usedBy" : "att.global" },
-          
-          { "class" : "att.global.source",
-            "module" : "tei",
-            "usedBy" : "att.global" } ] } ],
+          { "type" : "sequence",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "elementRef",
+                "key" : "title" },
+              
+              { "type" : "classRef",
+                "key" : "model.respLike" } ] } ] } ],
+    "classes" : 
+    { "models" : 
+      [ 
+        { "ident" : "model.addressLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">groups elements used to represent a postal or email address.<\/desc>" ],
+          "shortDesc" : "groups elements used to represent a postal or email address.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.pPart.data" ] } },
+        
+        { "ident" : "model.biblLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements containing a bibliographic description.<\/desc>" ],
+          "shortDesc" : "groups elements containing a bibliographic description.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.inter" ] } },
+        
+        { "ident" : "model.common",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups common chunk- and inter-level elements.<\/desc>" ],
+          "shortDesc" : "groups common chunk- and inter-level elements.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.dateLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-01-31\" xml:lang=\"en\">groups elements containing temporal expressions.<\/desc>" ],
+          "shortDesc" : "groups elements containing temporal expressions.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.pPart.data" ] } },
+        
+        { "ident" : "model.div1Like",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-02-11\" xml:lang=\"en\">groups top-level structural divisions.<\/desc>" ],
+          "shortDesc" : "groups top-level structural divisions.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.divBottom",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">groups elements appearing at the end of a text\n    division.<\/desc>" ],
+          "shortDesc" : "groups elements appearing at the end of a text\n    division.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.divBottomPart",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups elements which can occur only at the end of a text\n  division.<\/desc>" ],
+          "shortDesc" : "groups elements which can occur only at the end of a text\n  division.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.divBottom" ] } },
+        
+        { "ident" : "model.divGenLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-02-11\" xml:lang=\"en\">groups elements used to represent a structural division which is generated rather than\n    explicitly present in the source.<\/desc>" ],
+          "shortDesc" : "groups elements used to represent a structural division which is generated rather than\n    explicitly present in the source.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.divLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">groups elements used to represent un-numbered generic structural divisions.<\/desc>" ],
+          "shortDesc" : "groups elements used to represent un-numbered generic structural divisions.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.divPart",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-12-12\" xml:lang=\"en\">groups paragraph-level elements appearing directly within divisions.<\/desc>" ],
+          "shortDesc" : "groups paragraph-level elements appearing directly within divisions.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.common" ] } },
+        
+        { "ident" : "model.divTop",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">groups elements appearing at  the beginning of a\n  text division.<\/desc>" ],
+          "shortDesc" : "groups elements appearing at  the beginning of a\n  text division.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.divTopPart",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups elements which can occur only at the beginning of a text division.<\/desc>" ],
+          "shortDesc" : "groups elements which can occur only at the beginning of a text division.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.divTop" ] } },
+        
+        { "ident" : "model.divWrapper",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">groups elements which can appear at either top or bottom of a\n  textual division.<\/desc>" ],
+          "shortDesc" : "groups elements which can appear at either top or bottom of a\n  textual division.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.divTop",
+              "model.divBottom" ] } },
+        
+        { "ident" : "model.egLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements containing examples or illustrations.<\/desc>" ],
+          "shortDesc" : "groups elements containing examples or illustrations.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.inter" ] } },
+        
+        { "ident" : "model.emphLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups phrase-level elements which are typographically\n  distinct and to which a specific function can be attributed.<\/desc>" ],
+          "shortDesc" : "groups phrase-level elements which are typographically\n  distinct and to which a specific function can be attributed.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.highlighted",
+              "model.limitedPhrase" ] } },
+        
+        { "ident" : "model.frontPart",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements which appear at the level of divisions within front or back matter.<\/desc>" ],
+          "shortDesc" : "groups elements which appear at the level of divisions within front or back matter.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.frontPart.drama",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements which appear at the level of divisions within front or back matter of\n    performance texts only.<\/desc>" ],
+          "shortDesc" : "groups elements which appear at the level of divisions within front or back matter of\n    performance texts only.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.frontPart" ] } },
+        
+        { "ident" : "model.gLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements used to represent individual non-Unicode characters or glyphs.<\/desc>" ],
+          "shortDesc" : "groups elements used to represent individual non-Unicode characters or glyphs.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.global",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements which may appear at any point within a TEI text.<\/desc>" ],
+          "shortDesc" : "groups elements which may appear at any point within a TEI text.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.global.edit",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups globally available elements which perform a specifically editorial function.<\/desc>" ],
+          "shortDesc" : "groups globally available elements which perform a specifically editorial function.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.global" ] } },
+        
+        { "ident" : "model.global.meta",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups globally available elements which describe the status of other elements.<\/desc>" ],
+          "shortDesc" : "groups globally available elements which describe the status of other elements.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.global" ] } },
+        
+        { "ident" : "model.graphicLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups elements containing images, formulae, and \n  similar objects.<\/desc>" ],
+          "shortDesc" : "groups elements containing images, formulae, and \n  similar objects.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.phrase" ] } },
+        
+        { "ident" : "model.headLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements used to provide a title or heading at the start of a text\n  division.<\/desc>" ],
+          "shortDesc" : "groups elements used to provide a title or heading at the start of a text\n  division.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.divTopPart" ] } },
+        
+        { "ident" : "model.hiLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-06\" xml:lang=\"en\">groups phrase-level elements which are typographically distinct but to which no specific\n    function can be attributed.<\/desc>" ],
+          "shortDesc" : "groups phrase-level elements which are typographically distinct but to which no specific\n    function can be attributed.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.highlighted",
+              "model.limitedPhrase" ] } },
+        
+        { "ident" : "model.highlighted",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups phrase-level elements which are typographically distinct.<\/desc>" ],
+          "shortDesc" : "groups phrase-level elements which are typographically distinct.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.phrase" ] } },
+        
+        { "ident" : "model.inter",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements which can appear either within or between paragraph-like elements.<\/desc>" ],
+          "shortDesc" : "groups elements which can appear either within or between paragraph-like elements.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.common" ] } },
+        
+        { "ident" : "model.lLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-11-08\" xml:lang=\"en\">groups elements representing metrical components such as verse lines.<\/desc>" ],
+          "shortDesc" : "groups elements representing metrical components such as verse lines.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.divPart" ] } },
+        
+        { "ident" : "model.lPart",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-11-26\" xml:lang=\"en\">groups phrase-level elements which may appear within verse only.<\/desc>" ],
+          "shortDesc" : "groups phrase-level elements which may appear within verse only.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.phrase" ] } },
+        
+        { "ident" : "model.labelLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-06-13\" xml:lang=\"en\">groups elements used to gloss or explain other parts of a document.<\/desc>" ],
+          "shortDesc" : "groups elements used to gloss or explain other parts of a document.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.inter" ] } },
+        
+        { "ident" : "model.limitedPhrase",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-02-23\" xml:lang=\"en\">groups phrase-level elements excluding those elements primarily intended for transcription\n    of existing sources.<\/desc>" ],
+          "shortDesc" : "groups phrase-level elements excluding those elements primarily intended for transcription\n    of existing sources.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.listLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups list-like elements.<\/desc>" ],
+          "shortDesc" : "groups list-like elements.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.inter" ] } },
+        
+        { "ident" : "model.measureLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups elements which denote a number, a quantity, a measurement, or similar piece of text\n    that conveys some numerical meaning.<\/desc>" ],
+          "shortDesc" : "groups elements which denote a number, a quantity, a measurement, or similar piece of text\n    that conveys some numerical meaning.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.pPart.data" ] } },
+        
+        { "ident" : "model.milestoneLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups milestone-style\nelements used to represent reference systems.<\/desc>" ],
+          "shortDesc" : "groups milestone-style\nelements used to represent reference systems.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.global" ] } },
+        
+        { "ident" : "model.nameLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups elements which name or refer to a person, place, or organization.<\/desc>" ],
+          "shortDesc" : "groups elements which name or refer to a person, place, or organization.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.pPart.data" ] } },
+        
+        { "ident" : "model.nameLike.agent",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements which contain names of individuals\nor corporate bodies.<\/desc>" ],
+          "shortDesc" : "groups elements which contain names of individuals\nor corporate bodies.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.nameLike" ] } },
+        
+        { "ident" : "model.noteLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups globally-available note-like elements.<\/desc>" ],
+          "shortDesc" : "groups globally-available note-like elements.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.global" ] } },
+        
+        { "ident" : "model.oddDecl",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements which generate declarations in some markup language in ODD documents.<\/desc>" ],
+          "shortDesc" : "groups elements which generate declarations in some markup language in ODD documents.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.inter" ] } },
+        
+        { "ident" : "model.offsetLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-09\" xml:lang=\"en\">groups elements which can appear only as part of a place name.<\/desc>" ],
+          "shortDesc" : "groups elements which can appear only as part of a place name.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.nameLike" ] } },
+        
+        { "ident" : "model.pLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups paragraph-like elements.<\/desc>" ],
+          "shortDesc" : "groups paragraph-like elements.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.divPart" ] } },
+        
+        { "ident" : "model.pLike.front",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups paragraph-like elements which can occur as direct constituents of front matter.<\/desc>" ],
+          "shortDesc" : "groups paragraph-like elements which can occur as direct constituents of front matter.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.pPart.data",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups phrase-level elements containing names, dates, numbers, measures, and similar data.<\/desc>" ],
+          "shortDesc" : "groups phrase-level elements containing names, dates, numbers, measures, and similar data.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.phrase",
+              "model.limitedPhrase" ] } },
+        
+        { "ident" : "model.pPart.edit",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups phrase-level elements for simple editorial correction and transcription.<\/desc>" ],
+          "shortDesc" : "groups phrase-level elements for simple editorial correction and transcription.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.phrase" ] } },
+        
+        { "ident" : "model.pPart.editorial",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups phrase-level elements for simple editorial interventions that may be useful both\nin transcribing and in authoring.<\/desc>" ],
+          "shortDesc" : "groups phrase-level elements for simple editorial interventions that may be useful both\nin transcribing and in authoring.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.pPart.edit",
+              "model.limitedPhrase" ] } },
+        
+        { "ident" : "model.pPart.msdesc",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups phrase-level elements used in manuscript description.<\/desc>" ],
+          "shortDesc" : "groups phrase-level elements used in manuscript description.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.phrase",
+              "model.limitedPhrase" ] } },
+        
+        { "ident" : "model.pPart.transcriptional",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups phrase-level elements used for editorial transcription of pre-existing source\n    materials.<\/desc>" ],
+          "shortDesc" : "groups phrase-level elements used for editorial transcription of pre-existing source\n    materials.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.pPart.edit" ] } },
+        
+        { "ident" : "model.phrase",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements which can occur at the level of individual words or phrases.<\/desc>" ],
+          "shortDesc" : "groups elements which can occur at the level of individual words or phrases.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.phrase.xml",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups phrase-level elements used to encode XML constructs such as element names, attribute\n    names, and attribute values<\/desc>" ],
+          "shortDesc" : "groups phrase-level elements used to encode XML constructs such as element names, attribute\n    names, and attribute values",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.phrase",
+              "model.limitedPhrase" ] } },
+        
+        { "ident" : "model.placeNamePart",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements which form part of a place name.<\/desc>" ],
+          "shortDesc" : "groups elements which form part of a place name.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.placeStateLike" ] } },
+        
+        { "ident" : "model.placeStateLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-09\" xml:lang=\"en\">groups elements which describe changing states of a place.<\/desc>" ],
+          "shortDesc" : "groups elements which describe changing states of a place.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.nameLike" ] } },
+        
+        { "ident" : "model.ptrLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups elements used for purposes of location and reference.<\/desc>" ],
+          "shortDesc" : "groups elements used for purposes of location and reference.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.phrase",
+              "model.limitedPhrase",
+              "model.publicationStmtPart.detail" ] } },
+        
+        { "ident" : "model.publicationStmtPart.agency",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-01-11\" xml:lang=\"en\">groups the child\n  elements of a <gi>publicationStmt<\/gi> element of the TEI header\n  that indicate an authorising agent.<\/desc>" ],
+          "shortDesc" : "groups the child\n  elements of a publicationStmt element of the TEI header\n  that indicate an authorising agent.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.publicationStmtPart.detail",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-01-11\" xml:lang=\"en\">groups the agency-specific child elements of the <gi>publicationStmt<\/gi> element of the TEI header.<\/desc>" ],
+          "shortDesc" : "groups the agency-specific child elements of the publicationStmt element of the TEI header.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.qLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements related to highlighting which can appear either within or between\n    chunk-level elements.<\/desc>" ],
+          "shortDesc" : "groups elements related to highlighting which can appear either within or between\n    chunk-level elements.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.inter" ] } },
+        
+        { "ident" : "model.quoteLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-11-17\" xml:lang=\"en\">groups elements used to directly contain quotations.<\/desc>" ],
+          "shortDesc" : "groups elements used to directly contain quotations.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.qLike" ] } },
+        
+        { "ident" : "model.resourceLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-02-19\" xml:lang=\"en\">groups separate elements\n    which constitute the content of a digital resource, as opposed to its\n    metadata.<\/desc>" ],
+          "shortDesc" : "groups separate elements\n    which constitute the content of a digital resource, as opposed to its\n    metadata.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.respLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-10-12\" xml:lang=\"en\">groups elements which are used to indicate intellectual or other significant responsibility,\n    for example within a bibliographic element.<\/desc>" ],
+          "shortDesc" : "groups elements which are used to indicate intellectual or other significant responsibility,\n    for example within a bibliographic element.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          {  } },
+        
+        { "ident" : "model.segLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements used for arbitrary segmentation.<\/desc>" ],
+          "shortDesc" : "groups elements used for arbitrary segmentation.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.phrase" ] } },
+        
+        { "ident" : "model.sourceDescPart",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-22\" xml:lang=\"en\">groups elements which may be used inside <gi>sourceDesc<\/gi> and appear multiple times.<\/desc>" ],
+          "shortDesc" : "groups elements which may be used inside sourceDesc and appear multiple times.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] },
+        
+        { "ident" : "model.specDescLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-22\" xml:lang=\"en\">groups elements for referring to specification elements.<\/desc>" ],
+          "shortDesc" : "groups elements for referring to specification elements.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.phrase" ] } },
+        
+        { "ident" : "model.stageLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-08-29\" xml:lang=\"en\">groups elements containing stage directions or similar things defined by the module for\n    performance texts.<\/desc>" ],
+          "shortDesc" : "groups elements containing stage directions or similar things defined by the module for\n    performance texts.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [ "model.inter" ] } },
+        
+        { "ident" : "model.teiHeaderPart",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-02-02\" xml:lang=\"en\">groups high level elements which may appear more than once in a TEI header.<\/desc>" ],
+          "shortDesc" : "groups high level elements which may appear more than once in a TEI header.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ] } ],
+      "attributes" : 
+      [ 
+        { "ident" : "att.canonical",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">provides attributes which can be used to associate a representation such as a name or title\n    with canonical information about the object being named or referenced.<\/desc>" ],
+          "shortDesc" : "provides attributes which can be used to associate a representation such as a name or title\n    with canonical information about the object being named or referenced.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "attributes" : 
+          [ 
+            { "ident" : "key",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">provides an externally-defined means of identifying the entity (or entities) being\n        named, using a coded value of some kind.<\/desc>" ],
+              "shortDesc" : "provides an externally-defined means of identifying the entity (or entities) being\n        named, using a coded value of some kind.",
+              "gloss" : 
+              [  ] },
+            
+            { "ident" : "ref",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">provides an explicit means of locating a full definition or identity for the entity being named by\n        means of one or more URIs.<\/desc>" ],
+              "shortDesc" : "(reference) provides an explicit means of locating a full definition or identity for the entity being named by\n        means of one or more URIs.",
+              "gloss" : 
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">reference<\/gloss>" ] } ] },
+        
+        { "ident" : "att.datable",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-06-12\" xml:lang=\"en\">provides attributes for normalization of elements that contain\n  dates, times, or datable events.<\/desc>" ],
+          "shortDesc" : "provides attributes for normalization of elements that contain\n  dates, times, or datable events.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "atts" : 
+            [ "att.datable.w3c" ] },
+          "attributes" : 
+          [ 
+            { "ident" : "calendar",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-25\" xml:lang=\"en\">indicates the system or calendar to which the date represented by the content of this\n        element belongs.<\/desc>" ],
+              "shortDesc" : "indicates the system or calendar to which the date represented by the content of this\n        element belongs.",
+              "gloss" : 
+              [  ] },
+            
+            { "ident" : "period",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-25\" xml:lang=\"en\">supplies a pointer to some location defining a named\n        period of time within which the datable item is understood to\n        have occurred.<\/desc>" ],
+              "shortDesc" : "supplies a pointer to some location defining a named\n        period of time within which the datable item is understood to\n        have occurred.",
+              "gloss" : 
+              [  ] } ] },
+        
+        { "ident" : "att.datable.w3c",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-11-22\" xml:lang=\"en\">provides attributes for normalization of elements that contain\n  datable events  conforming to the W3C\n  <title ref=\"#XSD2\">XML Schema Part 2: Datatypes Second Edition<\/title>.<\/desc>" ],
+          "shortDesc" : "provides attributes for normalization of elements that contain\n  datable events  conforming to the W3C\n  XML Schema Part 2: Datatypes Second Edition.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "attributes" : 
+          [ 
+            { "ident" : "when",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-07-23\" xml:lang=\"en\">supplies the value of the date or time in a standard form,\n        e.g. yyyy-mm-dd.<\/desc>" ],
+              "shortDesc" : "supplies the value of the date or time in a standard form,\n        e.g. yyyy-mm-dd.",
+              "gloss" : 
+              [  ] },
+            
+            { "ident" : "notBefore",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-09\" xml:lang=\"en\">specifies the earliest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.<\/desc>" ],
+              "shortDesc" : "specifies the earliest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.",
+              "gloss" : 
+              [  ] },
+            
+            { "ident" : "notAfter",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-09\" xml:lang=\"en\">specifies the latest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.<\/desc>" ],
+              "shortDesc" : "specifies the latest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.",
+              "gloss" : 
+              [  ] },
+            
+            { "ident" : "from",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-02-10\" xml:lang=\"en\">indicates the starting point of the period in standard form, e.g. yyyy-mm-dd.<\/desc>" ],
+              "shortDesc" : "indicates the starting point of the period in standard form, e.g. yyyy-mm-dd.",
+              "gloss" : 
+              [  ] },
+            
+            { "ident" : "to",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-02-10\" xml:lang=\"en\">indicates the ending point of the period in standard\n        form, e.g. yyyy-mm-dd.<\/desc>" ],
+              "shortDesc" : "indicates the ending point of the period in standard\n        form, e.g. yyyy-mm-dd.",
+              "gloss" : 
+              [  ] } ] },
+        
+        { "ident" : "att.declarable",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-02-02\" xml:lang=\"en\">provides attributes for those elements in the TEI header which\n  may be independently selected by means of  the special purpose <att>decls<\/att> attribute.<\/desc>" ],
+          "shortDesc" : "provides attributes for those elements in the TEI header which\n  may be independently selected by means of  the special purpose decls attribute.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "attributes" : 
+          [ 
+            { "ident" : "default",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">indicates whether or not this element is selected by default when\nits parent is selected.<\/desc>" ],
+              "shortDesc" : "indicates whether or not this element is selected by default when\nits parent is selected.",
+              "gloss" : 
+              [  ],
+              "values" : 
+              [ "true",
+                "false" ] } ] },
+        
+        { "ident" : "att.divLike",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">provides attributes common to all elements which behave in the same way as divisions.<\/desc>" ],
+          "shortDesc" : "provides attributes common to all elements which behave in the same way as divisions.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          {  } },
+        
+        { "ident" : "att.global",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">provides attributes common to all elements in the TEI encoding scheme.<\/desc>" ],
+          "shortDesc" : "provides attributes common to all elements in the TEI encoding scheme.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "atts" : 
+            [ "att.global.rendition",
+              "att.global.responsibility",
+              "att.global.source" ] },
+          "attributes" : 
+          [ 
+            { "ident" : "rend",
+              "desc" : 
+              [  ],
+              "shortDesc" : "",
+              "gloss" : 
+              [  ] },
+            
+            { "ident" : "xml:id",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">provides a unique identifier for the element bearing the attribute.<\/desc>" ],
+              "shortDesc" : "(identifier) provides a unique identifier for the element bearing the attribute.",
+              "gloss" : 
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">identifier<\/gloss>" ] },
+            
+            { "ident" : "n",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">gives a number (or other label) for an element, which is not necessarily unique within\n        the document.<\/desc>" ],
+              "shortDesc" : "(number) gives a number (or other label) for an element, which is not necessarily unique within\n        the document.",
+              "gloss" : 
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">number<\/gloss>" ] },
+            
+            { "ident" : "xml:lang",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-01-07\" xml:lang=\"en\">indicates the language of the element content using a <soCalled>tag<\/soCalled> generated\n        according to <ref target=\"http:\/\/www.rfc-editor.org\/rfc\/bcp\/bcp47.txt\">BCP 47<\/ref>.<\/desc>" ],
+              "shortDesc" : "(language) indicates the language of the element content using a tag generated\n        according to BCP 47.",
+              "gloss" : 
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">language<\/gloss>" ] } ] },
+        
+        { "ident" : "att.global.rendition",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-12-02\" xml:lang=\"en\">provides rendering attributes common to all elements in the TEI encoding scheme.<\/desc>" ],
+          "shortDesc" : "provides rendering attributes common to all elements in the TEI encoding scheme.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          {  },
+          "attributes" : 
+          [ 
+            { "ident" : "rend",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">indicates how the element in question was rendered or presented in the source text.<\/desc>" ],
+              "shortDesc" : "(rendition) indicates how the element in question was rendered or presented in the source text.",
+              "gloss" : 
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">rendition<\/gloss>" ] },
+            
+            { "ident" : "style",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-10-05\" xml:lang=\"en\">contains an expression in some formal style definition language\nwhich defines the rendering or presentation\nused for this element in the source text<\/desc>" ],
+              "shortDesc" : "contains an expression in some formal style definition language\nwhich defines the rendering or presentation\nused for this element in the source text",
+              "gloss" : 
+              [  ] },
+            
+            { "ident" : "rendition",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-09-22\" xml:lang=\"en\">points to a description of the rendering or presentation used for this element in the\n        source text.<\/desc>" ],
+              "shortDesc" : "points to a description of the rendering or presentation used for this element in the\n        source text.",
+              "gloss" : 
+              [  ] } ] },
+        
+        { "ident" : "att.global.responsibility",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-12-10\" xml:lang=\"en\">provides attributes indicating the agent\n    responsible for some aspect of the text, the markup or \n    something asserted by the markup, and the degree of certainty \n    associated with it.<\/desc>" ],
+          "shortDesc" : "provides attributes indicating the agent\n    responsible for some aspect of the text, the markup or \n    something asserted by the markup, and the degree of certainty \n    associated with it.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          {  },
+          "attributes" : 
+          [ 
+            { "ident" : "cert",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">signifies the degree of certainty associated with the intervention or interpretation.<\/desc>" ],
+              "shortDesc" : "(certainty) signifies the degree of certainty associated with the intervention or interpretation.",
+              "gloss" : 
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">certainty<\/gloss>" ] },
+            
+            { "ident" : "resp",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">indicates the agency responsible for the intervention or interpretation, for example an\n        editor or transcriber.<\/desc>" ],
+              "shortDesc" : "(responsible party) indicates the agency responsible for the intervention or interpretation, for example an\n        editor or transcriber.",
+              "gloss" : 
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">responsible party<\/gloss>" ] } ] },
+        
+        { "ident" : "att.global.source",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-02-15\" xml:lang=\"en\">provides an attribute used by elements to point to an\n    external source.<\/desc>" ],
+          "shortDesc" : "provides an attribute used by elements to point to an\n    external source.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "attributes" : 
+          [ 
+            { "ident" : "source",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2010-05-09\" xml:lang=\"en\">specifies the source from which some aspect of\n        this element is drawn.<\/desc>" ],
+              "shortDesc" : "specifies the source from which some aspect of\n        this element is drawn.",
+              "gloss" : 
+              [  ] } ] },
+        
+        { "ident" : "att.naming",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2006-01-05\" xml:lang=\"en\">provides attributes common to elements which refer to named persons, places, organizations etc.<\/desc>" ],
+          "shortDesc" : "provides attributes common to elements which refer to named persons, places, organizations etc.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "atts" : 
+            [ "att.canonical" ] },
+          "attributes" : 
+          [ 
+            { "ident" : "role",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-10-12\" xml:lang=\"en\">may be used to specify further information about the entity referenced by\nthis name in the form of a set of whitespace-separated values, for example the occupation of a person, or the status of a place.<\/desc>" ],
+              "shortDesc" : "may be used to specify further information about the entity referenced by\nthis name in the form of a set of whitespace-separated values, for example the occupation of a person, or the status of a place.",
+              "gloss" : 
+              [  ] },
+            
+            { "ident" : "nymRef",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-05-22\" xml:lang=\"en\">provides a means of locating the canonical form\n      (<term>nym<\/term>) of the names associated with the object\n       named by\n      the element bearing it.<\/desc>" ],
+              "shortDesc" : "(reference to the canonical name) provides a means of locating the canonical form\n      (nym) of the names associated with the object\n       named by\n      the element bearing it.",
+              "gloss" : 
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">reference to the canonical name<\/gloss>" ] } ] },
+        
+        { "ident" : "att.placement",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2006-06-08\" xml:lang=\"en\">provides attributes for describing where on the source page or\n  object a textual element appears.<\/desc>" ],
+          "shortDesc" : "provides attributes for describing where on the source page or\n  object a textual element appears.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "attributes" : 
+          [ 
+            { "ident" : "place",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-10-07\" xml:lang=\"en\">specifies where this item is placed.<\/desc>" ],
+              "shortDesc" : "specifies where this item is placed.",
+              "gloss" : 
+              [  ],
+              "values" : 
+              [ "below",
+                "bottom",
+                "margin",
+                "top",
+                "opposite",
+                "overleaf",
+                "above",
+                "end",
+                "inline",
+                "inspace" ] } ] },
+        
+        { "ident" : "att.sortable",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-06\" xml:lang=\"en\">provides attributes for elements in lists or groups that are sortable, but whose sorting key cannot be derived mechanically from the element content.<\/desc>" ],
+          "shortDesc" : "provides attributes for elements in lists or groups that are sortable, but whose sorting key cannot be derived mechanically from the element content.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "attributes" : 
+          [ 
+            { "ident" : "sortKey",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-06\" xml:lang=\"en\">supplies the sort key for this element in an index, list or group which contains it.<\/desc>" ],
+              "shortDesc" : "supplies the sort key for this element in an index, list or group which contains it.",
+              "gloss" : 
+              [  ] } ] },
+        
+        { "ident" : "att.typed",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">provides attributes which can be used to classify or subclassify elements in any way.<\/desc>" ],
+          "shortDesc" : "provides attributes which can be used to classify or subclassify elements in any way.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "attributes" : 
+          [ 
+            { "ident" : "type",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">characterizes the element in some sense, using any convenient\n classification scheme or typology.<\/desc>" ],
+              "shortDesc" : "characterizes the element in some sense, using any convenient\n classification scheme or typology.",
+              "gloss" : 
+              [  ] },
+            
+            { "ident" : "subtype",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">provides a sub-categorization of the element, if needed<\/desc>" ],
+              "shortDesc" : "provides a sub-categorization of the element, if needed",
+              "gloss" : 
+              [  ] } ] },
+        
+        { "ident" : "att.written",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-01-10\" xml:lang=\"en\">provides an attribute to indicate the hand in which\n  \tthe textual content of an element was written in the source being transcribed.<\/desc>" ],
+          "shortDesc" : "provides an attribute to indicate the hand in which\n  \tthe textual content of an element was written in the source being transcribed.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          {  },
+          "attributes" : 
+          [ 
+            { "ident" : "hand",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-02-19\" xml:lang=\"en\">points to a <gi>handNote<\/gi> element describing the hand considered responsible for the\n  \t\t\ttextual content of the element concerned.<\/desc>" ],
+              "shortDesc" : "points to a handNote element describing the hand considered responsible for the\n  \t\t\ttextual content of the element concerned.",
+              "gloss" : 
+              [  ] } ] } ] },
     "elementRefs" : 
     [  ],
-    "modelclasses" : 
-    [ 
-      { "ident" : "model.addressLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">groups elements used to represent a postal or email address.<\/desc>" ],
-        "shortDesc" : "groups elements used to represent a postal or email address.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.biblLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements containing a bibliographic description.<\/desc>" ],
-        "shortDesc" : "groups elements containing a bibliographic description.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.common",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups common chunk- and inter-level elements.<\/desc>" ],
-        "shortDesc" : "groups common chunk- and inter-level elements.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.dateLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-01-31\" xml:lang=\"en\">groups elements containing temporal expressions.<\/desc>" ],
-        "shortDesc" : "groups elements containing temporal expressions.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.div1Like",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-02-11\" xml:lang=\"en\">groups top-level structural divisions.<\/desc>" ],
-        "shortDesc" : "groups top-level structural divisions.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.divBottom",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">groups elements appearing at the end of a text\n    division.<\/desc>" ],
-        "shortDesc" : "groups elements appearing at the end of a text\n    division.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.divBottomPart",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups elements which can occur only at the end of a text\n  division.<\/desc>" ],
-        "shortDesc" : "groups elements which can occur only at the end of a text\n  division.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.divGenLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-02-11\" xml:lang=\"en\">groups elements used to represent a structural division which is generated rather than\n    explicitly present in the source.<\/desc>" ],
-        "shortDesc" : "groups elements used to represent a structural division which is generated rather than\n    explicitly present in the source.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.divLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">groups elements used to represent un-numbered generic structural divisions.<\/desc>" ],
-        "shortDesc" : "groups elements used to represent un-numbered generic structural divisions.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.divPart",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-12-12\" xml:lang=\"en\">groups paragraph-level elements appearing directly within divisions.<\/desc>" ],
-        "shortDesc" : "groups paragraph-level elements appearing directly within divisions.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.divTop",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">groups elements appearing at  the beginning of a\n  text division.<\/desc>" ],
-        "shortDesc" : "groups elements appearing at  the beginning of a\n  text division.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.divTopPart",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups elements which can occur only at the beginning of a text division.<\/desc>" ],
-        "shortDesc" : "groups elements which can occur only at the beginning of a text division.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.divWrapper",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-02\" xml:lang=\"en\">groups elements which can appear at either top or bottom of a\n  textual division.<\/desc>" ],
-        "shortDesc" : "groups elements which can appear at either top or bottom of a\n  textual division.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.egLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements containing examples or illustrations.<\/desc>" ],
-        "shortDesc" : "groups elements containing examples or illustrations.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.emphLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups phrase-level elements which are typographically\n  distinct and to which a specific function can be attributed.<\/desc>" ],
-        "shortDesc" : "groups phrase-level elements which are typographically\n  distinct and to which a specific function can be attributed.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.frontPart",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements which appear at the level of divisions within front or back matter.<\/desc>" ],
-        "shortDesc" : "groups elements which appear at the level of divisions within front or back matter.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.frontPart.drama",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements which appear at the level of divisions within front or back matter of\n    performance texts only.<\/desc>" ],
-        "shortDesc" : "groups elements which appear at the level of divisions within front or back matter of\n    performance texts only.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.gLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements used to represent individual non-Unicode characters or glyphs.<\/desc>" ],
-        "shortDesc" : "groups elements used to represent individual non-Unicode characters or glyphs.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.global",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements which may appear at any point within a TEI text.<\/desc>" ],
-        "shortDesc" : "groups elements which may appear at any point within a TEI text.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.global.edit",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups globally available elements which perform a specifically editorial function.<\/desc>" ],
-        "shortDesc" : "groups globally available elements which perform a specifically editorial function.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.global.meta",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups globally available elements which describe the status of other elements.<\/desc>" ],
-        "shortDesc" : "groups globally available elements which describe the status of other elements.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.graphicLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups elements containing images, formulae, and \n  similar objects.<\/desc>" ],
-        "shortDesc" : "groups elements containing images, formulae, and \n  similar objects.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.headLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements used to provide a title or heading at the start of a text\n  division.<\/desc>" ],
-        "shortDesc" : "groups elements used to provide a title or heading at the start of a text\n  division.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.hiLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-06\" xml:lang=\"en\">groups phrase-level elements which are typographically distinct but to which no specific\n    function can be attributed.<\/desc>" ],
-        "shortDesc" : "groups phrase-level elements which are typographically distinct but to which no specific\n    function can be attributed.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.highlighted",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups phrase-level elements which are typographically distinct.<\/desc>" ],
-        "shortDesc" : "groups phrase-level elements which are typographically distinct.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.inter",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements which can appear either within or between paragraph-like elements.<\/desc>" ],
-        "shortDesc" : "groups elements which can appear either within or between paragraph-like elements.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.lLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-11-08\" xml:lang=\"en\">groups elements representing metrical components such as verse lines.<\/desc>" ],
-        "shortDesc" : "groups elements representing metrical components such as verse lines.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.lPart",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-11-26\" xml:lang=\"en\">groups phrase-level elements which may appear within verse only.<\/desc>" ],
-        "shortDesc" : "groups phrase-level elements which may appear within verse only.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.labelLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-06-13\" xml:lang=\"en\">groups elements used to gloss or explain other parts of a document.<\/desc>" ],
-        "shortDesc" : "groups elements used to gloss or explain other parts of a document.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.limitedPhrase",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-02-23\" xml:lang=\"en\">groups phrase-level elements excluding those elements primarily intended for transcription\n    of existing sources.<\/desc>" ],
-        "shortDesc" : "groups phrase-level elements excluding those elements primarily intended for transcription\n    of existing sources.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.listLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups list-like elements.<\/desc>" ],
-        "shortDesc" : "groups list-like elements.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.measureLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups elements which denote a number, a quantity, a measurement, or similar piece of text\n    that conveys some numerical meaning.<\/desc>" ],
-        "shortDesc" : "groups elements which denote a number, a quantity, a measurement, or similar piece of text\n    that conveys some numerical meaning.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.milestoneLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups milestone-style\nelements used to represent reference systems.<\/desc>" ],
-        "shortDesc" : "groups milestone-style\nelements used to represent reference systems.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.nameLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups elements which name or refer to a person, place, or organization.<\/desc>" ],
-        "shortDesc" : "groups elements which name or refer to a person, place, or organization.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.nameLike.agent",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements which contain names of individuals\nor corporate bodies.<\/desc>" ],
-        "shortDesc" : "groups elements which contain names of individuals\nor corporate bodies.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.noteLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups globally-available note-like elements.<\/desc>" ],
-        "shortDesc" : "groups globally-available note-like elements.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.oddDecl",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements which generate declarations in some markup language in ODD documents.<\/desc>" ],
-        "shortDesc" : "groups elements which generate declarations in some markup language in ODD documents.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.offsetLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-09\" xml:lang=\"en\">groups elements which can appear only as part of a place name.<\/desc>" ],
-        "shortDesc" : "groups elements which can appear only as part of a place name.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.pLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups paragraph-like elements.<\/desc>" ],
-        "shortDesc" : "groups paragraph-like elements.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.pLike.front",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups paragraph-like elements which can occur as direct constituents of front matter.<\/desc>" ],
-        "shortDesc" : "groups paragraph-like elements which can occur as direct constituents of front matter.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.pPart.data",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups phrase-level elements containing names, dates, numbers, measures, and similar data.<\/desc>" ],
-        "shortDesc" : "groups phrase-level elements containing names, dates, numbers, measures, and similar data.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.pPart.edit",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups phrase-level elements for simple editorial correction and transcription.<\/desc>" ],
-        "shortDesc" : "groups phrase-level elements for simple editorial correction and transcription.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.pPart.editorial",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups phrase-level elements for simple editorial interventions that may be useful both\nin transcribing and in authoring.<\/desc>" ],
-        "shortDesc" : "groups phrase-level elements for simple editorial interventions that may be useful both\nin transcribing and in authoring.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.pPart.msdesc",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups phrase-level elements used in manuscript description.<\/desc>" ],
-        "shortDesc" : "groups phrase-level elements used in manuscript description.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.pPart.transcriptional",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups phrase-level elements used for editorial transcription of pre-existing source\n    materials.<\/desc>" ],
-        "shortDesc" : "groups phrase-level elements used for editorial transcription of pre-existing source\n    materials.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.phrase",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements which can occur at the level of individual words or phrases.<\/desc>" ],
-        "shortDesc" : "groups elements which can occur at the level of individual words or phrases.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.phrase.xml",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups phrase-level elements used to encode XML constructs such as element names, attribute\n    names, and attribute values<\/desc>" ],
-        "shortDesc" : "groups phrase-level elements used to encode XML constructs such as element names, attribute\n    names, and attribute values",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.placeNamePart",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-03\" xml:lang=\"en\">groups elements which form part of a place name.<\/desc>" ],
-        "shortDesc" : "groups elements which form part of a place name.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.placeStateLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-09\" xml:lang=\"en\">groups elements which describe changing states of a place.<\/desc>" ],
-        "shortDesc" : "groups elements which describe changing states of a place.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.ptrLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">groups elements used for purposes of location and reference.<\/desc>" ],
-        "shortDesc" : "groups elements used for purposes of location and reference.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.publicationStmtPart.agency",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-01-11\" xml:lang=\"en\">groups the child\n  elements of a <gi>publicationStmt<\/gi> element of the TEI header\n  that indicate an authorising agent.<\/desc>" ],
-        "shortDesc" : "groups the child\n  elements of a publicationStmt element of the TEI header\n  that indicate an authorising agent.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.publicationStmtPart.detail",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-01-11\" xml:lang=\"en\">groups the agency-specific child elements of the <gi>publicationStmt<\/gi> element of the TEI header.<\/desc>" ],
-        "shortDesc" : "groups the agency-specific child elements of the publicationStmt element of the TEI header.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.qLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements related to highlighting which can appear either within or between\n    chunk-level elements.<\/desc>" ],
-        "shortDesc" : "groups elements related to highlighting which can appear either within or between\n    chunk-level elements.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.quoteLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-11-17\" xml:lang=\"en\">groups elements used to directly contain quotations.<\/desc>" ],
-        "shortDesc" : "groups elements used to directly contain quotations.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.resourceLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-02-19\" xml:lang=\"en\">groups separate elements\n    which constitute the content of a digital resource, as opposed to its\n    metadata.<\/desc>" ],
-        "shortDesc" : "groups separate elements\n    which constitute the content of a digital resource, as opposed to its\n    metadata.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.respLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-10-12\" xml:lang=\"en\">groups elements which are used to indicate intellectual or other significant responsibility,\n    for example within a bibliographic element.<\/desc>" ],
-        "shortDesc" : "groups elements which are used to indicate intellectual or other significant responsibility,\n    for example within a bibliographic element.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.segLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">groups elements used for arbitrary segmentation.<\/desc>" ],
-        "shortDesc" : "groups elements used for arbitrary segmentation.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.sourceDescPart",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-22\" xml:lang=\"en\">groups elements which may be used inside <gi>sourceDesc<\/gi> and appear multiple times.<\/desc>" ],
-        "shortDesc" : "groups elements which may be used inside sourceDesc and appear multiple times.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.specDescLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-22\" xml:lang=\"en\">groups elements for referring to specification elements.<\/desc>" ],
-        "shortDesc" : "groups elements for referring to specification elements.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.stageLike",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-08-29\" xml:lang=\"en\">groups elements containing stage directions or similar things defined by the module for\n    performance texts.<\/desc>" ],
-        "shortDesc" : "groups elements containing stage directions or similar things defined by the module for\n    performance texts.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "model.teiHeaderPart",
-        "module" : "tei",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-02-02\" xml:lang=\"en\">groups high level elements which may appear more than once in a TEI header.<\/desc>" ],
-        "shortDesc" : "groups high level elements which may appear more than once in a TEI header.",
-        "gloss" : 
-        [  ] } ],
     "classRefs" : 
     [  ],
     "macros" : 
@@ -1833,8 +2341,9 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">defines the content model of elements such as notes or list items, which either contain a\n    series of component-level elements or else have the same structure as a paragraph, containing a\n    series of phrase-level and inter-level elements.<\/desc>" ],
         "shortDesc" : "('special' paragraph content) defines the content model of elements such as notes or list items, which either contain a\n    series of component-level elements or else have the same structure as a paragraph, containing a\n    series of phrase-level and inter-level elements.",
         "gloss" : 
-        [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">'special' paragraph content<\/gloss>" ] },
-      
+        [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">'special' paragraph content<\/gloss>" ] } ],
+    "datatypes" : 
+    [ 
       { "ident" : "teidata.certainty",
         "module" : "tei",
         "type" : "",
