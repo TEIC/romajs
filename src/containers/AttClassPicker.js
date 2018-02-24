@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import Picker from '../components/Picker'
-import {addFromPicker} from '../actions/interface'
+import AnchoredPicker from '../components/pickers/AnchoredPicker'
+import { addElementAttributeClass } from '../actions/elements'
 
 const mapStateToProps = (state) => {
   const customClasses = state.odd.customization.json.classes.attributes
@@ -19,15 +19,17 @@ const mapStateToProps = (state) => {
   return {items: classes, pickerType: 'attributes'}
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    add: (type, item) => dispatch(addFromPicker(type, item))
+    add: (type, item) => {
+      dispatch(addElementAttributeClass(ownProps.element, item.ident))
+    }
   }
 }
 
 const AttClassPicker = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Picker)
+)(AnchoredPicker)
 
 export default AttClassPicker

@@ -6,7 +6,8 @@ import {
   INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS
 } from '../actions/modules'
 import {
-  UPDATE_ELEMENT_DOCS, UPDATE_ELEMENT_MODEL_CLASSES, UPDATE_ELEMENT_ATTRIBUTE_CLASSES
+  DELETE_ELEMENT_DOCS, UPDATE_ELEMENT_DOCS, ADD_ELEMENT_MODEL_CLASS, DELETE_ELEMENT_MODEL_CLASS,
+  ADD_ELEMENT_ATTRIBUTE_CLASS, DELETE_ELEMENT_ATTRIBUTE_CLASS
 } from '../actions/elements'
 import { oddModules } from './modules'
 import { oddElements } from './elements'
@@ -15,6 +16,8 @@ import { ui } from  './interface'
 import * as fileSaver from 'file-saver'
 import { routerReducer } from 'react-router-redux'
 import oxgarage from '../utils/oxgarage'
+
+// import { clone } from '../utils/clone'
 
 export function postToOxGarage(input, endpoint) {
   const fd = new FormData()
@@ -71,6 +74,7 @@ function customization(state = {
       return Object.assign({}, state, {
         isFetching: false,
         xml: action.xml,
+        unchanged: action.xml,
         lastUpdated: Date.now()
       })
     case REQUEST_OXGARAGE_TRANSFORM:
@@ -125,9 +129,12 @@ function odd(state = {}, action) {
     case INCLUDE_ELEMENTS:
     case EXCLUDE_ELEMENTS:
       return Object.assign({}, oddModules(state, action))
+    case DELETE_ELEMENT_DOCS:
     case UPDATE_ELEMENT_DOCS:
-    case UPDATE_ELEMENT_MODEL_CLASSES:
-    case UPDATE_ELEMENT_ATTRIBUTE_CLASSES:
+    case ADD_ELEMENT_MODEL_CLASS:
+    case DELETE_ELEMENT_MODEL_CLASS:
+    case ADD_ELEMENT_ATTRIBUTE_CLASS:
+    case DELETE_ELEMENT_ATTRIBUTE_CLASS:
       return Object.assign({}, oddElements(state, action))
     default:
       return state

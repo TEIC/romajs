@@ -18,8 +18,8 @@ if (module.hot) {
   module.hot.accept()
 }
 
-// const history = createHistory({ basename: '/romajs' })
-const history = createHistory()
+const history = createHistory({ basename: '/romajs' })
+// const history = createHistory()
 
 const persistConf = {
   key: 'root',

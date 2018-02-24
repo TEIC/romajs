@@ -1,29 +1,8 @@
 import { connect } from 'react-redux'
 import Element from '../components/Element'
 import { push } from 'react-router-redux'
-import { updateElementDocs, updateElementModelClasses, updateElementAttributeClasses } from '../actions/elements'
+import { deleteElementModelClass, deleteElementAttributeClass } from '../actions/elements'
 import { clearPicker } from '../actions/interface'
-
-const flattenContentModel = (cnt, flattened = [], depth = 1) => {
-  cnt.map(c => {
-    switch (c.type) {
-      case 'sequence':
-      case 'alternate':
-        let copy = Object.assign({}, c)
-        copy.depth = depth
-        flattened.push(copy)
-        const content = copy.content.slice(0)
-        copy.content = true
-        flattenContentModel(content, flattened, depth + 1)
-        break
-      default:
-        copy = Object.assign({}, c)
-        copy.depth = depth
-        flattened.push(copy)
-    }
-  })
-  return flattened
-}
 
 const mapStateToProps = (state, ownProps) => {
   let element = null
@@ -70,22 +49,16 @@ const mapStateToProps = (state, ownProps) => {
         descs[className] = classData.shortDesc
         return descs
       }, {})
-      // Flatten content model
-      element.flattenedContent = []
-      if (element.content) {
-        element.flattenedContent = flattenContentModel(element.content)
-      }
     }
   }
-  return {element, success, pickerItem: state.ui.pickerItem}
+  return {element, success}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     navigateTo: (place) => dispatch(push(place)),
-    updateElementDocs: (element, docEl, content) => dispatch(updateElementDocs(element, docEl, content)),
-    updateElementModelClasses: (element, classNames) => dispatch(updateElementModelClasses(element, classNames)),
-    updateElementAttributeClasses: (element, classNames) => dispatch(updateElementAttributeClasses(element, classNames)),
+    deleteElementModelClass: (element, className) => dispatch(deleteElementModelClass(element, className)),
+    deleteElementAttributeClass: (element, className) => dispatch(deleteElementAttributeClass(element, className)),
     clearPicker: () => dispatch(clearPicker())
   }
 }

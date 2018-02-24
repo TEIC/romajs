@@ -48,6 +48,20 @@ $romajs-theme-no: #802900;
   margin-left: 20px;
 }
 
+/* Make sure dialogs are above everything */
+.mdc-dialog {
+  z-index: 99;
+}
+
+/* Make sure secondary text in lists DOES wrap */
+.mdc-list-item {
+  white-space: normal;
+  height: auto;
+}
+.mdc-list--two-line.mdc-list--dense .mdc-list-item {
+  height: auto;
+}
+
 /* Ensure layout covers the entire screen. */
 html {
   height: 100%;

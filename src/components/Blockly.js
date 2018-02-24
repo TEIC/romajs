@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Blockly from 'node-blockly/browser'
 import { content, alternate, sequence, elementRef, classRef, dataRef, macroRef,
   anyElement, empty, textNode } from '../utils/blocks'
+import ModalPicker from './pickers/ModalPicker'
 
 const xmlParser = new DOMParser()
 const xmlSerializer = new XMLSerializer()
@@ -11,36 +12,72 @@ const xmlSerializer = new XMLSerializer()
 export default class BlocklyRomaJsEditor extends Component {
   constructor(props) {
     super(props)
+
+    window.Blockly = Blockly // TODO: This is bad, find fix.
+
+    const thisEditor = this
+    Blockly.FieldDropdown.prototype.showEditor_ = function() {
+      const pickerOptions = []
+      for (const opt of this.getOptions()) {
+        pickerOptions.push({ident: opt[0], shortDesc: opt[1]})
+      }
+      thisEditor.setState({
+        pickerOptions,
+        pickerAdd: (i) => { this.setValue(i.ident) }
+      })
+    }
+
     // Add custom blocks for ODD content defintions
     Blockly.Blocks.content = content
     Blockly.Blocks.alternate = alternate
     Blockly.Blocks.sequence = sequence
-    Blockly.Blocks.elementRef = elementRef
-    Blockly.Blocks.classRef = classRef
-    Blockly.Blocks.dataRef = dataRef
-    Blockly.Blocks.macroRef = macroRef
+    Blockly.Blocks.elementRef = elementRef(props.elements)
+    Blockly.Blocks.classRef = classRef(props.classes)
+    Blockly.Blocks.dataRef = dataRef(props.datatypes)
+    Blockly.Blocks.macroRef = macroRef(props.macros)
     Blockly.Blocks.anyElement = anyElement
     Blockly.Blocks.empty = empty
     Blockly.Blocks.textNode = textNode
 
-    this.state = {
-      initialXml: ''
-    }
     const templateXml = `<xml xmlns="http://www.w3.org/1999/xhtml">
       <block type="content" deletable="false" x="10" y="10">
         <statement name="references" id="start"></statement>
       </block></xml>`
     this.blocklyXml = xmlParser.parseFromString(templateXml, 'text/xml')
-    this.processContent(props.elementContent, this.blocklyXml.getElementById('start'))
+    this.processContent(props.flattenedContent, this.blocklyXml.getElementById('start'))
     const initialXml = xmlSerializer.serializeToString(this.blocklyXml)
-    console.log(initialXml)
-    this.state = { initialXml }
+    // initialXml = `<xml xmlns="http://www.w3.org/1999/xhtml">
+    //   <block type="content" deletable="false" x="10" y="10">
+    //     <statement name="references" id="start"><block xmlns="" type="sequence"><field name="maxOccurs">1</field><field name="minOccurs">1</field>
+    //     <statement name="references"><block type="elementRef"><field name="key">msIdentifier</field><next><block type="classRef">
+    //       <field name="key">model.headLike</field><next><block type="alternate"><field name="maxOccurs">1</field><field name="minOccurs">1</field>
+    //       <statement name="references"><block type="classRef"><field name="key">model.pLike</field><next><block type="sequence">
+    //         <field name="maxOccurs">1</field><field name="minOccurs">1</field><statement name="references"><block type="elementRef">
+    //           <field name="key">msContents</field><next><block type="elementRef"><field name="key">physDesc</field><next>
+    //             <block type="elementRef"><field name="key">history</field><next><block type="elementRef"><field name="key">additional</field><next>
+    //               <block type="alternate"><field name="maxOccurs">1</field><field name="minOccurs">1</field>
+    //               <statement name="references"><block type="elementRef"><field name="key">msPart</field><next><block type="elementRef">
+    //                 <field name="key">msFrag</field></block></next></block></statement></block></next></block></next></block></next></block></next></block>
+    //
+    //                 </statement></block></next></block></statement></block></next></block></next></block></statement></block></statement>
+    //   </block></xml>`
+    this.state = {
+      initialXml,
+      pickerOptions: [],
+      pickerAdd: null
+    }
   }
 
   createBlock = (c) => {
     const block = this.blocklyXml.createElement('block')
     block.setAttribute('type', c.type)
     // Create fields
+    if (c.key) {
+      const key = this.blocklyXml.createElement('field')
+      key.setAttribute('name', 'key')
+      key.appendChild(this.blocklyXml.createTextNode(c.key))
+      block.appendChild(key)
+    }
     if (c.maxOccurs) {
       const maxOccurs = this.blocklyXml.createElement('field')
       maxOccurs.setAttribute('name', 'maxOccurs')
@@ -126,7 +163,6 @@ export default class BlocklyRomaJsEditor extends Component {
   }
 
   render() {
-    window.Blockly = Blockly // TODO: This is bad, find fix.
     const config = {
       toolboxCategories: [{
         type: 'groups',
@@ -158,15 +194,30 @@ export default class BlocklyRomaJsEditor extends Component {
       }],
       initialXml: this.state.initialXml,
       wrapperDivClassName: 'romajs-blockly',
-      workspaceDidChange: function(newXml) {
-        newXml
-        // console.log(newXml)
+      workspaceDidChange: function(workspace) {
+        workspace
+        // console.log(workspace)
+      },
+      xmlDidChange: function(xml) {
+        xml
+        // console.log(xml)
       }
     }
-    return React.createElement(ReactBlocklyComponent.BlocklyEditor, config)
+    let picker = null
+    if (this.state.pickerOptions.length > 0) {
+      picker = <ModalPicker items={this.state.pickerOptions} pickerType="blockly" add={(t, i) => {this.state.pickerAdd(i)}}/>
+    }
+    return (<div>
+      {picker}
+      {React.createElement(ReactBlocklyComponent.BlocklyEditor, config)}
+    </div>)
   }
 }
 
 BlocklyRomaJsEditor.propTypes = {
-  elementContent: PropTypes.array,
+  flattenedContent: PropTypes.array,
+  elements: PropTypes.array,
+  macros: PropTypes.array,
+  classes: PropTypes.array,
+  datatypes: PropTypes.array
 }

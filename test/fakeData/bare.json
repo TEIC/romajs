@@ -2,7 +2,7 @@
   { "title" : "TEI Absolutely Bare",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2018-01-15T22:39:53Z",
+    "date" : "2018-02-09T22:12:59Z",
     "modules" : 
     [ 
       { "ident" : "core",
@@ -59,7 +59,9 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [  ],
+          "atts" : 
           [ "att.global",
             "att.typed" ] },
         "attributes" : 
@@ -94,11 +96,11 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [ "model.respLike" ],
+          "atts" : 
           [ "att.global",
-            "att.naming" ],
-          "model" : 
-          [ "model.respLike" ] },
+            "att.naming" ] },
         "content" : 
         [ 
           { "type" : "macroRef",
@@ -115,7 +117,9 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [  ],
+          "atts" : 
           [ "att.global" ] },
         "content" : 
         [ 
@@ -223,7 +227,9 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [  ],
+          "atts" : 
           [ "att.global" ] },
         "content" : 
         [ 
@@ -397,13 +403,13 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [ "model.divLike" ],
+          "atts" : 
           [ "att.global",
             "att.divLike",
             "att.typed",
-            "att.written" ],
-          "model" : 
-          [ "model.divLike" ] },
+            "att.written" ] },
         "content" : 
         [ 
           { "type" : "sequence",
@@ -508,7 +514,9 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [  ],
+          "atts" : 
           [ "att.global" ] },
         "content" : 
         [ 
@@ -554,7 +562,9 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [  ],
+          "atts" : 
           [ "att.global" ] },
         "content" : 
         [ 
@@ -664,14 +674,14 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [ "model.headLike",
+            "model.pLike.front" ],
+          "atts" : 
           [ "att.global",
             "att.typed",
             "att.placement",
-            "att.written" ],
-          "model" : 
-          [ "model.headLike",
-            "model.pLike.front" ] },
+            "att.written" ] },
         "content" : 
         [ 
           { "type" : "alternate",
@@ -710,7 +720,9 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [  ],
+          "atts" : 
           [ "att.global",
             "att.sortable" ] },
         "content" : 
@@ -729,13 +741,13 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [ "model.labelLike" ],
+          "atts" : 
           [ "att.global",
             "att.typed",
             "att.placement",
-            "att.written" ],
-          "model" : 
-          [ "model.labelLike" ] },
+            "att.written" ] },
         "content" : 
         [ 
           { "type" : "macroRef",
@@ -752,12 +764,12 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [ "model.listLike" ],
+          "atts" : 
           [ "att.global",
             "att.sortable",
-            "att.typed" ],
-          "model" : 
-          [ "model.listLike" ] },
+            "att.typed" ] },
         "attributes" : 
         [ 
           { "ident" : "type",
@@ -856,11 +868,11 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [ "model.pLike" ],
+          "atts" : 
           [ "att.global",
-            "att.written" ],
-          "model" : 
-          [ "model.pLike" ] },
+            "att.written" ] },
         "content" : 
         [ 
           { "type" : "macroRef",
@@ -877,7 +889,9 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [  ],
+          "atts" : 
           [ "att.global" ] },
         "content" : 
         [ 
@@ -911,7 +925,9 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [  ],
+          "atts" : 
           [ "att.global",
             "att.declarable" ] },
         "attributes" : 
@@ -957,7 +973,9 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [  ],
+          "atts" : 
           [ "att.global" ] },
         "content" : 
         [ 
@@ -986,12 +1004,12 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [ "model.resourceLike" ],
+          "atts" : 
           [ "att.global",
             "att.typed",
-            "att.written" ],
-          "model" : 
-          [ "model.resourceLike" ] },
+            "att.written" ] },
         "content" : 
         [ 
           { "type" : "sequence",
@@ -1049,13 +1067,13 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [ "model.emphLike" ],
+          "atts" : 
           [ "att.global",
             "att.canonical",
             "att.typed",
-            "att.datable" ],
-          "model" : 
-          [ "model.emphLike" ] },
+            "att.datable" ] },
         "attributes" : 
         [ 
           { "ident" : "level",
@@ -1093,7 +1111,9 @@
         "altIdent" : 
         [  ],
         "classes" : 
-        { "atts" : 
+        { "model" : 
+          [  ],
+          "atts" : 
           [ "att.global" ] },
         "content" : 
         [ 
@@ -1122,7 +1142,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.pPart.data" ] } },
+            [ "model.pPart.data" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.biblLike",
           "type" : "classSpec",
@@ -1136,7 +1158,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.inter" ] } },
+            [ "model.inter" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.common",
           "type" : "classSpec",
@@ -1161,7 +1185,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.pPart.data" ] } },
+            [ "model.pPart.data" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.div1Like",
           "type" : "classSpec",
@@ -1197,7 +1223,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.divBottom" ] } },
+            [ "model.divBottom" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.divGenLike",
           "type" : "classSpec",
@@ -1233,7 +1261,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.common" ] } },
+            [ "model.common" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.divTop",
           "type" : "classSpec",
@@ -1258,7 +1288,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.divTop" ] } },
+            [ "model.divTop" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.divWrapper",
           "type" : "classSpec",
@@ -1273,7 +1305,9 @@
           "classes" : 
           { "model" : 
             [ "model.divTop",
-              "model.divBottom" ] } },
+              "model.divBottom" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.egLike",
           "type" : "classSpec",
@@ -1287,7 +1321,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.inter" ] } },
+            [ "model.inter" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.emphLike",
           "type" : "classSpec",
@@ -1302,7 +1338,9 @@
           "classes" : 
           { "model" : 
             [ "model.highlighted",
-              "model.limitedPhrase" ] } },
+              "model.limitedPhrase" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.frontPart",
           "type" : "classSpec",
@@ -1327,7 +1365,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.frontPart" ] } },
+            [ "model.frontPart" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.gLike",
           "type" : "classSpec",
@@ -1363,7 +1403,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.global" ] } },
+            [ "model.global" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.global.meta",
           "type" : "classSpec",
@@ -1377,7 +1419,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.global" ] } },
+            [ "model.global" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.graphicLike",
           "type" : "classSpec",
@@ -1391,7 +1435,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.phrase" ] } },
+            [ "model.phrase" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.headLike",
           "type" : "classSpec",
@@ -1405,7 +1451,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.divTopPart" ] } },
+            [ "model.divTopPart" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.hiLike",
           "type" : "classSpec",
@@ -1420,7 +1468,9 @@
           "classes" : 
           { "model" : 
             [ "model.highlighted",
-              "model.limitedPhrase" ] } },
+              "model.limitedPhrase" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.highlighted",
           "type" : "classSpec",
@@ -1434,7 +1484,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.phrase" ] } },
+            [ "model.phrase" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.inter",
           "type" : "classSpec",
@@ -1448,7 +1500,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.common" ] } },
+            [ "model.common" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.lLike",
           "type" : "classSpec",
@@ -1462,7 +1516,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.divPart" ] } },
+            [ "model.divPart" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.lPart",
           "type" : "classSpec",
@@ -1476,7 +1532,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.phrase" ] } },
+            [ "model.phrase" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.labelLike",
           "type" : "classSpec",
@@ -1490,7 +1548,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.inter" ] } },
+            [ "model.inter" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.limitedPhrase",
           "type" : "classSpec",
@@ -1515,7 +1575,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.inter" ] } },
+            [ "model.inter" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.measureLike",
           "type" : "classSpec",
@@ -1529,7 +1591,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.pPart.data" ] } },
+            [ "model.pPart.data" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.milestoneLike",
           "type" : "classSpec",
@@ -1543,7 +1607,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.global" ] } },
+            [ "model.global" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.nameLike",
           "type" : "classSpec",
@@ -1557,7 +1623,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.pPart.data" ] } },
+            [ "model.pPart.data" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.nameLike.agent",
           "type" : "classSpec",
@@ -1571,7 +1639,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.nameLike" ] } },
+            [ "model.nameLike" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.noteLike",
           "type" : "classSpec",
@@ -1585,7 +1655,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.global" ] } },
+            [ "model.global" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.oddDecl",
           "type" : "classSpec",
@@ -1599,7 +1671,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.inter" ] } },
+            [ "model.inter" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.offsetLike",
           "type" : "classSpec",
@@ -1613,7 +1687,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.nameLike" ] } },
+            [ "model.nameLike" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.pLike",
           "type" : "classSpec",
@@ -1627,7 +1703,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.divPart" ] } },
+            [ "model.divPart" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.pLike.front",
           "type" : "classSpec",
@@ -1653,7 +1731,9 @@
           "classes" : 
           { "model" : 
             [ "model.phrase",
-              "model.limitedPhrase" ] } },
+              "model.limitedPhrase" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.pPart.edit",
           "type" : "classSpec",
@@ -1667,7 +1747,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.phrase" ] } },
+            [ "model.phrase" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.pPart.editorial",
           "type" : "classSpec",
@@ -1682,7 +1764,9 @@
           "classes" : 
           { "model" : 
             [ "model.pPart.edit",
-              "model.limitedPhrase" ] } },
+              "model.limitedPhrase" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.pPart.msdesc",
           "type" : "classSpec",
@@ -1697,7 +1781,9 @@
           "classes" : 
           { "model" : 
             [ "model.phrase",
-              "model.limitedPhrase" ] } },
+              "model.limitedPhrase" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.pPart.transcriptional",
           "type" : "classSpec",
@@ -1711,7 +1797,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.pPart.edit" ] } },
+            [ "model.pPart.edit" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.phrase",
           "type" : "classSpec",
@@ -1737,7 +1825,9 @@
           "classes" : 
           { "model" : 
             [ "model.phrase",
-              "model.limitedPhrase" ] } },
+              "model.limitedPhrase" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.placeNamePart",
           "type" : "classSpec",
@@ -1751,7 +1841,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.placeStateLike" ] } },
+            [ "model.placeStateLike" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.placeStateLike",
           "type" : "classSpec",
@@ -1765,7 +1857,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.nameLike" ] } },
+            [ "model.nameLike" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.ptrLike",
           "type" : "classSpec",
@@ -1781,7 +1875,9 @@
           { "model" : 
             [ "model.phrase",
               "model.limitedPhrase",
-              "model.publicationStmtPart.detail" ] } },
+              "model.publicationStmtPart.detail" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.publicationStmtPart.agency",
           "type" : "classSpec",
@@ -1817,7 +1913,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.inter" ] } },
+            [ "model.inter" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.quoteLike",
           "type" : "classSpec",
@@ -1831,7 +1929,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.qLike" ] } },
+            [ "model.qLike" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.resourceLike",
           "type" : "classSpec",
@@ -1855,7 +1955,10 @@
           "altIdent" : 
           [  ],
           "classes" : 
-          {  } },
+          { "model" : 
+            [  ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.segLike",
           "type" : "classSpec",
@@ -1869,7 +1972,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.phrase" ] } },
+            [ "model.phrase" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.sourceDescPart",
           "type" : "classSpec",
@@ -1894,7 +1999,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.phrase" ] } },
+            [ "model.phrase" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.stageLike",
           "type" : "classSpec",
@@ -1908,7 +2015,9 @@
           [  ],
           "classes" : 
           { "model" : 
-            [ "model.inter" ] } },
+            [ "model.inter" ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "model.teiHeaderPart",
           "type" : "classSpec",
@@ -1959,7 +2068,9 @@
           "altIdent" : 
           [  ],
           "classes" : 
-          { "atts" : 
+          { "model" : 
+            [  ],
+            "atts" : 
             [ "att.datable.w3c" ] },
           "attributes" : 
           [ 
@@ -2057,7 +2168,10 @@
           "altIdent" : 
           [  ],
           "classes" : 
-          {  } },
+          { "model" : 
+            [  ],
+            "atts" : 
+            [  ] } },
         
         { "ident" : "att.global",
           "type" : "classSpec",
@@ -2070,7 +2184,9 @@
           "altIdent" : 
           [  ],
           "classes" : 
-          { "atts" : 
+          { "model" : 
+            [  ],
+            "atts" : 
             [ "att.global.rendition",
               "att.global.responsibility",
               "att.global.source" ] },
@@ -2115,7 +2231,10 @@
           "altIdent" : 
           [  ],
           "classes" : 
-          {  },
+          { "model" : 
+            [  ],
+            "atts" : 
+            [  ] },
           "attributes" : 
           [ 
             { "ident" : "rend",
@@ -2150,7 +2269,10 @@
           "altIdent" : 
           [  ],
           "classes" : 
-          {  },
+          { "model" : 
+            [  ],
+            "atts" : 
+            [  ] },
           "attributes" : 
           [ 
             { "ident" : "cert",
@@ -2197,7 +2319,9 @@
           "altIdent" : 
           [  ],
           "classes" : 
-          { "atts" : 
+          { "model" : 
+            [  ],
+            "atts" : 
             [ "att.canonical" ] },
           "attributes" : 
           [ 
@@ -2301,7 +2425,10 @@
           "altIdent" : 
           [  ],
           "classes" : 
-          {  },
+          { "model" : 
+            [  ],
+            "atts" : 
+            [  ] },
           "attributes" : 
           [ 
             { "ident" : "hand",

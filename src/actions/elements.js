@@ -1,29 +1,57 @@
 export const UPDATE_ELEMENT_DOCS = 'UPDATE_ELEMENT_DOCS'
-export const UPDATE_ELEMENT_MODEL_CLASSES = 'UPDATE_ELEMENT_MODEL_CLASSES'
-export const UPDATE_ELEMENT_ATTRIBUTE_CLASSES = 'UPDATE_ELEMENT_ATTRIBUTE_CLASSES'
+export const DELETE_ELEMENT_DOCS = 'DELETE_ELEMENT_DOCS'
+export const ADD_ELEMENT_MODEL_CLASS = 'ADD_ELEMENT_MODEL_CLASS'
+export const DELETE_ELEMENT_MODEL_CLASS = 'DELETE_ELEMENT_MODEL_CLASS'
+export const ADD_ELEMENT_ATTRIBUTE_CLASS = 'ADD_ELEMENT_ATTRIBUTE_CLASS'
+export const DELETE_ELEMENT_ATTRIBUTE_CLASS = 'DELETE_ELEMENT_ATTRIBUTE_CLASS'
 
-export function updateElementDocs(element, docEl, content) {
-  // content can be string or array depending on element and documentation element (docEl).
+export function updateElementDocs(element, docEl, content, index) {
   return {
     type: UPDATE_ELEMENT_DOCS,
     element,
     docEl,
-    content
+    content,
+    index
   }
 }
 
-export function updateElementModelClasses(element, classNames) {
+export function deleteElementDocs(element, docEl, index) {
   return {
-    type: UPDATE_ELEMENT_MODEL_CLASSES,
+    type: DELETE_ELEMENT_DOCS,
     element,
-    classNames
+    docEl,
+    index
   }
 }
 
-export function updateElementAttributeClasses(element, classNames) {
+export function addElementModelClass(element, className) {
   return {
-    type: UPDATE_ELEMENT_ATTRIBUTE_CLASSES,
+    type: ADD_ELEMENT_MODEL_CLASS,
     element,
-    classNames
+    className
+  }
+}
+
+export function deleteElementModelClass(element, className) {
+  return {
+    type: DELETE_ELEMENT_MODEL_CLASS,
+    element,
+    className
+  }
+}
+
+export function addElementAttributeClass(element, className) {
+  return {
+    type: ADD_ELEMENT_ATTRIBUTE_CLASS,
+    element,
+    className
+  }
+}
+
+export function deleteElementAttributeClass(element, className) {
+  return {
+    type: DELETE_ELEMENT_ATTRIBUTE_CLASS,
+    element,
+    className
   }
 }

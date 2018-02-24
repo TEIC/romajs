@@ -1,0 +1,123 @@
+import { connect } from 'react-redux'
+import Blockly from '../components/Blockly'
+
+const flattenContentModel = (cnt, flattened = [], depth = 1) => {
+  cnt.map(c => {
+    switch (c.type) {
+      case 'sequence':
+      case 'alternate':
+        let copy = Object.assign({}, c)
+        copy.depth = depth
+        flattened.push(copy)
+        const content = copy.content.slice(0)
+        copy.content = true
+        flattenContentModel(content, flattened, depth + 1)
+        break
+      default:
+        copy = Object.assign({}, c)
+        copy.depth = depth
+        flattened.push(copy)
+    }
+  })
+  return flattened
+}
+
+const mapStateToProps = (state, ownProps) => {
+  // Flatten content model
+  let flattenedContent = []
+  if (ownProps.element.content) {
+    flattenedContent = flattenContentModel(ownProps.element.content)
+  }
+  // Get all macros from state
+  const customMacros = state.odd.customization.json.macros
+  const customMacrosNames = customMacros.reduce((acc, cn) => {
+    acc.push(cn.ident)
+    return acc
+  }, [])
+  let localMacros = state.odd.localsource.json.macros
+  localMacros = localMacros.filter((lc) => {
+    return customMacrosNames.indexOf(lc.ident) === -1
+  })
+  const macros = []
+  // TODO: sort by ident
+  for (const ac of localMacros.concat(customMacros)) {
+    macros.push([ac.ident, ac.shortDesc])
+  }
+
+  // Get all datatypes from state
+  const datatypes = []
+  const customDatatypes = new Set(state.odd.customization.json.datatypes.map(d => {
+    return d.ident
+  }))
+  const localDatatypes = new Set(state.odd.localsource.json.datatypes.map(d => {
+    return d.ident
+  }))
+  for (const d of Array.from(new Set([...customDatatypes, ...localDatatypes]))) {
+    datatypes.push([d, d])
+  }
+  // Get all elements from state
+  const customElements = state.odd.customization.json.elements
+  const customElementsNames = customElements.reduce((acc, cn) => {
+    acc.push(cn.ident)
+    return acc
+  }, [])
+  let localElements = state.odd.localsource.json.elements
+  localElements = localElements.filter((lc) => {
+    return customElementsNames.indexOf(lc.ident) === -1
+  })
+  const elements = []
+  // TODO: sort by ident
+  for (const ac of localElements.concat(customElements)) {
+    elements.push([ac.ident, ac.shortDesc])
+  }
+
+  // Get all classes from state
+  // TODO: these should be selectors as they're used by more than one container's mapStateToProps
+  // i.e. AttClassPicker and ModelClassPicker
+  const customAttClasses = state.odd.customization.json.classes.attributes
+  const customAttClassNames = customAttClasses.reduce((acc, cn) => {
+    acc.push(cn.ident)
+    return acc
+  }, [])
+  const localAttClasses = state.odd.localsource.json.classes.attributes
+
+  // Get all classes from localsource that are not customized
+  let attClasses = localAttClasses.filter((lc) => {
+    return customAttClassNames.indexOf(lc.ident) === -1
+  })
+  // join with custom classes
+  attClasses = attClasses.concat(customAttClasses)
+
+  const customModClasses = state.odd.customization.json.classes.models
+  const customModClassNames = customModClasses.reduce((acc, cn) => {
+    acc.push(cn.ident)
+    return acc
+  }, [])
+  const localModClasses = state.odd.localsource.json.classes.models
+
+  // Get all classes from localsource that are not customized
+  let modClasses = localModClasses.filter((lc) => {
+    return customModClassNames.indexOf(lc.ident) === -1
+  })
+  // join with custom classes
+  modClasses = modClasses.concat(customModClasses)
+
+  // TODO: sort by ident
+  const classes = []
+  for (const ac of attClasses) {
+    classes.push([ac.ident, ac.shortDesc])
+  }
+  for (const mc of modClasses) {
+    classes.push([mc.ident, mc.shortDesc])
+  }
+  return {flattenedContent, macros, classes, elements, datatypes}
+}
+
+const mapDispatchToProps = () => { return { } }
+
+const BlocklyContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Blockly)
+
+export default BlocklyContainer

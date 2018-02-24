@@ -21,14 +21,15 @@ describe('ODD elements operation reducers', () => {
       type: 'UPDATE_ELEMENT_DOCS',
       element: 'sourceDesc',
       docEl: 'desc',
-      content: ['new desc']
+      content: 'new desc',
+      index: 0
     })
     expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'sourceDesc')
     )[0].desc[0]).toEqual('new desc')
   })
 
-  it('should handle UPDATE_ELEMENT_MODEL_CLASSES', () => {
+  it('should handle ADD_ELEMENT_MODEL_CLASS', () => {
     customJSON = JSON.parse(customization)
     localJSON = JSON.parse(localsource)
     const state = romajsApp({
@@ -38,16 +39,16 @@ describe('ODD elements operation reducers', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'UPDATE_ELEMENT_MODEL_CLASSES',
+      type: 'ADD_ELEMENT_MODEL_CLASS',
       element: 'div',
-      classNames: ['model.divLike']
+      className: 'model.pLike'
     })
     expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'div')
-    )[0].classes.model).toEqual(['model.divLike'])
+    )[0].classes.model.indexOf('model.pLike')).toEqual(1)
   })
 
-  it('should handle UPDATE_ELEMENT_ATTRIBUTE_CLASSES', () => {
+  it('should handle DELETE_ELEMENT_MODEL_CLASS', () => {
     customJSON = JSON.parse(customization)
     localJSON = JSON.parse(localsource)
     const state = romajsApp({
@@ -57,12 +58,50 @@ describe('ODD elements operation reducers', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'UPDATE_ELEMENT_ATTRIBUTE_CLASSES',
+      type: 'DELETE_ELEMENT_MODEL_CLASS',
       element: 'div',
-      classNames: ['att.divLike', 'att.typed', 'att.written']
+      className: 'model.divLike'
     })
     expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'div')
-    )[0].classes.atts).toEqual(['att.divLike', 'att.typed', 'att.written'])
+    )[0].classes.model.length).toEqual(0)
+  })
+
+  it('should handle ADD_ELEMENT_ATTRIBUTE_CLASS', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'ADD_ELEMENT_ATTRIBUTE_CLASS',
+      element: 'div',
+      className: 'att.fragmentable'
+    })
+    expect(state.odd.customization.json.elements.filter(
+      x => (x.ident === 'div')
+    )[0].classes.atts.indexOf('att.fragmentable')).toEqual(4)
+  })
+
+  it('should handle DELETE_ELEMENT_ATTRIBUTE_CLASS', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'DELETE_ELEMENT_ATTRIBUTE_CLASS',
+      element: 'div',
+      className: 'att.written'
+    })
+    expect(state.odd.customization.json.elements.filter(
+      x => (x.ident === 'div')
+    )[0].classes.atts.indexOf('att.written')).toEqual(-1)
   })
 })

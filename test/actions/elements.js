@@ -3,27 +3,44 @@ import * as actions from '../../src/actions/elements'
 
 describe('Element actions', () => {
   it('updateElementDocs should pass documentation element changes to an elementSpec', () =>{
-    expect(actions.updateElementDocs('p', 'desc', ['new desc'])).toEqual({
+    expect(actions.updateElementDocs('p', 'desc', 'new desc', 0)).toEqual({
       type: 'UPDATE_ELEMENT_DOCS',
       element: 'p',
       docEl: 'desc',
-      content: ['new desc']
+      content: 'new desc',
+      index: 0
     })
   })
 
-  it('updateElementModelClasses should update an element\'s membership to model classes', () =>{
-    expect(actions.updateElementModelClasses('div', ['model.divLike'])).toEqual({
-      type: 'UPDATE_ELEMENT_MODEL_CLASSES',
+  it('addElementModelClass should add an element\'s membership to a model class', () =>{
+    expect(actions.addElementModelClass('div', 'model.pLike')).toEqual({
+      type: 'ADD_ELEMENT_MODEL_CLASS',
       element: 'div',
-      classNames: ['model.divLike']
+      className: 'model.pLike'
     })
   })
 
-  it('updateElementAttributeClasses should update an element\'s membership to model classes', () =>{
-    expect(actions.updateElementAttributeClasses('div', ['att.divLike', 'att.typed', 'att.written'])).toEqual({
-      type: 'UPDATE_ELEMENT_ATTRIBUTE_CLASSES',
+  it('deleteElementModelClass should delete an element\'s membership to a model class', () =>{
+    expect(actions.deleteElementModelClass('div', 'model.divLike')).toEqual({
+      type: 'DELETE_ELEMENT_MODEL_CLASS',
       element: 'div',
-      classNames: ['att.divLike', 'att.typed', 'att.written']
+      className: 'model.divLike'
+    })
+  })
+
+  it('addElementAttributeClass should add an element\'s membership to an attribute class', () =>{
+    expect(actions.addElementAttributeClass('div', 'att.fragmentable')).toEqual({
+      type: 'ADD_ELEMENT_ATTRIBUTE_CLASS',
+      element: 'div',
+      className: 'att.fragmentable'
+    })
+  })
+
+  it('deleteElementAttributeClass should delete an element\'s membership to an attribute class', () =>{
+    expect(actions.deleteElementAttributeClass('div', 'att.written')).toEqual({
+      type: 'DELETE_ELEMENT_ATTRIBUTE_CLASS',
+      element: 'div',
+      className: 'att.written'
     })
   })
 })

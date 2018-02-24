@@ -88,99 +88,95 @@ export const sequence = {
   }
 }
 
-export const elementRef = {
-  init: function() {
-    this.jsonInit({
-      type: 'elementRef',
-      message0: 'elementRef %1',
-      args0: [
-        {
-          type: 'field_dropdown',
-          name: 'elements',
-          options: [
-            [ 'element1', 'EL1' ],
-            [ 'element2', 'EL2' ]
-          ]
-        }
-      ],
-      previousStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
-      nextStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
-      colour: 230,
-      tooltip: 'points to the specification for some element which is to be included in a schema.',
-      helpUrl: 'http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-elementRef.html'
-    })
+export const elementRef = (elements) => {
+  return {
+    init: function() {
+      this.jsonInit({
+        type: 'elementRef',
+        message0: 'elementRef %1',
+        args0: [
+          {
+            type: 'field_dropdown',
+            name: 'key',
+            options: elements
+          }
+        ],
+        previousStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
+        nextStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
+        colour: 230,
+        tooltip: 'points to the specification for some element which is to be included in a schema.',
+        helpUrl: 'http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-elementRef.html'
+      })
+    }
   }
 }
 
-export const classRef = {
-  init: function() {
-    this.jsonInit({
-      type: 'classRef',
-      message0: 'classRef %1',
-      args0: [
-        {
-          type: 'field_dropdown',
-          name: 'classes',
-          options: [
-            [ 'class1', 'C1' ],
-            [ 'class2', 'C2' ]
-          ]
-        }
-      ],
-      previousStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
-      nextStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
-      colour: 230,
-      tooltip: 'points to the specification for an attribute or model class which is to be included in a schema.',
-      helpUrl: 'http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-classRef.html'
-    })
+export const classRef = (classes) => {
+  return {
+    init: function() {
+      this.jsonInit({
+        type: 'classRef',
+        message0: 'classRef %1',
+        args0: [
+          {
+            type: 'field_dropdown',
+            name: 'key',
+            options: classes
+          }
+        ],
+        previousStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
+        nextStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
+        colour: 230,
+        tooltip: 'points to the specification for an attribute or model class which is to be included in a schema.',
+        helpUrl: 'http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-classRef.html'
+      })
+    }
   }
 }
 
-export const dataRef = {
-  init: function() {
-    this.jsonInit({
-      type: 'dataRef',
-      message0: 'dataRef %1',
-      args0: [
-        {
-          type: 'field_dropdown',
-          name: 'datatypes',
-          options: [
-            [ 'data1', 'D1' ],
-            [ 'data2', 'D2' ]
-          ]
-        }
-      ],
-      previousStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
-      nextStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
-      colour: 230,
-      tooltip: 'points to the specification for some element which is to be included in a schema.',
-      helpUrl: 'http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-dataRef.html'
-    })
+export const dataRef = (datatypes) => {
+  return {
+    init: function() {
+      this.jsonInit({
+        type: 'dataRef',
+        message0: 'dataRef %1',
+        args0: [
+          {
+            type: 'field_dropdown',
+            name: 'key',
+            options: datatypes
+          }
+        ],
+        previousStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
+        nextStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
+        colour: 230,
+        tooltip: 'points to the specification for some element which is to be included in a schema.',
+        helpUrl: 'http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-dataRef.html'
+      })
+    }
   }
 }
 
-export const macroRef = {
-  init: function() {
-    this.jsonInit({
-      type: 'macroRef',
-      message0: 'macroRef %1',
-      args0: [
-        {
-          type: 'field_dropdown',
-          name: 'macros',
-          options: [
-            [ 'macro1', 'M1' ],
-            [ 'macro2', 'M2' ]
-          ]
-        }
-      ],
-      previousStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
-      nextStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
-      colour: 230,
-      tooltip: 'points to the specification for some pattern which is to be included in a schema.',
-      helpUrl: 'http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-macroRef.html'
-    })
+export const macroRef = (macros) => {
+  return {
+    init: function() {
+      this.jsonInit({
+        type: 'macroRef',
+        message0: 'macroRef %1',
+        args0: [
+          {
+            type: 'field_dropdown',
+            name: 'key',
+            options: macros
+          }
+        ],
+        previousStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
+        nextStatement: ['alternate', 'sequence', 'elementRef', 'classRef', 'dataRef', 'macroRef', 'anyElement', 'textNode'],
+        colour: 230,
+        tooltip: 'points to the specification for some pattern which is to be included in a schema.',
+        helpUrl: 'http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-macroRef.html'
+      })
+    }
   }
 }
 
