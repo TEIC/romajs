@@ -11,9 +11,6 @@ export default class Element extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      modelClasses: props.element.classes.model.slice(0).sort() || [],
-      attClasses: props.element.classes.atts.slice(0).sort() || [],
-      classDescs: props.element.classDescs || {},
       changed: false
     }
   }
@@ -22,40 +19,6 @@ export default class Element extends Component {
     if (!this.props.success) {
       this.props.navigateTo('/')
     }
-  }
-
-  removeClass = (className, type) => {
-    const newState = {changed: true}
-    newState[type] = this.state[type].filter((c) => {
-      return c !== className
-    })
-    this.setState(newState)
-  }
-
-  addClass = (className, classDesc, type) => {
-    const newState = {changed: true}
-    const classes = new Set(this.state[type])
-    classes.add(className)
-    newState[type] = Array.from(classes).sort()
-    newState.classDescs = Object.assign({}, this.state.classDescs)
-    newState.classDescs[className] = classDesc
-    this.setState(newState)
-  }
-
-  removeModelClass = (className) => {
-    this.removeClass(className, 'modelClasses')
-  }
-
-  addModelClass = (className, classDesc) => {
-    this.addClass(className, classDesc, 'modelClasses')
-  }
-
-  removeAttClass = (className) => {
-    this.removeClass(className, 'attClasses')
-  }
-
-  addAttClass = (className, classDesc) => {
-    this.addClass(className, classDesc, 'attClasses')
   }
 
   goBack = (event) => {

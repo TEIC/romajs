@@ -4,13 +4,6 @@ import Picker from './Picker'
 import { MDCDialog } from '@material/dialog'
 
 export default class ModalPicker extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      added: false
-    }
-  }
-
   componentDidMount() {
     this.dialog = new MDCDialog(this.refs.picker)
     this.dialog.listen('MDCDialog:cancel', () => {
@@ -19,20 +12,9 @@ export default class ModalPicker extends Component {
     this.dialog.show()
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (!nextState.added) {
-      this.dialog.show()
-      return true
-    } else {
-      nextState.added = false
-      return false
-    }
-  }
-
   addItem = (type, item) => {
-    this.props.add(type, item)
     this.dialog.close()
-    this.setState({added: true})
+    this.props.add(type, item)
   }
 
   render() {
