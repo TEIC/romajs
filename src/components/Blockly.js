@@ -23,6 +23,7 @@ export default class BlocklyRomaJsEditor extends Component {
       }
       thisEditor.setState({
         pickerOptions,
+        pickerVisible: true,
         pickerAdd: (i) => { this.setValue(i.ident) }
       })
     }
@@ -64,6 +65,7 @@ export default class BlocklyRomaJsEditor extends Component {
     this.state = {
       initialXml,
       pickerOptions: [],
+      pickerVisible: false,
       pickerAdd: null
     }
   }
@@ -204,8 +206,12 @@ export default class BlocklyRomaJsEditor extends Component {
       }
     }
     let picker = null
-    if (this.state.pickerOptions.length > 0) {
-      picker = <ModalPicker items={this.state.pickerOptions} pickerType="blockly" add={(t, i) => {this.state.pickerAdd(i)}}/>
+    if (this.state.pickerOptions.length > 0 && this.state.pickerVisible) {
+      picker = (<ModalPicker show={true} items={this.state.pickerOptions} pickerType="blockly"
+        add={ (t, i) => {
+          this.setState({pickerVisible: false})
+          this.state.pickerAdd(i)
+        }}/>)
     }
     return (<div>
       {picker}

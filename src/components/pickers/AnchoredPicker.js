@@ -26,7 +26,7 @@ export default class AnchoredPicker extends Component {
   render() {
     let picker = null
     if (this.state.visible) {
-      picker = <ModalPicker show={this.state.visible} items={this.props.items} pickerType={this.props.pickerType} add={this.addItem} />
+      picker = <ModalPicker items={this.props.items} pickerType={this.props.pickerType} add={this.addItem} />
     }
     return (<div className="romajs-clickable">
       <i className="material-icons" onClick={this.show}>add_circle_outline</i>

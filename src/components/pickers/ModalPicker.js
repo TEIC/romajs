@@ -35,7 +35,6 @@ export default class ModalPicker extends Component {
 }
 
 ModalPicker.propTypes = {
-  show: PropTypes.bool,
   items: PropTypes.array,
   pickerType: PropTypes.string,
   add: PropTypes.func
