@@ -222,6 +222,15 @@ main {
 /* Ace editor */
 .ace_editor {
   border: 1px solid lightgrey;
+
+  .ace_active-line {
+    background-color: transparent !important;
+  }
+
+  .romajs-ace-readonly {
+    background-color:  #cccccc;
+  }
+
 }
 
 /* EDITABLE LISTS */
@@ -246,4 +255,21 @@ main {
 /* Blockly */
 .romajs-blockly {
   height: 300px;
+}
+
+/* Dashboard */
+.romajs-squares {
+
+  margin: 0 0 0 20px;
+
+  .mdc-grid-tile__primary {
+    background-color: $mdc-theme-secondary;
+    span {
+      color: white;
+      font-weight: 500;
+      font-size: 1.3rem;
+      margin: .5em;
+      display: inline-block;
+    }
+  }
 }

@@ -16,12 +16,113 @@ export default class Desc extends Component {
   }
 
   setupEditors = () => {
-    for (const reactAceComponent of this.aceEditors) {
+    this.aceEditors.forEach((reactAceComponent, descIndex) => {
       const editor = reactAceComponent.editor
       editor.setOption('wrap', true)
+
+      // const updateVersionDate = () => {
+      // // TODO: revisit this after deciding how to export to ODD
+      // // Problem: if I make a change and undo, the new date will remain, but the ODD
+      // // shouldn't update because the content is the same.
+      //   const match = /desc.*?versionDate="[^""]+"/.exec(this.props.desc[descIndex])
+      //   if (match) {
+      //     const d = new Date()
+      //     const monthNum = d.getUTCMonth()
+      //     const month = monthNum.toString().length === 2 ? monthNum : '0' + monthNum
+      //     const dayNum = d.getUTCDate()
+      //     const day = dayNum.toString().length === 2 ? dayNum : '0' + dayNum
+      //     const newDate = `versionDate="${d.getUTCFullYear()}-${month}-${day}"`
+      //     const text = this.props.desc[descIndex].replace(/desc(.*?)versionDate="[^""]+"/, `desc$1${newDate}`)
+      //     this.props.updateElementDocs(this.props.ident, text, descIndex)
+      //   }
+      // }
+      const getRootElRanges = () => {
+        // Determine character range of root opening and closing tag
+        const descLines = this.props.desc[descIndex].split(/\r\n|[\n\v\f\r\x85\u2028\u2029]/)
+
+        const openingTagMatch = /<desc[^>]*>/.exec(descLines[0])
+        const openingTag = {
+          row: 0,
+          start: openingTagMatch.index,
+          end: openingTagMatch.index + openingTagMatch[0].length
+        }
+
+        const closingTagMatch = /<\/desc\s*>/.exec(descLines[descLines.length - 1])
+        const closingTag = {
+          row: descLines.length - 1,
+          start: closingTagMatch.index,
+          end: closingTagMatch.index + closingTagMatch[0].length
+        }
+
+        return {openingTag, closingTag}
+      }
+
+      let rootElRanges = getRootElRanges()
+      let openingTagRange = rootElRanges.openingTag
+      let closingTagRange = rootElRanges.closingTag
+
+      // Override selectall to make sure root element tags are not selected
+      editor.commands.addCommand({
+        name: 'selectall',
+        bindKey: {win: 'Ctrl-A', mac: 'Command-A'},
+        exec: function(ed) {
+          const ranges = getRootElRanges()
+          const dummyRange = ed.session.selection.getRange()
+          dummyRange.start.row = ranges.openingTag.row
+          dummyRange.start.column = ranges.openingTag.end
+          dummyRange.end.row = ranges.closingTag.row
+          dummyRange.end.column = ranges.closingTag.start
+          ed.session.selection.setSelectionRange(dummyRange)
+        }
+      })
+
+      // Force cursor and anchor to not get into root element tags.
+      editor.session.on('change', () => {
+        // updateVersionDate()
+        rootElRanges = getRootElRanges()
+        openingTagRange = rootElRanges.openingTag
+        closingTagRange = rootElRanges.closingTag
+      })
+
+      editor.session.selection.on('changeSelection', () => {
+        const cursor = editor.session.selection.getCursor()
+        const lines = editor.session.getLength() - 1
+        if (cursor.row === lines && cursor.column === editor.session.getLine(lines).length) {
+          editor.session.selection.setSelectionAnchor(closingTagRange.row, closingTagRange.start)
+          editor.session.selection.moveCursorTo(closingTagRange.row, closingTagRange.start)
+        } else if (cursor.row === 0 && cursor.column === 0) {
+          editor.session.selection.setSelectionAnchor(openingTagRange.row, openingTagRange.end)
+          editor.session.selection.moveCursorTo(openingTagRange.row, openingTagRange.end)
+        }
+      })
+
+      editor.session.selection.on('changeCursor', () => {
+        const cursor = editor.session.selection.getCursor()
+        const anchor = editor.session.selection.getSelectionAnchor()
+        if (cursor.row === openingTagRange.row) {
+          if (cursor.column > openingTagRange.start && cursor.column < openingTagRange.end) {
+            editor.session.selection.moveCursorTo(openingTagRange.row, openingTagRange.end)
+          }
+        }
+        if (cursor.row === closingTagRange.row) {
+          if (cursor.column > closingTagRange.start) {
+            editor.session.selection.moveCursorTo(closingTagRange.row, closingTagRange.start)
+          }
+        }
+        if (anchor.row === openingTagRange.row) {
+          if (anchor.column > openingTagRange.start && anchor.column < openingTagRange.end) {
+            editor.session.selection.setSelectionAnchor(openingTagRange.row, openingTagRange.end)
+          }
+        }
+        if (anchor.row === closingTagRange.row) {
+          if (anchor.column > closingTagRange.start) {
+            editor.session.selection.setSelectionAnchor(closingTagRange.row, closingTagRange.start)
+          }
+        }
+      })
       // TODO: this is for tinkering in browser, remove:
       // window.editor = editor
-    }
+    })
   }
 
   render() {
@@ -35,6 +136,7 @@ export default class Desc extends Component {
       <div className="mdc-layout-grid__cell--span-8">{
         this.props.desc.map((d, pos) => {
           return (<div className="mdc-layout-grid__inner" key={`d${pos}`}>
+            <h4>English</h4>
             <div className="mdc-layout-grid__cell--span-11">
               <AceEditor
                 ref={(ae) => { ae ? this.aceEditors[pos] = ae : null }}
@@ -46,31 +148,24 @@ export default class Desc extends Component {
                 showGutter={true}
                 highlightActiveLine={true}
                 value={d}
-                onChange={(text) => this.props.updateElementDocs(this.props.element, text, pos)}
+                onChange={(text) => this.props.updateElementDocs(this.props.ident, text, pos)}
                 height="100px"
                 width="80%"
                 editorProps={{
                   $blockScrolling: Infinity
                 }}/>
             </div>
-            <div className="mdc-layout-grid__cell--span-1">
-              <i className="material-icons romajs-clickable" onClick={() => { this.props.deleteElementDocs(this.props.element, pos) }}>clear</i>
-            </div>
           </div>)
         })
       }
-      <div><i className="material-icons romajs-clickable" onClick={() => {
-        const pos = this.props.desc.length
-        this.props.updateElementDocs(this.props.element, '<desc xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en"></desc>', pos)
-      }}>add_circle_outline</i></div>
       </div>
     </div>)
   }
 }
 
 Desc.propTypes = {
-  element: PropTypes.string,
-  desc: PropTypes.array,
-  updateElementDocs: PropTypes.func,
-  deleteElementDocs: PropTypes.func
+  ident: PropTypes.string.isRequired,
+  desc: PropTypes.array.isRequired,
+  updateElementDocs: PropTypes.func.isRequired,
+  lang: PropTypes.string
 }

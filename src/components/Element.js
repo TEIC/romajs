@@ -1,23 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import AltIdent from '../containers/AltIdentContainer'
-import Desc from '../containers/DescContainer'
-import ModelClassPicker from '../containers/ModelClassPicker'
-import AttClassPicker from '../containers/AttClassPicker'
-import BlocklyContainer from '../containers/BlocklyContainer'
-
+import Documentation from './Documentation'
+import Attributes from './Attributes'
+import ContentModel from './ContentModel'
 
 export default class Element extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      changed: false
-    }
+    this.baseurl = `/element/${this.props.element.ident}`
   }
 
   componentWillMount() {
     if (!this.props.success) {
-      this.props.navigateTo('/')
+      this.props.navigateTo('/members')
     }
   }
 
@@ -30,14 +25,101 @@ export default class Element extends Component {
     if (!this.props.success) {
       return null
     }
+    let content = null
+    let trail = null
+    let arrow = null
+    const home = (<div className="mdc-grid-list romajs-squares">
+      <ul className="mdc-grid-list__tiles">
+        <li className="mdc-grid-tile">
+          <div className="mdc-grid-tile__primary romajs-clickable"
+            onClick={() => this.props.navigateTo(`${this.baseurl}/documentation`)}>
+            <span>Documentation</span>
+          </div>
+        </li>
+        <li className="mdc-grid-tile">
+          <div className="mdc-grid-tile__primary romajs-clickable"
+            onClick={() => this.props.navigateTo(`${this.baseurl}/attributes`)}>
+            <span>Attributes</span>
+          </div>
+        </li>
+        <li className="mdc-grid-tile">
+          <div className="mdc-grid-tile__primary romajs-clickable"
+            onClick={() => this.props.navigateTo(`${this.baseurl}/content`)}>
+            <span>Class Membership <br/> &amp; Content Model</span>
+          </div>
+        </li>
+        <li className="mdc-grid-tile">
+          <div className="mdc-grid-tile__primary romajs-clickable"
+            onClick={() => this.props.navigateTo(`${this.baseurl}/constraints`)}>
+            <span>Constraints</span>
+          </div>
+        </li>
+        <li className="mdc-grid-tile">
+          <div className="mdc-grid-tile__primary romajs-clickable"
+            onClick={() => this.props.navigateTo(`${this.baseurl}/processing`)}>
+            <span>Processing model</span>
+          </div>
+        </li>
+      </ul>
+    </div>)
+    if (this.props.section) {
+      arrow = <i className="material-icons">keyboard_arrow_left</i>
+    }
+    switch (this.props.section) {
+      case 'documentation':
+        content = <Documentation member={this.props.element}/>
+        trail = (<span className="mdl-chip mdl-chip--deletable">
+          <span className="mdl-chip__text">Documentation</span>
+        </span>)
+        break
+      case 'attributes':
+        content = (<Attributes
+          element={this.props.element}
+          deleteElementAttributeClass={this.props.deleteElementAttributeClass}
+          clearPicker={this.props.clearPicker} />)
+        trail = (<span className="mdl-chip mdl-chip--deletable">
+          <span className="mdl-chip__text">Attributes</span>
+        </span>)
+        break
+      case 'content':
+        content = (<ContentModel
+          element={this.props.element}
+          deleteElementModelClass={this.props.deleteElementModelClass}
+          clearPicker={this.props.clearPicker} />)
+        trail = (<span className="mdl-chip mdl-chip--deletable">
+          <span className="mdl-chip__text">Content</span>
+        </span>)
+        break
+      case 'constraints':
+        content = (<div>contr</div>)
+        trail = (<span className="mdl-chip mdl-chip--deletable">
+          <span className="mdl-chip__text">Contraints</span>
+        </span>)
+        break
+      case 'processing':
+        content = (<div>proc</div>)
+        trail = (<span className="mdl-chip mdl-chip--deletable">
+          <span className="mdl-chip__text">Processing Model</span>
+        </span>)
+        break
+      default:
+        content = home
+    }
     return [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
       <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
         <span className="mdl-chip mdl-chip--deletable romajs-clickable" onClick={this.goBack}>
-          <span className="mdl-chip__text">Back</span>
+          <span className="mdl-chip__text">Members</span>
           <span className="mdl-chip__action">
             <i className="material-icons">keyboard_arrow_left</i>
           </span>
         </span>
+        <span className="mdl-chip mdl-chip--deletable romajs-clickable" onClick={() => this.props.navigateTo(this.baseurl)}>
+          <span className="mdl-chip__text">&lt;{this.props.element.ident}&gt;</span>
+          <span className="mdl-chip__action">
+            {arrow}
+          </span>
+        </span>
+        {trail}
       </section>
       <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
         <span className="mdl-chip mdl-chip--deletable">
@@ -51,85 +133,18 @@ export default class Element extends Component {
     <main key="main">
       <div className="romajs-form">
         <h1 className="mdc-typography--headline">&lt;{this.props.element.ident}&gt;</h1>
-        <div className="mdc-layout-grid">
-          <AltIdent element={this.props.element.ident} />
-          <Desc element={this.props.element.ident} />
-          <div className="mdc-layout-grid__inner romajs-formrow">
-            <div className="mdc-layout-grid__cell--span-3">
-              <label>Class Memberships</label>
-              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                Elements can be members of model classes (groups of elements) and attribute classes
-                (to inherit the attributes defined in a class). <br/>
-                Change class membership here.
-              </p>
-            </div>
-            <div className="mdc-layout-grid__cell--span-8">
-              <div className="mdc-layout-grid__inner">
-                <div className="mdc-layout-grid__cell--span-6 romajs-editable-list">
-                  <label>Models</label>
-                  <ModelClassPicker element={this.props.element.ident}/>
-                  <ul className="mdc-list mdc-list--two-line">{
-                    this.props.element.classes.model.slice(0).sort().map((c, pos) => {
-                      return (<li key={`c${pos}`} className="mdc-list-item">
-                        <span className="mdc-list-item__graphic">
-                          <i className="material-icons romajs-clickable" onClick={() =>
-                            this.props.deleteElementModelClass(this.props.element.ident, c)}>clear</i>
-                        </span>
-                        <span className="mdc-list-item__text">
-                          {c}
-                          <span className="mdc-list-item__secondary-text">
-                            {this.props.element.classDescs[c]}
-                          </span>
-                        </span>
-                      </li>)
-                    })
-                  }</ul>
-                </div>
-                <div className="mdc-layout-grid__cell--span-6 romajs-editable-list">
-                  <label>Attributes</label>
-                  <AttClassPicker element={this.props.element.ident}/>
-                  <ul className="mdc-list">{
-                    this.props.element.classes.atts.slice(0).sort().map((c, pos) => {
-                      return (<li key={`c${pos}`} className="mdc-list-item">
-                        <span className="mdc-list-item__graphic">
-                          <i className="material-icons romajs-clickable" onClick={() =>
-                            this.props.deleteElementAttributeClass(this.props.element.ident, c)}>clear</i>
-                        </span>
-                        <span className="mdc-list-item__text">
-                          {c}
-                          <span className="mdc-list-item__secondary-text">
-                            {this.props.element.classDescs[c]}
-                          </span>
-                        </span>
-                      </li>)
-                    })
-                  }</ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mdc-layout-grid__inner romajs-formrow">
-            <div className="mdc-layout-grid__cell--span-3">
-              <label>Content</label>
-              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                Edit element content
-              </p>
-            </div>
-            <div className="mdc-layout-grid__cell--span-8">
-              <BlocklyContainer element={this.props.element}/>
-            </div>
-          </div>
-        </div>
+        {content}
       </div>
     </main>]
   }
 }
 
 Element.propTypes = {
-  success: PropTypes.bool,
-  element: PropTypes.object,
-  navigateTo: PropTypes.func,
-  clearPicker: PropTypes.func,
-  deleteElementModelClass: PropTypes.func,
-  deleteElementAttributeClass: PropTypes.func
+  success: PropTypes.bool.isRequired,
+  element: PropTypes.object.isRequired,
+  section: PropTypes.string,
+  navigateTo: PropTypes.func.isRequired,
+  clearPicker: PropTypes.func.isRequired,
+  deleteElementAttributeClass: PropTypes.func.isRequired,
+  deleteElementModelClass: PropTypes.func.isRequired
 }

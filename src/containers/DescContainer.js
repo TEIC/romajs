@@ -3,8 +3,11 @@ import Desc from '../components/Desc'
 import { deleteElementDocs, updateElementDocs } from '../actions/elements'
 
 const mapStateToProps = (state, ownProps) => {
-  const element = state.odd.customization.json.elements.filter(x => x.ident === ownProps.element)[0]
-  return {element: element.ident, desc: element.desc}
+  // TODO: parametrize language
+  return {
+    ident: ownProps.member.ident,
+    desc: ownProps.member.desc,
+    lang: 'en'}
 }
 
 const mapDispatchToProps = (dispatch) => {

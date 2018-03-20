@@ -14,6 +14,7 @@ class App extends Component {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/members" component={Members} />
         <Route exact path="/element/:el" component={ElementPage} />
+        <Route exact path="/element/:el/:section" component={ElementPage} />
       </div>
     </div>)
   }

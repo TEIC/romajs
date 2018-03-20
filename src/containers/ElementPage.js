@@ -7,7 +7,6 @@ import { clearPicker } from '../actions/interface'
 const mapStateToProps = (state, ownProps) => {
   let element = null
   let success = false
-  // TODO: Also don't set success to true if the element hasn't been selected
   if (state.odd.customization && state.odd.localsource) {
     if (!state.odd.customization.isFetching && !state.odd.localsource.isFetching) {
       const customEl = state.odd.customization.json.elements.filter(x => {
@@ -19,7 +18,6 @@ const mapStateToProps = (state, ownProps) => {
         })[0]
         if (localEl) {
           element = localEl
-          success = true
         }
       } else {
         element = customEl
@@ -51,14 +49,14 @@ const mapStateToProps = (state, ownProps) => {
       }, {})
     }
   }
-  return {element, success}
+  return {element, success, section: ownProps.match.params.section}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     navigateTo: (place) => dispatch(push(place)),
-    deleteElementModelClass: (element, className) => dispatch(deleteElementModelClass(element, className)),
     deleteElementAttributeClass: (element, className) => dispatch(deleteElementAttributeClass(element, className)),
+    deleteElementModelClass: (element, className) => dispatch(deleteElementModelClass(element, className)),
     clearPicker: () => dispatch(clearPicker())
   }
 }
