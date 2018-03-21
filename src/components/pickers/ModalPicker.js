@@ -7,9 +7,18 @@ export default class ModalPicker extends Component {
   componentDidMount() {
     this.dialog = new MDCDialog(this.refs.picker)
     this.dialog.listen('MDCDialog:cancel', () => {
+      if (this.props.cancel) {
+        this.props.cancel()
+      }
       this.dialog.close()
     })
-    this.dialog.show()
+    // this.dialog.show()
+  }
+
+  componentDidUpdate() {
+    if (this.props.visible) {
+      this.dialog.show()
+    }
   }
 
   addItem = (type, item) => {
@@ -35,7 +44,9 @@ export default class ModalPicker extends Component {
 }
 
 ModalPicker.propTypes = {
+  visible: PropTypes.bool,
   items: PropTypes.array,
   pickerType: PropTypes.string,
-  add: PropTypes.func
+  add: PropTypes.func,
+  cancel: PropTypes.func
 }

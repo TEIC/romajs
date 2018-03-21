@@ -37,6 +37,8 @@ export default class Attributes extends Component {
   }
 }
 
+// Edit attributes
+
 Attributes.propTypes = {
   element: PropTypes.object,
   deleteElementAttributeClass: PropTypes.func,

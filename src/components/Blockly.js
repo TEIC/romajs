@@ -205,16 +205,13 @@ export default class BlocklyRomaJsEditor extends Component {
         // console.log(xml)
       }
     }
-    let picker = null
-    if (this.state.pickerOptions.length > 0 && this.state.pickerVisible) {
-      picker = (<ModalPicker show={true} items={this.state.pickerOptions} pickerType="blockly"
+    return (<div>
+      <ModalPicker visible={this.state.pickerVisible} items={this.state.pickerOptions} pickerType="blockly"
+        cancel={() => {this.setState({pickerVisible: false})}}
         add={ (t, i) => {
           this.setState({pickerVisible: false})
           this.state.pickerAdd(i)
-        }}/>)
-    }
-    return (<div>
-      {picker}
+        }}/>
       {React.createElement(ReactBlocklyComponent.BlocklyEditor, config)}
     </div>)
   }
