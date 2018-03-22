@@ -13,4 +13,14 @@ describe('Attribute actions', () => {
       index: 0
     })
   })
+
+  it('setNs should pass a new namespace URI to attDef', () =>{
+    expect(actions.setNs('list', 'element', 'type', 'http://example.com/')).toEqual({
+      type: 'SET_NS',
+      member: 'list',
+      memberType: 'element',
+      attr: 'type',
+      ns: 'http://example.com/'
+    })
+  })
 })

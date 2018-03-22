@@ -148,7 +148,7 @@ export default class Desc extends Component {
                 showGutter={true}
                 highlightActiveLine={true}
                 value={d}
-                onChange={(text) => this.props.updateElementDocs(this.props.ident, text, pos)}
+                onChange={(text) => this.props.update(this.props.ident, text, pos)}
                 height="100px"
                 width="80%"
                 editorProps={{
@@ -166,6 +166,6 @@ export default class Desc extends Component {
 Desc.propTypes = {
   ident: PropTypes.string.isRequired,
   desc: PropTypes.array.isRequired,
-  updateElementDocs: PropTypes.func.isRequired,
+  update: PropTypes.func.isRequired,
   lang: PropTypes.string
 }

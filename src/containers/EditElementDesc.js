@@ -12,8 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateElementDocs: (element, content, index) => dispatch(updateElementDocs(element, 'desc', content, index)),
-    deleteElementDocs: (element, index) => dispatch(deleteElementDocs(element, 'desc', index))
+    update: (element, content, index) => dispatch(updateElementDocs(element, 'desc', content, index)),
+    delete: (element, index) => dispatch(deleteElementDocs(element, 'desc', index))
   }
 }
 

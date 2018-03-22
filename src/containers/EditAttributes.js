@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import Attributes from '../components/Attributes'
 import { deleteElementAttributeClass } from '../actions/elements'
 import { clearPicker } from '../actions/interface'
+import { push } from 'react-router-redux'
 
 const mapStateToProps = (state, ownProps) => {
   const element = ownProps.element
@@ -27,11 +28,12 @@ const mapStateToProps = (state, ownProps) => {
 
   const attsfromClasses = getClasses(element.classes.atts)
 
-  return {element, attsfromClasses}
+  return {element, attsfromClasses, path: state.router.location.pathname}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    navigateTo: (place) => dispatch(push(place)),
     deleteElementAttributeClass: (element, className) => dispatch(deleteElementAttributeClass(element, className)),
     clearPicker: () => dispatch(clearPicker())
   }

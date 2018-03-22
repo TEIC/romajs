@@ -26,3 +26,13 @@ export function deleteAttributeDocs(member, memberType, attr, docEl, index) {
     index
   }
 }
+
+export function setNs(member, memberType, attr, ns) {
+  return {
+    type: SET_NS,
+    member,
+    memberType,
+    attr,
+    ns
+  }
+}

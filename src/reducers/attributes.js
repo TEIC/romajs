@@ -1,20 +1,24 @@
 import { ReducerException } from '../utils/exceptions'
 import { clone } from '../utils/clone'
 import {
-  DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS
+  DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS
 } from '../actions/attributes'
 
 function updateDocEl(m, action) {
   if (m.ident === action.member) {
-    if (m.attributes) {
-      for (const att of m.attributes) {
-        if (Array.isArray(att[action.docEl]) && action.index !== undefined) {
-          att[action.docEl][action.index] = action.content
-        } else {
-          throw new ReducerException(`Description element content does not match ${action.content}.`)
-        }
-      }
+    const att = m.attributes.filter(a => (a.ident === action.attr))[0]
+    if (Array.isArray(att[action.docEl]) && action.index !== undefined) {
+      att[action.docEl][action.index] = action.content
+    } else {
+      throw new ReducerException(`Description element content does not match ${action.content}.`)
     }
+  }
+}
+
+function setNs(m, action) {
+  if (m.ident === action.member) {
+    const att = m.attributes.filter(a => (a.ident === action.attr))[0]
+    att.ns = action.ns
   }
 }
 
@@ -27,8 +31,10 @@ export function oddAttributes(state, action) {
       switch (action.memberType) {
         case 'element':
           customization.elements.forEach(m => updateDocEl(m, action))
+          break
         case 'class':
-          customization.classes.forEach(m => updateDocEl(m, action))
+          customization.classes.attributes.forEach(m => updateDocEl(m, action))
+          break
         default:
       }
       return newState
@@ -42,6 +48,17 @@ export function oddAttributes(state, action) {
           }
         }
       })
+      return newState
+    case SET_NS:
+      switch (action.memberType) {
+        case 'element':
+          customization.elements.forEach(m => setNs(m, action))
+          break
+        case 'class':
+          customization.classes.attributes.forEach(m => setNs(m, action))
+          break
+        default:
+      }
       return newState
     default:
       return state

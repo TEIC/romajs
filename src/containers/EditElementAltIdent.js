@@ -8,14 +8,14 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateElementDocs: (element, content, index) => {dispatch(updateElementDocs(element, 'altIdent', content, index))},
-    deleteElementDocs: (element, index) => dispatch(deleteElementDocs(element, 'altIdent', index))
+    update: (element, content, index) => {dispatch(updateElementDocs(element, 'altIdent', content, index))},
+    delete: (element, index) => dispatch(deleteElementDocs(element, 'altIdent', index))
   }
 }
 
-const AltIdentContainer = connect(
+const EditElementAltIdent = connect(
   mapStateToProps,
   mapDispatchToProps
 )(AltIdent)
 
-export default AltIdentContainer
+export default EditElementAltIdent

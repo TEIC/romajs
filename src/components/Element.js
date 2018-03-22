@@ -26,8 +26,9 @@ export default class Element extends Component {
       return null
     }
     let content = null
-    let trail = null
-    let arrow = null
+    let trail
+    let arrow
+    let subArrow
     const home = (<div className="mdc-grid-list romajs-squares">
       <ul className="mdc-grid-list__tiles">
         <li className="mdc-grid-tile">
@@ -62,8 +63,12 @@ export default class Element extends Component {
         </li>
       </ul>
     </div>)
+    // TODO: re-organize this into proper components
     if (this.props.section) {
       arrow = <i className="material-icons">keyboard_arrow_left</i>
+    }
+    if (this.props.attribute) {
+      subArrow = <i className="material-icons">keyboard_arrow_left</i>
     }
     switch (this.props.section) {
       case 'documentation':
@@ -73,10 +78,20 @@ export default class Element extends Component {
         </span>)
         break
       case 'attributes':
-        content = (<EditAttributes element={this.props.element} />)
-        trail = (<span className="mdl-chip mdl-chip--deletable">
+        content = (<EditAttributes element={this.props.element} attribute={this.props.attribute}/>)
+        let editAtt
+        if (this.props.attribute) {
+          editAtt = (<span className="mdl-chip mdl-chip--deletable">
+            <span className="mdl-chip__text">{this.props.attribute}</span>
+          </span>)
+        }
+        trail = (<span><span className="mdl-chip mdl-chip--deletable romajs-clickable" onClick={() => this.props.navigateTo(`${this.baseurl}/attributes`)}>
           <span className="mdl-chip__text">Attributes</span>
-        </span>)
+          <span className="mdl-chip__action">
+            {subArrow}
+          </span>
+        </span>
+        {editAtt}</span>)
         break
       case 'content':
         content = (<ContentModel
@@ -140,6 +155,7 @@ Element.propTypes = {
   success: PropTypes.bool.isRequired,
   element: PropTypes.object.isRequired,
   section: PropTypes.string,
+  attribute: PropTypes.string,
   navigateTo: PropTypes.func.isRequired,
   clearPicker: PropTypes.func.isRequired,
   deleteElementModelClass: PropTypes.func.isRequired

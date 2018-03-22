@@ -1,0 +1,52 @@
+import expect from 'expect'
+import fs from 'fs'
+import romajsApp from './combinedReducers'
+
+const customization = fs.readFileSync('test/fakeData/bare.json', 'utf-8')
+const localsource = fs.readFileSync('test/fakeData/p5subset.json', 'utf-8')
+let customJSON = null
+let localJSON = null
+
+describe('ODD attributes operation reducers', () => {
+  it('should handle UPDATE_ATTRIBUTE_DOCS (desc)', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_ATTRIBUTE_DOCS',
+      member: 'list',
+      memberType: 'element',
+      attr: 'type',
+      docEl: 'desc',
+      content: 'new desc',
+      index: 0
+    })
+    expect(state.odd.customization.json.elements.filter(x => (x.ident === 'list'))[0]
+      .attributes.filter(x => (x.ident === 'type'))[0].desc[0]).toEqual('new desc')
+  })
+
+  it('should handle SET_NS (desc)', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'SET_NS',
+      member: 'list',
+      memberType: 'element',
+      attr: 'type',
+      ns: 'http://example.com/'
+    })
+    expect(state.odd.customization.json.elements.filter(x => (x.ident === 'list'))[0]
+      .attributes.filter(x => (x.ident === 'type'))[0].ns).toEqual('http://example.com/')
+  })
+})

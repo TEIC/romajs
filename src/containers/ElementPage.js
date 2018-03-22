@@ -49,7 +49,14 @@ const mapStateToProps = (state, ownProps) => {
       }, {})
     }
   }
-  return {element, success, section: ownProps.match.params.section}
+  // Handle attribute subsection
+  let section = ownProps.match.params.section
+  let attribute
+  if (ownProps.match.path.includes('attributes/:attr')) {
+    section = 'attributes'
+    attribute = ownProps.match.params.attr
+  }
+  return {element, success, section, attribute}
 }
 
 const mapDispatchToProps = (dispatch) => {

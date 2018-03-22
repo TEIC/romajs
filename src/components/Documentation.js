@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import AltIdent from '../containers/AltIdentContainer'
-import Desc from '../containers/DescContainer'
+import AltIdent from '../containers/EditElementAltIdent'
+import Desc from '../containers/EditElementDesc'
 
 export default class Documentation extends Component {
   render() {

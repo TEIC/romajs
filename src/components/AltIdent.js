@@ -15,16 +15,16 @@ export default class AltIdent extends Component {
         this.props.altIdent.map((ai, pos) => {
           return (<div key={`ai${pos}`}><div className="mdc-text-field mdc-text-field--upgraded">
             <input autoFocus type="text" className="mdc-text-field__input" value={ai}
-              onChange={(e) => this.props.updateElementDocs(this.props.ident, e.target.value, pos)}/>
+              onChange={(e) => this.props.update(this.props.ident, e.target.value, pos)}/>
             <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
           </div>
-          <i className="material-icons romajs-clickable" onClick={() => { this.props.deleteElementDocs(this.props.ident, pos) }}>clear</i>
+          <i className="material-icons romajs-clickable" onClick={() => { this.props.delete(this.props.ident, pos) }}>clear</i>
           </div>)
         })
       }
       <i className="material-icons romajs-clickable" onClick={() => {
         const pos = this.props.altIdent.length
-        this.props.updateElementDocs(this.props.ident, '', pos)
+        this.props.update(this.props.ident, '', pos)
       }}>add_circle_outline</i>
       </div>
     </div>)
@@ -34,6 +34,6 @@ export default class AltIdent extends Component {
 AltIdent.propTypes = {
   ident: PropTypes.string.isRequired,
   altIdent: PropTypes.array.isRequired,
-  updateElementDocs: PropTypes.func.isRequired,
-  deleteElementDocs: PropTypes.func.isRequired
+  update: PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired
 }
