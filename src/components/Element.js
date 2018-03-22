@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Documentation from './Documentation'
-import Attributes from './Attributes'
+import EditAttributes from '../containers/EditAttributes'
 import ContentModel from './ContentModel'
 
 export default class Element extends Component {
@@ -73,10 +73,7 @@ export default class Element extends Component {
         </span>)
         break
       case 'attributes':
-        content = (<Attributes
-          element={this.props.element}
-          deleteElementAttributeClass={this.props.deleteElementAttributeClass}
-          clearPicker={this.props.clearPicker} />)
+        content = (<EditAttributes element={this.props.element} />)
         trail = (<span className="mdl-chip mdl-chip--deletable">
           <span className="mdl-chip__text">Attributes</span>
         </span>)
@@ -145,6 +142,5 @@ Element.propTypes = {
   section: PropTypes.string,
   navigateTo: PropTypes.func.isRequired,
   clearPicker: PropTypes.func.isRequired,
-  deleteElementAttributeClass: PropTypes.func.isRequired,
   deleteElementModelClass: PropTypes.func.isRequired
 }

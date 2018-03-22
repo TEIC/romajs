@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Element from '../components/Element'
 import { push } from 'react-router-redux'
-import { deleteElementModelClass, deleteElementAttributeClass } from '../actions/elements'
+import { deleteElementModelClass } from '../actions/elements'
 import { clearPicker } from '../actions/interface'
 
 const mapStateToProps = (state, ownProps) => {
@@ -55,7 +55,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     navigateTo: (place) => dispatch(push(place)),
-    deleteElementAttributeClass: (element, className) => dispatch(deleteElementAttributeClass(element, className)),
     deleteElementModelClass: (element, className) => dispatch(deleteElementModelClass(element, className)),
     clearPicker: () => dispatch(clearPicker())
   }

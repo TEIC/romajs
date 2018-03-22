@@ -32,15 +32,58 @@ export default class Attributes extends Component {
             })
           }</ul>
         </div>
+        <div className="mdc-layout-grid__cell--span-3">
+          <label>All Attributes</label>
+          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
+            Edit attributes for this element only.
+          </p>
+        </div>
+        <div className="mdc-layout-grid__cell--span-8">{
+          [[<h4>Defined on this element</h4>,
+            (<ul className="mdc-list">{
+              this.props.element.attributes.map((c, pos) => {
+                return (<li key={`c${pos}`} className="mdc-list-item">
+                  <span className="mdc-list-item__graphic">
+                    <i className="material-icons romajs-clickable">mode_edit</i>
+                    <i className="material-icons romajs-clickable">clear</i>
+                  </span>
+                  <span className="mdc-list-item__text">
+                    {c.ident}
+                    <span className="mdc-list-item__secondary-text">
+                      {c.shortDesc}
+                    </span>
+                  </span>
+                </li>)
+              })
+            }</ul>)],
+          this.props.attsfromClasses.map((cl, cpos) => {
+            return [<h4 key={`clh${cpos}`}>{cl.ident}</h4>,
+              (<ul className="mdc-list" key={`cl${cpos}`}>{
+                cl.attributes.map((c, pos) => {
+                  const overridden = c.overridden ? 'romajs-att-overridden' : ''
+                  return (<li key={`c${pos}`} className={`mdc-list-item ${overridden}`}>
+                    <span className="mdc-list-item__graphic">
+                      <i className="material-icons romajs-clickable">mode_edit</i>
+                    </span>
+                    <span className="mdc-list-item__text">
+                      {c.ident}
+                      <span className="mdc-list-item__secondary-text">
+                        {c.shortDesc}
+                      </span>
+                    </span>
+                  </li>)
+                })
+              }</ul>)]
+          })]
+        }</div>
       </div>
     </div>)
   }
 }
 
-// Edit attributes
-
 Attributes.propTypes = {
   element: PropTypes.object,
+  attsfromClasses: PropTypes.array,
   deleteElementAttributeClass: PropTypes.func,
   clearPicker: PropTypes.func
 }

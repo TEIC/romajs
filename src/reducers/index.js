@@ -9,8 +9,12 @@ import {
   DELETE_ELEMENT_DOCS, UPDATE_ELEMENT_DOCS, ADD_ELEMENT_MODEL_CLASS, DELETE_ELEMENT_MODEL_CLASS,
   ADD_ELEMENT_ATTRIBUTE_CLASS, DELETE_ELEMENT_ATTRIBUTE_CLASS
 } from '../actions/elements'
+import {
+  DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS
+} from '../actions/attributes'
 import { oddModules } from './modules'
 import { oddElements } from './elements'
+import { oddAttributes } from './attributes'
 import { updateOdd } from './updateOdd'
 import { ui } from  './interface'
 import * as fileSaver from 'file-saver'
@@ -136,6 +140,9 @@ function odd(state = {}, action) {
     case ADD_ELEMENT_ATTRIBUTE_CLASS:
     case DELETE_ELEMENT_ATTRIBUTE_CLASS:
       return Object.assign({}, oddElements(state, action))
+    case UPDATE_ATTRIBUTE_DOCS:
+    case DELETE_ATTRIBUTE_DOCS:
+      return Object.assign({}, oddAttributes(state, action))
     default:
       return state
   }
