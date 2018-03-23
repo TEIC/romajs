@@ -36,3 +36,13 @@ export function setNs(member, memberType, attr, ns) {
     ns
   }
 }
+
+export function setUsage(member, memberType, attr, usage) {
+  return {
+    type: SET_USAGE,
+    member,
+    memberType,
+    attr,
+    usage
+  }
+}

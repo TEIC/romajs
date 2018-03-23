@@ -10,7 +10,7 @@ import {
   ADD_ELEMENT_ATTRIBUTE_CLASS, DELETE_ELEMENT_ATTRIBUTE_CLASS
 } from '../actions/elements'
 import {
-  DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS
+  DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS, SET_USAGE
 } from '../actions/attributes'
 import { oddModules } from './modules'
 import { oddElements } from './elements'
@@ -143,6 +143,7 @@ function odd(state = {}, action) {
     case UPDATE_ATTRIBUTE_DOCS:
     case DELETE_ATTRIBUTE_DOCS:
     case SET_NS:
+    case SET_USAGE:
       return Object.assign({}, oddAttributes(state, action))
     default:
       return state

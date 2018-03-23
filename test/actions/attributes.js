@@ -23,4 +23,14 @@ describe('Attribute actions', () => {
       ns: 'http://example.com/'
     })
   })
+
+  it('setUsage should pass a new usage value to attDef', () =>{
+    expect(actions.setUsage('list', 'element', 'type', 'opt')).toEqual({
+      type: 'SET_USAGE',
+      member: 'list',
+      memberType: 'element',
+      attr: 'type',
+      usage: 'opt'
+    })
+  })
 })

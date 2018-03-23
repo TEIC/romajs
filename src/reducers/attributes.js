@@ -1,7 +1,7 @@
 import { ReducerException } from '../utils/exceptions'
 import { clone } from '../utils/clone'
 import {
-  DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS
+  DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS, SET_USAGE
 } from '../actions/attributes'
 
 function updateDocEl(m, action) {
@@ -19,6 +19,13 @@ function setNs(m, action) {
   if (m.ident === action.member) {
     const att = m.attributes.filter(a => (a.ident === action.attr))[0]
     att.ns = action.ns
+  }
+}
+
+function setUsage(m, action) {
+  if (m.ident === action.member) {
+    const att = m.attributes.filter(a => (a.ident === action.attr))[0]
+    att.usage = action.usage
   }
 }
 
@@ -56,6 +63,17 @@ export function oddAttributes(state, action) {
           break
         case 'class':
           customization.classes.attributes.forEach(m => setNs(m, action))
+          break
+        default:
+      }
+      return newState
+    case SET_USAGE:
+      switch (action.memberType) {
+        case 'element':
+          customization.elements.forEach(m => setUsage(m, action))
+          break
+        case 'class':
+          customization.classes.attributes.forEach(m => setUsage(m, action))
           break
         default:
       }

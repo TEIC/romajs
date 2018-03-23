@@ -30,7 +30,7 @@ describe('ODD attributes operation reducers', () => {
       .attributes.filter(x => (x.ident === 'type'))[0].desc[0]).toEqual('new desc')
   })
 
-  it('should handle SET_NS (desc)', () => {
+  it('should handle SET_NS', () => {
     customJSON = JSON.parse(customization)
     localJSON = JSON.parse(localsource)
     const state = romajsApp({
@@ -48,5 +48,25 @@ describe('ODD attributes operation reducers', () => {
     })
     expect(state.odd.customization.json.elements.filter(x => (x.ident === 'list'))[0]
       .attributes.filter(x => (x.ident === 'type'))[0].ns).toEqual('http://example.com/')
+  })
+
+  it('should handle SET_USAGE', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'SET_USAGE',
+      member: 'list',
+      memberType: 'element',
+      attr: 'type',
+      usage: 'opt'
+    })
+    expect(state.odd.customization.json.elements.filter(x => (x.ident === 'list'))[0]
+      .attributes.filter(x => (x.ident === 'type'))[0].usage).toEqual('opt')
   })
 })

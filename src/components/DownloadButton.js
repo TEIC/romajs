@@ -5,7 +5,8 @@ import { MDCSimpleMenu } from '@material/menu'
 
 export default class DonwloadButton extends Component {
   componentDidMount() {
-    this.menu = new MDCSimpleMenu(this.refs.menu)
+    MDCSimpleMenu
+    // this.menu = new MDCSimpleMenu(this.refs.menu)
   }
 
   render() {
