@@ -9,6 +9,7 @@ export default class Desc extends Component {
   constructor(props) {
     super(props)
     this.aceEditors = []
+    this.descTag = props.valDesc ? 'valDesc' : 'desc'
   }
 
   componentDidMount() {
@@ -40,14 +41,14 @@ export default class Desc extends Component {
         // Determine character range of root opening and closing tag
         const descLines = this.props.desc[descIndex].split(/\r\n|[\n\v\f\r\x85\u2028\u2029]/)
 
-        const openingTagMatch = /<desc[^>]*>/.exec(descLines[0])
+        const openingTagMatch = new RegExp(`<${this.descTag}[^>]*>`).exec(descLines[0])
         const openingTag = {
           row: 0,
           start: openingTagMatch.index,
           end: openingTagMatch.index + openingTagMatch[0].length
         }
 
-        const closingTagMatch = /<\/desc\s*>/.exec(descLines[descLines.length - 1])
+        const closingTagMatch = new RegExp(`<\/${this.descTag}\s*>`).exec(descLines[descLines.length - 1])
         const closingTag = {
           row: descLines.length - 1,
           start: closingTagMatch.index,
@@ -84,7 +85,7 @@ export default class Desc extends Component {
         closingTagRange = rootElRanges.closingTag
       })
 
-      editor.session.selection.on('changeSelection', () => {
+      const preventHomeEnd = () => {
         const cursor = editor.session.selection.getCursor()
         const lines = editor.session.getLength() - 1
         if (cursor.row === lines && cursor.column === editor.session.getLine(lines).length) {
@@ -94,6 +95,10 @@ export default class Desc extends Component {
           editor.session.selection.setSelectionAnchor(openingTagRange.row, openingTagRange.end)
           editor.session.selection.moveCursorTo(openingTagRange.row, openingTagRange.end)
         }
+      }
+
+      editor.session.selection.on('changeSelection', () => {
+        preventHomeEnd()
       })
 
       editor.session.selection.on('changeCursor', () => {
@@ -119,6 +124,7 @@ export default class Desc extends Component {
             editor.session.selection.setSelectionAnchor(closingTagRange.row, closingTagRange.start)
           }
         }
+        preventHomeEnd()
       })
       // TODO: this is for tinkering in browser, remove:
       // window.editor = editor
@@ -126,18 +132,34 @@ export default class Desc extends Component {
   }
 
   render() {
-    return (<div className="mdc-layout-grid__inner romajs-formrow">
-      <div className="mdc-layout-grid__cell--span-3">
-        <label>Descriptions</label>
+    let info = (<div className="mdc-layout-grid__cell--span-3">
+      <label>Descriptions</label>
+      <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
+        Contains a brief description of the object documented by its parent element, typically a documentation element or an entity.
+      </p>
+    </div>)
+    if (this.props.valDesc) {
+      info = ( <div className="mdc-layout-grid__cell--span-3">
+        <label>Value descriptions</label>
         <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-          Contains a brief description of the object documented by its parent element, typically a documentation element or an entity.
+          Specifies any semantic or syntactic constraint on the value that an attribute may take, additional to the information carried by the datatype element.
         </p>
-      </div>
+      </div>)
+    }
+    let nodesc
+    if (this.props.desc.length === 0) {
+      nodesc = (<i className="material-icons romajs-clickable" onClick={() => {
+        this.props.update(this.props.ident, `<${this.descTag} xmlns="http://tei-c.org/ns/1.0" xml:lang="en"></${this.descTag}>`, 0)
+      }}>add_circle_outline</i>)
+    }
+    return (<div className="mdc-layout-grid__inner romajs-formrow">
+      {info}
+      {nodesc}
       <div className="mdc-layout-grid__cell--span-8">{
         this.props.desc.map((d, pos) => {
           return (<div className="mdc-layout-grid__inner" key={`d${pos}`}>
-            <h4>English</h4>
-            <div className="mdc-layout-grid__cell--span-11">
+            <h4 className="mdc-layout-grid__cell--span-1">English</h4>
+            <div className="mdc-layout-grid__cell--span-10">
               <AceEditor
                 ref={(ae) => { ae ? this.aceEditors[pos] = ae : null }}
                 mode="xml"
@@ -155,6 +177,9 @@ export default class Desc extends Component {
                   $blockScrolling: Infinity
                 }}/>
             </div>
+            <div className="mdc-layout-grid__cell--span-1">
+              <i className="material-icons romajs-clickable" onClick={() => { this.props.delete(pos) }}>clear</i>
+            </div>
           </div>)
         })
       }
@@ -167,5 +192,7 @@ Desc.propTypes = {
   ident: PropTypes.string.isRequired,
   desc: PropTypes.array.isRequired,
   update: PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired,
+  valDesc: PropTypes.bool,
   lang: PropTypes.string
 }

@@ -242,8 +242,12 @@ main {
 }
 
 /* Utils */
-.romajs-clickable {
+.romajs-clickable, .romajs-clickable-adjust {
   cursor: pointer;
+}
+
+.romajs-clickable-adjust {
+  vertical-align: middle;
 }
 
 /* Picker */
@@ -259,6 +263,11 @@ main {
 
 /* Attributes */
 .romajs-att-overridden {
+  // opacity: 0.4;
+  // pointer-events: none;
+}
+
+.romajs-att-deleted {
   opacity: 0.4;
   pointer-events: none;
 }

@@ -30,6 +30,27 @@ describe('ODD attributes operation reducers', () => {
       .attributes.filter(x => (x.ident === 'type'))[0].desc[0]).toEqual('new desc')
   })
 
+  it('should handle DELETE_ATTRIBUTE_DOCS (desc)', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'DELETE_ATTRIBUTE_DOCS',
+      member: 'list',
+      memberType: 'element',
+      attr: 'type',
+      docEl: 'desc',
+      index: 0
+    })
+    expect(state.odd.customization.json.elements.filter(x => (x.ident === 'list'))[0]
+      .attributes.filter(x => (x.ident === 'type'))[0].desc.length).toEqual(0)
+  })
+
   it('should handle SET_NS', () => {
     customJSON = JSON.parse(customization)
     localJSON = JSON.parse(localsource)

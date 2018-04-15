@@ -14,6 +14,17 @@ describe('Attribute actions', () => {
     })
   })
 
+  it('deleteAttributeDocs should pass documentation element changes to an attDef', () =>{
+    expect(actions.deleteAttributeDocs('list', 'element', 'type', 'desc', 0)).toEqual({
+      type: 'DELETE_ATTRIBUTE_DOCS',
+      member: 'list',
+      memberType: 'element',
+      attr: 'type',
+      docEl: 'desc',
+      index: 0
+    })
+  })
+
   it('setNs should pass a new namespace URI to attDef', () =>{
     expect(actions.setNs('list', 'element', 'type', 'http://example.com/')).toEqual({
       type: 'SET_NS',

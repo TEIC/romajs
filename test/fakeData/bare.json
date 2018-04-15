@@ -2,7 +2,7 @@
   { "title" : "TEI Absolutely Bare",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2018-03-23T15:51:53Z",
+    "date" : "2018-03-30T14:51:16Z",
     "modules" : 
     [ 
       { "ident" : "core",
@@ -67,12 +67,17 @@
         "attributes" : 
         [ 
           { "ident" : "version",
+            "mode" : "delete",
             "ns" : "",
             "usage" : "def",
             "desc" : 
             [  ],
             "shortDesc" : "",
             "gloss" : 
+            [  ],
+            "altIdent" : 
+            [  ],
+            "valDesc" : 
             [  ] } ],
         "content" : 
         [ 
@@ -775,6 +780,7 @@
         "attributes" : 
         [ 
           { "ident" : "type",
+            "mode" : "delete",
             "ns" : "",
             "usage" : "",
             "desc" : 
@@ -782,12 +788,58 @@
             "shortDesc" : "describes the nature of the items in the list.",
             "gloss" : 
             [  ],
-            "values" : 
-            [ "gloss",
-              "index",
-              "instructions",
-              "litany",
-              "syllogism" ] } ],
+            "altIdent" : 
+            [  ],
+            "valDesc" : 
+            [  ],
+            "valList" : 
+            { "type" : "",
+              "valItem" : 
+              [ 
+                { "ident" : "gloss",
+                  "desc" : 
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-11-25\" xml:lang=\"en\">each list item glosses some term or concept, which is given by a <gi>label<\/gi> element\n            preceding the list item.<\/desc>" ],
+                  "shortDesc" : "each list item glosses some term or concept, which is given by a label element\n            preceding the list item.",
+                  "gloss" : 
+                  [  ],
+                  "altIdent" : 
+                  [  ] },
+                
+                { "ident" : "index",
+                  "desc" : 
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-05-04\" xml:lang=\"en\">each list item is an entry in an index such as the alphabetical topical index \n          at the back of a print volume.<\/desc>" ],
+                  "shortDesc" : "each list item is an entry in an index such as the alphabetical topical index \n          at the back of a print volume.",
+                  "gloss" : 
+                  [  ],
+                  "altIdent" : 
+                  [  ] },
+                
+                { "ident" : "instructions",
+                  "desc" : 
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-05-04\" xml:lang=\"en\">each list item is a step in a sequence of instructions, as in a\n            recipe.<\/desc>" ],
+                  "shortDesc" : "each list item is a step in a sequence of instructions, as in a\n            recipe.",
+                  "gloss" : 
+                  [  ],
+                  "altIdent" : 
+                  [  ] },
+                
+                { "ident" : "litany",
+                  "desc" : 
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-05-04\" xml:lang=\"en\">each list item is one of a sequence of petitions, supplications \n            or invocations, typically in a religious ritual.<\/desc>" ],
+                  "shortDesc" : "each list item is one of a sequence of petitions, supplications \n            or invocations, typically in a religious ritual.",
+                  "gloss" : 
+                  [  ],
+                  "altIdent" : 
+                  [  ] },
+                
+                { "ident" : "syllogism",
+                  "desc" : 
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-05-04\" xml:lang=\"en\">each list item is part of an argument consisting of two or more propositions \n            and a final conclusion derived from them.<\/desc>" ],
+                  "shortDesc" : "each list item is part of an argument consisting of two or more propositions \n            and a final conclusion derived from them.",
+                  "gloss" : 
+                  [  ],
+                  "altIdent" : 
+                  [  ] } ] } } ],
         "content" : 
         [ 
           { "type" : "sequence",
@@ -937,12 +989,17 @@
         "attributes" : 
         [ 
           { "ident" : "default",
+            "mode" : "delete",
             "ns" : "",
             "usage" : "def",
             "desc" : 
             [  ],
             "shortDesc" : "",
             "gloss" : 
+            [  ],
+            "altIdent" : 
+            [  ],
+            "valDesc" : 
             [  ] } ],
         "content" : 
         [ 
@@ -1083,15 +1140,21 @@
         "attributes" : 
         [ 
           { "ident" : "level",
+            "mode" : "delete",
             "ns" : "",
             "usage" : "def",
             "desc" : 
             [  ],
             "shortDesc" : "",
             "gloss" : 
+            [  ],
+            "altIdent" : 
+            [  ],
+            "valDesc" : 
             [  ] },
           
           { "ident" : "type",
+            "mode" : "change",
             "ns" : "",
             "usage" : "def",
             "desc" : 
@@ -1099,12 +1162,58 @@
             "shortDesc" : "classifies the title according to some convenient typology.",
             "gloss" : 
             [  ],
-            "values" : 
-            [ "main",
-              "sub",
-              "alt",
-              "short",
-              "desc" ] } ],
+            "altIdent" : 
+            [  ],
+            "valDesc" : 
+            [  ],
+            "valList" : 
+            { "type" : "",
+              "valItem" : 
+              [ 
+                { "ident" : "main",
+                  "desc" : 
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-06-27\" xml:lang=\"en\">main title<\/desc>" ],
+                  "shortDesc" : "main title",
+                  "gloss" : 
+                  [  ],
+                  "altIdent" : 
+                  [  ] },
+                
+                { "ident" : "sub",
+                  "desc" : 
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-06-27\" xml:lang=\"en\">subtitle, title of part<\/desc>" ],
+                  "shortDesc" : "(subordinate) subtitle, title of part",
+                  "gloss" : 
+                  [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-04\" xml:lang=\"en\">subordinate<\/gloss>" ],
+                  "altIdent" : 
+                  [  ] },
+                
+                { "ident" : "alt",
+                  "desc" : 
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-06-27\" xml:lang=\"en\">alternate title, often in another language,\nby which the work is also known<\/desc>" ],
+                  "shortDesc" : "(alternate) alternate title, often in another language,\nby which the work is also known",
+                  "gloss" : 
+                  [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-04\" xml:lang=\"en\">alternate<\/gloss>" ],
+                  "altIdent" : 
+                  [  ] },
+                
+                { "ident" : "short",
+                  "desc" : 
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-06-27\" xml:lang=\"en\">abbreviated form of title<\/desc>" ],
+                  "shortDesc" : "abbreviated form of title",
+                  "gloss" : 
+                  [  ],
+                  "altIdent" : 
+                  [  ] },
+                
+                { "ident" : "desc",
+                  "desc" : 
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-06-27\" xml:lang=\"en\">descriptive paraphrase of the work\nfunctioning as a title<\/desc>" ],
+                  "shortDesc" : "(descriptive) descriptive paraphrase of the work\nfunctioning as a title",
+                  "gloss" : 
+                  [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-04\" xml:lang=\"en\">descriptive<\/gloss>" ],
+                  "altIdent" : 
+                  [  ] } ] } } ],
         "content" : 
         [ 
           { "type" : "macroRef",
@@ -2054,22 +2163,32 @@
           "attributes" : 
           [ 
             { "ident" : "key",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">provides an externally-defined means of identifying the entity (or entities) being\n        named, using a coded value of some kind.<\/desc>" ],
               "shortDesc" : "provides an externally-defined means of identifying the entity (or entities) being\n        named, using a coded value of some kind.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] },
             
             { "ident" : "ref",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">provides an explicit means of locating a full definition or identity for the entity being named by\n        means of one or more URIs.<\/desc>" ],
               "shortDesc" : "(reference) provides an explicit means of locating a full definition or identity for the entity being named by\n        means of one or more URIs.",
               "gloss" : 
-              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">reference<\/gloss>" ] } ] },
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">reference<\/gloss>" ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ] } ] },
         
         { "ident" : "att.datable",
           "type" : "classSpec",
@@ -2089,21 +2208,31 @@
           "attributes" : 
           [ 
             { "ident" : "calendar",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-25\" xml:lang=\"en\">indicates the system or calendar to which the date represented by the content of this\n        element belongs.<\/desc>" ],
               "shortDesc" : "indicates the system or calendar to which the date represented by the content of this\n        element belongs.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] },
             
             { "ident" : "period",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-25\" xml:lang=\"en\">supplies a pointer to some location defining a named\n        period of time within which the datable item is understood to\n        have occurred.<\/desc>" ],
               "shortDesc" : "supplies a pointer to some location defining a named\n        period of time within which the datable item is understood to\n        have occurred.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] } ] },
         
         { "ident" : "att.datable.w3c",
@@ -2119,48 +2248,73 @@
           "attributes" : 
           [ 
             { "ident" : "when",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-07-23\" xml:lang=\"en\">supplies the value of the date or time in a standard form,\n        e.g. yyyy-mm-dd.<\/desc>" ],
               "shortDesc" : "supplies the value of the date or time in a standard form,\n        e.g. yyyy-mm-dd.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] },
             
             { "ident" : "notBefore",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-09\" xml:lang=\"en\">specifies the earliest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.<\/desc>" ],
               "shortDesc" : "specifies the earliest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] },
             
             { "ident" : "notAfter",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-09\" xml:lang=\"en\">specifies the latest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.<\/desc>" ],
               "shortDesc" : "specifies the latest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] },
             
             { "ident" : "from",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-02-10\" xml:lang=\"en\">indicates the starting point of the period in standard form, e.g. yyyy-mm-dd.<\/desc>" ],
               "shortDesc" : "indicates the starting point of the period in standard form, e.g. yyyy-mm-dd.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] },
             
             { "ident" : "to",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-02-10\" xml:lang=\"en\">indicates the ending point of the period in standard\n        form, e.g. yyyy-mm-dd.<\/desc>" ],
               "shortDesc" : "indicates the ending point of the period in standard\n        form, e.g. yyyy-mm-dd.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] } ] },
         
         { "ident" : "att.declarable",
@@ -2176,6 +2330,7 @@
           "attributes" : 
           [ 
             { "ident" : "default",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
@@ -2183,9 +2338,31 @@
               "shortDesc" : "indicates whether or not this element is selected by default when\nits parent is selected.",
               "gloss" : 
               [  ],
-              "values" : 
-              [ "true",
-                "false" ] } ] },
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ],
+              "valList" : 
+              { "type" : "",
+                "valItem" : 
+                [ 
+                  { "ident" : "true",
+                    "desc" : 
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-06-27\" xml:lang=\"en\">This element is selected if its parent is selected<\/desc>" ],
+                    "shortDesc" : "This element is selected if its parent is selected",
+                    "gloss" : 
+                    [  ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "false",
+                    "desc" : 
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-06-27\" xml:lang=\"en\">This element can only be selected explicitly, unless it is the\nonly one of its kind, in which case it is selected if its parent is selected.<\/desc>" ],
+                    "shortDesc" : "This element can only be selected explicitly, unless it is the\nonly one of its kind, in which case it is selected if its parent is selected.",
+                    "gloss" : 
+                    [  ],
+                    "altIdent" : 
+                    [  ] } ] } } ] },
         
         { "ident" : "att.divLike",
           "type" : "classSpec",
@@ -2223,40 +2400,60 @@
           "attributes" : 
           [ 
             { "ident" : "rend",
+              "mode" : "delete",
               "ns" : "",
               "usage" : "def",
               "desc" : 
               [  ],
               "shortDesc" : "",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] },
             
             { "ident" : "xml:id",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">provides a unique identifier for the element bearing the attribute.<\/desc>" ],
               "shortDesc" : "(identifier) provides a unique identifier for the element bearing the attribute.",
               "gloss" : 
-              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">identifier<\/gloss>" ] },
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">identifier<\/gloss>" ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ] },
             
             { "ident" : "n",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">gives a number (or other label) for an element, which is not necessarily unique within\n        the document.<\/desc>" ],
               "shortDesc" : "(number) gives a number (or other label) for an element, which is not necessarily unique within\n        the document.",
               "gloss" : 
-              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">number<\/gloss>" ] },
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">number<\/gloss>" ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ] },
             
             { "ident" : "xml:lang",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-01-07\" xml:lang=\"en\">indicates the language of the element content using a <soCalled>tag<\/soCalled> generated\n        according to <ref target=\"http:\/\/www.rfc-editor.org\/rfc\/bcp\/bcp47.txt\">BCP 47<\/ref>.<\/desc>" ],
               "shortDesc" : "(language) indicates the language of the element content using a tag generated\n        according to BCP 47.",
               "gloss" : 
-              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">language<\/gloss>" ] } ] },
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">language<\/gloss>" ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ] } ] },
         
         { "ident" : "att.global.rendition",
           "type" : "classSpec",
@@ -2276,30 +2473,45 @@
           "attributes" : 
           [ 
             { "ident" : "rend",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">indicates how the element in question was rendered or presented in the source text.<\/desc>" ],
               "shortDesc" : "(rendition) indicates how the element in question was rendered or presented in the source text.",
               "gloss" : 
-              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">rendition<\/gloss>" ] },
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">rendition<\/gloss>" ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ] },
             
             { "ident" : "style",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-10-05\" xml:lang=\"en\">contains an expression in some formal style definition language\nwhich defines the rendering or presentation\nused for this element in the source text<\/desc>" ],
               "shortDesc" : "contains an expression in some formal style definition language\nwhich defines the rendering or presentation\nused for this element in the source text",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] },
             
             { "ident" : "rendition",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-09-22\" xml:lang=\"en\">points to a description of the rendering or presentation used for this element in the\n        source text.<\/desc>" ],
               "shortDesc" : "points to a description of the rendering or presentation used for this element in the\n        source text.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] } ] },
         
         { "ident" : "att.global.responsibility",
@@ -2320,22 +2532,32 @@
           "attributes" : 
           [ 
             { "ident" : "cert",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">signifies the degree of certainty associated with the intervention or interpretation.<\/desc>" ],
               "shortDesc" : "(certainty) signifies the degree of certainty associated with the intervention or interpretation.",
               "gloss" : 
-              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">certainty<\/gloss>" ] },
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">certainty<\/gloss>" ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ] },
             
             { "ident" : "resp",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">indicates the agency responsible for the intervention or interpretation, for example an\n        editor or transcriber.<\/desc>" ],
               "shortDesc" : "(responsible party) indicates the agency responsible for the intervention or interpretation, for example an\n        editor or transcriber.",
               "gloss" : 
-              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">responsible party<\/gloss>" ] } ] },
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">responsible party<\/gloss>" ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ] } ] },
         
         { "ident" : "att.global.source",
           "type" : "classSpec",
@@ -2350,12 +2572,17 @@
           "attributes" : 
           [ 
             { "ident" : "source",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2010-05-09\" xml:lang=\"en\">specifies the source from which some aspect of\n        this element is drawn.<\/desc>" ],
               "shortDesc" : "specifies the source from which some aspect of\n        this element is drawn.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] } ] },
         
         { "ident" : "att.naming",
@@ -2376,22 +2603,32 @@
           "attributes" : 
           [ 
             { "ident" : "role",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-10-12\" xml:lang=\"en\">may be used to specify further information about the entity referenced by\nthis name in the form of a set of whitespace-separated values, for example the occupation of a person, or the status of a place.<\/desc>" ],
               "shortDesc" : "may be used to specify further information about the entity referenced by\nthis name in the form of a set of whitespace-separated values, for example the occupation of a person, or the status of a place.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] },
             
             { "ident" : "nymRef",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-05-22\" xml:lang=\"en\">provides a means of locating the canonical form\n      (<term>nym<\/term>) of the names associated with the object\n       named by\n      the element bearing it.<\/desc>" ],
               "shortDesc" : "(reference to the canonical name) provides a means of locating the canonical form\n      (nym) of the names associated with the object\n       named by\n      the element bearing it.",
               "gloss" : 
-              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">reference to the canonical name<\/gloss>" ] } ] },
+              [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-02\" xml:lang=\"en\">reference to the canonical name<\/gloss>" ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ] } ] },
         
         { "ident" : "att.placement",
           "type" : "classSpec",
@@ -2406,6 +2643,7 @@
           "attributes" : 
           [ 
             { "ident" : "place",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
@@ -2413,17 +2651,103 @@
               "shortDesc" : "specifies where this item is placed.",
               "gloss" : 
               [  ],
-              "values" : 
-              [ "below",
-                "bottom",
-                "margin",
-                "top",
-                "opposite",
-                "overleaf",
-                "above",
-                "end",
-                "inline",
-                "inspace" ] } ] },
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ],
+              "valList" : 
+              { "type" : "",
+                "valItem" : 
+                [ 
+                  { "ident" : "below",
+                    "desc" : 
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-01-22\" xml:lang=\"en\">below the line<\/desc>" ],
+                    "shortDesc" : "below the line",
+                    "gloss" : 
+                    [  ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "bottom",
+                    "desc" : 
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-01-22\" xml:lang=\"en\">at the foot of the page<\/desc>" ],
+                    "shortDesc" : "at the foot of the page",
+                    "gloss" : 
+                    [  ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "margin",
+                    "desc" : 
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-01-22\" xml:lang=\"en\">in the margin (left, right, or both)<\/desc>" ],
+                    "shortDesc" : "in the margin (left, right, or both)",
+                    "gloss" : 
+                    [  ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "top",
+                    "desc" : 
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-01-22\" xml:lang=\"en\">at the top of the page<\/desc>" ],
+                    "shortDesc" : "at the top of the page",
+                    "gloss" : 
+                    [  ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "opposite",
+                    "desc" : 
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-01-22\" xml:lang=\"en\">on the opposite, i.e. facing, page<\/desc>" ],
+                    "shortDesc" : "on the opposite, i.e. facing, page",
+                    "gloss" : 
+                    [  ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "overleaf",
+                    "desc" : 
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-01-22\" xml:lang=\"en\">on the other side of the leaf<\/desc>" ],
+                    "shortDesc" : "on the other side of the leaf",
+                    "gloss" : 
+                    [  ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "above",
+                    "desc" : 
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-01-22\" xml:lang=\"en\">above the line<\/desc>" ],
+                    "shortDesc" : "above the line",
+                    "gloss" : 
+                    [  ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "end",
+                    "desc" : 
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-01-22\" xml:lang=\"en\">at the end of e.g. chapter or volume.<\/desc>" ],
+                    "shortDesc" : "at the end of e.g. chapter or volume.",
+                    "gloss" : 
+                    [  ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "inline",
+                    "desc" : 
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-01-22\" xml:lang=\"en\">within the body of the text.<\/desc>" ],
+                    "shortDesc" : "within the body of the text.",
+                    "gloss" : 
+                    [  ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "inspace",
+                    "desc" : 
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-01-22\" xml:lang=\"en\"> in a predefined space, for example left by an earlier scribe.<\/desc>" ],
+                    "shortDesc" : " in a predefined space, for example left by an earlier scribe.",
+                    "gloss" : 
+                    [  ],
+                    "altIdent" : 
+                    [  ] } ] } } ] },
         
         { "ident" : "att.sortable",
           "type" : "classSpec",
@@ -2438,12 +2762,17 @@
           "attributes" : 
           [ 
             { "ident" : "sortKey",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-06\" xml:lang=\"en\">supplies the sort key for this element in an index, list or group which contains it.<\/desc>" ],
               "shortDesc" : "supplies the sort key for this element in an index, list or group which contains it.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] } ] },
         
         { "ident" : "att.typed",
@@ -2459,21 +2788,31 @@
           "attributes" : 
           [ 
             { "ident" : "type",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">characterizes the element in some sense, using any convenient\n classification scheme or typology.<\/desc>" ],
               "shortDesc" : "characterizes the element in some sense, using any convenient\n classification scheme or typology.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] },
             
             { "ident" : "subtype",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">provides a sub-categorization of the element, if needed<\/desc>" ],
               "shortDesc" : "provides a sub-categorization of the element, if needed",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] } ] },
         
         { "ident" : "att.written",
@@ -2494,12 +2833,17 @@
           "attributes" : 
           [ 
             { "ident" : "hand",
+              "mode" : "add",
               "ns" : "",
               "usage" : "",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-02-19\" xml:lang=\"en\">points to a <gi>handNote<\/gi> element describing the hand considered responsible for the\n  \t\t\ttextual content of the element concerned.<\/desc>" ],
               "shortDesc" : "points to a handNote element describing the hand considered responsible for the\n  \t\t\ttextual content of the element concerned.",
               "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
               [  ] } ] } ] },
     "elementRefs" : 
     [  ],

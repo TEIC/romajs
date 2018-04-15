@@ -63,7 +63,7 @@ export default class Element extends Component {
         </li>
       </ul>
     </div>)
-    // TODO: re-organize this into proper components
+    // TODO: This is uly! Re-organize this into proper components
     if (this.props.section) {
       arrow = <i className="material-icons">keyboard_arrow_left</i>
     }
@@ -82,7 +82,7 @@ export default class Element extends Component {
         let editAtt
         if (this.props.attribute) {
           editAtt = (<span className="mdl-chip mdl-chip--deletable">
-            <span className="mdl-chip__text">{this.props.attribute}</span>
+            <span className="mdl-chip__text">@{this.props.attribute}</span>
           </span>)
         }
         trail = (<span><span className="mdl-chip mdl-chip--deletable romajs-clickable" onClick={() => this.props.navigateTo(`${this.baseurl}/attributes`)}>

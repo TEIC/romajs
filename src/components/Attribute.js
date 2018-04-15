@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import AltIdent from '../containers/EditAttributeAltIdent'
 import Desc from '../containers/EditAttributeDesc'
 import { MDCSelect } from '@material/select'
 
@@ -34,22 +35,6 @@ export default class Attribute extends Component {
     const rec = this.props.attribute.usage === 'rec'
     const opt = this.props.attribute.usage === 'opt'
     return (<div className="mdc-layout-grid">
-      <Desc member={this.props.member} attribute={this.props.attribute} />
-      <div className="mdc-layout-grid__inner romajs-formrow">
-        <div className="mdc-layout-grid__cell--span-3">
-          <label>Namespace</label>
-          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-            Set a namespace for this attribute. Leave empty for null namespace.
-          </p>
-        </div>
-        <div className="mdc-layout-grid__cell--span-8">
-          <div className="mdc-text-field mdc-text-field--upgraded">
-            <input autoFocus type="text" className="mdc-text-field__input" value={this.props.attribute.ns}
-              onChange={(e) => this.props.setNs(e.target.value)} placeholder="(null)"/>
-            <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
-          </div>
-        </div>
-      </div>
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">
           <label>Usage</label>
@@ -80,6 +65,24 @@ export default class Attribute extends Component {
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+      </div>
+      <Desc member={this.props.member} attribute={this.props.attribute} />
+      <AltIdent member={this.props.member} attribute={this.props.attribute} />
+      <Desc member={this.props.member} attribute={this.props.attribute} valDesc={true}/>
+      <div className="mdc-layout-grid__inner romajs-formrow">
+        <div className="mdc-layout-grid__cell--span-3">
+          <label>Namespace</label>
+          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
+            Set a namespace for this attribute. Leave empty for null namespace.
+          </p>
+        </div>
+        <div className="mdc-layout-grid__cell--span-8">
+          <div className="mdc-text-field mdc-text-field--upgraded">
+            <input type="text" className="mdc-text-field__input" value={this.props.attribute.ns}
+              onChange={(e) => this.props.setNs(e.target.value)} placeholder="(null)"/>
+            <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
           </div>
         </div>
       </div>

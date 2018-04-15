@@ -43,4 +43,29 @@ describe('Element actions', () => {
       className: 'att.written'
     })
   })
+
+  it('restoreElementAttributeClass should add an element\'s membership to an attribute class', () =>{
+    expect(actions.restoreElementAttributeClass('div', 'att.global.rendition')).toEqual({
+      type: 'RESTORE_ELEMENT_ATTRIBUTE_CLASS',
+      element: 'div',
+      className: 'att.global.rendition'
+    })
+  })
+
+  it('deleteClassAttribute should delete an attribute from a class on an element', () =>{
+    expect(actions.deleteClassAttribute('div', 'att.global.rendition', 'rend')).toEqual({
+      type: 'DELETE_CLASS_ATTRIBUTE',
+      element: 'div',
+      className: 'att.global.rendition',
+      attName: 'rend'
+    })
+  })
+
+  it('restoreClassAttribute should restore an attribute from a class on an element', () =>{
+    expect(actions.restoreClassAttribute('div', 'rend')).toEqual({
+      type: 'RESTORE_CLASS_ATTRIBUTE',
+      element: 'div',
+      attName: 'rend'
+    })
+  })
 })

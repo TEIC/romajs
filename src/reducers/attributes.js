@@ -15,6 +15,17 @@ function updateDocEl(m, action) {
   }
 }
 
+function delDocEl(m, action) {
+  if (m.ident === action.member) {
+    const att = m.attributes.filter(a => (a.ident === action.attr))[0]
+    if (Array.isArray(att[action.docEl]) && action.index !== undefined) {
+      att[action.docEl].splice(action.index, 1)
+    } else {
+      throw new ReducerException(`Description element content does not match ${action.content}.`)
+    }
+  }
+}
+
 function setNs(m, action) {
   if (m.ident === action.member) {
     const att = m.attributes.filter(a => (a.ident === action.attr))[0]
@@ -46,15 +57,15 @@ export function oddAttributes(state, action) {
       }
       return newState
     case DELETE_ATTRIBUTE_DOCS:
-      customization.elements.forEach(m => {
-        if (m.ident === action.element) {
-          if (Array.isArray(m[action.docEl]) && action.index !== undefined) {
-            m[action.docEl].splice(action.index, 1)
-          } else {
-            throw new ReducerException(`Description element content does not match ${action.content}.`)
-          }
-        }
-      })
+      switch (action.memberType) {
+        case 'element':
+          customization.elements.forEach(m => delDocEl(m, action))
+          break
+        case 'class':
+          customization.classes.attributes.forEach(m => delDocEl(m, action))
+          break
+        default:
+      }
       return newState
     case SET_NS:
       switch (action.memberType) {
