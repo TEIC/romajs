@@ -2,7 +2,7 @@
   { "title" : "TEI Absolutely Bare",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2018-03-30T14:51:16Z",
+    "date" : "2018-04-24T21:30:58Z",
     "modules" : 
     [ 
       { "ident" : "core",
@@ -108,6 +108,8 @@
           "atts" : 
           [ "att.global",
             "att.naming" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "macroRef",
@@ -128,6 +130,8 @@
           [  ],
           "atts" : 
           [ "att.global" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "sequence",
@@ -238,6 +242,8 @@
           [  ],
           "atts" : 
           [ "att.global" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "sequence",
@@ -417,6 +423,8 @@
             "att.divLike",
             "att.typed",
             "att.written" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "sequence",
@@ -525,6 +533,8 @@
           [  ],
           "atts" : 
           [ "att.global" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "sequence",
@@ -573,6 +583,8 @@
           [  ],
           "atts" : 
           [ "att.global" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "sequence",
@@ -689,6 +701,8 @@
             "att.typed",
             "att.placement",
             "att.written" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "alternate",
@@ -732,6 +746,8 @@
           "atts" : 
           [ "att.global",
             "att.sortable" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "macroRef",
@@ -755,6 +771,8 @@
             "att.typed",
             "att.placement",
             "att.written" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "macroRef",
@@ -780,7 +798,7 @@
         "attributes" : 
         [ 
           { "ident" : "type",
-            "mode" : "delete",
+            "mode" : "change",
             "ns" : "",
             "usage" : "",
             "desc" : 
@@ -929,6 +947,8 @@
           "atts" : 
           [ "att.global",
             "att.written" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "macroRef",
@@ -949,6 +969,8 @@
           [  ],
           "atts" : 
           [ "att.global" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "alternate",
@@ -1040,6 +1062,8 @@
           [  ],
           "atts" : 
           [ "att.global" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "sequence",
@@ -1073,6 +1097,8 @@
           [ "att.global",
             "att.typed",
             "att.written" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "sequence",
@@ -1234,6 +1260,8 @@
           [  ],
           "atts" : 
           [ "att.global" ] },
+        "attributes" : 
+        [  ],
         "content" : 
         [ 
           { "type" : "sequence",
@@ -2378,7 +2406,9 @@
           { "model" : 
             [  ],
             "atts" : 
-            [  ] } },
+            [  ] },
+          "attributes" : 
+          [  ] },
         
         { "ident" : "att.global",
           "type" : "classSpec",

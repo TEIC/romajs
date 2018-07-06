@@ -4,7 +4,8 @@ import { setNs, setUsage } from '../actions/attributes'
 
 const mapStateToProps = (state, ownProps) => {
   const attribute = ownProps.member.attributes.filter(x => (x.ident === ownProps.attribute))[0]
-  return {member: ownProps.member, attribute}
+  return {member: ownProps.member, attribute, path: state.router.location.pathname,
+    setRouteLeaveHook: state.router.setRouteLeaveHook}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

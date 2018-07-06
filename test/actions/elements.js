@@ -45,9 +45,10 @@ describe('Element actions', () => {
   })
 
   it('restoreElementAttributeClass should add an element\'s membership to an attribute class', () =>{
-    expect(actions.restoreElementAttributeClass('div', 'att.global.rendition')).toEqual({
+    expect(actions.restoreElementAttributeClass('div', 'att.global.rendition', [])).toEqual({
       type: 'RESTORE_ELEMENT_ATTRIBUTE_CLASS',
       element: 'div',
+      deletedAttributes: [],
       className: 'att.global.rendition'
     })
   })
@@ -65,6 +66,15 @@ describe('Element actions', () => {
     expect(actions.restoreClassAttribute('div', 'rend')).toEqual({
       type: 'RESTORE_CLASS_ATTRIBUTE',
       element: 'div',
+      attName: 'rend'
+    })
+  })
+
+  it('changeClassAttribute should prepare an attribute from a class on an element to be changed', () =>{
+    expect(actions.changeClassAttribute('div', 'att.global.rendition', 'rend')).toEqual({
+      type: 'CHANGE_CLASS_ATTRIBUTE',
+      element: 'div',
+      className: 'att.global.rendition',
       attName: 'rend'
     })
   })

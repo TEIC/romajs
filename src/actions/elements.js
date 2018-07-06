@@ -8,7 +8,10 @@ export const DELETE_ELEMENT_ATTRIBUTE_CLASS = 'DELETE_ELEMENT_ATTRIBUTE_CLASS'
 export const ADD_ELEMENT_ATTRIBUTE = 'ADD_ELEMENT_ATTRIBUTE' // Creates a new entry in attributes array
 export const DELETE_ELEMENT_ATTRIBUTE = 'DELETE_ELEMENT_ATTRIBUTE' // Completely removes entry in `attributes` array
 export const RESTORE_CLASS_ATTRIBUTE = 'RESTORE_CLASS_ATTRIBUTE'
+export const RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS = 'RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS'
+export const USE_CLASS_DEFAULT = 'USE_CLASS_DEFAULT'
 export const DELETE_CLASS_ATTRIBUTE = 'DELETE_CLASS_ATTRIBUTE'
+export const CHANGE_CLASS_ATTRIBUTE = 'CHANGE_CLASS_ATTRIBUTE'
 
 export function updateElementDocs(element, docEl, content, index) {
   return {
@@ -61,11 +64,12 @@ export function deleteElementAttributeClass(element, className) {
   }
 }
 
-export function restoreElementAttributeClass(element, className) {
+export function restoreElementAttributeClass(element, className, deletedAttributes) {
   return {
     type: RESTORE_ELEMENT_ATTRIBUTE_CLASS,
     element,
-    className
+    className,
+    deletedAttributes
   }
 }
 
@@ -77,9 +81,35 @@ export function restoreClassAttribute(element, attName) {
   }
 }
 
+export function restoreClassAttributeDeletedOnClass(element, className, attName) {
+  return {
+    type: RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS,
+    element,
+    className,
+    attName
+  }
+}
+
+export function useClassDefault(element, attName) {
+  return {
+    type: USE_CLASS_DEFAULT,
+    element,
+    attName
+  }
+}
+
 export function deleteClassAttribute(element, className, attName) {
   return {
     type: DELETE_CLASS_ATTRIBUTE,
+    element,
+    className,
+    attName
+  }
+}
+
+export function changeClassAttribute(element, className, attName) {
+  return {
+    type: CHANGE_CLASS_ATTRIBUTE,
     element,
     className,
     attName

@@ -9,6 +9,7 @@ function updateDocEl(m, action) {
     const att = m.attributes.filter(a => (a.ident === action.attr))[0]
     if (Array.isArray(att[action.docEl]) && action.index !== undefined) {
       att[action.docEl][action.index] = action.content
+      att.changed = true
     } else {
       throw new ReducerException(`Description element content does not match ${action.content}.`)
     }
@@ -20,6 +21,7 @@ function delDocEl(m, action) {
     const att = m.attributes.filter(a => (a.ident === action.attr))[0]
     if (Array.isArray(att[action.docEl]) && action.index !== undefined) {
       att[action.docEl].splice(action.index, 1)
+      att.changed = true
     } else {
       throw new ReducerException(`Description element content does not match ${action.content}.`)
     }
@@ -30,6 +32,7 @@ function setNs(m, action) {
   if (m.ident === action.member) {
     const att = m.attributes.filter(a => (a.ident === action.attr))[0]
     att.ns = action.ns
+    att.changed = true
   }
 }
 
@@ -37,6 +40,7 @@ function setUsage(m, action) {
   if (m.ident === action.member) {
     const att = m.attributes.filter(a => (a.ident === action.attr))[0]
     att.usage = action.usage
+    att.changed = true
   }
 }
 

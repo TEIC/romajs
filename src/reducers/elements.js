@@ -4,7 +4,8 @@ import {
   DELETE_ELEMENT_DOCS, UPDATE_ELEMENT_DOCS,
   ADD_ELEMENT_MODEL_CLASS, DELETE_ELEMENT_MODEL_CLASS,
   ADD_ELEMENT_ATTRIBUTE_CLASS, RESTORE_ELEMENT_ATTRIBUTE_CLASS, DELETE_ELEMENT_ATTRIBUTE_CLASS,
-  RESTORE_CLASS_ATTRIBUTE, DELETE_CLASS_ATTRIBUTE
+  RESTORE_CLASS_ATTRIBUTE, RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS,
+  USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE, CHANGE_CLASS_ATTRIBUTE
 } from '../actions/elements'
 
 function deleteAttribute(m, attribute) {
@@ -23,6 +24,16 @@ function deleteAttribute(m, attribute) {
       m.attributes.push(newAtt)
     }
   }
+}
+
+function restoreClassAttributeDeletedOnClass(element, className, attName, localsource, customization) {
+  const localClass = localsource.classes.attributes.filter(c => (c.ident === className))[0]
+  const attribute = localClass.attributes.filter(a => a.ident === attName)[0]
+  customization.elements.forEach(m => {
+    if (m.ident === element) {
+      m.attributes.push(Object.assign({}, attribute, {mode: 'change', changed: 'false'}))
+    }
+  })
 }
 
 export function oddElements(state, action) {
@@ -110,48 +121,110 @@ export function oddElements(state, action) {
     case RESTORE_ELEMENT_ATTRIBUTE_CLASS:
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
-          const cl = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
-          cl.attributes.map(a => {
-            m.attributes = m.attributes.filter(attEl => (attEl.ident !== a.ident))
-          })
+          let cl = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
+          if (cl) {
+            cl.attributes.map(a => {
+              m.attributes = m.attributes.filter(attEl => (attEl.ident !== a.ident))
+            })
+          } else {
+            // It must be inherited, so get it from the localsource
+            cl = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
+            m.attributes = Array.from(cl.attributes)
+          }
+          // If there are deleted attributes on the class, they need to be marked as changed
+          if (action.deletedAttributes.length > 0) {
+            for (const attName of action.deletedAttributes) {
+              restoreClassAttributeDeletedOnClass(action.element, action.className, attName, localsource, customization)
+            }
+          }
         }
       })
       return newState
     case DELETE_ELEMENT_ATTRIBUTE_CLASS:
-      let customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
           const idx = m.classes.atts.indexOf(action.className)
+          // If the element is a member of the class
           if (idx > -1) {
+            // Remove membership to this class
             m.classes.atts.splice(idx, 1)
-          } else if (customClass) {
-            // The class must be inherited, so remove all the attributes instead
-            for (const clAtt of customClass.attributes) {
-              deleteAttribute(m, clAtt)
+            // Also remove all attributes from this class that have been redefined
+            const lClass = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
+            if (m.attributes) {
+              m.attributes = m.attributes.filter(att => {
+                if (!lClass.attributes.filter(la => {la.ident === att.ident})[0]) {
+                  return false
+                }
+                return true
+              })
             }
           } else {
-            throw new ReducerException(`Could not locate class ${action.className}.`)
+            // The class must be inherited, so remove all the attributes instead
+            const customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
+            if (customClass) {
+              for (const clAtt of customClass.attributes) {
+                deleteAttribute(m, clAtt)
+              }
+            } else {
+              throw new ReducerException(`Could not locate class ${action.className}.`)
+            }
           }
         }
       })
-      // TODO: If this class is not used anywhere else, it *could* be removed from the customization...
+      // TODO: If this class is not used anywhere else, it *could* be removed from the customization subtree...
       // localsource.classes.attributes = localsource.classes.attributes.filter(c => (c.ident !== action.className))
       return newState
     case RESTORE_CLASS_ATTRIBUTE:
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
           m.attributes = m.attributes.filter(a => {
-            return (a.ident !== action.attName && a.mode === 'delete')
+            return (a.ident !== action.attName)
+          })
+        }
+      })
+      return newState
+    case RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS:
+      // get it from the localsource because this attribute has been deleted from the customized class
+      restoreClassAttributeDeletedOnClass(action.element, action.className, action.attName, localsource, customization)
+      return newState
+    case USE_CLASS_DEFAULT:
+      customization.elements.forEach(m => {
+        if (m.ident === action.element) {
+          m.attributes = m.attributes.filter(a => {
+            return (a.ident !== action.attName)
           })
         }
       })
       return newState
     case DELETE_CLASS_ATTRIBUTE:
-      customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
+      let customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
       const attribute = customClass.attributes.filter(a => a.ident === action.attName)[0]
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
           deleteAttribute(m, attribute)
+        }
+      })
+      return newState
+    case CHANGE_CLASS_ATTRIBUTE:
+      customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
+      const attributeToChange = customClass.attributes.filter(a => a.ident === action.attName)[0]
+      customization.elements.forEach(m => {
+        if (m.ident === action.element) {
+          const newAtt = Object.assign({}, attributeToChange, {mode: 'change', changed: false})
+          if (!m.attributes) {
+            m.attributes = [newAtt]
+          } else {
+            let found = false
+            m.attributes.forEach(att => {
+              if (att.ident === attributeToChange.ident) {
+                found = true
+                att.mode = 'change'
+              }
+            })
+            if (!found) {
+              m.attributes.push(newAtt)
+            }
+          }
         }
       })
       return newState

@@ -141,12 +141,13 @@ describe('ODD elements operation reducers', () => {
     })
     const state = romajsApp(firstState, {
       type: 'RESTORE_ELEMENT_ATTRIBUTE_CLASS',
+      deletedAttributes: [],
       element: 'div',
       className: 'att.global.rendition',
     })
     expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'div')
-    )[0].attributes.filter(x => (x.ident === 'rend'))[0]).toNotExist()
+    )[0].attributes.filter(x => (x.ident === 'rendition'))[0]).toNotExist()
   })
 
   it('should handle DELETE_CLASS_ATTRIBUTE', () => {
@@ -192,5 +193,25 @@ describe('ODD elements operation reducers', () => {
     expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'div')
     )[0].attributes.filter(x => (x.ident === 'rend'))[0]).toNotExist()
+  })
+
+  it('should handle CHANGE_CLASS_ATTRIBUTE', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CHANGE_CLASS_ATTRIBUTE',
+      element: 'div',
+      className: 'att.global.rendition',
+      attName: 'rend'
+    })
+    expect(state.odd.customization.json.elements.filter(
+      x => (x.ident === 'div')
+    )[0].attributes.filter(x => (x.ident === 'rend'))[0].mode).toEqual('change')
   })
 })
