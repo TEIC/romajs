@@ -1,23 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
+import Picker from './Picker'
 
-export default class Picker extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      filterTerm: ''
-    }
-  }
-
-  setFilterTerm = (e) => {
-    this.setState({filterTerm: e.target.value})
-  }
-
-  addItem = (item) => {
-    this.props.add(this.props.pickerType, item)
-    this.setState({filterTerm: ''})
-  }
-
+export default class AttPicker extends Picker {
   render() {
     return (<div className="romajs-editable-list-add romajs-clickable">
       <div className="mdc-text-field mdc-text-field--outlined">
@@ -28,13 +12,19 @@ export default class Picker extends Component {
       <ul className="mdc-list mdc-list--dense mdc-list--two-line romajs-picker">{
         this.props.items.map((c, pos) => {
           const t = this.state.filterTerm.toLowerCase()
+          let local = ''
+          let localClass = ''
+          if (c.isLocal) {
+            local = '(currently not in customization)'
+            localClass = 'romajs-localatt'
+          }
           if ((t === '' && this.props.showAll) || (t !== '' && c.ident.toLowerCase().match(t))) {
             return (<li className="mdc-list-item" key={`c${pos}`}>
               <span className="mdc-list-item__graphic" onClick={() => this.addItem(c)}>
                 <i className="material-icons">add_circle_outline</i>
               </span>
-              <span className="mdc-list-item__text">
-                {c.ident}
+              <span className={`dc-list-item__text ${localClass}`}>
+                {c.ident} {local}
                 <span className="mdc-list-item__secondary-text">{c.shortDesc}</span>
               </span>
             </li>)
@@ -43,11 +33,4 @@ export default class Picker extends Component {
       }</ul>
     </div>)
   }
-}
-
-Picker.propTypes = {
-  showAll: PropTypes.bool,
-  items: PropTypes.array,
-  pickerType: PropTypes.string,
-  add: PropTypes.func
 }

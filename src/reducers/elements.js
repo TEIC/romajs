@@ -3,6 +3,7 @@ import { clone } from '../utils/clone'
 import {
   DELETE_ELEMENT_DOCS, UPDATE_ELEMENT_DOCS,
   ADD_ELEMENT_MODEL_CLASS, DELETE_ELEMENT_MODEL_CLASS,
+  ADD_ELEMENT_ATTRIBUTE, DELETE_ELEMENT_ATTRIBUTE,
   ADD_ELEMENT_ATTRIBUTE_CLASS, RESTORE_ELEMENT_ATTRIBUTE_CLASS, DELETE_ELEMENT_ATTRIBUTE_CLASS,
   RESTORE_CLASS_ATTRIBUTE, RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS,
   USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE, CHANGE_CLASS_ATTRIBUTE
@@ -82,6 +83,44 @@ export function oddElements(state, action) {
             m.classes.model.splice(idx, 1)
           } else {
             throw new ReducerException(`Could not locate class ${action.className}.`)
+          }
+        }
+      })
+      return newState
+    case ADD_ELEMENT_ATTRIBUTE:
+      let newAttribute = {}
+      if (typeof action.attribute === 'string') {
+        newAttribute = {
+          ident: action.attribute,
+          desc: [],
+          gloss: [],
+          altIdent: [],
+          valDesc: [],
+          mode: 'add',
+          ns: 'http://example.com/newNS',
+          usage: ''
+        }
+      } else {
+        newAttribute = clone(action.attribute)
+        if (!newAttribute.valDesc) {
+          newAttribute.valDesc = []
+        }
+      }
+      customization.elements.forEach(m => {
+        if (m.ident === action.element) {
+          if (!m.attributes) {
+            m.attributes = [newAttribute]
+          } else {
+            m.attributes.push(newAttribute)
+          }
+        }
+      })
+      return newState
+    case DELETE_ELEMENT_ATTRIBUTE:
+      customization.elements.forEach(m => {
+        if (m.ident === action.element) {
+          if (m.attributes) {
+            m.attributes = m.attributes.filter((a) => a.ident !== action.attribute)
           }
         }
       })

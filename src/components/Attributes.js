@@ -2,8 +2,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AttClassPicker from '../containers/AttClassPicker'
 import EditAttribute from '../containers/EditAttribute'
+import NewAttributeDialog from '../containers/NewAttributeDialog'
 
 export default class Attributes extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      show: false
+    }
+  }
+
   render() {
     if (this.props.attribute) {
       return <EditAttribute member={this.props.element} attribute={this.props.attribute}/>
@@ -17,7 +25,11 @@ export default class Attributes extends Component {
             </p>
           </div>
           <div className="mdc-layout-grid__cell--span-8">
-            <i className="material-icons romajs-clickable">add_circle_outline</i>
+            <i className="material-icons romajs-clickable" onClick={() => {
+              this.setState({show: true})
+            }}>add_circle_outline</i>
+            <NewAttributeDialog show={this.state.show} element={this.props.element.ident}
+              hide={() => {this.setState({show: false})}} />
             <ul className="mdc-list" key="elatts">{
               this.props.element.attributes.map((c, pos) => {
                 if (c.mode === 'add') {
@@ -26,7 +38,9 @@ export default class Attributes extends Component {
                       <i className="material-icons romajs-clickable"
                         onClick={() => this.props.navigateTo(`${this.props.path}/${c.ident}`)}>
                         mode_edit</i>
-                      <i className="material-icons romajs-clickable">clear</i>
+                      <i className="material-icons romajs-clickable" onClick={() => {
+                        this.props.deleteElementAttribute(this.props.element.ident, c.ident)
+                      }}>clear</i>
                     </span>
                     <span className="mdc-list-item__text">
                       {c.ident}
@@ -123,6 +137,7 @@ Attributes.propTypes = {
   attribute: PropTypes.string,
   attsfromClasses: PropTypes.array,
   editAttribute: PropTypes.func.isRequired,
+  deleteElementAttribute: PropTypes.func.isRequired,
   deleteElementAttributeClass: PropTypes.func.isRequired,
   restoreElementAttributeClass: PropTypes.func.isRequired,
   useClassDefault: PropTypes.func.isRequired,

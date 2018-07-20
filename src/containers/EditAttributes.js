@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Attributes from '../components/Attributes'
-import { deleteElementAttributeClass, restoreElementAttributeClass,
+import { deleteElementAttributeClass, restoreElementAttributeClass, deleteElementAttribute,
   deleteClassAttribute, restoreClassAttribute, restoreClassAttributeDeletedOnClass,
   useClassDefault, changeClassAttribute } from '../actions/elements'
 import { clearPicker } from '../actions/interface'
@@ -88,12 +88,18 @@ const mapStateToProps = (state, ownProps) => {
     return a.ident > b.ident
   })
 
+  // Sort element attributes
+  element.attributes.sort((a, b) => {
+    return a.ident > b.ident
+  })
+
   return {element, attsfromClasses, path: state.router.location.pathname}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     navigateTo: (place) => dispatch(push(place)),
+    deleteElementAttribute: (element, attribute) => dispatch(deleteElementAttribute(element, attribute)),
     deleteElementAttributeClass: (element, className) => dispatch(deleteElementAttributeClass(element, className)),
     clearPicker: () => dispatch(clearPicker()),
     restoreElementAttributeClass: (element, className, deletedAttributes) => dispatch(restoreElementAttributeClass(element, className, deletedAttributes)),
