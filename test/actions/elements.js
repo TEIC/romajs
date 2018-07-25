@@ -28,7 +28,23 @@ describe('Element actions', () => {
     })
   })
 
-  it('addElementAttributeClass should add an element\'s membership to an attribute class', () =>{
+  it('addElementAttribute should add a new attribute with a different namespace to an element', () => {
+    expect(actions.addElementAttribute('div', 'newAtt')).toEqual({
+      type: 'ADD_ELEMENT_ATTRIBUTE',
+      element: 'div',
+      attribute: 'newAtt'
+    })
+  })
+
+  it('deleteElementAttribute should delete an attribute defined directly on an element', () =>{
+    expect(actions.deleteElementAttribute('title', 'type')).toEqual({
+      type: 'DELETE_ELEMENT_ATTRIBUTE',
+      element: 'title',
+      attribute: 'type'
+    })
+  })
+
+  it('addElementAttributeClass should add an element\'s membership to an attribute class', () => {
     expect(actions.addElementAttributeClass('div', 'att.fragmentable')).toEqual({
       type: 'ADD_ELEMENT_ATTRIBUTE_CLASS',
       element: 'div',

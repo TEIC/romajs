@@ -67,6 +67,44 @@ describe('ODD elements operation reducers', () => {
     )[0].classes.model.length).toEqual(0)
   })
 
+  it('should handle ADD_ELEMENT_ATTRIBUTE', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'ADD_ELEMENT_ATTRIBUTE',
+      element: 'div',
+      attribute: 'newAtt'
+    })
+    expect(state.odd.customization.json.elements.filter(
+      x => (x.ident === 'div')
+    )[0].attributes[0].ident === 'newAtt')
+  })
+
+  it('should handle DELETE_ELEMENT_ATTRIBUTE (already defined)', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'DELETE_ELEMENT_ATTRIBUTE',
+      element: 'title',
+      attribute: 'type'
+    })
+    expect(state.odd.customization.json.elements.filter(
+      x => (x.ident === 'title')
+    )[0].attributes.filter(a => (a.ident === 'type')).length).toEqual(0)
+  })
+
   it('should handle ADD_ELEMENT_ATTRIBUTE_CLASS', () => {
     customJSON = JSON.parse(customization)
     localJSON = JSON.parse(localsource)
