@@ -3,7 +3,7 @@ import { clone } from '../utils/clone'
 import {
   DELETE_ELEMENT_DOCS, UPDATE_ELEMENT_DOCS,
   ADD_ELEMENT_MODEL_CLASS, DELETE_ELEMENT_MODEL_CLASS,
-  ADD_ELEMENT_ATTRIBUTE, DELETE_ELEMENT_ATTRIBUTE,
+  ADD_ELEMENT_ATTRIBUTE, DELETE_ELEMENT_ATTRIBUTE, RESTORE_ELEMENT_ATTRIBUTE,
   ADD_ELEMENT_ATTRIBUTE_CLASS, RESTORE_ELEMENT_ATTRIBUTE_CLASS, DELETE_ELEMENT_ATTRIBUTE_CLASS,
   RESTORE_CLASS_ATTRIBUTE, RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS,
   USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE, CHANGE_CLASS_ATTRIBUTE
@@ -120,7 +120,40 @@ export function oddElements(state, action) {
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
           if (m.attributes) {
-            m.attributes = m.attributes.filter((a) => a.ident !== action.attribute)
+            m.attributes = m.attributes.map(a => {
+              if (a.ident === action.attribute) {
+                a.mode = 'delete'
+              }
+              return a
+            })
+          }
+        }
+      })
+      return newState
+    case RESTORE_ELEMENT_ATTRIBUTE:
+      customization.elements.forEach(m => {
+        if (m.ident === action.element) {
+          if (m.attributes) {
+            m.attributes = m.attributes.map(a => {
+              let restoredAtt
+              if (a.ident === action.attribute) {
+                restoredAtt = clone(a)
+                restoredAtt.mode = 'add'
+                // Get all others properties from localsource
+                localsource.elements.forEach(el => {
+                  if (el.ident === action.element) {
+                    if (el.attributes) {
+                      const latt = el.attributes.filter(la => la.ident === action.attribute)[0]
+                      if (latt) {
+                        restoredAtt = clone(latt)
+                      }
+                    }
+                  }
+                })
+              }
+              if (restoredAtt) return restoredAtt
+              return a
+            })
           }
         }
       })

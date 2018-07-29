@@ -2,7 +2,7 @@
   { "title" : "The TEI Guidelines",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2018-04-24T21:02:44Z",
+    "date" : "2018-07-29T18:46:41Z",
     "modules" : 
     [ 
       { "ident" : "analysis",
@@ -236,7 +236,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "version",
+          { "onElement" : true,
+            "ident" : "version",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -307,7 +308,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "def",
@@ -769,7 +771,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -846,7 +849,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -944,7 +948,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -981,7 +986,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "target",
+          { "onElement" : true,
+            "ident" : "target",
             "mode" : "change",
             "ns" : "",
             "usage" : "def",
@@ -995,7 +1001,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "mode",
+          { "onElement" : true,
+            "ident" : "mode",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1030,7 +1037,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "weights",
+          { "onElement" : true,
+            "ident" : "weights",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1064,7 +1072,8 @@
             "att.pointing.group" ] },
         "attributes" : 
         [ 
-          { "ident" : "mode",
+          { "onElement" : true,
+            "ident" : "mode",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1359,7 +1368,8 @@
             "att.repeatable" ] },
         "attributes" : 
         [ 
-          { "ident" : "require",
+          { "onElement" : true,
+            "ident" : "require",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -1373,7 +1383,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "except",
+          { "onElement" : true,
+            "ident" : "except",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -1406,7 +1417,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1420,7 +1432,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "from",
+          { "onElement" : true,
+            "ident" : "from",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1434,7 +1447,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "to",
+          { "onElement" : true,
+            "ident" : "to",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1448,7 +1462,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "loc",
+          { "onElement" : true,
+            "ident" : "loc",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1529,7 +1544,8 @@
             "att.datable" ] },
         "attributes" : 
         [ 
-          { "ident" : "ident",
+          { "onElement" : true,
+            "ident" : "ident",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1543,7 +1559,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "version",
+          { "onElement" : true,
+            "ident" : "version",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1594,7 +1611,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "from",
+          { "onElement" : true,
+            "ident" : "from",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1608,7 +1626,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "to",
+          { "onElement" : true,
+            "ident" : "to",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1699,7 +1718,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "scheme",
+          { "onElement" : true,
+            "ident" : "scheme",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1801,7 +1821,8 @@
             "att.identified" ] },
         "attributes" : 
         [ 
-          { "ident" : "usage",
+          { "onElement" : true,
+            "ident" : "usage",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1845,7 +1866,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "ns",
+          { "onElement" : true,
+            "ident" : "ns",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -1919,7 +1941,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "org",
+          { "onElement" : true,
+            "ident" : "org",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -1986,7 +2009,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "class",
+          { "onElement" : true,
+            "ident" : "class",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -2000,7 +2024,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "name",
+          { "onElement" : true,
+            "ident" : "name",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -2080,7 +2105,8 @@
             "att.declarable" ] },
         "attributes" : 
         [ 
-          { "ident" : "status",
+          { "onElement" : true,
+            "ident" : "status",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -2522,7 +2548,8 @@
             "att.datcat" ] },
         "attributes" : 
         [ 
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -2559,7 +2586,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "url",
+          { "onElement" : true,
+            "ident" : "url",
             "mode" : "delete",
             "ns" : "",
             "usage" : "def",
@@ -2573,7 +2601,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "encoding",
+          { "onElement" : true,
+            "ident" : "encoding",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -2608,7 +2637,8 @@
             "att.datable" ] },
         "attributes" : 
         [ 
-          { "ident" : "contemporary",
+          { "onElement" : true,
+            "ident" : "contemporary",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -2699,7 +2729,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -3318,7 +3349,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -3500,7 +3532,8 @@
             "att.pointing" ] },
         "attributes" : 
         [ 
-          { "ident" : "scheme",
+          { "onElement" : true,
+            "ident" : "scheme",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -3650,7 +3683,8 @@
             "att.scoping" ] },
         "attributes" : 
         [ 
-          { "ident" : "cert",
+          { "onElement" : true,
+            "ident" : "cert",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -3664,7 +3698,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "locus",
+          { "onElement" : true,
+            "ident" : "locus",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -3726,7 +3761,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "assertedValue",
+          { "onElement" : true,
+            "ident" : "assertedValue",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -3740,7 +3776,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "given",
+          { "onElement" : true,
+            "ident" : "given",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -3754,7 +3791,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "degree",
+          { "onElement" : true,
+            "ident" : "degree",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -3801,7 +3839,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "target",
+          { "onElement" : true,
+            "ident" : "target",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -3836,7 +3875,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "mode",
+          { "onElement" : true,
+            "ident" : "mode",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -4194,7 +4234,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "scheme",
+          { "onElement" : true,
+            "ident" : "scheme",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -4253,7 +4294,8 @@
             "att.repeatable" ] },
         "attributes" : 
         [ 
-          { "ident" : "key",
+          { "onElement" : true,
+            "ident" : "key",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -4267,7 +4309,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "expand",
+          { "onElement" : true,
+            "ident" : "expand",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -4329,7 +4372,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "include",
+          { "onElement" : true,
+            "ident" : "include",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -4343,7 +4387,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "except",
+          { "onElement" : true,
+            "ident" : "except",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -4377,7 +4422,8 @@
             "att.identified" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -4412,7 +4458,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "generate",
+          { "onElement" : true,
+            "ident" : "generate",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -4526,7 +4573,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "mode",
+          { "onElement" : true,
+            "ident" : "mode",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -4686,7 +4734,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "lang",
+          { "onElement" : true,
+            "ident" : "lang",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -4885,7 +4934,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -4991,7 +5041,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "scheme",
+          { "onElement" : true,
+            "ident" : "scheme",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -5063,7 +5114,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "autoPrefix",
+          { "onElement" : true,
+            "ident" : "autoPrefix",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -5154,7 +5206,8 @@
             "att.declarable" ] },
         "attributes" : 
         [ 
-          { "ident" : "status",
+          { "onElement" : true,
+            "ident" : "status",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -5207,7 +5260,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "method",
+          { "onElement" : true,
+            "ident" : "method",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -5265,7 +5319,8 @@
             "att.sortable" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -5571,7 +5626,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "name",
+          { "onElement" : true,
+            "ident" : "name",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -5696,7 +5752,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -5730,7 +5787,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "key",
+          { "onElement" : true,
+            "ident" : "key",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -5744,7 +5802,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "name",
+          { "onElement" : true,
+            "ident" : "name",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -5758,7 +5817,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "ref",
+          { "onElement" : true,
+            "ident" : "ref",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -5772,7 +5832,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "restriction",
+          { "onElement" : true,
+            "ident" : "restriction",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -5867,7 +5928,8 @@
             "att.repeatable" ] },
         "attributes" : 
         [ 
-          { "ident" : "minOccurs",
+          { "onElement" : true,
+            "ident" : "minOccurs",
             "mode" : "change",
             "ns" : "",
             "usage" : "def",
@@ -5881,7 +5943,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "maxOccurs",
+          { "onElement" : true,
+            "ident" : "maxOccurs",
             "mode" : "change",
             "ns" : "",
             "usage" : "def",
@@ -6007,7 +6070,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -6325,7 +6389,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -6511,7 +6576,8 @@
             "att.dimensions" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -6620,7 +6686,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -6634,7 +6701,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "time",
+          { "onElement" : true,
+            "ident" : "time",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -6648,7 +6716,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "space",
+          { "onElement" : true,
+            "ident" : "space",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -6662,7 +6731,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "social",
+          { "onElement" : true,
+            "ident" : "social",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -7603,7 +7673,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -7704,7 +7775,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "when",
+          { "onElement" : true,
+            "ident" : "when",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -7847,7 +7919,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -7949,7 +8022,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -7993,7 +8067,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -8168,7 +8243,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -8283,7 +8359,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "valid",
+          { "onElement" : true,
+            "ident" : "valid",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -8358,7 +8435,8 @@
             "att.repeatable" ] },
         "attributes" : 
         [ 
-          { "ident" : "key",
+          { "onElement" : true,
+            "ident" : "key",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -8393,7 +8471,8 @@
             "att.namespaceable" ] },
         "attributes" : 
         [ 
-          { "ident" : "prefix",
+          { "onElement" : true,
+            "ident" : "prefix",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -8774,7 +8853,8 @@
             "att.internetMedia" ] },
         "attributes" : 
         [ 
-          { "ident" : "name",
+          { "onElement" : true,
+            "ident" : "name",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -8788,7 +8868,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "uri",
+          { "onElement" : true,
+            "ident" : "uri",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -8802,7 +8883,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "filter",
+          { "onElement" : true,
+            "ident" : "filter",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -8895,7 +8977,8 @@
             "att.sortable" ] },
         "attributes" : 
         [ 
-          { "ident" : "where",
+          { "onElement" : true,
+            "ident" : "where",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -9104,7 +9187,8 @@
             "att.datcat" ] },
         "attributes" : 
         [ 
-          { "ident" : "name",
+          { "onElement" : true,
+            "ident" : "name",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -9118,7 +9202,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "fVal",
+          { "onElement" : true,
+            "ident" : "fVal",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -9160,7 +9245,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "name",
+          { "onElement" : true,
+            "ident" : "name",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -9174,7 +9260,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "optional",
+          { "onElement" : true,
+            "ident" : "optional",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -9309,7 +9396,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -9387,7 +9475,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -9827,7 +9916,8 @@
             "att.lexicographic" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -10097,7 +10187,8 @@
             "att.datcat" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -10111,7 +10202,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "feats",
+          { "onElement" : true,
+            "ident" : "feats",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -10176,7 +10268,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -10190,7 +10283,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "baseTypes",
+          { "onElement" : true,
+            "ident" : "baseTypes",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -10289,7 +10383,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -10303,7 +10398,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "target",
+          { "onElement" : true,
+            "ident" : "target",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -10383,7 +10479,8 @@
             "att.written" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -10476,7 +10573,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "ref",
+          { "onElement" : true,
+            "ident" : "ref",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -10512,7 +10610,8 @@
             "att.editLike" ] },
         "attributes" : 
         [ 
-          { "ident" : "reason",
+          { "onElement" : true,
+            "ident" : "reason",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -10592,7 +10691,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "hand",
+          { "onElement" : true,
+            "ident" : "hand",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -10606,7 +10706,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "agent",
+          { "onElement" : true,
+            "ident" : "agent",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -10772,7 +10873,8 @@
             "att.declarable" ] },
         "attributes" : 
         [ 
-          { "ident" : "datum",
+          { "onElement" : true,
+            "ident" : "datum",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -10898,7 +11000,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "scheme",
+          { "onElement" : true,
+            "ident" : "scheme",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -11076,7 +11179,8 @@
             "att.lexicographic" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -11204,7 +11308,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -11257,7 +11362,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "order",
+          { "onElement" : true,
+            "ident" : "order",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -11271,7 +11377,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "size",
+          { "onElement" : true,
+            "ident" : "size",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -11474,7 +11581,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "hands",
+          { "onElement" : true,
+            "ident" : "hands",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -11572,7 +11680,8 @@
             "att.handFeatures" ] },
         "attributes" : 
         [ 
-          { "ident" : "new",
+          { "onElement" : true,
+            "ident" : "new",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -11869,7 +11978,8 @@
             "att.declarable" ] },
         "attributes" : 
         [ 
-          { "ident" : "eol",
+          { "onElement" : true,
+            "ident" : "eol",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -11943,7 +12053,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -11957,7 +12068,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "children",
+          { "onElement" : true,
+            "ident" : "children",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -11971,7 +12083,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "parent",
+          { "onElement" : true,
+            "ident" : "parent",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -11985,7 +12098,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "ord",
+          { "onElement" : true,
+            "ident" : "ord",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -11999,7 +12113,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "follow",
+          { "onElement" : true,
+            "ident" : "follow",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -12013,7 +12128,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "outDegree",
+          { "onElement" : true,
+            "ident" : "outDegree",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -12049,7 +12165,8 @@
             "att.lexicographic" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -12133,7 +12250,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -12434,7 +12552,8 @@
             "att.spanning" ] },
         "attributes" : 
         [ 
-          { "ident" : "indexName",
+          { "onElement" : true,
+            "ident" : "indexName",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -12500,7 +12619,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -12553,7 +12673,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "active",
+          { "onElement" : true,
+            "ident" : "active",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -12606,7 +12727,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "passive",
+          { "onElement" : true,
+            "ident" : "passive",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -12804,7 +12926,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "result",
+          { "onElement" : true,
+            "ident" : "result",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -12818,7 +12941,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "scope",
+          { "onElement" : true,
+            "ident" : "scope",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -12883,7 +13007,8 @@
             "att.pointing.group" ] },
         "attributes" : 
         [ 
-          { "ident" : "result",
+          { "onElement" : true,
+            "ident" : "result",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -12934,7 +13059,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "scheme",
+          { "onElement" : true,
+            "ident" : "scheme",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -12980,7 +13106,8 @@
             "att.ascribed" ] },
         "attributes" : 
         [ 
-          { "ident" : "iterated",
+          { "onElement" : true,
+            "ident" : "iterated",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -13149,7 +13276,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -13202,7 +13330,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "tags",
+          { "onElement" : true,
+            "ident" : "tags",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -13255,7 +13384,8 @@
             "att.editLike" ] },
         "attributes" : 
         [ 
-          { "ident" : "tag",
+          { "onElement" : true,
+            "ident" : "tag",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -13269,7 +13399,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "level",
+          { "onElement" : true,
+            "ident" : "level",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -13335,7 +13466,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "ident",
+          { "onElement" : true,
+            "ident" : "ident",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -13349,7 +13481,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "usage",
+          { "onElement" : true,
+            "ident" : "usage",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -13384,7 +13517,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "columns",
+          { "onElement" : true,
+            "ident" : "columns",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -13398,7 +13532,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "ruledLines",
+          { "onElement" : true,
+            "ident" : "ruledLines",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -13412,7 +13547,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "writtenLines",
+          { "onElement" : true,
+            "ident" : "writtenLines",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -13511,7 +13647,8 @@
             "att.lexicographic" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -13546,7 +13683,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -13560,7 +13698,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "parent",
+          { "onElement" : true,
+            "ident" : "parent",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -13574,7 +13713,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "follow",
+          { "onElement" : true,
+            "ident" : "follow",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -13861,7 +14001,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -14108,7 +14249,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "ordered",
+          { "onElement" : true,
+            "ident" : "ordered",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -14204,7 +14346,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -14717,7 +14860,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "scheme",
+          { "onElement" : true,
+            "ident" : "scheme",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -14731,7 +14875,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "from",
+          { "onElement" : true,
+            "ident" : "from",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -14745,7 +14890,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "to",
+          { "onElement" : true,
+            "ident" : "to",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -14793,7 +14939,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "scheme",
+          { "onElement" : true,
+            "ident" : "scheme",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -14830,7 +14977,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "baseForm",
+          { "onElement" : true,
+            "ident" : "baseForm",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -14888,7 +15036,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "key",
+          { "onElement" : true,
+            "ident" : "key",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -14922,7 +15071,8 @@
             "att.identified" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15061,7 +15211,8 @@
             "att.measurement" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15136,7 +15287,8 @@
             "att.timed" ] },
         "attributes" : 
         [ 
-          { "ident" : "mimeType",
+          { "onElement" : true,
+            "ident" : "mimeType",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -15195,7 +15347,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "key",
+          { "onElement" : true,
+            "ident" : "key",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -15209,7 +15362,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "mode",
+          { "onElement" : true,
+            "ident" : "mode",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15244,7 +15398,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "max",
+          { "onElement" : true,
+            "ident" : "max",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -15258,7 +15413,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "min",
+          { "onElement" : true,
+            "ident" : "min",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -15316,7 +15472,8 @@
             "att.declarable" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15360,7 +15517,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "pattern",
+          { "onElement" : true,
+            "ident" : "pattern",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15411,7 +15569,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15425,7 +15584,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "terminal",
+          { "onElement" : true,
+            "ident" : "terminal",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15462,7 +15622,8 @@
             "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "function",
+          { "onElement" : true,
+            "ident" : "function",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -15476,7 +15637,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "target",
+          { "onElement" : true,
+            "ident" : "target",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -15562,7 +15724,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "behaviour",
+          { "onElement" : true,
+            "ident" : "behaviour",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15813,7 +15976,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "predicate",
+          { "onElement" : true,
+            "ident" : "predicate",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15827,7 +15991,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "useSourceRendition",
+          { "onElement" : true,
+            "ident" : "useSourceRendition",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15841,7 +16006,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "output",
+          { "onElement" : true,
+            "ident" : "output",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15885,7 +16051,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "cssClass",
+          { "onElement" : true,
+            "ident" : "cssClass",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15939,7 +16106,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "useSourceRendition",
+          { "onElement" : true,
+            "ident" : "useSourceRendition",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -15953,7 +16121,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "output",
+          { "onElement" : true,
+            "ident" : "output",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -16045,7 +16214,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "predicate",
+          { "onElement" : true,
+            "ident" : "predicate",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -16059,7 +16229,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "useSourceRendition",
+          { "onElement" : true,
+            "ident" : "useSourceRendition",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -16073,7 +16244,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "output",
+          { "onElement" : true,
+            "ident" : "output",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -16154,7 +16326,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "prefix",
+          { "onElement" : true,
+            "ident" : "prefix",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -16168,7 +16341,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "include",
+          { "onElement" : true,
+            "ident" : "include",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -16182,7 +16356,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "except",
+          { "onElement" : true,
+            "ident" : "except",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -16196,7 +16371,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "key",
+          { "onElement" : true,
+            "ident" : "key",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -16210,7 +16386,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "url",
+          { "onElement" : true,
+            "ident" : "url",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -16510,7 +16687,8 @@
             "att.ascribed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -16554,7 +16732,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "where",
+          { "onElement" : true,
+            "ident" : "where",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -16598,7 +16777,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "perf",
+          { "onElement" : true,
+            "ident" : "perf",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17203,7 +17383,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "name",
+          { "onElement" : true,
+            "ident" : "name",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17242,7 +17423,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -17307,7 +17489,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17321,7 +17504,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17356,7 +17540,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "adjTo",
+          { "onElement" : true,
+            "ident" : "adjTo",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17370,7 +17555,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "adjFrom",
+          { "onElement" : true,
+            "ident" : "adjFrom",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17384,7 +17570,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "adj",
+          { "onElement" : true,
+            "ident" : "adj",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17398,7 +17585,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "inDegree",
+          { "onElement" : true,
+            "ident" : "inDegree",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17412,7 +17600,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "outDegree",
+          { "onElement" : true,
+            "ident" : "outDegree",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17426,7 +17615,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "degree",
+          { "onElement" : true,
+            "ident" : "degree",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17470,7 +17660,8 @@
             "att.declarable" ] },
         "attributes" : 
         [ 
-          { "ident" : "method",
+          { "onElement" : true,
+            "ident" : "method",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17574,7 +17765,8 @@
             "att.written" ] },
         "attributes" : 
         [ 
-          { "ident" : "anchored",
+          { "onElement" : true,
+            "ident" : "anchored",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17588,7 +17780,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "targetEnd",
+          { "onElement" : true,
+            "ident" : "targetEnd",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17654,7 +17847,8 @@
             "att.ranging" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17707,7 +17901,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17766,7 +17961,8 @@
             "att.datcat" ] },
         "attributes" : 
         [ 
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17780,7 +17976,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "max",
+          { "onElement" : true,
+            "ident" : "max",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17794,7 +17991,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "trunc",
+          { "onElement" : true,
+            "ident" : "trunc",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17829,7 +18027,8 @@
             "att.sortable" ] },
         "attributes" : 
         [ 
-          { "ident" : "parts",
+          { "onElement" : true,
+            "ident" : "parts",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -17878,7 +18077,8 @@
             "att.notated" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -17946,7 +18146,8 @@
             "att.pointing" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -18039,7 +18240,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "form",
+          { "onElement" : true,
+            "ident" : "form",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -18117,7 +18319,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -18170,7 +18373,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "scheme",
+          { "onElement" : true,
+            "ident" : "scheme",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -18184,7 +18388,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "code",
+          { "onElement" : true,
+            "ident" : "code",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -18302,7 +18507,8 @@
             "att.sortable" ] },
         "attributes" : 
         [ 
-          { "ident" : "role",
+          { "onElement" : true,
+            "ident" : "role",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -18530,7 +18736,8 @@
             "att.partials" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -18565,7 +18772,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "scope",
+          { "onElement" : true,
+            "ident" : "scope",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -18733,7 +18941,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "name",
+          { "onElement" : true,
+            "ident" : "name",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -18849,7 +19058,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19027,7 +19237,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "force",
+          { "onElement" : true,
+            "ident" : "force",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19071,7 +19282,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "unit",
+          { "onElement" : true,
+            "ident" : "unit",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19085,7 +19297,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "pre",
+          { "onElement" : true,
+            "ident" : "pre",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19242,7 +19455,8 @@
             "att.sortable" ] },
         "attributes" : 
         [ 
-          { "ident" : "role",
+          { "onElement" : true,
+            "ident" : "role",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19256,7 +19470,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "sex",
+          { "onElement" : true,
+            "ident" : "sex",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19270,7 +19485,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "age",
+          { "onElement" : true,
+            "ident" : "age",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19322,7 +19538,8 @@
             "att.sortable" ] },
         "attributes" : 
         [ 
-          { "ident" : "role",
+          { "onElement" : true,
+            "ident" : "role",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19336,7 +19553,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "sex",
+          { "onElement" : true,
+            "ident" : "sex",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19350,7 +19568,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "age",
+          { "onElement" : true,
+            "ident" : "age",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19364,7 +19583,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "size",
+          { "onElement" : true,
+            "ident" : "size",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19417,7 +19637,8 @@
             "att.sortable" ] },
         "attributes" : 
         [ 
-          { "ident" : "role",
+          { "onElement" : true,
+            "ident" : "role",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19431,7 +19652,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "sex",
+          { "onElement" : true,
+            "ident" : "sex",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19445,7 +19667,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "age",
+          { "onElement" : true,
+            "ident" : "age",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19854,7 +20077,8 @@
             "att.datable" ] },
         "attributes" : 
         [ 
-          { "ident" : "precision",
+          { "onElement" : true,
+            "ident" : "precision",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -19868,7 +20092,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "stdDeviation",
+          { "onElement" : true,
+            "ident" : "stdDeviation",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19912,7 +20137,8 @@
             "att.patternReplacement" ] },
         "attributes" : 
         [ 
-          { "ident" : "ident",
+          { "onElement" : true,
+            "ident" : "ident",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -19947,7 +20173,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -20307,7 +20534,8 @@
             "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "marks",
+          { "onElement" : true,
+            "ident" : "marks",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -20351,7 +20579,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "placement",
+          { "onElement" : true,
+            "ident" : "placement",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -20407,7 +20636,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -20460,7 +20690,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "degree",
+          { "onElement" : true,
+            "ident" : "degree",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -20496,7 +20727,8 @@
             "att.ascribed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -20616,7 +20848,8 @@
             "att.declarable" ] },
         "attributes" : 
         [ 
-          { "ident" : "marks",
+          { "onElement" : true,
+            "ident" : "marks",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -20905,7 +21138,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -21002,7 +21236,8 @@
             "att.transcriptional" ] },
         "attributes" : 
         [ 
-          { "ident" : "target",
+          { "onElement" : true,
+            "ident" : "target",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -21064,7 +21299,8 @@
             "att.edition" ] },
         "attributes" : 
         [ 
-          { "ident" : "length",
+          { "onElement" : true,
+            "ident" : "length",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -21078,7 +21314,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "delim",
+          { "onElement" : true,
+            "ident" : "delim",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -21196,7 +21433,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "target",
+          { "onElement" : true,
+            "ident" : "target",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -21244,7 +21482,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "name",
+          { "onElement" : true,
+            "ident" : "name",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -21258,7 +21497,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "active",
+          { "onElement" : true,
+            "ident" : "active",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -21272,7 +21512,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "mutual",
+          { "onElement" : true,
+            "ident" : "mutual",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -21286,7 +21527,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "passive",
+          { "onElement" : true,
+            "ident" : "passive",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -21345,7 +21587,8 @@
             "att.styleDef" ] },
         "attributes" : 
         [ 
-          { "ident" : "scope",
+          { "onElement" : true,
+            "ident" : "scope",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -21398,7 +21641,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "selector",
+          { "onElement" : true,
+            "ident" : "selector",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -21460,7 +21704,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -21616,7 +21861,8 @@
             "att.scoping" ] },
         "attributes" : 
         [ 
-          { "ident" : "locus",
+          { "onElement" : true,
+            "ident" : "locus",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -21792,7 +22038,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "label",
+          { "onElement" : true,
+            "ident" : "label",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -21895,7 +22142,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -21909,7 +22157,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "children",
+          { "onElement" : true,
+            "ident" : "children",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -21923,7 +22172,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "ord",
+          { "onElement" : true,
+            "ident" : "ord",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -21937,7 +22187,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "outDegree",
+          { "onElement" : true,
+            "ident" : "outDegree",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -22068,7 +22319,8 @@
             "att.ascribed" ] },
         "attributes" : 
         [ 
-          { "ident" : "aloud",
+          { "onElement" : true,
+            "ident" : "aloud",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -22082,7 +22334,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "direct",
+          { "onElement" : true,
+            "ident" : "direct",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -22165,7 +22418,8 @@
             "att.resourced" ] },
         "attributes" : 
         [ 
-          { "ident" : "key",
+          { "onElement" : true,
+            "ident" : "key",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -22204,7 +22458,8 @@
             "att.docStatus" ] },
         "attributes" : 
         [ 
-          { "ident" : "start",
+          { "onElement" : true,
+            "ident" : "start",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -22218,7 +22473,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "prefix",
+          { "onElement" : true,
+            "ident" : "prefix",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -22232,7 +22488,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "targetLang",
+          { "onElement" : true,
+            "ident" : "targetLang",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -22246,7 +22503,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "docLang",
+          { "onElement" : true,
+            "ident" : "docLang",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -22260,7 +22518,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "defaultExceptions",
+          { "onElement" : true,
+            "ident" : "defaultExceptions",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -22413,7 +22672,8 @@
             "att.datable" ] },
         "attributes" : 
         [ 
-          { "ident" : "contemporary",
+          { "onElement" : true,
+            "ident" : "contemporary",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -22528,7 +22788,8 @@
             "att.editLike" ] },
         "attributes" : 
         [ 
-          { "ident" : "reason",
+          { "onElement" : true,
+            "ident" : "reason",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -22614,7 +22875,8 @@
             "att.lexicographic" ] },
         "attributes" : 
         [ 
-          { "ident" : "level",
+          { "onElement" : true,
+            "ident" : "level",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -22669,7 +22931,8 @@
             "att.repeatable" ] },
         "attributes" : 
         [ 
-          { "ident" : "preserveOrder",
+          { "onElement" : true,
+            "ident" : "preserveOrder",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -22975,7 +23238,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -23010,7 +23274,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23046,7 +23311,8 @@
             "att.ascribed" ] },
         "attributes" : 
         [ 
-          { "ident" : "feature",
+          { "onElement" : true,
+            "ident" : "feature",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23117,7 +23383,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "new",
+          { "onElement" : true,
+            "ident" : "new",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23245,7 +23512,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "scheme",
+          { "onElement" : true,
+            "ident" : "scheme",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23259,7 +23527,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "code",
+          { "onElement" : true,
+            "ident" : "code",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23273,7 +23542,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -23356,7 +23626,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23370,7 +23641,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "discrete",
+          { "onElement" : true,
+            "ident" : "discrete",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23621,7 +23893,8 @@
             "att.dimensions" ] },
         "attributes" : 
         [ 
-          { "ident" : "dim",
+          { "onElement" : true,
+            "ident" : "dim",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23656,7 +23929,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "resp",
+          { "onElement" : true,
+            "ident" : "resp",
             "mode" : "change",
             "ns" : "",
             "usage" : "def",
@@ -23701,7 +23975,8 @@
             "att.pointing" ] },
         "attributes" : 
         [ 
-          { "ident" : "from",
+          { "onElement" : true,
+            "ident" : "from",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23715,7 +23990,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "to",
+          { "onElement" : true,
+            "ident" : "to",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23795,7 +24071,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "key",
+          { "onElement" : true,
+            "ident" : "key",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23809,7 +24086,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "atts",
+          { "onElement" : true,
+            "ident" : "atts",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23875,7 +24153,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "target",
+          { "onElement" : true,
+            "ident" : "target",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -23955,7 +24234,8 @@
             "att.placement" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -24444,7 +24724,8 @@
             "att.editLike" ] },
         "attributes" : 
         [ 
-          { "ident" : "reason",
+          { "onElement" : true,
+            "ident" : "reason",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -24501,7 +24782,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "material",
+          { "onElement" : true,
+            "ident" : "material",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -24594,7 +24876,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "attachment",
+          { "onElement" : true,
+            "ident" : "attachment",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -24638,7 +24921,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "flipping",
+          { "onElement" : true,
+            "ident" : "flipping",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -24774,7 +25058,8 @@
             "att.editLike" ] },
         "attributes" : 
         [ 
-          { "ident" : "reason",
+          { "onElement" : true,
+            "ident" : "reason",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -24856,7 +25141,8 @@
             "att.datcat" ] },
         "attributes" : 
         [ 
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -24890,7 +25176,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "rows",
+          { "onElement" : true,
+            "ident" : "rows",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -24904,7 +25191,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "cols",
+          { "onElement" : true,
+            "ident" : "cols",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -24990,7 +25278,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -25061,7 +25350,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "scheme",
+          { "onElement" : true,
+            "ident" : "scheme",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -25143,7 +25433,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "gi",
+          { "onElement" : true,
+            "ident" : "gi",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -25157,7 +25448,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "occurs",
+          { "onElement" : true,
+            "ident" : "occurs",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -25171,7 +25463,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "withId",
+          { "onElement" : true,
+            "ident" : "withId",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -25206,7 +25499,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "partial",
+          { "onElement" : true,
+            "ident" : "partial",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -25335,7 +25629,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -25388,7 +25683,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "perf",
+          { "onElement" : true,
+            "ident" : "perf",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -25424,7 +25720,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "version",
+          { "onElement" : true,
+            "ident" : "version",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -25752,7 +26049,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "mainLang",
+          { "onElement" : true,
+            "ident" : "mainLang",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -25766,7 +26064,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "otherLangs",
+          { "onElement" : true,
+            "ident" : "otherLangs",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -25880,7 +26179,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "origin",
+          { "onElement" : true,
+            "ident" : "origin",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -25894,7 +26194,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "unit",
+          { "onElement" : true,
+            "ident" : "unit",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -25956,7 +26257,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "interval",
+          { "onElement" : true,
+            "ident" : "interval",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -25995,7 +26297,8 @@
             "att.datable" ] },
         "attributes" : 
         [ 
-          { "ident" : "level",
+          { "onElement" : true,
+            "ident" : "level",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26057,7 +26360,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "def",
@@ -26140,7 +26444,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26195,7 +26500,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26452,7 +26758,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "ident",
+          { "onElement" : true,
+            "ident" : "ident",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26466,7 +26773,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "version",
+          { "onElement" : true,
+            "ident" : "version",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26542,7 +26850,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "arity",
+          { "onElement" : true,
+            "ident" : "arity",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26556,7 +26865,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "ord",
+          { "onElement" : true,
+            "ident" : "ord",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26600,7 +26910,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "order",
+          { "onElement" : true,
+            "ident" : "order",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26670,7 +26981,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "value",
+          { "onElement" : true,
+            "ident" : "value",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26789,7 +27101,8 @@
             "att.notated" ] },
         "attributes" : 
         [ 
-          { "ident" : "trans",
+          { "onElement" : true,
+            "ident" : "trans",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26866,7 +27179,8 @@
             "att.editLike" ] },
         "attributes" : 
         [ 
-          { "ident" : "reason",
+          { "onElement" : true,
+            "ident" : "reason",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26880,7 +27194,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "hand",
+          { "onElement" : true,
+            "ident" : "hand",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26894,7 +27209,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "agent",
+          { "onElement" : true,
+            "ident" : "agent",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -26962,7 +27278,8 @@
             "att.transcriptional" ] },
         "attributes" : 
         [ 
-          { "ident" : "target",
+          { "onElement" : true,
+            "ident" : "target",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -26995,7 +27312,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "version",
+          { "onElement" : true,
+            "ident" : "version",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -27032,7 +27350,8 @@
             "att.lexicographic" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -27244,7 +27563,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "org",
+          { "onElement" : true,
+            "ident" : "org",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -27347,7 +27667,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "name",
+          { "onElement" : true,
+            "ident" : "name",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -27382,7 +27703,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "org",
+          { "onElement" : true,
+            "ident" : "org",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -27537,7 +27859,8 @@
             "att.combinable" ] },
         "attributes" : 
         [ 
-          { "ident" : "ident",
+          { "onElement" : true,
+            "ident" : "ident",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -27589,7 +27912,8 @@
             "att.combinable" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -27676,7 +28000,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "method",
+          { "onElement" : true,
+            "ident" : "method",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -27720,7 +28045,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "location",
+          { "onElement" : true,
+            "ident" : "location",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -27799,7 +28125,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "iterated",
+          { "onElement" : true,
+            "ident" : "iterated",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -27837,7 +28164,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "lemma",
+          { "onElement" : true,
+            "ident" : "lemma",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -27851,7 +28179,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "lemmaRef",
+          { "onElement" : true,
+            "ident" : "lemmaRef",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -27942,7 +28271,8 @@
           [ "att.global" ] },
         "attributes" : 
         [ 
-          { "ident" : "absolute",
+          { "onElement" : true,
+            "ident" : "absolute",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -27956,7 +28286,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "unit",
+          { "onElement" : true,
+            "ident" : "unit",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -28018,7 +28349,8 @@
                   "altIdent" : 
                   [  ] } ] } },
           
-          { "ident" : "interval",
+          { "onElement" : true,
+            "ident" : "interval",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -28032,7 +28364,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "since",
+          { "onElement" : true,
+            "ident" : "since",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -28114,7 +28447,8 @@
             "att.pointing" ] },
         "attributes" : 
         [ 
-          { "ident" : "wit",
+          { "onElement" : true,
+            "ident" : "wit",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -28128,7 +28462,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -28231,7 +28566,8 @@
             "att.timed" ] },
         "attributes" : 
         [ 
-          { "ident" : "gradual",
+          { "onElement" : true,
+            "ident" : "gradual",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -28300,7 +28636,8 @@
             "att.lexicographic" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "add",
             "ns" : "",
             "usage" : "",
@@ -28399,7 +28736,8 @@
             "att.written" ] },
         "attributes" : 
         [ 
-          { "ident" : "rotate",
+          { "onElement" : true,
+            "ident" : "rotate",
             "mode" : "add",
             "ns" : "",
             "usage" : "def",
@@ -30098,7 +30436,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "who",
+            { "onElement" : false,
+              "ident" : "who",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -30124,7 +30463,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "break",
+            { "onElement" : false,
+              "ident" : "break",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30180,7 +30520,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "cRef",
+            { "onElement" : false,
+              "ident" : "cRef",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -30206,7 +30547,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "key",
+            { "onElement" : false,
+              "ident" : "key",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30220,7 +30562,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "ref",
+            { "onElement" : false,
+              "ident" : "ref",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30251,7 +30594,8 @@
             [  ] },
           "attributes" : 
           [ 
-            { "ident" : "unit",
+            { "onElement" : false,
+              "ident" : "unit",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30340,7 +30684,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "from",
+            { "onElement" : false,
+              "ident" : "from",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -30354,7 +30699,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "to",
+            { "onElement" : false,
+              "ident" : "to",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -30385,7 +30731,8 @@
             [ "att.deprecated" ] },
           "attributes" : 
           [ 
-            { "ident" : "mode",
+            { "onElement" : false,
+              "ident" : "mode",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30450,7 +30797,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "start",
+            { "onElement" : false,
+              "ident" : "start",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -30464,7 +30812,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "ulx",
+            { "onElement" : false,
+              "ident" : "ulx",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -30478,7 +30827,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "uly",
+            { "onElement" : false,
+              "ident" : "uly",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -30492,7 +30842,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "lrx",
+            { "onElement" : false,
+              "ident" : "lrx",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -30506,7 +30857,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "lry",
+            { "onElement" : false,
+              "ident" : "lry",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -30520,7 +30872,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "points",
+            { "onElement" : false,
+              "ident" : "points",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -30552,7 +30905,8 @@
               "att.written" ] },
           "attributes" : 
           [ 
-            { "ident" : "agent",
+            { "onElement" : false,
+              "ident" : "agent",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30596,7 +30950,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "degree",
+            { "onElement" : false,
+              "ident" : "degree",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30610,7 +30965,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "group",
+            { "onElement" : false,
+              "ident" : "group",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30643,7 +30999,8 @@
               "att.datable.custom" ] },
           "attributes" : 
           [ 
-            { "ident" : "calendar",
+            { "onElement" : false,
+              "ident" : "calendar",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30657,7 +31014,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "period",
+            { "onElement" : false,
+              "ident" : "period",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30683,7 +31041,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "when-custom",
+            { "onElement" : false,
+              "ident" : "when-custom",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30697,7 +31056,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "notBefore-custom",
+            { "onElement" : false,
+              "ident" : "notBefore-custom",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30711,7 +31071,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "notAfter-custom",
+            { "onElement" : false,
+              "ident" : "notAfter-custom",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30725,7 +31086,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "from-custom",
+            { "onElement" : false,
+              "ident" : "from-custom",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30739,7 +31101,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "to-custom",
+            { "onElement" : false,
+              "ident" : "to-custom",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30753,7 +31116,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "datingPoint",
+            { "onElement" : false,
+              "ident" : "datingPoint",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30767,7 +31131,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "datingMethod",
+            { "onElement" : false,
+              "ident" : "datingMethod",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30793,7 +31158,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "when-iso",
+            { "onElement" : false,
+              "ident" : "when-iso",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30807,7 +31173,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "notBefore-iso",
+            { "onElement" : false,
+              "ident" : "notBefore-iso",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30821,7 +31188,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "notAfter-iso",
+            { "onElement" : false,
+              "ident" : "notAfter-iso",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30835,7 +31203,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "from-iso",
+            { "onElement" : false,
+              "ident" : "from-iso",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30849,7 +31218,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "to-iso",
+            { "onElement" : false,
+              "ident" : "to-iso",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30875,7 +31245,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "when",
+            { "onElement" : false,
+              "ident" : "when",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30889,7 +31260,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "notBefore",
+            { "onElement" : false,
+              "ident" : "notBefore",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30903,7 +31275,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "notAfter",
+            { "onElement" : false,
+              "ident" : "notAfter",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30917,7 +31290,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "from",
+            { "onElement" : false,
+              "ident" : "from",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30931,7 +31305,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "to",
+            { "onElement" : false,
+              "ident" : "to",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -30957,7 +31332,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "datcat",
+            { "onElement" : false,
+              "ident" : "datcat",
               "mode" : "add",
               "ns" : "http:\/\/www.isocat.org\/ns\/dcr",
               "usage" : "http:\/\/www.isocat.org\/ns\/dcr",
@@ -30971,7 +31347,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "valueDatcat",
+            { "onElement" : false,
+              "ident" : "valueDatcat",
               "mode" : "add",
               "ns" : "http:\/\/www.isocat.org\/ns\/dcr",
               "usage" : "http:\/\/www.isocat.org\/ns\/dcr",
@@ -30997,7 +31374,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "default",
+            { "onElement" : false,
+              "ident" : "default",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31044,7 +31422,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "decls",
+            { "onElement" : false,
+              "ident" : "decls",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31070,7 +31449,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "validUntil",
+            { "onElement" : false,
+              "ident" : "validUntil",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31101,7 +31481,8 @@
             [ "att.ranging" ] },
           "attributes" : 
           [ 
-            { "ident" : "unit",
+            { "onElement" : false,
+              "ident" : "unit",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31163,7 +31544,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "quantity",
+            { "onElement" : false,
+              "ident" : "quantity",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -31177,7 +31559,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "extent",
+            { "onElement" : false,
+              "ident" : "extent",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31191,7 +31574,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "precision",
+            { "onElement" : false,
+              "ident" : "precision",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -31205,7 +31589,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "scope",
+            { "onElement" : false,
+              "ident" : "scope",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31267,7 +31652,8 @@
               "att.fragmentable" ] },
           "attributes" : 
           [ 
-            { "ident" : "org",
+            { "onElement" : false,
+              "ident" : "org",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31302,7 +31688,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "sample",
+            { "onElement" : false,
+              "ident" : "sample",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31376,7 +31763,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "status",
+            { "onElement" : false,
+              "ident" : "status",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -31559,7 +31947,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "dur-iso",
+            { "onElement" : false,
+              "ident" : "dur-iso",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31585,7 +31974,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "dur",
+            { "onElement" : false,
+              "ident" : "dur",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31616,7 +32006,8 @@
             [ "att.dimensions" ] },
           "attributes" : 
           [ 
-            { "ident" : "evidence",
+            { "onElement" : false,
+              "ident" : "evidence",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31660,7 +32051,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "instant",
+            { "onElement" : false,
+              "ident" : "instant",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -31686,7 +32078,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "ed",
+            { "onElement" : false,
+              "ident" : "ed",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31700,7 +32093,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "edRef",
+            { "onElement" : false,
+              "ident" : "edRef",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31726,7 +32120,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "enjamb",
+            { "onElement" : false,
+              "ident" : "enjamb",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31791,7 +32186,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "type",
+            { "onElement" : false,
+              "ident" : "type",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31883,7 +32279,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "part",
+            { "onElement" : false,
+              "ident" : "part",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31968,7 +32365,8 @@
               "att.global.source" ] },
           "attributes" : 
           [ 
-            { "ident" : "xml:id",
+            { "onElement" : false,
+              "ident" : "xml:id",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31982,7 +32380,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "n",
+            { "onElement" : false,
+              "ident" : "n",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -31996,7 +32395,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "xml:lang",
+            { "onElement" : false,
+              "ident" : "xml:lang",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32010,7 +32410,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "xml:base",
+            { "onElement" : false,
+              "ident" : "xml:base",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32024,7 +32425,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "xml:space",
+            { "onElement" : false,
+              "ident" : "xml:space",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32071,7 +32473,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "ana",
+            { "onElement" : false,
+              "ident" : "ana",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32097,7 +32500,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "change",
+            { "onElement" : false,
+              "ident" : "change",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -32123,7 +32527,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "facs",
+            { "onElement" : false,
+              "ident" : "facs",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32149,7 +32554,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "corresp",
+            { "onElement" : false,
+              "ident" : "corresp",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32163,7 +32569,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "synch",
+            { "onElement" : false,
+              "ident" : "synch",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32177,7 +32584,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "sameAs",
+            { "onElement" : false,
+              "ident" : "sameAs",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32191,7 +32599,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "copyOf",
+            { "onElement" : false,
+              "ident" : "copyOf",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32205,7 +32614,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "next",
+            { "onElement" : false,
+              "ident" : "next",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32219,7 +32629,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "prev",
+            { "onElement" : false,
+              "ident" : "prev",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32233,7 +32644,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "exclude",
+            { "onElement" : false,
+              "ident" : "exclude",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32247,7 +32659,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "select",
+            { "onElement" : false,
+              "ident" : "select",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32278,7 +32691,8 @@
             [  ] },
           "attributes" : 
           [ 
-            { "ident" : "rend",
+            { "onElement" : false,
+              "ident" : "rend",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32292,7 +32706,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "style",
+            { "onElement" : false,
+              "ident" : "style",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32306,7 +32721,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "rendition",
+            { "onElement" : false,
+              "ident" : "rendition",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32337,7 +32753,8 @@
             [  ] },
           "attributes" : 
           [ 
-            { "ident" : "cert",
+            { "onElement" : false,
+              "ident" : "cert",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32351,7 +32768,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "resp",
+            { "onElement" : false,
+              "ident" : "resp",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32377,7 +32795,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "source",
+            { "onElement" : false,
+              "ident" : "source",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32403,7 +32822,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "scribe",
+            { "onElement" : false,
+              "ident" : "scribe",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -32417,7 +32837,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "scribeRef",
+            { "onElement" : false,
+              "ident" : "scribeRef",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -32431,7 +32852,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "script",
+            { "onElement" : false,
+              "ident" : "script",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -32445,7 +32867,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "scriptRef",
+            { "onElement" : false,
+              "ident" : "scriptRef",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -32459,7 +32882,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "medium",
+            { "onElement" : false,
+              "ident" : "medium",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -32473,7 +32897,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "scope",
+            { "onElement" : false,
+              "ident" : "scope",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -32534,7 +32959,8 @@
             [ "att.combinable" ] },
           "attributes" : 
           [ 
-            { "ident" : "ident",
+            { "onElement" : false,
+              "ident" : "ident",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32548,7 +32974,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "predeclare",
+            { "onElement" : false,
+              "ident" : "predeclare",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32562,7 +32989,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "module",
+            { "onElement" : false,
+              "ident" : "module",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32588,7 +33016,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "mimeType",
+            { "onElement" : false,
+              "ident" : "mimeType",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32619,7 +33048,8 @@
             [  ] },
           "attributes" : 
           [ 
-            { "ident" : "type",
+            { "onElement" : false,
+              "ident" : "type",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32672,7 +33102,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "inst",
+            { "onElement" : false,
+              "ident" : "inst",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32703,7 +33134,8 @@
             [ "att.datcat" ] },
           "attributes" : 
           [ 
-            { "ident" : "expand",
+            { "onElement" : false,
+              "ident" : "expand",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32717,7 +33149,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "norm",
+            { "onElement" : false,
+              "ident" : "norm",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32731,7 +33164,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "split",
+            { "onElement" : false,
+              "ident" : "split",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32745,7 +33179,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "value",
+            { "onElement" : false,
+              "ident" : "value",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32759,7 +33194,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "orig",
+            { "onElement" : false,
+              "ident" : "orig",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32773,7 +33209,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "location",
+            { "onElement" : false,
+              "ident" : "location",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32787,7 +33224,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "mergedIn",
+            { "onElement" : false,
+              "ident" : "mergedIn",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32801,7 +33239,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "opt",
+            { "onElement" : false,
+              "ident" : "opt",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -32827,7 +33266,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "unit",
+            { "onElement" : false,
+              "ident" : "unit",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33015,7 +33455,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "quantity",
+            { "onElement" : false,
+              "ident" : "quantity",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33029,7 +33470,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "commodity",
+            { "onElement" : false,
+              "ident" : "commodity",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33060,7 +33502,8 @@
             [ "att.internetMedia" ] },
           "attributes" : 
           [ 
-            { "ident" : "width",
+            { "onElement" : false,
+              "ident" : "width",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33074,7 +33517,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "height",
+            { "onElement" : false,
+              "ident" : "height",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33088,7 +33532,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "scale",
+            { "onElement" : false,
+              "ident" : "scale",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33114,7 +33559,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "met",
+            { "onElement" : false,
+              "ident" : "met",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33128,7 +33574,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "real",
+            { "onElement" : false,
+              "ident" : "real",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33142,7 +33589,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "rhyme",
+            { "onElement" : false,
+              "ident" : "rhyme",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33168,7 +33616,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "unit",
+            { "onElement" : false,
+              "ident" : "unit",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33314,7 +33763,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "class",
+            { "onElement" : false,
+              "ident" : "class",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -33340,7 +33790,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "defective",
+            { "onElement" : false,
+              "ident" : "defective",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33366,7 +33817,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "ns",
+            { "onElement" : false,
+              "ident" : "ns",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33397,7 +33849,8 @@
             [ "att.canonical" ] },
           "attributes" : 
           [ 
-            { "ident" : "role",
+            { "onElement" : false,
+              "ident" : "role",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33411,7 +33864,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "nymRef",
+            { "onElement" : false,
+              "ident" : "nymRef",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33437,7 +33891,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "notation",
+            { "onElement" : false,
+              "ident" : "notation",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33463,7 +33918,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "extent",
+            { "onElement" : false,
+              "ident" : "extent",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33537,7 +33993,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "matchPattern",
+            { "onElement" : false,
+              "ident" : "matchPattern",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33551,7 +34008,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "replacementPattern",
+            { "onElement" : false,
+              "ident" : "replacementPattern",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33582,7 +34040,8 @@
             [ "att.naming" ] },
           "attributes" : 
           [ 
-            { "ident" : "full",
+            { "onElement" : false,
+              "ident" : "full",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33626,7 +34085,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "sort",
+            { "onElement" : false,
+              "ident" : "sort",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33652,7 +34112,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "place",
+            { "onElement" : false,
+              "ident" : "place",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33771,7 +34232,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "targetLang",
+            { "onElement" : false,
+              "ident" : "targetLang",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33785,7 +34247,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "target",
+            { "onElement" : false,
+              "ident" : "target",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33799,7 +34262,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "evaluate",
+            { "onElement" : false,
+              "ident" : "evaluate",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33861,7 +34325,8 @@
               "att.typed" ] },
           "attributes" : 
           [ 
-            { "ident" : "domains",
+            { "onElement" : false,
+              "ident" : "domains",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33875,7 +34340,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "targFunc",
+            { "onElement" : false,
+              "ident" : "targFunc",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -33901,7 +34367,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "atLeast",
+            { "onElement" : false,
+              "ident" : "atLeast",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -33915,7 +34382,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "atMost",
+            { "onElement" : false,
+              "ident" : "atMost",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -33929,7 +34397,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "min",
+            { "onElement" : false,
+              "ident" : "min",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -33943,7 +34412,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "max",
+            { "onElement" : false,
+              "ident" : "max",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -33957,7 +34427,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "confidence",
+            { "onElement" : false,
+              "ident" : "confidence",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -33983,7 +34454,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "wit",
+            { "onElement" : false,
+              "ident" : "wit",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34009,7 +34481,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "minOccurs",
+            { "onElement" : false,
+              "ident" : "minOccurs",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -34023,7 +34496,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "maxOccurs",
+            { "onElement" : false,
+              "ident" : "maxOccurs",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -34049,7 +34523,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "url",
+            { "onElement" : false,
+              "ident" : "url",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34075,7 +34550,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "target",
+            { "onElement" : false,
+              "ident" : "target",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34089,7 +34565,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "match",
+            { "onElement" : false,
+              "ident" : "match",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34122,7 +34599,8 @@
               "att.fragmentable" ] },
           "attributes" : 
           [ 
-            { "ident" : "function",
+            { "onElement" : false,
+              "ident" : "function",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34148,7 +34626,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "sortKey",
+            { "onElement" : false,
+              "ident" : "sortKey",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34174,7 +34653,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "spanTo",
+            { "onElement" : false,
+              "ident" : "spanTo",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34200,7 +34680,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "scheme",
+            { "onElement" : false,
+              "ident" : "scheme",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -34253,7 +34734,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "schemeVersion",
+            { "onElement" : false,
+              "ident" : "schemeVersion",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34279,7 +34761,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "role",
+            { "onElement" : false,
+              "ident" : "role",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34314,7 +34797,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "rows",
+            { "onElement" : false,
+              "ident" : "rows",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34328,7 +34812,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "cols",
+            { "onElement" : false,
+              "ident" : "cols",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34359,7 +34844,8 @@
             [ "att.written" ] },
           "attributes" : 
           [ 
-            { "ident" : "type",
+            { "onElement" : false,
+              "ident" : "type",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34394,7 +34880,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "cause",
+            { "onElement" : false,
+              "ident" : "cause",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34465,7 +34952,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "varSeq",
+            { "onElement" : false,
+              "ident" : "varSeq",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34479,7 +34967,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "require",
+            { "onElement" : false,
+              "ident" : "require",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34510,7 +34999,8 @@
             [ "att.duration" ] },
           "attributes" : 
           [ 
-            { "ident" : "start",
+            { "onElement" : false,
+              "ident" : "start",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34524,7 +35014,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "end",
+            { "onElement" : false,
+              "ident" : "end",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34556,7 +35047,8 @@
               "att.written" ] },
           "attributes" : 
           [ 
-            { "ident" : "status",
+            { "onElement" : false,
+              "ident" : "status",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34645,7 +35137,8 @@
                     "altIdent" : 
                     [  ] } ] } },
             
-            { "ident" : "cause",
+            { "onElement" : false,
+              "ident" : "cause",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -34659,7 +35152,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "seq",
+            { "onElement" : false,
+              "ident" : "seq",
               "mode" : "add",
               "ns" : "",
               "usage" : "def",
@@ -34685,7 +35179,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "versionDate",
+            { "onElement" : false,
+              "ident" : "versionDate",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34711,7 +35206,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "type",
+            { "onElement" : false,
+              "ident" : "type",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34725,7 +35221,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "subtype",
+            { "onElement" : false,
+              "ident" : "subtype",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34756,7 +35253,8 @@
             [  ] },
           "attributes" : 
           [ 
-            { "ident" : "wit",
+            { "onElement" : false,
+              "ident" : "wit",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -34787,7 +35285,8 @@
             [  ] },
           "attributes" : 
           [ 
-            { "ident" : "hand",
+            { "onElement" : false,
+              "ident" : "hand",
               "mode" : "add",
               "ns" : "",
               "usage" : "",

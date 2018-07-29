@@ -2,7 +2,7 @@
   { "title" : "TEI Absolutely Bare",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2018-04-24T21:30:58Z",
+    "date" : "2018-07-25T13:16:57Z",
     "modules" : 
     [ 
       { "ident" : "core",
@@ -66,7 +66,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "version",
+          { "onElement" : true,
+            "ident" : "version",
             "mode" : "delete",
             "ns" : "",
             "usage" : "def",
@@ -797,7 +798,8 @@
             "att.typed" ] },
         "attributes" : 
         [ 
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "",
@@ -1010,7 +1012,8 @@
             "att.declarable" ] },
         "attributes" : 
         [ 
-          { "ident" : "default",
+          { "onElement" : true,
+            "ident" : "default",
             "mode" : "delete",
             "ns" : "",
             "usage" : "def",
@@ -1165,7 +1168,8 @@
             "att.datable" ] },
         "attributes" : 
         [ 
-          { "ident" : "level",
+          { "onElement" : true,
+            "ident" : "level",
             "mode" : "delete",
             "ns" : "",
             "usage" : "def",
@@ -1179,7 +1183,8 @@
             "valDesc" : 
             [  ] },
           
-          { "ident" : "type",
+          { "onElement" : true,
+            "ident" : "type",
             "mode" : "change",
             "ns" : "",
             "usage" : "def",
@@ -2190,7 +2195,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "key",
+            { "onElement" : false,
+              "ident" : "key",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2204,7 +2210,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "ref",
+            { "onElement" : false,
+              "ident" : "ref",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2235,7 +2242,8 @@
             [ "att.datable.w3c" ] },
           "attributes" : 
           [ 
-            { "ident" : "calendar",
+            { "onElement" : false,
+              "ident" : "calendar",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2249,7 +2257,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "period",
+            { "onElement" : false,
+              "ident" : "period",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2275,7 +2284,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "when",
+            { "onElement" : false,
+              "ident" : "when",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2289,7 +2299,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "notBefore",
+            { "onElement" : false,
+              "ident" : "notBefore",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2303,7 +2314,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "notAfter",
+            { "onElement" : false,
+              "ident" : "notAfter",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2317,7 +2329,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "from",
+            { "onElement" : false,
+              "ident" : "from",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2331,7 +2344,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "to",
+            { "onElement" : false,
+              "ident" : "to",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2357,7 +2371,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "default",
+            { "onElement" : false,
+              "ident" : "default",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2429,7 +2444,8 @@
               "att.global.source" ] },
           "attributes" : 
           [ 
-            { "ident" : "rend",
+            { "onElement" : false,
+              "ident" : "rend",
               "mode" : "delete",
               "ns" : "",
               "usage" : "def",
@@ -2443,7 +2459,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "xml:id",
+            { "onElement" : false,
+              "ident" : "xml:id",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2457,7 +2474,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "n",
+            { "onElement" : false,
+              "ident" : "n",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2471,7 +2489,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "xml:lang",
+            { "onElement" : false,
+              "ident" : "xml:lang",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2502,7 +2521,8 @@
             [  ] },
           "attributes" : 
           [ 
-            { "ident" : "rend",
+            { "onElement" : false,
+              "ident" : "rend",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2516,7 +2536,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "style",
+            { "onElement" : false,
+              "ident" : "style",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2530,7 +2551,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "rendition",
+            { "onElement" : false,
+              "ident" : "rendition",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2561,7 +2583,8 @@
             [  ] },
           "attributes" : 
           [ 
-            { "ident" : "cert",
+            { "onElement" : false,
+              "ident" : "cert",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2575,7 +2598,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "resp",
+            { "onElement" : false,
+              "ident" : "resp",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2601,7 +2625,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "source",
+            { "onElement" : false,
+              "ident" : "source",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2632,7 +2657,8 @@
             [ "att.canonical" ] },
           "attributes" : 
           [ 
-            { "ident" : "role",
+            { "onElement" : false,
+              "ident" : "role",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2646,7 +2672,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "nymRef",
+            { "onElement" : false,
+              "ident" : "nymRef",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2672,7 +2699,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "place",
+            { "onElement" : false,
+              "ident" : "place",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2791,7 +2819,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "sortKey",
+            { "onElement" : false,
+              "ident" : "sortKey",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2817,7 +2846,8 @@
           [  ],
           "attributes" : 
           [ 
-            { "ident" : "type",
+            { "onElement" : false,
+              "ident" : "type",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2831,7 +2861,8 @@
               "valDesc" : 
               [  ] },
             
-            { "ident" : "subtype",
+            { "onElement" : false,
+              "ident" : "subtype",
               "mode" : "add",
               "ns" : "",
               "usage" : "",
@@ -2862,7 +2893,8 @@
             [  ] },
           "attributes" : 
           [ 
-            { "ident" : "hand",
+            { "onElement" : false,
+              "ident" : "hand",
               "mode" : "add",
               "ns" : "",
               "usage" : "",

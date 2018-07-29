@@ -7,6 +7,7 @@ export const RESTORE_ELEMENT_ATTRIBUTE_CLASS = 'RESTORE_ELEMENT_ATTRIBUTE_CLASS'
 export const DELETE_ELEMENT_ATTRIBUTE_CLASS = 'DELETE_ELEMENT_ATTRIBUTE_CLASS'
 export const ADD_ELEMENT_ATTRIBUTE = 'ADD_ELEMENT_ATTRIBUTE'
 export const DELETE_ELEMENT_ATTRIBUTE = 'DELETE_ELEMENT_ATTRIBUTE'
+export const RESTORE_ELEMENT_ATTRIBUTE = 'RESTORE_ELEMENT_ATTRIBUTE'
 export const RESTORE_CLASS_ATTRIBUTE = 'RESTORE_CLASS_ATTRIBUTE'
 export const RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS = 'RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS'
 export const USE_CLASS_DEFAULT = 'USE_CLASS_DEFAULT'
@@ -59,6 +60,14 @@ export function addElementAttribute(element, attribute) {
 export function deleteElementAttribute(element, attribute) {
   return {
     type: DELETE_ELEMENT_ATTRIBUTE,
+    element,
+    attribute
+  }
+}
+
+export function restoreElementAttribute(element, attribute) {
+  return {
+    type: RESTORE_ELEMENT_ATTRIBUTE,
     element,
     attribute
   }

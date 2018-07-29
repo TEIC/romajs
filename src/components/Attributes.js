@@ -31,21 +31,28 @@ export default class Attributes extends Component {
             <NewAttributeDialog show={this.state.show} element={this.props.element.ident}
               hide={() => {this.setState({show: false})}} />
             <ul className="mdc-list" key="elatts">{
-              this.props.element.attributes.map((c, pos) => {
-                if (c.mode === 'add') {
+              this.props.element.attributes.map((a, pos) => {
+                if (a.mode === 'add' || (a.mode === 'delete' && a.onElement)) {
+                  const deleted = a.deleted ? 'romajs-att-deleted' : ''
+                  let addOrRemove
+                  if (a.deleted) {
+                    addOrRemove = (<i className={`material-icons romajs-clickable`} onClick={() =>
+                      this.props.restoreElementAttribute(this.props.element.ident, a.ident)}>add_circle_outline</i>)
+                  } else {
+                    addOrRemove = (<i className={`material-icons romajs-clickable ${deleted}`} onClick={() =>
+                      this.props.deleteElementAttribute(this.props.element.ident, a.ident)}>clear</i>)
+                  }
                   return (<li key={`c${pos}`} className="mdc-list-item">
                     <span className="mdc-list-item__graphic">
-                      <i className="material-icons romajs-clickable"
-                        onClick={() => this.props.navigateTo(`${this.props.path}/${c.ident}`)}>
+                      <i className={`material-icons romajs-clickable ${deleted}`}
+                        onClick={() => this.props.navigateTo(`${this.props.path}/${a.ident}`)}>
                         mode_edit</i>
-                      <i className="material-icons romajs-clickable" onClick={() => {
-                        this.props.deleteElementAttribute(this.props.element.ident, c.ident)
-                      }}>clear</i>
+                      {addOrRemove}
                     </span>
                     <span className="mdc-list-item__text">
-                      {c.ident}
+                      {a.ident}
                       <span className="mdc-list-item__secondary-text">
-                        {c.shortDesc}
+                        {a.shortDesc}
                       </span>
                     </span>
                   </li>)
@@ -138,6 +145,7 @@ Attributes.propTypes = {
   attsfromClasses: PropTypes.array,
   editAttribute: PropTypes.func.isRequired,
   deleteElementAttribute: PropTypes.func.isRequired,
+  restoreElementAttribute: PropTypes.func.isRequired,
   deleteElementAttributeClass: PropTypes.func.isRequired,
   restoreElementAttributeClass: PropTypes.func.isRequired,
   useClassDefault: PropTypes.func.isRequired,

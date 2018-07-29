@@ -2,20 +2,18 @@ import { connect } from 'react-redux'
 import Attributes from '../components/Attributes'
 import { deleteElementAttributeClass, restoreElementAttributeClass, deleteElementAttribute,
   deleteClassAttribute, restoreClassAttribute, restoreClassAttributeDeletedOnClass,
-  useClassDefault, changeClassAttribute } from '../actions/elements'
+  useClassDefault, changeClassAttribute, restoreElementAttribute } from '../actions/elements'
 import { clearPicker } from '../actions/interface'
 import { push } from 'react-router-redux'
 import {clone} from '../utils/clone'
 
 const mapStateToProps = (state, ownProps) => {
-  const element = ownProps.element
-  // const localElement = state.odd.localsource.json.elements.filter(le => (le.ident === element.ident))[0]
+  const element = clone(ownProps.element)
 
   const getClasses = (classNames, sub = false, from = '') => {
     // Get attribute classes
     return classNames.reduce((acc, className) => {
       const localClass = state.odd.localsource.json.classes.attributes.filter((lc) => (lc.ident === className))[0]
-      // let isLocalOnly = false
       const c = state.odd.customization.json.classes.attributes.filter(ac => (ac.ident === className))[0]
       if (c) {
         let tempAcc = Array.from(acc)
@@ -23,7 +21,6 @@ const mapStateToProps = (state, ownProps) => {
         const curClass = clone(c)
         curClass.sub = sub
         curClass.from = from
-        // curClass.inactive = isLocalOnly ? true : false
         curClass.deletedAttributes = new Set()
 
         // We check against the localsource to obtain attributes that have been deleted
@@ -88,6 +85,16 @@ const mapStateToProps = (state, ownProps) => {
     return a.ident > b.ident
   })
 
+  // Check for deleted attributes that were defined on the element only
+  // ie are not inherited from a class.
+  const localElement = state.odd.localsource.json.elements.filter(le => (le.ident === element.ident))[0]
+  for (const att of element.attributes) {
+    if (att.mode === 'delete' && att.onElement) {
+      att.shortDesc = localElement.attributes.filter(a => (a.ident === att.ident))[0].shortDesc
+      att.deleted = true
+    }
+  }
+
   // Sort element attributes
   element.attributes.sort((a, b) => {
     return a.ident > b.ident
@@ -100,6 +107,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     navigateTo: (place) => dispatch(push(place)),
     deleteElementAttribute: (element, attribute) => dispatch(deleteElementAttribute(element, attribute)),
+    restoreElementAttribute: (element, attribute) => dispatch(restoreElementAttribute(element, attribute)),
     deleteElementAttributeClass: (element, className) => dispatch(deleteElementAttributeClass(element, className)),
     clearPicker: () => dispatch(clearPicker()),
     restoreElementAttributeClass: (element, className, deletedAttributes) => dispatch(restoreElementAttributeClass(element, className, deletedAttributes)),

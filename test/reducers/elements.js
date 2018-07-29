@@ -102,7 +102,7 @@ describe('ODD elements operation reducers', () => {
     })
     expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'title')
-    )[0].attributes.filter(a => (a.ident === 'type')).length).toEqual(0)
+    )[0].attributes.filter(a => (a.ident === 'type'))[0].mode).toEqual('delete')
   })
 
   it('should handle ADD_ELEMENT_ATTRIBUTE_CLASS', () => {
