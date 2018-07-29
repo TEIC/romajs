@@ -1,5 +1,3 @@
-import { DOMParser, XMLSerializer } from 'xmldom'
-
 function mergeModules(localsource, customization, odd) {
   // This function compares the original ODD and the customization to locate
   // changes in modules. It applies those changes and returns a new ODD.

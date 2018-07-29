@@ -3,7 +3,6 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import expect from 'expect'
 import express from 'express'
-import { DOMParser } from 'xmldom'
 import * as actions from '../../src/actions'
 
 const middlewares = [ thunk ]

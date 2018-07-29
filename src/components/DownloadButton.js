@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
-import { MDCSimpleMenu } from '@material/menu'
+import { MDCMenu } from '@material/menu'
 
 export default class DonwloadButton extends Component {
   componentDidMount() {
-    MDCSimpleMenu
-    // this.menu = new MDCSimpleMenu(this.refs.menu)
+    this.menu = new MDCMenu(this.refs.menu)
   }
 
   render() {
@@ -18,8 +17,8 @@ export default class DonwloadButton extends Component {
         }}>
           <i className="material-icons mdc-button__icon">file_download</i> Download
         </button>
-        <div className="romajs-download-menu mdc-simple-menu" ref="menu" tabIndex="-1">
-          <ul className="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true" style={{transform: 'scale(1, 1)'}}>
+        <div className="mdc-menu" tabIndex="-1" ref="menu">
+          <ul className="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
             <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadCustomization()}}>Download ODD</li>
             <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadRng()}}>Download RelaxNG schema</li>
             <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadW3c()}}>Download W3C schema</li>

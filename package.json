@@ -76,6 +76,6 @@
     "webpack": "^3.5.5",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.20.0",
-    "xmldom": "^0.1.27"
+    "xmldom-qsa": "^1.0.3"
   }
 }
