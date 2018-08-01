@@ -1,3 +1,4 @@
+
 function mergeModules(localsource, customization, odd) {
   // This function compares the original ODD and the customization to locate
   // changes in modules. It applies those changes and returns a new ODD.
@@ -16,18 +17,7 @@ function mergeModules(localsource, customization, odd) {
     return acc
   }, new Set())
   // Add modules based on elementRef classRef dataRef macroRef (attRef?)
-  // NB wish I could use querySelectorAll()!
-  // TODO: you MAY use querySelectorAll when this code runs in the browser.
-  // Change this to inject a polyfill when testing with node and you should be good to go.
-  const memberRefs = Array.from(schemaSpec.childNodes).reduce((acc, child) => {
-    if (child.localName === 'elementRef'
-     || child.localName === 'classRef'
-     || child.localName === 'dataRef'
-     || child.localName === 'macroRef') {
-      acc.push(child)
-    }
-    return acc
-  }, [])
+  const memberRefs = Array.from(schemaSpec.querySelectorAll('elementRef, classRef, dataRef, macroRef'))
   memberRefs.map(el => {
     const ident = el.getAttribute('key')
     oddModuleNames.add(allLocalMembers.filter(m => m.ident === ident)[0].module)
@@ -231,7 +221,11 @@ export function updateOdd(localsourceObj, customizationObj) {
   //     but since it's a one-off operation, it should be ok.
   const localsource = localsourceObj.json
   const customization = customizationObj.json
-  let odd = new DOMParser().parseFromString(customizationObj.xml)
+  let odd = new DOMParser().parseFromString(customizationObj.xml, 'text/xml')
+  // For testing. TODO: figure out a way to only do this in dev mode.
+  if (!odd.querySelectorAll && global.addQsaPolyfill) {
+    odd = global.addQsaPolyfill(odd)
+  }
 
   // MODULES
   // These operations need to happen synchronously
