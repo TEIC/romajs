@@ -299,4 +299,28 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       return m.getAttribute('ident') === 'char'
     })[0]).toNotExist()
   })
+
+  it('should change an elemnet', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_ELEMENT_DOCS',
+      element: 'div',
+      docEl: 'desc',
+      content: '<desc xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">new desc</desc>',
+      index: 0
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = new DOMParser().parseFromString(state.odd.customization.xml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="div"] > desc').textContent).toEqual('new desc')
+  })
 })

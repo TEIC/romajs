@@ -1,10 +1,11 @@
+const parser = new DOMParser()
 
 function mergeModules(localsource, customization, odd) {
   // This function compares the original ODD and the customization to locate
-  // changes in modules. It applies those changes and returns a new ODD.
+  // changes in module selection. It applies those changes and returns a new ODD.
   // NB It operates on the FIRST schemaSpec; this could be an issue.
-  const schemaSpec = odd.getElementsByTagName('schemaSpec')[0]
-  const oddModules = schemaSpec.getElementsByTagName('moduleRef')
+  const schemaSpec = odd.querySelector('schemaSpec')
+  const oddModules = schemaSpec.querySelectorAll('moduleRef')
   const customModuleNames = customization.modules.map(m => m.ident)
   const allLocalMembers = localsource.elements
     .concat(localsource.classes.models)
@@ -63,10 +64,13 @@ function mergeModules(localsource, customization, odd) {
 }
 
 function mergeElements(localsource, customization, odd) {
-  const schemaSpec = odd.getElementsByTagName('schemaSpec')[0]
-  const moduleRefs = schemaSpec.getElementsByTagName('moduleRef')
-  const elementSpecs = schemaSpec.getElementsByTagName('elementSpec')
-  const elementRefs = schemaSpec.getElementsByTagName('elementRef')
+  // This function compares the original ODD and the customization to locate
+  // changes in element selection via moduleRef or elementRef. It applies those changes and returns a new ODD.
+  // NB It operates on the FIRST schemaSpec; this could be an issue.
+  const schemaSpec = odd.querySelector('schemaSpec')
+  const moduleRefs = schemaSpec.querySelectorAll('moduleRef')
+  const elementSpecs = schemaSpec.querySelectorAll('elementSpec')
+  const elementRefs = schemaSpec.querySelectorAll('elementRef')
 
   // Get all elements from the XML ODD
   let allOddElements = Array.from(moduleRefs).reduce((includedElements, mod) => {
@@ -214,6 +218,72 @@ function mergeElements(localsource, customization, odd) {
   return odd
 }
 
+function updateElements(localsource, customization, odd) {
+  // Compare element declarations to apply changes to elements and return a new ODD
+  // Check against localsource to insure that the changes are actually there.
+  // e.g. a user could change a desc, then backspace the change. The mode would be set to change, but
+  // real change wouldn't really have happened.
+
+  function _compareArrays(a, b) {
+    return a.length === b.length && a.every((value, index) => value === b[index])
+  }
+
+  function _getOrSetElementSpec(_odd, ident) {
+    let elSpec = _odd.querySelectorAll(`elementSpec[ident='${ident}']`)
+    // console.log(_odd.documentElement)
+    // TODO: watch out for the @ns attribute in case there are more than one element with the same ident
+    if (!elSpec || elSpec.length === 0) {
+      elSpec = _odd.createElementNS('http://www.tei-c.org/ns/1.0', 'elementSpec')
+      elSpec.setAttribute('ident', ident)
+      elSpec.setAttribute('mode', 'change')
+      const schemaSpec = _odd.querySelector('schemaSpec')
+      schemaSpec.appendChild(elSpec)
+    }
+    return elSpec
+  }
+
+  for (const el of customization.elements) {
+    if (el._changed) {
+      // Check structures against localsource
+      const localEl = localsource.elements.filter(le => le.ident === el.ident)[0]
+      for (const whatChanged of el._changed) {
+        const change = el[whatChanged]
+        const local = localEl[whatChanged]
+        const elSpec = _getOrSetElementSpec(odd, el.ident)
+        switch (whatChanged) {
+          case 'desc':
+            if (!_compareArrays(change, local)) {
+              if (elSpec.querySelectorAll('desc').length > 0) {
+                // figure out how to replace descs correctly
+              } else {
+                // create new desc mode="change"
+                for (const d of el.desc) {
+                  // TODO: find a cleaner isomorphic solution
+                  const temp = odd.createElement('temp')
+                  temp.innerHTML = d
+                  const desc = temp.firstChild
+                  desc.setAttribute('mode', 'change')
+                  elSpec.appendChild(desc)
+                }
+              }
+            }
+          default:
+            false
+        }
+      }
+      // console.log(el._changed)
+      // Locate elementSpec in customization - does it exist and has @mode='change'?
+
+      // If there is no elementSpec, create a new one
+    }
+  }
+
+  localsource
+  customization
+  odd
+  return odd
+}
+
 export function updateOdd(localsourceObj, customizationObj) {
   // NB: localsource and customization are READ ONLY
   //     odd XML gets cloned every time to keep sub-routines pure
@@ -221,17 +291,22 @@ export function updateOdd(localsourceObj, customizationObj) {
   //     but since it's a one-off operation, it should be ok.
   const localsource = localsourceObj.json
   const customization = customizationObj.json
-  let odd = new DOMParser().parseFromString(customizationObj.xml, 'text/xml')
+  let odd = parser.parseFromString(customizationObj.xml, 'text/xml')
   // For testing. TODO: figure out a way to only do this in dev mode.
-  if (!odd.querySelectorAll && global.addQsaPolyfill) {
-    odd = global.addQsaPolyfill(odd)
+  if (global.usejsdom) {
+    // replace DOM with JSDOM
+    odd = global.usejsdom(odd)
   }
 
   // MODULES
   // These operations need to happen synchronously
   odd = mergeModules(localsource, customization, odd.cloneNode(true))
   odd = mergeElements(localsource, customization, odd.cloneNode(true))
+  odd = updateElements(localsource, customization, odd.cloneNode(true))
 
+  if (global.usejsdom) {
+    return odd.documentElement.outerHTML
+  }
   return new XMLSerializer().serializeToString(odd)
 }
 

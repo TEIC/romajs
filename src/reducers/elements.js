@@ -49,6 +49,12 @@ export function oddElements(state, action) {
         if (m.ident === action.element) {
           if (Array.isArray(m[action.docEl]) && action.index !== undefined) {
             m[action.docEl][action.index] = action.content
+            m.mode = 'change'
+            if (m._changed) {
+              m._changed.push(action.docEl)
+            } else {
+              m._changed = [action.docEl]
+            }
           } else {
             throw new ReducerException(`Description element content does not match ${action.content}.`)
           }
