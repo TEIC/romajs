@@ -229,10 +229,9 @@ function updateElements(localsource, customization, odd) {
   }
 
   function _getOrSetElementSpec(_odd, ident) {
-    let elSpec = _odd.querySelectorAll(`elementSpec[ident='${ident}']`)
-    // console.log(_odd.documentElement)
+    let elSpec = _odd.querySelectorAll(`elementSpec[ident='${ident}']`)[0]
     // TODO: watch out for the @ns attribute in case there are more than one element with the same ident
-    if (!elSpec || elSpec.length === 0) {
+    if (!elSpec) {
       elSpec = _odd.createElementNS('http://www.tei-c.org/ns/1.0', 'elementSpec')
       elSpec.setAttribute('ident', ident)
       elSpec.setAttribute('mode', 'change')
@@ -263,6 +262,7 @@ function updateElements(localsource, customization, odd) {
                   temp.innerHTML = d
                   const desc = temp.firstChild
                   desc.setAttribute('mode', 'change')
+                  desc.removeAttribute('xmlns')
                   elSpec.appendChild(desc)
                 }
               }
@@ -271,10 +271,6 @@ function updateElements(localsource, customization, odd) {
             false
         }
       }
-      // console.log(el._changed)
-      // Locate elementSpec in customization - does it exist and has @mode='change'?
-
-      // If there is no elementSpec, create a new one
     }
   }
 
@@ -298,10 +294,11 @@ export function updateOdd(localsourceObj, customizationObj) {
     odd = global.usejsdom(odd)
   }
 
-  // MODULES
   // These operations need to happen synchronously
+  // MODULE OPERATIONS (including excluding and including elements)
   odd = mergeModules(localsource, customization, odd.cloneNode(true))
   odd = mergeElements(localsource, customization, odd.cloneNode(true))
+  // CHANGES TO ELEMENTS
   odd = updateElements(localsource, customization, odd.cloneNode(true))
 
   if (global.usejsdom) {
