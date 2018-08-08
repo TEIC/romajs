@@ -257,28 +257,29 @@ function updateElements(localsource, customization, odd) {
           case 'altIdent':
             if (!_areArraysEqual(change, local)) {
               const docEls = elSpec.querySelectorAll(whatChanged)
-              if (docEls.length > 0) {
-                // Replace descs based on their position
-                for (const [i, d] of el[whatChanged].entries()) {
+              // create or replace descs. Determine mode.
+              for (const [i, d] of el[whatChanged].entries()) {
+                const docEl = docEls[i]
+                const mode = local[i] ? 'change' : 'add'
+                let newDocEl
+                if (d.startsWith('<')) {
                   dummyEl.innerHTML = d
-                  const docEl = dummyEl.firstChild
+                  newDocEl = dummyEl.firstChild
                   dummyEl.firstChild.remove()
-                  docEl.setAttribute('mode', 'change')
-                  docEl.removeAttribute('xmlns')
-                  elSpec.replaceChild(docEl, docEls[i])
+                } else {
+                  newDocEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'altIdent')
+                  newDocEl.innerHTML = d
                 }
-              } else {
-                // create new descs mode="change" TODO: could be add if array lenghts are different!
-                for (const d of el[whatChanged]) {
-                  dummyEl.innerHTML = d
-                  const docEl = dummyEl.firstChild
-                  dummyEl.firstChild.remove()
-                  docEl.setAttribute('mode', 'change')
-                  docEl.removeAttribute('xmlns')
-                  elSpec.appendChild(docEl)
+                newDocEl.setAttribute('mode', mode)
+                newDocEl.removeAttribute('xmlns')
+                if (docEl) {
+                  elSpec.replaceChild(newDocEl, docEl)
+                } else {
+                  elSpec.appendChild(newDocEl)
                 }
               }
             }
+            break
           default:
             false
         }

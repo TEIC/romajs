@@ -51,7 +51,9 @@ export function oddElements(state, action) {
             m[action.docEl][action.index] = action.content
             m.mode = 'change'
             if (m._changed) {
-              m._changed.push(action.docEl)
+              const changes = new Set(m._changed)
+              changes.add(action.docEl)
+              m._changed = Array.from(changes)
             } else {
               m._changed = [action.docEl]
             }
