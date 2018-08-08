@@ -327,6 +327,30 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(xml.querySelector('elementSpec[ident="div"] > desc').textContent).toEqual('new desc')
   })
 
+  it('should change an element\'s documentation (altIdent, entirely new)', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_ELEMENT_DOCS',
+      element: 'div',
+      docEl: 'altIdent',
+      content: 'myDiv',
+      index: 0
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.xml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="div"] > altIdent').textContent).toEqual('myDiv')
+  })
+
   it('should change an element\'s documentation (desc, previously changed)', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)

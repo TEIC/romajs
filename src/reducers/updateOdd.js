@@ -262,16 +262,18 @@ function updateElements(localsource, customization, odd) {
                 const docEl = docEls[i]
                 const mode = local[i] ? 'change' : 'add'
                 let newDocEl
+                // If the state keeps the full element as string (e.g. uses ACE editor), parse it.
                 if (d.startsWith('<')) {
                   dummyEl.innerHTML = d
                   newDocEl = dummyEl.firstChild
+                  newDocEl.removeAttribute('xmlns')
                   dummyEl.firstChild.remove()
                 } else {
-                  newDocEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'altIdent')
-                  newDocEl.innerHTML = d
+                  newDocEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', whatChanged)
+                  const text = odd.createTextNode(d)
+                  newDocEl.appendChild(text)
                 }
                 newDocEl.setAttribute('mode', mode)
-                newDocEl.removeAttribute('xmlns')
                 if (docEl) {
                   elSpec.replaceChild(newDocEl, docEl)
                 } else {
