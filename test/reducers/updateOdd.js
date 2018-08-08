@@ -2,10 +2,13 @@ import expect from 'expect'
 import fs from 'fs'
 import romajsApp from './combinedReducers'
 
+const serializer = new XMLSerializer()
+const parser = new DOMParser()
+
 const customization = fs.readFileSync('test/fakeData/bare.json', 'utf-8')
 const customizationXMLString = fs.readFileSync('test/fakeData/bare.odd', 'utf-8')
 const localsource = fs.readFileSync('test/fakeData/p5subset.json', 'utf-8')
-const customizationXML = new DOMParser().parseFromString(customizationXMLString)
+const customizationXML = parser.parseFromString(customizationXMLString)
 let customJson = null
 let localJson = null
 
@@ -26,7 +29,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = new DOMParser().parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.xml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'linking'
     }).length).toEqual(1)
@@ -42,7 +45,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     fileDesc.setAttribute('ident', 'fileDesc')
     fileDesc.setAttribute('mode', 'change')
     testXml.getElementsByTagName('schemaSpec')[0].appendChild(fileDesc)
-    const testXmlString = new XMLSerializer().serializeToString(testXml)
+    const testXmlString = serializer.serializeToString(testXml)
 
     // The JSON file doesn't need updating
 
@@ -59,7 +62,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = new DOMParser().parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.xml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'header'
     }).length).toEqual(0)
@@ -77,7 +80,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const msDescRef = testXml.createElement('elementRef')
     msDescRef.setAttribute('key', 'msDesc')
     testXml.getElementsByTagName('schemaSpec')[0].appendChild(msDescRef)
-    const testXmlString = new XMLSerializer().serializeToString(testXml)
+    const testXmlString = serializer.serializeToString(testXml)
 
     // Update JSON data accordingly
     customJson.modules.push(
@@ -100,7 +103,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = new DOMParser().parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.xml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'msdescription'
     }).length).toEqual(0)
@@ -119,7 +122,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     gaiji.setAttribute('key', 'gaiji')
     gaiji.setAttribute('include', 'char')
     testXml.getElementsByTagName('schemaSpec')[0].appendChild(gaiji)
-    const testXmlString = new XMLSerializer().serializeToString(testXml)
+    const testXmlString = serializer.serializeToString(testXml)
 
     // Update JSON data accordingly
     customJson.modules.push(
@@ -142,7 +145,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = new DOMParser().parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.xml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'gaiji'
     })[0].getAttribute('include')).toEqual('char charDecl')
@@ -165,7 +168,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = new DOMParser().parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.xml)
 
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'gaiji'
@@ -182,7 +185,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     gaiji.setAttribute('key', 'gaiji')
     gaiji.setAttribute('except', 'charDecl charName')
     testXml.getElementsByTagName('schemaSpec')[0].appendChild(gaiji)
-    const testXmlString = new XMLSerializer().serializeToString(testXml)
+    const testXmlString = serializer.serializeToString(testXml)
 
     // Update JSON data accordingly
     customJson.modules.push(
@@ -207,7 +210,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = new DOMParser().parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.xml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'gaiji'
     })[0].getAttribute('except')).toEqual('charName')
@@ -223,7 +226,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     gaiji.setAttribute('key', 'gaiji')
     gaiji.setAttribute('except', 'charDecl')
     testXml.getElementsByTagName('schemaSpec')[0].appendChild(gaiji)
-    const testXmlString = new XMLSerializer().serializeToString(testXml)
+    const testXmlString = serializer.serializeToString(testXml)
 
     // Update JSON data accordingly
     customJson.modules.push(
@@ -248,7 +251,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = new DOMParser().parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.xml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'gaiji'
     })[0].getAttribute('except')).toNotExist()
@@ -267,7 +270,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     char.setAttribute('ident', 'char')
     char.setAttribute('mode', 'delete')
     testXml.getElementsByTagName('schemaSpec')[0].appendChild(char)
-    const testXmlString = new XMLSerializer().serializeToString(testXml)
+    const testXmlString = serializer.serializeToString(testXml)
 
     // Update JSON data accordingly
     customJson.modules.push(
@@ -293,14 +296,14 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = new DOMParser().parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.xml)
 
     expect(Array.from(xml.getElementsByTagName('elementSpec')).filter(m => {
       return m.getAttribute('ident') === 'char'
     })[0]).toNotExist()
   })
 
-  it('should change an elemnet', () => {
+  it('should change an element\'s documentation (desc, no previous change)', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)
     const firstState = romajsApp({
@@ -319,8 +322,51 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    let xml = new DOMParser().parseFromString(state.odd.customization.xml)
+    let xml = parser.parseFromString(state.odd.customization.xml)
     xml = global.usejsdom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > desc').textContent).toEqual('new desc')
+  })
+
+  it('should change an element\'s documentation (desc, previously changed)', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    // Change ODD data for testing
+    const testXml = customizationXML.cloneNode(true)
+    const edDesc0 = '<desc mode="change">some desc1</desc>'
+    const edDesc1 = '<desc mode="change">some desc2</desc>'
+    const ed = `<elementSpec ident="div" mode="change">${edDesc0}${edDesc1}</elementSpec>`
+    const edEl = parser.parseFromString(ed)
+    testXml.getElementsByTagName('schemaSpec')[0].appendChild(edEl)
+    const testXmlString = serializer.serializeToString(testXml)
+
+    // Update JSON data accordingly
+    customJson.elements = customJson.elements.map(el => {
+      if (el.ident === 'div') {
+        el.desc[0] = edDesc0
+        el.desc[1] = edDesc1
+      }
+      return el
+    })
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: testXmlString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_ELEMENT_DOCS',
+      element: 'div',
+      docEl: 'desc',
+      content: '<desc xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">new desc</desc>',
+      index: 1
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.xml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="div"] > desc:nth-child(2)').textContent).toEqual('new desc')
   })
 })

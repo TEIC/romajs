@@ -224,7 +224,7 @@ function updateElements(localsource, customization, odd) {
   // e.g. a user could change a desc, then backspace the change. The mode would be set to change, but
   // real change wouldn't really have happened.
 
-  function _compareArrays(a, b) {
+  function _areArraysEqual(a, b) {
     return a.length === b.length && a.every((value, index) => value === b[index])
   }
 
@@ -245,25 +245,37 @@ function updateElements(localsource, customization, odd) {
     if (el._changed) {
       // Check structures against localsource
       const localEl = localsource.elements.filter(le => le.ident === el.ident)[0]
+      // Create a dummy element for isomorphic conversion of serialized XML from the state to actual XML
+      // TODO: find a cleaner isomorphic solution
+      const dummyEl = odd.createElement('temp')
       for (const whatChanged of el._changed) {
         const change = el[whatChanged]
         const local = localEl[whatChanged]
         const elSpec = _getOrSetElementSpec(odd, el.ident)
         switch (whatChanged) {
           case 'desc':
-            if (!_compareArrays(change, local)) {
-              if (elSpec.querySelectorAll('desc').length > 0) {
-                // figure out how to replace descs correctly
+          case 'altIdent':
+            if (!_areArraysEqual(change, local)) {
+              const docEls = elSpec.querySelectorAll(whatChanged)
+              if (docEls.length > 0) {
+                // Replace descs based on their position
+                for (const [i, d] of el[whatChanged].entries()) {
+                  dummyEl.innerHTML = d
+                  const docEl = dummyEl.firstChild
+                  dummyEl.firstChild.remove()
+                  docEl.setAttribute('mode', 'change')
+                  docEl.removeAttribute('xmlns')
+                  elSpec.replaceChild(docEl, docEls[i])
+                }
               } else {
-                // create new desc mode="change"
-                for (const d of el.desc) {
-                  // TODO: find a cleaner isomorphic solution
-                  const temp = odd.createElement('temp')
-                  temp.innerHTML = d
-                  const desc = temp.firstChild
-                  desc.setAttribute('mode', 'change')
-                  desc.removeAttribute('xmlns')
-                  elSpec.appendChild(desc)
+                // create new descs mode="change" TODO: could be add if array lenghts are different!
+                for (const d of el[whatChanged]) {
+                  dummyEl.innerHTML = d
+                  const docEl = dummyEl.firstChild
+                  dummyEl.firstChild.remove()
+                  docEl.setAttribute('mode', 'change')
+                  docEl.removeAttribute('xmlns')
+                  elSpec.appendChild(docEl)
                 }
               }
             }
