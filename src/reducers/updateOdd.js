@@ -259,8 +259,12 @@ function updateElements(localsource, customization, odd) {
               const docEls = elSpec.querySelectorAll(whatChanged)
               // create or replace descs. Determine mode.
               for (const [i, d] of el[whatChanged].entries()) {
+                if (d.deleted) {
+                  // Something got deleted, so apply
+                  docEls[i].parentNode.removeChild(docEls[i])
+                  continue
+                }
                 const docEl = docEls[i]
-                const mode = local[i] ? 'change' : 'add'
                 let newDocEl
                 // If the state keeps the full element as string (e.g. uses ACE editor), parse it.
                 if (d.startsWith('<')) {
@@ -273,7 +277,6 @@ function updateElements(localsource, customization, odd) {
                   const text = odd.createTextNode(d)
                   newDocEl.appendChild(text)
                 }
-                newDocEl.setAttribute('mode', mode)
                 if (docEl) {
                   elSpec.replaceChild(newDocEl, docEl)
                 } else {

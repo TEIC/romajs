@@ -29,7 +29,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = parser.parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.updatedXml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'linking'
     }).length).toEqual(1)
@@ -62,7 +62,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = parser.parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.updatedXml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'header'
     }).length).toEqual(0)
@@ -103,7 +103,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = parser.parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.updatedXml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'msdescription'
     }).length).toEqual(0)
@@ -145,7 +145,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = parser.parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.updatedXml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'gaiji'
     })[0].getAttribute('include')).toEqual('char charDecl')
@@ -168,8 +168,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = parser.parseFromString(state.odd.customization.xml)
-
+    const xml = parser.parseFromString(state.odd.customization.updatedXml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'gaiji'
     })[0].getAttribute('include')).toEqual('char')
@@ -210,7 +209,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = parser.parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.updatedXml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'gaiji'
     })[0].getAttribute('except')).toEqual('charName')
@@ -251,7 +250,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = parser.parseFromString(state.odd.customization.xml)
+    const xml = parser.parseFromString(state.odd.customization.updatedXml)
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'gaiji'
     })[0].getAttribute('except')).toNotExist()
@@ -296,8 +295,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    const xml = parser.parseFromString(state.odd.customization.xml)
-
+    const xml = parser.parseFromString(state.odd.customization.updatedXml)
     expect(Array.from(xml.getElementsByTagName('elementSpec')).filter(m => {
       return m.getAttribute('ident') === 'char'
     })[0]).toNotExist()
@@ -322,7 +320,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    let xml = parser.parseFromString(state.odd.customization.xml)
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > desc').textContent).toEqual('new desc')
   })
@@ -346,9 +344,57 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    let xml = parser.parseFromString(state.odd.customization.xml)
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > altIdent').textContent).toEqual('myDiv')
+  })
+
+  it('should change an element\'s documentation (altIdent, preceded by another previously changed, then deleted)', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    // Change ODD data for testing
+    const testXml = customizationXML.cloneNode(true)
+    const altIdent = '<altIdent>alt</altIdent>'
+    const ed = `<elementSpec ident="div" mode="change">${altIdent}</elementSpec>`
+    const edEl = parser.parseFromString(ed)
+    testXml.getElementsByTagName('schemaSpec')[0].appendChild(edEl)
+    const testXmlString = serializer.serializeToString(testXml)
+
+    // Update JSON data accordingly
+    customJson.elements = customJson.elements.map(el => {
+      if (el.ident === 'div') {
+        el.altIdent[0] = altIdent
+      }
+      return el
+    })
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: testXmlString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_ELEMENT_DOCS',
+      element: 'div',
+      docEl: 'altIdent',
+      content: {deleted: true},
+      index: 0
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'UPDATE_ELEMENT_DOCS',
+      element: 'div',
+      docEl: 'altIdent',
+      content: 'alt2',
+      index: 1
+    })
+    const state = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="div"] > altIdent').textContent).toEqual('alt2')
   })
 
   it('should change an element\'s documentation (desc, previously changed)', () => {
@@ -357,8 +403,8 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
 
     // Change ODD data for testing
     const testXml = customizationXML.cloneNode(true)
-    const edDesc0 = '<desc mode="change">some desc1</desc>'
-    const edDesc1 = '<desc mode="change">some desc2</desc>'
+    const edDesc0 = '<desc>some desc1</desc>'
+    const edDesc1 = '<desc>some desc2</desc>'
     const ed = `<elementSpec ident="div" mode="change">${edDesc0}${edDesc1}</elementSpec>`
     const edEl = parser.parseFromString(ed)
     testXml.getElementsByTagName('schemaSpec')[0].appendChild(edEl)
@@ -389,7 +435,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    let xml = parser.parseFromString(state.odd.customization.xml)
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > desc:nth-child(2)').textContent).toEqual('new desc')
   })

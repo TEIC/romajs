@@ -52,7 +52,6 @@ export function oddElements(state, action) {
             m.mode = 'change'
             if (m._changed) {
               const changes = new Set(m._changed)
-              changes.add(action.docEl)
               m._changed = Array.from(changes)
             } else {
               m._changed = [action.docEl]
@@ -64,10 +63,18 @@ export function oddElements(state, action) {
       })
       return newState
     case DELETE_ELEMENT_DOCS:
+      const localEl = localsource.elements.filter(e => action.element === e.ident)[0]
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
           if (Array.isArray(m[action.docEl]) && action.index !== undefined) {
-            m[action.docEl].splice(action.index, 1)
+            if (action.index + 1 <= localEl[action.docEl].length) {
+              // This is an already defined documentation element,
+              // so keep a place holder since our operations are based on position.
+              m[action.docEl].splice(action.index, 1, {deleted: true})
+            } else {
+              // New documentation element, simply get rid of it.
+              m[action.docEl].splice(action.index, 1)
+            }
           } else {
             throw new ReducerException(`Description element content does not match ${action.content}.`)
           }

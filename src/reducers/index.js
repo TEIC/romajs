@@ -104,12 +104,13 @@ function odd(state = {}, action) {
     case UPDATE_CUSTOMIZATION_ODD:
       const xml = Object.assign({}, state.customization,
         {
-          xml: updateOdd(state.localsource, state.customization),
+          updatedXml: updateOdd(state.localsource, state.customization),
           lastUpdated: Date.now()
         })
       return Object.assign({}, state, {customization: xml})
     case EXPORT_ODD:
-      fileSaver.saveAs(new Blob([state.customization.xml], {'type': 'text\/xml'}), 'new_odd.xml')
+      const toExport = state.customization.updatedXml ? state.customization.updatedXml : state.customization.xml
+      fileSaver.saveAs(new Blob([toExport], {'type': 'text\/xml'}), 'new_odd.xml')
       return state
     case EXPORT_SCHEMA:
       postToOxGarage(state.customization.xml, oxgarage.compile).then((compiled) => {

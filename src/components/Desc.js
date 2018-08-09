@@ -177,9 +177,6 @@ export default class Desc extends Component {
                   $blockScrolling: Infinity
                 }}/>
             </div>
-            <div className="mdc-layout-grid__cell--span-1">
-              <i className="material-icons romajs-clickable" onClick={() => { this.props.delete(pos) }}>clear</i>
-            </div>
           </div>)
         })
       }
@@ -187,6 +184,13 @@ export default class Desc extends Component {
     </div>)
   }
 }
+
+// Omitting desc delete button for now until different languages get implemented.
+/*
+<div className="mdc-layout-grid__cell--span-1">
+  <i className="material-icons romajs-clickable" onClick={() => { this.props.delete(pos) }}>clear</i>
+</div>
+*/
 
 Desc.propTypes = {
   ident: PropTypes.string.isRequired,

@@ -13,13 +13,16 @@ export default class AltIdent extends Component {
       </div>
       <div className="mdc-layout-grid__cell--span-8">{
         this.props.altIdent.map((ai, pos) => {
-          return (<div key={`ai${pos}`}><div className="mdc-text-field mdc-text-field--upgraded">
-            <input autoFocus type="text" className="mdc-text-field__input" value={ai}
-              onChange={(e) => this.props.update(this.props.ident, e.target.value, pos)}/>
-            <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
-          </div>
-          <i className="material-icons romajs-clickable" onClick={() => { this.props.delete(this.props.ident, pos) }}>clear</i>
-          </div>)
+          if (!ai.deleted) {
+            return (<div key={`ai${pos}`}><div className="mdc-text-field mdc-text-field--upgraded">
+              <input autoFocus type="text" className="mdc-text-field__input" value={ai}
+                onChange={(e) => this.props.update(this.props.ident, e.target.value, pos)}/>
+              <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
+            </div>
+            <i className="material-icons romajs-clickable" onClick={() => { this.props.delete(this.props.ident, pos) }}>clear</i>
+            </div>)
+          }
+          return null
         })
       }
       <i className="material-icons romajs-clickable" onClick={() => {
