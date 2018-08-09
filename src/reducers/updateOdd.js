@@ -249,13 +249,12 @@ function updateElements(localsource, customization, odd) {
       // TODO: find a cleaner isomorphic solution
       const dummyEl = odd.createElement('temp')
       for (const whatChanged of el._changed) {
-        const change = el[whatChanged]
-        const local = localEl[whatChanged]
-        const elSpec = _getOrSetElementSpec(odd, el.ident)
+        let elSpec
         switch (whatChanged) {
           case 'desc':
           case 'altIdent':
-            if (!_areArraysEqual(change, local)) {
+            if (!_areArraysEqual(el[whatChanged], localEl[whatChanged])) {
+              elSpec = _getOrSetElementSpec(odd, el.ident)
               const docEls = elSpec.querySelectorAll(whatChanged)
               // create or replace descs. Determine mode.
               for (const [i, d] of el[whatChanged].entries()) {
@@ -285,6 +284,103 @@ function updateElements(localsource, customization, odd) {
               }
             }
             break
+          case 'attClasses':
+            const change = Array.from(el.classes.atts).sort()
+            const local = Array.from(localEl.classes.atts).sort()
+            if (!_areArraysEqual(change, local)) {
+              const added = change.filter(cl => local.indexOf(cl) === -1)
+              const removed = local.filter(cl => {
+                // Make sure the class isn't globally deleted.
+                if (change.indexOf(cl) === -1) {
+                  // This relies on truth-y and false-y values. watch out.
+                  return customization.classes.attributes.filter(cc => cc.ident === cl)[0]
+                } else return false
+              })
+
+              if (added.length > 0 || removed.length > 0) {
+                elSpec = _getOrSetElementSpec(odd, el.ident)
+                let classesEl = elSpec.querySelector('classes')
+                if (!classesEl) {
+                  classesEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'classes')
+                  // Place <classes> after documentation elements if present, or first.
+                  const lastDocEl = Array.from(elSpec.querySelectorAll('desc, gloss, altIdent, equiv')).pop()
+                  if (lastDocEl) {
+                    elSpec.insertBefore(classesEl, lastDocEl.nextSibling)
+                  } else {
+                    elSpec.insertBefore(classesEl, elSpec.firstChild)
+                  }
+                }
+                // Add
+                for (const cl of added) {
+                  const mOf = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'memberOf')
+                  mOf.setAttribute('key', cl)
+                  classesEl.appendChild(mOf)
+                }
+                // Remove
+                for (const cl of removed) {
+                  const mOf = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'memberOf')
+                  mOf.setAttribute('key', cl)
+                  mOf.setAttribute('mode', 'delete')
+                  classesEl.appendChild(mOf)
+                }
+              }
+            }
+            break
+          case 'attributes':
+            // const changedAtts = el.attributes.reduce((acc, att) => {
+            //   acc.push(att.ident)
+            //   return acc
+            // }, [])
+            const localAtts = localEl.attributes.reduce((acc, att) => {
+              acc.push(att.ident)
+              return acc
+            }, [])
+            for (const att of el.attributes) {
+              const toRemove = localAtts.indexOf(att.ident) !== -1 && att.mode === 'delete'
+              const toAdd = localAtts.indexOf(att.ident) === -1
+              if (toRemove || toAdd) {
+                elSpec = _getOrSetElementSpec(odd, el.ident)
+                let attList = elSpec.querySelector('attList')
+                if (!attList) {
+                  attList = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attList')
+                  // Place <attList> after documentation elements in right position
+                  /*
+                    ( model.glossLike | model.descLike )*,
+                    classes?,
+                    content?,
+                    valList?,
+                    constraintSpec*,
+                    --> attList?, <--
+                    ( model | modelGrp | modelSequence )*,
+                    exemplum*,
+                    remarks*,
+                    listRef*
+                  */
+                  const lastElBefore = Array.from(elSpec.querySelectorAll('desc, gloss, altIdent, equiv, classes, content, valList, constraintSpec')).pop()
+                  if (lastElBefore) {
+                    elSpec.insertBefore(attList, lastElBefore.nextSibling)
+                  } else {
+                    const firstElAfter = Array.from(elSpec.querySelectorAll('model, modelGrp, modelSequence, exemplum, remarks, listRef')).shift()
+                    if (firstElAfter) {
+                      elSpec.insertBefore(attList, firstElAfter)
+                    } else {
+                      elSpec.appendChild(attList)
+                    }
+                  }
+                }
+                // Add
+                if (toAdd) {
+                  const attDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
+                  attDef.setAttribute('ident', att.ident)
+                  attDef.setAttribute('mode', 'add')
+                  attDef.setAttribute('ns', att.ns)
+                  if (att.usage) {
+                    attDef.setAttribute('ns', att.ns)
+                  }
+                  attList.appendChild(attDef)
+                }
+              }
+            }
           default:
             false
         }

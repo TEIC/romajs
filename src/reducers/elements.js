@@ -37,6 +37,16 @@ function restoreClassAttributeDeletedOnClass(element, className, attName, locals
   })
 }
 
+function markChange(element, whatChanged) {
+  if (element._changed) {
+    const changes = new Set(element._changed)
+    changes.add(whatChanged)
+    element._changed = Array.from(changes)
+  } else {
+    element._changed = [whatChanged]
+  }
+}
+
 export function oddElements(state, action) {
   const newState = clone(state)
   const customizationObj = newState.customization
@@ -50,12 +60,7 @@ export function oddElements(state, action) {
           if (Array.isArray(m[action.docEl]) && action.index !== undefined) {
             m[action.docEl][action.index] = action.content
             m.mode = 'change'
-            if (m._changed) {
-              const changes = new Set(m._changed)
-              m._changed = Array.from(changes)
-            } else {
-              m._changed = [action.docEl]
-            }
+            markChange(m, action.docEl)
           } else {
             throw new ReducerException(`Description element content does not match ${action.content}.`)
           }
@@ -128,6 +133,7 @@ export function oddElements(state, action) {
           } else {
             m.attributes.push(newAttribute)
           }
+          markChange(m, 'attributes')
         }
       })
       return newState
@@ -197,6 +203,7 @@ export function oddElements(state, action) {
           // Make sure the request class is not already selected or inherited
           if (!hasClass(m, action.className)) {
             m.classes.atts.push(action.className)
+            markChange(m, 'attClasses')
           }
         }
       })
@@ -224,6 +231,7 @@ export function oddElements(state, action) {
               restoreClassAttributeDeletedOnClass(action.element, action.className, attName, localsource, customization)
             }
           }
+          markChange(m, 'attributes')
         }
       })
       return newState
@@ -245,6 +253,7 @@ export function oddElements(state, action) {
                 return true
               })
             }
+            markChange(m, 'attClasses')
           } else {
             // The class must be inherited, so remove all the attributes instead
             const customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
@@ -255,6 +264,7 @@ export function oddElements(state, action) {
             } else {
               throw new ReducerException(`Could not locate class ${action.className}.`)
             }
+            markChange(m, 'attributes')
           }
         }
       })
