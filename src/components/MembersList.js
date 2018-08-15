@@ -5,6 +5,31 @@ import FilterSearch from '../containers/FilterSearch'
 import Member from './Member'
 
 export default class MembersList extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { windowWidth: 0 }
+  }
+
+  componentWillMount() {
+    this.udpatedWidth()
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', () => {this.udpatedWidth()})
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.udpatedWidth)
+  }
+
+  udpatedWidth() {
+    // Set max width to document size
+    const cw = document.documentElement.clientWidth
+    this.setState({
+      windowWidth: cw
+    })
+  }
+
   render() {
     let content = (
       <figure>
@@ -32,7 +57,7 @@ export default class MembersList extends Component {
           <FilterSearch/>
         </section>
       </div>,
-      <main key="main">
+      <main key="main" style={{maxWidth: this.state.windowWidth}}>
         <ul key="list" className="mdc-list mdc-list--two-line romajs-itemlist">
           {this.props.elements.map(element => {
             if (element.visible) {

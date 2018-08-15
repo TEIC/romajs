@@ -126,6 +126,9 @@ main {
   .mdl-chip__action {
     margin: 0 0 10px 0;
   }
+  .mdc-text-field__input {
+    padding: 0px;
+  }
 }
 
 /* ITEMS */
@@ -137,6 +140,7 @@ main {
   .mdc-list-item__end-detail {
     margin-right: 15px;
     width: 10%;
+    min-width: 160px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

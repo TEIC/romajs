@@ -14,7 +14,7 @@ export default class Header extends Component {
       <header className="mdc-toolbar mdc-elevation--z4 mdc-toolbar--fixed romajs-toolbar">
         <div className="mdc-toolbar__row">
           <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-            <span className="mdc-toolbar__title">Roma - ODDs customization</span>
+            <span className="mdc-toolbar__title">Roma - ODD customization</span>
           </section>
           {download}
         </div>
