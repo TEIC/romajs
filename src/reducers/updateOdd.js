@@ -42,7 +42,7 @@ function mergeModules(localsource, customization, odd) {
       }
 
       if (moduleElementsCount === selectedElementsCount) {
-        const moduleEl = odd.createElement('moduleRef')
+        const moduleEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'moduleRef')
         moduleEl.setAttribute('key', m.ident)
         schemaSpec.insertBefore(moduleEl, oddModules[0])
       }
@@ -192,7 +192,7 @@ function mergeElements(localsource, customization, odd) {
         }
       } else {
         // create moduleRef
-        const newModuleRef = odd.createElement('moduleRef')
+        const newModuleRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'moduleRef')
         newModuleRef.setAttribute('key', mod)
         newModuleRef.setAttribute('include', el)
         schemaSpec.insertBefore(newModuleRef, moduleRefs[0])
