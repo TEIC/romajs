@@ -7,6 +7,22 @@ import { MDCSelect } from '@material/select'
 export default class Attribute extends Component {
   componentDidMount() {
     const select = new MDCSelect(this.refs.usage)
+    switch (this.props.attribute.usage) {
+      case 'def':
+        select.foundation_.setSelectedIndex(0)
+        break
+      case 'req':
+        select.foundation_.setSelectedIndex(1)
+        break
+      case 'rec':
+        select.foundation_.setSelectedIndex(2)
+        break
+      case 'opt':
+        select.foundation_.setSelectedIndex(3)
+        break
+      default:
+        select.foundation_.setSelectedIndex(0)
+    }
     select.listen('MDCSelect:change', () => {
       let value = 'def'
       switch (select.value) {
@@ -30,10 +46,6 @@ export default class Attribute extends Component {
   }
 
   render() {
-    const def = this.props.attribute.usage === 'def'
-    const req = this.props.attribute.usage === 'req'
-    const rec = this.props.attribute.usage === 'rec'
-    const opt = this.props.attribute.usage === 'opt'
     return (<div className="mdc-layout-grid">
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">
@@ -51,16 +63,16 @@ export default class Attribute extends Component {
             </div>
             <div className="mdc-menu mdc-select__menu">
               <ul className="mdc-list mdc-menu__items">
-                <li className="mdc-list-item" role="option" aria-selected={def} tabIndex="0">
+                <li className="mdc-list-item" role="option" tabIndex="0">
                   Default (optional)
                 </li>
-                <li className="mdc-list-item" role="option" aria-selected={req} tabIndex="0">
+                <li className="mdc-list-item" role="option" tabIndex="1">
                   Required
                 </li>
-                <li className="mdc-list-item" role="option" aria-selected={rec} tabIndex="0">
+                <li className="mdc-list-item" role="option" tabIndex="2">
                   Recommended
                 </li>
-                <li className="mdc-list-item" role="option" aria-selected={opt} tabIndex="0">
+                <li className="mdc-list-item" role="option" tabIndex="3">
                   Optional
                 </li>
               </ul>

@@ -63,7 +63,7 @@ export default class Element extends Component {
         </li>
       </ul>
     </div>)
-    // TODO: This is uly! Re-organize this into proper components
+    // TODO: This is ugly! Re-organize this into proper components
     if (this.props.section) {
       arrow = <i className="material-icons">keyboard_arrow_left</i>
     }

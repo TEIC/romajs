@@ -90,4 +90,30 @@ describe('ODD attributes operation reducers', () => {
     expect(state.odd.customization.json.elements.filter(x => (x.ident === 'list'))[0]
       .attributes.filter(x => (x.ident === 'type'))[0].usage).toEqual('opt')
   })
+
+  it('should handle SET_USAGE (inherited att)', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CHANGE_CLASS_ATTRIBUTE',
+      element: 'title',
+      className: 'att.canonical',
+      attName: 'key'
+    })
+    const state = romajsApp(firstState, {
+      type: 'SET_USAGE',
+      member: 'title',
+      memberType: 'element',
+      attr: 'key',
+      usage: 'rec'
+    })
+    expect(state.odd.customization.json.elements.filter(x => (x.ident === 'title'))[0]
+      .attributes.filter(x => (x.ident === 'key'))[0].usage).toEqual('rec')
+  })
 })

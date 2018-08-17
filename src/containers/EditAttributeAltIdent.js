@@ -9,11 +9,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    update: (member, content, index) => {
-      dispatch(updateAttributeDocs(ownProps.member.ident, 'element', ownProps.attribute.ident, 'altIdent', content, index))
+    update: (ident, content, index) => {
+      dispatch(updateAttributeDocs(ownProps.member.ident, 'element', ident, 'altIdent', content, index))
     },
-    delete: (member, index) => {
-      dispatch(deleteAttributeDocs(ownProps.member.ident, 'element', ownProps.attribute.ident, 'altIdent', index))
+    delete: (ident, index) => {
+      dispatch(deleteAttributeDocs(ownProps.member.ident, 'element', ident, 'altIdent', index))
     }
   }
 }

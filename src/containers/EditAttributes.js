@@ -51,7 +51,7 @@ const mapStateToProps = (state, ownProps) => {
               curClass.deletedAttributes.add(att.ident)
             } else if (redefinedAtt.mode === 'change' || redefinedAtt.mode === 'add') {
               curClass.deletedAttributes.delete(att.ident)
-              if (redefinedAtt.changed === undefined || redefinedAtt.changed === true) {
+              if (redefinedAtt._changed === undefined || redefinedAtt._changed.length > 0) {
                 att.overridden = true
               }
             }

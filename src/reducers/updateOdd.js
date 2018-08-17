@@ -68,12 +68,12 @@ function mergeElements(localsource, customization, odd) {
   // changes in element selection via moduleRef or elementRef. It applies those changes and returns a new ODD.
   // NB It operates on the FIRST schemaSpec; this could be an issue.
   const schemaSpec = odd.querySelector('schemaSpec')
-  const moduleRefs = schemaSpec.querySelectorAll('moduleRef')
+  const moduleRefs = Array.from(schemaSpec.querySelectorAll('moduleRef'))
   const elementSpecs = schemaSpec.querySelectorAll('elementSpec')
   const elementRefs = schemaSpec.querySelectorAll('elementRef')
 
   // Get all elements from the XML ODD
-  let allOddElements = Array.from(moduleRefs).reduce((includedElements, mod) => {
+  let allOddElements = moduleRefs.reduce((includedElements, mod) => {
     const moduleName = mod.getAttribute('key')
     const include = mod.getAttribute('include')
     const except = mod.getAttribute('except')
@@ -130,7 +130,7 @@ function mergeElements(localsource, customization, odd) {
       console.log('removing ' + el)
       const mod = localsource.elements.filter(x => (x.ident === el))[0].module
       // adjust @include or @except
-      const moduleRef = Array.from(moduleRefs).filter(m => (m.getAttribute('key') === mod))[0]
+      const moduleRef = moduleRefs.filter(m => (m.getAttribute('key') === mod))[0]
       const elementRef = Array.from(elementRefs).filter(er => (er.getAttribute('key') === el))[0]
       const elementSpec = Array.from(elementSpecs).filter(er => (er.getAttribute('ident') === el))[0]
 
@@ -169,7 +169,7 @@ function mergeElements(localsource, customization, odd) {
       console.log('adding ' + el)
       const mod = localsource.elements.filter(x => (x.ident === el))[0].module
       // adjust @include or @except
-      const moduleRef = Array.from(moduleRefs).filter(m => (m.getAttribute('key') === mod))[0]
+      const moduleRef = moduleRefs.filter(m => (m.getAttribute('key') === mod))[0]
       const elementRef = Array.from(elementRefs).filter(er => (er.getAttribute('key') === el))[0]
       const elementSpec = Array.from(elementSpecs).filter(er => (er.getAttribute('ident') === el))[0]
 
@@ -196,6 +196,8 @@ function mergeElements(localsource, customization, odd) {
         newModuleRef.setAttribute('key', mod)
         newModuleRef.setAttribute('include', el)
         schemaSpec.insertBefore(newModuleRef, moduleRefs[0])
+        // add to list of existing moduleRefs
+        moduleRefs.unshift(newModuleRef)
       }
       // remove elementRef
       if (elementRef) {
@@ -225,7 +227,22 @@ function updateElements(localsource, customization, odd) {
   // real change wouldn't really have happened.
 
   function _areArraysEqual(a, b) {
-    return a.length === b.length && a.every((value, index) => value === b[index])
+    return a.length === b.length && a.every((value, index) => {
+      // When checking descs, ignore versionDate
+      const match = /[dD]esc.*?versionDate="[^""]+"/.exec(value)
+      if (match) {
+        return value.replace(/versionDate="[^""]+"/, '') === b[index].replace(/versionDate="[^""]+"/, '')
+      }
+      return value === b[index]
+    })
+  }
+
+  function _areDocElsEqual(a, b) {
+    const match = /[dD]esc.*?versionDate="[^""]+"/.exec(a)
+    if (match) {
+      return a.replace('xmlns="http://www.tei-c.org/ns/1.0"', '').replace(/versionDate="[^""]+"/, '').replace(/\s+/g, ' ') === b.replace('xmlns="http://www.tei-c.org/ns/1.0"', '').replace(/versionDate="[^""]+"/, '').replace(/\s+/g, ' ')
+    }
+    return a === b
   }
 
   function _getOrSetElementSpec(_odd, ident) {
@@ -241,29 +258,95 @@ function updateElements(localsource, customization, odd) {
     return elSpec
   }
 
+  function _insertBetween(parent, element, before, after) {
+    const lastElBefore = Array.from(parent.querySelectorAll(before)).pop()
+    if (lastElBefore) {
+      parent.insertBefore(element, lastElBefore.nextSibling)
+    } else {
+      const firstElAfter = Array.from(parent.querySelectorAll(after)).shift()
+      if (firstElAfter) {
+        parent.insertBefore(element, firstElAfter)
+      } else {
+        parent.appendChild(element)
+      }
+    }
+  }
+
+  function _changeAttr(att, localAtt, attDef) {
+    for (const whatChanged of att._changed) {
+      switch (whatChanged) {
+        case 'desc':
+        case 'altIdent':
+          for (const [i, d] of att[whatChanged].entries()) {
+            const docEl = attDef.querySelector(`${whatChanged}:nth-child(${i + 1})`)
+            if (!_areDocElsEqual(d, localAtt[whatChanged][i])) {
+              // Change is differnet from the local source: apply changes
+              if (d.deleted) {
+                // Something got deleted, so apply
+                docEl.parentNode.removeChild(docEl)
+                continue
+              }
+              let newDocEl
+              // If the state keeps the full element as string (e.g. uses ACE editor), parse it.
+              if (d.startsWith('<')) {
+                const dummyEl = odd.createElement('temp')
+                dummyEl.innerHTML = d
+                newDocEl = dummyEl.firstChild
+                newDocEl.removeAttribute('xmlns')
+                dummyEl.firstChild.remove()
+              } else {
+                newDocEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', whatChanged)
+                const text = odd.createTextNode(d)
+                newDocEl.appendChild(text)
+              }
+              if (docEl) {
+                attDef.replaceChild(newDocEl, docEl)
+              } else {
+                attDef.appendChild(newDocEl)
+              }
+            } else if (!_areDocElsEqual(d !== docEl.outerHTML)) {
+              // If we're returning to local source values, remove customization operation
+              attDef.parentNode.removeChild(attDef)
+            }
+          }
+          break
+        case 'usage':
+        case 'ns':
+          if (att[whatChanged] !== localAtt[whatChanged]) {
+            attDef.setAttribute(whatChanged, att[whatChanged])
+          } else if (attDef.getAttribute(whatChanged) && (att[whatChanged] !== attDef.getAttribute(whatChanged))) {
+            // returning to local values means that customization is no longer needed!
+            attDef.removeAttribute(whatChanged)
+          }
+          break
+        default:
+      }
+    }
+  }
+
   for (const el of customization.elements) {
     if (el._changed) {
       // Check structures against localsource
       const localEl = localsource.elements.filter(le => le.ident === el.ident)[0]
       // Create a dummy element for isomorphic conversion of serialized XML from the state to actual XML
       // TODO: find a cleaner isomorphic solution
+      // TODO: merge with attribute desc handling
       const dummyEl = odd.createElement('temp')
       for (const whatChanged of el._changed) {
         let elSpec
         switch (whatChanged) {
           case 'desc':
           case 'altIdent':
-            if (!_areArraysEqual(el[whatChanged], localEl[whatChanged])) {
-              elSpec = _getOrSetElementSpec(odd, el.ident)
-              const docEls = elSpec.querySelectorAll(whatChanged)
-              // create or replace descs. Determine mode.
-              for (const [i, d] of el[whatChanged].entries()) {
+            elSpec = _getOrSetElementSpec(odd, el.ident)
+            for (const [i, d] of el[whatChanged].entries()) {
+              const docEl = elSpec.querySelector(`${whatChanged}:nth-child(${i + 1})`)
+              if (!_areDocElsEqual(d, localEl[whatChanged][i])) {
+                // Change is differnet from the local source: apply changes
                 if (d.deleted) {
                   // Something got deleted, so apply
-                  docEls[i].parentNode.removeChild(docEls[i])
+                  docEl.parentNode.removeChild(docEl)
                   continue
                 }
-                const docEl = docEls[i]
                 let newDocEl
                 // If the state keeps the full element as string (e.g. uses ACE editor), parse it.
                 if (d.startsWith('<')) {
@@ -281,6 +364,9 @@ function updateElements(localsource, customization, odd) {
                 } else {
                   elSpec.appendChild(newDocEl)
                 }
+              } else if (!_areDocElsEqual(d !== docEl.outerHTML)) {
+                // If we're returning to local source values, remove customization operation
+                elSpec.parentNode.removeChild(elSpec)
               }
             }
             break
@@ -336,48 +422,100 @@ function updateElements(localsource, customization, odd) {
               return acc
             }, [])
             for (const att of el.attributes) {
-              const toRemove = localAtts.indexOf(att.ident) !== -1 && att.mode === 'delete'
-              const toAdd = localAtts.indexOf(att.ident) === -1
-              if (toRemove || toAdd) {
+              const isDefined = localAtts.indexOf(att.ident) !== -1
+              const toRemove = isDefined && att.mode === 'delete'
+              const toChange = (att.mode === 'change' || (att.mode === 'add' && Boolean(att._changed)))
+              const toAdd = !isDefined && !toChange
+              const toRestore = isDefined && !toRemove && att.mode !== 'change'
+
+              if (toRemove || toChange || toAdd) {
                 elSpec = _getOrSetElementSpec(odd, el.ident)
                 let attList = elSpec.querySelector('attList')
                 if (!attList) {
                   attList = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attList')
                   // Place <attList> after documentation elements in right position
-                  /*
-                    ( model.glossLike | model.descLike )*,
-                    classes?,
-                    content?,
-                    valList?,
-                    constraintSpec*,
-                    --> attList?, <--
-                    ( model | modelGrp | modelSequence )*,
-                    exemplum*,
-                    remarks*,
-                    listRef*
-                  */
-                  const lastElBefore = Array.from(elSpec.querySelectorAll('desc, gloss, altIdent, equiv, classes, content, valList, constraintSpec')).pop()
-                  if (lastElBefore) {
-                    elSpec.insertBefore(attList, lastElBefore.nextSibling)
-                  } else {
-                    const firstElAfter = Array.from(elSpec.querySelectorAll('model, modelGrp, modelSequence, exemplum, remarks, listRef')).shift()
-                    if (firstElAfter) {
-                      elSpec.insertBefore(attList, firstElAfter)
-                    } else {
-                      elSpec.appendChild(attList)
-                    }
-                  }
+                  _insertBetween(
+                    elSpec, attList,
+                    'desc, gloss, altIdent, equiv, classes, content, valList, constraintSpec',
+                    'model, modelGrp, modelSequence, exemplum, remarks, listRef')
                 }
-                // Add
                 if (toAdd) {
                   const attDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
                   attDef.setAttribute('ident', att.ident)
-                  attDef.setAttribute('mode', 'add')
-                  attDef.setAttribute('ns', att.ns)
-                  if (att.usage) {
+                  // The mode is based on the customization:
+                  // e.g. we may be "adding" an addDef to delete an attribute defined in a class
+                  // Default is add
+                  attDef.setAttribute('mode', att.mode || 'add')
+                  if (att.ns) {
                     attDef.setAttribute('ns', att.ns)
                   }
+                  if (!att.mode || att.mode === 'add') {
+                    if (att.usage) {
+                      attDef.setAttribute('usage', att.usage)
+                    }
+                    if (att.desc.length > 0) {
+                      for (const desc of att.desc) {
+                        dummyEl.innerHTML = desc
+                        const docEl = dummyEl.firstChild
+                        docEl.removeAttribute('xmlns')
+                        dummyEl.firstChild.remove()
+                        attDef.insertBefore(docEl, attDef.firstChild)
+                      }
+                    }
+                    if (att.valDesc.length > 0) {
+                      for (const valDesc of att.valDesc) {
+                        dummyEl.innerHTML = valDesc
+                        const docEl = dummyEl.firstChild
+                        docEl.removeAttribute('xmlns')
+                        dummyEl.firstChild.remove()
+                        _insertBetween(
+                          attDef, docEl,
+                          'desc, gloss, altIdent, equiv, datatype, constraintSpec, defaultVal',
+                          'exemplum, remarks')
+                      }
+                    }
+                  }
                   attList.appendChild(attDef)
+                } else if (toRemove) {
+                  let attDef = attList.querySelector(`attDef[ident='${att.ident}'][mode='delete']`)
+                  if (!attDef) {
+                    attDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
+                    attDef.setAttribute('ident', att.ident)
+                    attDef.setAttribute('mode', 'delete')
+                    if (att.ns) {
+                      attDef.setAttribute('ns', att.ns)
+                    }
+                    attList.appendChild(attDef)
+                  }
+                } else if (toChange) {
+                  // TODO CONTINUE HERE. Cover these cases:
+                  // 1. attribute is defined on local element (isDefined && att.mode='change')
+                  //    OK 1a. there are already some changes (attDef exists in customization) and there are new adjustments (att._changed)
+                  //    OK 1b. this is the first time there are changes (no attDef and att._changed)
+                  // 2. attribute is NOT defined on local element (!isDefined && att.mode='change')
+                  //    OK 2a. the attribute is already defined in customization as an attribute on the element (att.mode = 'add') and needs to be updated (attDef and att._changed)
+                  //    2b. the attribute comes from a class and there are already some updates (attDef and att._fromClass)
+                  //    2c. the attribute comes from a class and there are no changes yet (!attDef, att._fromClass)
+                  if (isDefined) {
+                    const attDef = attList.querySelector(`attDef[ident='${att.ident}']`)
+                    if (attDef) {
+                      // there are already some changes from the customization and there are new adjustments
+                      const localAtt = localEl.attributes.filter(la => att.ident === la.ident)[0]
+                      _changeAttr(att, localAtt, attDef)
+                    }
+                  }
+                }
+              } else if (toRestore) {
+                const attDef = odd.querySelector(`elementSpec[ident='${el.ident}'] attDef[ident='${att.ident}']`)
+                const attList = attDef.parentNode
+                attList.removeChild(attDef)
+                // clean up
+                if (attList.children.length === 0) {
+                  elSpec = attList.parentNode
+                  elSpec.removeChild(attList)
+                  if (elSpec.children.length === 0) {
+                    elSpec.parentNode.removeChild(elSpec)
+                  }
                 }
               }
             }

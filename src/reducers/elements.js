@@ -118,12 +118,17 @@ export function oddElements(state, action) {
           valDesc: [],
           mode: 'add',
           ns: 'http://example.com/newNS',
-          usage: ''
+          usage: '',
+          _isNew: true
         }
       } else {
         newAttribute = clone(action.attribute)
+        newAttribute._isNew = true
         if (!newAttribute.valDesc) {
           newAttribute.valDesc = []
+        }
+        if (!newAttribute.altIdent) {
+          newAttribute.altIdent = []
         }
       }
       customization.elements.forEach(m => {
@@ -141,12 +146,18 @@ export function oddElements(state, action) {
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
           if (m.attributes) {
-            m.attributes = m.attributes.map(a => {
+            m.attributes = m.attributes.reduce((acc, a) => {
               if (a.ident === action.attribute) {
-                a.mode = 'delete'
+                if (!a._isNew) {
+                  a.mode = 'delete'
+                  acc.push(a)
+                }
+              } else {
+                acc.push(a)
               }
-              return a
-            })
+              return acc
+            }, [])
+            markChange(m, 'attributes')
           }
         }
       })
@@ -176,6 +187,7 @@ export function oddElements(state, action) {
               return a
             })
           }
+          markChange(m, 'attributes')
         }
       })
       return newState
@@ -299,6 +311,7 @@ export function oddElements(state, action) {
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
           deleteAttribute(m, attribute)
+          markChange(m, 'attributes')
         }
       })
       return newState
@@ -307,7 +320,10 @@ export function oddElements(state, action) {
       const attributeToChange = customClass.attributes.filter(a => a.ident === action.attName)[0]
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
-          const newAtt = Object.assign({}, attributeToChange, {mode: 'change', changed: false})
+          // let newAtt
+          // // get attribute from customization if it exists
+          // if ()
+          const newAtt = Object.assign({}, attributeToChange, {mode: 'change', changed: false, _fromClass: action.className})
           if (!m.attributes) {
             m.attributes = [newAtt]
           } else {
@@ -316,6 +332,7 @@ export function oddElements(state, action) {
               if (att.ident === attributeToChange.ident) {
                 found = true
                 att.mode = 'change'
+                att._fromClass = action.className
               }
             })
             if (!found) {

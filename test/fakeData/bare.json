@@ -2,7 +2,7 @@
   { "title" : "TEI Absolutely Bare",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2018-07-25T13:16:57Z",
+    "date" : "2018-08-17T18:59:25Z",
     "modules" : 
     [ 
       { "ident" : "core",
@@ -802,7 +802,7 @@
             "ident" : "type",
             "mode" : "change",
             "ns" : "",
-            "usage" : "",
+            "usage" : "opt",
             "desc" : 
             [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-07-29\" xml:lang=\"en\">describes the nature of the items in the list.<\/desc>" ],
             "shortDesc" : "describes the nature of the items in the list.",
@@ -2199,7 +2199,7 @@
               "ident" : "key",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">provides an externally-defined means of identifying the entity (or entities) being\n        named, using a coded value of some kind.<\/desc>" ],
               "shortDesc" : "provides an externally-defined means of identifying the entity (or entities) being\n        named, using a coded value of some kind.",
@@ -2214,7 +2214,7 @@
               "ident" : "ref",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">provides an explicit means of locating a full definition or identity for the entity being named by\n        means of one or more URIs.<\/desc>" ],
               "shortDesc" : "(reference) provides an explicit means of locating a full definition or identity for the entity being named by\n        means of one or more URIs.",
@@ -2246,7 +2246,7 @@
               "ident" : "calendar",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-25\" xml:lang=\"en\">indicates the system or calendar to which the date represented by the content of this\n        element belongs.<\/desc>" ],
               "shortDesc" : "indicates the system or calendar to which the date represented by the content of this\n        element belongs.",
@@ -2261,7 +2261,7 @@
               "ident" : "period",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-25\" xml:lang=\"en\">supplies a pointer to some location defining a named\n        period of time within which the datable item is understood to\n        have occurred.<\/desc>" ],
               "shortDesc" : "supplies a pointer to some location defining a named\n        period of time within which the datable item is understood to\n        have occurred.",
@@ -2288,7 +2288,7 @@
               "ident" : "when",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-07-23\" xml:lang=\"en\">supplies the value of the date or time in a standard form,\n        e.g. yyyy-mm-dd.<\/desc>" ],
               "shortDesc" : "supplies the value of the date or time in a standard form,\n        e.g. yyyy-mm-dd.",
@@ -2303,7 +2303,7 @@
               "ident" : "notBefore",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-09\" xml:lang=\"en\">specifies the earliest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.<\/desc>" ],
               "shortDesc" : "specifies the earliest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.",
@@ -2318,7 +2318,7 @@
               "ident" : "notAfter",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-09\" xml:lang=\"en\">specifies the latest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.<\/desc>" ],
               "shortDesc" : "specifies the latest possible date for the event in\n        standard form, e.g. yyyy-mm-dd.",
@@ -2333,7 +2333,7 @@
               "ident" : "from",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-02-10\" xml:lang=\"en\">indicates the starting point of the period in standard form, e.g. yyyy-mm-dd.<\/desc>" ],
               "shortDesc" : "indicates the starting point of the period in standard form, e.g. yyyy-mm-dd.",
@@ -2348,7 +2348,7 @@
               "ident" : "to",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-02-10\" xml:lang=\"en\">indicates the ending point of the period in standard\n        form, e.g. yyyy-mm-dd.<\/desc>" ],
               "shortDesc" : "indicates the ending point of the period in standard\n        form, e.g. yyyy-mm-dd.",
@@ -2375,7 +2375,7 @@
               "ident" : "default",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">indicates whether or not this element is selected by default when\nits parent is selected.<\/desc>" ],
               "shortDesc" : "indicates whether or not this element is selected by default when\nits parent is selected.",
@@ -2463,7 +2463,7 @@
               "ident" : "xml:id",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">provides a unique identifier for the element bearing the attribute.<\/desc>" ],
               "shortDesc" : "(identifier) provides a unique identifier for the element bearing the attribute.",
@@ -2478,7 +2478,7 @@
               "ident" : "n",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">gives a number (or other label) for an element, which is not necessarily unique within\n        the document.<\/desc>" ],
               "shortDesc" : "(number) gives a number (or other label) for an element, which is not necessarily unique within\n        the document.",
@@ -2493,7 +2493,7 @@
               "ident" : "xml:lang",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-01-07\" xml:lang=\"en\">indicates the language of the element content using a <soCalled>tag<\/soCalled> generated\n        according to <ref target=\"http:\/\/www.rfc-editor.org\/rfc\/bcp\/bcp47.txt\">BCP 47<\/ref>.<\/desc>" ],
               "shortDesc" : "(language) indicates the language of the element content using a tag generated\n        according to BCP 47.",
@@ -2525,7 +2525,7 @@
               "ident" : "rend",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">indicates how the element in question was rendered or presented in the source text.<\/desc>" ],
               "shortDesc" : "(rendition) indicates how the element in question was rendered or presented in the source text.",
@@ -2540,7 +2540,7 @@
               "ident" : "style",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-10-05\" xml:lang=\"en\">contains an expression in some formal style definition language\nwhich defines the rendering or presentation\nused for this element in the source text<\/desc>" ],
               "shortDesc" : "contains an expression in some formal style definition language\nwhich defines the rendering or presentation\nused for this element in the source text",
@@ -2555,7 +2555,7 @@
               "ident" : "rendition",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-09-22\" xml:lang=\"en\">points to a description of the rendering or presentation used for this element in the\n        source text.<\/desc>" ],
               "shortDesc" : "points to a description of the rendering or presentation used for this element in the\n        source text.",
@@ -2587,7 +2587,7 @@
               "ident" : "cert",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">signifies the degree of certainty associated with the intervention or interpretation.<\/desc>" ],
               "shortDesc" : "(certainty) signifies the degree of certainty associated with the intervention or interpretation.",
@@ -2602,7 +2602,7 @@
               "ident" : "resp",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-11-02\" xml:lang=\"en\">indicates the agency responsible for the intervention or interpretation, for example an\n        editor or transcriber.<\/desc>" ],
               "shortDesc" : "(responsible party) indicates the agency responsible for the intervention or interpretation, for example an\n        editor or transcriber.",
@@ -2629,7 +2629,7 @@
               "ident" : "source",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2010-05-09\" xml:lang=\"en\">specifies the source from which some aspect of\n        this element is drawn.<\/desc>" ],
               "shortDesc" : "specifies the source from which some aspect of\n        this element is drawn.",
@@ -2661,7 +2661,7 @@
               "ident" : "role",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-10-12\" xml:lang=\"en\">may be used to specify further information about the entity referenced by\nthis name in the form of a set of whitespace-separated values, for example the occupation of a person, or the status of a place.<\/desc>" ],
               "shortDesc" : "may be used to specify further information about the entity referenced by\nthis name in the form of a set of whitespace-separated values, for example the occupation of a person, or the status of a place.",
@@ -2676,7 +2676,7 @@
               "ident" : "nymRef",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-05-22\" xml:lang=\"en\">provides a means of locating the canonical form\n      (<term>nym<\/term>) of the names associated with the object\n       named by\n      the element bearing it.<\/desc>" ],
               "shortDesc" : "(reference to the canonical name) provides a means of locating the canonical form\n      (nym) of the names associated with the object\n       named by\n      the element bearing it.",
@@ -2703,7 +2703,7 @@
               "ident" : "place",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "rec",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-10-07\" xml:lang=\"en\">specifies where this item is placed.<\/desc>" ],
               "shortDesc" : "specifies where this item is placed.",
@@ -2823,7 +2823,7 @@
               "ident" : "sortKey",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2011-11-06\" xml:lang=\"en\">supplies the sort key for this element in an index, list or group which contains it.<\/desc>" ],
               "shortDesc" : "supplies the sort key for this element in an index, list or group which contains it.",
@@ -2850,7 +2850,7 @@
               "ident" : "type",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">characterizes the element in some sense, using any convenient\n classification scheme or typology.<\/desc>" ],
               "shortDesc" : "characterizes the element in some sense, using any convenient\n classification scheme or typology.",
@@ -2865,7 +2865,7 @@
               "ident" : "subtype",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">provides a sub-categorization of the element, if needed<\/desc>" ],
               "shortDesc" : "provides a sub-categorization of the element, if needed",
@@ -2897,7 +2897,7 @@
               "ident" : "hand",
               "mode" : "add",
               "ns" : "",
-              "usage" : "",
+              "usage" : "opt",
               "desc" : 
               [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-02-19\" xml:lang=\"en\">points to a <gi>handNote<\/gi> element describing the hand considered responsible for the\n  \t\t\ttextual content of the element concerned.<\/desc>" ],
               "shortDesc" : "points to a handNote element describing the hand considered responsible for the\n  \t\t\ttextual content of the element concerned.",
