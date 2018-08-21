@@ -32,7 +32,7 @@ export default class Attributes extends Component {
               hide={() => {this.setState({show: false})}} />
             <ul className="mdc-list" key="elatts">{
               this.props.element.attributes.map((a, pos) => {
-                if (a.mode === 'add' || (a.mode === 'delete' && a.onElement)) {
+                if (a.mode === 'add' || (a.mode === 'delete' && a.onElement) || (a.mode === 'change' && a._changedOnElement)) {
                   const deleted = a.deleted ? 'romajs-att-deleted' : ''
                   let addOrRemove
                   if (a.deleted) {
@@ -45,7 +45,7 @@ export default class Attributes extends Component {
                   return (<li key={`c${pos}`} className="mdc-list-item">
                     <span className="mdc-list-item__graphic">
                       <i className={`material-icons romajs-clickable ${deleted}`}
-                        onClick={() => this.props.navigateTo(`${this.props.path}/${a.ident}`)}>
+                        onClick={() => this.props.editAttribute(this.props.element.ident, a.ident, this.props.path)}>
                         mode_edit</i>
                       {addOrRemove}
                     </span>
@@ -118,7 +118,7 @@ export default class Attributes extends Component {
                     return (<li key={`c${pos}`} className={`mdc-list-item ${overridden}`}>
                       <span className="mdc-list-item__graphic">
                         <i className={`material-icons romajs-clickable ${deleted}`}
-                          onClick={() => this.props.editAttribute(this.props.element.ident, cl.ident, a.ident, this.props.path)}>mode_edit</i>
+                          onClick={() => this.props.editClassAttribute(this.props.element.ident, cl.ident, a.ident, this.props.path)}>mode_edit</i>
                         {addOrRemove}
                       </span>
                       <span className={`mdc-list-item__text ${deleted} ${noeffect}`}>
@@ -144,6 +144,7 @@ Attributes.propTypes = {
   attribute: PropTypes.string,
   attsfromClasses: PropTypes.array,
   editAttribute: PropTypes.func.isRequired,
+  editClassAttribute: PropTypes.func.isRequired,
   deleteElementAttribute: PropTypes.func.isRequired,
   restoreElementAttribute: PropTypes.func.isRequired,
   deleteElementAttributeClass: PropTypes.func.isRequired,

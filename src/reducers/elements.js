@@ -6,7 +6,7 @@ import {
   ADD_ELEMENT_ATTRIBUTE, DELETE_ELEMENT_ATTRIBUTE, RESTORE_ELEMENT_ATTRIBUTE,
   ADD_ELEMENT_ATTRIBUTE_CLASS, RESTORE_ELEMENT_ATTRIBUTE_CLASS, DELETE_ELEMENT_ATTRIBUTE_CLASS,
   RESTORE_CLASS_ATTRIBUTE, RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS,
-  USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE, CHANGE_CLASS_ATTRIBUTE
+  USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE, CHANGE_CLASS_ATTRIBUTE, CHANGE_ELEMENT_ATTRIBUTE
 } from '../actions/elements'
 
 function deleteAttribute(m, attribute) {
@@ -320,9 +320,6 @@ export function oddElements(state, action) {
       const attributeToChange = customClass.attributes.filter(a => a.ident === action.attName)[0]
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
-          // let newAtt
-          // // get attribute from customization if it exists
-          // if ()
           const newAtt = Object.assign({}, attributeToChange, {mode: 'change', changed: false, _fromClass: action.className})
           if (!m.attributes) {
             m.attributes = [newAtt]
@@ -339,6 +336,33 @@ export function oddElements(state, action) {
               m.attributes.push(newAtt)
             }
           }
+        }
+      })
+      return newState
+    case CHANGE_ELEMENT_ATTRIBUTE:
+      customization.elements.forEach(m => {
+        if (m.ident === action.element) {
+          const localAtt = localsource.elements.filter((e) => action.element === e.ident)[0].attributes
+            .filter((a) => action.attName === a.ident)[0]
+          const newAtt = Object.assign({}, localAtt, {mode: 'change', changed: false, _changedOnElement: true})
+          let found = false
+          if (m.attributes) {
+            m.attributes.forEach(att => {
+              if (att.ident === action.attName) {
+                found = true
+                // If this element is not defined on localsource, the mode needs to stay 'add'
+                // In all other cases we need to signal a change from the localsource
+                if (localAtt) att.mode = 'change'
+                att._changedOnElement = true
+              }
+            })
+            if (!found) {
+              m.attributes.push(newAtt)
+            }
+          } else {
+            m.attributes = [newAtt]
+          }
+          markChange(m, 'attributes')
         }
       })
       return newState

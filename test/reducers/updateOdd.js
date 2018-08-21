@@ -749,26 +749,44 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)
 
+    // Change ODD data for testing
+    const testXml = global.usejsdom(customizationXML)
+    const attList = testXml.querySelector('elementSpec[ident="title"] attList')
+    attList.parentNode.removeChild(attList)
+    const testXmlString = testXml.documentElement.outerHTML
+
+    // Update JSON data accordingly
+    customJson.elements = customJson.elements.map(el => {
+      if (el.ident === 'title') {
+        el.attributes = []
+      }
+      return el
+    })
+
     const firstState = romajsApp({
       odd: {
-        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        customization: { isFetching: false, json: customJson, xml: testXmlString },
         localsource: { isFetching: false, json: localJson }
       },
       selectedOdd: ''
     }, {
+      type: 'CHANGE_ELEMENT_ATTRIBUTE',
+      element: 'title',
+      attName: 'level'
+    })
+    const secondState = romajsApp(firstState, {
       type: 'SET_USAGE',
       member: 'title',
       memberType: 'element',
-      attr: 'type',
+      attr: 'level',
       usage: 'req'
     })
-    const state = romajsApp(firstState, {
+    const state = romajsApp(secondState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
-    console.log(xml.querySelector('elementSpec[ident="title"]'))
-    // expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="newAtt"]').getAttribute('mode')).toEqual('add')
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="level"]').getAttribute('usage')).toEqual('req')
   })
 
   it('should change an attribute defined only on customized element.', () => {
@@ -776,11 +794,14 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     localJson = JSON.parse(localsource)
 
     // Change ODD data for testing
-    const testXml = customizationXML.cloneNode(true)
-    const ed = `<elementSpec ident="title" mode="change"><attList><attDef ident="type2" mode="add" usage="req"/></attList></elementSpec>`
-    const edEl = parser.parseFromString(ed)
-    testXml.getElementsByTagName('schemaSpec')[0].appendChild(edEl)
-    const testXmlString = serializer.serializeToString(testXml)
+    const testXml = global.usejsdom(customizationXML)
+    const attList = testXml.querySelector('elementSpec[ident="title"] attList')
+    const attDef = testXml.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
+    attDef.setAttribute('ident', 'type2')
+    attDef.setAttribute('mode', 'add')
+    attDef.setAttribute('usage', 'req')
+    attList.appendChild(attDef)
+    const testXmlString = testXml.documentElement.outerHTML
 
     // Update JSON data accordingly
     customJson.elements = customJson.elements.map(el => {
@@ -790,7 +811,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
           ident: 'type2',
           mode: 'add',
           ns: '',
-          usage: 'def',
+          usage: 'req',
           desc: [  ],
           shortDesc: '',
           gloss: [  ],
@@ -807,19 +828,24 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       },
       selectedOdd: ''
     }, {
+      type: 'CHANGE_ELEMENT_ATTRIBUTE',
+      element: 'title',
+      attName: 'type2'
+    })
+    const secondState = romajsApp(firstState, {
       type: 'SET_USAGE',
       member: 'title',
       memberType: 'element',
       attr: 'type2',
       usage: 'opt'
     })
-    const state = romajsApp(firstState, {
+    const state = romajsApp(secondState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
-    xml
-    // expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="newAtt"]').getAttribute('mode')).toEqual('add')
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type2"]').getAttribute('mode')).toEqual('add')
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type2"]').getAttribute('usage')).toEqual('opt')
   })
 
   it('should change an element attribute inherited from a class.', () => {
@@ -850,8 +876,8 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
-    console.log(xml.querySelector('elementSpec[ident="title"]'))
-    // expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="newAtt"]').getAttribute('mode')).toEqual('add')
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]').getAttribute('mode')).toEqual('change')
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]').getAttribute('usage')).toEqual('req')
   })
 
   it('should change an element attribute inherited from a class that is already changed by the customization.', () => {
@@ -859,11 +885,14 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     localJson = JSON.parse(localsource)
 
     // Change ODD data for testing
-    const testXml = customizationXML.cloneNode(true)
-    const ed = `<elementSpec ident="title" mode="change"><attList><attDef ident="key" mode="change" usage="req"/></attList></elementSpec>`
-    const edEl = parser.parseFromString(ed)
-    testXml.getElementsByTagName('schemaSpec')[0].appendChild(edEl)
-    const testXmlString = serializer.serializeToString(testXml)
+    const testXml = global.usejsdom(customizationXML)
+    const attList = testXml.querySelector('elementSpec[ident="title"] attList')
+    const attDef = testXml.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
+    attDef.setAttribute('ident', 'key')
+    attDef.setAttribute('mode', 'change')
+    attDef.setAttribute('usage', 'req')
+    attList.appendChild(attDef)
+    const testXmlString = testXml.documentElement.outerHTML
 
     // Update JSON data accordingly
     customJson.elements = customJson.elements.map(el => {
@@ -900,14 +929,15 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       member: 'title',
       memberType: 'element',
       attr: 'key',
-      usage: 'req'
+      usage: 'opt'
     })
     const state = romajsApp(secondState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
-    console.log(xml.querySelector('elementSpec[ident="title"]'))
-    // expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="newAtt"]').getAttribute('mode')).toEqual('add')
+    // Returning to original definition means that usage should not be there any longer.
+    // This test may need to be updated if better cleanup is implemented.
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]').getAttribute('usage')).toNotExist()
   })
 })

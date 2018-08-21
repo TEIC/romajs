@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Attributes from '../components/Attributes'
 import { deleteElementAttributeClass, restoreElementAttributeClass, deleteElementAttribute,
-  deleteClassAttribute, restoreClassAttribute, restoreClassAttributeDeletedOnClass,
+  deleteClassAttribute, restoreClassAttribute, restoreClassAttributeDeletedOnClass, changeElementAttribute,
   useClassDefault, changeClassAttribute, restoreElementAttribute } from '../actions/elements'
 import { clearPicker } from '../actions/interface'
 import { push } from 'react-router-redux'
@@ -113,7 +113,11 @@ const mapDispatchToProps = (dispatch) => {
     restoreElementAttributeClass: (element, className, deletedAttributes) => dispatch(restoreElementAttributeClass(element, className, deletedAttributes)),
     deleteClassAttribute: (element, className, attName) => dispatch(deleteClassAttribute(element, className, attName)),
     restoreClassAttribute: (element, attName) => dispatch(restoreClassAttribute(element, attName)),
-    editAttribute: (element, className, attName, path) => {
+    editAttribute: (element, attName, path) => {
+      dispatch(changeElementAttribute(element, attName))
+      dispatch(push(`${path}/${attName}`))
+    },
+    editClassAttribute: (element, className, attName, path) => {
       dispatch(changeClassAttribute(element, className, attName))
       dispatch(push(`${path}/${attName}`))
     },

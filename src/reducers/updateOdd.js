@@ -279,8 +279,13 @@ function updateElements(localsource, customization, odd) {
         case 'altIdent':
           for (const [i, d] of att[whatChanged].entries()) {
             const docEl = attDef.querySelector(`${whatChanged}:nth-child(${i + 1})`)
-            if (!_areDocElsEqual(d, localAtt[whatChanged][i])) {
-              // Change is differnet from the local source: apply changes
+            let comparison = null
+            if (localAtt) {
+              // When we are not updating a new attribute, comparison with local source is necessary
+              comparison = localAtt[whatChanged][i]
+            }
+            if (!_areDocElsEqual(d, comparison)) {
+              // Change is different from the local source: apply changes
               if (d.deleted) {
                 // Something got deleted, so apply
                 docEl.parentNode.removeChild(docEl)
@@ -312,7 +317,12 @@ function updateElements(localsource, customization, odd) {
           break
         case 'usage':
         case 'ns':
-          if (att[whatChanged] !== localAtt[whatChanged]) {
+          let comparison = null
+          if (localAtt) {
+            // When we are not updating a new attribute, comparison with local source is necessary
+            comparison = localAtt[whatChanged]
+          }
+          if (att[whatChanged] !== comparison) {
             attDef.setAttribute(whatChanged, att[whatChanged])
           } else if (attDef.getAttribute(whatChanged) && (att[whatChanged] !== attDef.getAttribute(whatChanged))) {
             // returning to local values means that customization is no longer needed!
@@ -320,6 +330,9 @@ function updateElements(localsource, customization, odd) {
           }
           break
         default:
+          // noop
+
+        // TODO: Clean up. It's a bit hard to do safely. Which attributes should be checked?
       }
     }
   }
@@ -413,10 +426,6 @@ function updateElements(localsource, customization, odd) {
             }
             break
           case 'attributes':
-            // const changedAtts = el.attributes.reduce((acc, att) => {
-            //   acc.push(att.ident)
-            //   return acc
-            // }, [])
             const localAtts = localEl.attributes.reduce((acc, att) => {
               acc.push(att.ident)
               return acc
@@ -487,21 +496,30 @@ function updateElements(localsource, customization, odd) {
                     }
                     attList.appendChild(attDef)
                   }
-                } else if (toChange) {
-                  // TODO CONTINUE HERE. Cover these cases:
-                  // 1. attribute is defined on local element (isDefined && att.mode='change')
-                  //    OK 1a. there are already some changes (attDef exists in customization) and there are new adjustments (att._changed)
-                  //    OK 1b. this is the first time there are changes (no attDef and att._changed)
-                  // 2. attribute is NOT defined on local element (!isDefined && att.mode='change')
-                  //    OK 2a. the attribute is already defined in customization as an attribute on the element (att.mode = 'add') and needs to be updated (attDef and att._changed)
-                  //    2b. the attribute comes from a class and there are already some updates (attDef and att._fromClass)
-                  //    2c. the attribute comes from a class and there are no changes yet (!attDef, att._fromClass)
-                  if (isDefined) {
+                } else if (toChange && att._changed) {
+                  // First deal with attributes defined on elements.
+                  const localAtt = localEl.attributes.filter(la => att.ident === la.ident)[0]
+                  let comparisonAtt = localAtt
+                  if (att._fromClass) {
+                    // get from class
+                    comparisonAtt = localsource.classes.attributes.filter(lc => lc.ident === att._fromClass)[0].attributes
+                      .filter(lca => lca.ident === att.ident)[0]
+                  }
+                  if (!isDefined && !att._fromClass) {
+                    // We are updating a new attribute defined on this customization
+                    const attDef = attList.querySelector(`attDef[ident='${att.ident}']`)
+                    _changeAttr(att, null, attDef)
+                  } else {
                     const attDef = attList.querySelector(`attDef[ident='${att.ident}']`)
                     if (attDef) {
                       // there are already some changes from the customization and there are new adjustments
-                      const localAtt = localEl.attributes.filter(la => att.ident === la.ident)[0]
-                      _changeAttr(att, localAtt, attDef)
+                      _changeAttr(att, comparisonAtt, attDef)
+                    } else {
+                      const newAttDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
+                      newAttDef.setAttribute('ident', att.ident)
+                      newAttDef.setAttribute('mode', 'change')
+                      _changeAttr(att, comparisonAtt, newAttDef)
+                      attList.append(newAttDef)
                     }
                   }
                 }
@@ -513,14 +531,15 @@ function updateElements(localsource, customization, odd) {
                 if (attList.children.length === 0) {
                   elSpec = attList.parentNode
                   elSpec.removeChild(attList)
-                  if (elSpec.children.length === 0) {
-                    elSpec.parentNode.removeChild(elSpec)
-                  }
                 }
               }
             }
           default:
             false
+        }
+        // Cleanup
+        if (elSpec.children.length === 0) {
+          elSpec.parentNode.removeChild(elSpec)
         }
       }
     }
