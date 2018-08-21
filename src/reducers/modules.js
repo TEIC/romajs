@@ -47,6 +47,7 @@ export function oddModules(state, action) {
     case INCLUDE_ELEMENTS:
       for (const el of action.elements) {
         const localEl = getElementByIdent(localsource, el)
+        localEl._changed = ['all']
         if (!getElementByIdent(customization, el)) {
           customization.elements.push(localEl)
         }

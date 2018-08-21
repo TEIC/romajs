@@ -159,6 +159,10 @@ function mergeElements(localsource, customization, odd) {
       // switch elementSpec to @mode='delete'
       if (elementSpec) {
         elementSpec.setAttribute('mode', 'delete')
+        // clear content
+        while (elementSpec.firstChild) {
+          elementSpec.removeChild(elementSpec.firstChild)
+        }
       }
     }
   }
@@ -345,7 +349,11 @@ function updateElements(localsource, customization, odd) {
       // TODO: find a cleaner isomorphic solution
       // TODO: merge with attribute desc handling
       const dummyEl = odd.createElement('temp')
-      for (const whatChanged of el._changed) {
+      let changes = el._changed
+      if (el._changed.indexOf('all') !== -1) {
+        changes = ['desc', 'altIdent', 'attClasses', 'attributes']
+      }
+      for (const whatChanged of changes) {
         let elSpec
         switch (whatChanged) {
           case 'desc':
@@ -377,6 +385,8 @@ function updateElements(localsource, customization, odd) {
                 } else {
                   elSpec.appendChild(newDocEl)
                 }
+              } else if (!docEl) {
+                // noop
               } else if (!_areDocElsEqual(d !== docEl.outerHTML)) {
                 // If we're returning to local source values, remove customization operation
                 elSpec.parentNode.removeChild(elSpec)
@@ -524,13 +534,12 @@ function updateElements(localsource, customization, odd) {
                   }
                 }
               } else if (toRestore) {
-                const attDef = odd.querySelector(`elementSpec[ident='${el.ident}'] attDef[ident='${att.ident}']`)
+                elSpec = odd.querySelector(`elementSpec[ident='${el.ident}']`)
+                const attDef = elSpec.querySelector(`attDef[ident='${att.ident}']`)
                 const attList = attDef.parentNode
                 attList.removeChild(attDef)
-                // clean up
                 if (attList.children.length === 0) {
-                  elSpec = attList.parentNode
-                  elSpec.removeChild(attList)
+                  elSpec.querySelector(`attList`).parentNode.remove()
                 }
               }
             }
@@ -538,8 +547,10 @@ function updateElements(localsource, customization, odd) {
             false
         }
         // Cleanup
-        if (elSpec.children.length === 0) {
-          elSpec.parentNode.removeChild(elSpec)
+        if (elSpec) {
+          if (elSpec.children.length === 0) {
+            elSpec.parentNode.removeChild(elSpec)
+          }
         }
       }
     }
