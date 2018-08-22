@@ -2,7 +2,7 @@
   { "title" : "TEI Absolutely Bare",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2018-08-20T19:39:55Z",
+    "date" : "2018-08-21T20:02:32Z",
     "modules" : 
     [ 
       { "ident" : "core",

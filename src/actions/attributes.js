@@ -6,7 +6,7 @@ export const SET_DATATYPE = 'SET_DATATYPE'
 export const SET_VALLIST_TYPE = 'SET_VALLIST_TYPE'
 export const ADD_VALITEM = 'ADD_VALITEM'
 export const DELETE_VALITEM = 'DELETE_VALITEM'
-export const UPDATE_VALITEM_DOCS = 'UPDATE_VALITEM_DOCS'
+// export const UPDATE_VALITEM_DOCS = 'UPDATE_VALITEM_DOCS'
 
 export function updateAttributeDocs(member, memberType, attr, docEl, content, index) {
   return {
@@ -48,5 +48,35 @@ export function setUsage(member, memberType, attr, usage) {
     memberType,
     attr,
     usage
+  }
+}
+
+export function setValListType(member, memberType, attr, listType) {
+  return {
+    type: SET_VALLIST_TYPE,
+    member,
+    memberType,
+    attr,
+    listType
+  }
+}
+
+export function addValItem(member, memberType, attr, value) {
+  return {
+    type: ADD_VALITEM,
+    member,
+    memberType,
+    attr,
+    value
+  }
+}
+
+export function deleteValItem(member, memberType, attr, value) {
+  return {
+    type: DELETE_VALITEM,
+    member,
+    memberType,
+    attr,
+    value
   }
 }

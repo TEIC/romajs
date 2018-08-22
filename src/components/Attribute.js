@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AltIdent from '../containers/EditAttributeAltIdent'
 import Desc from '../containers/EditAttributeDesc'
+import ValList from './ValList'
 import { MDCSelect } from '@material/select'
 
 export default class Attribute extends Component {
@@ -81,8 +82,12 @@ export default class Attribute extends Component {
         </div>
       </div>
       <Desc member={this.props.member} attribute={this.props.attribute} />
-      <AltIdent member={this.props.member} attribute={this.props.attribute} />
       <Desc member={this.props.member} attribute={this.props.attribute} valDesc={true}/>
+      <ValList
+        member={this.props.member} attribute={this.props.attribute}
+        setValListType={this.props.setValListType} addValItem={this.props.addValItem}
+        deleteValItem={this.props.deleteValItem} />
+      <AltIdent member={this.props.member} attribute={this.props.attribute} />
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">
           <label>Namespace</label>
@@ -106,5 +111,8 @@ Attribute.propTypes = {
   member: PropTypes.object.isRequired,
   attribute: PropTypes.object.isRequired,
   setNs: PropTypes.func.isRequired,
-  setUsage: PropTypes.func.isRequired
+  setUsage: PropTypes.func.isRequired,
+  setValListType: PropTypes.func.isRequired,
+  addValItem: PropTypes.func.isRequired,
+  deleteValItem: PropTypes.func.isRequired
 }

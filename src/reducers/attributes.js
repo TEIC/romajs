@@ -1,7 +1,8 @@
 import { ReducerException } from '../utils/exceptions'
 import { clone } from '../utils/clone'
 import {
-  DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS, SET_USAGE
+  DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS, SET_USAGE, SET_VALLIST_TYPE, ADD_VALITEM,
+  DELETE_VALITEM
 } from '../actions/attributes'
 
 function markChange(member) {
@@ -68,6 +69,50 @@ function setUsage(m, action) {
   }
 }
 
+function setValListType(m, action) {
+  if (m.ident === action.member) {
+    markChange(m)
+    const att = m.attributes.filter(a => (a.ident === action.attr))[0]
+    if (att.valList) {
+      att.valList.type = action.listType
+    } else {
+      att.valList = {type: action.listType}
+    }
+    markAttChange(att, 'valList')
+  }
+}
+
+function addValItem(m, action) {
+  if (m.ident === action.member) {
+    markChange(m)
+    const att = m.attributes.filter(a => (a.ident === action.attr))[0]
+    if (att.valList) {
+      if (att.valList.valItem) {
+        const isDefined = att.valList.valItem.filter(v => v.ident === action.value)[0]
+        if (!isDefined) {
+          att.valList.valItem.push({ident: action.value.replace(/\s+/, '')})
+        }
+      }
+    } else {
+      att.valList = {valItem: [{type: action.value.replace(/\s+/, '')}]}
+    }
+    markAttChange(att, 'valList')
+  }
+}
+
+function deleteValItem(m, action) {
+  if (m.ident === action.member) {
+    markChange(m)
+    const att = m.attributes.filter(a => (a.ident === action.attr))[0]
+    if (att.valList) {
+      if (att.valList.valItem) {
+        att.valList.valItem = att.valList.valItem.filter(vi => vi.ident !== action.value)
+      }
+    }
+    markAttChange(att, 'valList')
+  }
+}
+
 export function oddAttributes(state, action) {
   const newState = clone(state)
   const customizationObj = newState.customization
@@ -113,6 +158,39 @@ export function oddAttributes(state, action) {
           break
         case 'class':
           customization.classes.attributes.forEach(m => setUsage(m, action))
+          break
+        default:
+      }
+      return newState
+    case SET_VALLIST_TYPE:
+      switch (action.memberType) {
+        case 'element':
+          customization.elements.forEach(m => setValListType(m, action))
+          break
+        case 'class':
+          customization.classes.attributes.forEach(m => setValListType(m, action))
+          break
+        default:
+      }
+      return newState
+    case ADD_VALITEM:
+      switch (action.memberType) {
+        case 'element':
+          customization.elements.forEach(m => addValItem(m, action))
+          break
+        case 'class':
+          customization.classes.attributes.forEach(m => addValItem(m, action))
+          break
+        default:
+      }
+      return newState
+    case DELETE_VALITEM:
+      switch (action.memberType) {
+        case 'element':
+          customization.elements.forEach(m => deleteValItem(m, action))
+          break
+        case 'class':
+          customization.classes.attributes.forEach(m => deleteValItem(m, action))
           break
         default:
       }
