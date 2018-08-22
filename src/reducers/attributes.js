@@ -2,8 +2,10 @@ import { ReducerException } from '../utils/exceptions'
 import { clone } from '../utils/clone'
 import {
   DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS, SET_USAGE, SET_VALLIST_TYPE, ADD_VALITEM,
-  DELETE_VALITEM
+  DELETE_VALITEM,
+  SET_DATATYPE
 } from '../actions/attributes'
+import primitiveDatatypes from '../utils/primitiveDatatypes'
 
 function markChange(member) {
   if (member._changed) {
@@ -66,6 +68,23 @@ function setUsage(m, action) {
     const att = m.attributes.filter(a => (a.ident === action.attr))[0]
     att.usage = action.usage
     markAttChange(att, 'usage')
+  }
+}
+
+function setDatatype(m, datatype, action) {
+  if (m.ident === action.member) {
+    markChange(m)
+    const att = m.attributes.filter(a => (a.ident === action.attr))[0]
+    if (datatype.type === 'primitive') {
+      att.datatype.dataRef.name = datatype.ident
+      delete att.datatype.dataRef.key
+      delete att.datatype.dataRef.ref
+    } else {
+      att.datatype.dataRef.key = datatype.ident
+      delete att.datatype.dataRef.name
+      delete att.datatype.dataRef.ref
+    }
+    markAttChange(att, 'datatype')
   }
 }
 
@@ -191,6 +210,19 @@ export function oddAttributes(state, action) {
           break
         case 'class':
           customization.classes.attributes.forEach(m => deleteValItem(m, action))
+          break
+        default:
+      }
+      return newState
+    case SET_DATATYPE:
+      const allDtypes = customization.datatypes.concat(primitiveDatatypes)
+      const datatype = allDtypes.filter(dt => dt.ident === action.datatype)[0]
+      switch (action.memberType) {
+        case 'element':
+          customization.elements.forEach(m => setDatatype(m, datatype, action))
+          break
+        case 'class':
+          customization.classes.attributes.forEach(m => setDatatype(m, datatype, action))
           break
         default:
       }

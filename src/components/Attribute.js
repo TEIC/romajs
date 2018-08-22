@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import AltIdent from '../containers/EditAttributeAltIdent'
 import Desc from '../containers/EditAttributeDesc'
 import ValList from './ValList'
+import AttDatatype from './AttDatatype'
 import { MDCSelect } from '@material/select'
 
 export default class Attribute extends Component {
@@ -87,6 +88,7 @@ export default class Attribute extends Component {
         member={this.props.member} attribute={this.props.attribute}
         setValListType={this.props.setValListType} addValItem={this.props.addValItem}
         deleteValItem={this.props.deleteValItem} />
+      <AttDatatype member={this.props.member} attribute={this.props.attribute} />
       <AltIdent member={this.props.member} attribute={this.props.attribute} />
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">

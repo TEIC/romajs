@@ -1,0 +1,21 @@
+export default [
+  {ident: 'string', type: 'primitive', shortDesc: 'Represents character strings in XML. (W3C)'},
+  {ident: 'boolean', type: 'primitive', shortDesc: 'Has the value space required to support the mathematical concept of binary-valued logic: {true, false}. (W3C)'},
+  {ident: 'decimal', type: 'primitive', shortDesc: 'Represents a subset of the real numbers, which can be represented by decimal numerals. (W3C)'},
+  {ident: 'float', type: 'primitive', shortDesc: 'Is patterned after the IEEE single-precision 32-bit floating point type IEEE 754-1985. (W3C)'},
+  {ident: 'double', type: 'primitive', shortDesc: 'Is patterned after the IEEE double-precision 64-bit floating point type IEEE 754-1985. (W3C)'},
+  {ident: 'duration', type: 'primitive', shortDesc: 'Represents a duration of time. (W3C)'},
+  {ident: 'dateTime', type: 'primitive', shortDesc: 'Values may be viewed as objects with integer-valued year, month, day, hour and minute properties, a decimal-valued second property, and a boolean timezoned property. (W3C)'},
+  {ident: 'time', type: 'primitive', shortDesc: 'Represents an instant of time that recurs every day. (W3C)'},
+  {ident: 'date', type: 'primitive', shortDesc: 'The value space of date consists of top-open intervals of exactly one day in length on the timelines of dateTime, beginning on the beginning moment of each day (in each timezone). (W3C)'},
+  {ident: 'gYearMonth', type: 'primitive', shortDesc: 'Represents a specific gregorian month in a specific gregorian year. (W3C)'},
+  {ident: 'gYear', type: 'primitive', shortDesc: 'Represents a gregorian calendar year. (W3C)'},
+  {ident: 'gMonthDay', type: 'primitive', shortDesc: 'Is a gregorian date that recurs, specifically a day of the year such as the third of May. (W3C)'},
+  {ident: 'gDay', type: 'primitive', shortDesc: 'Is a gregorian day that recurs, specifically a day of the month such as the 5th of the month. (W3C)'},
+  {ident: 'gMonth', type: 'primitive', shortDesc: 'Is a gregorian month that recurs every year. (W3C)'},
+  {ident: 'hexBinary', type: 'primitive', shortDesc: 'Represents arbitrary hex-encoded binary data. (W3C)'},
+  {ident: 'base64Binary', type: 'primitive', shortDesc: 'Represents Base64-encoded arbitrary binary data. (W3C)'},
+  {ident: 'anyURI', type: 'primitive', shortDesc: 'Represents a Uniform Resource Identifier Reference (URI). (W3C)'},
+  {ident: 'QName', type: 'primitive', shortDesc: 'Represents XML qualified names. (W3C)'},
+  {ident: 'NOTATION', type: 'primitive', shortDesc: 'Represents the NOTATION attribute type from XML 1.0 (Second Edition). (W3C)'}
+]

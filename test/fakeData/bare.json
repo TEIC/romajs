@@ -2,7 +2,7 @@
   { "title" : "TEI Absolutely Bare",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2018-08-21T20:02:32Z",
+    "date" : "2018-08-22T18:19:28Z",
     "modules" : 
     [ 
       { "ident" : "core",
@@ -79,7 +79,9 @@
             "altIdent" : 
             [  ],
             "valDesc" : 
-            [  ] } ],
+            [  ],
+            "datatype" : 
+            {  } } ],
         "content" : 
         [ 
           { "type" : "sequence",
@@ -812,6 +814,13 @@
             [  ],
             "valDesc" : 
             [  ],
+            "datatype" : 
+            { "min" : "1",
+              "max" : "1",
+              "dataRef" : 
+              { "key" : "teidata.enumerated",
+                "dataFacet" : 
+                [  ] } },
             "valList" : 
             { "type" : "",
               "valItem" : 
@@ -1025,7 +1034,9 @@
             "altIdent" : 
             [  ],
             "valDesc" : 
-            [  ] } ],
+            [  ],
+            "datatype" : 
+            {  } } ],
         "content" : 
         [ 
           { "type" : "alternate",
@@ -1181,7 +1192,9 @@
             "altIdent" : 
             [  ],
             "valDesc" : 
-            [  ] },
+            [  ],
+            "datatype" : 
+            {  } },
           
           { "onElement" : true,
             "ident" : "type",
@@ -1197,6 +1210,13 @@
             [  ],
             "valDesc" : 
             [  ],
+            "datatype" : 
+            { "min" : "1",
+              "max" : "1",
+              "dataRef" : 
+              { "key" : "teidata.enumerated",
+                "dataFacet" : 
+                [  ] } },
             "valList" : 
             { "type" : "",
               "valItem" : 
@@ -2208,7 +2228,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.text",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "ref",
@@ -2223,7 +2250,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] } ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "unbounded",
+                "dataRef" : 
+                { "key" : "teidata.pointer",
+                  "dataFacet" : 
+                  [  ] } } } ] },
         
         { "ident" : "att.datable",
           "type" : "classSpec",
@@ -2255,7 +2289,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.pointer",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "period",
@@ -2270,7 +2311,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] } ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.pointer",
+                  "dataFacet" : 
+                  [  ] } } } ] },
         
         { "ident" : "att.datable.w3c",
           "type" : "classSpec",
@@ -2297,7 +2345,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.temporal.w3c",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "notBefore",
@@ -2312,7 +2367,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.temporal.w3c",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "notAfter",
@@ -2327,7 +2389,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.temporal.w3c",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "from",
@@ -2342,7 +2411,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.temporal.w3c",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "to",
@@ -2357,7 +2433,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] } ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.temporal.w3c",
+                  "dataFacet" : 
+                  [  ] } } } ] },
         
         { "ident" : "att.declarable",
           "type" : "classSpec",
@@ -2385,6 +2468,13 @@
               [  ],
               "valDesc" : 
               [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.truthValue",
+                  "dataFacet" : 
+                  [  ] } },
               "valList" : 
               { "type" : "",
                 "valItem" : 
@@ -2457,7 +2547,9 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              {  } },
             
             { "onElement" : false,
               "ident" : "xml:id",
@@ -2472,7 +2564,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "name" : "ID",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "n",
@@ -2487,7 +2586,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.text",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "xml:lang",
@@ -2502,7 +2608,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] } ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.language",
+                  "dataFacet" : 
+                  [  ] } } } ] },
         
         { "ident" : "att.global.rendition",
           "type" : "classSpec",
@@ -2534,7 +2647,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "unbounded",
+                "dataRef" : 
+                { "key" : "teidata.word",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "style",
@@ -2549,7 +2669,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.text",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "rendition",
@@ -2564,7 +2691,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] } ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "unbounded",
+                "dataRef" : 
+                { "key" : "teidata.pointer",
+                  "dataFacet" : 
+                  [  ] } } } ] },
         
         { "ident" : "att.global.responsibility",
           "type" : "classSpec",
@@ -2596,7 +2730,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.probCert",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "resp",
@@ -2611,7 +2752,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] } ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "unbounded",
+                "dataRef" : 
+                { "key" : "teidata.pointer",
+                  "dataFacet" : 
+                  [  ] } } } ] },
         
         { "ident" : "att.global.source",
           "type" : "classSpec",
@@ -2638,7 +2786,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] } ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "unbounded",
+                "dataRef" : 
+                { "key" : "teidata.pointer",
+                  "dataFacet" : 
+                  [  ] } } } ] },
         
         { "ident" : "att.naming",
           "type" : "classSpec",
@@ -2670,7 +2825,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "unbounded",
+                "dataRef" : 
+                { "key" : "teidata.enumerated",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "nymRef",
@@ -2685,7 +2847,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] } ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "unbounded",
+                "dataRef" : 
+                { "key" : "teidata.pointer",
+                  "dataFacet" : 
+                  [  ] } } } ] },
         
         { "ident" : "att.placement",
           "type" : "classSpec",
@@ -2713,6 +2882,13 @@
               [  ],
               "valDesc" : 
               [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "unbounded",
+                "dataRef" : 
+                { "key" : "teidata.enumerated",
+                  "dataFacet" : 
+                  [  ] } },
               "valList" : 
               { "type" : "",
                 "valItem" : 
@@ -2832,7 +3008,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] } ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.word",
+                  "dataFacet" : 
+                  [  ] } } } ] },
         
         { "ident" : "att.typed",
           "type" : "classSpec",
@@ -2859,7 +3042,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.enumerated",
+                  "dataFacet" : 
+                  [  ] } } },
             
             { "onElement" : false,
               "ident" : "subtype",
@@ -2874,7 +3064,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] } ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.enumerated",
+                  "dataFacet" : 
+                  [  ] } } } ] },
         
         { "ident" : "att.written",
           "type" : "classSpec",
@@ -2906,7 +3103,14 @@
               "altIdent" : 
               [  ],
               "valDesc" : 
-              [  ] } ] } ] },
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.pointer",
+                  "dataFacet" : 
+                  [  ] } } } ] } ] },
     "elementRefs" : 
     [  ],
     "classRefs" : 

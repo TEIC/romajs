@@ -13,7 +13,7 @@ import {
   USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE, CHANGE_CLASS_ATTRIBUTE
 } from '../actions/elements'
 import {
-  DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS, SET_USAGE, SET_VALLIST_TYPE, ADD_VALITEM, DELETE_VALITEM
+  DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS, SET_USAGE, SET_VALLIST_TYPE, ADD_VALITEM, DELETE_VALITEM, SET_DATATYPE
 } from '../actions/attributes'
 import { oddModules } from './modules'
 import { oddElements } from './elements'
@@ -161,6 +161,7 @@ function odd(state = {}, action) {
     case SET_VALLIST_TYPE:
     case ADD_VALITEM:
     case DELETE_VALITEM:
+    case SET_DATATYPE:
       return Object.assign({}, oddAttributes(state, action))
     default:
       return state
