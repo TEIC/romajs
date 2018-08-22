@@ -44,4 +44,54 @@ describe('Attribute actions', () => {
       usage: 'opt'
     })
   })
+
+  it('setValListType should pass a new type of list valList', () =>{
+    expect(actions.setValListType('title', 'element', 'key', 'closed')).toEqual({
+      type: 'SET_VALLIST_TYPE',
+      member: 'title',
+      memberType: 'element',
+      attr: 'key',
+      listType: 'closed'
+    })
+  })
+
+  it('addValItem should pass a value for a new valItem', () =>{
+    expect(actions.addValItem('title', 'element', 'type', 'special')).toEqual({
+      type: 'ADD_VALITEM',
+      member: 'title',
+      memberType: 'element',
+      attr: 'type',
+      value: 'special'
+    })
+  })
+
+  it('deleteValItem should pass a value for removing a valItem defining that value', () =>{
+    expect(actions.deleteValItem('title', 'element', 'type', 'special')).toEqual({
+      type: 'DELETE_VALITEM',
+      member: 'title',
+      memberType: 'element',
+      attr: 'type',
+      value: 'special'
+    })
+  })
+
+  it('setDatatype should pass the name (ident) of a new datatype for an attribute', () =>{
+    expect(actions.setDatatype('title', 'element', 'type', 'string')).toEqual({
+      type: 'SET_DATATYPE',
+      member: 'title',
+      memberType: 'element',
+      attr: 'type',
+      datatype: 'string'
+    })
+  })
+
+  it('setDatatypeRestriction should pass the pattern to restrict an existing datatype for an attribute', () =>{
+    expect(actions.setDataTypeRestriction('title', 'element', 'type', '[ab]')).toEqual({
+      type: 'SET_DATATYPE_RESTRICTION',
+      member: 'title',
+      memberType: 'element',
+      attr: 'type',
+      value: '[ab]'
+    })
+  })
 })

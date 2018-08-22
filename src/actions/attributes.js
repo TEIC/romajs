@@ -3,6 +3,7 @@ export const DELETE_ATTRIBUTE_DOCS = 'DELETE_ATTRIBUTE_DOCS'
 export const SET_NS = 'SET_NS'
 export const SET_USAGE = 'SET_USAGE'
 export const SET_DATATYPE = 'SET_DATATYPE'
+export const SET_DATATYPE_RESTRICTION = 'SET_DATATYPE_RESTRICTION'
 export const SET_VALLIST_TYPE = 'SET_VALLIST_TYPE'
 export const ADD_VALITEM = 'ADD_VALITEM'
 export const DELETE_VALITEM = 'DELETE_VALITEM'
@@ -87,5 +88,15 @@ export function setDatatype(member, memberType, attr, datatype) {
     memberType,
     attr,
     datatype
+  }
+}
+
+export function setDataTypeRestriction(member, memberType, attr, value) {
+  return {
+    type: SET_DATATYPE_RESTRICTION,
+    member,
+    memberType,
+    attr,
+    value
   }
 }

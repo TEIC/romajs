@@ -88,7 +88,8 @@ export default class Attribute extends Component {
         member={this.props.member} attribute={this.props.attribute}
         setValListType={this.props.setValListType} addValItem={this.props.addValItem}
         deleteValItem={this.props.deleteValItem} />
-      <AttDatatype member={this.props.member} attribute={this.props.attribute} />
+      <AttDatatype member={this.props.member} attribute={this.props.attribute}
+        setDataTypeRestriction={this.props.setDataTypeRestriction}/>
       <AltIdent member={this.props.member} attribute={this.props.attribute} />
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">
@@ -116,5 +117,6 @@ Attribute.propTypes = {
   setUsage: PropTypes.func.isRequired,
   setValListType: PropTypes.func.isRequired,
   addValItem: PropTypes.func.isRequired,
-  deleteValItem: PropTypes.func.isRequired
+  deleteValItem: PropTypes.func.isRequired,
+  setDataTypeRestriction: PropTypes.func.isRequired
 }

@@ -3,7 +3,8 @@ import { clone } from '../utils/clone'
 import {
   DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS, SET_USAGE, SET_VALLIST_TYPE, ADD_VALITEM,
   DELETE_VALITEM,
-  SET_DATATYPE
+  SET_DATATYPE,
+  SET_DATATYPE_RESTRICTION
 } from '../actions/attributes'
 import primitiveDatatypes from '../utils/primitiveDatatypes'
 
@@ -84,6 +85,15 @@ function setDatatype(m, datatype, action) {
       delete att.datatype.dataRef.name
       delete att.datatype.dataRef.ref
     }
+    markAttChange(att, 'datatype')
+  }
+}
+
+function setDatatypeRestriction(m, action) {
+  if (m.ident === action.member) {
+    markChange(m)
+    const att = m.attributes.filter(a => (a.ident === action.attr))[0]
+    att.datatype.dataRef.restriction = action.value
     markAttChange(att, 'datatype')
   }
 }
@@ -223,6 +233,17 @@ export function oddAttributes(state, action) {
           break
         case 'class':
           customization.classes.attributes.forEach(m => setDatatype(m, datatype, action))
+          break
+        default:
+      }
+      return newState
+    case SET_DATATYPE_RESTRICTION:
+      switch (action.memberType) {
+        case 'element':
+          customization.elements.forEach(m => setDatatypeRestriction(m, action))
+          break
+        case 'class':
+          customization.classes.attributes.forEach(m => setDatatypeRestriction(m, action))
           break
         default:
       }

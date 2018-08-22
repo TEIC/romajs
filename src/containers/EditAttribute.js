@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Attribute from '../components/Attribute'
-import { setNs, setUsage, setValListType, addValItem, deleteValItem} from '../actions/attributes'
+import { setNs, setUsage, setValListType, addValItem, deleteValItem, setDataTypeRestriction} from '../actions/attributes'
 
 const mapStateToProps = (state, ownProps) => {
   const attribute = ownProps.member.attributes.filter(x => (x.ident === ownProps.attribute))[0]
@@ -14,7 +14,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     setUsage: (usage) => dispatch(setUsage(ownProps.member.ident, 'element', ownProps.attribute, usage)),
     setValListType: (type) => dispatch(setValListType(ownProps.member.ident, 'element', ownProps.attribute, type)),
     addValItem: (value) => dispatch(addValItem(ownProps.member.ident, 'element', ownProps.attribute, value)),
-    deleteValItem: (value) => dispatch(deleteValItem(ownProps.member.ident, 'element', ownProps.attribute, value))
+    deleteValItem: (value) => dispatch(deleteValItem(ownProps.member.ident, 'element', ownProps.attribute, value)),
+    setDataTypeRestriction: (value) => dispatch(setDataTypeRestriction(ownProps.member.ident, 'element', ownProps.attribute, value))
   }
 }
 

@@ -94,4 +94,6 @@ describe('Element actions', () => {
       attName: 'rend'
     })
   })
+
+  // Add test for RESTORE_ELEMENT_ATTRIBUTE and a couple more!
 })
