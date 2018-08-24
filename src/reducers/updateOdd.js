@@ -231,6 +231,7 @@ function updateElements(localsource, customization, odd) {
   // real change wouldn't really have happened.
 
   function _areArraysEqual(a, b) {
+    if (a === null || b === null) return false
     return a.length === b.length && a.every((value, index) => {
       // When checking descs, ignore versionDate
       const match = /[dD]esc.*?versionDate="[^""]+"/.exec(value)
@@ -323,7 +324,6 @@ function updateElements(localsource, customization, odd) {
         case 'ns':
           let comparison = null
           if (localAtt) {
-            // When we are not updating a new attribute, comparison with local source is necessary
             comparison = localAtt[whatChanged]
           }
           if (att[whatChanged] !== comparison) {
@@ -333,10 +333,137 @@ function updateElements(localsource, customization, odd) {
             attDef.removeAttribute(whatChanged)
           }
           break
+        case 'valList':
+          for (const wchange of Object.keys(att.valList)) {
+            switch (wchange) {
+              case 'type':
+                comparison = null
+                if (localAtt) {
+                  if (localAtt.valList) {
+                    comparison = localAtt.valList.type
+                  }
+                }
+                if (att.valList.type !== comparison) {
+                  let valListEl = attDef.querySelector('valList')
+                  if (!valListEl) {
+                    valListEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valList')
+                    attDef.appendChild(valListEl)
+                  }
+                  if (att.valList.type && att.valList.type !== '') {
+                    valListEl.setAttribute('type', att.valList.type)
+                  }
+                  valListEl.setAttribute('mode', 'change')
+                }
+                break
+              case 'valItem':
+                comparison = []
+                if (localAtt) {
+                  if (localAtt.valList) {
+                    comparison = localAtt.valList.valItem
+                  }
+                }
+                // add
+                for (const item of att.valList.valItem) {
+                  if (!comparison.filter(v => v.ident === item.ident)[0]) {
+                    let valListEl = attDef.querySelector('valList')
+                    if (!valListEl) {
+                      valListEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valList')
+                      attDef.appendChild(valListEl)
+                    }
+                    valListEl.setAttribute('mode', 'change')
+                    let valItem = valListEl.querySelector(`valItem[ident="${item.ident}"]`)
+                    if (!valItem) {
+                      valItem = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valItem')
+                      valListEl.appendChild(valItem)
+                    }
+                    valItem.setAttribute('mode', 'change')
+                    valItem.setAttribute('ident', item.ident)
+                  }
+                }
+                // remove
+                for (const item of comparison) {
+                  if (!att.valList.valItem.filter(v => v.ident === item.ident)[0]) {
+                    let valListEl = attDef.querySelector('valList')
+                    if (!valListEl) {
+                      valListEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valList')
+                      attDef.appendChild(valListEl)
+                    }
+                    valListEl.setAttribute('mode', 'change')
+                    let valItem = valListEl.querySelector(`valItem[ident="${item.ident}"]`)
+                    if (!valItem) {
+                      valItem = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valItem')
+                      valListEl.appendChild(valItem)
+                    }
+                    valItem.setAttribute('mode', 'delete')
+                    valItem.setAttribute('ident', item.ident)
+                  }
+                }
+                break
+              default:
+            }
+          }
+          break
+        case 'datatype':
+          for (const wchange of Object.keys(att.datatype.dataRef)) {
+            switch (wchange) {
+              case 'key':
+              case 'name':
+                comparison = null
+                if (localAtt) {
+                  if (localAtt.datatype) {
+                    comparison = localAtt.datatype.dataRef
+                  }
+                }
+                const type = att.datatype.dataRef.key ? 'key' : 'name'
+                const otherType = type === 'key' ? 'name' : 'key'
+                if (att.datatype.dataRef[type] !== comparison[type]) {
+                  let datatype = attDef.querySelector('datatype')
+                  if (!datatype) {
+                    datatype = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'datatype')
+                    attDef.appendChild(datatype)
+                  }
+                  let dataRef = datatype.querySelector('dataRef')
+                  if (!dataRef) {
+                    dataRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'dataRef')
+                    datatype.appendChild(dataRef)
+                  }
+                  dataRef.setAttribute(type, att.datatype.dataRef[type])
+                  dataRef.removeAttribute(otherType)
+                }
+                break
+              case 'restriction':
+                comparison = null
+                if (localAtt) {
+                  if (localAtt.datatype) {
+                    comparison = localAtt.datatype.dataRef.restriction
+                  }
+                }
+                if (att.datatype.dataRef.restriction !== comparison) {
+                  let datatype = attDef.querySelector('datatype')
+                  if (!datatype) {
+                    datatype = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'datatype')
+                    attDef.appendChild(datatype)
+                  }
+                  let dataRef = datatype.querySelector('dataRef')
+                  if (!dataRef) {
+                    dataRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'dataRef')
+                    datatype.appendChild(dataRef)
+                  }
+                  if (att.datatype.dataRef.key) {
+                    dataRef.setAttribute('key', att.datatype.dataRef.key)
+                  } else if (att.datatype.dataRef.name) {
+                    dataRef.setAttribute('name', att.datatype.dataRef.name)
+                  }
+                  dataRef.setAttribute('restriction', att.datatype.dataRef.restriction)
+                }
+              default:
+            }
+          }
+          break
         default:
           // noop
 
-        // TODO: Clean up. It's a bit hard to do safely. Which attributes should be checked?
+        // TODO: Clean up. It's a bit hard to do safely. Which attributes / elements should be checked?
       }
     }
   }
@@ -511,8 +638,10 @@ function updateElements(localsource, customization, odd) {
                   const localAtt = localEl.attributes.filter(la => att.ident === la.ident)[0]
                   let comparisonAtt = localAtt
                   if (att._fromClass) {
+                    // Is the attribute changed from the class? Otherwise get it from the class
                     // get from class
-                    comparisonAtt = localsource.classes.attributes.filter(lc => lc.ident === att._fromClass)[0].attributes
+                    comparisonAtt = localAtt ? localAtt : localsource.classes.attributes
+                      .filter(lc => lc.ident === att._fromClass)[0].attributes
                       .filter(lca => lca.ident === att.ident)[0]
                   }
                   if (!isDefined && !att._fromClass) {

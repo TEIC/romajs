@@ -123,7 +123,7 @@ function addValItem(m, action) {
         }
       }
     } else {
-      att.valList = {valItem: [{type: action.value.replace(/\s+/, '')}]}
+      att.valList = {valItem: [{ident: action.value.replace(/\s+/, '')}]}
     }
     markAttChange(att, 'valList')
   }

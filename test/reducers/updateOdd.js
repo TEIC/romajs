@@ -940,4 +940,203 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     // This test may need to be updated if better cleanup is implemented.
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]').getAttribute('usage')).toNotExist()
   })
+
+  it('should change the valList type of an attribute defined on an element.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    // Change ODD data for testing
+    const testXml = global.usejsdom(customizationXML)
+    const attList = testXml.querySelector('elementSpec[ident="title"] attList')
+    attList.parentNode.removeChild(attList)
+    const testXmlString = testXml.documentElement.outerHTML
+
+    // Update JSON data accordingly
+    customJson.elements = customJson.elements.map(el => {
+      if (el.ident === 'title') {
+        el.attributes = []
+      }
+      return el
+    })
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: testXmlString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CHANGE_ELEMENT_ATTRIBUTE',
+      element: 'title',
+      attName: 'level'
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'SET_VALLIST_TYPE',
+      member: 'title',
+      memberType: 'element',
+      attr: 'level',
+      listType: 'semi'
+    })
+    const state = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="level"] > valList').getAttribute('type')).toEqual('semi')
+  })
+
+  it('should change the valList type of an attribute inherited from a class.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CHANGE_CLASS_ATTRIBUTE',
+      element: 'title',
+      className: 'att.canonical',
+      attName: 'key'
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'SET_VALLIST_TYPE',
+      member: 'title',
+      memberType: 'element',
+      attr: 'key',
+      listType: 'semi'
+    })
+    const state = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"] > valList').getAttribute('type')).toEqual('semi')
+  })
+
+  it('should add a valItem to a valList of an attribute inherited from a class.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CHANGE_CLASS_ATTRIBUTE',
+      element: 'title',
+      className: 'att.canonical',
+      attName: 'key'
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'ADD_VALITEM',
+      member: 'title',
+      memberType: 'element',
+      attr: 'key',
+      value: 'new'
+    })
+    const state = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"] > valList > valItem').getAttribute('ident')).toEqual('new')
+  })
+
+  it('should remove a valItem from a valList of an attribute inherited from a class.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CHANGE_CLASS_ATTRIBUTE',
+      element: 'title',
+      className: 'att.typed',
+      attName: 'type'
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'DELETE_VALITEM',
+      member: 'title',
+      memberType: 'element',
+      attr: 'type',
+      value: 'desc'
+    })
+    const state = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type"] > valList > valItem[ident="desc"]').getAttribute('mode')).toEqual('delete')
+  })
+
+  it('should set a datatype for an element attribute inherited from a class.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CHANGE_CLASS_ATTRIBUTE',
+      element: 'title',
+      className: 'att.typed',
+      attName: 'type'
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'SET_DATATYPE',
+      member: 'title',
+      memberType: 'element',
+      attr: 'type',
+      datatype: 'string'
+    })
+    const state = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type"] > datatype > dataRef').getAttribute('name')).toEqual('string')
+  })
+
+  it('should set a restriction on a datatype for an element attribute inherited from a class.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CHANGE_CLASS_ATTRIBUTE',
+      element: 'title',
+      className: 'att.typed',
+      attName: 'type'
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'SET_DATATYPE_RESTRICTION',
+      member: 'title',
+      memberType: 'element',
+      attr: 'type',
+      value: '[ab]'
+    })
+    const state = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type"] > datatype > dataRef[key="teidata.enumerated"]').getAttribute('restriction')).toEqual('[ab]')
+  })
 })

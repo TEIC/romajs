@@ -50,7 +50,9 @@ export default class Attribute extends Component {
   render() {
     let valItems = []
     if (this.props.attribute.valList) {
-      valItems = this.props.attribute.valList.valItem
+      if (this.props.attribute.valList.valItem) {
+        valItems = this.props.attribute.valList.valItem
+      }
     }
 
     return (<div className="mdc-layout-grid__inner romajs-formrow">
