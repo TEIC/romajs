@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run eslint && mocha --recursive --require babel-core/register --require ./test/setup.js",
+    "test:nolint": "mocha --recursive --require babel-core/register --require ./test/setup.js",
     "test:watch": "npm test -- --watch",
     "start": "node server.js",
     "build": "rimraf ./build && cross-env NODE_ENV=\"production\" webpack",
