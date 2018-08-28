@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { includeElements, excludeElements } from '../actions/modules'
+import { clearUiData } from '../actions/interface'
 import MembersList from '../components/MembersList'
 
 const mapStateToProps = (state) => {
@@ -64,7 +65,8 @@ const mapDispatchToProps = (dispatch) => {
       } else {
         dispatch(includeElements([name]))
       }
-    }
+    },
+    clearUiData: () => dispatch(clearUiData())
   }
 }
 

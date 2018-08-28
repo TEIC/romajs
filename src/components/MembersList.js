@@ -19,6 +19,7 @@ export default class MembersList extends Component {
   }
 
   componentWillUnmount() {
+    this.props.clearUiData()
     window.removeEventListener('resize', this.udpatedWidth)
   }
 
@@ -88,5 +89,6 @@ MembersList.propTypes = {
     module_selected: PropTypes.bool.isRequired
   }).isRequired).isRequired,
   toggleItem: PropTypes.func.isRequired,
-  loadingStatus: PropTypes.string
+  loadingStatus: PropTypes.string,
+  clearUiData: PropTypes.func.isRequired
 }
