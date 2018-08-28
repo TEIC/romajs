@@ -109,7 +109,7 @@ main {
   padding: 10px 10px 10px 20px;
   background-color: $mdc-theme-secondary;
   top: auto;
-  z-index: 99;
+  z-index: 5;
 
   .mdl-chip {
     margin-right: 10px;
@@ -217,10 +217,11 @@ main {
 /* DOWNLOAD MENU */
 .romajs-download-menu {
   position: absolute;
-  transform-origin: right top 0px;
-  right: 0px;
-  top: 0px;
-  transform: scale(0, 0);
+  z-index: 10;
+  transform-origin: right top 0px !important;
+  right: 12px;
+  top: 50px !important;
+  left: auto !important;
 }
 
 /* Ace editor */

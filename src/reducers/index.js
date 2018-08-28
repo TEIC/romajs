@@ -81,7 +81,6 @@ function customization(state = {
       return Object.assign({}, state, {
         isFetching: false,
         xml: action.xml,
-        unchanged: action.xml,
         lastUpdated: Date.now()
       })
     case REQUEST_OXGARAGE_TRANSFORM:
@@ -115,7 +114,7 @@ function odd(state = {}, action) {
       fileSaver.saveAs(new Blob([toExport], {'type': 'text\/xml'}), 'new_odd.xml')
       return state
     case EXPORT_SCHEMA:
-      postToOxGarage(state.customization.xml, oxgarage.compile).then((compiled) => {
+      postToOxGarage(state.customization.updatedXml, oxgarage.compile).then((compiled) => {
         postToOxGarage(compiled, oxgarage[action.format])
           .then((res) => {
             fileSaver.saveAs(new Blob([res], {'type': 'text\/xml'}), 'schema.' + action.format)

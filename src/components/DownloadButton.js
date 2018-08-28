@@ -17,7 +17,7 @@ export default class DonwloadButton extends Component {
         }}>
           <i className="material-icons mdc-button__icon">file_download</i> Download
         </button>
-        <div className="mdc-menu" tabIndex="-1" ref="menu">
+        <div className="mdc-menu romajs-download-menu" tabIndex="-1" ref="menu">
           <ul className="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
             <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadCustomization()}}>Download ODD</li>
             <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadRng()}}>Download RelaxNG schema</li>
