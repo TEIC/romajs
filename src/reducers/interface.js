@@ -1,7 +1,11 @@
-import { SET_FILTER_TERM, CLEAR_UI_DATA, ADD_FROM_PICKER, CLEAR_PICKER } from '../actions/interface'
+import { SET_FILTER_TERM, CLEAR_UI_DATA, ADD_FROM_PICKER, CLEAR_PICKER, SET_LOADING_STATUS } from '../actions/interface'
 
 export function ui(state = {}, action) {
   switch (action.type) {
+    case SET_LOADING_STATUS:
+      return Object.assign({}, state,
+        {loadingStatus: action.msg}
+      )
     case SET_FILTER_TERM:
       return Object.assign({}, state,
         {filterTerm: action.term}

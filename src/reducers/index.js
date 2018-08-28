@@ -1,6 +1,6 @@
 import {
   SELECT_ODD, REQUEST_ODD, RECEIVE_ODD, REQUEST_LOCAL_SOURCE, RECEIVE_LOCAL_SOURCE,
-  REQUEST_OXGARAGE_TRANSFORM, RECEIVE_FROM_OXGARAGE, UPDATE_CUSTOMIZATION_ODD, EXPORT_ODD, EXPORT_SCHEMA
+  REQUEST_OXGARAGE_TRANSFORM, RECEIVE_FROM_OXGARAGE, UPDATE_CUSTOMIZATION_ODD, EXPORT_ODD, EXPORT_SCHEMA, CLEAR_STATE
 } from '../actions'
 import {
   INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS
@@ -101,6 +101,8 @@ function customization(state = {
 
 function odd(state = {}, action) {
   switch (action.type) {
+    case CLEAR_STATE:
+      return {}
     case UPDATE_CUSTOMIZATION_ODD:
       const xml = Object.assign({}, state.customization,
         {

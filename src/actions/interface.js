@@ -4,11 +4,19 @@ export const SET_FILTER_TERM = 'SET_FILTER_TERM'
 export const ADD_FROM_PICKER = 'ADD_FROM_PICKER'
 export const CLEAR_PICKER = 'CLEAR_PICKER'
 export const CLEAR_UI_DATA = 'CLEAR_UI_DATA'
+export const SET_LOADING_STATUS = 'SET_LOADING_STATUS'
 
 export function setFilterTerm(term) {
   return {
     type: SET_FILTER_TERM,
     term
+  }
+}
+
+export function setLoadingStatus(msg) {
+  return {
+    type: SET_LOADING_STATUS,
+    msg
   }
 }
 

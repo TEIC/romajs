@@ -43,7 +43,7 @@ export default class MembersList extends Component {
             <span className="mdc-linear-progress__bar-inner"/>
           </div>
         </div>
-        <figcaption>Loading ODD data...</figcaption>
+        <figcaption>{this.props.loadingStatus}</figcaption>
       </figure>)
     if (this.props.elements.length > 0) {
       content = [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
@@ -87,5 +87,6 @@ MembersList.propTypes = {
     module: PropTypes.string.isRequired,
     module_selected: PropTypes.bool.isRequired
   }).isRequired).isRequired,
-  toggleItem: PropTypes.func.isRequired
+  toggleItem: PropTypes.func.isRequired,
+  loadingStatus: PropTypes.string
 }

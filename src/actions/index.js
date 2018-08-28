@@ -12,6 +12,14 @@ export const UPDATE_CUSTOMIZATION_ODD = 'UPDATE_CUSTOMIZATION_ODD'
 export const EXPORT_ODD = 'EXPORT_ODD'
 export const EXPORT_SCHEMA = 'EXPORT_SCHEMA'
 
+export const CLEAR_STATE = 'CLEAR_STATE'
+
+export function clearState() {
+  return {
+    type: CLEAR_STATE
+  }
+}
+
 export function selectOdd(oddUrl) {
   return {
     type: SELECT_ODD,
@@ -41,7 +49,7 @@ function requestLocalSource(url) {
   }
 }
 
-function receiveLocalSource(json) {
+export function receiveLocalSource(json) {
   return {
     type: RECEIVE_LOCAL_SOURCE,
     json,
@@ -120,9 +128,9 @@ export function postToOxGarage(input, endpoint) {
         method: 'post',
         body: fd
       })
-        .then(response => {return response.text()})
+        .then(response => {return response.json()})
         .then((json) => {
-          return res(dispatch(receiveFromOxGarage(JSON.parse(json))))
+          return res(dispatch(receiveFromOxGarage(json)))
         })
     })
   }

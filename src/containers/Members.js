@@ -52,7 +52,7 @@ const mapStateToProps = (state) => {
       })
     }
   }
-  return {elements}
+  return {elements, loadingStatus: state.ui.loadingStatus}
   // else return {elements: [], classes: [], datatypes: [], macros: []}
 }
 
