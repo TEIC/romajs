@@ -44,7 +44,7 @@ $romajs-theme-no: #802900;
 }
 
 /* Typography overrides */
-.mdc-typography--headline {
+.mdc-typography--headline, .mdc-typography--subheading1 {
   margin-left: 20px;
 }
 
@@ -253,6 +253,11 @@ main {
 
 .romajs-clickable-adjust {
   vertical-align: middle;
+}
+
+/* Tabs */
+.romajs-tabPanels {
+  padding: 0 20px 20px 20px;
 }
 
 /* Picker */

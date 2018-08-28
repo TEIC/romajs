@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Component } from 'react'
 
 import {MDCTabBar} from '@material/tabs'
+import { MDCSelect } from '@material/select'
 
 export default class Home extends Component {
   constructor(props) {
@@ -47,6 +48,19 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+    console.log(` 
+                    _____      ___      _____
+                    (   )     @   @     \\%%%/
+                     |||       |||      \\%%%/
+                     |||       |||       |||
+                     |||       |||       |||
+                     |||       |||       |||
+                    (___)     (___)     (___)
+                             Roma JS
+   If you're checking out the console, maybe you want to contribute?
+              Please do! https://github.com/raffazizzi/romajs
+   `)
+
     this.props.clearUiData()
     const tabBar = new MDCTabBar(this.refs.tabs)
     tabBar.listen('MDCTabBar:change', ({detail: tabs}) => {
@@ -54,6 +68,13 @@ export default class Home extends Component {
     })
     // Set start function to first option
     this._updateCustomizationUrl(this.state.odds.urls[0])
+
+    const select = new MDCSelect(this.refs.chooseodd)
+    select.foundation_.setSelectedIndex(0)
+    select.listen('MDCSelect:change', () => {
+      const idx = this.state.odds.labels.indexOf(select.value)
+      this._updateCustomizationUrl(this.state.odds.urls[idx])
+    })
   }
 
   updatePanel(index) {
@@ -96,13 +117,20 @@ export default class Home extends Component {
               <div className="romajs-tabPanels">
                 <div className="romajs-tabPanel" role="tabpanel" style={this._setActivePanel(0)}>
                   <h2 className="mdc-typography--title">Select ODD</h2>
-                  <select className="mdc-select" onChange={e => this._updateCustomizationUrl(e.target.value)}>
-                    {
-                      this.state.odds.urls.map((url, i) => {
-                        return (<option key={i} value={url}>{this.state.odds.labels[i]}</option>)
-                      })
-                    }
-                  </select>
+                  <div className="mdc-select" role="listbox" ref="chooseodd">
+                    <div className="mdc-select__surface" tabIndex="0">
+                      <div className="mdc-select__label"/>
+                      <div className="mdc-select__selected-text"/>
+                      <div className="mdc-select__bottom-line"/>
+                    </div>
+                    <div className="mdc-menu mdc-select__menu">
+                      <ul className="mdc-list mdc-menu__items">{
+                        this.state.odds.urls.map((url, i) => {
+                          return (<li className="mdc-list-item" role="option" key={i} tabIndex={i}>{this.state.odds.labels[i]}</li>)
+                        })
+                      }</ul>
+                    </div>
+                  </div>
                 </div>
                 <div className="romajs-tabPanel"role="tabpanel" style={this._setActivePanel(1)}>
                   <h2 className="mdc-typography--title">Upload ODD</h2>
@@ -114,7 +142,8 @@ export default class Home extends Component {
             </section>
             <section className="mdc-card__actions">
               <button className="mdc-button mdc-button--compact mdc-card__action" onClick={this.state.start} {...disabled}>Start</button>
-              <button className="mdc-button mdc-button--compact mdc-card__action" onClick={this.props.loadTestData} {...disabled}>(Test: Skip OxGarage)</button>
+              <button className="mdc-button mdc-button--compact mdc-card__action" id="test"
+                onClick={this.props.loadTestData} {...disabled} style={{display: 'none'}}>(Test: Skip OxGarage)</button>
             </section>
           </div>
         </div>

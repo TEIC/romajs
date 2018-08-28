@@ -103,13 +103,13 @@ export default class Element extends Component {
         </span>)
         break
       case 'constraints':
-        content = (<div>contr</div>)
+        content = (<h1 className="mdc-typography--headline" style={{color: '#225688'}}>Coming soon.</h1>)
         trail = (<span className="mdl-chip mdl-chip--deletable">
           <span className="mdl-chip__text">Contraints</span>
         </span>)
         break
       case 'processing':
-        content = (<div>proc</div>)
+        content = (<h1 className="mdc-typography--headline" style={{color: '#225688'}}>Coming soon.</h1>)
         trail = (<span className="mdl-chip mdl-chip--deletable">
           <span className="mdl-chip__text">Processing Model</span>
         </span>)
@@ -145,6 +145,7 @@ export default class Element extends Component {
     <main key="main">
       <div className="romajs-form">
         <h1 className="mdc-typography--headline">&lt;{this.props.element.ident}&gt;</h1>
+        <h2 className="mdc-typography--subheading1">{this.props.element.shortDesc}</h2>
         {content}
       </div>
     </main>]
