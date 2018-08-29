@@ -521,15 +521,18 @@ function updateElements(localsource, customization, odd) {
             }
             break
           case 'attClasses':
-            const change = Array.from(el.classes.atts).sort()
-            const local = Array.from(localEl.classes.atts).sort()
+          case 'modelClasses':
+            const type = whatChanged === 'attClasses' ? 'atts' : 'model'
+            const change = Array.from(el.classes[type]).sort()
+            const local = Array.from(localEl.classes[type]).sort()
             if (!_areArraysEqual(change, local)) {
               const added = change.filter(cl => local.indexOf(cl) === -1)
               const removed = local.filter(cl => {
                 // Make sure the class isn't globally deleted.
                 if (change.indexOf(cl) === -1) {
                   // This relies on truth-y and false-y values. watch out.
-                  return customization.classes.attributes.filter(cc => cc.ident === cl)[0]
+                  const classType = type === 'atts' ? 'attributes' : 'models'
+                  return customization.classes[classType].filter(cc => cc.ident === cl)[0]
                 } else return false
               })
 

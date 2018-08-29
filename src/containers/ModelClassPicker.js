@@ -4,19 +4,8 @@ import { addElementModelClass } from '../actions/elements'
 
 const mapStateToProps = (state) => {
   const customClasses = state.odd.customization.json.classes.models
-  const customClassNames = customClasses.reduce((acc, cn) => {
-    acc.push(cn.ident)
-    return acc
-  }, [])
-  const localClasses = state.odd.localsource.json.classes.models
-
-  // Get all classes from localsource that are not customized
-  let classes = localClasses.filter((lc) => {
-    return customClassNames.indexOf(lc.ident) === -1
-  })
-  // join with custom classes
-  classes = classes.concat(customClasses)
-  return {items: classes, pickerType: 'models'}
+  return {items: customClasses, pickerType: 'models',
+    message: `Not seeing a class you're looking for? <a href='#'>Manage classes</a>`}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

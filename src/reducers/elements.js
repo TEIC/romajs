@@ -91,6 +91,7 @@ export function oddElements(state, action) {
         if (m.ident === action.element) {
           if (m.classes.model.indexOf(action.className) === -1) {
             m.classes.model.push(action.className)
+            markChange(m, 'modelClasses')
           }
         }
       })
@@ -101,6 +102,7 @@ export function oddElements(state, action) {
           const idx = m.classes.model.indexOf(action.className)
           if (idx > -1) {
             m.classes.model.splice(idx, 1)
+            markChange(m, 'modelClasses')
           } else {
             throw new ReducerException(`Could not locate class ${action.className}.`)
           }
