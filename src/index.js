@@ -27,26 +27,27 @@ const persistConf = {
 }
 
 const romajsApp = persistCombineReducers(persistConf, reducers)
+let store
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-  // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-})
+if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
 
-const enhancer = composeEnhancers(
-  applyMiddleware(
-    routerMiddleware(history),
-    thunkMiddleware
+  const enhancer = composeEnhancers(
+    applyMiddleware(
+      routerMiddleware(history),
+      thunkMiddleware
+    )
   )
-)
-const store = createStore(romajsApp, enhancer)
-
-// const store = createStore(
-//   romajsApp,
-//   applyMiddleware(
-//     routerMiddleware(history),
-//     thunkMiddleware
-//   )
-// )
+  store = createStore(romajsApp, enhancer)
+} else {
+  store = createStore(
+    romajsApp,
+    applyMiddleware(
+      routerMiddleware(history),
+      thunkMiddleware
+    )
+  )
+}
 
 const persistor = persistStore(store)
 
