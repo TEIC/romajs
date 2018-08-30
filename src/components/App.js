@@ -5,8 +5,24 @@ import HeaderContainer from '../containers/HeaderContainer'
 import HomePage from '../containers/HomePage'
 import Members from '../containers/Members'
 import ElementPage from '../containers/ElementPage'
+import ErrorReporting from './dialogs/ErrorReporting'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showErrorDialog: false,
+      errorMsg: ''
+    }
+  }
+
+  componentDidMount() {
+    window.onerror = (error) => {
+      console.log('err')
+      this.setState({showErrorDialog: true, errorMsg: error})
+    }
+  }
+
   render() {
     return (<div className="mdc-typography">
       <HeaderContainer />
@@ -17,6 +33,8 @@ class App extends Component {
         <Route exact path="/element/:el/:section" component={ElementPage} />
         <Route exact path="/element/:el/attributes/:attr" component={ElementPage} />
       </div>
+      <ErrorReporting show={this.state.showErrorDialog} error={this.state.errorMsg}
+        hide={() => {this.setState({showErrorDialog: false})}}/>
     </div>)
   }
 }
