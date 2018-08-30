@@ -14,6 +14,15 @@ export const EXPORT_SCHEMA = 'EXPORT_SCHEMA'
 
 export const CLEAR_STATE = 'CLEAR_STATE'
 
+export const REPORT_ERROR = 'REPORT_ERROR'
+
+export function reportError(err) {
+  return {
+    type: REPORT_ERROR,
+    err
+  }
+}
+
 export function clearState() {
   return {
     type: CLEAR_STATE
@@ -100,7 +109,12 @@ export function fetchOdd(odd) {
     dispatch(requestOdd(odd))
     return new Promise((res)=>{
       fetch(odd)
-        .then(response => response.text())
+        .then(response => {
+          if (!response.ok) {
+            throw Error(response.statusText)
+          }
+          return response.text()
+        })
         .then((xml) => {
           res(dispatch(receiveOdd(xml)))
         })
@@ -112,7 +126,12 @@ export function fetchLocalSource(url) {
   return dispatch => {
     dispatch(requestLocalSource(url))
     return fetch(url)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText)
+        }
+        return response.json()
+      })
       .then(json => dispatch(receiveLocalSource(json)))
   }
 }
@@ -128,9 +147,12 @@ export function postToOxGarage(input, endpoint) {
         method: 'post',
         body: fd
       })
-        .then(response => {return response.json()})
+        .then(response => response.json())
         .then((json) => {
           return res(dispatch(receiveFromOxGarage(json)))
+        })
+        .catch( (err) => {
+          dispatch(reportError(err))
         })
     })
   }
