@@ -18,7 +18,9 @@ function mergeModules(localsource, customization, odd) {
     return acc
   }, new Set())
   // Add modules based on elementRef classRef dataRef macroRef (attRef?)
-  const memberRefs = Array.from(schemaSpec.querySelectorAll('elementRef, classRef, dataRef, macroRef'))
+  // Using schemaSpec > elementRef to make sure content > elementRef is ignored
+  const memberRefs = Array.from(
+    schemaSpec.querySelectorAll('schemaSpec > elementRef, schemaSpec > classRef, schemaSpec > dataRef, schemaSpec > macroRef'))
   memberRefs.map(el => {
     const ident = el.getAttribute('key')
     oddModuleNames.add(allLocalMembers.filter(m => m.ident === ident)[0].module)
@@ -169,9 +171,9 @@ function mergeElements(localsource, customization, odd) {
 
   // add elements
   for (const el of customizationElements) {
-    if (!allOddElements.has(el)) {
-      console.log('adding ' + el)
-      const mod = localsource.elements.filter(x => (x.ident === el))[0].module
+    const localEl = localsource.elements.filter(x => (x.ident === el))[0]
+    if (!allOddElements.has(el) && localEl) {
+      const mod = localEl.module
       // adjust @include or @except
       const moduleRef = moduleRefs.filter(m => (m.getAttribute('key') === mod))[0]
       const elementRef = Array.from(elementRefs).filter(er => (er.getAttribute('key') === el))[0]
