@@ -57,6 +57,9 @@ const mapDispatchToProps = (dispatch) => {
         // 1. Get JSON via OxGarage
         dispatch(setLoadingStatus('Importing customization ODD...'))
         const odd = new DOMParser().parseFromString(e.target.result, 'text/xml')
+        if (odd.getElementsByTagNameNS('http://www.tei-c.org/ns/1.0', '*').length !== 1 ) {
+          throw Error('This does not appear to be a TEI document.')
+        }
         if (odd.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*').length > 0) {
           throw Error('ODDs with RELAX NG elements are not supported.')
         }

@@ -49,6 +49,12 @@ export default class ErrorReporting extends Component {
             </p>
           </section>
           <footer className="mdc-dialog__footer">
+            <button type="button" className="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button" onClick={() => {
+              this.refs.cancelBtn.click()
+              this.props.goHome()
+            }}>
+              Start Over
+            </button>
             <button ref="cancelBtn" type="button" className="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">
               OK
             </button>
@@ -63,5 +69,6 @@ export default class ErrorReporting extends Component {
 ErrorReporting.propTypes = {
   show: PropTypes.bool.isRequired,
   hide: PropTypes.func,
-  error: PropTypes.string
+  error: PropTypes.string,
+  goHome: PropTypes.func
 }

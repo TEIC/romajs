@@ -134,7 +134,7 @@ export default class Home extends Component {
                 </div>
                 <div className="romajs-tabPanel"role="tabpanel" style={this._setActivePanel(1)}>
                   <h2 className="mdc-typography--title">Upload ODD</h2>
-                  <input type="file" id="files" onChange={e => {
+                  <input type="file" id="files" accept=".xml,.tei,.odd" onChange={e => {
                     this.setState({selectedFile: e.target.files.length > 0 ? e.target.files : undefined})
                   }}/>
                 </div>

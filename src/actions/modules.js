@@ -18,10 +18,12 @@ export function excludeModules(modules) {
 }
 
 export function includeElements(elements) {
-  return {
-    type: INCLUDE_ELEMENTS,
-    elements
-  }
+  elements
+  throw Error
+  // return {
+  //   type: INCLUDE_ELEMENTS,
+  //   elements
+  // }
 }
 
 export function excludeElements(elements) {
