@@ -9,22 +9,21 @@ export default class DonwloadButton extends Component {
   }
 
   render() {
-    return (
-      <section className="mdc-toolbar__section mdc-toolbar__section--align-end mdc-menu-anchor" style={{right: '15px'}}>
-        <button className="mdc-button mdc-button--raised toggle" onClick={(e) => {
-          this.menu.open = !this.menu.open
-          return e
-        }}>
-          <i className="material-icons mdc-button__icon">file_download</i> Download
-        </button>
-        <div className="mdc-menu romajs-download-menu" tabIndex="-1" ref="menu">
-          <ul className="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
-            <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadCustomization()}}>Download ODD</li>
-            <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadRng()}}>Download RelaxNG schema</li>
-            <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadW3c()}}>Download W3C schema</li>
-          </ul>
-        </div>
-      </section>)
+    return [
+      (<button className="mdc-button mdc-button--raised toggle" onClick={(e) => {
+        this.menu.open = !this.menu.open
+        return e
+      }}>
+        <i className="material-icons mdc-button__icon">file_download</i> Download
+      </button>),
+      (<div className="mdc-menu romajs-download-menu" tabIndex="-1" ref="menu">
+        <ul className="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
+          <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadCustomization()}}>Download ODD</li>
+          <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadRng()}}>Download RelaxNG schema</li>
+          <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadW3c()}}>Download W3C schema</li>
+        </ul>
+      </div>)
+    ]
   }
 }
 
