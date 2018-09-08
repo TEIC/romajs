@@ -13,6 +13,8 @@ export default class Home extends Component {
       selectedFile: undefined,
       odds: {
         labels: [
+          'TEI All (customize by reducing TEI)',
+          'TEI Minimal (customize by building TEI up)',
           'TEI Absolutely Bare',
           'TEI SimplePrint',
           'TEI Lite',
@@ -28,6 +30,8 @@ export default class Home extends Component {
           'TEI for Journal of the TEI'
         ],
         urls: [
+          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_all.odd',
+          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_minimal.odd',
           'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_bare.odd',
           'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_simplePrint.odd',
           'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_lite.odd',
