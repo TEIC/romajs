@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchOdd, receiveOdd, postToOxGarage, fetchLocalSource, receiveLocalSource, receiveFromOxGarage, clearState } from '../actions'
+import { fetchOdd, receiveOdd, postToOxGarage, fetchLocalSource, receiveFromOxGarage, clearState } from '../actions'
 import { clearUiData, setLoadingStatus } from '../actions/interface'
 import { push } from 'react-router-redux'
 import Home from '../components/Home'
@@ -18,31 +18,11 @@ const mapDispatchToProps = (dispatch) => {
         // 1. Get JSON via OxGarage
         dispatch(setLoadingStatus('Importing customization ODD...'))
         dispatch(postToOxGarage(odd.xml, oxgarage.compile_json)).then(() => {
-          dispatch(setLoadingStatus('Obtaining full specification source...'))
-          // 2. Get p5subset. TODO: optimize this for speed.
-          // from next release it should be possible to get p5susbet.json directly
-          fetch('http://www.tei-c.org/Vault/P5/current/xml/tei/odd/p5subset.xml')
-            .then(response => response.text())
-            .then(p5data => {
-              dispatch(setLoadingStatus('Importing full specification source (last step!)...'))
-              // 3. Transform into JSON
-              const fd = new FormData()
-              fd.append('fileToConvert', new Blob([p5data], {'type': 'application\/octet-stream'}), 'p5.odd')
-              fetch(oxgarage.json, {
-                mode: 'cors',
-                method: 'post',
-                body: fd
-              })
-                .then(response => {
-                  if (!response.ok) {
-                    throw Error(response.statusText)
-                  }
-                  return response.json()
-                })
-                .then(json => {
-                  dispatch(receiveLocalSource(json))
-                })
-            })
+          dispatch(setLoadingStatus('Importing full specification source...'))
+          // 2. Get p5subset.
+          // TODO: this is a terrible thing, but there are plans to fix it:
+          // from next release it will be possible to get p5susbet.json directly from the Vault.
+          dispatch(fetchLocalSource('http://mith.us/romajs/fakeData/p5subset.json'))
         })
       })
     },
@@ -64,36 +44,11 @@ const mapDispatchToProps = (dispatch) => {
           throw Error('ODDs with RELAX NG elements are not supported.')
         }
         dispatch(postToOxGarage(e.target.result, oxgarage.compile_json)).then(() => {
-          dispatch(setLoadingStatus('Obtaining full specification source...'))
-          // 2. Get p5subset. TODO: optimize this for speed.
-          // from next release it should be possible to get p5susbet.json directly
-          fetch('http://www.tei-c.org/Vault/P5/current/xml/tei/odd/p5subset.xml')
-            .then(response => {
-              if (!response.ok) {
-                throw Error(response.statusText)
-              }
-              return response.text()
-            })
-            .then(p5data => {
-              dispatch(setLoadingStatus('Importing full specification source...'))
-              // 3. Transform into JSON
-              const fd = new FormData()
-              fd.append('fileToConvert', new Blob([p5data], {'type': 'application\/octet-stream'}), 'p5.odd')
-              fetch(oxgarage.json, {
-                mode: 'cors',
-                method: 'post',
-                body: fd
-              })
-                .then(response => {
-                  if (!response.ok) {
-                    throw Error(response.statusText)
-                  }
-                  return response.json()
-                })
-                .then(json => {
-                  dispatch(receiveLocalSource(json))
-                })
-            })
+          dispatch(setLoadingStatus('Importing full specification source...'))
+          // 2. Get p5subset.
+          // TODO: this is a terrible thing, but there are plans to fix it:
+          // from next release it will be possible to get p5susbet.json directly from the Vault.
+          dispatch(fetchLocalSource('http://mith.us/romajs/fakeData/p5subset.json'))
         })
       }
     },
