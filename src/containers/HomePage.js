@@ -13,12 +13,12 @@ const mapDispatchToProps = (dispatch) => {
     getCustomization: (url) => {
       dispatch(clearState())
       dispatch(push('/members'))
-      dispatch(setLoadingStatus('Obtaining customization ODD...'))
+      dispatch(setLoadingStatus('1/3 Obtaining customization ODD...'))
       dispatch(fetchOdd(url)).then((odd) => {
         // 1. Get JSON via OxGarage
-        dispatch(setLoadingStatus('Importing customization ODD...'))
+        dispatch(setLoadingStatus('2/3 Importing customization ODD...'))
         dispatch(postToOxGarage(odd.xml, oxgarage.compile_json)).then(() => {
-          dispatch(setLoadingStatus('Importing full specification source...'))
+          dispatch(setLoadingStatus('3/3 Importing full specification source...'))
           // 2. Get p5subset.
           // TODO: this is a terrible thing, but there are plans to fix it:
           // from next release it will be possible to get p5susbet.json directly from the Vault.
@@ -29,13 +29,13 @@ const mapDispatchToProps = (dispatch) => {
     uploadCustomization: (files) => {
       dispatch(clearState())
       dispatch(push('/members'))
-      dispatch(setLoadingStatus('Obtaining customization ODD...'))
+      dispatch(setLoadingStatus('1/3 Obtaining customization ODD...'))
       const reader = new FileReader()
       reader.readAsText(files[0])
       reader.onload = (e) => {
         dispatch(receiveOdd(e.target.result))
         // 1. Get JSON via OxGarage
-        dispatch(setLoadingStatus('Importing customization ODD...'))
+        dispatch(setLoadingStatus('2/3 Importing customization ODD...'))
         const odd = new DOMParser().parseFromString(e.target.result, 'text/xml')
         if (odd.getElementsByTagNameNS('http://www.tei-c.org/ns/1.0', 'TEI').length !== 1 ) {
           throw Error('This does not appear to be a TEI document.')
@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch) => {
           throw Error('ODDs with RELAX NG elements are not supported.')
         }
         dispatch(postToOxGarage(e.target.result, oxgarage.compile_json)).then(() => {
-          dispatch(setLoadingStatus('Importing full specification source...'))
+          dispatch(setLoadingStatus('3/3 Importing full specification source...'))
           // 2. Get p5subset.
           // TODO: this is a terrible thing, but there are plans to fix it:
           // from next release it will be possible to get p5susbet.json directly from the Vault.
