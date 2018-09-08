@@ -1,20 +1,22 @@
 import { connect } from 'react-redux'
 import Blockly from '../components/Blockly'
+import { updateContentModel } from '../actions/elements'
+import { clone } from '../utils/clone'
 
 const flattenContentModel = (cnt, flattened = [], depth = 1) => {
   cnt.map(c => {
     switch (c.type) {
       case 'sequence':
       case 'alternate':
-        let copy = Object.assign({}, c)
+        let copy = clone(c)
         copy.depth = depth
-        flattened.push(copy)
         const content = copy.content.slice(0)
         copy.content = true
+        flattened.push(copy)
         flattenContentModel(content, flattened, depth + 1)
         break
       default:
-        copy = Object.assign({}, c)
+        copy = clone(c)
         copy.depth = depth
         flattened.push(copy)
     }
@@ -74,33 +76,8 @@ const mapStateToProps = (state, ownProps) => {
   // Get all classes from state
   // TODO: these should be selectors as they're used by more than one container's mapStateToProps
   // i.e. AttClassPicker and ModelClassPicker
-  const customAttClasses = state.odd.customization.json.classes.attributes
-  const customAttClassNames = customAttClasses.reduce((acc, cn) => {
-    acc.push(cn.ident)
-    return acc
-  }, [])
-  const localAttClasses = state.odd.localsource.json.classes.attributes
-
-  // Get all classes from localsource that are not customized
-  let attClasses = localAttClasses.filter((lc) => {
-    return customAttClassNames.indexOf(lc.ident) === -1
-  })
-  // join with custom classes
-  attClasses = attClasses.concat(customAttClasses)
-
-  const customModClasses = state.odd.customization.json.classes.models
-  const customModClassNames = customModClasses.reduce((acc, cn) => {
-    acc.push(cn.ident)
-    return acc
-  }, [])
-  const localModClasses = state.odd.localsource.json.classes.models
-
-  // Get all classes from localsource that are not customized
-  let modClasses = localModClasses.filter((lc) => {
-    return customModClassNames.indexOf(lc.ident) === -1
-  })
-  // join with custom classes
-  modClasses = modClasses.concat(customModClasses)
+  const attClasses = state.odd.customization.json.classes.attributes
+  const modClasses = state.odd.customization.json.classes.models
 
   // TODO: sort by ident
   const classes = []
@@ -113,7 +90,11 @@ const mapStateToProps = (state, ownProps) => {
   return {flattenedContent, macros, classes, elements, datatypes}
 }
 
-const mapDispatchToProps = () => { return { } }
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    updateContentModel: (content) => dispatch(updateContentModel(ownProps.element.ident, content))
+  }
+}
 
 const BlocklyContainer = connect(
   mapStateToProps,

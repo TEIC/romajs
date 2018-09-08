@@ -89,6 +89,7 @@ export const sequence = {
 }
 
 export const elementRef = (elements) => {
+  elements.unshift(['...', '...'])
   return {
     init: function() {
       this.jsonInit({
@@ -112,6 +113,7 @@ export const elementRef = (elements) => {
 }
 
 export const classRef = (classes) => {
+  classes.unshift(['...', '...'])
   return {
     init: function() {
       this.jsonInit({
@@ -135,6 +137,7 @@ export const classRef = (classes) => {
 }
 
 export const dataRef = (datatypes) => {
+  datatypes.unshift(['...', '...'])
   return {
     init: function() {
       this.jsonInit({
@@ -158,6 +161,7 @@ export const dataRef = (datatypes) => {
 }
 
 export const macroRef = (macros) => {
+  macros.unshift(['...', '...'])
   return {
     init: function() {
       this.jsonInit({

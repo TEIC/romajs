@@ -26,7 +26,7 @@ export default class Header extends Component {
     }
 
     return [
-      (<header className="mdc-toolbar mdc-elevation--z4 mdc-toolbar--fixed romajs-toolbar">
+      (<header key="header" className="mdc-toolbar mdc-elevation--z4 mdc-toolbar--fixed romajs-toolbar">
         <div className="mdc-toolbar__row">
           <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
             <span className="mdc-toolbar__title">Roma - ODD customization</span>
@@ -37,7 +37,7 @@ export default class Header extends Component {
           </section>
         </div>
       </header>),
-      (<YesNoDialog show={this.state.showStartOver} continue={() => {this.props.navigateTo('/')}}
+      (<YesNoDialog key="ynd" show={this.state.showStartOver} continue={() => {this.props.navigateTo('/')}}
         header={'Do you want to start over? All changes will be lost.'} hide={() => {
           this.setState({showStartOver: false})
         }}/>)

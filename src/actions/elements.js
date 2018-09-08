@@ -14,6 +14,15 @@ export const RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS = 'RESTORE_CLASS_ATTRIBUTE
 export const USE_CLASS_DEFAULT = 'USE_CLASS_DEFAULT'
 export const DELETE_CLASS_ATTRIBUTE = 'DELETE_CLASS_ATTRIBUTE'
 export const CHANGE_CLASS_ATTRIBUTE = 'CHANGE_CLASS_ATTRIBUTE'
+export const UPDATE_CONTENT_MODEL = 'UPDATE_CONTENT_MODEL'
+
+export function updateContentModel(element, content) {
+  return {
+    type: UPDATE_CONTENT_MODEL,
+    element,
+    content
+  }
+}
 
 export function updateElementDocs(element, docEl, content, index) {
   return {

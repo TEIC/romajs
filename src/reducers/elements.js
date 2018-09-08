@@ -6,7 +6,8 @@ import {
   ADD_ELEMENT_ATTRIBUTE, DELETE_ELEMENT_ATTRIBUTE, RESTORE_ELEMENT_ATTRIBUTE,
   ADD_ELEMENT_ATTRIBUTE_CLASS, RESTORE_ELEMENT_ATTRIBUTE_CLASS, DELETE_ELEMENT_ATTRIBUTE_CLASS,
   RESTORE_CLASS_ATTRIBUTE, RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS,
-  USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE, CHANGE_CLASS_ATTRIBUTE, CHANGE_ELEMENT_ATTRIBUTE
+  USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE, CHANGE_CLASS_ATTRIBUTE, CHANGE_ELEMENT_ATTRIBUTE,
+  UPDATE_CONTENT_MODEL
 } from '../actions/elements'
 
 function deleteAttribute(m, attribute) {
@@ -365,6 +366,16 @@ export function oddElements(state, action) {
             m.attributes = [newAtt]
           }
           markChange(m, 'attributes')
+        }
+      })
+      return newState
+    case UPDATE_CONTENT_MODEL:
+      // no-op
+      customization.elements.forEach(m => {
+        if (m.ident === action.element) {
+          // TODO: this may be made safer without stringify
+          m.content = JSON.parse(JSON.stringify(action.content).replace(/Infinity/g, 'unbounded'))
+          markChange(m, 'content')
         }
       })
       return newState

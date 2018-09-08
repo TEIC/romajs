@@ -18,8 +18,11 @@ export default class BlocklyRomaJsEditor extends Component {
     const thisEditor = this
     Blockly.FieldDropdown.prototype.showEditor_ = function() {
       const pickerOptions = []
-      for (const opt of this.getOptions()) {
-        pickerOptions.push({ident: opt[0], shortDesc: opt[1]})
+      const opts = Array.from(this.getOptions())
+      for (const opt of opts) {
+        if (opt[0] !== '...') {
+          pickerOptions.push({ident: opt[0], shortDesc: opt[1]})
+        }
       }
       thisEditor.setState({
         pickerOptions,
@@ -47,21 +50,6 @@ export default class BlocklyRomaJsEditor extends Component {
     this.blocklyXml = xmlParser.parseFromString(templateXml, 'text/xml')
     this.processContent(props.flattenedContent, this.blocklyXml.getElementById('start'))
     const initialXml = xmlSerializer.serializeToString(this.blocklyXml)
-    // initialXml = `<xml xmlns="http://www.w3.org/1999/xhtml">
-    //   <block type="content" deletable="false" x="10" y="10">
-    //     <statement name="references" id="start"><block xmlns="" type="sequence"><field name="maxOccurs">1</field><field name="minOccurs">1</field>
-    //     <statement name="references"><block type="elementRef"><field name="key">msIdentifier</field><next><block type="classRef">
-    //       <field name="key">model.headLike</field><next><block type="alternate"><field name="maxOccurs">1</field><field name="minOccurs">1</field>
-    //       <statement name="references"><block type="classRef"><field name="key">model.pLike</field><next><block type="sequence">
-    //         <field name="maxOccurs">1</field><field name="minOccurs">1</field><statement name="references"><block type="elementRef">
-    //           <field name="key">msContents</field><next><block type="elementRef"><field name="key">physDesc</field><next>
-    //             <block type="elementRef"><field name="key">history</field><next><block type="elementRef"><field name="key">additional</field><next>
-    //               <block type="alternate"><field name="maxOccurs">1</field><field name="minOccurs">1</field>
-    //               <statement name="references"><block type="elementRef"><field name="key">msPart</field><next><block type="elementRef">
-    //                 <field name="key">msFrag</field></block></next></block></statement></block></next></block></next></block></next></block></next></block>
-    //
-    //                 </statement></block></next></block></statement></block></next></block></next></block></statement></block></statement>
-    //   </block></xml>`
     this.state = {
       initialXml,
       pickerOptions: [],
@@ -114,6 +102,7 @@ export default class BlocklyRomaJsEditor extends Component {
     if (c.content) {
       newStmt = this.blocklyXml.createElement('statement')
       newStmt.setAttribute('name', 'references')
+      newStmt.setAttribute('depth', c.depth)
       block.appendChild(newStmt)
     }
     return newStmt
@@ -147,8 +136,10 @@ export default class BlocklyRomaJsEditor extends Component {
         curBlock = block
         depth = c.depth
       } else if (c.depth < depth) {
-        // Go back up to ancestor::statement/block and create a next element
-        const oldBlock = stmt.parentNode.closest('statement').getElementsByTagName('block')[0]
+        // Go back up to necessary depth ancestor::statement/block and create a next element
+        // const oldBlock = stmt.parentNode.closest('statement').getElementsByTagName('block')[0]
+        const oldStmt = start.querySelectorAll(`statement[depth='${c.depth - 1}']`)
+        const oldBlock = oldStmt[oldStmt.length - 1].getElementsByTagName('block')[0]
         const block = this.createBlock(c)
         const newStmt = this.createStmt(c, block)
         // Create element next
@@ -198,11 +189,51 @@ export default class BlocklyRomaJsEditor extends Component {
       wrapperDivClassName: 'romajs-blockly',
       workspaceDidChange: function(workspace) {
         workspace
-        // console.log(workspace)
       },
-      xmlDidChange: function(xml) {
-        xml
-        // console.log(xml)
+      xmlDidChange: (xml) => {
+        const blocklyXml = xmlParser.parseFromString(xml, 'text/xml')
+        const contentObject = []
+        let valid = true
+        function _processXml(block, curContent) {
+          const o = {}
+          const type = block.getAttribute('type')
+          // Do not update state if alternate|sequence is incomplete
+          if (type === 'alternate' || type === 'sequence') {
+            if (!Array.from(block.children).filter(c => c.tagName === 'statement').length > 0) {
+              valid = false
+            }
+          }
+          for (const blockChild of block.children) {
+            if (blockChild.tagName === 'field') {
+              const bName = blockChild.getAttribute('name')
+              // Do not update state if a key is not set.
+              if (blockChild.textContent !== '...') {
+                o[bName] = blockChild.textContent
+              } else valid = false
+              // Do no update state if (min|max)Occurs is not valid
+              if (bName === 'minOccurs' | bName === 'maxOccurs') {
+                if (!blockChild.textContent.match(/\d+|Infinity/)) {
+                  valid = false
+                }
+              }
+            } else if (blockChild.tagName === 'next') {
+              _processXml(blockChild.querySelector('block'), curContent)
+            } else if (blockChild.tagName === 'statement') {
+              o.content = []
+              _processXml(blockChild.querySelector('block'), o.content)
+            }
+          }
+          if (valid) {
+            curContent.unshift(o)
+            o.type = block.getAttribute('type')
+          }
+          return curContent
+        }
+        _processXml(blocklyXml.querySelector("block[type='content'] block"), contentObject)
+        // Now pass this to an action to update content
+        if (valid) {
+          this.props.updateContentModel(contentObject)
+        }
       }
     }
     return (<div>
@@ -211,7 +242,7 @@ export default class BlocklyRomaJsEditor extends Component {
         add={ (t, i) => {
           this.setState({pickerVisible: false})
           this.state.pickerAdd(i)
-        }}/>
+        }} message="Not seeing something you're looking for? <a href='#'>Manage members</a>"/>
       {React.createElement(ReactBlocklyComponent.BlocklyEditor, config)}
     </div>)
   }
@@ -219,6 +250,7 @@ export default class BlocklyRomaJsEditor extends Component {
 
 BlocklyRomaJsEditor.propTypes = {
   flattenedContent: PropTypes.array,
+  updateContentModel: PropTypes.func,
   elements: PropTypes.array,
   macros: PropTypes.array,
   classes: PropTypes.array,

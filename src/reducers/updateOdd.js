@@ -1,3 +1,5 @@
+import { deepCompare } from  '../utils/deepCompare'
+
 const parser = new DOMParser()
 
 function mergeModules(localsource, customization, odd) {
@@ -100,7 +102,6 @@ function mergeElements(localsource, customization, odd) {
         }
         return acc
       }, [])
-      // console.log('full module ', mod.getAttribute('key'))
       localsource.elements.map(mem => {
         if (mem.module === moduleName && deletedEls.indexOf(mem.ident) === -1) {
           includedElements.push(mem.ident)
@@ -222,7 +223,6 @@ function mergeElements(localsource, customization, odd) {
   const elementsToAdd = customizationElements.filter(x => (!allOddElements.has(x)))
   elementsToRemove
   elementsToAdd
-  // console.log(elementsToRemove)
   return odd
 }
 
@@ -677,6 +677,41 @@ function updateElements(localsource, customization, odd) {
                 }
               }
             }
+            break
+          case 'content':
+            const _cntToXml = (content, parent) => {
+              for (const cntItem of content) {
+                const cntItemEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', cntItem.type)
+                if (cntItem.key) {
+                  cntItemEl.setAttribute('key', cntItem.key)
+                }
+                if (cntItem.maxOccurs) {
+                  cntItemEl.setAttribute('maxOccurs', cntItem.maxOccurs)
+                }
+                if (cntItem.minOccurs) {
+                  cntItemEl.setAttribute('minOccurs', cntItem.minOccurs)
+                }
+                if (cntItem.content) {
+                  _cntToXml(cntItem.content, cntItemEl)
+                }
+                parent.appendChild(cntItemEl)
+              }
+            }
+            if (!deepCompare(el.content, localEl.content)) {
+              elSpec = _getOrSetElementSpec(odd, el.ident)
+              let contentEl = elSpec.querySelector('content')
+              if (!contentEl) {
+                contentEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'content')
+                // Place <content> after documentation elements in right position
+                _insertBetween(
+                  elSpec, contentEl,
+                  'desc, gloss, altIdent, equiv, classes',
+                  'valList, constraintSpec, attList, model, modelGrp, modelSequence, exemplum, remarks, listRef')
+              }
+              // JSON -> XML
+              _cntToXml(el.content, contentEl)
+            }
+            break
           default:
             false
         }

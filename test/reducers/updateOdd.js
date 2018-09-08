@@ -1185,4 +1185,46 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     xml = global.usejsdom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > classes > memberOf[key="model.divLike"]').getAttribute('mode')).toEqual('delete')
   })
+
+  it('should update element\'s content model', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_CONTENT_MODEL',
+      element: 'title',
+      content: [
+        {
+          key: 'macro.phraseSeq.limited',
+          type: 'macroRef'
+        },
+        {
+          minOccurs: '2',
+          maxOccurs: '234',
+          content: [
+            {
+              key: 'abbr',
+              type: 'elementRef'
+            }
+          ],
+          type: 'alternate'
+        }
+      ]
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="title"] > content > macroRef').getAttribute('key')).toEqual('macro.phraseSeq.limited')
+    expect(xml.querySelector('elementSpec[ident="title"] > content > alternate').getAttribute('minOccurs')).toEqual('2')
+    expect(xml.querySelector('elementSpec[ident="title"] > content > alternate').getAttribute('maxOccurs')).toEqual('234')
+    expect(xml.querySelector('elementSpec[ident="title"] > content > alternate > elementRef').getAttribute('key')).toEqual('abbr')
+  })
 })
