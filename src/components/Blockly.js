@@ -242,7 +242,7 @@ export default class BlocklyRomaJsEditor extends Component {
         add={ (t, i) => {
           this.setState({pickerVisible: false})
           this.state.pickerAdd(i)
-        }} message="Not seeing something you're looking for? <a href='#'>Manage members</a>"/>
+        }} message="Not seeing something you're looking for? <a href='#'>Manage members</a> (Coming soon)"/>
       {React.createElement(ReactBlocklyComponent.BlocklyEditor, config)}
     </div>)
   }
