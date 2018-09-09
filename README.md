@@ -23,5 +23,5 @@ $ npm start
 
 ## Build static assets (for now)
 ```
-$ webpack --define process.env.NODE_ENV=\"production\"
+$ npm run build
 ```
