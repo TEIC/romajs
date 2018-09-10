@@ -652,7 +652,15 @@ function updateElements(localsource, customization, odd) {
                   if (!isDefined && !att._fromClass) {
                     // We are updating a new attribute defined on this customization
                     const attDef = attList.querySelector(`attDef[ident='${att.ident}']`)
-                    _changeAttr(att, null, attDef)
+                    if (attDef) {
+                      _changeAttr(att, null, attDef)
+                    } else {
+                      const newAttDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
+                      newAttDef.setAttribute('ident', att.ident)
+                      newAttDef.setAttribute('mode', 'change')
+                      _changeAttr(att, null, newAttDef)
+                      attList.append(newAttDef)
+                    }
                   } else {
                     const attDef = attList.querySelector(`attDef[ident='${att.ident}']`)
                     if (attDef) {
