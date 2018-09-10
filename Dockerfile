@@ -12,7 +12,7 @@ WORKDIR /var/romajs
 COPY . .
 
 RUN npm install 
-RUN ./node_modules/.bin/webpack --define process.env.NODE_ENV=\"production\"
+RUN npm run build
 
 #########################################
 # step 2
