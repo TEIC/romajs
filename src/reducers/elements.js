@@ -118,6 +118,12 @@ export function oddElements(state, action) {
           desc: [],
           gloss: [],
           altIdent: [],
+          datatype: {
+            dataRef: {
+              name: 'string',
+              dataFacet: []
+            }
+          },
           valDesc: [],
           mode: 'add',
           ns: 'http://example.com/newNS',
