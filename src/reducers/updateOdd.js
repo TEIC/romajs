@@ -697,7 +697,6 @@ function updateElements(localsource, customization, odd) {
                 parent.appendChild(cntItemEl)
               }
             }
-            console.log(el.content, localEl.content, deepCompare(el.content, localEl.content))
             if (!deepCompare(el.content, localEl.content)) {
               elSpec = _getOrSetElementSpec(odd, el.ident)
               let contentEl = elSpec.querySelector('content')
