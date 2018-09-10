@@ -8,3 +8,9 @@ before_script:
 
 script: 
   - npm run build
+
+notifications:
+    slack: tei-c:3IFCBSmTvNx3j1GUMDWS9Dom
+        on_success: change # default: always
+        on_failure: always # default: always
+    email: false
