@@ -411,14 +411,14 @@ function updateElements(localsource, customization, odd) {
               case 'key':
               case 'name':
                 comparison = null
-                if (localAtt) {
-                  if (localAtt.datatype) {
-                    comparison = localAtt.datatype.dataRef
-                  }
-                }
                 const type = att.datatype.dataRef.key ? 'key' : 'name'
                 const otherType = type === 'key' ? 'name' : 'key'
-                if (att.datatype.dataRef[type] !== comparison[type]) {
+                if (localAtt) {
+                  if (localAtt.datatype) {
+                    comparison = localAtt.datatype.dataRef[type]
+                  }
+                }
+                if (att.datatype.dataRef[type] !== comparison) {
                   let datatype = attDef.querySelector('datatype')
                   if (!datatype) {
                     datatype = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'datatype')
