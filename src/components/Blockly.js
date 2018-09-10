@@ -229,7 +229,13 @@ export default class BlocklyRomaJsEditor extends Component {
           }
           return curContent
         }
-        _processXml(blocklyXml.querySelector("block[type='content'] block"), contentObject)
+        // Only process if there's at least one block
+        const startBlock = blocklyXml.querySelector("block[type='content'] block")
+        if (startBlock) {
+          _processXml(startBlock, contentObject)
+        } else {
+          valid = false
+        }
         // Now pass this to an action to update content
         if (valid) {
           this.props.updateContentModel(contentObject)

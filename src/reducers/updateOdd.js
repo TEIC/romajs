@@ -480,7 +480,7 @@ function updateElements(localsource, customization, odd) {
       const dummyEl = odd.createElement('temp')
       let changes = el._changed
       if (el._changed.indexOf('all') !== -1) {
-        changes = ['desc', 'altIdent', 'attClasses', 'attributes']
+        changes = ['desc', 'altIdent', 'attClasses', 'attributes', 'content']
       }
       for (const whatChanged of changes) {
         let elSpec
@@ -697,6 +697,7 @@ function updateElements(localsource, customization, odd) {
                 parent.appendChild(cntItemEl)
               }
             }
+            console.log(el.content, localEl.content, deepCompare(el.content, localEl.content))
             if (!deepCompare(el.content, localEl.content)) {
               elSpec = _getOrSetElementSpec(odd, el.ident)
               let contentEl = elSpec.querySelector('content')
