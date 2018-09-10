@@ -121,6 +121,8 @@ function addValItem(m, action) {
         if (!isDefined) {
           att.valList.valItem.push({ident: action.value.replace(/\s+/, '')})
         }
+      } else {
+        att.valList.valItem = [{ident: action.value.replace(/\s+/, '')}]
       }
     } else {
       att.valList = {valItem: [{ident: action.value.replace(/\s+/, '')}]}
