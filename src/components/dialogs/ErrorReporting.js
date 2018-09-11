@@ -45,7 +45,7 @@ export default class ErrorReporting extends Component {
             </p>
             <pre>{this.props.error}</pre>
             <p className="mdc-typography--body2">
-              Feel free to <a href="https://github.com/raffazizzi/romajs/issues">report an issue on GitHub</a>.
+              Feel free to <a href="https://github.com/TEIC/romajs/issues">report an issue on GitHub</a>.
             </p>
           </section>
           <footer className="mdc-dialog__footer">

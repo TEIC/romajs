@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/raffazizzi/romajs.git"
+    "url": "git+https://github.com/TEIC/romajs.git"
   },
   "keywords": [
     "TEI",
@@ -25,9 +25,9 @@
   "author": "Raff Viglianti",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/raffazizzi/romajs/issues"
+    "url": "https://github.com/TEIC/romajs/issues"
   },
-  "homepage": "https://github.com/raffazizzi/romajs#readme",
+  "homepage": "https://github.com/TEIC/romajs#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
