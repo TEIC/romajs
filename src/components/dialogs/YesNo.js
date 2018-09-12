@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { MDCDialog } from '@material/dialog'
 
-export default class ErrorReporting extends Component {
+export default class YesNo extends Component {
   constructor(props) {
     super(props)
     this.dialog
@@ -60,10 +60,10 @@ export default class ErrorReporting extends Component {
   }
 }
 
-ErrorReporting.propTypes = {
+YesNo.propTypes = {
   show: PropTypes.bool.isRequired,
   hide: PropTypes.func,
   header: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
+  body: PropTypes.string,
   continue: PropTypes.func.isRequired
 }
