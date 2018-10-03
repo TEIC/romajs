@@ -5,6 +5,7 @@ export const ADD_FROM_PICKER = 'ADD_FROM_PICKER'
 export const CLEAR_PICKER = 'CLEAR_PICKER'
 export const CLEAR_UI_DATA = 'CLEAR_UI_DATA'
 export const SET_LOADING_STATUS = 'SET_LOADING_STATUS'
+export const SET_LANGUAGE = 'SET_LANGUAGE'
 
 export function setFilterTerm(term) {
   return {
@@ -37,5 +38,12 @@ export function clearPicker() {
 export function clearUiData() {
   return {
     type: CLEAR_UI_DATA
+  }
+}
+
+export function setLanguage(language) {
+  return {
+    type: SET_LANGUAGE,
+    language
   }
 }

@@ -2,7 +2,11 @@ import { connect } from 'react-redux'
 import { updateCustomizationOdd, exportOdd, exportSchema } from '../actions'
 import DownloadButton from '../components/DownloadButton'
 
-const mapStateToProps = () => { return {} }
+const mapStateToProps = (state) => {
+  return {
+    language: state.ui.language
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
+import * as local from '../localization/uiStrings'
 
 import {MDCTabBar} from '@material/tabs'
 import { MDCSelect } from '@material/select'
@@ -108,19 +109,20 @@ export default class Home extends Component {
     if (this.state.panel === 1 && !this.state.selectedFile) {
       disabled = {disabled: 'disabled'}
     }
+    console.log(this.props.language)
     return (
       <main>
         <div className="romajs-hero">
           <div className="romajs-homebox mdc-card mdc-elevation--z10">
             <section className="mdc-card__primary">
               <nav id="basic-tab-bar" className="mdc-tab-bar" ref="tabs">
-                <a className="mdc-tab mdc-tab--active">Select ODD</a>
-                <a className="mdc-tab">Upload ODD</a>
+                <a className="mdc-tab mdc-tab--active">{local.selectODD[this.props.language]}</a>
+                <a className="mdc-tab">{local.uploadODD[this.props.language]}</a>
                 <span className="mdc-tab-bar__indicator" style={{transform: 'translateX(160px) scale(0.333333, 1)', visibility: 'visible'}}/>
               </nav>
               <div className="romajs-tabPanels">
                 <div className="romajs-tabPanel" role="tabpanel" style={this._setActivePanel(0)}>
-                  <h2 className="mdc-typography--title">Select ODD</h2>
+                  <h2 className="mdc-typography--title">{local.selectODD[this.props.language]}</h2>
                   <div className="mdc-select" role="listbox" ref="chooseodd">
                     <div className="mdc-select__surface" tabIndex="0">
                       <div className="mdc-select__label"/>
@@ -137,7 +139,7 @@ export default class Home extends Component {
                   </div>
                 </div>
                 <div className="romajs-tabPanel"role="tabpanel" style={this._setActivePanel(1)}>
-                  <h2 className="mdc-typography--title">Upload ODD</h2>
+                  <h2 className="mdc-typography--title">{local.uploadODD[this.props.language]}</h2>
                   <input type="file" id="files" accept=".xml,.tei,.odd" onChange={e => {
                     this.setState({selectedFile: e.target.files.length > 0 ? e.target.files : undefined})
                   }}/>
@@ -145,7 +147,7 @@ export default class Home extends Component {
               </div>
             </section>
             <section className="mdc-card__actions">
-              <button className="mdc-button mdc-button--compact mdc-card__action" onClick={this.state.start} {...disabled}>Start</button>
+              <button className="mdc-button mdc-button--compact mdc-card__action" onClick={this.state.start} {...disabled}>{local.start[this.props.language]}</button>
               <button className="mdc-button mdc-button--compact mdc-card__action" id="test"
                 onClick={this.props.loadTestData} {...disabled} style={{display: 'none'}}>(Test: Skip OxGarage)</button>
             </section>
@@ -160,5 +162,6 @@ Home.propTypes = {
   uploadCustomization: PropTypes.func,
   getCustomization: PropTypes.func,
   clearUiData: PropTypes.func,
-  loadTestData: PropTypes.func
+  loadTestData: PropTypes.func,
+  language: PropTypes.string.isRequired
 }

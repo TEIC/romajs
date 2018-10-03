@@ -6,7 +6,11 @@ import Home from '../components/Home'
 import oxgarage from '../utils/oxgarage'
 import fetch from 'isomorphic-fetch'
 
-const mapStateToProps = () => { return {} }
+const mapStateToProps = (state) => {
+  return {
+    language: state.ui.language
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -43,7 +47,7 @@ const mapDispatchToProps = (dispatch) => {
         if (odd.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*').length > 0) {
           throw Error('ODDs with RELAX NG elements are not supported.')
         }
-        dispatch(postToOxGarage(e.target.result, oxgarage.compile_json)).then(() => {
+        dispatch(postToOxGarage(e.target.result, oxgarage.json)).then(() => {
           dispatch(setLoadingStatus('3/3 Importing full specification source...'))
           // 2. Get p5subset.
           // TODO: this is a terrible thing, but there are plans to fix it:

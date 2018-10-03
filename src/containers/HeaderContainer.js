@@ -1,14 +1,19 @@
 import { connect } from 'react-redux'
 import Header from '../components/Header'
 import { push } from 'react-router-redux'
+import { setLanguage } from '../actions/interface'
 
 const mapStateToProps = (state) => {
-  return { location: state.router.location.pathname }
+  return {
+    location: state.router.location.pathname,
+    language: state.ui.language
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    navigateTo: (to) => {dispatch(push(to))}
+    navigateTo: (to) => {dispatch(push(to))},
+    setLanguage: (lan) => {dispatch(setLanguage(lan))}
   }
 }
 
