@@ -31,6 +31,20 @@ export default class MembersList extends Component {
     })
   }
 
+  toggleMemberTypeVisibility(type) {
+    const types = new Set(this.props.visibleMemberTypes)
+    if (types.has(type)) {
+      // Make sure not to remove the last one
+      // TODO: make this better
+      if (types.size > 1) {
+        types.delete(type)
+      }
+    } else {
+      types.add(type)
+    }
+    this.props.setMemberTypeVisibility(Array.from(types))
+  }
+
   render() {
     let content = (
       <figure>
@@ -46,12 +60,20 @@ export default class MembersList extends Component {
         </div>
         <figcaption>{this.props.loadingStatus}</figcaption>
       </figure>)
-    if (this.props.elements.length > 0) {
+    if (this.props.members.length > 0) {
       content = [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
         <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
           <span className="mdl-chip mdl-chip--deletable romajs-active">
             <span className="mdl-chip__text">Elements</span>
-            <button type="button" className="mdl-chip__action"><i className="material-icons">cancel</i></button>
+            <button type="button" className="mdl-chip__action" onClick={() => {
+              this.toggleMemberTypeVisibility('elements')
+            }}><i className="material-icons">cancel</i></button>
+          </span>
+          <span className="mdl-chip mdl-chip--deletable romajs-active">
+            <span className="mdl-chip__text">Attribute Classes</span>
+            <button type="button" className="mdl-chip__action" onClick={() => {
+              this.toggleMemberTypeVisibility('attclasses')
+            }}><i className="material-icons">cancel</i></button>
           </span>
         </section>
         <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
@@ -60,7 +82,7 @@ export default class MembersList extends Component {
       </div>,
       <main key="main" style={{maxWidth: this.state.windowWidth}}>
         <ul key="list" className="mdc-list mdc-list--two-line romajs-itemlist">
-          {this.props.elements.map(element => {
+          {this.props.members.map(element => {
             if (element.visible) {
               return (<Member
                 key={element.ident}
@@ -79,7 +101,7 @@ export default class MembersList extends Component {
 }
 
 MembersList.propTypes = {
-  elements: PropTypes.arrayOf(PropTypes.shape({
+  members: PropTypes.arrayOf(PropTypes.shape({
     selected: PropTypes.bool.isRequired,
     visible: PropTypes.bool.isRequired,
     ident: PropTypes.string.isRequired,
@@ -90,5 +112,7 @@ MembersList.propTypes = {
   }).isRequired).isRequired,
   toggleItem: PropTypes.func.isRequired,
   loadingStatus: PropTypes.string,
-  clearUiData: PropTypes.func.isRequired
+  clearUiData: PropTypes.func.isRequired,
+  setMemberTypeVisibility: PropTypes.func,
+  visibleMemberTypes: PropTypes.array
 }

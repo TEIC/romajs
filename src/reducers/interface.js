@@ -1,7 +1,10 @@
-import { SET_FILTER_TERM, CLEAR_UI_DATA, ADD_FROM_PICKER, CLEAR_PICKER, SET_LOADING_STATUS, SET_LANGUAGE } from '../actions/interface'
+import { SET_FILTER_TERM, CLEAR_UI_DATA, ADD_FROM_PICKER, CLEAR_PICKER, SET_LOADING_STATUS, SET_LANGUAGE,
+  SET_MEMBERTYPE_VISIBILITY
+} from '../actions/interface'
 
 const initialState = {
-  language: 'en'
+  language: 'en',
+  visibleMemberTypes: ['elements', 'attclasses']
 }
 
 export function ui(state = initialState, action) {
@@ -31,6 +34,9 @@ export function ui(state = initialState, action) {
       return Object.assign({}, state,
         {language: action.language}
       )
+    case SET_MEMBERTYPE_VISIBILITY:
+      return Object.assign({}, state,
+        {visibleMemberTypes: action.visibleMemberTypes})
     default:
       return state
   }
