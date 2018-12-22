@@ -6,9 +6,19 @@ import { Link } from 'react-router-dom'
 
 export default class Member extends Component {
   render() {
-    let ident = this.props.ident
+    let identLabel = this.props.ident
+    if (this.props.highlight && this.props.highlight.length > 0) {
+      const m = identLabel.match(this.props.highlight)
+      if (m) {
+        const s = identLabel.slice(0, m.index)
+        const mid = identLabel.slice(m.index, m.index + m[0].length)
+        const e = identLabel.slice(m.index + m[0].length)
+        identLabel = <span>{s}<i style={{fontStyle: 'normal', backgroundColor: '#d2aa28'}}>{mid}</i>{e}</span>
+      }
+    }
+    let ident = identLabel
     if (this.props.selected) {
-      ident = <Link to={'element/' + this.props.ident}>{this.props.ident}</Link>
+      ident = <Link to={'element/' + this.props.ident}>{identLabel}</Link>
     }
     return (
       <li className="mdc-list-item mdc-elevation--z1">
@@ -30,7 +40,8 @@ export default class Member extends Component {
         <span className="mdc-list-item__end-detail">
           <SingleModule
             selected={this.props.module_selected}
-            ident={this.props.module} />
+            ident={this.props.module}
+            highlight={this.props.highlight} />
         </span>
       </li>
     )
@@ -45,5 +56,6 @@ Member.propTypes = {
   desc: PropTypes.array.isRequired,
   module: PropTypes.string.isRequired,
   module_selected: PropTypes.bool.isRequired,
-  visible: PropTypes.bool.isRequired
+  visible: PropTypes.bool.isRequired,
+  highlight: PropTypes.string
 }

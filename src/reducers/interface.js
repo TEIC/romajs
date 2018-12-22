@@ -4,7 +4,7 @@ import { SET_FILTER_TERM, CLEAR_UI_DATA, ADD_FROM_PICKER, CLEAR_PICKER, SET_LOAD
 
 const initialState = {
   language: 'en',
-  visibleMemberTypes: ['elements', 'attclasses']
+  visibleMemberTypes: ['elements']
 }
 
 export function ui(state = initialState, action) {

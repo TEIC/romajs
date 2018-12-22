@@ -46,8 +46,10 @@ const mapStateToProps = (state) => {
       // Function to filter members based on user input
       const filterMembers = (members) => {
         return members.map(member => {
-          if (member.ident.toLowerCase().match(filter.toLowerCase())) {
+          if (member.ident.toLowerCase().match(filter.toLowerCase()) ||
+              member.module.toLowerCase().match(filter.toLowerCase())) {
             member.visible = true
+            member.highlight = filter
           } else {
             member.visible = false
           }

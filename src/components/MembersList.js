@@ -16,6 +16,7 @@ export default class MembersList extends Component {
   }
 
   componentDidMount() {
+    this.props.clearUiData()
     window.addEventListener('resize', () => {this.udpatedWidth()})
   }
 
@@ -61,11 +62,11 @@ export default class MembersList extends Component {
       </div>,
       <main key="main" style={{maxWidth: this.state.windowWidth}}>
         <ul key="list" className="mdc-list mdc-list--two-line romajs-itemlist">
-          {this.props.members.map(element => {
-            if (element.visible) {
+          {this.props.members.map(member => {
+            if (member.visible) {
               return (<Member
-                key={element.ident}
-                {...element}
+                key={member.ident}
+                {...member}
                 toggleItem={this.props.toggleItem}
               />)
             }
@@ -83,6 +84,7 @@ MembersList.propTypes = {
   members: PropTypes.arrayOf(PropTypes.shape({
     selected: PropTypes.bool.isRequired,
     visible: PropTypes.bool.isRequired,
+    highlight: PropTypes.string,
     ident: PropTypes.string.isRequired,
     shortDesc: PropTypes.string.isRequired,
     desc: PropTypes.array.isRequired,
