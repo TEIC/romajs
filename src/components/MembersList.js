@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Component } from 'react'
 import FilterSearch from '../containers/FilterSearch'
 import Member from './Member'
+import MembersFacet from './MemberFacet'
 
 export default class MembersList extends Component {
   constructor(props) {
@@ -31,20 +32,6 @@ export default class MembersList extends Component {
     })
   }
 
-  toggleMemberTypeVisibility(type) {
-    const types = new Set(this.props.visibleMemberTypes)
-    if (types.has(type)) {
-      // Make sure not to remove the last one
-      // TODO: make this better
-      if (types.size > 1) {
-        types.delete(type)
-      }
-    } else {
-      types.add(type)
-    }
-    this.props.setMemberTypeVisibility(Array.from(types))
-  }
-
   render() {
     let content = (
       <figure>
@@ -63,18 +50,10 @@ export default class MembersList extends Component {
     if (this.props.members.length > 0) {
       content = [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
         <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-          <span className="mdl-chip mdl-chip--deletable romajs-active">
-            <span className="mdl-chip__text">Elements</span>
-            <button type="button" className="mdl-chip__action" onClick={() => {
-              this.toggleMemberTypeVisibility('elements')
-            }}><i className="material-icons">cancel</i></button>
-          </span>
-          <span className="mdl-chip mdl-chip--deletable romajs-active">
-            <span className="mdl-chip__text">Attribute Classes</span>
-            <button type="button" className="mdl-chip__action" onClick={() => {
-              this.toggleMemberTypeVisibility('attclasses')
-            }}><i className="material-icons">cancel</i></button>
-          </span>
+          <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
+            visibleMemberTypes={this.props.visibleMemberTypes} type="elements" label="Elements" />
+          <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
+            visibleMemberTypes={this.props.visibleMemberTypes} type="attclasses" label="Attribute Classes" />
         </section>
         <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
           <FilterSearch/>

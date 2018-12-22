@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   let allMembers = []
   let elements = []
   let attclasses = []
-  const visibleMemberTypes = state.ui.visibleMemberTypes || []
+  const visibleMemberTypes = state.ui.visibleMemberTypes || ['elements']
   if (state.odd.customization && state.odd.localsource) {
     if (!state.odd.customization.isFetching && !state.odd.localsource.isFetching) {
       const customization = state.odd.customization.json
