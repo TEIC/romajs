@@ -8,8 +8,9 @@ export default class Member extends Component {
   render() {
     let identLabel = this.props.ident
     if (this.props.highlight && this.props.highlight.length > 0) {
-      const m = identLabel.match(this.props.highlight)
+      const m = identLabel.toLowerCase().match(this.props.highlight.toLowerCase())
       if (m) {
+        console.log(m)
         const s = identLabel.slice(0, m.index)
         const mid = identLabel.slice(m.index, m.index + m[0].length)
         const e = identLabel.slice(m.index + m[0].length)

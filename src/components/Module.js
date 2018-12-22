@@ -5,7 +5,7 @@ export default class Module extends Component {
   render() {
     let ident = this.props.ident
     if (this.props.highlight && this.props.highlight.length > 0) {
-      const m = ident.match(this.props.highlight)
+      const m = ident.toLowerCase().match(this.props.highlight.toLowerCase())
       if (m) {
         const s = ident.slice(0, m.index)
         const mid = ident.slice(m.index, m.index + m[0].length)
