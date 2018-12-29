@@ -9,11 +9,11 @@ export const ADD_ELEMENT_ATTRIBUTE = 'ADD_ELEMENT_ATTRIBUTE'
 export const DELETE_ELEMENT_ATTRIBUTE = 'DELETE_ELEMENT_ATTRIBUTE'
 export const CHANGE_ELEMENT_ATTRIBUTE = 'CHANGE_ELEMENT_ATTRIBUTE'
 export const RESTORE_ELEMENT_ATTRIBUTE = 'RESTORE_ELEMENT_ATTRIBUTE'
-export const RESTORE_CLASS_ATTRIBUTE = 'RESTORE_CLASS_ATTRIBUTE'
+export const RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT = 'RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT'
 export const RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS = 'RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS'
 export const USE_CLASS_DEFAULT = 'USE_CLASS_DEFAULT'
-export const DELETE_CLASS_ATTRIBUTE = 'DELETE_CLASS_ATTRIBUTE'
-export const CHANGE_CLASS_ATTRIBUTE = 'CHANGE_CLASS_ATTRIBUTE'
+export const DELETE_CLASS_ATTRIBUTE_ON_ELEMENT = 'DELETE_CLASS_ATTRIBUTE_ON_ELEMENT'
+export const CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT = 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT'
 export const UPDATE_CONTENT_MODEL = 'UPDATE_CONTENT_MODEL'
 
 export function updateContentModel(element, content) {
@@ -110,7 +110,7 @@ export function restoreElementAttributeClass(element, className, deletedAttribut
 
 export function restoreClassAttribute(element, attName) {
   return {
-    type: RESTORE_CLASS_ATTRIBUTE,
+    type: RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT,
     element,
     attName
   }
@@ -135,7 +135,7 @@ export function useClassDefault(element, attName) {
 
 export function deleteClassAttribute(element, className, attName) {
   return {
-    type: DELETE_CLASS_ATTRIBUTE,
+    type: DELETE_CLASS_ATTRIBUTE_ON_ELEMENT,
     element,
     className,
     attName
@@ -152,7 +152,7 @@ export function changeElementAttribute(element, attName) {
 
 export function changeClassAttribute(element, className, attName) {
   return {
-    type: CHANGE_CLASS_ATTRIBUTE,
+    type: CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT,
     element,
     className,
     attName

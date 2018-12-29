@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import NewAttribute from '../components/dialogs/NewAttribute'
-import { addElementAttribute } from '../actions/elements'
 import { push } from 'react-router-redux'
 
 const mapStateToProps = (state, ownProps) => {
@@ -36,7 +35,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     navigateToAttribute: (attName) => {dispatch(push(`attributes/${attName}`))},
     add: (attribute) => {
-      dispatch(addElementAttribute(ownProps.element, attribute))
+      dispatch(ownProps.add(ownProps.member, attribute))
     }
   }
 }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Documentation from './Documentation'
-import EditAttributes from '../containers/EditAttributes'
+import EditClassAttributes from '../containers/EditClassAttributes'
 import ContentModel from './ContentModel'
 
-export default class Element extends Component {
+export default class Class extends Component {
   constructor(props) {
     super(props)
-    this.baseurl = `/element/${this.props.element.ident}`
+    this.baseurl = `/class/${this.props.klass.ident}`
   }
 
   componentWillMount() {
@@ -25,38 +25,44 @@ export default class Element extends Component {
     if (!this.props.success) {
       return null
     }
+    const typeLabel = this.props.klass.attributes ? 'Attributes' : 'Model'
     let content = null
     let trail
     let arrow
     let subArrow
+    let mainSettings
+    if (this.props.klass.attributes) {
+      mainSettings = (<li className="mdc-grid-tile">
+        <div className="mdc-grid-tile__primary romajs-classbackground romajs-clickable"
+          onClick={() => this.props.navigateTo(`${this.baseurl}/attributes`)}>
+          <span>Attributes</span>
+        </div>
+      </li>)
+    } else {
+      mainSettings = (<li className="mdc-grid-tile">
+        <div className="mdc-grid-tile__primary romajs-classbackground romajs-clickable"
+          onClick={() => this.props.navigateTo(`${this.baseurl}/content`)}>
+          <span>Class Membership</span>
+        </div>
+      </li>)
+    }
     const home = (<div className="mdc-grid-list romajs-squares">
       <ul className="mdc-grid-list__tiles">
         <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-clickable"
+          <div className="mdc-grid-tile__primary romajs-classbackground romajs-clickable"
             onClick={() => this.props.navigateTo(`${this.baseurl}/documentation`)}>
             <span>Documentation</span>
           </div>
         </li>
+        {mainSettings}
         <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-clickable"
-            onClick={() => this.props.navigateTo(`${this.baseurl}/attributes`)}>
-            <span>Attributes</span>
-          </div>
-        </li>
-        <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-clickable"
-            onClick={() => this.props.navigateTo(`${this.baseurl}/content`)}>
-            <span>Class Membership <br/> &amp; Content Model</span>
-          </div>
-        </li>
-        <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-clickable"
+          <div className="mdc-grid-tile__primary romajs-classbackground romajs-clickable"
             onClick={() => this.props.navigateTo(`${this.baseurl}/constraints`)}>
             <span>Constraints</span>
           </div>
         </li>
         <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-clickable"
+          <div className="mdc-grid-tile__primary romajs-classbackground romajs-clickable"
             onClick={() => this.props.navigateTo(`${this.baseurl}/processing`)}>
             <span>Processing model</span>
           </div>
@@ -72,13 +78,13 @@ export default class Element extends Component {
     }
     switch (this.props.section) {
       case 'documentation':
-        content = <Documentation member={this.props.element}  memberType="element"/>
+        content = <Documentation member={this.props.klass} memberType="class"/>
         trail = (<span className="mdl-chip mdl-chip--deletable">
           <span className="mdl-chip__text">Documentation</span>
         </span>)
         break
       case 'attributes':
-        content = (<EditAttributes element={this.props.element} attribute={this.props.attribute}/>)
+        content = (<EditClassAttributes member={this.props.klass} attribute={this.props.attribute}/>)
         let editAtt
         if (this.props.attribute) {
           editAtt = (<span className="mdl-chip mdl-chip--deletable">
@@ -95,8 +101,7 @@ export default class Element extends Component {
         break
       case 'content':
         content = (<ContentModel
-          element={this.props.element}
-          deleteElementModelClass={this.props.deleteElementModelClass}
+          element={this.props.klass}
           clearPicker={this.props.clearPicker} />)
         trail = (<span className="mdl-chip mdl-chip--deletable">
           <span className="mdl-chip__text">Content</span>
@@ -117,7 +122,7 @@ export default class Element extends Component {
       default:
         content = home
     }
-    return [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
+    return [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2 romajs-classbackground">
       <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
         <span className="mdl-chip mdl-chip--deletable romajs-clickable" onClick={this.goBack}>
           <span className="mdl-chip__text">Members</span>
@@ -126,7 +131,7 @@ export default class Element extends Component {
           </span>
         </span>
         <span className="mdl-chip mdl-chip--deletable romajs-clickable" onClick={() => this.props.navigateTo(this.baseurl)}>
-          <span className="mdl-chip__text">&lt;{this.props.element.ident}&gt;</span>
+          <span className="mdl-chip__text">{this.props.klass.ident}</span>
           <span className="mdl-chip__action">
             {arrow}
           </span>
@@ -144,20 +149,19 @@ export default class Element extends Component {
     </div>,
     <main key="main">
       <div className="romajs-form">
-        <h1 className="mdc-typography--headline">&lt;{this.props.element.ident}&gt;</h1>
-        <h2 className="mdc-typography--subheading1">{this.props.element.shortDesc}</h2>
+        <h1 className="mdc-typography--headline">{typeLabel} class {this.props.klass.ident}</h1>
+        <h2 className="mdc-typography--subheading1">{this.props.klass.shortDesc}</h2>
         {content}
       </div>
     </main>]
   }
 }
 
-Element.propTypes = {
+Class.propTypes = {
   success: PropTypes.bool.isRequired,
-  element: PropTypes.object.isRequired,
+  klass: PropTypes.object.isRequired,
   section: PropTypes.string,
   attribute: PropTypes.string,
   navigateTo: PropTypes.func.isRequired,
-  clearPicker: PropTypes.func.isRequired,
-  deleteElementModelClass: PropTypes.func.isRequired
+  clearPicker: PropTypes.func.isRequired
 }

@@ -10,7 +10,6 @@ export default class Member extends Component {
     if (this.props.highlight && this.props.highlight.length > 0) {
       const m = identLabel.toLowerCase().match(this.props.highlight.toLowerCase())
       if (m) {
-        console.log(m)
         const s = identLabel.slice(0, m.index)
         const mid = identLabel.slice(m.index, m.index + m[0].length)
         const e = identLabel.slice(m.index + m[0].length)
@@ -18,14 +17,25 @@ export default class Member extends Component {
       }
     }
     let ident = identLabel
+    let location = ''
+    let subType = ''
+    switch (this.props.type) {
+      case 'classes' :
+        location = 'class'
+        subType = this.props.attributes ? 'attributes' : 'models'
+        break
+      default:
+        location = 'element'
+        subType = 'element'
+    }
     if (this.props.selected) {
-      ident = <Link to={'element/' + this.props.ident}>{identLabel}</Link>
+      ident = <Link to={`${location}/${this.props.ident}`}>{identLabel}</Link>
     }
     return (
       <li className="mdc-list-item mdc-elevation--z1">
         <span className="mdc-checkbox">
           <input type="checkbox" id="basic-checkbox" className="mdc-checkbox__native-control"
-            checked={this.props.selected} onChange={() => this.props.toggleItem(this.props.ident, this.props.selected)}/>
+            checked={this.props.selected} onChange={() => this.props.toggleItem(this.props.ident, this.props.selected, subType)}/>
           <span className="mdc-checkbox__background">
             <svg className="mdc-checkbox__checkmark" viewBox="0 0 24 24">
               <path className="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
@@ -58,5 +68,7 @@ Member.propTypes = {
   module: PropTypes.string.isRequired,
   module_selected: PropTypes.bool.isRequired,
   visible: PropTypes.bool.isRequired,
-  highlight: PropTypes.string
+  highlight: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  attributes: PropTypes.array
 }

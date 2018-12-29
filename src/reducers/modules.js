@@ -1,9 +1,13 @@
 import {
-  INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS
+  INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS, INCLUDE_CLASSES, EXCLUDE_CLASSES
 } from '../actions/modules'
 
 function getElementByIdent(source, ident) {
   return source.elements.filter(m => { return m.ident === ident })[0]
+}
+
+function getClassByIdent(source, ident, type) {
+  return source.classes[type].filter(m => { return m.ident === ident })[0]
 }
 
 export function oddModules(state, action) {
@@ -74,6 +78,43 @@ export function oddModules(state, action) {
         if (moduleElements.length === 0) {
           customization.modules = customization.modules.reduce((acc, m) => {
             if (m.ident !== localEl.module) {
+              acc.push(m)
+            }
+            return acc
+          }, [])
+        }
+      }
+      return Object.assign(state, {customization: customizationObj})
+    case INCLUDE_CLASSES:
+      for (const cl of action.classes) {
+        const localCl = getClassByIdent(localsource, cl, action.classType)
+        localCl._changed = ['all']
+        if (!getClassByIdent(customization, cl, action.classType)) {
+          customization.classes[action.classType].push(localCl)
+        }
+        // If the module for the added element was not selected, do it now.
+        if (customization.modules.filter(x => (x.ident === localCl.module)).length === 0) {
+          const localMod = localsource.modules.filter(x => (x.ident === localCl.module))[0]
+          customization.modules.push(localMod)
+        }
+      }
+      return Object.assign(state, {customization: customizationObj})
+    case EXCLUDE_CLASSES:
+      for (const cl of action.classes) {
+        const localCl = getClassByIdent(localsource, cl, action.classType)
+        customization.classes[action.classType] = customization.classes[action.classType].reduce((acc, m) => {
+          if (m.ident !== cl) {
+            acc.push(m)
+          }
+          return acc
+        }, [])
+        // If there are no more elements belonging to the module, remove it
+        const moduleElements = customization.classes[action.classType].filter(x => {
+          return x.module === localCl.module
+        })
+        if (moduleElements.length === 0) {
+          customization.modules = customization.modules.reduce((acc, m) => {
+            if (m.ident !== localCl.module) {
               acc.push(m)
             }
             return acc

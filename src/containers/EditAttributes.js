@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import Attributes from '../components/Attributes'
 import { deleteElementAttributeClass, restoreElementAttributeClass, deleteElementAttribute,
   deleteClassAttribute, restoreClassAttribute, restoreClassAttributeDeletedOnClass, changeElementAttribute,
-  useClassDefault, changeClassAttribute, restoreElementAttribute } from '../actions/elements'
+  useClassDefault, changeClassAttribute, restoreElementAttribute, addElementAttribute } from '../actions/elements'
 import { clearPicker } from '../actions/interface'
 import { push } from 'react-router-redux'
 import {clone} from '../utils/clone'
@@ -100,14 +100,14 @@ const mapStateToProps = (state, ownProps) => {
     return a.ident > b.ident
   })
 
-  return {element, attsfromClasses, path: state.router.location.pathname}
+  return {member: element, memberType: 'element', attsfromClasses, path: state.router.location.pathname}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     navigateTo: (place) => dispatch(push(place)),
-    deleteElementAttribute: (element, attribute) => dispatch(deleteElementAttribute(element, attribute)),
-    restoreElementAttribute: (element, attribute) => dispatch(restoreElementAttribute(element, attribute)),
+    deleteMemberAttribute: (element, attribute) => dispatch(deleteElementAttribute(element, attribute)),
+    restoreMemberAttribute: (element, attribute) => dispatch(restoreElementAttribute(element, attribute)),
     deleteElementAttributeClass: (element, className) => dispatch(deleteElementAttributeClass(element, className)),
     clearPicker: () => dispatch(clearPicker()),
     restoreElementAttributeClass: (element, className, deletedAttributes) => dispatch(restoreElementAttributeClass(element, className, deletedAttributes)),
@@ -124,7 +124,8 @@ const mapDispatchToProps = (dispatch) => {
     restoreClassAttributeDeletedOnClass: (element, className, attName) => {
       dispatch(restoreClassAttributeDeletedOnClass(element, className, attName))
     },
-    useClassDefault: (element, attName) => dispatch(useClassDefault(element, attName))
+    useClassDefault: (element, attName) => dispatch(useClassDefault(element, attName)),
+    addMemberAttribute: (element, attribute) => addElementAttribute(element, attribute)
   }
 }
 

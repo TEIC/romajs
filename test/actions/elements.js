@@ -71,7 +71,7 @@ describe('Element actions', () => {
 
   it('deleteClassAttribute should delete an attribute from a class on an element', () =>{
     expect(actions.deleteClassAttribute('div', 'att.global.rendition', 'rend')).toEqual({
-      type: 'DELETE_CLASS_ATTRIBUTE',
+      type: 'DELETE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'div',
       className: 'att.global.rendition',
       attName: 'rend'
@@ -80,7 +80,7 @@ describe('Element actions', () => {
 
   it('restoreClassAttribute should restore an attribute from a class on an element', () =>{
     expect(actions.restoreClassAttribute('div', 'rend')).toEqual({
-      type: 'RESTORE_CLASS_ATTRIBUTE',
+      type: 'RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'div',
       attName: 'rend'
     })

@@ -172,7 +172,7 @@ describe('ODD elements operation reducers', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'DELETE_CLASS_ATTRIBUTE',
+      type: 'DELETE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'div',
       className: 'att.global.rendition',
       attName: 'rend'
@@ -188,7 +188,7 @@ describe('ODD elements operation reducers', () => {
     )[0].attributes.filter(x => (x.ident === 'rendition'))[0]).toNotExist()
   })
 
-  it('should handle DELETE_CLASS_ATTRIBUTE', () => {
+  it('should handle DELETE_CLASS_ATTRIBUTE_ON_ELEMENT', () => {
     customJSON = JSON.parse(customization)
     localJSON = JSON.parse(localsource)
     const state = romajsApp({
@@ -198,7 +198,7 @@ describe('ODD elements operation reducers', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'DELETE_CLASS_ATTRIBUTE',
+      type: 'DELETE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'div',
       className: 'att.global.rendition',
       attName: 'rend'
@@ -208,7 +208,7 @@ describe('ODD elements operation reducers', () => {
     )[0].attributes.filter(x => (x.ident === 'rend'))[0].mode).toEqual('delete')
   })
 
-  it('should handle RESTORE_CLASS_ATTRIBUTE', () => {
+  it('should handle RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT', () => {
     customJSON = JSON.parse(customization)
     localJSON = JSON.parse(localsource)
     const firstState = romajsApp({
@@ -218,13 +218,13 @@ describe('ODD elements operation reducers', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'DELETE_CLASS_ATTRIBUTE',
+      type: 'DELETE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'div',
       className: 'att.global.rendition',
       attName: 'rend'
     })
     const state = romajsApp(firstState, {
-      type: 'RESTORE_CLASS_ATTRIBUTE',
+      type: 'RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'div',
       attName: 'rend'
     })
@@ -233,7 +233,7 @@ describe('ODD elements operation reducers', () => {
     )[0].attributes.filter(x => (x.ident === 'rend'))[0]).toNotExist()
   })
 
-  it('should handle CHANGE_CLASS_ATTRIBUTE', () => {
+  it('should handle CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT', () => {
     customJSON = JSON.parse(customization)
     localJSON = JSON.parse(localsource)
     const state = romajsApp({
@@ -243,7 +243,7 @@ describe('ODD elements operation reducers', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'CHANGE_CLASS_ATTRIBUTE',
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'div',
       className: 'att.global.rendition',
       attName: 'rend'

@@ -3,8 +3,7 @@ import { SET_FILTER_TERM, CLEAR_UI_DATA, ADD_FROM_PICKER, CLEAR_PICKER, SET_LOAD
 } from '../actions/interface'
 
 const initialState = {
-  language: 'en',
-  visibleMemberTypes: ['elements']
+  language: 'en'
 }
 
 export function ui(state = initialState, action) {

@@ -5,8 +5,8 @@ import {
   ADD_ELEMENT_MODEL_CLASS, DELETE_ELEMENT_MODEL_CLASS,
   ADD_ELEMENT_ATTRIBUTE, DELETE_ELEMENT_ATTRIBUTE, RESTORE_ELEMENT_ATTRIBUTE,
   ADD_ELEMENT_ATTRIBUTE_CLASS, RESTORE_ELEMENT_ATTRIBUTE_CLASS, DELETE_ELEMENT_ATTRIBUTE_CLASS,
-  RESTORE_CLASS_ATTRIBUTE, RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS,
-  USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE, CHANGE_CLASS_ATTRIBUTE, CHANGE_ELEMENT_ATTRIBUTE,
+  RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT, RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS,
+  USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE_ON_ELEMENT, CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT, CHANGE_ELEMENT_ATTRIBUTE,
   UPDATE_CONTENT_MODEL
 } from '../actions/elements'
 
@@ -292,7 +292,7 @@ export function oddElements(state, action) {
       // TODO: If this class is not used anywhere else, it *could* be removed from the customization subtree...
       // localsource.classes.attributes = localsource.classes.attributes.filter(c => (c.ident !== action.className))
       return newState
-    case RESTORE_CLASS_ATTRIBUTE:
+    case RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT:
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
           m.attributes = m.attributes.filter(a => {
@@ -314,7 +314,7 @@ export function oddElements(state, action) {
         }
       })
       return newState
-    case DELETE_CLASS_ATTRIBUTE:
+    case DELETE_CLASS_ATTRIBUTE_ON_ELEMENT:
       let customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
       const attribute = customClass.attributes.filter(a => a.ident === action.attName)[0]
       customization.elements.forEach(m => {
@@ -324,7 +324,7 @@ export function oddElements(state, action) {
         }
       })
       return newState
-    case CHANGE_CLASS_ATTRIBUTE:
+    case CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT:
       customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
       const attributeToChange = customClass.attributes.filter(a => a.ident === action.attName)[0]
       customization.elements.forEach(m => {

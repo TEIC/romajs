@@ -3,6 +3,9 @@ $mdc-theme-primary: #225688;
 $mdc-theme-secondary: #3572ad;
 $mdc-theme-accent: #d2aa28;
 $mdc-theme-background: #fff;
+$romajs-theme-classes: #ffb140;
+$romajs-theme-datatypes: #4842b8;
+$romajs-theme-macros: #2db283;
 $romajs-theme-yes: #1b8c64;
 $romajs-theme-no: #802900;
 
@@ -307,4 +310,12 @@ main {
       display: inline-block;
     }
   }
+  
 }
+
+.romajs-classbackground {
+    background-color: $romajs-theme-classes !important;
+    span {
+      color: black !important;
+    }
+  }

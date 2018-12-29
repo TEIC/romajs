@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { includeElements, excludeElements } from '../actions/modules'
+import { includeElements, excludeElements, includeClasses, excludeClasses } from '../actions/modules'
 import { clearUiData, setMemberTypeVisibility } from '../actions/interface'
 import MembersList from '../components/MembersList'
 
@@ -86,11 +86,26 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleItem: (name, selected) => {
+    toggleItem: (name, selected, type) => {
+      let include
+      let exclude
+      switch (type) {
+        case 'element':
+          include = includeElements
+          exclude = excludeElements
+          break
+        case 'attributes' || 'models':
+          include = includeClasses
+          exclude = excludeClasses
+          break
+        default:
+          include = () => {}
+          exclude = () => {}
+      }
       if (selected) {
-        dispatch(excludeElements([name]))
+        dispatch(exclude([name], type))
       } else {
-        dispatch(includeElements([name]))
+        dispatch(include([name], type))
       }
     },
     setMemberTypeVisibility: (visibleMemberTypes) => {
