@@ -19,7 +19,7 @@ export default class AttributesOnMember extends Component {
         hide={() => {this.setState({show: false})}} />,
       <ul key="u" className="mdc-list" key="elatts">{
         this.props.member.attributes.map((a, pos) => {
-          if (a.mode === 'add' || (a.mode === 'delete' && a.onElement) || (a.mode === 'delete' && a.onClass) || (a.mode === 'change' && a._changedOnElement)) {
+          if (a.mode === 'add' || (a.mode === 'delete' && a.onElement) || (a.mode === 'delete' && a.onClass) || (a.mode === 'change' && a._changedOnMember)) {
             const deleted = a.deleted ? 'romajs-att-deleted' : ''
             let addOrRemove
             if (a.deleted) {

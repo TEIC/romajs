@@ -15,7 +15,7 @@ export default class Attributes extends Component {
 
   render() {
     if (this.props.attribute) {
-      return <EditAttribute member={this.props.member} attribute={this.props.attribute}/>
+      return <EditAttribute member={this.props.member} memberType="class" attribute={this.props.attribute}/>
     } else {
       return (<div className="mdc-layout-grid">
         <div className="mdc-layout-grid__inner romajs-formrow">
@@ -40,40 +40,65 @@ export default class Attributes extends Component {
           <div className="mdc-layout-grid__cell--span-3">
             <label>Class Membership</label>
             <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-              The classes listed here inherit attributes from this class. Change class membership here.
+              Attributes inherited from classes. Change class membership here.
             </p>
           </div>
           <div className="mdc-layout-grid__cell--span-8">
             <AttClassAttPicker member={this.props.member.ident}/>
-            <ul className="mdc-list">
-              {this.props.memberships.map((m, pos) => {
+            <ul className="mdc-list mdc-list--two-line">{
+              this.props.memberships.map((c, pos) => {
                 let deleted = ''
-                let content = <Link to={`/class/${m.ident}`}>{m.ident}</Link>
-                if (m.mode === 'deleted') {
+                let content = <Link to={`/class/${c.ident}`}>{c.ident}</Link>
+                if (c.mode === 'deleted') {
                   deleted = 'romajs-att-deleted'
-                  content = `${m.ident} (deleted)`
+                  content = `${c.ident} (deleted)`
                 }
                 return (<li key={`c${pos}`} className={`mdc-list-item ${deleted}`}>
-                  <span className={`mdc-list-item__text`}>
-                    {content}
+                  <span className="mdc-list-item__graphic">
+                    <i className="material-icons romajs-clickable" onClick={() => {
+                      this.props.removeMembershipToClass(this.props.member.ident, c.ident)
+                    }}>clear</i>
+                  </span>
+                  <span className="mdc-list-item__text">
+                    {content} ({c.attributes.map((at, ap) => {
+                      const attDeleted = at.mode === 'deleted' ? 'romajs-att-deleted' : ''
+                      return <span key={`at${ap}`} className={attDeleted}>&nbsp;{at.ident}&nbsp;</span>
+                    })})
                     <span className="mdc-list-item__secondary-text">
-                      {m.shortDesc}
+                      {c.shortDesc}
                     </span>
                   </span>
                 </li>)
-              })}
-            </ul>
+              })
+            }</ul>
           </div>
         </div>
         <div className="mdc-layout-grid__inner romajs-formrow">
           <div className="mdc-layout-grid__cell--span-3">
             <label>Member Classes</label>
             <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-              Attributes inherited from member classes. Click on class names to change their attributes and memberships.
+              The classes listed here inherit attributes from this class.
             </p>
           </div>
           <div className="mdc-layout-grid__cell--span-8">
-            <div/>
+            <ul className="mdc-list mdc-list--two-line">{
+              this.props.memberClasses.map((c, pos) => {
+                let deleted = ''
+                let content = <Link to={`/class/${c.ident}`}>{c.ident}</Link>
+                if (c.mode === 'deleted') {
+                  deleted = 'romajs-att-deleted'
+                  content = `${c.ident} (deleted)`
+                }
+                return (<li key={`c${pos}`} className={`mdc-list-item ${deleted}`}>
+                  <span className="mdc-list-item__text">
+                    {content}
+                    <span className="mdc-list-item__secondary-text">
+                      {c.shortDesc}
+                    </span>
+                  </span>
+                </li>)
+              })
+            }</ul>
           </div>
         </div>
       </div>)
@@ -89,10 +114,10 @@ Attributes.propTypes = {
   attribute: PropTypes.string,
   memberClasses: PropTypes.array,
   editAttribute: PropTypes.func.isRequired,
-  editClassAttribute: PropTypes.func.isRequired,
   deleteMemberAttribute: PropTypes.func.isRequired,
   restoreMemberAttribute: PropTypes.func.isRequired,
   clearPicker: PropTypes.func.isRequired,
   navigateTo: PropTypes.func.isRequired,
-  addMemberAttribute: PropTypes.func.isRequired
+  addMemberAttribute: PropTypes.func.isRequired,
+  removeMembershipToClass: PropTypes.func.isRequired
 }

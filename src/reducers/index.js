@@ -16,7 +16,7 @@ import {
 import {
   DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS, SET_USAGE, SET_VALLIST_TYPE, ADD_VALITEM, DELETE_VALITEM, SET_DATATYPE, SET_DATATYPE_RESTRICTION
 } from '../actions/attributes'
-import { DELETE_CLASS_DOCS, UPDATE_CLASS_DOCS, DELETE_CLASS_ATTRIBUTE, RESTORE_CLASS_ATTRIBUTE, ADD_CLASS_ATTRIBUTE, ADD_MEMBERSHIP_TO_CLASS } from '../actions/classes'
+import { DELETE_CLASS_DOCS, UPDATE_CLASS_DOCS, DELETE_CLASS_ATTRIBUTE, RESTORE_CLASS_ATTRIBUTE, ADD_CLASS_ATTRIBUTE, ADD_MEMBERSHIP_TO_CLASS, REMOVE_MEMBERSHIP_TO_CLASS, CHANGE_CLASS_ATTRIBUTE } from '../actions/classes'
 import { oddModules } from './modules'
 import { oddElements } from './elements'
 import { oddClasses } from './classes'
@@ -167,6 +167,8 @@ function odd(state = {}, action) {
     case RESTORE_CLASS_ATTRIBUTE:
     case ADD_CLASS_ATTRIBUTE:
     case ADD_MEMBERSHIP_TO_CLASS:
+    case REMOVE_MEMBERSHIP_TO_CLASS:
+    case CHANGE_CLASS_ATTRIBUTE:
       return Object.assign({}, oddClasses(state, action))
     case UPDATE_ATTRIBUTE_DOCS:
     case DELETE_ATTRIBUTE_DOCS:

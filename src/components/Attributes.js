@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import AttClassPicker from '../containers/AttClassPicker'
 import EditAttribute from '../containers/EditAttribute'
 import AttributesOnMember from './AttributesOnMember'
+import { Link } from 'react-router-dom'
 
 export default class Attributes extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class Attributes extends Component {
 
   render() {
     if (this.props.attribute) {
-      return <EditAttribute member={this.props.member} attribute={this.props.attribute}/>
+      return <EditAttribute member={this.props.member} memberType="element" attribute={this.props.attribute}/>
     } else {
       return (<div className="mdc-layout-grid">
         <div className="mdc-layout-grid__inner romajs-formrow">
@@ -60,7 +61,7 @@ export default class Attributes extends Component {
                 addRemove = (<i className="material-icons romajs-clickable" onClick={() =>
                   this.props.restoreElementAttributeClass(this.props.member.ident, cl.ident, Array.from(cl.deletedAttributes))}>add_circle_outline</i>)
               }
-              return [<h4 key={`clh${cpos}`}>{addRemove} From {cl.ident} {sub}</h4>,
+              return [<h4 key={`clh${cpos}`}>{addRemove} From <Link to={`/class/${cl.ident}`}>{cl.ident}</Link> {sub}</h4>,
                 (<ul className="mdc-list" key={`cl${cpos}`}>{
                   cl.attributes.map((a, pos) => {
                     let overridden = ''

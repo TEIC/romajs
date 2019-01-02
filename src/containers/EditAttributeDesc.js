@@ -21,10 +21,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const tagName = ownProps.valDesc ? 'valDesc' : 'desc'
   return {
     update: (member, content, index) => {
-      dispatch(updateAttributeDocs(ownProps.member.ident, 'element', ownProps.attribute.ident, tagName, content, index))
+      dispatch(updateAttributeDocs(ownProps.member.ident, ownProps.memberType, ownProps.attribute.ident, tagName, content, index))
     },
     delete: (index) => {
-      dispatch(deleteAttributeDocs(ownProps.member.ident, 'element', ownProps.attribute.ident, tagName, index))
+      dispatch(deleteAttributeDocs(ownProps.member.ident, ownProps.memberType, ownProps.attribute.ident, tagName, index))
     }
   }
 }

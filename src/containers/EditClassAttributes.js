@@ -1,8 +1,7 @@
 import { connect } from 'react-redux'
 import ClassAttributes from '../components/ClassAttributes'
-// import { deleteClassAttribute, restoreClassAttribute, restoreClassAttributeDeletedOnClass, changeElementAttribute,
-//   useClassDefault, changeClassAttribute, restoreElementAttribute } from '../actions/classes'
-import { deleteClassAttribute, restoreClassAttribute, addClassAttribute } from '../actions/classes'
+import { deleteClassAttribute, restoreClassAttribute, addClassAttribute, removeMembershipToClass,
+  changeClassAttribute } from '../actions/classes'
 import { clearPicker } from '../actions/interface'
 import { push } from 'react-router-redux'
 import {clone} from '../utils/clone'
@@ -37,7 +36,7 @@ const mapStateToProps = (state, ownProps) => {
 
   // Sort classes based on active/inactive
   memberClasses.sort((a, b) => {
-    return a.ident > b.ident
+    return a.ident.toLowerCase() > b.ident.toLowerCase()
   })
 
   // Check for deleted attributes that were defined on this class only
@@ -53,7 +52,7 @@ const mapStateToProps = (state, ownProps) => {
 
   // Sort attributes
   klass.attributes.sort((a, b) => {
-    return a.ident > b.ident
+    return a.ident.toLowerCase() > b.ident.toLowerCase()
   })
 
   // Get class memberships
@@ -62,13 +61,18 @@ const mapStateToProps = (state, ownProps) => {
     for (const ident of klass.classes.atts) {
       const customClass = state.odd.customization.json.classes.attributes.filter(ac => (ac.ident === ident))[0]
       const shortDesc = customClass ? customClass.shortDesc : localClass.shortDesc
+      const attributes = customClass ? customClass.attributes : localClass.attributes
       if (customClass && customClass.mode !== 'deleted') {
-        memberships.push({ident, mode: 'add', shortDesc})
+        memberships.push({ident, mode: 'add', shortDesc, attributes})
       } else {
         memberships.push({ident, mode: 'deleted', shortDesc})
       }
     }
   }
+
+  memberships.sort((a, b) => {
+    return a.ident.toLowerCase() > b.ident.toLowerCase()
+  })
 
   return {member: klass, memberType: 'class', memberships, memberClasses, path: state.router.location.pathname}
 }
@@ -83,11 +87,15 @@ const mapDispatchToProps = (dispatch) => {
     restoreElementAttributeClass: () => null,
     deleteClassAttribute: () => null,
     restoreClassAttribute: () => null,
-    editAttribute: () => null,
-    editClassAttribute: () => null,
+    editAttribute: (className, attName, path) => {
+      dispatch(changeClassAttribute(className, attName))
+      dispatch(push(`${path}/${attName}`))
+    },
     restoreClassAttributeDeletedOnClass: () => null,
     useClassDefault: () => null,
-    addMemberAttribute: (member, attribute) => addClassAttribute(member, attribute)
+    // not sure why dispatch is not needed below, but using it causes the reducer (not the action) to be dispatched twice.
+    addMemberAttribute: (member, attribute) => addClassAttribute(member, attribute),
+    removeMembershipToClass: (member, className) => dispatch(removeMembershipToClass(member, className, 'atts'))
   }
 }
 

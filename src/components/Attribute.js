@@ -82,15 +82,15 @@ export default class Attribute extends Component {
           </div>
         </div>
       </div>
-      <Desc member={this.props.member} attribute={this.props.attribute} />
-      <Desc member={this.props.member} attribute={this.props.attribute} valDesc={true}/>
+      <Desc member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} />
+      <Desc member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} valDesc={true}/>
       <ValList
         member={this.props.member} attribute={this.props.attribute}
         setValListType={this.props.setValListType} addValItem={this.props.addValItem}
         deleteValItem={this.props.deleteValItem} />
       <AttDatatype member={this.props.member} attribute={this.props.attribute}
         setDataTypeRestriction={this.props.setDataTypeRestriction}/>
-      <AltIdent member={this.props.member} attribute={this.props.attribute} />
+      <AltIdent member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} />
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">
           <label>Namespace</label>
@@ -112,6 +112,7 @@ export default class Attribute extends Component {
 
 Attribute.propTypes = {
   member: PropTypes.object.isRequired,
+  memberType: PropTypes.string.isRequired,
   attribute: PropTypes.object.isRequired,
   setNs: PropTypes.func.isRequired,
   setUsage: PropTypes.func.isRequired,

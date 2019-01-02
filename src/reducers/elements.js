@@ -353,7 +353,7 @@ export function oddElements(state, action) {
         if (m.ident === action.element) {
           const localAtt = localsource.elements.filter((e) => action.element === e.ident)[0].attributes
             .filter((a) => action.attName === a.ident)[0]
-          const newAtt = Object.assign({}, localAtt, {mode: 'change', changed: false, _changedOnElement: true})
+          const newAtt = Object.assign({}, localAtt, {mode: 'change', changed: false, _changedOnMember: true})
           let found = false
           if (m.attributes) {
             m.attributes.forEach(att => {
@@ -362,7 +362,7 @@ export function oddElements(state, action) {
                 // If this element is not defined on localsource, the mode needs to stay 'add'
                 // In all other cases we need to signal a change from the localsource
                 if (localAtt) att.mode = 'change'
-                att._changedOnElement = true
+                att._changedOnMember = true
               }
             })
             if (!found) {

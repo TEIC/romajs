@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     add: (type, item) => {
-      dispatch(addMembershipToClass(ownProps.member, item.ident))
+      dispatch(addMembershipToClass(ownProps.member, item.ident, 'atts'))
     }
   }
 }
