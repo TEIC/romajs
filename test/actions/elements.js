@@ -88,7 +88,7 @@ describe('Element actions', () => {
 
   it('changeClassAttribute should prepare an attribute from a class on an element to be changed', () =>{
     expect(actions.changeClassAttribute('div', 'att.global.rendition', 'rend')).toEqual({
-      type: 'CHANGE_CLASS_ATTRIBUTE',
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'div',
       className: 'att.global.rendition',
       attName: 'rend'

@@ -101,7 +101,7 @@ describe('ODD attributes operation reducers', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'CHANGE_CLASS_ATTRIBUTE',
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'title',
       className: 'att.canonical',
       attName: 'key'

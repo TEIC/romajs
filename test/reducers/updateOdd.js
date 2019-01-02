@@ -859,7 +859,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'CHANGE_CLASS_ATTRIBUTE',
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'title',
       className: 'att.canonical',
       attName: 'key'
@@ -919,7 +919,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'CHANGE_CLASS_ATTRIBUTE',
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'title',
       className: 'att.canonical',
       attName: 'key'
@@ -996,7 +996,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'CHANGE_CLASS_ATTRIBUTE',
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'title',
       className: 'att.canonical',
       attName: 'key'
@@ -1027,7 +1027,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'CHANGE_CLASS_ATTRIBUTE',
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'title',
       className: 'att.canonical',
       attName: 'key'
@@ -1058,7 +1058,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'CHANGE_CLASS_ATTRIBUTE',
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'title',
       className: 'att.typed',
       attName: 'type'
@@ -1089,7 +1089,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'CHANGE_CLASS_ATTRIBUTE',
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'title',
       className: 'att.typed',
       attName: 'type'
@@ -1120,7 +1120,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       },
       selectedOdd: ''
     }, {
-      type: 'CHANGE_CLASS_ATTRIBUTE',
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
       element: 'title',
       className: 'att.typed',
       attName: 'type'
