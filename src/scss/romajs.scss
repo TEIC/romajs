@@ -46,6 +46,10 @@ $romajs-theme-no: #802900;
   color: $romajs-theme-yes;
 }
 
+a, a:hover, a:visited, a:focus a:active {
+  color: $mdc-theme-primary;
+}
+
 /* Typography overrides */
 .mdc-typography--headline, .mdc-typography--subheading1 {
   margin-left: 20px;
