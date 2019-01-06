@@ -9,6 +9,7 @@ import {clone} from '../utils/clone'
 
 const mapStateToProps = (state, ownProps) => {
   const element = clone(ownProps.element)
+  const localElement = state.odd.localsource.json.elements.filter(le => (le.ident === element.ident))[0]
 
   const getClasses = (classNames, sub = false, from = '') => {
     // Get attribute classes
@@ -25,10 +26,12 @@ const mapStateToProps = (state, ownProps) => {
 
         // We check against the localsource to obtain attributes that have been deleted
         // (ie do not appear in customization)
-        for (const localAtt of localClass.attributes) {
-          if (!c.attributes.filter((a) => (a.ident === localAtt.ident))[0]) {
-            curClass.deletedAttributes.add(localAtt.ident)
-            curClass.attributes.push(Object.assign({}, localAtt, {mode: 'delete', deleted: true, overridden: false, deletedOnClass: true}))
+        if (localClass) {
+          for (const localAtt of localClass.attributes) {
+            if (!c.attributes.filter((a) => (a.ident === localAtt.ident))[0]) {
+              curClass.deletedAttributes.add(localAtt.ident)
+              curClass.attributes.push(Object.assign({}, localAtt, {mode: 'delete', deleted: true, overridden: false, deletedOnClass: true}))
+            }
           }
         }
         // Deal with wrongly removed attributes (e.g. they don't exist in the localclass or customization)
@@ -63,7 +66,7 @@ const mapStateToProps = (state, ownProps) => {
         tempAcc.push(curClass)
         // Get inherited classes from both customization and localsource
         const subClasses = curClass.classes ? new Set(curClass.classes.atts) : new Set()
-        if (localClass.classes) {
+        if (localClass && localClass.classes) {
           for (const cl of localClass.classes.atts) {
             subClasses.add(cl)
           }
@@ -78,7 +81,12 @@ const mapStateToProps = (state, ownProps) => {
     }, [])
   }
 
-  const attsfromClasses = getClasses(element.classes.atts)
+  // Get attribute classes
+  let attsfromClasses = []
+
+  if (element.classes) {
+    attsfromClasses = getClasses(element.classes.atts)
+  }
 
   // Sort classes based on active/inactive
   attsfromClasses.sort((a, b) => {
@@ -87,7 +95,6 @@ const mapStateToProps = (state, ownProps) => {
 
   // Check for deleted attributes that were defined on the element only
   // ie are not inherited from a class.
-  const localElement = state.odd.localsource.json.elements.filter(le => (le.ident === element.ident))[0]
   for (const att of element.attributes) {
     if (att.mode === 'delete' && att.onElement) {
       att.shortDesc = localElement.attributes.filter(a => (a.ident === att.ident))[0].shortDesc

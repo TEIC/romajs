@@ -45,7 +45,7 @@ describe('ODD elements operation reducers', () => {
     })
     expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'div')
-    )[0].classes.model.indexOf('model.pLike')).toEqual(1)
+    )[0].classes.model.filter(c => (c === 'model.pLike')).length).toEqual(1)
   })
 
   it('should handle DELETE_ELEMENT_MODEL_CLASS', () => {
@@ -121,7 +121,7 @@ describe('ODD elements operation reducers', () => {
     })
     expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'div')
-    )[0].classes.atts.indexOf('att.fragmentable')).toEqual(4)
+    )[0].classes.atts.filter(c => (c === 'att.fragmentable')).length).toEqual(1)
   })
 
   it('should handle DELETE_ELEMENT_ATTRIBUTE_CLASS', () => {

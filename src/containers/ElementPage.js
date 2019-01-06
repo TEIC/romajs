@@ -31,13 +31,9 @@ const mapStateToProps = (state, ownProps) => {
         state.odd.localsource.json.classes.attributes)
       element.classDescs = classes.reduce((descs, className) => {
         let classData = null
-        const customClass = customClasses.filter(x => {
-          return (x.ident === className)
-        })[0]
+        const customClass = customClasses.filter(x => (x.ident === className))[0]
         if (!customClass) {
-          const localClass = localClasses.filter(x => {
-            return (x.ident === className)
-          })[0]
+          const localClass = localClasses.filter(x => (x.ident === className))[0]
           if (localClass) {
             classData = localClass
           }

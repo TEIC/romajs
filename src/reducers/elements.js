@@ -90,7 +90,7 @@ export function oddElements(state, action) {
     case ADD_ELEMENT_MODEL_CLASS:
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
-          if (m.classes.model.indexOf(action.className) === -1) {
+          if (m.classes.model.filter(c => (c === action.className)).length === 0) {
             m.classes.model.push(action.className)
             markChange(m, 'modelClasses')
           }
@@ -100,13 +100,8 @@ export function oddElements(state, action) {
     case DELETE_ELEMENT_MODEL_CLASS:
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
-          const idx = m.classes.model.indexOf(action.className)
-          if (idx > -1) {
-            m.classes.model.splice(idx, 1)
-            markChange(m, 'modelClasses')
-          } else {
-            throw new ReducerException(`Could not locate class ${action.className}.`)
-          }
+          m.classes.model = m.classes.model.filter(c => (c !== action.className))
+          markChange(m, 'modelClasses')
         }
       })
       return newState

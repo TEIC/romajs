@@ -2,6 +2,46 @@ import expect from 'expect'
 import * as actions from '../../src/actions/elements'
 
 describe('Element actions', () => {
+  it('updateContentModel should update and elementSpec\'s content model', () =>{
+    expect(actions.updateContentModel('p', [
+      {
+        key: 'macro.phraseSeq.limited',
+        type: 'macroRef'
+      },
+      {
+        minOccurs: '2',
+        maxOccurs: '234',
+        content: [
+          {
+            key: 'abbr',
+            type: 'elementRef'
+          }
+        ],
+        type: 'alternate'
+      }
+    ])).toEqual({
+      type: 'UPDATE_CONTENT_MODEL',
+      element: 'p',
+      content: [
+        {
+          key: 'macro.phraseSeq.limited',
+          type: 'macroRef'
+        },
+        {
+          minOccurs: '2',
+          maxOccurs: '234',
+          content: [
+            {
+              key: 'abbr',
+              type: 'elementRef'
+            }
+          ],
+          type: 'alternate'
+        }
+      ]
+    })
+  })
+
   it('updateElementDocs should pass documentation element changes to an elementSpec', () =>{
     expect(actions.updateElementDocs('p', 'desc', 'new desc', 0)).toEqual({
       type: 'UPDATE_ELEMENT_DOCS',
@@ -9,6 +49,15 @@ describe('Element actions', () => {
       docEl: 'desc',
       content: 'new desc',
       index: 0
+    })
+  })
+
+  it('deleteElementDocs should delete a documentation element from an elementSpec', () =>{
+    expect(actions.deleteElementDocs('p', 'desc', 1)).toEqual({
+      type: 'DELETE_ELEMENT_DOCS',
+      element: 'p',
+      docEl: 'desc',
+      index: 1
     })
   })
 
@@ -39,6 +88,14 @@ describe('Element actions', () => {
   it('deleteElementAttribute should delete an attribute defined directly on an element', () =>{
     expect(actions.deleteElementAttribute('title', 'type')).toEqual({
       type: 'DELETE_ELEMENT_ATTRIBUTE',
+      element: 'title',
+      attribute: 'type'
+    })
+  })
+
+  it('restoreElementAttribute should restore a delete attribute defined directly on an element', () =>{
+    expect(actions.restoreElementAttribute('title', 'type')).toEqual({
+      type: 'RESTORE_ELEMENT_ATTRIBUTE',
       element: 'title',
       attribute: 'type'
     })
@@ -86,6 +143,40 @@ describe('Element actions', () => {
     })
   })
 
+  it('restoreClassAttributeDeletedOnClass should restore, for this element only, an attribute deleted on a class', () =>{
+    expect(actions.restoreClassAttributeDeletedOnClass('div', 'att.global', 'n')).toEqual({
+      type: 'RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS',
+      element: 'div',
+      className: 'att.global',
+      attName: 'n'
+    })
+  })
+
+  it('useClassDefault should remove changes to an attribute defined on a class, thus restoring the class default behavior.', () =>{
+    expect(actions.useClassDefault('div', 'n')).toEqual({
+      type: 'USE_CLASS_DEFAULT',
+      element: 'div',
+      attName: 'n'
+    })
+  })
+
+  it('deleteClassAttribute should delete an attribute defined on a class for this element.', () =>{
+    expect(actions.deleteClassAttribute('div', 'att.global', 'n')).toEqual({
+      type: 'DELETE_CLASS_ATTRIBUTE_ON_ELEMENT',
+      element: 'div',
+      className: 'att.global',
+      attName: 'n'
+    })
+  })
+
+  it('changeElementAttribute should mark an attribute defined on an element as changed.', () =>{
+    expect(actions.changeElementAttribute('title', 'level')).toEqual({
+      type: 'CHANGE_ELEMENT_ATTRIBUTE',
+      element: 'title',
+      attName: 'level'
+    })
+  })
+
   it('changeClassAttribute should prepare an attribute from a class on an element to be changed', () =>{
     expect(actions.changeClassAttribute('div', 'att.global.rendition', 'rend')).toEqual({
       type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
@@ -94,6 +185,4 @@ describe('Element actions', () => {
       attName: 'rend'
     })
   })
-
-  // Add test for RESTORE_ELEMENT_ATTRIBUTE and a couple more!
 })

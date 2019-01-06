@@ -2,7 +2,8 @@ import { ReducerException } from '../utils/exceptions'
 import { clone } from '../utils/clone'
 import {
   DELETE_CLASS_DOCS, UPDATE_CLASS_DOCS, DELETE_CLASS_ATTRIBUTE, RESTORE_CLASS_ATTRIBUTE, ADD_CLASS_ATTRIBUTE,
-  ADD_MEMBERSHIP_TO_CLASS, REMOVE_MEMBERSHIP_TO_CLASS, CHANGE_CLASS_ATTRIBUTE
+  ADD_MEMBERSHIP_TO_CLASS, REMOVE_MEMBERSHIP_TO_CLASS, CHANGE_CLASS_ATTRIBUTE, RESTORE_MEMBERSHIPS_TO_CLASS,
+  CLEAR_MEMBERSHIPS_TO_CLASS
 } from '../actions/classes'
 
 // TODO: this function can be shared with elements.js
@@ -25,6 +26,35 @@ export function oddClasses(state, action) {
 
   const allCustomClasses = customization.classes.attributes.concat(customization.classes.models)
   const allLocalClasses = localsource.classes.attributes.concat(localsource.classes.models)
+
+  function addClass(m, className, classType) {
+    const hasClass = (member, cn) => {
+      // This function checks against inherited classes
+      if (member.classes) {
+        if (member.classes[classType].filter(cl => (cl === cn))[0]) {
+          return true
+        } else {
+          for (const cl of member.classes[classType]) {
+            const subClass = allCustomClasses.filter(c => (c.ident === cl))[0]
+            if (subClass) {
+              if (hasClass(subClass, cn)) {
+                return true
+              }
+            } else continue
+          }
+          return false
+        }
+      } else {
+        return false
+      }
+    }
+    // Make sure the request class is not already selected or inherited
+    if (!hasClass(m, className)) {
+      if (!m.classes) m.classes = []
+      m.classes.atts.push(className)
+      markChange(m, classType)
+    }
+  }
 
   switch (action.type) {
     case UPDATE_CLASS_DOCS:
@@ -152,37 +182,7 @@ export function oddClasses(state, action) {
     case ADD_MEMBERSHIP_TO_CLASS:
       allCustomClasses.forEach(m => {
         if (m.ident === action.member) {
-          const hasClass = (member, className) => {
-            // This function checks against inherited classes
-            if (member.classes) {
-              if (member.classes[action.classType].filter(cl => (cl === className))[0]) {
-                return true
-              } else {
-                for (const cl of member.classes[action.classType]) {
-                  const subClass = allCustomClasses.filter(c => (c.ident === cl))[0]
-                  if (subClass) {
-                    if (hasClass(subClass, className)) {
-                      return true
-                    }
-                  } else continue
-                }
-                return false
-              }
-            } else {
-              return false
-            }
-          }
-          // Make sure the request class is not already selected or inherited
-          if (!hasClass(m, action.className)) {
-            if (!m.classes) {
-              m.classes = {
-                atts: [],
-                model: []
-              }
-            }
-            m.classes.atts.push(action.className)
-            markChange(m, action.classType)
-          }
+          addClass(m, action.className, action.classType)
         }
       })
       localClass = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
@@ -193,20 +193,13 @@ export function oddClasses(state, action) {
     case REMOVE_MEMBERSHIP_TO_CLASS:
       allCustomClasses.forEach(m => {
         if (m.ident === action.member) {
-          const idxAtt = m.classes.atts.indexOf(action.className)
-          const idxMod = m.classes.model.indexOf(action.className)
-          const idx = idxAtt > -1 ? idxAtt : idxMod
-          // If the element is a member of the class
-          if (idx > -1) {
-            // Remove membership to this class
-            m.classes[action.classType].splice(idx, 1)
-            markChange(m, [action.classType])
-          }
+          m.classes[action.classType] = m.classes[action.classType].filter(cl => (cl !== action.className))
+          markChange(m, [action.classType])
         }
       })
       return newState
     case CHANGE_CLASS_ATTRIBUTE:
-      const customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
+      let customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
       customClass.attributes = customClass.attributes.map(a => {
         if (a.ident === action.attName) {
           return Object.assign({}, a, {mode: 'change', changed: false, _changedOnMember: true})
@@ -214,6 +207,38 @@ export function oddClasses(state, action) {
           return a
         }
       })
+      return newState
+    case RESTORE_MEMBERSHIPS_TO_CLASS:
+      // Locate all classes that are member of the requested class.
+      // Restore membership if missing
+      for (localClass of allLocalClasses) {
+        if (localClass.classes) {
+          const type = action.classType === 'attributes' ? 'atts' : 'model'
+          const isMember = localClass.classes[type].filter(c => c === action.className)[0]
+          if (isMember) {
+            customClass = allCustomClasses.filter(c => (c.ident === localClass.ident))[0]
+            if (customClass) {
+              addClass(customClass, action.className, type)
+            }
+          }
+        }
+      }
+      return newState
+    case CLEAR_MEMBERSHIPS_TO_CLASS:
+      // Locate all classes that are member of the requested class.
+      // remove membership to that class
+      for (localClass of allLocalClasses) {
+        if (localClass.classes) {
+          const type = action.classType === 'attributes' ? 'atts' : 'model'
+          const isMember = localClass.classes[type].filter(c => c === action.className)[0]
+          if (isMember) {
+            customClass = allCustomClasses.filter(c => (c.ident === localClass.ident))[0]
+            if (customClass && customClass.classes) {
+              customClass.classes[type] = customClass.classes[type].filter(c => (c !== action.className))
+            }
+          }
+        }
+      }
       return newState
     default:
       return state

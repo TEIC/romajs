@@ -6,6 +6,8 @@ export const ADD_CLASS_ATTRIBUTE = 'ADD_CLASS_ATTRIBUTE'
 export const ADD_MEMBERSHIP_TO_CLASS = 'ADD_MEMBERSHIP_TO_CLASS'
 export const REMOVE_MEMBERSHIP_TO_CLASS = 'REMOVE_MEMBERSHIP_TO_CLASS'
 export const CHANGE_CLASS_ATTRIBUTE = 'CHANGE_CLASS_ATTRIBUTE'
+export const RESTORE_MEMBERSHIPS_TO_CLASS = 'RESTORE_MEMBERSHIPS_TO_CLASS'
+export const CLEAR_MEMBERSHIPS_TO_CLASS = 'CLEAR_MEMBERSHIPS_TO_CLASS'
 
 export function updateClassDocs(member, docEl, content, index) {
   return {
@@ -73,5 +75,21 @@ export function changeClassAttribute(className, attName) {
     type: CHANGE_CLASS_ATTRIBUTE,
     className,
     attName
+  }
+}
+
+export function restoreMembershipsToClass(className, classType) {
+  return {
+    type: RESTORE_MEMBERSHIPS_TO_CLASS,
+    className,
+    classType
+  }
+}
+
+export function clearMembershipsToClass(className, classType) {
+  return {
+    type: CLEAR_MEMBERSHIPS_TO_CLASS,
+    className,
+    classType
   }
 }

@@ -20,4 +20,88 @@ describe('Class actions (lol)', () => {
       index: 1
     })
   })
+
+  it('deleteClassAttribute should delete an attribute on an attribute class', () =>{
+    expect(actions.deleteClassAttribute('att.ascribed', 'who')).toEqual({
+      type: 'DELETE_CLASS_ATTRIBUTE',
+      member: 'att.ascribed',
+      attribute: 'who'
+    })
+  })
+
+  it('restoreClassAttribute should restore a delete attribute on an attribute class', () =>{
+    expect(actions.restoreClassAttribute('att.ascribed', 'who')).toEqual({
+      type: 'RESTORE_CLASS_ATTRIBUTE',
+      member: 'att.ascribed',
+      attribute: 'who'
+    })
+  })
+
+  it('addClassAttribute should add a new attribute to an attribute class', () =>{
+    expect(actions.addClassAttribute('att.ascribed', 'new')).toEqual({
+      type: 'ADD_CLASS_ATTRIBUTE',
+      member: 'att.ascribed',
+      attribute: 'new'
+    })
+  })
+
+  it('addMembershipToClass should make this class member of another (atts)', () =>{
+    expect(actions.addMembershipToClass('att.ascribed', 'att.global', 'atts')).toEqual({
+      type: 'ADD_MEMBERSHIP_TO_CLASS',
+      member: 'att.ascribed',
+      className: 'att.global',
+      classType: 'atts'
+    })
+  })
+
+  it('addMembershipToClass should make this class member of another (model)', () =>{
+    expect(actions.addMembershipToClass('model.pLike', 'model.teiHeaderPart', 'model')).toEqual({
+      type: 'ADD_MEMBERSHIP_TO_CLASS',
+      member: 'model.pLike',
+      className: 'model.teiHeaderPart',
+      classType: 'model'
+    })
+  })
+
+  it('removeMembershipToClass should make this class not a member of another (atts)', () =>{
+    expect(actions.removeMembershipToClass('att.global', 'att.global.linking', 'atts')).toEqual({
+      type: 'REMOVE_MEMBERSHIP_TO_CLASS',
+      member: 'att.global',
+      className: 'att.global.linking',
+      classType: 'atts'
+    })
+  })
+
+  it('removeMembershipToClass should make this class not a member of another (model)', () =>{
+    expect(actions.removeMembershipToClass('model.pLike', 'model.pLike.front', 'model')).toEqual({
+      type: 'REMOVE_MEMBERSHIP_TO_CLASS',
+      member: 'model.pLike',
+      className: 'model.pLike.front',
+      classType: 'model'
+    })
+  })
+
+  it('changeClassAttribute mark existing attribute on an attribute class as changed', () =>{
+    expect(actions.changeClassAttribute('att.global', 'who')).toEqual({
+      type: 'CHANGE_CLASS_ATTRIBUTE',
+      className: 'att.global',
+      attName: 'who'
+    })
+  })
+
+  it('restoreMembershipsToClass should restore membership to a given class for all classes that are members in the localsource', () =>{
+    expect(actions.restoreMembershipsToClass('att.global.analytic', 'attributes')).toEqual({
+      type: 'RESTORE_MEMBERSHIPS_TO_CLASS',
+      className: 'att.global.analytic',
+      classType: 'attributes'
+    })
+  })
+
+  it('clearMembershipsToClass should clear membership to a given class for all classes that are members in the localsource', () =>{
+    expect(actions.clearMembershipsToClass('att.global.analytic', 'attributes')).toEqual({
+      type: 'CLEAR_MEMBERSHIPS_TO_CLASS',
+      className: 'att.global.analytic',
+      classType: 'attributes'
+    })
+  })
 })

@@ -2,13 +2,13 @@
   { "title" : "The TEI Guidelines",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2018-08-22T18:19:29Z",
+    "date" : "2019-01-04T22:29:57Z",
     "modules" : 
     [ 
       { "ident" : "analysis",
         "id" : "AI",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Simple analytic mechanisms<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Simple analytic mechanisms<\/desc>" ],
         "shortDesc" : "Simple analytic mechanisms",
         "gloss" : 
         [  ],
@@ -18,17 +18,17 @@
       { "ident" : "certainty",
         "id" : "CE",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Certainty and uncertainty<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Certainty and uncertainty<\/desc>" ],
         "shortDesc" : "Certainty and uncertainty",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [ "Certainty\nand Uncertainty" ] },
+        [ "Certainty and Uncertainty" ] },
       
       { "ident" : "core",
         "id" : "CO",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Elements common to all TEI documents<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Elements common to all TEI documents<\/desc>" ],
         "shortDesc" : "Elements common to all TEI documents",
         "gloss" : 
         [  ],
@@ -38,7 +38,7 @@
       { "ident" : "corpus",
         "id" : "CC",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Corpus texts<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2018-07-12\">Corpus texts<\/desc>" ],
         "shortDesc" : "Corpus texts",
         "gloss" : 
         [  ],
@@ -48,7 +48,7 @@
       { "ident" : "dictionaries",
         "id" : "DI",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Dictionaries<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2018-07-12\">Dictionaries<\/desc>" ],
         "shortDesc" : "Dictionaries",
         "gloss" : 
         [  ],
@@ -58,17 +58,17 @@
       { "ident" : "drama",
         "id" : "DR",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Performance texts<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Performance texts<\/desc>" ],
         "shortDesc" : "Performance texts",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [ "Performance\nTexts" ] },
+        [ "Performance Texts" ] },
       
       { "ident" : "figures",
         "id" : "FT",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Tables, formulæ, notated music, and figures<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2018-07-12\">Tables, formulæ, notated music, and figures<\/desc>" ],
         "shortDesc" : "Tables, formulæ, notated music, and figures",
         "gloss" : 
         [  ],
@@ -78,17 +78,17 @@
       { "ident" : "gaiji",
         "id" : "WD",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Character and glyph documentation<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Character and glyph documentation<\/desc>" ],
         "shortDesc" : "Character and glyph documentation",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [ "Character and Glyph\nDocumentation" ] },
+        [ "Character and Glyph Documentation" ] },
       
       { "ident" : "header",
         "id" : "HD",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">The TEI Header<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">The TEI Header<\/desc>" ],
         "shortDesc" : "The TEI Header",
         "gloss" : 
         [  ],
@@ -98,7 +98,7 @@
       { "ident" : "iso-fs",
         "id" : "FS",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Feature structures<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Feature structures<\/desc>" ],
         "shortDesc" : "Feature structures",
         "gloss" : 
         [  ],
@@ -108,7 +108,7 @@
       { "ident" : "linking",
         "id" : "SA",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Linking, segmentation and alignment<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Linking, segmentation and alignment<\/desc>" ],
         "shortDesc" : "Linking, segmentation and alignment",
         "gloss" : 
         [  ],
@@ -118,7 +118,7 @@
       { "ident" : "msdescription",
         "id" : "MS",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Manuscript Description<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Manuscript Description<\/desc>" ],
         "shortDesc" : "Manuscript Description",
         "gloss" : 
         [  ],
@@ -128,7 +128,7 @@
       { "ident" : "namesdates",
         "id" : "ND",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Names and dates<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Names and dates<\/desc>" ],
         "shortDesc" : "Names and dates",
         "gloss" : 
         [  ],
@@ -138,7 +138,7 @@
       { "ident" : "nets",
         "id" : "GD",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Graphs, networks, and trees<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2018-07-12\">Graphs, networks, and trees<\/desc>" ],
         "shortDesc" : "Graphs, networks, and trees",
         "gloss" : 
         [  ],
@@ -148,7 +148,7 @@
       { "ident" : "spoken",
         "id" : "TS",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Transcribed Speech<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Transcribed Speech<\/desc>" ],
         "shortDesc" : "Transcribed Speech",
         "gloss" : 
         [  ],
@@ -158,7 +158,7 @@
       { "ident" : "tagdocs",
         "id" : "TD",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Documentation of TEI modules<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Documentation of TEI modules<\/desc>" ],
         "shortDesc" : "Documentation of TEI modules",
         "gloss" : 
         [  ],
@@ -168,7 +168,7 @@
       { "ident" : "tei",
         "id" : "ST",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Declarations for classes, datatypes, and macros available to all TEI modules<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2018-07-12\">Declarations for classes, datatypes, and macros available to all TEI modules<\/desc>" ],
         "shortDesc" : "Declarations for classes, datatypes, and macros available to all TEI modules",
         "gloss" : 
         [  ],
@@ -178,7 +178,7 @@
       { "ident" : "textcrit",
         "id" : "TC",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Critical Apparatus<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2018-07-12\">Critical Apparatus<\/desc>" ],
         "shortDesc" : "Critical Apparatus",
         "gloss" : 
         [  ],
@@ -188,8 +188,8 @@
       { "ident" : "textstructure",
         "id" : "DS",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Default\ntext structure<\/desc>" ],
-        "shortDesc" : "Default\ntext structure",
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Default text structure<\/desc>" ],
+        "shortDesc" : "Default text structure",
         "gloss" : 
         [  ],
         "altIdent" : 
@@ -198,7 +198,7 @@
       { "ident" : "transcr",
         "id" : "PH",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Transcription of primary sources<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Transcription of primary sources<\/desc>" ],
         "shortDesc" : "Transcription of primary sources",
         "gloss" : 
         [  ],
@@ -208,7 +208,7 @@
       { "ident" : "verse",
         "id" : "VE",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">Verse structures<\/desc>" ],
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2006-09-13\">Verse structures<\/desc>" ],
         "shortDesc" : "Verse structures",
         "gloss" : 
         [  ],
@@ -242,8 +242,8 @@
             "ns" : "",
             "usage" : "opt",
             "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-04-18\" xml:lang=\"en\">specifies the major version number of the TEI Guidelines against\n      which this document is valid.<\/desc>" ],
-            "shortDesc" : "specifies the major version number of the TEI Guidelines against\n      which this document is valid.",
+            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-01-24\" xml:lang=\"en\">specifies the version number of the TEI Guidelines against\n      which this document is valid.<\/desc>" ],
+            "shortDesc" : "specifies the version number of the TEI Guidelines against\n      which this document is valid.",
             "gloss" : 
             [  ],
             "altIdent" : 
@@ -555,7 +555,8 @@
           [ "att.global",
             "att.transcriptional",
             "att.placement",
-            "att.typed" ] },
+            "att.typed",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -605,11 +606,13 @@
             "att.transcriptional",
             "att.placement",
             "att.typed",
-            "att.spanning" ] },
+            "att.spanning",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "additional",
         "type" : "elementSpec",
@@ -867,7 +870,8 @@
           [ "att.global",
             "att.editLike",
             "att.datable",
-            "att.typed" ] },
+            "att.typed",
+            "att.dimensions" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -1108,7 +1112,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "altGrp",
         "type" : "elementSpec",
@@ -1252,8 +1257,8 @@
         "type" : "elementSpec",
         "module" : "tagdocs",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-11-21\" xml:lang=\"en\">an alternation of references<\/desc>" ],
-        "shortDesc" : "an alternation of references",
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-11-21\" xml:lang=\"en\">indicates that the constructs referenced by its children form an alternation<\/desc>" ],
+        "shortDesc" : "indicates that the constructs referenced by its children form an alternation",
         "gloss" : 
         [  ],
         "altIdent" : 
@@ -1376,7 +1381,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "annotationBlock",
         "type" : "elementSpec",
@@ -1475,7 +1481,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "app",
         "type" : "elementSpec",
@@ -2214,7 +2221,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "author",
         "type" : "elementSpec",
@@ -2253,7 +2261,8 @@
         { "model" : 
           [ "model.publicationStmtPart.agency" ],
           "atts" : 
-          [ "att.global" ] },
+          [ "att.global",
+            "att.canonical" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -2752,7 +2761,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "binaryObject",
         "type" : "elementSpec",
@@ -2930,6 +2940,7 @@
           [ "att.global",
             "att.editLike",
             "att.datable",
+            "att.dimensions",
             "att.naming",
             "att.typed" ] },
         "attributes" : 
@@ -3312,7 +3323,8 @@
           "atts" : 
           [ "att.global",
             "att.segLike",
-            "att.typed" ] },
+            "att.typed",
+            "att.notated" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -3361,7 +3373,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "calendar",
         "type" : "elementSpec",
@@ -3773,7 +3786,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "catchwords",
         "type" : "elementSpec",
@@ -3865,7 +3879,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "cell",
         "type" : "elementSpec",
@@ -4390,7 +4405,7 @@
         "content" : 
         [ 
           { "type" : "alternate",
-            "minOccurs" : "0",
+            "minOccurs" : "2",
             "maxOccurs" : "unbounded",
             "content" : 
             [ 
@@ -4484,7 +4499,8 @@
           "atts" : 
           [ "att.global",
             "att.segLike",
-            "att.typed" ] },
+            "att.typed",
+            "att.notated" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -4707,7 +4723,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "classSpec",
         "type" : "elementSpec",
@@ -5359,7 +5376,7 @@
               { "type" : "textNode" },
               
               { "type" : "anyElement",
-                "require" : "http:\/\/purl.oclc.org\/dsdl\/schematron",
+                "require" : "",
                 "except" : "" } ] } ] },
       
       { "ident" : "constraintSpec",
@@ -5413,15 +5430,6 @@
                   "gloss" : 
                   [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-09-27\" xml:lang=\"en\">ISO Schematron<\/gloss>" ],
                   "altIdent" : 
-                  [  ] },
-                
-                { "ident" : "schematron",
-                  "desc" : 
-                  [  ],
-                  "shortDesc" : "(ISO Schematron) ",
-                  "gloss" : 
-                  [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2009-06-10\" xml:lang=\"en\">ISO Schematron<\/gloss>" ],
-                  "altIdent" : 
                   [  ] } ] } } ],
         "content" : 
         [ 
@@ -5448,8 +5456,8 @@
         "type" : "elementSpec",
         "module" : "tagdocs",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">contains the text of a declaration for the schema documented.<\/desc>" ],
-        "shortDesc" : "(content model) contains the text of a declaration for the schema documented.",
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-01-20\" xml:lang=\"en\">contains a declaration of the intended content model for the element (or other construct) being specified.<\/desc>" ],
+        "shortDesc" : "(content model) contains a declaration of the intended content model for the element (or other construct) being specified.",
         "gloss" : 
         [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-04\" xml:lang=\"en\">content model<\/gloss>" ],
         "altIdent" : 
@@ -5467,8 +5475,8 @@
             "ns" : "",
             "usage" : "def",
             "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2010-05-13\" xml:lang=\"en\">controls whether or not pattern names generated in the corresponding RELAX NG schema\n        source are automatically prefixed to avoid potential nameclashes.<\/desc>" ],
-            "shortDesc" : "controls whether or not pattern names generated in the corresponding RELAX NG schema\n        source are automatically prefixed to avoid potential nameclashes.",
+            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2010-05-13\" xml:lang=\"en\">controls whether or\n      not pattern names generated in the corresponding RELAX NG schema\n      source are automatically prefixed to avoid potential\n      nameclashes.<\/desc>" ],
+            "shortDesc" : "controls whether or\n      not pattern names generated in the corresponding RELAX NG schema\n      source are automatically prefixed to avoid potential\n      nameclashes.",
             "gloss" : 
             [  ],
             "altIdent" : 
@@ -5488,8 +5496,8 @@
               [ 
                 { "ident" : "true",
                   "desc" : 
-                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2010-05-13\" xml:lang=\"en\">Each name referenced in e.g. a <gi>rng:ref<\/gi> element within a content model is\n            automatically prefixed by the value of the <att>prefix<\/att> attribute on the current\n              <gi>schemaSpec<\/gi>\n               <\/desc>" ],
-                  "shortDesc" : "Each name referenced in e.g. a rng:ref element within a content model is\n            automatically prefixed by the value of the prefix attribute on the current\n              schemaSpec\n               ",
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2010-05-13\" xml:lang=\"en\">Each name\n          referenced in e.g. a <gi>rng:ref<\/gi> element within a\n          content model is automatically prefixed by the value of the\n          <att>prefix<\/att> attribute on the current\n          <gi>schemaSpec<\/gi>\n\t  <\/desc>" ],
+                  "shortDesc" : "Each name\n          referenced in e.g. a rng:ref element within a\n          content model is automatically prefixed by the value of the\n          prefix attribute on the current\n          schemaSpec\n\t  ",
                   "gloss" : 
                   [  ],
                   "altIdent" : 
@@ -5497,8 +5505,8 @@
                 
                 { "ident" : "false",
                   "desc" : 
-                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2010-05-13\" xml:lang=\"en\">No prefixes are added: any prefix required by the value of the <att>prefix<\/att>\n            attribute on the current <gi>schemaSpec<\/gi> must therefore be supplied explicitly, as\n            appropriate.<\/desc>" ],
-                  "shortDesc" : "No prefixes are added: any prefix required by the value of the prefix\n            attribute on the current schemaSpec must therefore be supplied explicitly, as\n            appropriate.",
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2010-05-13\" xml:lang=\"en\">No prefixes are\n\t  added: any prefix required by the value of the\n\t  <att>prefix<\/att> attribute on the current\n\t  <gi>schemaSpec<\/gi> must therefore be supplied explicitly,\n\t  as appropriate.<\/desc>" ],
+                  "shortDesc" : "No prefixes are\n\t  added: any prefix required by the value of the\n\t  prefix attribute on the current\n\t  schemaSpec must therefore be supplied explicitly,\n\t  as appropriate.",
                   "gloss" : 
                   [  ],
                   "altIdent" : 
@@ -5506,16 +5514,16 @@
         "content" : 
         [ 
           { "type" : "alternate",
-            "minOccurs" : "0",
-            "maxOccurs" : "unbounded",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
             "content" : 
             [ 
+              { "type" : "classRef",
+                "key" : "model.contentPart" },
+              
               { "type" : "anyElement",
                 "require" : "http:\/\/relaxng.org\/ns\/structure\/1.0",
-                "except" : "" },
-              
-              { "type" : "classRef",
-                "key" : "model.contentPart" } ] } ] },
+                "except" : "" } ] } ] },
       
       { "ident" : "corr",
         "type" : "elementSpec",
@@ -5982,7 +5990,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "dataFacet",
         "type" : "elementSpec",
@@ -6156,7 +6165,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "dataRef",
         "type" : "elementSpec",
@@ -6411,6 +6421,7 @@
             "att.datable",
             "att.duration",
             "att.editLike",
+            "att.dimensions",
             "att.typed" ] },
         "attributes" : 
         [  ],
@@ -6484,9 +6495,10 @@
         { "model" : 
           [ "model.personPart" ],
           "atts" : 
-          [ "att.global",
+          [ "att.datable",
+            "att.dimensions",
             "att.editLike",
-            "att.datable",
+            "att.global",
             "att.naming",
             "att.typed" ] },
         "attributes" : 
@@ -6704,7 +6716,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "defaultVal",
         "type" : "elementSpec",
@@ -6745,7 +6758,8 @@
           "atts" : 
           [ "att.global",
             "att.transcriptional",
-            "att.typed" ] },
+            "att.typed",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -6770,11 +6784,13 @@
           [ "att.global",
             "att.transcriptional",
             "att.typed",
-            "att.spanning" ] },
+            "att.spanning",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "depth",
         "type" : "elementSpec",
@@ -7235,7 +7251,8 @@
           [ "model.imprintPart",
             "model.publicationStmtPart.agency" ],
           "atts" : 
-          [ "att.global" ] },
+          [ "att.global",
+            "att.canonical" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -8976,7 +8993,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "elementSpec",
         "type" : "elementSpec",
@@ -9136,7 +9154,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "encodingDesc",
         "type" : "elementSpec",
@@ -9199,6 +9218,9 @@
               
               { "type" : "elementRef",
                 "key" : "sense" },
+              
+              { "type" : "elementRef",
+                "key" : "pc" },
               
               { "type" : "classRef",
                 "key" : "model.entryPart.top" },
@@ -9452,7 +9474,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "etym",
         "type" : "elementSpec",
@@ -9470,6 +9493,7 @@
             "model.entryPart" ],
           "atts" : 
           [ "att.global",
+            "att.typed",
             "att.lexicographic" ] },
         "attributes" : 
         [  ],
@@ -9486,28 +9510,31 @@
                 "key" : "model.gLike" },
               
               { "type" : "classRef",
-                "key" : "model.phrase" },
+                "key" : "model.global" },
               
               { "type" : "classRef",
                 "key" : "model.inter" },
               
-              { "type" : "elementRef",
-                "key" : "usg" },
-              
-              { "type" : "elementRef",
-                "key" : "lbl" },
+              { "type" : "classRef",
+                "key" : "model.phrase" },
               
               { "type" : "elementRef",
                 "key" : "def" },
               
               { "type" : "elementRef",
+                "key" : "etym" },
+              
+              { "type" : "elementRef",
                 "key" : "gramGrp" },
               
               { "type" : "elementRef",
-                "key" : "xr" },
+                "key" : "lbl" },
               
-              { "type" : "classRef",
-                "key" : "model.global" } ] } ] },
+              { "type" : "elementRef",
+                "key" : "usg" },
+              
+              { "type" : "elementRef",
+                "key" : "xr" } ] } ] },
       
       { "ident" : "event",
         "type" : "elementSpec",
@@ -9609,7 +9636,8 @@
             "model.choicePart" ],
           "atts" : 
           [ "att.global",
-            "att.editLike" ] },
+            "att.editLike",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -10183,7 +10211,8 @@
           "atts" : 
           [ "att.global",
             "att.placement",
-            "att.typed" ] },
+            "att.typed",
+            "att.written" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -10389,6 +10418,7 @@
           "atts" : 
           [ "att.global",
             "att.datable",
+            "att.dimensions",
             "att.editLike" ] },
         "attributes" : 
         [  ],
@@ -10516,12 +10546,13 @@
             "model.formPart" ],
           "atts" : 
           [ "att.global",
+            "att.typed",
             "att.lexicographic" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
             "ident" : "type",
-            "mode" : "add",
+            "mode" : "change",
             "ns" : "",
             "usage" : "opt",
             "desc" : 
@@ -11065,7 +11096,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "funder",
         "type" : "elementSpec",
@@ -11273,7 +11305,8 @@
           "atts" : 
           [ "att.global",
             "att.timed",
-            "att.editLike" ] },
+            "att.editLike",
+            "att.dimensions" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -11365,28 +11398,6 @@
                   [  ] } ] } },
           
           { "onElement" : true,
-            "ident" : "hand",
-            "mode" : "add",
-            "ns" : "",
-            "usage" : "opt",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">in the case of text omitted from the transcription because of deliberate deletion by an\n        identifiable hand, indicates the hand which made the deletion.<\/desc>" ],
-            "shortDesc" : "in the case of text omitted from the transcription because of deliberate deletion by an\n        identifiable hand, indicates the hand which made the deletion.",
-            "gloss" : 
-            [  ],
-            "altIdent" : 
-            [  ],
-            "valDesc" : 
-            [  ],
-            "datatype" : 
-            { "min" : "1",
-              "max" : "1",
-              "dataRef" : 
-              { "key" : "teidata.pointer",
-                "dataFacet" : 
-                [  ] } } },
-          
-          { "onElement" : true,
             "ident" : "agent",
             "mode" : "add",
             "ns" : "",
@@ -11467,11 +11478,13 @@
           [ "att.global",
             "att.typed",
             "att.spanning",
-            "att.breaking" ] },
+            "att.breaking",
+            "att.edition" ] },
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "gen",
         "type" : "elementSpec",
@@ -11643,7 +11656,8 @@
             "att.editLike",
             "att.global",
             "att.naming",
-            "att.typed" ] },
+            "att.typed",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -12297,8 +12311,8 @@
         "type" : "elementSpec",
         "module" : "msdescription",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\" xml:id=\"script.desc\">contains a description of all the different kinds of writing  used in a manuscript.<\/desc>" ],
-        "shortDesc" : "(description of hands) contains a description of all the different kinds of writing  used in a manuscript.",
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-06-15\" xml:lang=\"en\" xml:id=\"script.desc\">contains a description of all the different hands used in a manuscript.<\/desc>" ],
+        "shortDesc" : "(description of hands) contains a description of all the different hands used in a manuscript.",
         "gloss" : 
         [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-08-01\" xml:lang=\"en\">description of hands<\/gloss>" ],
         "altIdent" : 
@@ -12438,7 +12452,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "head",
         "type" : "elementSpec",
@@ -12673,6 +12688,9 @@
               { "type" : "elementRef",
                 "key" : "sense" },
               
+              { "type" : "elementRef",
+                "key" : "pc" },
+              
               { "type" : "classRef",
                 "key" : "model.entryPart.top" },
               
@@ -12695,7 +12713,8 @@
             "model.formPart" ],
           "atts" : 
           [ "att.global",
-            "att.lexicographic" ] },
+            "att.lexicographic",
+            "att.notated" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -13130,8 +13149,8 @@
                 
                 { "ident" : "OCLC",
                   "desc" : 
-                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-07-02\" xml:lang=\"en\">union catalog number in WorldCat representing a resource held by one or more of the member libraries in the global cooperative Online Computer Library Center.<\/desc>" ],
-                  "shortDesc" : "union catalog number in WorldCat representing a resource held by one or more of the member libraries in the global cooperative Online Computer Library Center.",
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-07-02\" xml:lang=\"en\">OCLC control number (record number) for the union catalog record in WorldCat, a union catalog for member libraries in the Online Computer Library Center global cooperative.<\/desc>" ],
+                  "shortDesc" : "OCLC control number (record number) for the union catalog record in WorldCat, a union catalog for member libraries in the Online Computer Library Center global cooperative.",
                   "gloss" : 
                   [  ],
                   "altIdent" : 
@@ -13210,7 +13229,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "imprimatur",
         "type" : "elementSpec",
@@ -13965,7 +13985,7 @@
           [ "att.global",
             "att.timed",
             "att.typed",
-            "att.ascribed" ] },
+            "att.ascribed.directed" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -14079,7 +14099,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "lacunaStart",
         "type" : "elementSpec",
@@ -14100,7 +14121,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "lang",
         "type" : "elementSpec",
@@ -14451,6 +14473,28 @@
                 [  ] } } },
           
           { "onElement" : true,
+            "ident" : "streams",
+            "mode" : "add",
+            "ns" : "",
+            "usage" : "def",
+            "desc" : 
+            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-07-12\" xml:lang=\"en\">indicates the number of streams per page, each of which contains an independent textual stream<\/desc>" ],
+            "shortDesc" : "(textual streams) indicates the number of streams per page, each of which contains an independent textual stream",
+            "gloss" : 
+            [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-07-12\" xml:lang=\"en\">textual streams<\/gloss>" ],
+            "altIdent" : 
+            [  ],
+            "valDesc" : 
+            [  ],
+            "datatype" : 
+            { "min" : "1",
+              "max" : "2",
+              "dataRef" : 
+              { "key" : "teidata.count",
+                "dataFacet" : 
+                [  ] } } },
+          
+          { "onElement" : true,
             "ident" : "ruledLines",
             "mode" : "add",
             "ns" : "",
@@ -14558,7 +14602,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "lbl",
         "type" : "elementSpec",
@@ -14573,6 +14618,7 @@
         "classes" : 
         { "model" : 
           [ "model.entryPart",
+            "model.entryPart.top",
             "model.lexicalRefinement" ],
           "atts" : 
           [ "att.global",
@@ -14909,7 +14955,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "linkGrp",
         "type" : "elementSpec",
@@ -15281,16 +15328,8 @@
               { "type" : "classRef",
                 "key" : "model.headLike" },
               
-              { "type" : "alternate",
-                "minOccurs" : "1",
-                "maxOccurs" : "unbounded",
-                "content" : 
-                [ 
-                  { "type" : "elementRef",
-                    "key" : "event" },
-                  
-                  { "type" : "elementRef",
-                    "key" : "listEvent" } ] },
+              { "type" : "classRef",
+                "key" : "model.eventLike" },
               
               { "type" : "alternate",
                 "minOccurs" : "0",
@@ -15606,16 +15645,8 @@
         [  ],
         "content" : 
         [ 
-          { "type" : "alternate",
-            "minOccurs" : "1",
-            "maxOccurs" : "1",
-            "content" : 
-            [ 
-              { "type" : "elementRef",
-                "key" : "ptr" },
-              
-              { "type" : "elementRef",
-                "key" : "ref" } ] } ] },
+          { "type" : "classRef",
+            "key" : "model.ptrLike" } ] },
       
       { "ident" : "listRelation",
         "type" : "elementSpec",
@@ -15983,7 +16014,8 @@
           "atts" : 
           [ "att.global",
             "att.segLike",
-            "att.typed" ] },
+            "att.typed",
+            "att.notated" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -16074,7 +16106,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "macroSpec",
         "type" : "elementSpec",
@@ -16788,7 +16821,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "mod",
         "type" : "elementSpec",
@@ -16808,7 +16842,8 @@
           [ "att.global",
             "att.transcriptional",
             "att.typed",
-            "att.spanning" ] },
+            "att.spanning",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -17887,8 +17922,8 @@
         "type" : "elementSpec",
         "module" : "drama",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">marks the actual entrance or exit of one or more characters on stage.<\/desc>" ],
-        "shortDesc" : "(movement) marks the actual entrance or exit of one or more characters on stage.",
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2017-11-17\" xml:lang=\"en\">marks the actual movement of one or more characters.<\/desc>" ],
+        "shortDesc" : "(movement) marks the actual movement of one or more characters.",
         "gloss" : 
         [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-04\" xml:lang=\"en\">movement<\/gloss>" ],
         "altIdent" : 
@@ -17898,7 +17933,7 @@
           [ "model.stageLike" ],
           "atts" : 
           [ "att.global",
-            "att.ascribed" ] },
+            "att.ascribed.directed" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -18027,7 +18062,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "msContents",
         "type" : "elementSpec",
@@ -19367,7 +19403,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "nym",
         "type" : "elementSpec",
@@ -19485,109 +19522,6 @@
                   "shortDesc" : "(no hyphen) indicates that the headword, though a prefix or suffix, loses its hyphen",
                   "gloss" : 
                   [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-04\" xml:lang=\"en\">no hyphen<\/gloss>" ],
-                  "altIdent" : 
-                  [  ] } ] } } ],
-        "content" : 
-        [ 
-          { "type" : "alternate",
-            "minOccurs" : "0",
-            "maxOccurs" : "unbounded",
-            "content" : 
-            [ 
-              { "type" : "textNode" },
-              
-              { "type" : "classRef",
-                "key" : "model.gLike" },
-              
-              { "type" : "elementRef",
-                "key" : "oRef" } ] } ] },
-      
-      { "ident" : "oVar",
-        "type" : "elementSpec",
-        "module" : "dictionaries",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">in a dictionary example, indicates a reference to variant orthographic form(s) of the\n    headword.<\/desc>" ],
-        "shortDesc" : "(orthographic-variant reference) in a dictionary example, indicates a reference to variant orthographic form(s) of the\n    headword.",
-        "gloss" : 
-        [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">orthographic-variant reference<\/gloss>" ],
-        "altIdent" : 
-        [  ],
-        "classes" : 
-        { "model" : 
-          [ "model.ptrLike.form" ],
-          "atts" : 
-          [ "att.global",
-            "att.lexicographic",
-            "att.pointing" ] },
-        "attributes" : 
-        [ 
-          { "onElement" : true,
-            "ident" : "type",
-            "mode" : "add",
-            "ns" : "",
-            "usage" : "opt",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">indicates the kind of variant involved.<\/desc>" ],
-            "shortDesc" : "indicates the kind of variant involved.",
-            "gloss" : 
-            [  ],
-            "altIdent" : 
-            [  ],
-            "valDesc" : 
-            [  ],
-            "datatype" : 
-            { "min" : "1",
-              "max" : "1",
-              "dataRef" : 
-              { "key" : "teidata.enumerated",
-                "dataFacet" : 
-                [  ] } },
-            "valList" : 
-            { "type" : "",
-              "valItem" : 
-              [ 
-                { "ident" : "pt",
-                  "desc" : 
-                  [  ],
-                  "shortDesc" : "(past tense) ",
-                  "gloss" : 
-                  [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">past tense<\/gloss>" ],
-                  "altIdent" : 
-                  [  ] },
-                
-                { "ident" : "pp",
-                  "desc" : 
-                  [  ],
-                  "shortDesc" : "(past participle) ",
-                  "gloss" : 
-                  [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">past participle<\/gloss>" ],
-                  "altIdent" : 
-                  [  ] },
-                
-                { "ident" : "prp",
-                  "desc" : 
-                  [  ],
-                  "shortDesc" : "(present participle) ",
-                  "gloss" : 
-                  [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">present participle<\/gloss>" ],
-                  "altIdent" : 
-                  [  ] },
-                
-                { "ident" : "f",
-                  "desc" : 
-                  [  ],
-                  "shortDesc" : "(feminine) ",
-                  "gloss" : 
-                  [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">feminine<\/gloss>" ],
-                  "altIdent" : 
-                  [  ] },
-                
-                { "ident" : "pl",
-                  "desc" : 
-                  [  ],
-                  "shortDesc" : "(plural) ",
-                  "gloss" : 
-                  [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">plural<\/gloss>" ],
                   "altIdent" : 
                   [  ] } ] } } ],
         "content" : 
@@ -19835,7 +19769,8 @@
             "att.editLike",
             "att.global",
             "att.naming",
-            "att.typed" ] },
+            "att.typed",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -20061,6 +19996,7 @@
           "atts" : 
           [ "att.global",
             "att.datable",
+            "att.dimensions",
             "att.editLike",
             "att.typed" ] },
         "attributes" : 
@@ -20150,7 +20086,8 @@
           "atts" : 
           [ "att.global",
             "att.lexicographic",
-            "att.partials" ] },
+            "att.partials",
+            "att.notated" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -20293,41 +20230,6 @@
         "shortDesc" : "(pronunciation reference) in a dictionary example, indicates a reference to the pronunciation(s) of the headword.",
         "gloss" : 
         [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">pronunciation reference<\/gloss>" ],
-        "altIdent" : 
-        [  ],
-        "classes" : 
-        { "model" : 
-          [ "model.ptrLike.form" ],
-          "atts" : 
-          [ "att.global",
-            "att.pointing",
-            "att.lexicographic",
-            "att.notated" ] },
-        "attributes" : 
-        [  ],
-        "content" : 
-        [ 
-          { "type" : "alternate",
-            "minOccurs" : "0",
-            "maxOccurs" : "unbounded",
-            "content" : 
-            [ 
-              { "type" : "textNode" },
-              
-              { "type" : "classRef",
-                "key" : "model.gLike" },
-              
-              { "type" : "elementRef",
-                "key" : "pRef" } ] } ] },
-      
-      { "ident" : "pVar",
-        "type" : "elementSpec",
-        "module" : "dictionaries",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">in a dictionary example, indicates a reference to variant pronunciation(s) of the headword.<\/desc>" ],
-        "shortDesc" : "(pronunciation-variant reference) in a dictionary example, indicates a reference to variant pronunciation(s) of the headword.",
-        "gloss" : 
-        [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">pronunciation-variant reference<\/gloss>" ],
         "altIdent" : 
         [  ],
         "classes" : 
@@ -20518,7 +20420,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "paramList",
         "type" : "elementSpec",
@@ -20615,6 +20518,51 @@
                   { "type" : "elementRef",
                     "key" : "listOrg" } ] } ] } ] },
       
+      { "ident" : "path",
+        "type" : "elementSpec",
+        "module" : "transcr",
+        "desc" : 
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-03-28\" xml:lang=\"en\">defines any line passing through two or more points within a <gi>surface<\/gi>\nelement.<\/desc>" ],
+        "shortDesc" : "defines any line passing through two or more points within a surface\nelement.",
+        "gloss" : 
+        [  ],
+        "altIdent" : 
+        [  ],
+        "classes" : 
+        { "model" : 
+          [ "model.linePart" ],
+          "atts" : 
+          [ "att.global",
+            "att.coordinated",
+            "att.typed",
+            "att.written" ] },
+        "attributes" : 
+        [ 
+          { "onElement" : true,
+            "ident" : "points",
+            "mode" : "change",
+            "ns" : "",
+            "usage" : "def",
+            "desc" : 
+            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-03-28\" xml:lang=\"en\">identifies a line \n        within the container or bounding box\n        specified by the parent element by means of\n        a series of two or more pairs of numbers, each of which \n        gives the x,y coordinates\n        of a point on the line.<\/desc>" ],
+            "shortDesc" : "identifies a line \n        within the container or bounding box\n        specified by the parent element by means of\n        a series of two or more pairs of numbers, each of which \n        gives the x,y coordinates\n        of a point on the line.",
+            "gloss" : 
+            [  ],
+            "altIdent" : 
+            [  ],
+            "valDesc" : 
+            [  ],
+            "datatype" : 
+            { "min" : "2",
+              "max" : "unbounded",
+              "dataRef" : 
+              { "key" : "teidata.point",
+                "dataFacet" : 
+                [  ] } } } ],
+        "content" : 
+        [ 
+          { "type" : "empty" } ] },
+      
       { "ident" : "pause",
         "type" : "elementSpec",
         "module" : "spoken",
@@ -20632,11 +20580,12 @@
           [ "att.global",
             "att.timed",
             "att.typed",
-            "att.ascribed" ] },
+            "att.ascribed.directed" ] },
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "pb",
         "type" : "elementSpec",
@@ -20660,7 +20609,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "pc",
         "type" : "elementSpec",
@@ -20679,7 +20629,8 @@
           "atts" : 
           [ "att.global",
             "att.segLike",
-            "att.typed" ] },
+            "att.typed",
+            "att.linguistic" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -21254,7 +21205,8 @@
           "atts" : 
           [ "att.global",
             "att.segLike",
-            "att.typed" ] },
+            "att.typed",
+            "att.notated" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -21419,7 +21371,8 @@
             "att.datable",
             "att.editLike",
             "att.naming",
-            "att.typed" ] },
+            "att.typed",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -21993,7 +21946,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "pubPlace",
         "type" : "elementSpec",
@@ -22072,7 +22026,8 @@
           [ "model.imprintPart",
             "model.publicationStmtPart.agency" ],
           "atts" : 
-          [ "att.global" ] },
+          [ "att.global",
+            "att.canonical" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -22156,8 +22111,8 @@
             "ns" : "",
             "usage" : "opt",
             "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-06-20\" xml:lang=\"en\">indicates whether punctation marks have been captured inside or outside of an adjacent\n        element.<\/desc>" ],
-            "shortDesc" : "indicates whether punctation marks have been captured inside or outside of an adjacent\n        element.",
+            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-01-16\" xml:lang=\"en\"> indicates the positioning of punctuation marks that are associated with marked up text as being encoded within the element surrounding the text or immediately before or after it.<\/desc>" ],
+            "shortDesc" : " indicates the positioning of punctuation marks that are associated with marked up text as being encoded within the element surrounding the text or immediately before or after it.",
             "gloss" : 
             [  ],
             "altIdent" : 
@@ -22177,8 +22132,8 @@
               [ 
                 { "ident" : "internal",
                   "desc" : 
-                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-06-20\" xml:lang=\"en\">punctuation marks are captured inside adjacent elements<\/desc>" ],
-                  "shortDesc" : "punctuation marks are captured inside adjacent elements",
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-01-16\" xml:lang=\"en\">punctuation marks found at the start or end of a marked up text component are included within its surrounding element;<\/desc>" ],
+                  "shortDesc" : "punctuation marks found at the start or end of a marked up text component are included within its surrounding element;",
                   "gloss" : 
                   [  ],
                   "altIdent" : 
@@ -22186,8 +22141,8 @@
                 
                 { "ident" : "external",
                   "desc" : 
-                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-06-20\" xml:lang=\"en\">punctuation marks are captured outside adjacent elements<\/desc>" ],
-                  "shortDesc" : "punctuation marks are captured outside adjacent elements",
+                  [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-01-16\" xml:lang=\"en\">punctuation marks found at the start or end of a marked up text component appear immediately before or after the surrounding element<\/desc>" ],
+                  "shortDesc" : "punctuation marks found at the start or end of a marked up text component appear immediately before or after the surrounding element",
                   "gloss" : 
                   [  ],
                   "altIdent" : 
@@ -22316,7 +22271,7 @@
           [ "model.qLike" ],
           "atts" : 
           [ "att.global",
-            "att.ascribed" ] },
+            "att.ascribed.directed" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -22519,7 +22474,8 @@
           "atts" : 
           [ "att.global",
             "att.typed",
-            "att.msExcerpt" ] },
+            "att.msExcerpt",
+            "att.notated" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -22846,7 +22802,8 @@
           "atts" : 
           [ "att.global",
             "att.spanning",
-            "att.transcriptional" ] },
+            "att.transcriptional",
+            "att.dimensions" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -22871,7 +22828,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "ref",
         "type" : "elementSpec",
@@ -22963,7 +22921,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "refsDecl",
         "type" : "elementSpec",
@@ -23650,7 +23609,8 @@
           "atts" : 
           [ "att.global",
             "att.transcriptional",
-            "att.typed" ] },
+            "att.typed",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -23675,7 +23635,8 @@
           "atts" : 
           [ "att.global",
             "att.spanning",
-            "att.transcriptional" ] },
+            "att.transcriptional",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -24025,7 +23986,8 @@
           "atts" : 
           [ "att.global",
             "att.segLike",
-            "att.typed" ] },
+            "att.typed",
+            "att.notated" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -24048,7 +24010,7 @@
           [ "model.qLike" ],
           "atts" : 
           [ "att.global",
-            "att.ascribed" ] },
+            "att.ascribed.directed" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -24445,8 +24407,8 @@
         "type" : "elementSpec",
         "module" : "msdescription",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\" xml:id=\"seal.desc\">contains a description of one seal or similar\n  attachment applied to a manuscript.<\/desc>" ],
-        "shortDesc" : "contains a description of one seal or similar\n  attachment applied to a manuscript.",
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-07-17\" xml:lang=\"en\">contains a description of one seal or similar applied to the object described<\/desc>" ],
+        "shortDesc" : "contains a description of one seal or similar applied to the object described",
         "gloss" : 
         [  ],
         "altIdent" : 
@@ -24498,8 +24460,8 @@
         "type" : "elementSpec",
         "module" : "msdescription",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">describes the seals or other external items attached to a manuscript, either\nas a series of paragraphs or as a series of distinct <gi>seal<\/gi> elements,\npossibly with additional <gi>decoNote<\/gi>s.<\/desc>" ],
-        "shortDesc" : "(seal description) describes the seals or other external items attached to a manuscript, either\nas a series of paragraphs or as a series of distinct seal elements,\npossibly with additional decoNotes.",
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-07-17\" xml:lang=\"en\">describes the seals or similar items related to the object described, either as a series of paragraphs or as a series of <gi>seal<\/gi> elements.<\/desc>" ],
+        "shortDesc" : "(seal description) describes the seals or similar items related to the object described, either as a series of paragraphs or as a series of seal elements.",
         "gloss" : 
         [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-04\" xml:lang=\"en\">seal description<\/gloss>" ],
         "altIdent" : 
@@ -24580,7 +24542,8 @@
           [ "model.pPart.transcriptional" ],
           "atts" : 
           [ "att.global",
-            "att.editLike" ] },
+            "att.editLike",
+            "att.dimensions" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -24628,7 +24591,8 @@
           [ "att.global",
             "att.segLike",
             "att.typed",
-            "att.written" ] },
+            "att.written",
+            "att.notated" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -24726,8 +24690,8 @@
         "type" : "elementSpec",
         "module" : "tagdocs",
         "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-11-21\" xml:lang=\"en\">sequence of references<\/desc>" ],
-        "shortDesc" : "sequence of references",
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-11-21\" xml:lang=\"en\">indicates that the constructs referenced by its children form a sequence<\/desc>" ],
+        "shortDesc" : "indicates that the constructs referenced by its children form a sequence",
         "gloss" : 
         [  ],
         "altIdent" : 
@@ -24746,8 +24710,8 @@
             "ns" : "",
             "usage" : "def",
             "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-11-21\" xml:lang=\"en\">if true, indicates that\n\t      the order in which component elements of a sequence\n\t      appear in a document must correspond to the order in\n\t      which they are given in the content model.<\/desc>" ],
-            "shortDesc" : "if true, indicates that\n\t      the order in which component elements of a sequence\n\t      appear in a document must correspond to the order in\n\t      which they are given in the content model.",
+            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-11-21\" xml:lang=\"en\">if true, indicates that\n      the order in which component elements of a sequence\n      appear in a document must correspond to the order in\n      which they are given in the content model.<\/desc>" ],
+            "shortDesc" : "if true, indicates that\n      the order in which component elements of a sequence\n      appear in a document must correspond to the order in\n      which they are given in the content model.",
             "gloss" : 
             [  ],
             "altIdent" : 
@@ -25242,7 +25206,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "sic",
         "type" : "elementSpec",
@@ -25251,7 +25216,7 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2006-03-20\" xml:lang=\"en\">contains text reproduced although apparently incorrect or inaccurate.<\/desc>" ],
         "shortDesc" : "(Latin for thus or so) contains text reproduced although apparently incorrect or inaccurate.",
         "gloss" : 
-        [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-03-15\" xml:lang=\"en\">Latin for <gloss>thus<\/gloss> or <gloss>so<\/gloss><\/gloss>" ],
+        [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-03-15\" xml:lang=\"en\">Latin for <mentioned>thus<\/mentioned> or <mentioned>so<\/mentioned><\/gloss>" ],
         "altIdent" : 
         [  ],
         "classes" : 
@@ -25655,7 +25620,7 @@
           [ "model.divPart" ],
           "atts" : 
           [ "att.global",
-            "att.ascribed" ] },
+            "att.ascribed.directed" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -25726,7 +25691,7 @@
           "atts" : 
           [ "att.global",
             "att.typed",
-            "att.ascribed" ] },
+            "att.ascribed.directed" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -26017,7 +25982,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "specGrp",
         "type" : "elementSpec",
@@ -26091,7 +26057,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "specList",
         "type" : "elementSpec",
@@ -26152,7 +26119,7 @@
         { "model" : 
           [ "model.stageLike" ],
           "atts" : 
-          [ "att.ascribed",
+          [ "att.ascribed.directed",
             "att.global",
             "att.placement" ] },
         "attributes" : 
@@ -26311,7 +26278,8 @@
             "att.datable",
             "att.editLike",
             "att.typed",
-            "att.naming" ] },
+            "att.naming",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -26427,7 +26395,8 @@
         { "model" : 
           [ "model.formPart" ],
           "atts" : 
-          [ "att.global" ] },
+          [ "att.global",
+            "att.notated" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -26521,7 +26490,8 @@
           [ "model.pPart.editorial" ],
           "atts" : 
           [ "att.global",
-            "att.transcriptional" ] },
+            "att.transcriptional",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -26556,7 +26526,8 @@
           "atts" : 
           [ "att.global",
             "att.pointing",
-            "att.transcriptional" ] },
+            "att.transcriptional",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -26651,7 +26622,8 @@
             "model.choicePart" ],
           "atts" : 
           [ "att.global",
-            "att.editLike" ] },
+            "att.editLike",
+            "att.dimensions" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -26931,6 +26903,9 @@
                         "key" : "line" },
                       
                       { "type" : "elementRef",
+                        "key" : "path" },
+                      
+                      { "type" : "elementRef",
                         "key" : "surface" },
                       
                       { "type" : "elementRef",
@@ -27013,7 +26988,8 @@
           [ "model.pPart.transcriptional" ],
           "atts" : 
           [ "att.global",
-            "att.editLike" ] },
+            "att.editLike",
+            "att.dimensions" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -27080,7 +27056,8 @@
             "model.formPart" ],
           "atts" : 
           [ "att.global",
-            "att.lexicographic" ] },
+            "att.lexicographic",
+            "att.notated" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -27128,7 +27105,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "table",
         "type" : "elementSpec",
@@ -27768,8 +27746,8 @@
             "ns" : "",
             "usage" : "opt",
             "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-12-24\" xml:lang=\"en\">The version of the TEI scheme<\/desc>" ],
-            "shortDesc" : "The version of the TEI scheme",
+            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-01-24\" xml:lang=\"en\">specifies the version number of the TEI Guidelines against\n        which this document is valid.<\/desc>" ],
+            "shortDesc" : "specifies the version number of the TEI Guidelines against\n        which this document is valid.",
             "gloss" : 
             [  ],
             "altIdent" : 
@@ -28164,7 +28142,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "then",
         "type" : "elementSpec",
@@ -28184,7 +28163,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "time",
         "type" : "elementSpec",
@@ -28204,6 +28184,7 @@
             "att.datable",
             "att.duration",
             "att.editLike",
+            "att.dimensions",
             "att.typed" ] },
         "attributes" : 
         [  ],
@@ -28796,7 +28777,8 @@
             "att.datable",
             "att.editLike",
             "att.naming",
-            "att.typed" ] },
+            "att.typed",
+            "att.dimensions" ] },
         "attributes" : 
         [  ],
         "content" : 
@@ -29251,7 +29233,7 @@
           [ "att.global",
             "att.timed",
             "att.declaring",
-            "att.ascribed",
+            "att.ascribed.directed",
             "att.notated" ] },
         "attributes" : 
         [ 
@@ -29337,7 +29319,8 @@
             "model.choicePart" ],
           "atts" : 
           [ "att.global",
-            "att.editLike" ] },
+            "att.editLike",
+            "att.dimensions" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -29358,31 +29341,57 @@
             { "min" : "1",
               "max" : "unbounded",
               "dataRef" : 
-              { "key" : "teidata.word",
+              { "key" : "teidata.enumerated",
                 "dataFacet" : 
-                [  ] } } },
-          
-          { "onElement" : true,
-            "ident" : "hand",
-            "mode" : "add",
-            "ns" : "",
-            "usage" : "opt",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">Where the difficulty in transcription arises from action (partial deletion, etc.)\n                assignable to an identifiable hand, signifies the hand responsible for the action.<\/desc>" ],
-            "shortDesc" : "Where the difficulty in transcription arises from action (partial deletion, etc.)\n                assignable to an identifiable hand, signifies the hand responsible for the action.",
-            "gloss" : 
-            [  ],
-            "altIdent" : 
-            [  ],
-            "valDesc" : 
-            [  ],
-            "datatype" : 
-            { "min" : "1",
-              "max" : "1",
-              "dataRef" : 
-              { "key" : "teidata.pointer",
-                "dataFacet" : 
-                [  ] } } },
+                [  ] } },
+            "valList" : 
+            { "type" : "",
+              "valItem" : 
+              [ 
+                { "ident" : "illegible",
+                  "desc" : 
+                  [  ],
+                  "shortDesc" : "",
+                  "gloss" : 
+                  [  ],
+                  "altIdent" : 
+                  [  ] },
+                
+                { "ident" : "inaudible",
+                  "desc" : 
+                  [  ],
+                  "shortDesc" : "",
+                  "gloss" : 
+                  [  ],
+                  "altIdent" : 
+                  [  ] },
+                
+                { "ident" : "faded",
+                  "desc" : 
+                  [  ],
+                  "shortDesc" : "",
+                  "gloss" : 
+                  [  ],
+                  "altIdent" : 
+                  [  ] },
+                
+                { "ident" : "background_noise",
+                  "desc" : 
+                  [  ],
+                  "shortDesc" : "",
+                  "gloss" : 
+                  [  ],
+                  "altIdent" : 
+                  [  ] },
+                
+                { "ident" : "eccentric_ductus",
+                  "desc" : 
+                  [  ],
+                  "shortDesc" : "",
+                  "gloss" : 
+                  [  ],
+                  "altIdent" : 
+                  [  ] } ] } },
           
           { "onElement" : true,
             "ident" : "agent",
@@ -29457,7 +29466,8 @@
           "atts" : 
           [ "att.global",
             "att.spanning",
-            "att.transcriptional" ] },
+            "att.transcriptional",
+            "att.dimensions" ] },
         "attributes" : 
         [ 
           { "onElement" : true,
@@ -29482,7 +29492,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "unicodeName",
         "type" : "elementSpec",
@@ -29525,6 +29536,30 @@
         "content" : 
         [ 
           { "type" : "textNode" } ] },
+      
+      { "ident" : "unit",
+        "type" : "elementSpec",
+        "module" : "core",
+        "desc" : 
+        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-07-17\" xml:lang=\"en\">contains a symbol, a word or a phrase referring to a unit of measurement in any kind of formal or informal system.<\/desc>" ],
+        "shortDesc" : "contains a symbol, a word or a phrase referring to a unit of measurement in any kind of formal or informal system.",
+        "gloss" : 
+        [  ],
+        "altIdent" : 
+        [  ],
+        "classes" : 
+        { "model" : 
+          [ "model.measureLike" ],
+          "atts" : 
+          [ "att.global",
+            "att.typed",
+            "att.measurement" ] },
+        "attributes" : 
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "macroRef",
+            "key" : "macro.phraseSeq" } ] },
       
       { "ident" : "usg",
         "type" : "elementSpec",
@@ -30111,16 +30146,30 @@
             "maxOccurs" : "1",
             "content" : 
             [ 
-              { "type" : "alternate",
+              { "type" : "classRef",
+                "key" : "model.glossLike" },
+              
+              { "type" : "sequence",
                 "minOccurs" : "0",
-                "maxOccurs" : "unbounded",
+                "maxOccurs" : "1",
                 "content" : 
                 [ 
                   { "type" : "classRef",
                     "key" : "model.descLike" },
                   
-                  { "type" : "classRef",
-                    "key" : "model.glossLike" } ] },
+                  { "type" : "sequence",
+                    "minOccurs" : "0",
+                    "maxOccurs" : "unbounded",
+                    "content" : 
+                    [ 
+                      { "type" : "classRef",
+                        "key" : "model.glossLike" },
+                      
+                      { "type" : "classRef",
+                        "key" : "model.descLike" } ] },
+                  
+                  { "type" : "elementRef",
+                    "key" : "remarks" } ] },
               
               { "type" : "elementRef",
                 "key" : "paramList" } ] } ] },
@@ -30333,7 +30382,8 @@
                   "altIdent" : 
                   [  ] } ] } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "view",
         "type" : "elementSpec",
@@ -30373,7 +30423,7 @@
           "atts" : 
           [ "att.global",
             "att.timed",
-            "att.ascribed",
+            "att.ascribed.directed",
             "att.typed" ] },
         "attributes" : 
         [ 
@@ -30420,52 +30470,11 @@
           "atts" : 
           [ "att.global",
             "att.segLike",
-            "att.typed" ] },
+            "att.typed",
+            "att.linguistic",
+            "att.notated" ] },
         "attributes" : 
-        [ 
-          { "onElement" : true,
-            "ident" : "lemma",
-            "mode" : "add",
-            "ns" : "",
-            "usage" : "opt",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-02-23\" xml:lang=\"en\">provides a lemma for the word, such as an uninflected\n      dictionary entry form.<\/desc>" ],
-            "shortDesc" : "provides a lemma for the word, such as an uninflected\n      dictionary entry form.",
-            "gloss" : 
-            [  ],
-            "altIdent" : 
-            [  ],
-            "valDesc" : 
-            [  ],
-            "datatype" : 
-            { "min" : "1",
-              "max" : "1",
-              "dataRef" : 
-              { "key" : "teidata.text",
-                "dataFacet" : 
-                [  ] } } },
-          
-          { "onElement" : true,
-            "ident" : "lemmaRef",
-            "mode" : "add",
-            "ns" : "",
-            "usage" : "def",
-            "desc" : 
-            [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2010-07-20\" xml:lang=\"en\">provides a pointer to a definition of the lemma for the\n      word, for example in an online lexicon.<\/desc>" ],
-            "shortDesc" : "provides a pointer to a definition of the lemma for the\n      word, for example in an online lexicon.",
-            "gloss" : 
-            [  ],
-            "altIdent" : 
-            [  ],
-            "valDesc" : 
-            [  ],
-            "datatype" : 
-            { "min" : "1",
-              "max" : "1",
-              "dataRef" : 
-              { "key" : "teidata.pointer",
-                "dataFacet" : 
-                [  ] } } } ],
+        [  ],
         "content" : 
         [ 
           { "type" : "alternate",
@@ -30680,7 +30689,8 @@
                 "dataFacet" : 
                 [  ] } } } ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "width",
         "type" : "elementSpec",
@@ -30793,8 +30803,24 @@
                 [  ] } } } ],
         "content" : 
         [ 
-          { "type" : "macroRef",
-            "key" : "macro.phraseSeq" } ] },
+          { "type" : "alternate",
+            "minOccurs" : "0",
+            "maxOccurs" : "unbounded",
+            "content" : 
+            [ 
+              { "type" : "textNode" },
+              
+              { "type" : "classRef",
+                "key" : "model.gLike" },
+              
+              { "type" : "classRef",
+                "key" : "model.phrase" },
+              
+              { "type" : "classRef",
+                "key" : "model.global" },
+              
+              { "type" : "elementRef",
+                "key" : "bibl" } ] } ] },
       
       { "ident" : "witEnd",
         "type" : "elementSpec",
@@ -30815,7 +30841,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "witStart",
         "type" : "elementSpec",
@@ -30836,7 +30863,8 @@
         "attributes" : 
         [  ],
         "content" : 
-        [  ] },
+        [ 
+          { "type" : "empty" } ] },
       
       { "ident" : "witness",
         "type" : "elementSpec",
@@ -30876,7 +30904,7 @@
           [ "model.global.spoken" ],
           "atts" : 
           [ "att.global",
-            "att.ascribed",
+            "att.ascribed.directed",
             "att.typed",
             "att.timed" ] },
         "attributes" : 
@@ -32422,7 +32450,7 @@
         
         { "ident" : "model.physDescPart",
           "type" : "classSpec",
-          "module" : "tei",
+          "module" : "msdescription",
           "desc" : 
           [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-03-14\" xml:lang=\"en\">groups specialized elements forming part of the physical description of a manuscript or\n    similar written source.<\/desc>" ],
           "shortDesc" : "groups specialized elements forming part of the physical description of a manuscript or\n    similar written source.",
@@ -32794,6 +32822,45 @@
                   "dataFacet" : 
                   [  ] } } } ] },
         
+        { "ident" : "att.ascribed.directed",
+          "type" : "classSpec",
+          "module" : "tei",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-07-19\" xml:lang=\"en\">provides attributes for elements representing speech or action that can be directed at a\n        group or individual.<\/desc>" ],
+          "shortDesc" : "provides attributes for elements representing speech or action that can be directed at a\n        group or individual.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [  ],
+            "atts" : 
+            [ "att.ascribed" ] },
+          "attributes" : 
+          [ 
+            { "onElement" : false,
+              "ident" : "toWhom",
+              "mode" : "add",
+              "ns" : "",
+              "usage" : "def",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-07-19\" xml:lang=\"en\">indicates the person, or group of people, to whom a speech act or action is directed.<\/desc>" ],
+              "shortDesc" : "indicates the person, or group of people, to whom a speech act or action is directed.",
+              "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "unbounded",
+                "dataRef" : 
+                { "key" : "teidata.pointer",
+                  "dataFacet" : 
+                  [  ] } } } ] },
+        
         { "ident" : "att.breaking",
           "type" : "classSpec",
           "module" : "tei",
@@ -33046,8 +33113,8 @@
                   
                   { "ident" : "column",
                     "desc" : 
-                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-06-17\" xml:lang=\"en\">the element identifies an entry number or label in a list of entries.<\/desc>" ],
-                    "shortDesc" : "the element identifies an entry number or label in a list of entries.",
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-06-17\" xml:lang=\"en\">the element identifies a column.<\/desc>" ],
+                    "shortDesc" : "the element identifies a column.",
                     "gloss" : 
                     [  ],
                     "altIdent" : 
@@ -33055,8 +33122,8 @@
                   
                   { "ident" : "entry",
                     "desc" : 
-                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2017-06-24\" xml:lang=\"en\">the element identifies a column.<\/desc>" ],
-                    "shortDesc" : "the element identifies a column.",
+                    [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2017-10-29\" xml:lang=\"en\">the element identifies an entry number or label in a list of entries.<\/desc>" ],
+                    "shortDesc" : "the element identifies an entry number or label in a list of entries.",
                     "gloss" : 
                     [  ],
                     "altIdent" : 
@@ -34699,11 +34766,6 @@
           [  ],
           "altIdent" : 
           [  ],
-          "classes" : 
-          { "model" : 
-            [  ],
-            "atts" : 
-            [ "att.dimensions" ] },
           "attributes" : 
           [ 
             { "onElement" : false,
@@ -36296,6 +36358,181 @@
                 { "key" : "teidata.truthValue",
                   "dataFacet" : 
                   [  ] } } } ] },
+        
+        { "ident" : "att.linguistic",
+          "type" : "classSpec",
+          "module" : "analysis",
+          "desc" : 
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2017-03-24\" xml:lang=\"en\">provides a set of attributes concerning linguistic features of tokens, for usage within token-level elements, specifically <gi>w<\/gi> and <gi>pc<\/gi> in the analysis module.<\/desc>" ],
+          "shortDesc" : "provides a set of attributes concerning linguistic features of tokens, for usage within token-level elements, specifically w and pc in the analysis module.",
+          "gloss" : 
+          [  ],
+          "altIdent" : 
+          [  ],
+          "classes" : 
+          { "model" : 
+            [  ],
+            "atts" : 
+            [  ] },
+          "attributes" : 
+          [ 
+            { "onElement" : false,
+              "ident" : "lemma",
+              "mode" : "add",
+              "ns" : "",
+              "usage" : "opt",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2017-07-07\" xml:lang=\"en\">provides a lemma (base form) for the word, typically uninflected and serving both as an identifier (e.g. in dictionary contexts, as a headword), and as a basis for potential inflections.<\/desc>" ],
+              "shortDesc" : "provides a lemma (base form) for the word, typically uninflected and serving both as an identifier (e.g. in dictionary contexts, as a headword), and as a basis for potential inflections.",
+              "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.text",
+                  "dataFacet" : 
+                  [  ] } } },
+            
+            { "onElement" : false,
+              "ident" : "lemmaRef",
+              "mode" : "add",
+              "ns" : "",
+              "usage" : "def",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2010-07-20\" xml:lang=\"en\">provides a pointer to a definition of the lemma for the\n        word, for example in an online lexicon.<\/desc>" ],
+              "shortDesc" : "provides a pointer to a definition of the lemma for the\n        word, for example in an online lexicon.",
+              "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.pointer",
+                  "dataFacet" : 
+                  [  ] } } },
+            
+            { "onElement" : false,
+              "ident" : "pos",
+              "mode" : "add",
+              "ns" : "",
+              "usage" : "opt",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2017-03-24\" xml:lang=\"en\">(part of speech) indicates the part of speech assigned to a token \n        (i.e. information on whether it is a noun, adjective, or verb), usually according to some official reference \n        vocabulary (e.g. for German: STTS, for English: CLAWS, for Polish: NKJP, etc.).<\/desc>" ],
+              "shortDesc" : "(part of speech) indicates the part of speech assigned to a token \n        (i.e. information on whether it is a noun, adjective, or verb), usually according to some official reference \n        vocabulary (e.g. for German: STTS, for English: CLAWS, for Polish: NKJP, etc.).",
+              "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.text",
+                  "dataFacet" : 
+                  [  ] } } },
+            
+            { "onElement" : false,
+              "ident" : "msd",
+              "mode" : "add",
+              "ns" : "",
+              "usage" : "opt",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-10\" xml:lang=\"en\">(morphosyntactic description) supplies\n        morphosyntactic information for a token, usually according to some official reference\n        vocabulary (e.g. for German: <ref target=\"http:\/\/www.ims.uni-stuttgart.de\/forschung\/ressourcen\/lexika\/TagSets\/stts-1999.pdf\">STTS-large tagset<\/ref>; for a feature description system designed as (pragmatically) universal, see <ref target=\"http:\/\/universaldependencies.org\/u\/feat\/index.html\">Universal Features<\/ref>).\n      <\/desc>" ],
+              "shortDesc" : "(morphosyntactic description) supplies\n        morphosyntactic information for a token, usually according to some official reference\n        vocabulary (e.g. for German: STTS-large tagset; for a feature description system designed as (pragmatically) universal, see Universal Features).\n      ",
+              "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.text",
+                  "dataFacet" : 
+                  [  ] } } },
+            
+            { "onElement" : false,
+              "ident" : "join",
+              "mode" : "add",
+              "ns" : "",
+              "usage" : "opt",
+              "desc" : 
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2017-03-24\" xml:lang=\"en\">when present, it provides information on whether the token in question is adjacent to another, and if so, on which side. The definition of this attribute is adapted from ISO MAF (Morpho-syntactic Annotation Framework), ISO 24611:2012.<\/desc>" ],
+              "shortDesc" : "when present, it provides information on whether the token in question is adjacent to another, and if so, on which side. The definition of this attribute is adapted from ISO MAF (Morpho-syntactic Annotation Framework), ISO 24611:2012.",
+              "gloss" : 
+              [  ],
+              "altIdent" : 
+              [  ],
+              "valDesc" : 
+              [  ],
+              "datatype" : 
+              { "min" : "1",
+                "max" : "1",
+                "dataRef" : 
+                { "key" : "teidata.text",
+                  "dataFacet" : 
+                  [  ] } },
+              "valList" : 
+              { "type" : "",
+                "valItem" : 
+                [ 
+                  { "ident" : "no",
+                    "desc" : 
+                    [  ],
+                    "shortDesc" : "(the token is not adjacent to another) ",
+                    "gloss" : 
+                    [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2017-07-07\">the token is not adjacent to another<\/gloss>" ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "left",
+                    "desc" : 
+                    [  ],
+                    "shortDesc" : "(there is no whitespace on the left side of the token) ",
+                    "gloss" : 
+                    [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2017-07-07\">there is no whitespace on the left side of the token<\/gloss>" ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "right",
+                    "desc" : 
+                    [  ],
+                    "shortDesc" : "(there is no whitespace on the right side of the token) ",
+                    "gloss" : 
+                    [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2017-07-07\">there is no whitespace on the right side of the token<\/gloss>" ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "both",
+                    "desc" : 
+                    [  ],
+                    "shortDesc" : "(there is no whitespace on either side of the token) ",
+                    "gloss" : 
+                    [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2017-07-07\">there is no whitespace on either side of the token<\/gloss>" ],
+                    "altIdent" : 
+                    [  ] },
+                  
+                  { "ident" : "overlap",
+                    "desc" : 
+                    [  ],
+                    "shortDesc" : "(the token overlaps with another; other devices (specifying the extent and the area of overlap) are needed to more precisely locate this token in the character stream) ",
+                    "gloss" : 
+                    [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"en\" versionDate=\"2017-07-07\">the token overlaps with another; other devices (specifying the extent and the area of overlap) are needed to more precisely locate this token in the character stream<\/gloss>" ],
+                    "altIdent" : 
+                    [  ] } ] } } ] },
         
         { "ident" : "att.measurement",
           "type" : "classSpec",
@@ -38728,8 +38965,8 @@
           "type" : "classSpec",
           "module" : "tei",
           "desc" : 
-          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2014-01-10\" xml:lang=\"en\">provides an attribute to indicate the hand in which\n  \tthe textual content of an element was written in the source being transcribed.<\/desc>" ],
-          "shortDesc" : "provides an attribute to indicate the hand in which\n  \tthe textual content of an element was written in the source being transcribed.",
+          [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-06-15\" xml:lang=\"en\">provides an attribute to indicate the hand in which\n    the content of an element was written in the source being transcribed.<\/desc>" ],
+          "shortDesc" : "provides an attribute to indicate the hand in which\n    the content of an element was written in the source being transcribed.",
           "gloss" : 
           [  ],
           "altIdent" : 
@@ -38747,8 +38984,8 @@
               "ns" : "",
               "usage" : "opt",
               "desc" : 
-              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2016-02-19\" xml:lang=\"en\">points to a <gi>handNote<\/gi> element describing the hand considered responsible for the\n  \t\t\ttextual content of the element concerned.<\/desc>" ],
-              "shortDesc" : "points to a handNote element describing the hand considered responsible for the\n  \t\t\ttextual content of the element concerned.",
+              [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2018-06-15\" xml:lang=\"en\">points to a <gi>handNote<\/gi> element describing the hand considered responsible for the\n  \t    content of the element concerned.<\/desc>" ],
+              "shortDesc" : "points to a handNote element describing the hand considered responsible for the\n  \t    content of the element concerned.",
               "gloss" : 
               [  ],
               "altIdent" : 
@@ -38768,18 +39005,9 @@
     [  ],
     "macros" : 
     [ 
-      { "ident" : "macro.anyXML",
-        "module" : "tei",
-        "type" : "pe",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-09-05\" xml:lang=\"en\">defines a content model within which any XML elements are\n  permitted<\/desc>" ],
-        "shortDesc" : "defines a content model within which any XML elements are\n  permitted",
-        "gloss" : 
-        [  ] },
-      
       { "ident" : "macro.limitedContent",
         "module" : "tei",
-        "type" : "pe",
+        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the content of prose elements that are not used for transcription of extant materials.<\/desc>" ],
         "shortDesc" : "(paragraph content) defines the content of prose elements that are not used for transcription of extant materials.",
@@ -38788,7 +39016,7 @@
       
       { "ident" : "macro.paraContent",
         "module" : "tei",
-        "type" : "pe",
+        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-11-06\" xml:lang=\"en\">defines the content of paragraphs and similar elements.<\/desc>" ],
         "shortDesc" : "(paragraph content) defines the content of paragraphs and similar elements.",
@@ -38797,7 +39025,7 @@
       
       { "ident" : "macro.phraseSeq",
         "module" : "tei",
-        "type" : "pe",
+        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">defines a sequence of character data and phrase-level elements.<\/desc>" ],
         "shortDesc" : "(phrase sequence) defines a sequence of character data and phrase-level elements.",
@@ -38806,25 +39034,16 @@
       
       { "ident" : "macro.phraseSeq.limited",
         "module" : "tei",
-        "type" : "pe",
+        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-14\" xml:lang=\"en\">defines a sequence of character data and those phrase-level elements that are not typically\nused for transcribing extant documents.<\/desc>" ],
         "shortDesc" : "(limited phrase sequence) defines a sequence of character data and those phrase-level elements that are not typically\nused for transcribing extant documents.",
         "gloss" : 
         [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-14\" xml:lang=\"en\">limited phrase sequence<\/gloss>" ] },
       
-      { "ident" : "macro.schemaPattern",
-        "module" : "tagdocs",
-        "type" : "pe",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2008-02-23\" xml:lang=\"en\">provides a pattern to match elements from the chosen schema language<\/desc>" ],
-        "shortDesc" : "provides a pattern to match elements from the chosen schema language",
-        "gloss" : 
-        [  ] },
-      
       { "ident" : "macro.specialPara",
         "module" : "tei",
-        "type" : "pe",
+        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-01-14\" xml:lang=\"en\">defines the content model of elements such as notes or list items, which either contain a\n    series of component-level elements or else have the same structure as a paragraph, containing a\n    series of phrase-level and inter-level elements.<\/desc>" ],
         "shortDesc" : "('special' paragraph content) defines the content model of elements such as notes or list items, which either contain a\n    series of component-level elements or else have the same structure as a paragraph, containing a\n    series of phrase-level and inter-level elements.",
@@ -38833,7 +39052,7 @@
       
       { "ident" : "macro.xtext",
         "module" : "tei",
-        "type" : "pe",
+        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2005-10-05\" xml:lang=\"en\">defines a sequence of character data and gaiji elements.<\/desc>" ],
         "shortDesc" : "(extended text) defines a sequence of character data and gaiji elements.",
@@ -38964,15 +39183,6 @@
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines attribute values which\n    are expressed as a regular expression.<\/desc>" ],
         "shortDesc" : "defines attribute values which\n    are expressed as a regular expression.",
-        "gloss" : 
-        [  ] },
-      
-      { "ident" : "teidata.percentage",
-        "module" : "tei",
-        "type" : "",
-        "desc" : 
-        [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-04-13\" xml:lang=\"en\">defines attribute values used to express a percentage value.<\/desc>" ],
-        "shortDesc" : "defines attribute values used to express a percentage value.",
         "gloss" : 
         [  ] },
       

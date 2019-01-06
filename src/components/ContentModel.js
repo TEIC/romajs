@@ -5,6 +5,9 @@ import BlocklyContainer from '../containers/BlocklyContainer'
 
 export default class ContentModel extends Component {
   render() {
+    const sortedClasses = this.props.element.classes.model.slice(0).sort((a, b) => {
+      return a.key > b.key
+    })
     return (<div className="mdc-layout-grid">
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">
@@ -16,16 +19,16 @@ export default class ContentModel extends Component {
         <div className="mdc-layout-grid__cell--span-8">
           <ModelClassPicker element={this.props.element.ident}/>
           <ul className="mdc-list mdc-list--two-line">{
-            this.props.element.classes.model.slice(0).sort().map((c, pos) => {
+            sortedClasses.map((c, pos) => {
               return (<li key={`c${pos}`} className="mdc-list-item">
                 <span className="mdc-list-item__graphic">
                   <i className="material-icons romajs-clickable" onClick={() =>
-                    this.props.deleteElementModelClass(this.props.element.ident, c)}>clear</i>
+                    this.props.deleteElementModelClass(this.props.element.ident, c.key)}>clear</i>
                 </span>
                 <span className="mdc-list-item__text">
-                  {c}
+                  {c.key}
                   <span className="mdc-list-item__secondary-text">
-                    {this.props.element.classDescs[c]}
+                    {this.props.element.classDescs[c.key]}
                   </span>
                 </span>
               </li>)

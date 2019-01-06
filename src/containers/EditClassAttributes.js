@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import ClassAttributes from '../components/ClassAttributes'
 import { deleteClassAttribute, restoreClassAttribute, addClassAttribute, removeMembershipToClass,
-  changeClassAttribute } from '../actions/classes'
+  changeClassAttribute, addMembershipToClass } from '../actions/classes'
 import { clearPicker } from '../actions/interface'
 import { push } from 'react-router-redux'
 import {clone} from '../utils/clone'
@@ -57,24 +57,42 @@ const mapStateToProps = (state, ownProps) => {
 
   // Get class memberships
   const memberships = []
-  if (klass.classes) {
-    for (const ident of klass.classes.atts) {
+  if (localClass.classes) {
+    for (const ident of localClass.classes.atts) {
+      let listed = true
+      if (klass.classes) {
+        if (klass.classes.atts.indexOf(ident) === -1) listed = false
+      } else {
+        listed = false
+      }
       const customClass = state.odd.customization.json.classes.attributes.filter(ac => (ac.ident === ident))[0]
       const shortDesc = customClass ? customClass.shortDesc : localClass.shortDesc
       const attributes = customClass ? customClass.attributes : localClass.attributes
-      if (customClass && customClass.mode !== 'deleted') {
+      if (customClass && listed) {
         memberships.push({ident, mode: 'add', shortDesc, attributes})
+      } else if (customClass && !listed) {
+        memberships.push({ident, mode: 'deleted', shortDesc, attributes})
       } else {
-        memberships.push({ident, mode: 'deleted', shortDesc})
+        memberships.push({ident, mode: 'not available', shortDesc, attributes})
       }
     }
   }
 
-  memberships.sort((a, b) => {
+  const availableSorted = memberships.filter(a => (a.mode === 'add')).sort((a, b) => {
     return a.ident.toLowerCase() > b.ident.toLowerCase()
   })
 
-  return {member: klass, memberType: 'class', memberships, memberClasses, path: state.router.location.pathname}
+  const deletedSorted = memberships.filter(a => (a.mode === 'deleted')).sort((a, b) => {
+    return a.ident.toLowerCase() > b.ident.toLowerCase()
+  })
+
+  const notAvailableSorted = memberships.filter(a => (a.mode === 'not available')).sort((a, b) => {
+    return a.ident.toLowerCase() > b.ident.toLowerCase()
+  })
+
+  const memberShipsSorted = [...availableSorted, ...deletedSorted, ...notAvailableSorted]
+
+  return {member: klass, memberType: 'class', memberships: memberShipsSorted, memberClasses, path: state.router.location.pathname}
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -82,20 +100,15 @@ const mapDispatchToProps = (dispatch) => {
     navigateTo: (place) => dispatch(push(place)),
     deleteMemberAttribute: (member, attribute) => dispatch(deleteClassAttribute(member, attribute)),
     restoreMemberAttribute: (member, attribute) => dispatch(restoreClassAttribute(member, attribute)),
-    deleteElementAttributeClass: () => null,
     clearPicker: () => dispatch(clearPicker()),
-    restoreElementAttributeClass: () => null,
-    deleteClassAttribute: () => null,
-    restoreClassAttribute: () => null,
     editAttribute: (className, attName, path) => {
       dispatch(changeClassAttribute(className, attName))
       dispatch(push(`${path}/${attName}`))
     },
-    restoreClassAttributeDeletedOnClass: () => null,
-    useClassDefault: () => null,
     // not sure why dispatch is not needed below, but using it causes the reducer (not the action) to be dispatched twice.
     addMemberAttribute: (member, attribute) => addClassAttribute(member, attribute),
-    removeMembershipToClass: (member, className) => dispatch(removeMembershipToClass(member, className, 'atts'))
+    removeMembershipToClass: (member, className) => dispatch(removeMembershipToClass(member, className, 'atts')),
+    addMembershipToClass: (member, className) => dispatch(addMembershipToClass(member, className, 'atts'))
   }
 }
 

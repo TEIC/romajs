@@ -49,21 +49,27 @@ export default class Attributes extends Component {
               this.props.memberships.map((c, pos) => {
                 let deleted = ''
                 let content = <Link to={`/class/${c.ident}`}>{c.ident}</Link>
-                if (c.mode === 'deleted') {
+                if (c.mode === 'deleted' || c.mode === 'not available') {
                   deleted = 'romajs-att-deleted'
-                  content = `${c.ident} (deleted)`
+                  content = `${c.ident} (${c.mode})`
                 }
-                return (<li key={`c${pos}`} className={`mdc-list-item ${deleted}`}>
-                  <span className="mdc-list-item__graphic">
-                    <i className="material-icons romajs-clickable" onClick={() => {
-                      this.props.removeMembershipToClass(this.props.member.ident, c.ident)
-                    }}>clear</i>
-                  </span>
-                  <span className="mdc-list-item__text">
-                    {content} ({c.attributes.map((at, ap) => {
+                let button = (<i className={`${deleted} material-icons romajs-clickable`} onClick={() => {
+                  this.props.removeMembershipToClass(this.props.member.ident, c.ident)
+                }}>clear</i>)
+                if (c.mode === 'deleted') {
+                  button = (<i className="material-icons romajs-clickable" onClick={() => {
+                    this.props.addMembershipToClass(this.props.member.ident, c.ident)
+                  }}>add_circle_outline</i>)
+                } else if (c.mode === 'not available') {
+                  button = ''
+                }
+                return (<li key={`c${pos}`} className="mdc-list-item">
+                  <span className="mdc-list-item__graphic">{button}</span>
+                  <span className={`mdc-list-item__text ${deleted}`}>
+                    {content} [{c.attributes.map((at, ap) => {
                       const attDeleted = at.mode === 'deleted' ? 'romajs-att-deleted' : ''
                       return <span key={`at${ap}`} className={attDeleted}>&nbsp;{at.ident}&nbsp;</span>
-                    })})
+                    })}]
                     <span className="mdc-list-item__secondary-text">
                       {c.shortDesc}
                     </span>
@@ -87,7 +93,7 @@ export default class Attributes extends Component {
                 let content = <Link to={`/class/${c.ident}`}>{c.ident}</Link>
                 if (c.mode === 'deleted') {
                   deleted = 'romajs-att-deleted'
-                  content = `${c.ident} (deleted)`
+                  content = `${c.ident} (not available)`
                 }
                 return (<li key={`c${pos}`} className={`mdc-list-item ${deleted}`}>
                   <span className="mdc-list-item__text">
@@ -119,5 +125,6 @@ Attributes.propTypes = {
   clearPicker: PropTypes.func.isRequired,
   navigateTo: PropTypes.func.isRequired,
   addMemberAttribute: PropTypes.func.isRequired,
-  removeMembershipToClass: PropTypes.func.isRequired
+  removeMembershipToClass: PropTypes.func.isRequired,
+  addMembershipToClass: PropTypes.func.isRequired
 }

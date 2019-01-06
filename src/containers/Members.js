@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { includeElements, excludeElements, includeClasses, excludeClasses } from '../actions/modules'
+import { restoreMembershipsToClass, clearMembershipsToClass } from '../actions/classes'
 import { clearUiData, setMemberTypeVisibility } from '../actions/interface'
 import MembersList from '../components/MembersList'
 
@@ -85,27 +86,38 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
+  const includeClassesAndRestoreMemberships = (name, type) => {
+    dispatch(includeClasses([name], type))
+    dispatch(restoreMembershipsToClass(name, type))
+  }
+
+  const excludeClassesAndClearMemberships = (name, type) => {
+    dispatch(excludeClasses([name], type))
+    dispatch(clearMembershipsToClass(name, type))
+  }
+
   return {
     toggleItem: (name, selected, type) => {
-      let include
-      let exclude
-      switch (type) {
-        case 'element':
-          include = includeElements
-          exclude = excludeElements
-          break
-        case 'attributes' || 'models':
-          include = includeClasses
-          exclude = excludeClasses
-          break
-        default:
-          include = () => {}
-          exclude = () => {}
-      }
       if (selected) {
-        dispatch(exclude([name], type))
+        switch (type) {
+          case 'element':
+            dispatch(excludeElements([name], type))
+            break
+          case 'attributes' || 'models':
+            excludeClassesAndClearMemberships(name, type)
+            break
+          default:
+        }
       } else {
-        dispatch(include([name], type))
+        switch (type) {
+          case 'element':
+            dispatch(includeElements([name], type))
+            break
+          case 'attributes' || 'models':
+            includeClassesAndRestoreMemberships(name, type)
+            break
+          default:
+        }
       }
     },
     setMemberTypeVisibility: (visibleMemberTypes) => {

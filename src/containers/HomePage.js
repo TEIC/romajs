@@ -26,7 +26,8 @@ const mapDispatchToProps = (dispatch) => {
           // 2. Get p5subset.
           // TODO: this is a terrible thing, but there are plans to fix it:
           // from next release it will be possible to get p5susbet.json directly from the Vault.
-          dispatch(fetchLocalSource('http://mith.us/romajs/fakeData/p5subset.json'))
+          // dispatch(fetchLocalSource('http://mith.us/romajs/fakeData/p5subset.json'))
+          dispatch(fetchLocalSource('/fakeData/p5subset.json'))
         })
       })
     },
@@ -47,12 +48,13 @@ const mapDispatchToProps = (dispatch) => {
         if (odd.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*').length > 0) {
           throw Error('ODDs with RELAX NG elements are not supported.')
         }
-        dispatch(postToOxGarage(e.target.result, oxgarage.json)).then(() => {
+        dispatch(postToOxGarage(e.target.result, oxgarage.compile_json)).then(() => {
           dispatch(setLoadingStatus('3/3 Importing full specification source...'))
           // 2. Get p5subset.
           // TODO: this is a terrible thing, but there are plans to fix it:
           // from next release it will be possible to get p5susbet.json directly from the Vault.
-          dispatch(fetchLocalSource('http://mith.us/romajs/fakeData/p5subset.json'))
+          // dispatch(fetchLocalSource('http://mith.us/romajs/fakeData/p5subset.json'))
+          dispatch(fetchLocalSource('/fakeData/p5subset.json'))
         })
       }
     },
