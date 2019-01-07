@@ -51,7 +51,7 @@ export function oddClasses(state, action) {
     // Make sure the request class is not already selected or inherited
     if (!hasClass(m, className)) {
       if (!m.classes) m.classes = []
-      m.classes.atts.push(className)
+      m.classes[classType].push(className)
       markChange(m, classType)
     }
   }
@@ -185,9 +185,10 @@ export function oddClasses(state, action) {
           addClass(m, action.className, action.classType)
         }
       })
-      localClass = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
-      if (customization.classes.attributes.filter(c => (c.ident === action.className)).length === 0) {
-        customization.classes.attributes.push(localClass)
+      const classesType = action.classType === 'atts' ? 'attributes' : 'models'
+      localClass = localsource.classes[classesType].filter(c => (c.ident === action.className))[0]
+      if (customization.classes[classesType].filter(c => (c.ident === action.className)).length === 0) {
+        customization.classes[classesType].push(localClass)
       }
       return newState
     case REMOVE_MEMBERSHIP_TO_CLASS:

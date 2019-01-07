@@ -65,6 +65,9 @@ const mapStateToProps = (state) => {
       if (visibleMemberTypes.indexOf('attclasses') !== -1) {
         attclasses = getMembers('classes', 'attributes')
       }
+      if (visibleMemberTypes.indexOf('modelclasses') !== -1) {
+        attclasses = getMembers('classes', 'models')
+      }
 
       // apply filter
       if (filter) {

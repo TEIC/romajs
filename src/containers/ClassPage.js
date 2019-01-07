@@ -1,8 +1,6 @@
 import { connect } from 'react-redux'
 import Class from '../components/Class'
 import { push } from 'react-router-redux'
-// import { deleteElementModelClass } from '../actions/elements'
-import { clearPicker } from '../actions/interface'
 
 const mapStateToProps = (state, ownProps) => {
   let klass = null
@@ -14,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
       const localClasses = state.odd.localsource.json.classes.models
         .concat(state.odd.localsource.json.classes.attributes)
 
+      console.log(customClasses)
       const customClass = customClasses.filter(x => {
         return (x.ident === ownProps.match.params.cl)
       })[0]
@@ -59,14 +58,13 @@ const mapStateToProps = (state, ownProps) => {
     section = 'attributes'
     attribute = ownProps.match.params.attr
   }
+  !klass.classes ? klass.classes = {atts: [], model: []} : null
   return {klass, success, section, attribute}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    navigateTo: (place) => dispatch(push(place)),
-    // deleteElementModelClass: (element, className) => dispatch(deleteElementModelClass(element, className)),
-    clearPicker: () => dispatch(clearPicker())
+    navigateTo: (place) => dispatch(push(place))
   }
 }
 

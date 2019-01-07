@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Documentation from './Documentation'
 import EditClassAttributes from '../containers/EditClassAttributes'
-import ContentModel from './ContentModel'
+import EditModelClassMemberships from '../containers/EditModelClassMemberships'
 
 export default class Class extends Component {
   constructor(props) {
@@ -41,7 +41,7 @@ export default class Class extends Component {
     } else {
       mainSettings = (<li className="mdc-grid-tile">
         <div className="mdc-grid-tile__primary romajs-classbackground romajs-clickable"
-          onClick={() => this.props.navigateTo(`${this.baseurl}/content`)}>
+          onClick={() => this.props.navigateTo(`${this.baseurl}/memberships`)}>
           <span>Class Membership</span>
         </div>
       </li>)
@@ -99,10 +99,8 @@ export default class Class extends Component {
         </span>
         {editAtt}</span>)
         break
-      case 'content':
-        content = (<ContentModel
-          element={this.props.klass}
-          clearPicker={this.props.clearPicker} />)
+      case 'memberships':
+        content = (<EditModelClassMemberships member={this.props.klass} />)
         trail = (<span className="mdl-chip mdl-chip--deletable">
           <span className="mdl-chip__text">Content</span>
         </span>)
@@ -162,6 +160,5 @@ Class.propTypes = {
   klass: PropTypes.object.isRequired,
   section: PropTypes.string,
   attribute: PropTypes.string,
-  navigateTo: PropTypes.func.isRequired,
-  clearPicker: PropTypes.func.isRequired
+  navigateTo: PropTypes.func.isRequired
 }
