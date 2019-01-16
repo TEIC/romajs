@@ -84,11 +84,11 @@ describe('ODD class operations reducers', () => {
     }, {
       type: 'RESTORE_CLASS_ATTRIBUTE',
       member: 'att.global',
-      attribute: 'rend'
+      attribute: 'xml:space'
     })
     expect(state.odd.customization.json.classes.attributes.filter(
       x => (x.ident === 'att.global')
-    )[0].attributes.filter(a => a.ident === 'rend')[0].mode).toEqual('add')
+    )[0].attributes.filter(a => a.ident === 'xml:space')[0].mode).toEqual('add')
   })
 
   it('should handle ADD_CLASS_ATTRIBUTE', () => {

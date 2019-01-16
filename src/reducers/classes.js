@@ -8,12 +8,18 @@ import {
 
 // TODO: this function can be shared with elements.js
 function markChange(member, whatChanged) {
+  let wc = whatChanged
+  if (whatChanged === 'atts') {
+    wc = 'attributes'
+  } else if (whatChanged === 'model') {
+    wc = 'models'
+  }
   if (member._changed) {
     const changes = new Set(member._changed)
-    changes.add(whatChanged)
+    changes.add(wc)
     member._changed = Array.from(changes)
   } else {
-    member._changed = [whatChanged]
+    member._changed = [wc]
   }
 }
 
@@ -104,37 +110,23 @@ export function oddClasses(state, action) {
               }
               return acc
             }, [])
-            markChange(m, 'attributes')
+            markChange(m, 'classAtts')
           }
         }
       })
       return newState
     case RESTORE_CLASS_ATTRIBUTE:
+      localClass = allLocalClasses.filter(m => action.member === m.ident)[0]
+      const latt = localClass.attributes.filter(la => la.ident === action.attribute)[0]
+      const restoredAtt = clone(latt)
       allCustomClasses.forEach(m => {
         if (m.ident === action.member) {
           if (m.attributes) {
-            m.attributes = m.attributes.map(a => {
-              let restoredAtt
-              if (a.ident === action.attribute) {
-                restoredAtt = clone(a)
-                restoredAtt.mode = 'add'
-                // Get all others properties from localsource
-                allLocalClasses.forEach(el => {
-                  if (el.ident === action.element) {
-                    if (el.attributes) {
-                      const latt = el.attributes.filter(la => la.ident === action.attribute)[0]
-                      if (latt) {
-                        restoredAtt = clone(latt)
-                      }
-                    }
-                  }
-                })
-              }
-              if (restoredAtt) return restoredAtt
-              return a
-            })
+            m.attributes.push(restoredAtt)
+          } else {
+            m.attributes = [restoredAtt]
           }
-          markChange(m, 'attributes')
+          markChange(m, 'classAtts')
         }
       })
       return newState
@@ -175,7 +167,7 @@ export function oddClasses(state, action) {
           } else {
             m.attributes.push(newAttribute)
           }
-          markChange(m, 'attributes')
+          markChange(m, 'classAtts')
         }
       })
       return newState
@@ -208,6 +200,7 @@ export function oddClasses(state, action) {
           return a
         }
       })
+      markChange(customClass, 'classAtts')
       return newState
     case RESTORE_MEMBERSHIPS_TO_CLASS:
       // Locate all classes that are member of the requested class.

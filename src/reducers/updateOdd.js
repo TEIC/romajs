@@ -1,6 +1,12 @@
 import { deepCompare } from  '../utils/deepCompare'
+import { updateClasses } from './odd/updateClasses'
+import { areDocElsEqual } from './odd/utils'
+import { processDocEls } from './odd/processDocEls'
+import { processClassMemberships } from './odd/processClassMemberships'
 
 const parser = new DOMParser()
+
+// TODO (in progress): split this file into multiple ones.
 
 function mergeModules(localsource, customization, odd) {
   // This function compares the original ODD and the customization to locate
@@ -232,26 +238,6 @@ function updateElements(localsource, customization, odd) {
   // e.g. a user could change a desc, then backspace the change. The mode would be set to change, but
   // real change wouldn't really have happened.
 
-  function _areArraysEqual(a, b) {
-    if (a === null || b === null) return false
-    return a.length === b.length && a.every((value, index) => {
-      // When checking descs, ignore versionDate
-      const match = /[dD]esc.*?versionDate="[^""]+"/.exec(value)
-      if (match) {
-        return value.replace(/versionDate="[^""]+"/, '') === b[index].replace(/versionDate="[^""]+"/, '')
-      }
-      return value === b[index]
-    })
-  }
-
-  function _areDocElsEqual(a, b) {
-    const match = /[dD]esc.*?versionDate="[^""]+"/.exec(a)
-    if (match) {
-      return a.replace('xmlns="http://www.tei-c.org/ns/1.0"', '').replace(/versionDate="[^""]+"/, '').replace(/\s+/g, ' ') === b.replace('xmlns="http://www.tei-c.org/ns/1.0"', '').replace(/versionDate="[^""]+"/, '').replace(/\s+/g, ' ')
-    }
-    return a === b
-  }
-
   function _getOrSetElementSpec(_odd, ident) {
     let elSpec = _odd.querySelectorAll(`elementSpec[ident='${ident}']`)[0]
     // TODO: watch out for the @ns attribute in case there are more than one element with the same ident
@@ -291,7 +277,7 @@ function updateElements(localsource, customization, odd) {
               // When we are not updating a new attribute, comparison with local source is necessary
               comparison = localAtt[whatChanged][i]
             }
-            if (!_areDocElsEqual(d, comparison)) {
+            if (!areDocElsEqual(d, comparison)) {
               // Change is different from the local source: apply changes
               if (d.deleted) {
                 // Something got deleted, so apply
@@ -316,7 +302,7 @@ function updateElements(localsource, customization, odd) {
               } else {
                 attDef.appendChild(newDocEl)
               }
-            } else if (!_areDocElsEqual(d !== docEl.outerHTML)) {
+            } else if (!areDocElsEqual(d !== docEl.outerHTML)) {
               // If we're returning to local source values, remove customization operation
               attDef.parentNode.removeChild(attDef)
             }
@@ -488,84 +474,16 @@ function updateElements(localsource, customization, odd) {
           case 'desc':
           case 'altIdent':
             elSpec = _getOrSetElementSpec(odd, el.ident)
-            for (const [i, d] of el[whatChanged].entries()) {
-              const docEl = elSpec.querySelector(`${whatChanged}:nth-child(${i + 1})`)
-              if (!_areDocElsEqual(d, localEl[whatChanged][i])) {
-                // Change is differnet from the local source: apply changes
-                if (d.deleted) {
-                  // Something got deleted, so apply
-                  docEl.parentNode.removeChild(docEl)
-                  continue
-                }
-                let newDocEl
-                // If the state keeps the full element as string (e.g. uses ACE editor), parse it.
-                if (d.startsWith('<')) {
-                  dummyEl.innerHTML = d
-                  newDocEl = dummyEl.firstChild
-                  newDocEl.removeAttribute('xmlns')
-                  dummyEl.firstChild.remove()
-                } else {
-                  newDocEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', whatChanged)
-                  const text = odd.createTextNode(d)
-                  newDocEl.appendChild(text)
-                }
-                if (docEl) {
-                  elSpec.replaceChild(newDocEl, docEl)
-                } else {
-                  elSpec.appendChild(newDocEl)
-                }
-              } else if (!docEl) {
-                // noop
-              } else if (!_areDocElsEqual(d !== docEl.outerHTML)) {
-                // If we're returning to local source values, remove customization operation
-                elSpec.parentNode.removeChild(elSpec)
-              }
-            }
+            processDocEls(elSpec, el, localEl, whatChanged, odd)
             break
           case 'attClasses':
           case 'modelClasses':
-            const type = whatChanged === 'attClasses' ? 'atts' : 'model'
-            const change = Array.from(el.classes[type]).sort()
-            const local = Array.from(localEl.classes[type]).sort()
-            if (!_areArraysEqual(change, local)) {
-              const added = change.filter(cl => local.indexOf(cl) === -1)
-              const removed = local.filter(cl => {
-                // Make sure the class isn't globally deleted.
-                if (change.indexOf(cl) === -1) {
-                  // This relies on truth-y and false-y values. watch out.
-                  const classType = type === 'atts' ? 'attributes' : 'models'
-                  return customization.classes[classType].filter(cc => cc.ident === cl)[0]
-                } else return false
-              })
-
-              if (added.length > 0 || removed.length > 0) {
-                elSpec = _getOrSetElementSpec(odd, el.ident)
-                let classesEl = elSpec.querySelector('classes')
-                if (!classesEl) {
-                  classesEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'classes')
-                  // Place <classes> after documentation elements if present, or first.
-                  const lastDocEl = Array.from(elSpec.querySelectorAll('desc, gloss, altIdent, equiv')).pop()
-                  if (lastDocEl) {
-                    elSpec.insertBefore(classesEl, lastDocEl.nextSibling)
-                  } else {
-                    elSpec.insertBefore(classesEl, elSpec.firstChild)
-                  }
-                }
-                // Add
-                for (const cl of added) {
-                  const mOf = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'memberOf')
-                  mOf.setAttribute('key', cl)
-                  classesEl.appendChild(mOf)
-                }
-                // Remove
-                for (const cl of removed) {
-                  const mOf = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'memberOf')
-                  mOf.setAttribute('key', cl)
-                  mOf.setAttribute('mode', 'delete')
-                  classesEl.appendChild(mOf)
-                }
-              }
-            }
+            elSpec = _getOrSetElementSpec(odd, el.ident)
+            processClassMemberships(
+              elSpec, el, localEl,
+              whatChanged === 'attClasses' ? 'atts' : 'model',
+              customization, odd
+            )
             break
           case 'attributes':
             const localAtts = localEl.attributes.reduce((acc, att) => {
@@ -759,6 +677,8 @@ export function updateOdd(localsourceObj, customizationObj) {
   odd = mergeElements(localsource, customization, odd.cloneNode(true))
   // CHANGES TO ELEMENTS
   odd = updateElements(localsource, customization, odd.cloneNode(true))
+  // CHANGES TO CLASSES
+  odd = updateClasses(localsource, customization, odd.cloneNode(true))
 
   if (global.usejsdom) {
     return odd.documentElement.outerHTML
