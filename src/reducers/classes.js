@@ -187,7 +187,8 @@ export function oddClasses(state, action) {
       allCustomClasses.forEach(m => {
         if (m.ident === action.member) {
           m.classes[action.classType] = m.classes[action.classType].filter(cl => (cl !== action.className))
-          markChange(m, [action.classType])
+          const type = action.classType === 'atts' ? 'attributes' : 'models'
+          markChange(m, type)
         }
       })
       return newState

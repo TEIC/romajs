@@ -1,5 +1,5 @@
-import processDocEls from './processDocEls'
-import insertBetween from './utils'
+import { processDocEls } from './processDocEls'
+import { insertBetween } from './utils'
 
 function changeAttr(att, localAtt, attDef, odd) {
   for (const whatChanged of att._changed) {
@@ -167,12 +167,6 @@ export function processAttributes(specElement, specData, localData, localsource,
     const toChange = (att.mode === 'change' || (att.mode === 'add' && Boolean(att._changed)))
     const toAdd = !isDefined && !toChange
     const toRestore = isDefined && !toRemove && att.mode !== 'change'
-    // console.log(
-    //   att.ident, att.mode,
-    //   'torem', toRemove,
-    //   'toch', toChange,
-    //   'add', toAdd,
-    //   'restore', toRestore)
 
     if (toRemove || toChange || toAdd) {
       // elSpec = _getOrSetElementSpec(odd, el.ident)
@@ -254,30 +248,29 @@ export function processAttributes(specElement, specData, localData, localsource,
           // We are updating a new attribute defined on this customization
           const attDef = attList.querySelector(`attDef[ident='${att.ident}']`)
           if (attDef) {
-            changeAttr(att, null, attDef)
+            changeAttr(att, null, attDef, odd)
           } else {
             const newAttDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
             newAttDef.setAttribute('ident', att.ident)
             newAttDef.setAttribute('mode', 'change')
-            changeAttr(att, null, newAttDef)
+            changeAttr(att, null, newAttDef, odd)
             attList.append(newAttDef)
           }
         } else {
           const attDef = attList.querySelector(`attDef[ident='${att.ident}']`)
           if (attDef) {
             // there are already some changes from the customization and there are new adjustments
-            changeAttr(att, comparisonAtt, attDef)
+            changeAttr(att, comparisonAtt, attDef, odd)
           } else {
             const newAttDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
             newAttDef.setAttribute('ident', att.ident)
             newAttDef.setAttribute('mode', 'change')
-            changeAttr(att, comparisonAtt, newAttDef)
+            changeAttr(att, comparisonAtt, newAttDef, odd)
             attList.append(newAttDef)
           }
         }
       }
     } else if (toRestore) {
-      // elSpec = odd.querySelector(`elementSpec[ident='${el.ident}']`)
       const attDef = specElement.querySelector(`attDef[ident='${att.ident}']`)
       if (attDef) {
         const attList = attDef.parentNode
