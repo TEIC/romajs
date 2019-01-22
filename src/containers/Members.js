@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { includeElements, excludeElements, includeClasses, excludeClasses } from '../actions/modules'
+import { restoreElementMembershipsToClass, clearElementMembershipsToClass } from '../actions/elements'
 import { restoreMembershipsToClass, clearMembershipsToClass } from '../actions/classes'
 import { clearUiData, setMemberTypeVisibility } from '../actions/interface'
 import MembersList from '../components/MembersList'
@@ -89,16 +90,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  const includeClassesAndRestoreMemberships = (name, type) => {
-    dispatch(includeClasses([name], type))
-    dispatch(restoreMembershipsToClass(name, type))
-  }
-
-  const excludeClassesAndClearMemberships = (name, type) => {
-    dispatch(excludeClasses([name], type))
-    dispatch(clearMembershipsToClass(name, type))
-  }
-
   return {
     toggleItem: (name, selected, type) => {
       if (selected) {
@@ -107,7 +98,9 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(excludeElements([name], type))
             break
           case 'attributes' || 'models':
-            excludeClassesAndClearMemberships(name, type)
+            dispatch(excludeClasses([name], type))
+            dispatch(clearMembershipsToClass(name, type))
+            dispatch(clearElementMembershipsToClass(name, type))
             break
           default:
         }
@@ -117,7 +110,9 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(includeElements([name], type))
             break
           case 'attributes' || 'models':
-            includeClassesAndRestoreMemberships(name, type)
+            dispatch(includeClasses([name], type))
+            dispatch(restoreMembershipsToClass(name, type))
+            dispatch(restoreElementMembershipsToClass(name, type))
             break
           default:
         }

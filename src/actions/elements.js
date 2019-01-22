@@ -15,6 +15,8 @@ export const USE_CLASS_DEFAULT = 'USE_CLASS_DEFAULT'
 export const DELETE_CLASS_ATTRIBUTE_ON_ELEMENT = 'DELETE_CLASS_ATTRIBUTE_ON_ELEMENT'
 export const CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT = 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT'
 export const UPDATE_CONTENT_MODEL = 'UPDATE_CONTENT_MODEL'
+export const RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS = 'RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS'
+export const CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS = 'CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS'
 
 export function updateContentModel(element, content) {
   return {
@@ -156,5 +158,21 @@ export function changeClassAttribute(element, className, attName) {
     element,
     className,
     attName
+  }
+}
+
+export function restoreElementMembershipsToClass(className, classType) {
+  return {
+    type: RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS,
+    className,
+    classType
+  }
+}
+
+export function clearElementMembershipsToClass(className, classType) {
+  return {
+    type: CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS,
+    className,
+    classType
   }
 }

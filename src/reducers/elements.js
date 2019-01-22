@@ -7,7 +7,9 @@ import {
   ADD_ELEMENT_ATTRIBUTE_CLASS, RESTORE_ELEMENT_ATTRIBUTE_CLASS, DELETE_ELEMENT_ATTRIBUTE_CLASS,
   RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT, RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS,
   USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE_ON_ELEMENT, CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT, CHANGE_ELEMENT_ATTRIBUTE,
-  UPDATE_CONTENT_MODEL
+  UPDATE_CONTENT_MODEL,
+  RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS,
+  CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS
 } from '../actions/elements'
 
 function deleteAttribute(m, attribute) {
@@ -54,6 +56,37 @@ export function oddElements(state, action) {
   const customization = customizationObj.json
   const localsourceObj = newState.localsource
   const localsource = localsourceObj.json
+
+  function addClass(m, className, classType) {
+    const type = classType === 'atts' ? 'attributes' : 'models'
+    const hasClass = (member, cn) => {
+      // This function checks against inherited classes
+      if (member.classes) {
+        if (member.classes[classType].filter(cl => (cl === cn))[0]) {
+          return true
+        } else {
+          for (const cl of member.classes[classType]) {
+            const subClass = customization.classes[type].filter(c => (c.ident === cl))[0]
+            if (subClass) {
+              if (hasClass(subClass, cn)) {
+                return true
+              }
+            } else continue
+          }
+          return false
+        }
+      } else {
+        return false
+      }
+    }
+    // Make sure the requested class is not already selected or inherited
+    if (!hasClass(m, className)) {
+      if (!m.classes) m.classes = []
+      m.classes[classType].push(className)
+      markChange(m, classType)
+    }
+  }
+
   switch (action.type) {
     case UPDATE_ELEMENT_DOCS:
       customization.elements.forEach(m => {
@@ -379,6 +412,38 @@ export function oddElements(state, action) {
           markChange(m, 'content')
         }
       })
+      return newState
+    case RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS:
+      // Locate all elements that are member of the requested class.
+      // Restore membership if missing
+      for (const locEl of localsource.elements) {
+        if (locEl.classes) {
+          const type = action.classType === 'attributes' ? 'atts' : 'model'
+          const isMember = locEl.classes[type].filter(c => c === action.className)[0]
+          if (isMember) {
+            const customEl = customization.elements.filter(el => (el.ident === locEl.ident))[0]
+            if (customEl) {
+              addClass(customEl, action.className, type)
+            }
+          }
+        }
+      }
+      return newState
+    case CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS:
+      // Locate all elements that are member of the requested class.
+      // remove membership to that class
+      for (const locEl of localsource.elements) {
+        if (locEl.classes) {
+          const type = action.classType === 'attributes' ? 'atts' : 'model'
+          const isMember = locEl.classes[type].filter(c => c === action.className)[0]
+          if (isMember) {
+            const customEl = customization.elements.filter(el => (el.ident === locEl.ident))[0]
+            if (customEl && customEl.classes) {
+              customEl.classes[type] = customEl.classes[type].filter(c => (c !== action.className))
+            }
+          }
+        }
+      }
       return newState
     default:
       return state

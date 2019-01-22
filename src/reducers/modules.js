@@ -1,6 +1,7 @@
 import {
   INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS, INCLUDE_CLASSES, EXCLUDE_CLASSES
 } from '../actions/modules'
+import { clone } from '../utils/clone'
 
 function getElementByIdent(source, ident) {
   return source.elements.filter(m => { return m.ident === ident })[0]
@@ -51,9 +52,27 @@ export function oddModules(state, action) {
     case INCLUDE_ELEMENTS:
       for (const el of action.elements) {
         const localEl = getElementByIdent(localsource, el)
-        localEl._changed = ['all']
+        const newEl = clone(localEl)
+        newEl._changed = ['all']
+        // Make sure only references to classes that are in the customization are included.
+        if (newEl.classes) {
+          newEl.classes.atts = newEl.classes.atts.reduce((acc, cl) => {
+            const customCl = customization.classes.attributes.filter(ccl => (cl === ccl.ident))[0]
+            if (customCl) {
+              acc.push(cl)
+            }
+            return acc
+          }, [])
+          newEl.classes.model = newEl.classes.model.reduce((acc, cl) => {
+            const customCl = customization.classes.models.filter(ccl => (cl === ccl.ident))[0]
+            if (customCl) {
+              acc.push(cl)
+            }
+            return acc
+          }, [])
+        }
         if (!getElementByIdent(customization, el)) {
-          customization.elements.push(localEl)
+          customization.elements.push(newEl)
         }
         // If the module for the added element was not selected, do it now.
         if (customization.modules.filter(x => (x.ident === localEl.module)).length === 0) {
@@ -91,6 +110,24 @@ export function oddModules(state, action) {
         localCl._changed = ['all']
         if (!getClassByIdent(customization, cl, action.classType)) {
           customization.classes[action.classType].push(localCl)
+        }
+        const newCl = clone(localCl)
+        // Make sure only references to classes that are in the customization are included.
+        if (newCl.classes) {
+          newCl.classes.atts = newCl.classes.atts.reduce((acc, lcl) => {
+            const customCl = customization.classes.attributes.filter(ccl => (lcl === ccl.ident))[0]
+            if (customCl) {
+              acc.push(lcl)
+            }
+            return acc
+          }, [])
+          newCl.classes.model = newCl.classes.model.reduce((acc, lcl) => {
+            const customCl = customization.classes.models.filter(ccl => (lcl === ccl.ident))[0]
+            if (customCl) {
+              acc.push(lcl)
+            }
+            return acc
+          }, [])
         }
         // If the module for the added element was not selected, do it now.
         if (customization.modules.filter(x => (x.ident === localCl.module)).length === 0) {
