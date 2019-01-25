@@ -11,32 +11,34 @@ $romajs-theme-no: #802900;
 
 @import "material-design-lite/src/chip/_chip";
 
-// @import "@material/animation/mdc-animation";
+@import "@material/theme/mdc-theme";
 @import "@material/button/mdc-button";
 @import "@material/card/mdc-card";
 @import "@material/checkbox/mdc-checkbox";
 @import "@material/dialog/mdc-dialog";
-@import "@material/drawer/mdc-drawer";
 @import "@material/elevation/mdc-elevation";
 @import "@material/fab/mdc-fab";
-@import "@material/form-field/mdc-form-field";
-@import "@material/grid-list/mdc-grid-list";
-@import "@material/icon-toggle/mdc-icon-toggle";
+// @import "@material/form-field/mdc-form-field";
+// @import "@material/icon-toggle/mdc-icon-toggle";
 @import "@material/layout-grid/mdc-layout-grid";
+@import "@material/image-list/mdc-image-list";
 @import "@material/list/mdc-list";
+@import "@material/menu-surface/mdc-menu-surface";
 @import "@material/menu/mdc-menu";
-@import "@material/radio/mdc-radio";
-@import "@material/ripple/mdc-ripple";
+@import "@material/notched-outline/mdc-notched-outline";
+// @import "@material/radio/mdc-radio";
+// @import "@material/ripple/mdc-ripple";
 @import "@material/select/mdc-select";
-@import "@material/snackbar/mdc-snackbar";
-@import "@material/switch/mdc-switch";
 @import "@material/textfield/mdc-text-field";
-@import "@material/theme/mdc-theme";
 @import "@material/toolbar/mdc-toolbar";
 @import "@material/typography/mdc-typography";
 @import "@material/tabs/mdc-tabs.scss";
 @import "@material/linear-progress/mdc-linear-progress";
 
+// @import "@material/animation/mdc-animation";
+// @import "@material/drawer/mdc-drawer";
+// @import "@material/switch/mdc-switch";
+// @import "@material/snackbar/mdc-snackbar";
 /* COLORS */
 .romajs-color-no {
   color: $romajs-theme-no;
@@ -130,11 +132,16 @@ main {
 
 /* SEARCHBAR */
 .romajs-searchbar{
-  .mdl-chip__action {
-    margin: 0 0 10px 0;
+  border-radius: 28px;
+  background-color: white !important;
+  height: 32px;
+  line-height: 32px;
+  input {
+    height: auto;
+    line-height: 0;
   }
-  .mdc-text-field__input {
-    padding: 0px;
+  i {
+    line-height: 0;
   }
 }
 
@@ -302,9 +309,13 @@ main {
 /* Dashboard */
 .romajs-squares {
 
-  margin: 0 0 0 20px;
+  width: calc(100% - 20px);
+  margin-left: 20px;
 
-  .mdc-grid-tile__primary {
+  .mdc-image-list__item {
+    width: 200px;
+    height: 200px;
+    margin: 2px;
     background-color: $mdc-theme-secondary;
     span {
       color: white;
@@ -318,8 +329,25 @@ main {
 }
 
 .romajs-classbackground {
-    background-color: $romajs-theme-classes !important;
-    span {
-      color: black !important;
-    }
+  background-color: $romajs-theme-classes !important;
+  span {
+    color: black !important;
   }
+}
+
+// FAB
+
+.romajs-fab--absolute {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.romajs-fab--secondary-el {
+  margin-bottom: 60px;
+}
+
+.romajs-fab--secondary-cl {
+  margin-bottom: 120px;
+  background-color: $romajs-theme-classes
+}

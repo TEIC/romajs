@@ -26,24 +26,7 @@ export default class Attribute extends Component {
         select.foundation_.setSelectedIndex(0)
     }
     select.listen('MDCSelect:change', () => {
-      let value = 'def'
-      switch (select.value) {
-        case 'Default (optional)':
-          value = 'def'
-          break
-        case 'Required':
-          value = 'req'
-          break
-        case 'Recommended':
-          value = 'rec'
-          break
-        case 'Optional':
-          value = 'opt'
-          break
-        default:
-          value = 'def'
-      }
-      this.props.setUsage(value)
+      this.props.setUsage(select.value)
     })
   }
 
@@ -57,33 +40,32 @@ export default class Attribute extends Component {
           </p>
         </div>
         <div className="mdc-layout-grid__cell--span-8">
-          <div className="mdc-select" role="listbox" ref="usage">
-            <div className="mdc-select__surface" tabIndex="0">
-              <div className="mdc-select__label"/>
-              <div className="mdc-select__selected-text"/>
-              <div className="mdc-select__bottom-line"/>
-            </div>
-            <div className="mdc-menu mdc-select__menu">
-              <ul className="mdc-list mdc-menu__items">
-                <li className="mdc-list-item" role="option" tabIndex="0">
+          <div className="mdc-select" ref="usage">
+            <input type="hidden" name="enhanced-select"/>
+            <i className="mdc-select__dropdown-icon"/>
+            <div className="mdc-select__selected-text"/>
+            <div className="mdc-select__menu mdc-menu mdc-menu-surface">
+              <ul className="mdc-list">
+                <li className="mdc-list-item" data-value="opt" tabIndex={0}>
                   Default (optional)
                 </li>
-                <li className="mdc-list-item" role="option" tabIndex="1">
+                <li className="mdc-list-item" data-value="req" tabIndex={1}>
                   Required
                 </li>
-                <li className="mdc-list-item" role="option" tabIndex="2">
+                <li className="mdc-list-item" data-value="rec" tabIndex={2}>
                   Recommended
                 </li>
-                <li className="mdc-list-item" role="option" tabIndex="3">
+                <li className="mdc-list-item" data-value="opt" tabIndex={3}>
                   Optional
                 </li>
               </ul>
             </div>
+            <div className="mdc-line-ripple"/>
           </div>
         </div>
       </div>
       <Desc member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} />
-      <Desc member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} valDesc={true}/>
+      <Desc member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} valDesc/>
       <ValList
         member={this.props.member} attribute={this.props.attribute}
         setValListType={this.props.setValListType} addValItem={this.props.addValItem}

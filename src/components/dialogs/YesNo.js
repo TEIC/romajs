@@ -11,50 +11,53 @@ export default class YesNo extends Component {
 
   componentDidMount() {
     this.dialog = new MDCDialog(this.refs.na)
-    this.dialog.listen('MDCDialog:accept', () => {
-      this.props.continue()
-      this.props.hide()
+    this.dialog.listen('MDCDialog:closed', (event) => {
+      switch (event.detail.action) {
+        case 'accept':
+          this.props.continue()
+          this.props.hide()
+          break
+        case 'cancel':
+        default:
+          this.props.hide()
+      }
     })
-    this.dialog.listen('MDCDialog:cancel', () => {
-      this.props.hide()
+    this.dialog.listen('MDCDialog:opened', () => {
+      this.dialog.layout()
     })
   }
 
   componentDidUpdate() {
     if (this.props.show) {
-      this.dialog.show()
+      this.dialog.open()
     }
   }
 
   render() {
     return (
-      <aside
+      <aside className="mdc-dialog"
         ref="na"
-        className="mdc-dialog"
         role="alertdialog"
-        aria-labelledby="my-mdc-dialog-label"
-        aria-describedby="my-mdc-dialog-description">
-        <div className="mdc-dialog__surface">
-          <header className="mdc-dialog__header">
-            <h2 className="mdc-dialog__header__title">
+        aria-modal="true">
+        <div className="mdc-dialog__container">
+          <div className="mdc-dialog__surface">
+            <h2 className="mdc-dialog__title">
               {this.props.header}
             </h2>
-          </header>
-          <section className="mdc-dialog__body">
-            <p className="mdc-typography--body2">
+            <div className="mdc-dialog__content">
               {this.props.body}
-            </p>
-          </section>
-          <footer className="mdc-dialog__footer">
-            <button type="button" className="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">
-              Yes
-            </button>
-            <button ref="cancelBtn" type="button" className="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">
-              No
-            </button>
-          </footer>
+            </div>
+            <footer className="mdc-dialog__actions">
+              <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
+                <span className="mdc-button__label">No</span>
+              </button>
+              <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="accept">
+                <span className="mdc-button__label">Yes</span>
+              </button>
+            </footer>
+          </div>
         </div>
-        <div className="mdc-dialog__backdrop"/>
+        <div className="mdc-dialog__scrim"/>
       </aside>
     )
   }

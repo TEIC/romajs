@@ -6,18 +6,19 @@ import { MDCDialog } from '@material/dialog'
 export default class ModalPicker extends Component {
   componentDidMount() {
     this.dialog = new MDCDialog(this.refs.picker)
-    this.dialog.listen('MDCDialog:cancel', () => {
-      if (this.props.cancel) {
-        this.props.cancel()
+    this.dialog.listen('MDCDialog:closed', (event) => {
+      switch (event.detail.action) {
+        case 'cancel':
+          this.props.cancel()
+        default:
+          this.dialog.close()
       }
-      this.dialog.close()
     })
-    // this.dialog.show()
   }
 
   componentDidUpdate() {
     if (this.props.visible) {
-      this.dialog.show()
+      this.dialog.open()
     }
   }
 
@@ -27,20 +28,26 @@ export default class ModalPicker extends Component {
   }
 
   render() {
-    return (<aside id="my-mdc-dialog" className="mdc-dialog" ref="picker">
-      <div className="mdc-dialog__surface">
-        <section id="my-mdc-dialog-description" className="mdc-dialog__body">
-          <Picker showAll={true} items={this.props.items} pickerType={this.props.pickerType} add={this.addItem} />
-          <div dangerouslySetInnerHTML={{__html: this.props.message}}/>
-        </section>
-        <footer className="mdc-dialog__footer">
-          <button type="button" className="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">
-            Cancel
-          </button>
-        </footer>
-      </div>
-      <div className="mdc-dialog__backdrop"/>
-    </aside>)
+    return (
+      <aside className="mdc-dialog"
+        ref="picker"
+        role="alertdialog"
+        aria-modal="true">
+        <div className="mdc-dialog__container">
+          <div className="mdc-dialog__surface">
+            <div className="mdc-dialog__content">
+              <Picker showAll items={this.props.items} pickerType={this.props.pickerType} add={this.addItem} />
+              <div dangerouslySetInnerHTML={{__html: this.props.message}}/>
+            </div>
+            <footer className="mdc-dialog__actions">
+              <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
+                <span className="mdc-button__label">Cancel</span>
+              </button>
+            </footer>
+          </div>
+        </div>
+        <div className="mdc-dialog__scrim"/>
+      </aside>)
   }
 }
 

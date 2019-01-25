@@ -37,15 +37,15 @@ export default class Header extends Component {
           <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
             <span className="mdc-toolbar__title">{local.title[this.props.language]}</span>
           </section>
-          <section className="mdc-toolbar__section mdc-toolbar__section--align-end mdc-menu-anchor" style={{right: '15px'}}>
+          <section className="mdc-toolbar__section mdc-toolbar__section--align-end mdc-menu-surface--anchor" style={{right: '15px'}}>
             <button className="mdc-button mdc-button--raised toggle" onClick={(e) => {
               this.lang.open = !this.lang.open
               return e
             }}>
               <i className="material-icons mdc-button__icon">language</i> {local.language[this.props.language]} ({this.props.language})
             </button>
-            <div className="mdc-menu" tabIndex="-1" ref="lang">
-              <ul className="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
+            <div className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="lang">
+              <ul className="mdc-list" role="menu" aria-hidden="true">
                 <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.setLanguage('en')}}>English</li>
                 <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.setLanguage('it')}}>Italiano</li>
               </ul>

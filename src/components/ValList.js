@@ -26,24 +26,7 @@ export default class Attribute extends Component {
         select.foundation_.setSelectedIndex(0)
     }
     select.listen('MDCSelect:change', () => {
-      let value = 'def'
-      switch (select.value) {
-        case 'Default (optional)':
-          value = ''
-          break
-        case 'Closed':
-          value = 'closed'
-          break
-        case 'Semi-Open':
-          value = 'semi'
-          break
-        case 'Open':
-          value = 'open'
-          break
-        default:
-          value = 'def'
-      }
-      this.props.setValListType(value)
+      this.props.setValListType(select.value)
     })
   }
 
@@ -63,28 +46,27 @@ export default class Attribute extends Component {
         </p>
       </div>
       <div className="mdc-layout-grid__cell--span-8">
-        <div className="mdc-select" role="listbox" ref="usage">
-          <div className="mdc-select__surface" tabIndex="0">
-            <div className="mdc-select__label"/>
-            <div className="mdc-select__selected-text"/>
-            <div className="mdc-select__bottom-line"/>
-          </div>
-          <div className="mdc-menu mdc-select__menu">
-            <ul className="mdc-list mdc-menu__items">
-              <li className="mdc-list-item" role="option" tabIndex="0">
+        <div className="mdc-select" ref="usage">
+          <input type="hidden" name="enhanced-select"/>
+          <i className="mdc-select__dropdown-icon"/>
+          <div className="mdc-select__selected-text"/>
+          <div className="mdc-select__menu mdc-menu mdc-menu-surface">
+            <ul className="mdc-list">
+              <li className="mdc-list-item" data-value="" tabIndex={0}>
                 Default (open)
               </li>
-              <li className="mdc-list-item" role="option" tabIndex="1">
+              <li className="mdc-list-item" data-value="closed" tabIndex={1}>
                 Closed
               </li>
-              <li className="mdc-list-item" role="option" tabIndex="2">
+              <li className="mdc-list-item" data-value="semi" tabIndex={2}>
                 Semi-Open
               </li>
-              <li className="mdc-list-item" role="option" tabIndex="3">
+              <li className="mdc-list-item" data-value="open" tabIndex={3}>
                 Open
               </li>
             </ul>
           </div>
+          <div className="mdc-line-ripple"/>
         </div>
         <div className="mdc-layout-grid">{[
           <div key="add" className="mdc-layout-grid__inner">

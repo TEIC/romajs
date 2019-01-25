@@ -32,37 +32,37 @@ export default class Class extends Component {
     let subArrow
     let mainSettings
     if (this.props.klass.attributes) {
-      mainSettings = (<li className="mdc-grid-tile">
-        <div className="mdc-grid-tile__primary romajs-classbackground romajs-clickable"
+      mainSettings = (<li className="mdc-image-list__item romajs-classbackground">
+        <div className="mdc-image-list__image-aspect-container romajs-clickable"
           onClick={() => this.props.navigateTo(`${this.baseurl}/attributes`)}>
           <span>Attributes</span>
         </div>
       </li>)
     } else {
-      mainSettings = (<li className="mdc-grid-tile">
-        <div className="mdc-grid-tile__primary romajs-classbackground romajs-clickable"
+      mainSettings = (<li className="mdc-image-list__item romajs-classbackground">
+        <div className="mdc-image-list__image-aspect-container romajs-clickable"
           onClick={() => this.props.navigateTo(`${this.baseurl}/memberships`)}>
           <span>Class Membership</span>
         </div>
       </li>)
     }
-    const home = (<div className="mdc-grid-list romajs-squares">
-      <ul className="mdc-grid-list__tiles">
-        <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-classbackground romajs-clickable"
+    const home = (<div className="romajs-squares">
+      <ul className="mdc-image-list">
+        <li className="mdc-image-list__item romajs-classbackground">
+          <div className="mdc-image-list__image-aspect-container romajs-clickable"
             onClick={() => this.props.navigateTo(`${this.baseurl}/documentation`)}>
             <span>Documentation</span>
           </div>
         </li>
         {mainSettings}
-        <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-classbackground romajs-clickable"
+        <li className="mdc-image-list__item romajs-classbackground">
+          <div className="mdc-image-list__image-aspect-container romajs-clickable"
             onClick={() => this.props.navigateTo(`${this.baseurl}/constraints`)}>
             <span>Constraints</span>
           </div>
         </li>
-        <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-classbackground romajs-clickable"
+        <li className="mdc-image-list__item romajs-classbackground">
+          <div className="mdc-image-list__image-aspect-container romajs-clickable"
             onClick={() => this.props.navigateTo(`${this.baseurl}/processing`)}>
             <span>Processing model</span>
           </div>
@@ -147,8 +147,8 @@ export default class Class extends Component {
     </div>,
     <main key="main">
       <div className="romajs-form">
-        <h1 className="mdc-typography--headline">{typeLabel} class {this.props.klass.ident}</h1>
-        <h2 className="mdc-typography--subheading1">{this.props.klass.shortDesc}</h2>
+        <h1 className="mdc-typography--headline mdc-typography--headline4">{typeLabel} class {this.props.klass.ident}</h1>
+        <h2 className="mdc-typography--headline mdc-typography--subtitle1">{this.props.klass.shortDesc}</h2>
         {content}
       </div>
     </main>]

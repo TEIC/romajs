@@ -123,19 +123,19 @@ export default class Home extends Component {
               <div className="romajs-tabPanels">
                 <div className="romajs-tabPanel" role="tabpanel" style={this._setActivePanel(0)}>
                   <h2 className="mdc-typography--title">{local.selectODD[this.props.language]}</h2>
-                  <div className="mdc-select" role="listbox" ref="chooseodd">
-                    <div className="mdc-select__surface" tabIndex="0">
-                      <div className="mdc-select__label"/>
-                      <div className="mdc-select__selected-text"/>
-                      <div className="mdc-select__bottom-line"/>
-                    </div>
-                    <div className="mdc-menu mdc-select__menu">
-                      <ul className="mdc-list mdc-menu__items">{
+                  <div className="mdc-select" ref="chooseodd">
+                    <input type="hidden" name="enhanced-select"/>
+                    <i className="mdc-select__dropdown-icon"/>
+                    <div className="mdc-select__selected-text"/>
+                    <div className="mdc-select__menu mdc-menu mdc-menu-surface">
+                      <ul className="mdc-list">{
                         this.state.odds.urls.map((url, i) => {
-                          return (<li className="mdc-list-item" role="option" key={i} tabIndex={i}>{this.state.odds.labels[i]}</li>)
+                          return <li className="mdc-list-item" data-value={this.state.odds.labels[i]} key={i} tabIndex={i}>{this.state.odds.labels[i]}</li>
                         })
                       }</ul>
                     </div>
+                    <span className="mdc-floating-label">Choose a preset</span>
+                    <div className="mdc-line-ripple"/>
                   </div>
                 </div>
                 <div className="romajs-tabPanel"role="tabpanel" style={this._setActivePanel(1)}>

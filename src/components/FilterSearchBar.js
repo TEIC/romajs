@@ -4,16 +4,12 @@ import PropTypes from 'prop-types'
 export default class FilterSearchBar extends Component {
   render() {
     return (
-      <span className="mdl-chip mdl-chip--deletable romajs-searchbar">
-        <span className="mdl-chip__text">
-          <div className="mdc-text-field">
-            <input type="text" className="mdc-text-field__input"
-              id="search-text-field" placeholder="filter items"
-              onChange={(e)=>{this.props.setFilterTerm(e.target.value)}}/>
-          </div>
-        </span>
-        <button type="button" className="mdl-chip__action"><i className="material-icons">search</i></button>
-      </span>
+      <div className="mdc-text-field romajs-searchbar mdc-text-field--with-trailing-icon mdc-ripple-upgraded">
+        <input type="text" id="search-text-field" className="mdc-text-field__input" placeholder="filter items"
+          onChange={(e)=>{this.props.setFilterTerm(e.target.value)}}/>
+        <i className="material-icons mdc-text-field__icon">search</i>
+        <div className="mdc-line-ripple"/>
+      </div>
     )
   }
 }

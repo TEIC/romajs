@@ -11,56 +11,59 @@ export default class ErrorReporting extends Component {
 
   componentDidMount() {
     this.dialog = new MDCDialog(this.refs.na)
-    this.dialog.listen('MDCDialog:accept', () => {
-      // no-op
+    this.dialog.listen('MDCDialog:closed', (event) => {
+      switch (event.detail.action) {
+        case 'cancel':
+        default:
+          this.props.hide()
+          this.dialog.close()
+      }
     })
-    this.dialog.listen('MDCDialog:cancel', () => {
-      this.props.hide()
+    this.dialog.listen('MDCDialog:opened', () => {
+      this.dialog.layout()
     })
   }
 
   componentDidUpdate() {
     if (this.props.show) {
-      this.dialog.show()
+      this.dialog.open()
     }
   }
 
   render() {
     return (
-      <aside
+      <aside className="mdc-dialog"
         ref="na"
-        className="mdc-dialog"
         role="alertdialog"
-        aria-labelledby="my-mdc-dialog-label"
-        aria-describedby="my-mdc-dialog-description">
-        <div className="mdc-dialog__surface">
-          <header className="mdc-dialog__header">
-            <h2 className="mdc-dialog__header__title">
+        aria-modal="true">
+        <div className="mdc-dialog__container">
+          <div className="mdc-dialog__surface">
+            <h2 className="mdc-dialog__title">
               Oh-oh... Something went wrong
             </h2>
-          </header>
-          <section className="mdc-dialog__body">
-            <p className="mdc-typography--body2">
-              Roma JS is still in alpha. The following error occurred:
-            </p>
-            <pre>{this.props.error}</pre>
-            <p className="mdc-typography--body2">
-              Feel free to <a href="https://github.com/TEIC/romajs/issues">report an issue on GitHub</a>.
-            </p>
-          </section>
-          <footer className="mdc-dialog__footer">
-            <button type="button" className="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button" onClick={() => {
-              this.refs.cancelBtn.click()
-              this.props.goHome()
-            }}>
-              Start Over
-            </button>
-            <button ref="cancelBtn" type="button" className="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">
-              OK
-            </button>
-          </footer>
+            <div className="mdc-dialog__content">
+              <p className="mdc-typography--body2">
+                Roma JS is still in alpha. The following error occurred:
+              </p>
+              <pre>{this.props.error}</pre>
+              <p className="mdc-typography--body2">
+                Feel free to <a href="https://github.com/TEIC/romajs/issues">report an issue on GitHub</a>.
+              </p>
+            </div>
+            <footer className="mdc-dialog__actions">
+              <button type="button" className="mdc-button mdc-dialog__button" onClick={() => {
+                this.dialog.close()
+                this.props.goHome()
+              }}>
+                Start Over
+              </button>
+              <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
+                <span className="mdc-button__label">OK</span>
+              </button>
+            </footer>
+          </div>
         </div>
-        <div className="mdc-dialog__backdrop"/>
+        <div className="mdc-dialog__scrim"/>
       </aside>
     )
   }

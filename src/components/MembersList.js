@@ -4,6 +4,7 @@ import { Component } from 'react'
 import FilterSearch from '../containers/FilterSearch'
 import Member from './Member'
 import MembersFacet from './MemberFacet'
+import AddMemberFab from './AddMemberFab'
 
 export default class MembersList extends Component {
   constructor(props) {
@@ -76,6 +77,7 @@ export default class MembersList extends Component {
           }
           )}
         </ul>
+        <AddMemberFab />
       </main>]
     }
     return content

@@ -29,36 +29,36 @@ export default class Element extends Component {
     let trail
     let arrow
     let subArrow
-    const home = (<div className="mdc-grid-list romajs-squares">
-      <ul className="mdc-grid-list__tiles">
-        <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-clickable"
+    const home = (<div className="romajs-squares">
+      <ul className="mdc-image-list">
+        <li className="mdc-image-list__item">
+          <div className="mdc-image-list__image-aspect-container romajs-clickable"
             onClick={() => this.props.navigateTo(`${this.baseurl}/documentation`)}>
             <span>Documentation</span>
           </div>
         </li>
-        <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-clickable"
+        <li className="mdc-image-list__item">
+          <div className="mdc-image-list__image-aspect-container romajs-clickable"
             onClick={() => this.props.navigateTo(`${this.baseurl}/attributes`)}>
             <span>Attributes</span>
           </div>
         </li>
-        <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-clickable"
+        <li className="mdc-image-list__item">
+          <div className="mdc-image-list__image-aspect-container romajs-clickable"
             onClick={() => this.props.navigateTo(`${this.baseurl}/content`)}>
             <span>Class Membership <br/> &amp; Content Model</span>
           </div>
         </li>
-        <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-clickable"
+        <li className="mdc-image-list__item">
+          <div className="mdc-image-list__image-aspect-container romajs-clickable"
             onClick={() => this.props.navigateTo(`${this.baseurl}/constraints`)}>
             <span>Constraints</span>
           </div>
         </li>
-        <li className="mdc-grid-tile">
-          <div className="mdc-grid-tile__primary romajs-clickable"
+        <li className="mdc-image-list__item">
+          <div className="mdc-image-list__image-aspect-container romajs-clickable"
             onClick={() => this.props.navigateTo(`${this.baseurl}/processing`)}>
-            <span>Processing model</span>
+            <span>Processing Model</span>
           </div>
         </li>
       </ul>
@@ -144,8 +144,8 @@ export default class Element extends Component {
     </div>,
     <main key="main">
       <div className="romajs-form">
-        <h1 className="mdc-typography--headline">&lt;{this.props.element.ident}&gt;</h1>
-        <h2 className="mdc-typography--subheading1">{this.props.element.shortDesc}</h2>
+        <h1 className="mdc-typography--headline mdc-typography--headline4">&lt;{this.props.element.ident}&gt;</h1>
+        <h2 className="mdc-typography--headline mdc-typography--subtitle1">{this.props.element.shortDesc}</h2>
         {content}
       </div>
     </main>]

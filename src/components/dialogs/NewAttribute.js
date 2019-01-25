@@ -15,17 +15,27 @@ export default class NewAttributeDialog extends Component {
 
   componentDidMount() {
     this.dialog = new MDCDialog(this.refs.na)
-    this.dialog.listen('MDCDialog:accept', () => {
-      // no-op
+    this.dialog.listen('MDCDialog:closed', (event) => {
+      // NB default action needs to happen in all cases,
+      // do not add breaks.
+      switch (event.detail.action) {
+        case 'add_attribute':
+          this.props.add(this.state.attribute)
+        case 'add_from_picker':
+        case 'cancel':
+        default:
+          this.props.hide()
+          this.dialog.close()
+      }
     })
-    this.dialog.listen('MDCDialog:cancel', () => {
-      this.props.hide()
+    this.dialog.listen('MDCDialog:opened', () => {
+      this.dialog.layout()
     })
   }
 
   componentDidUpdate() {
     if (this.props.show) {
-      this.dialog.show()
+      this.dialog.open()
     }
   }
 
@@ -43,64 +53,60 @@ export default class NewAttributeDialog extends Component {
 
   render() {
     return (
-      <aside
+      <aside className="mdc-dialog"
         ref="na"
-        className="mdc-dialog"
         role="alertdialog"
-        aria-labelledby="my-mdc-dialog-label"
-        aria-describedby="my-mdc-dialog-description">
-        <div className="mdc-dialog__surface">
-          <header className="mdc-dialog__header">
-            <h2 id="my-mdc-dialog-label" className="mdc-dialog__header__title">
+        aria-modal="true">
+        <div className="mdc-dialog__container">
+          <div className="mdc-dialog__surface">
+            <h2 className="mdc-dialog__title">
               Create new attribute
             </h2>
-          </header>
-          <section id="my-mdc-dialog-description" className="mdc-dialog__body">
-            <div className="mdc-layout-grid__inner romajs-formrow">
-              <div className="mdc-layout-grid__cell--span-3">
-                <label>New</label>
-                <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                  Create an entirely new attribute.
-                </p>
-              </div>
-              <div className="mdc-layout-grid__cell--span-6">
-                <div className="mdc-text-field mdc-text-field--upgraded">
-                  <input type="text" className="mdc-text-field__input"
-                    onChange={(e) => {this.setState({attribute: e.target.value})}} placeholder="newAttribute"/>
-                  <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
+            <div className="mdc-dialog__content">
+              <div className="mdc-layout-grid__inner romajs-formrow">
+                <div className="mdc-layout-grid__cell--span-3">
+                  <label>New</label>
+                  <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
+                    Create an entirely new attribute.
+                  </p>
+                </div>
+                <div className="mdc-layout-grid__cell--span-6">
+                  <div className="mdc-text-field mdc-text-field--upgraded">
+                    <input type="text" className="mdc-text-field__input"
+                      onChange={(e) => {this.setState({attribute: e.target.value})}} placeholder="newAttribute"/>
+                    <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
+                  </div>
+                </div>
+                <div className="mdc-layout-grid__cell--span-2">
+                  <button className="mdc-button mdc-dialog__button" data-mdc-dialog-action="add_attribute">
+                    Create
+                  </button>
                 </div>
               </div>
-              <div className="mdc-layout-grid__cell--span-2">
-                <button className="mdc-button" onClick={() => {
-                  this.props.add(this.state.attribute)
-                  this.refs.cancelBtn.click()
-                }}>
-                  Create
-                </button>
+              <div className="mdc-layout-grid__inner romajs-formrow">
+                <div className="mdc-layout-grid__cell--span-3">
+                  <label>Copy</label>
+                  <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
+                    Duplicate an existing attribute.
+                  </p>
+                </div>
+                <div className="mdc-layout-grid__cell--span-8">
+                  <AttPicker showAll items={this.props.items} pickerType={'attribute'} add={(t, a) => {
+                    this.props.add(this.cloneAttribute(t, a))
+                    this.props.hide()
+                    this.dialog.close()
+                  }} />
+                </div>
               </div>
             </div>
-            <div className="mdc-layout-grid__inner romajs-formrow">
-              <div className="mdc-layout-grid__cell--span-3">
-                <label>Copy</label>
-                <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                  Duplicate an existing attribute.
-                </p>
-              </div>
-              <div className="mdc-layout-grid__cell--span-8">
-                <AttPicker showAll={true} items={this.props.items} pickerType={'attribute'} add={(t, a) => {
-                  this.props.add(this.cloneAttribute(t, a))
-                  this.refs.cancelBtn.click()
-                }} />
-              </div>
-            </div>
-          </section>
-          <footer className="mdc-dialog__footer">
-            <button ref="cancelBtn" type="button" className="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">
-              Cancel
-            </button>
-          </footer>
+            <footer className="mdc-dialog__actions">
+              <button ref="cancelBtn" type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
+                Cancel
+              </button>
+            </footer>
+          </div>
         </div>
-        <div className="mdc-dialog__backdrop"/>
+        <div className="mdc-dialog__scrim"/>
       </aside>
     )
   }

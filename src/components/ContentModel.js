@@ -26,9 +26,9 @@ export default class ContentModel extends Component {
                     this.props.deleteElementModelClass(this.props.element.ident, c.key)}>clear</i>
                 </span>
                 <span className="mdc-list-item__text">
-                  {c.key}
+                  <span className="mdc-list-item__primary-text">{c}</span>
                   <span className="mdc-list-item__secondary-text">
-                    {this.props.element.classDescs[c.key]}
+                    {this.props.element.classDescs[c]}
                   </span>
                 </span>
               </li>)

@@ -186,8 +186,8 @@ export default class Desc extends Component {
                 name={`ace_desc${pos}`}
                 fontSize={14}
                 showPrintMargin={false}
-                showGutter={true}
-                highlightActiveLine={true}
+                showGutter
+                highlightActiveLine
                 value={d}
                 onChange={(text) => this.props.update(this.props.ident, text, pos)}
                 height="100px"
