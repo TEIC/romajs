@@ -185,4 +185,13 @@ describe('Element actions', () => {
       attName: 'rend'
     })
   })
+
+  it('createNewElement should create a new element', () =>{
+    expect(actions.createNewElement('newElement', 'core', 'http://example.com/ns')).toEqual({
+      type: 'CREATE_NEW_ELEMENT',
+      name: 'newElement',
+      module: 'core',
+      ns: 'http://example.com/ns'
+    })
+  })
 })

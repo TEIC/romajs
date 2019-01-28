@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import CreateNewElement from '../containers/CreateNewElement'
+import CreateNewClass from '../containers/CreateNewClass'
 
 export default class AddMemberFab extends Component {
   constructor(props) {
     super(props)
-    this.state = { expanded: false }
+    this.state = {
+      expanded: false,
+      type: 'element',
+      showDialog: false
+    }
   }
 
   toggle() {
@@ -16,19 +21,34 @@ export default class AddMemberFab extends Component {
   }
 
   render() {
+    let dialog = null
+    switch (this.state.type) {
+      case 'element':
+        dialog = (<CreateNewElement
+          show={this.state.showDialog} hide={() => {this.setState({showDialog: false})}} />)
+      case 'class':
+        dialog = (<CreateNewClass
+          show={this.state.showDialog} hide={() => {this.setState({showDialog: false})}} />)
+        break
+      default:
+        // noop
+    }
     let members = null
     if (this.state.expanded) {
       members = [
-        (<button key="el" className="mdc-fab mdc-fab--extended romajs-fab--absolute romajs-fab--secondary-el">
+        (<button key="el" className="mdc-fab mdc-fab--extended romajs-fab--absolute romajs-fab--secondary-el"
+          onClick={() => {this.setState({type: 'element', showDialog: true, expanded: false})}}>
           <span className="mdc-fab__label">Element</span>
         </button>),
-        (<button key="cl" className="mdc-fab mdc-fab--extended romajs-fab--absolute romajs-fab--secondary-cl">
+        (<button key="cl" className="mdc-fab mdc-fab--extended romajs-fab--absolute romajs-fab--secondary-cl"
+          onClick={() => {this.setState({type: 'class', showDialog: true, expanded: false})}}>
           <span className="mdc-fab__label">Class</span>
         </button>),
       ]
     }
     return (
       <div id="romajs-fab">
+        {dialog}
         <button key="new" className="mdc-fab mdc-fab--extended romajs-fab--absolute" onClick={() => {this.toggle()}}>
           <span className="mdc-fab__label">New</span>
           <span className="mdc-fab__icon material-icons">library_add</span>
@@ -38,5 +58,3 @@ export default class AddMemberFab extends Component {
     )
   }
 }
-
-// AddMemberFab.propTypes = {}

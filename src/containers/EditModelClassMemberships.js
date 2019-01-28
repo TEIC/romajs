@@ -45,7 +45,6 @@ const mapStateToProps = (state, ownProps) => {
   if (localClass.classes) {
     for (const ident of localClass.classes.model) {
       let listed = true
-      console.log(klass.classes)
       if (klass.classes) {
         if (klass.classes.model.indexOf(ident) === -1) listed = false
       } else {

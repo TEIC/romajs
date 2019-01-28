@@ -17,6 +17,7 @@ export const CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT = 'CHANGE_CLASS_ATTRIBUTE_ON_ELEM
 export const UPDATE_CONTENT_MODEL = 'UPDATE_CONTENT_MODEL'
 export const RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS = 'RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS'
 export const CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS = 'CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS'
+export const CREATE_NEW_ELEMENT = 'CREATE_NEW_ELEMENT'
 
 export function updateContentModel(element, content) {
   return {
@@ -174,5 +175,14 @@ export function clearElementMembershipsToClass(className, classType) {
     type: CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS,
     className,
     classType
+  }
+}
+
+export function createNewElement(name, module, ns) {
+  return {
+    type: CREATE_NEW_ELEMENT,
+    name,
+    module,
+    ns
   }
 }

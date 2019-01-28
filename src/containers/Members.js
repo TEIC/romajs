@@ -21,9 +21,9 @@ const mapStateToProps = (state) => {
       // Function to determine which members are selected
       const getMembers = (memberType, memberSubType) => {
         const localMembers = memberSubType ? localsource[memberType][memberSubType] : localsource[memberType]
-        return localMembers.reduce((acc, localMember) => {
+        const customMembers = memberSubType ? customization[memberType][memberSubType] : customization[memberType]
+        const members =  localMembers.reduce((acc, localMember) => {
           let member = Object.assign({}, localMember)
-          const customMembers = memberSubType ? customization[memberType][memberSubType] : customization[memberType]
           const customMember = customMembers.filter(m => (m.ident === localMember.ident))[0]
           if (customMember) {
             member = Object.assign({}, customMember)
@@ -43,6 +43,20 @@ const mapStateToProps = (state) => {
           acc.push(member)
           return acc
         }, [])
+        // Identify members defined in the customizion ONLY.
+        const a = customMembers.reduce((acc, customMember) => {
+          if (!localMembers.filter(m => (m.ident === customMember.ident))[0]) {
+            customMember.isNew = true
+            customMember.selected = true
+            customMember.module_selected = true
+            customMember.visible = true
+            customMember.type = memberType
+            customMember.subType = memberSubType
+            acc.push(customMember)
+          }
+          return acc
+        }, [])
+        return members.concat(a)
       }
 
       // Function to filter members based on user input

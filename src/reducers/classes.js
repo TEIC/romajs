@@ -3,7 +3,8 @@ import { clone } from '../utils/clone'
 import {
   DELETE_CLASS_DOCS, UPDATE_CLASS_DOCS, DELETE_CLASS_ATTRIBUTE, RESTORE_CLASS_ATTRIBUTE, ADD_CLASS_ATTRIBUTE,
   ADD_MEMBERSHIP_TO_CLASS, REMOVE_MEMBERSHIP_TO_CLASS, CHANGE_CLASS_ATTRIBUTE, RESTORE_MEMBERSHIPS_TO_CLASS,
-  CLEAR_MEMBERSHIPS_TO_CLASS
+  CLEAR_MEMBERSHIPS_TO_CLASS,
+  CREATE_NEW_CLASS
 } from '../actions/classes'
 
 // TODO: this function can be shared with elements.js
@@ -234,6 +235,26 @@ export function oddClasses(state, action) {
           }
         }
       }
+      return newState
+    case CREATE_NEW_CLASS:
+      const newClass = {
+        ident: action.name,
+        type: 'classSpec',
+        module: action.module,
+        desc: [],
+        shortDesc: '',
+        gloss: [],
+        altIdent: [],
+        classes: {
+          model: [],
+          atts: [],
+          unknown: []
+        }
+      }
+      if (action.classType === 'attributes') {
+        newClass.attributes = []
+      }
+      customization.classes[action.classType].push(newClass)
       return newState
     default:
       return state

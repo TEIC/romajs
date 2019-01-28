@@ -29,8 +29,10 @@ export default class MembersList extends Component {
   udpatedWidth() {
     // Set max width to document size
     const cw = document.documentElement.clientWidth
+    // this small adjustment avoids unwanted horizontal scrollbar
+    const windowWidth = cw - cw * 0.001
     this.setState({
-      windowWidth: cw
+      windowWidth
     })
   }
 

@@ -9,7 +9,8 @@ import {
   USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE_ON_ELEMENT, CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT, CHANGE_ELEMENT_ATTRIBUTE,
   UPDATE_CONTENT_MODEL,
   RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS,
-  CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS
+  CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS,
+  CREATE_NEW_ELEMENT
 } from '../actions/elements'
 
 function deleteAttribute(m, attribute) {
@@ -444,6 +445,25 @@ export function oddElements(state, action) {
           }
         }
       }
+      return newState
+    case CREATE_NEW_ELEMENT:
+      const newElement = {
+        ident: action.name,
+        type: 'elementSpec',
+        module: action.module,
+        desc: [],
+        shortDesc: '',
+        gloss: [],
+        altIdent: [],
+        classes: {
+          model: [],
+          atts: []
+        },
+        attributes: [],
+        content: [],
+        ns: action.ns
+      }
+      customization.elements.push(newElement)
       return newState
     default:
       return state

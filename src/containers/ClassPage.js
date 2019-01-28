@@ -12,7 +12,6 @@ const mapStateToProps = (state, ownProps) => {
       const localClasses = state.odd.localsource.json.classes.models
         .concat(state.odd.localsource.json.classes.attributes)
 
-      console.log(customClasses)
       const customClass = customClasses.filter(x => {
         return (x.ident === ownProps.match.params.cl)
       })[0]

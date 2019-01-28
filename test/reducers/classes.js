@@ -218,4 +218,44 @@ describe('ODD class operations reducers', () => {
       x => (x.ident === 'att.global')
     )[0].classes.atts.filter(c => (c === 'att.global.analytic'))[0]).toNotExist()
   })
+
+  it('should handle CREATE_NEW_CLASS (attributes)', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CREATE_NEW_CLASS',
+      name: 'att.newClass',
+      module: 'core',
+      classType: 'attributes'
+    })
+    expect(state.odd.customization.json.classes.attributes.filter(
+      x => (x.ident === 'att.newClass')
+    )[0]).toExist()
+  })
+
+  it('should handle CREATE_NEW_CLASS (model)', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CREATE_NEW_CLASS',
+      name: 'model.newClass',
+      module: 'core',
+      classType: 'models'
+    })
+    expect(state.odd.customization.json.classes.models.filter(
+      x => (x.ident === 'model.newClass')
+    )[0]).toExist()
+  })
 })

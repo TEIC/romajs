@@ -104,4 +104,22 @@ describe('Class actions (lol)', () => {
       classType: 'attributes'
     })
   })
+
+  it('createNewClass should create a new class (attributes)', () =>{
+    expect(actions.createNewClass('att.newClass', 'core', 'attributes')).toEqual({
+      type: 'CREATE_NEW_CLASS',
+      name: 'att.newClass',
+      module: 'core',
+      classType: 'attributes'
+    })
+  })
+
+  it('createNewClass should create a new class (model)', () =>{
+    expect(actions.createNewClass('model.newClass', 'core', 'models')).toEqual({
+      type: 'CREATE_NEW_CLASS',
+      name: 'model.newClass',
+      module: 'core',
+      classType: 'models'
+    })
+  })
 })

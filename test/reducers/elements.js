@@ -252,4 +252,24 @@ describe('ODD elements operation reducers', () => {
       x => (x.ident === 'div')
     )[0].attributes.filter(x => (x.ident === 'rend'))[0].mode).toEqual('change')
   })
+
+  it('should handle CREATE_NEW_ELEMENT', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CREATE_NEW_ELEMENT',
+      name: 'newElement',
+      module: 'core',
+      ns: 'http://example.com/ns'
+    })
+    expect(state.odd.customization.json.elements.filter(
+      x => (x.ident === 'newElement')
+    )[0]).toExist()
+  })
 })
