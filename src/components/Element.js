@@ -3,11 +3,15 @@ import PropTypes from 'prop-types'
 import Documentation from './Documentation'
 import EditAttributes from '../containers/EditAttributes'
 import ContentModel from './ContentModel'
+import RevertDialog from './dialogs/Revert'
 
 export default class Element extends Component {
   constructor(props) {
     super(props)
     this.baseurl = `/element/${this.props.element.ident}`
+    this.state = {
+      showRevertDialog: false
+    }
   }
 
   componentWillMount() {
@@ -134,11 +138,11 @@ export default class Element extends Component {
         {trail}
       </section>
       <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
-        <span className="mdl-chip mdl-chip--deletable">
-          <span className="mdl-chip__text">Revert to source</span>
-          <button type="button" className="mdl-chip__action">
-            <i className="material-icons">undo</i>
-          </button>
+        <span className="mdl-chip mdl-chip--deletable romajs-clickable" onClick={() => {
+          this.setState({showRevertDialog: true})
+        }}>
+          <span className="mdl-chip__text">Revert changes</span>
+          <button className="mdl-chip__action material-icons">undo</button>
         </span>
       </section>
     </div>,
@@ -148,7 +152,11 @@ export default class Element extends Component {
         <h2 className="mdc-typography--headline mdc-typography--subtitle1">{this.props.element.shortDesc}</h2>
         {content}
       </div>
-    </main>]
+    </main>,
+    <RevertDialog key="rd" show={this.state.showRevertDialog} hide={() => {this.setState({showRevertDialog: false})}}
+      memberLabel={`<${this.props.element.ident}>`} member={this.props.element.ident} isNew={false}
+      discard={this.props.discardChanges}/>
+    ]
   }
 }
 
@@ -159,5 +167,6 @@ Element.propTypes = {
   attribute: PropTypes.string,
   navigateTo: PropTypes.func.isRequired,
   clearPicker: PropTypes.func.isRequired,
-  deleteElementModelClass: PropTypes.func.isRequired
+  deleteElementModelClass: PropTypes.func.isRequired,
+  discardChanges: PropTypes.func.isRequired
 }

@@ -18,6 +18,7 @@ export const UPDATE_CONTENT_MODEL = 'UPDATE_CONTENT_MODEL'
 export const RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS = 'RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS'
 export const CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS = 'CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS'
 export const CREATE_NEW_ELEMENT = 'CREATE_NEW_ELEMENT'
+export const DISCARD_CHANGES = 'DISCARD_CHANGES'
 
 export function updateContentModel(element, content) {
   return {
@@ -184,5 +185,12 @@ export function createNewElement(name, module, ns) {
     name,
     module,
     ns
+  }
+}
+
+export function discardChanges(name) {
+  return {
+    type: DISCARD_CHANGES,
+    name
   }
 }

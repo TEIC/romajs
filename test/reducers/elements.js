@@ -272,4 +272,32 @@ describe('ODD elements operation reducers', () => {
       x => (x.ident === 'newElement')
     )[0]).toExist()
   })
+
+  it('should handle DISCARD_CHANGES', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON, orig: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_ELEMENT_DOCS',
+      element: 'title',
+      docEl: 'desc',
+      content: 'new desc',
+      index: 0
+    })
+    const state = romajsApp(firstState, {
+      type: 'DISCARD_CHANGES',
+      name: 'title'
+    })
+    expect(firstState.odd.customization.json.elements.filter(
+      x => (x.ident === 'title')
+    )[0]._changed).toExist()
+    expect(state.odd.customization.json.elements.filter(
+      x => (x.ident === 'title')
+    )[0]._changed).toNotExist()
+  })
 })

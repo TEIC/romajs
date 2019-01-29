@@ -81,8 +81,9 @@ describe('Input ODD reducers', () => {
     const nextState = romajsApp(initialState, {
       type: 'RECEIVE_FROM_OXGARAGE',
       json,
+      orig: json,
       receivedAt
     })
-    expect(nextState.odd.customization).toEqual({ isFetching: false, json: json, receivedAt: receivedAt})
+    expect(nextState.odd.customization).toEqual({ isFetching: false, json: json, orig: json, receivedAt: receivedAt})
   })
 })

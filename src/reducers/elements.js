@@ -10,7 +10,8 @@ import {
   UPDATE_CONTENT_MODEL,
   RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS,
   CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS,
-  CREATE_NEW_ELEMENT
+  CREATE_NEW_ELEMENT,
+  DISCARD_CHANGES
 } from '../actions/elements'
 
 function deleteAttribute(m, attribute) {
@@ -464,6 +465,15 @@ export function oddElements(state, action) {
         ns: action.ns
       }
       customization.elements.push(newElement)
+      return newState
+    case DISCARD_CHANGES:
+      customization.elements = customization.elements.map(m => {
+        if (m.ident === action.name) {
+          return clone(customizationObj.orig.elements.filter(el => el.ident === action.name)[0])
+        }
+        return m
+      })
+      // console.log(customization.elements)
       return newState
     default:
       return state

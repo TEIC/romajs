@@ -194,4 +194,11 @@ describe('Element actions', () => {
       ns: 'http://example.com/ns'
     })
   })
+
+  it('discardChanges should discard any changes to this element', () =>{
+    expect(actions.discardChanges('div')).toEqual({
+      type: 'DISCARD_CHANGES',
+      name: 'div'
+    })
+  })
 })
