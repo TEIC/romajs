@@ -4,7 +4,9 @@ import {
   DELETE_CLASS_DOCS, UPDATE_CLASS_DOCS, DELETE_CLASS_ATTRIBUTE, RESTORE_CLASS_ATTRIBUTE, ADD_CLASS_ATTRIBUTE,
   ADD_MEMBERSHIP_TO_CLASS, REMOVE_MEMBERSHIP_TO_CLASS, CHANGE_CLASS_ATTRIBUTE, RESTORE_MEMBERSHIPS_TO_CLASS,
   CLEAR_MEMBERSHIPS_TO_CLASS,
-  CREATE_NEW_CLASS
+  CREATE_NEW_CLASS,
+  DISCARD_CLASS_CHANGES,
+  REVERT_CLASS_TO_SOURCE
 } from '../actions/classes'
 
 // TODO: this function can be shared with elements.js
@@ -249,12 +251,39 @@ export function oddClasses(state, action) {
           model: [],
           atts: [],
           unknown: []
-        }
+        },
+        _isNew: true
       }
       if (action.classType === 'attributes') {
         newClass.attributes = []
       }
       customization.classes[action.classType].push(newClass)
+      return newState
+    case DISCARD_CLASS_CHANGES:
+      customization.classes[action.classType] = customization.classes[action.classType].reduce((acc, m) => {
+        if (m.ident === action.name) {
+          const origCl = customizationObj.orig.classes[action.classType].filter(cl => cl.ident === action.name)[0]
+          if (origCl) {
+            acc.push(clone(origCl))
+          }
+        } else {
+          acc.push(m)
+        }
+        return acc
+      }, [])
+      return newState
+    case REVERT_CLASS_TO_SOURCE:
+      customization.classes[action.classType] = customization.classes[action.classType].reduce((acc, m) => {
+        if (m.ident === action.name) {
+          const lCl = localsource.classes[action.classType].filter(cl => cl.ident === action.name)[0]
+          if (lCl) {
+            acc.push(clone(lCl))
+          }
+        } else {
+          acc.push(m)
+        }
+        return acc
+      }, [])
       return newState
     default:
       return state

@@ -197,7 +197,14 @@ describe('Element actions', () => {
 
   it('discardChanges should discard any changes to this element', () =>{
     expect(actions.discardChanges('div')).toEqual({
-      type: 'DISCARD_CHANGES',
+      type: 'DISCARD_ELEMENT_CHANGES',
+      name: 'div'
+    })
+  })
+
+  it('revertToSource should discard any changes to this element', () =>{
+    expect(actions.revertToSource('div')).toEqual({
+      type: 'REVERT_ELEMENT_TO_SOURCE',
       name: 'div'
     })
   })

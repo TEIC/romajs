@@ -26,6 +26,7 @@ export default class AddMemberFab extends Component {
       case 'element':
         dialog = (<CreateNewElement
           show={this.state.showDialog} hide={() => {this.setState({showDialog: false})}} />)
+        break
       case 'class':
         dialog = (<CreateNewClass
           show={this.state.showDialog} hide={() => {this.setState({showDialog: false})}} />)

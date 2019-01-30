@@ -258,4 +258,65 @@ describe('ODD class operations reducers', () => {
       x => (x.ident === 'model.newClass')
     )[0]).toExist()
   })
+
+  it('should handle DISCARD_CLASS_CHANGES', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON, orig: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_CLASS_DOCS',
+      member: 'att.global',
+      docEl: 'desc',
+      content: 'new desc',
+      index: 0
+    })
+    const state = romajsApp(firstState, {
+      type: 'DISCARD_CLASS_CHANGES',
+      name: 'att.global',
+      classType: 'attributes'
+    })
+    expect(firstState.odd.customization.json.classes.attributes.filter(
+      x => (x.ident === 'att.global')
+    )[0]._changed).toExist()
+    expect(state.odd.customization.json.classes.attributes.filter(
+      x => (x.ident === 'att.global')
+    )[0]._changed).toNotExist()
+  })
+
+  it('should handle REVERT_CLASS_TO_SOURCE', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON, orig: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_CLASS_DOCS',
+      member: 'att.divLike',
+      docEl: 'desc',
+      content: 'new desc',
+      index: 0
+    })
+    const state = romajsApp(firstState, {
+      type: 'REVERT_CLASS_TO_SOURCE',
+      name: 'att.divLike',
+      classType: 'attributes'
+    })
+    expect(firstState.odd.customization.json.classes.attributes.filter(
+      x => (x.ident === 'att.divLike')
+    )[0]._changed).toExist()
+    expect(state.odd.customization.json.classes.attributes.filter(
+      x => (x.ident === 'att.divLike')
+    )[0]._changed).toNotExist()
+    expect(state.odd.customization.json.classes.attributes.filter(
+      x => (x.ident === 'att.divLike')
+    )[0].attributes.filter(a => a.ident === 'org')[0]).toExist()
+  })
 })

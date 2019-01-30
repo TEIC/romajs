@@ -19,8 +19,9 @@ export default class Revert extends Component {
           this.dialog.close()
           break
         case 'revert':
-          console.log('r')
+          this.props.revert(this.props.member)
           this.props.hide()
+          this.dialog.close()
           break
         case 'cancel':
         default:
@@ -42,7 +43,24 @@ export default class Revert extends Component {
   render() {
     let revertOption = null
     if (this.props.isNew) {
-      // noop
+      revertOption = (
+        <div className="mdc-layout-grid__inner romajs-formrow">
+          <div className="mdc-layout-grid__cell--span-9">
+            <label style={{fontWeight: 'bold'}}>Revert to source (delete {this.props.memberLabel})</label>
+            <p className="mdc-typography--body1">
+              Discard <i>all</i> changes to {this.props.memberLabel} and revert
+              to its original definition. <br/>
+              Since this is a newly added item, it will be deleted. <br/>
+              <b>This action cannot be undone!</b>
+            </p>
+          </div>
+          <div className="mdc-layout-grid__cell--span-3">
+            <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="revert">
+              <span className="mdc-button__label">Revert</span>
+            </button>
+          </div>
+        </div>
+      )
     } else {
       revertOption = (
         <div className="mdc-layout-grid__inner romajs-formrow">
@@ -108,5 +126,6 @@ Revert.propTypes = {
   memberLabel: PropTypes.string.isRequired,
   member: PropTypes.string.isRequired,
   isNew: PropTypes.bool.isRequired,
-  discard: PropTypes.func.isRequired
+  discard: PropTypes.func.isRequired,
+  revert: PropTypes.func.isRequired
 }

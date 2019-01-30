@@ -12,7 +12,7 @@ import {
   ADD_ELEMENT_ATTRIBUTE_CLASS, RESTORE_ELEMENT_ATTRIBUTE_CLASS, DELETE_ELEMENT_ATTRIBUTE_CLASS,
   RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT, RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS,
   USE_CLASS_DEFAULT, DELETE_CLASS_ATTRIBUTE_ON_ELEMENT, CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT, UPDATE_CONTENT_MODEL,
-  RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS, CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS, CREATE_NEW_ELEMENT, DISCARD_CHANGES
+  RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS, CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS, CREATE_NEW_ELEMENT, DISCARD_ELEMENT_CHANGES, REVERT_ELEMENT_TO_SOURCE
 } from '../actions/elements'
 import {
   DELETE_ATTRIBUTE_DOCS, UPDATE_ATTRIBUTE_DOCS, SET_NS, SET_USAGE, SET_VALLIST_TYPE, ADD_VALITEM, DELETE_VALITEM,
@@ -20,7 +20,7 @@ import {
 } from '../actions/attributes'
 import { DELETE_CLASS_DOCS, UPDATE_CLASS_DOCS, DELETE_CLASS_ATTRIBUTE, RESTORE_CLASS_ATTRIBUTE, ADD_CLASS_ATTRIBUTE,
   ADD_MEMBERSHIP_TO_CLASS, REMOVE_MEMBERSHIP_TO_CLASS, CHANGE_CLASS_ATTRIBUTE,
-  RESTORE_MEMBERSHIPS_TO_CLASS, CLEAR_MEMBERSHIPS_TO_CLASS, CREATE_NEW_CLASS } from '../actions/classes'
+  RESTORE_MEMBERSHIPS_TO_CLASS, CLEAR_MEMBERSHIPS_TO_CLASS, CREATE_NEW_CLASS, DISCARD_CLASS_CHANGES, REVERT_CLASS_TO_SOURCE } from '../actions/classes'
 import { oddModules } from './modules'
 import { oddElements } from './elements'
 import { oddClasses } from './classes'
@@ -31,7 +31,7 @@ import * as fileSaver from 'file-saver'
 import { routerReducer } from 'react-router-redux'
 import oxgarage from '../utils/oxgarage'
 
-// import { clone } from '../utils/clone'
+import { clone } from '../utils/clone'
 
 export function postToOxGarage(input, endpoint) {
   const fd = new FormData()
@@ -98,7 +98,7 @@ function customization(state = {
       return Object.assign({}, state, {
         isFetching: false,
         json: action.json,
-        orig: action.json,
+        orig: clone(action.json),
         receivedAt: action.receivedAt
       })
     default:
@@ -168,7 +168,8 @@ function odd(state = {}, action) {
     case RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS:
     case CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS:
     case CREATE_NEW_ELEMENT:
-    case DISCARD_CHANGES:
+    case DISCARD_ELEMENT_CHANGES:
+    case REVERT_ELEMENT_TO_SOURCE:
       return Object.assign({}, oddElements(state, action))
     case DELETE_CLASS_DOCS:
     case UPDATE_CLASS_DOCS:
@@ -181,6 +182,8 @@ function odd(state = {}, action) {
     case RESTORE_MEMBERSHIPS_TO_CLASS:
     case CLEAR_MEMBERSHIPS_TO_CLASS:
     case CREATE_NEW_CLASS:
+    case DISCARD_CLASS_CHANGES:
+    case REVERT_CLASS_TO_SOURCE:
       return Object.assign({}, oddClasses(state, action))
     case UPDATE_ATTRIBUTE_DOCS:
     case DELETE_ATTRIBUTE_DOCS:

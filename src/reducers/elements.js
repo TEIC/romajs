@@ -11,7 +11,8 @@ import {
   RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS,
   CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS,
   CREATE_NEW_ELEMENT,
-  DISCARD_CHANGES
+  DISCARD_ELEMENT_CHANGES,
+  REVERT_ELEMENT_TO_SOURCE
 } from '../actions/elements'
 
 function deleteAttribute(m, attribute) {
@@ -462,18 +463,36 @@ export function oddElements(state, action) {
         },
         attributes: [],
         content: [],
-        ns: action.ns
+        ns: action.ns,
+        _isNew: true
       }
       customization.elements.push(newElement)
       return newState
-    case DISCARD_CHANGES:
-      customization.elements = customization.elements.map(m => {
+    case DISCARD_ELEMENT_CHANGES:
+      customization.elements = customization.elements.reduce((acc, m) => {
         if (m.ident === action.name) {
-          return clone(customizationObj.orig.elements.filter(el => el.ident === action.name)[0])
+          const origEl = customizationObj.orig.elements.filter(el => el.ident === action.name)[0]
+          if (origEl) {
+            acc.push(clone(origEl))
+          }
+        } else {
+          acc.push(m)
         }
-        return m
-      })
-      // console.log(customization.elements)
+        return acc
+      }, [])
+      return newState
+    case REVERT_ELEMENT_TO_SOURCE:
+      customization.elements = customization.elements.reduce((acc, m) => {
+        if (m.ident === action.name) {
+          const lEl = localsource.elements.filter(el => el.ident === action.name)[0]
+          if (lEl) {
+            acc.push(clone(lEl))
+          }
+        } else {
+          acc.push(m)
+        }
+        return acc
+      }, [])
       return newState
     default:
       return state

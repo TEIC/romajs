@@ -273,7 +273,7 @@ describe('ODD elements operation reducers', () => {
     )[0]).toExist()
   })
 
-  it('should handle DISCARD_CHANGES', () => {
+  it('should handle DISCARD_ELEMENT_CHANGES', () => {
     customJSON = JSON.parse(customization)
     localJSON = JSON.parse(localsource)
     const firstState = romajsApp({
@@ -290,7 +290,7 @@ describe('ODD elements operation reducers', () => {
       index: 0
     })
     const state = romajsApp(firstState, {
-      type: 'DISCARD_CHANGES',
+      type: 'DISCARD_ELEMENT_CHANGES',
       name: 'title'
     })
     expect(firstState.odd.customization.json.elements.filter(
@@ -299,5 +299,36 @@ describe('ODD elements operation reducers', () => {
     expect(state.odd.customization.json.elements.filter(
       x => (x.ident === 'title')
     )[0]._changed).toNotExist()
+  })
+
+  it('should handle REVERT_ELEMENT_TO_SOURCE', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON, orig: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_ELEMENT_DOCS',
+      element: 'title',
+      docEl: 'desc',
+      content: 'new desc',
+      index: 0
+    })
+    const state = romajsApp(firstState, {
+      type: 'REVERT_ELEMENT_TO_SOURCE',
+      name: 'title'
+    })
+    expect(firstState.odd.customization.json.elements.filter(
+      x => (x.ident === 'title')
+    )[0]._changed).toExist()
+    expect(state.odd.customization.json.elements.filter(
+      x => (x.ident === 'title')
+    )[0]._changed).toNotExist()
+    expect(state.odd.customization.json.elements.filter(
+      x => (x.ident === 'title')
+    )[0].attributes.filter(a => a.ident === 'level')[0]).toExist()
   })
 })

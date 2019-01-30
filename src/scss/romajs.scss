@@ -350,3 +350,9 @@ main {
   margin-bottom: 120px;
   background-color: $romajs-theme-classes
 }
+
+.romajs-newClassForm {
+  .mdc-chip--selected {
+    background-color: $romajs-theme-classes;
+  }
+}

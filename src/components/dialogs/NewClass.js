@@ -40,6 +40,9 @@ export default class NewClass extends Component {
     select.listen('MDCSelect:change', () => {
       this.setState({module: select.value})
     })
+    if (this.props.show) {
+      this.dialog.open()
+    }
   }
 
   componentDidUpdate() {
@@ -53,6 +56,8 @@ export default class NewClass extends Component {
   }
 
   render() {
+    const selectedTypeAttributes = this.state.classType === 'attributes' ? 'mdc-chip--selected' : null
+    const selectedTypeModel = this.state.classType === 'models' ? 'mdc-chip--selected' : null
     return (
       <aside className="mdc-dialog"
         ref="na"
@@ -73,30 +78,18 @@ export default class NewClass extends Component {
                 </div>
                 <div className="mdc-layout-grid__cell--span-9">
                   <div className="mdc-form-field">
-                    <div className="mdc-radio">
-                      <input className="mdc-radio__native-control" type="radio" id="type-atts" name="classType"
-                        checked={this.state.classType === 'attributes'}
-                        onChange={() => {
-                          this.setState({classType: 'attributes'})
-                        }} />
-                      <div className="mdc-radio__background">
-                        <div className="mdc-radio__outer-circle" />
-                        <div className="mdc-radio__inner-circle" />
+                    <div className="mdc-chip-set mdc-chip-set--choice romajs-newClassForm">
+                      <div className={`mdc-chip ${selectedTypeAttributes}`} tabIndex="0" onClick={() => {
+                        this.setState({classType: 'attributes'})
+                      }}>
+                        <div className="mdc-chip__text">Attributes</div>
+                      </div>
+                      <div className={`mdc-chip ${selectedTypeModel}`} tabIndex="1" onClick={() => {
+                        this.setState({classType: 'models'})
+                      }}>
+                        <div className="mdc-chip__text mdc-ripple-upgraded">Model</div>
                       </div>
                     </div>
-                    <label htmlFor="type-atts">Attributes</label>
-                    <div className="mdc-radio">
-                      <input className="mdc-radio__native-control" type="radio" id="type-model" name="classType"
-                        checked={this.state.classType === 'models'}
-                        onChange={() => {
-                          this.setState({classType: 'models'})
-                        }} />
-                      <div className="mdc-radio__background">
-                        <div className="mdc-radio__outer-circle" />
-                        <div className="mdc-radio__inner-circle" />
-                      </div>
-                    </div>
-                    <label htmlFor="type-atts">Model</label>
                   </div>
                 </div>
               </div>

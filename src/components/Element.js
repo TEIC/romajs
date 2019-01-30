@@ -14,7 +14,7 @@ export default class Element extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidUpdate() {
     if (!this.props.success) {
       this.props.navigateTo('/members')
     }
@@ -77,23 +77,21 @@ export default class Element extends Component {
     switch (this.props.section) {
       case 'documentation':
         content = <Documentation member={this.props.element}  memberType="element"/>
-        trail = (<span className="mdl-chip mdl-chip--deletable">
-          <span className="mdl-chip__text">Documentation</span>
+        trail = (<span className="mdc-chip">
+          <div className="mdc-chip__text">Documentation</div>
         </span>)
         break
       case 'attributes':
         content = (<EditAttributes element={this.props.element} attribute={this.props.attribute}/>)
         let editAtt
         if (this.props.attribute) {
-          editAtt = (<span className="mdl-chip mdl-chip--deletable">
-            <span className="mdl-chip__text">@{this.props.attribute}</span>
+          editAtt = (<span className="mdc-chip">
+            <span className="mdc-chip__text">@{this.props.attribute}</span>
           </span>)
         }
-        trail = (<span><span className="mdl-chip mdl-chip--deletable romajs-clickable" onClick={() => this.props.navigateTo(`${this.baseurl}/attributes`)}>
-          <span className="mdl-chip__text">Attributes</span>
-          <span className="mdl-chip__action">
-            {subArrow}
-          </span>
+        trail = (<span><span className="mdc-chip romajs-clickable" onClick={() => this.props.navigateTo(`${this.baseurl}/attributes`)}>
+          <span className="mdc-chip__text">Attributes</span>
+          <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">{subArrow}</i>
         </span>
         {editAtt}</span>)
         break
@@ -102,20 +100,20 @@ export default class Element extends Component {
           element={this.props.element}
           deleteElementModelClass={this.props.deleteElementModelClass}
           clearPicker={this.props.clearPicker} />)
-        trail = (<span className="mdl-chip mdl-chip--deletable">
-          <span className="mdl-chip__text">Content</span>
+        trail = (<span className="mdc-chip">
+          <span className="mdc-chip__text">Content</span>
         </span>)
         break
       case 'constraints':
         content = (<h1 className="mdc-typography--headline" style={{color: '#225688'}}>Coming soon.</h1>)
-        trail = (<span className="mdl-chip mdl-chip--deletable">
-          <span className="mdl-chip__text">Contraints</span>
+        trail = (<span className="mdc-chip">
+          <span className="mdc-chip__text">Contraints</span>
         </span>)
         break
       case 'processing':
         content = (<h1 className="mdc-typography--headline" style={{color: '#225688'}}>Coming soon.</h1>)
-        trail = (<span className="mdl-chip mdl-chip--deletable">
-          <span className="mdl-chip__text">Processing Model</span>
+        trail = (<span className="mdc-chip">
+          <span className="mdc-chip__text">Processing Model</span>
         </span>)
         break
       default:
@@ -123,26 +121,22 @@ export default class Element extends Component {
     }
     return [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
       <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-        <span className="mdl-chip mdl-chip--deletable romajs-clickable" onClick={this.goBack}>
-          <span className="mdl-chip__text">Members</span>
-          <span className="mdl-chip__action">
-            <i className="material-icons">keyboard_arrow_left</i>
-          </span>
+        <span className="mdc-chip romajs-clickable" onClick={this.goBack}>
+          <span className="mdc-chip__text">Members</span>
+          <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">keyboard_arrow_left</i>
         </span>
-        <span className="mdl-chip mdl-chip--deletable romajs-clickable" onClick={() => this.props.navigateTo(this.baseurl)}>
-          <span className="mdl-chip__text">&lt;{this.props.element.ident}&gt;</span>
-          <span className="mdl-chip__action">
-            {arrow}
-          </span>
+        <span className="mdc-chip romajs-clickable" onClick={() => this.props.navigateTo(this.baseurl)}>
+          <span className="mdc-chip__text">&lt;{this.props.element.ident}&gt;</span>
+          <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">{arrow}</i>
         </span>
         {trail}
       </section>
       <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
-        <span className="mdl-chip mdl-chip--deletable romajs-clickable" onClick={() => {
+        <span className="mdc-chip romajs-clickable" onClick={() => {
           this.setState({showRevertDialog: true})
         }}>
-          <span className="mdl-chip__text">Revert changes</span>
-          <button className="mdl-chip__action material-icons">undo</button>
+          <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">undo</i>
+          <span className="mdc-chip__text">Revert changes</span>
         </span>
       </section>
     </div>,
@@ -154,8 +148,8 @@ export default class Element extends Component {
       </div>
     </main>,
     <RevertDialog key="rd" show={this.state.showRevertDialog} hide={() => {this.setState({showRevertDialog: false})}}
-      memberLabel={`<${this.props.element.ident}>`} member={this.props.element.ident} isNew={false}
-      discard={this.props.discardChanges}/>
+      memberLabel={`<${this.props.element.ident}>`} member={this.props.element.ident} isNew={this.props.element._isNew || false}
+      discard={this.props.discardChanges} revert={this.props.revertToSource} />
     ]
   }
 }
@@ -168,5 +162,6 @@ Element.propTypes = {
   navigateTo: PropTypes.func.isRequired,
   clearPicker: PropTypes.func.isRequired,
   deleteElementModelClass: PropTypes.func.isRequired,
-  discardChanges: PropTypes.func.isRequired
+  discardChanges: PropTypes.func.isRequired,
+  revertToSource: PropTypes.func.isRequired
 }

@@ -40,6 +40,9 @@ export default class NewElement extends Component {
     select.listen('MDCSelect:change', () => {
       this.setState({module: select.value})
     })
+    if (this.props.show) {
+      this.dialog.open()
+    }
   }
 
   componentDidUpdate() {

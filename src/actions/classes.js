@@ -9,6 +9,8 @@ export const REMOVE_MEMBERSHIP_TO_CLASS = 'REMOVE_MEMBERSHIP_TO_CLASS'
 export const RESTORE_MEMBERSHIPS_TO_CLASS = 'RESTORE_MEMBERSHIPS_TO_CLASS'
 export const CLEAR_MEMBERSHIPS_TO_CLASS = 'CLEAR_MEMBERSHIPS_TO_CLASS'
 export const CREATE_NEW_CLASS = 'CREATE_NEW_CLASS'
+export const DISCARD_CLASS_CHANGES = 'DISCARD_CLASS_CHANGES'
+export const REVERT_CLASS_TO_SOURCE = 'REVERT_CLASS_TO_SOURCE'
 
 export function updateClassDocs(member, docEl, content, index) {
   return {
@@ -100,6 +102,22 @@ export function createNewClass(name, module, classType) {
     type: CREATE_NEW_CLASS,
     name,
     module,
+    classType
+  }
+}
+
+export function discardChanges(name, classType) {
+  return {
+    type: DISCARD_CLASS_CHANGES,
+    name,
+    classType
+  }
+}
+
+export function revertToSource(name, classType) {
+  return {
+    type: REVERT_CLASS_TO_SOURCE,
+    name,
     classType
   }
 }

@@ -18,7 +18,8 @@ export const UPDATE_CONTENT_MODEL = 'UPDATE_CONTENT_MODEL'
 export const RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS = 'RESTORE_ELEMENT_MEMBERSHIPS_TO_CLASS'
 export const CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS = 'CLEAR_ELEMENT_MEMBERSHIPS_TO_CLASS'
 export const CREATE_NEW_ELEMENT = 'CREATE_NEW_ELEMENT'
-export const DISCARD_CHANGES = 'DISCARD_CHANGES'
+export const DISCARD_ELEMENT_CHANGES = 'DISCARD_ELEMENT_CHANGES'
+export const REVERT_ELEMENT_TO_SOURCE = 'REVERT_ELEMENT_TO_SOURCE'
 
 export function updateContentModel(element, content) {
   return {
@@ -190,7 +191,14 @@ export function createNewElement(name, module, ns) {
 
 export function discardChanges(name) {
   return {
-    type: DISCARD_CHANGES,
+    type: DISCARD_ELEMENT_CHANGES,
+    name
+  }
+}
+
+export function revertToSource(name) {
+  return {
+    type: REVERT_ELEMENT_TO_SOURCE,
     name
   }
 }
