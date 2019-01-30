@@ -16,11 +16,12 @@ export default class Module extends Component {
     const iconClass = this.props.selected ? 'romajs-color-no' : 'romajs-color-yes'
     const iconType = this.props.selected ? 'cancel' : 'add_circle'
     return (
-      <span>
-        <button type="button" className="mdl-chip__action"
-          onClick={()=>this.props.toggleModule(this.props.ident, this.props.selected)}>
-          <i className={'material-icons ' + iconClass}>{iconType}</i>
-        </button> ({ident})</span>
+      <div className="mdc-chip" onClick={() => {
+        this.props.toggleModule(this.props.ident, this.props.selected)
+      }}>
+        <i className={`material-icons mdc-chip__icon mdc-chip__icon--leading ${iconClass}`}>{iconType}</i>
+        <div className="mdc-chip__text"> ({ident})</div>
+      </div>
     )
   }
 }

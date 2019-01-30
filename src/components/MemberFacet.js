@@ -22,12 +22,12 @@ export default class MembersFacet extends Component {
       activeClass = 'romajs-active'
     }
     return (
-      <span className={`mdl-chip mdl-chip--deletable ${activeClass}`}>
-        <span className="mdl-chip__text">{this.props.label}</span>
-        <button type="button" className="mdl-chip__action" onClick={() => {
-          this.toggleMemberTypeVisibility(this.props.type)
-        }}><i className="material-icons">{ico}</i></button>
-      </span>
+      <div className={`mdc-chip ${activeClass}`} onClick={() => {
+        this.toggleMemberTypeVisibility(this.props.type)
+      }}>
+        <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">{ico}</i>
+        <div className="mdc-chip__text">{this.props.label}</div>
+      </div>
     )
   }
 }

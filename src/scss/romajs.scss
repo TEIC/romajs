@@ -9,8 +9,6 @@ $romajs-theme-macros: #2db283;
 $romajs-theme-yes: #1b8c64;
 $romajs-theme-no: #802900;
 
-@import "material-design-lite/src/chip/_chip";
-
 @import "@material/theme/mdc-theme";
 @import "@material/button/mdc-button";
 @import "@material/card/mdc-card";
@@ -18,6 +16,7 @@ $romajs-theme-no: #802900;
 @import "@material/dialog/mdc-dialog";
 @import "@material/elevation/mdc-elevation";
 @import "@material/fab/mdc-fab";
+@import "@material/chips/mdc-chips";
 // @import "@material/form-field/mdc-form-field";
 // @import "@material/icon-toggle/mdc-icon-toggle";
 @import "@material/layout-grid/mdc-layout-grid";
@@ -120,7 +119,7 @@ main {
   top: auto;
   z-index: 5;
 
-  .mdl-chip {
+  .mdc-chip {
     margin-right: 10px;
   }
 
