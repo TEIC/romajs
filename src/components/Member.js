@@ -20,9 +20,13 @@ export default class Member extends Component {
     let location = ''
     let subType = ''
     switch (this.props.type) {
-      case 'classes' :
+      case 'classes':
         location = 'class'
         subType = this.props.attributes ? 'attributes' : 'models'
+        break
+      case 'datatypes':
+        location = 'datatype'
+        subType = 'datatype'
         break
       default:
         location = 'element'

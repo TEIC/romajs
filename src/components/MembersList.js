@@ -60,6 +60,8 @@ export default class MembersList extends Component {
             visibleMemberTypes={this.props.visibleMemberTypes} type="attclasses" label="Attribute Classes" />
           <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
             visibleMemberTypes={this.props.visibleMemberTypes} type="modelclasses" label="Model Classes" />
+          <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
+            visibleMemberTypes={this.props.visibleMemberTypes} type="datatypes" label="Datatypes" />
         </section>
         <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
           <FilterSearch/>

@@ -123,7 +123,7 @@ describe('Class actions (lol)', () => {
     })
   })
 
-  it('discardChanges should discard any changes to this element', () =>{
+  it('discardChanges should discard any changes to this class', () =>{
     expect(actions.discardChanges('att.global', 'attributes')).toEqual({
       type: 'DISCARD_CLASS_CHANGES',
       name: 'att.global',
@@ -131,7 +131,7 @@ describe('Class actions (lol)', () => {
     })
   })
 
-  it('revertToSource should discard any changes to this element', () =>{
+  it('revertToSource should discard any changes to this class', () =>{
     expect(actions.revertToSource('model.pLike', 'models')).toEqual({
       type: 'REVERT_CLASS_TO_SOURCE',
       name: 'model.pLike',

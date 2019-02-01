@@ -334,6 +334,10 @@ main {
   }
 }
 
+.romajs-dtbackground {
+  background-color: $romajs-theme-datatypes !important;
+}
+
 // FAB
 
 .romajs-fab--absolute {
@@ -348,7 +352,12 @@ main {
 
 .romajs-fab--secondary-cl {
   margin-bottom: 120px;
-  background-color: $romajs-theme-classes
+  background-color: $romajs-theme-classes;
+}
+
+.romajs-fab--secondary-dt {
+  margin-bottom: 180px;
+  background-color: $romajs-theme-datatypes;
 }
 
 .romajs-newClassForm {

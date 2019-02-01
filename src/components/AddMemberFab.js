@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import CreateNewElement from '../containers/CreateNewElement'
 import CreateNewClass from '../containers/CreateNewClass'
+import CreateNewDatatype from '../containers/CreateNewDatatype'
 
 export default class AddMemberFab extends Component {
   constructor(props) {
@@ -31,6 +32,10 @@ export default class AddMemberFab extends Component {
         dialog = (<CreateNewClass
           show={this.state.showDialog} hide={() => {this.setState({showDialog: false})}} />)
         break
+      case 'datatype':
+        dialog = (<CreateNewDatatype
+          show={this.state.showDialog} hide={() => {this.setState({showDialog: false})}} />)
+        break
       default:
         // noop
     }
@@ -44,6 +49,10 @@ export default class AddMemberFab extends Component {
         (<button key="cl" className="mdc-fab mdc-fab--extended romajs-fab--absolute romajs-fab--secondary-cl"
           onClick={() => {this.setState({type: 'class', showDialog: true, expanded: false})}}>
           <span className="mdc-fab__label">Class</span>
+        </button>),
+        (<button key="dt" className="mdc-fab mdc-fab--extended romajs-fab--absolute romajs-fab--secondary-dt"
+          onClick={() => {this.setState({type: 'datatype', showDialog: true, expanded: false})}}>
+          <span className="mdc-fab__label">Datatype</span>
         </button>),
       ]
     }

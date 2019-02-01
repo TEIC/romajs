@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import Desc from '../components/Desc'
 import { deleteElementDocs, updateElementDocs } from '../actions/elements'
 import { deleteClassDocs, updateClassDocs } from '../actions/classes'
+import { deleteDatatypeDocs, updateDatatypeDocs } from '../actions/datatypes'
 
 const mapStateToProps = (state, ownProps) => {
   // TODO: parametrize language
@@ -22,6 +23,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       return {
         update: (member, content, index) => {dispatch(updateClassDocs(member, 'desc', content, index))},
         delete: (member, index) => dispatch(deleteClassDocs(member, 'desc', index))
+      }
+    case 'datatype':
+      return {
+        update: (member, content, index) => {dispatch(updateDatatypeDocs(member, 'desc', content, index))},
+        delete: (member, index) => dispatch(deleteDatatypeDocs(member, 'desc', index))
       }
     default:
       return {

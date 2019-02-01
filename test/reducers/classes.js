@@ -31,7 +31,7 @@ describe('ODD class operations reducers', () => {
     )[0].desc[0]).toEqual('new desc')
   })
 
-  it('should handle DELETE_CLASS_DOCS (altIdent)', () => {
+  it('should handle DELETE_CLASS_DOCS (desc)', () => {
     customJSON = JSON.parse(customization)
     localJSON = JSON.parse(localsource)
     const state = romajsApp({
@@ -43,14 +43,14 @@ describe('ODD class operations reducers', () => {
     }, {
       type: 'DELETE_CLASS_DOCS',
       member: 'att.global',
-      docEl: 'altIdent',
+      docEl: 'desc',
       index: 0
     })
     const allClasses = state.odd.customization.json.classes.attributes
       .concat(state.odd.customization.json.classes.models)
     expect(allClasses.filter(
       x => (x.ident === 'att.global')
-    )[0].altIdent[0]).toNotExist
+    )[0].desc[0]).toNotExist
   })
 
   it('should handle DELETE_CLASS_ATTRIBUTE', () => {

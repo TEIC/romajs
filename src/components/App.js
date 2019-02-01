@@ -6,6 +6,7 @@ import HomePage from '../containers/HomePage'
 import Members from '../containers/Members'
 import ElementPage from '../containers/ElementPage'
 import ClassPage from '../containers/ClassPage'
+import DatatypePage from '../containers/DatatypePage'
 import ErrorReportingDialog from '../containers/ErrorReportingDialog'
 
 class App extends Component {
@@ -35,6 +36,8 @@ class App extends Component {
         <Route exact path="/class/:cl" component={ClassPage} />
         <Route exact path="/class/:cl/:section" component={ClassPage} />
         <Route exact path="/class/:cl/attributes/:attr" component={ClassPage} />
+        <Route exact path="/datatype/:cl" component={DatatypePage} />
+        <Route exact path="/datatype/:cl/:section" component={DatatypePage} />
       </div>
       <ErrorReportingDialog show={this.state.showErrorDialog} error={this.state.errorMsg}
         hide={() => {this.setState({showErrorDialog: false})}}/>

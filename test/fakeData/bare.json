@@ -2,7 +2,7 @@
   { "title" : "TEI Absolutely Bare",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2019-01-22T21:58:39Z",
+    "date" : "2019-02-01T18:55:39Z",
     "modules" : 
     [ 
       { "ident" : "core",
@@ -3290,6 +3290,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values expressing a degree of certainty.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values expressing a degree of certainty.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.count",
@@ -3299,6 +3301,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values used for a non-negative\ninteger value used as a count.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used for a non-negative\ninteger value used as a count.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.duration.iso",
@@ -3308,6 +3312,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-09\" xml:lang=\"en\">defines the range of attribute values available for representation of a duration in time\n    using ISO 8601 standard formats<\/desc>" ],
         "shortDesc" : "defines the range of attribute values available for representation of a duration in time\n    using ISO 8601 standard formats",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.duration.w3c",
@@ -3317,6 +3323,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values available for representation of a duration in time using W3C datatypes.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values available for representation of a duration in time using W3C datatypes.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.enumerated",
@@ -3326,6 +3334,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-22\" xml:lang=\"en\">defines the range of attribute values expressed as a single XML name taken from a list of\n    documented possibilities.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values expressed as a single XML name taken from a list of\n    documented possibilities.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.language",
@@ -3335,6 +3345,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values used to identify a particular combination of human\n    language and writing system.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used to identify a particular combination of human\n    language and writing system.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.name",
@@ -3344,6 +3356,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values expressed as an XML Name.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values expressed as an XML Name.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.numeric",
@@ -3353,6 +3367,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values used for numeric values.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used for numeric values.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.outputMeasurement",
@@ -3362,6 +3378,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-03-26\" xml:lang=\"en\">defines a range of values for use in specifying the size of an object that is intended for\n    display.<\/desc>" ],
         "shortDesc" : "defines a range of values for use in specifying the size of an object that is intended for\n    display.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.pattern",
@@ -3371,6 +3389,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines attribute values which\n    are expressed as a regular expression.<\/desc>" ],
         "shortDesc" : "defines attribute values which\n    are expressed as a regular expression.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.pointer",
@@ -3380,6 +3400,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-01-19\" xml:lang=\"en\">defines the range of attribute values used to provide a single\n  URI, absolute or relative, pointing to some other\nresource, either within the current document or elsewhere.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used to provide a single\n  URI, absolute or relative, pointing to some other\nresource, either within the current document or elsewhere.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.probCert",
@@ -3389,6 +3411,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines a range of attribute values which can be expressed either as a numeric probability or as a coded certainty value.<\/desc>" ],
         "shortDesc" : "defines a range of attribute values which can be expressed either as a numeric probability or as a coded certainty value.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.probability",
@@ -3398,6 +3422,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values expressing a probability.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values expressing a probability.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.replacement",
@@ -3407,6 +3433,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-04-14\" xml:lang=\"en\">defines attribute values which contain a replacement template.<\/desc>" ],
         "shortDesc" : "defines attribute values which contain a replacement template.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.temporal.w3c",
@@ -3416,6 +3444,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-08\" xml:lang=\"en\">defines the range of attribute values expressing a temporal\n  expression such as a date, a time, or a combination of them, that\n  conform to the W3C <title ref=\"#XSD2\">XML Schema Part 2: Datatypes Second Edition<\/title>\n  specification.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values expressing a temporal\n  expression such as a date, a time, or a combination of them, that\n  conform to the W3C XML Schema Part 2: Datatypes Second Edition\n  specification.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.text",
@@ -3425,6 +3455,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-06-17\" xml:lang=\"en\">defines the range of attribute values used to express some\n  kind of identifying string as a single sequence\n  of unicode characters possibly including whitespace.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used to express some\n  kind of identifying string as a single sequence\n  of unicode characters possibly including whitespace.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.truthValue",
@@ -3434,6 +3466,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-22\" xml:lang=\"en\">defines the range of attribute values used to express a truth\nvalue.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used to express a truth\nvalue.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.versionNumber",
@@ -3443,6 +3477,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-04-14\" xml:lang=\"en\">defines the range of attribute values used for version numbers.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used for version numbers.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.word",
@@ -3452,6 +3488,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-22\" xml:lang=\"en\">defines the range of attribute values expressed as a single\n  word or token.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values expressed as a single\n  word or token.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] },
       
       { "ident" : "teidata.xTruthValue",
@@ -3461,7 +3499,9 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values used to express a truth value which may be unknown.<\/desc>" ],
         "shortDesc" : "(extended truth value) defines the range of attribute values used to express a truth value which may be unknown.",
         "gloss" : 
-        [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-04\" xml:lang=\"en\">extended truth value<\/gloss>" ] },
+        [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-04\" xml:lang=\"en\">extended truth value<\/gloss>" ],
+        "altIdent" : 
+        [  ] },
       
       { "ident" : "teidata.xpath",
         "module" : "tei",
@@ -3470,6 +3510,8 @@
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-04-14\" xml:lang=\"en\">defines attribute values which contain an XPath  expression.<\/desc>" ],
         "shortDesc" : "defines attribute values which contain an XPath  expression.",
         "gloss" : 
+        [  ],
+        "altIdent" : 
         [  ] } ],
     "macroRefs" : 
     [  ] }
