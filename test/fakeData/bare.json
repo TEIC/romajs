@@ -2,7 +2,7 @@
   { "title" : "TEI Absolutely Bare",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2019-02-01T18:55:39Z",
+    "date" : "2019-02-14T22:25:27Z",
     "modules" : 
     [ 
       { "ident" : "core",
@@ -840,9 +840,7 @@
             { "min" : "1",
               "max" : "1",
               "dataRef" : 
-              { "key" : "teidata.enumerated",
-                "dataFacet" : 
-                [  ] } },
+              { "key" : "teidata.enumerated" } },
             "valList" : 
             { "type" : "",
               "valItem" : 
@@ -1248,9 +1246,7 @@
             { "min" : "1",
               "max" : "1",
               "dataRef" : 
-              { "key" : "teidata.enumerated",
-                "dataFacet" : 
-                [  ] } },
+              { "key" : "teidata.enumerated" } },
             "valList" : 
             { "type" : "",
               "valItem" : 
@@ -2357,9 +2353,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.text",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "key" : "teidata.text" } } },
             
             { "onElement" : false,
               "ident" : "ref",
@@ -2379,9 +2373,7 @@
               { "min" : "1",
                 "max" : "unbounded",
                 "dataRef" : 
-                { "key" : "teidata.pointer",
-                  "dataFacet" : 
-                  [  ] } } } ] },
+                { "key" : "teidata.pointer" } } } ] },
         
         { "ident" : "att.datable",
           "type" : "classSpec",
@@ -2420,9 +2412,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.pointer",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "key" : "teidata.pointer" } } },
             
             { "onElement" : false,
               "ident" : "period",
@@ -2442,9 +2432,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.pointer",
-                  "dataFacet" : 
-                  [  ] } } } ] },
+                { "key" : "teidata.pointer" } } } ] },
         
         { "ident" : "att.datable.w3c",
           "type" : "classSpec",
@@ -2476,9 +2464,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.temporal.w3c",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "key" : "teidata.temporal.w3c" } } },
             
             { "onElement" : false,
               "ident" : "notBefore",
@@ -2498,9 +2484,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.temporal.w3c",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "key" : "teidata.temporal.w3c" } } },
             
             { "onElement" : false,
               "ident" : "notAfter",
@@ -2520,9 +2504,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.temporal.w3c",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "key" : "teidata.temporal.w3c" } } },
             
             { "onElement" : false,
               "ident" : "from",
@@ -2542,9 +2524,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.temporal.w3c",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "key" : "teidata.temporal.w3c" } } },
             
             { "onElement" : false,
               "ident" : "to",
@@ -2564,9 +2544,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.temporal.w3c",
-                  "dataFacet" : 
-                  [  ] } } } ] },
+                { "key" : "teidata.temporal.w3c" } } } ] },
         
         { "ident" : "att.declarable",
           "type" : "classSpec",
@@ -2598,9 +2576,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.truthValue",
-                  "dataFacet" : 
-                  [  ] } },
+                { "key" : "teidata.truthValue" } },
               "valList" : 
               { "type" : "",
                 "valItem" : 
@@ -2699,9 +2675,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "name" : "ID",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "name" : "ID" } } },
             
             { "onElement" : false,
               "ident" : "n",
@@ -2721,9 +2695,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.text",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "key" : "teidata.text" } } },
             
             { "onElement" : false,
               "ident" : "xml:lang",
@@ -2743,9 +2715,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.language",
-                  "dataFacet" : 
-                  [  ] } } } ] },
+                { "key" : "teidata.language" } } } ] },
         
         { "ident" : "att.global.rendition",
           "type" : "classSpec",
@@ -2784,9 +2754,7 @@
               { "min" : "1",
                 "max" : "unbounded",
                 "dataRef" : 
-                { "key" : "teidata.word",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "key" : "teidata.word" } } },
             
             { "onElement" : false,
               "ident" : "style",
@@ -2806,9 +2774,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.text",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "key" : "teidata.text" } } },
             
             { "onElement" : false,
               "ident" : "rendition",
@@ -2828,9 +2794,7 @@
               { "min" : "1",
                 "max" : "unbounded",
                 "dataRef" : 
-                { "key" : "teidata.pointer",
-                  "dataFacet" : 
-                  [  ] } } } ] },
+                { "key" : "teidata.pointer" } } } ] },
         
         { "ident" : "att.global.responsibility",
           "type" : "classSpec",
@@ -2869,9 +2833,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.probCert",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "key" : "teidata.probCert" } } },
             
             { "onElement" : false,
               "ident" : "resp",
@@ -2891,9 +2853,7 @@
               { "min" : "1",
                 "max" : "unbounded",
                 "dataRef" : 
-                { "key" : "teidata.pointer",
-                  "dataFacet" : 
-                  [  ] } } } ] },
+                { "key" : "teidata.pointer" } } } ] },
         
         { "ident" : "att.global.source",
           "type" : "classSpec",
@@ -2925,9 +2885,7 @@
               { "min" : "1",
                 "max" : "unbounded",
                 "dataRef" : 
-                { "key" : "teidata.pointer",
-                  "dataFacet" : 
-                  [  ] } } } ] },
+                { "key" : "teidata.pointer" } } } ] },
         
         { "ident" : "att.naming",
           "type" : "classSpec",
@@ -2966,9 +2924,7 @@
               { "min" : "1",
                 "max" : "unbounded",
                 "dataRef" : 
-                { "key" : "teidata.enumerated",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "key" : "teidata.enumerated" } } },
             
             { "onElement" : false,
               "ident" : "nymRef",
@@ -2988,9 +2944,7 @@
               { "min" : "1",
                 "max" : "unbounded",
                 "dataRef" : 
-                { "key" : "teidata.pointer",
-                  "dataFacet" : 
-                  [  ] } } } ] },
+                { "key" : "teidata.pointer" } } } ] },
         
         { "ident" : "att.placement",
           "type" : "classSpec",
@@ -3022,9 +2976,7 @@
               { "min" : "1",
                 "max" : "unbounded",
                 "dataRef" : 
-                { "key" : "teidata.enumerated",
-                  "dataFacet" : 
-                  [  ] } },
+                { "key" : "teidata.enumerated" } },
               "valList" : 
               { "type" : "",
                 "valItem" : 
@@ -3149,9 +3101,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.word",
-                  "dataFacet" : 
-                  [  ] } } } ] },
+                { "key" : "teidata.word" } } } ] },
         
         { "ident" : "att.typed",
           "type" : "classSpec",
@@ -3183,9 +3133,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.enumerated",
-                  "dataFacet" : 
-                  [  ] } } },
+                { "key" : "teidata.enumerated" } } },
             
             { "onElement" : false,
               "ident" : "subtype",
@@ -3205,9 +3153,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.enumerated",
-                  "dataFacet" : 
-                  [  ] } } } ] },
+                { "key" : "teidata.enumerated" } } } ] },
         
         { "ident" : "att.written",
           "type" : "classSpec",
@@ -3246,9 +3192,7 @@
               { "min" : "1",
                 "max" : "1",
                 "dataRef" : 
-                { "key" : "teidata.pointer",
-                  "dataFacet" : 
-                  [  ] } } } ] } ] },
+                { "key" : "teidata.pointer" } } } ] } ] },
     "elementRefs" : 
     [  ],
     "classRefs" : 
@@ -3284,234 +3228,396 @@
     "datatypes" : 
     [ 
       { "ident" : "teidata.certainty",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values expressing a degree of certainty.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values expressing a degree of certainty.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "valList",
+            "valItem" : 
+            [ 
+              { "ident" : "high" },
+              
+              { "ident" : "medium" },
+              
+              { "ident" : "low" },
+              
+              { "ident" : "unknown" } ] } ] },
       
       { "ident" : "teidata.count",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values used for a non-negative\ninteger value used as a count.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used for a non-negative\ninteger value used as a count.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "name" : "nonNegativeInteger" } ] },
       
       { "ident" : "teidata.duration.iso",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-09\" xml:lang=\"en\">defines the range of attribute values available for representation of a duration in time\n    using ISO 8601 standard formats<\/desc>" ],
         "shortDesc" : "defines the range of attribute values available for representation of a duration in time\n    using ISO 8601 standard formats",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "name" : "token",
+            "restriction" : "[0-9.,DHMPRSTWYZ\/:+\\-]+" } ] },
       
       { "ident" : "teidata.duration.w3c",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values available for representation of a duration in time using W3C datatypes.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values available for representation of a duration in time using W3C datatypes.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "name" : "duration" } ] },
       
       { "ident" : "teidata.enumerated",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-22\" xml:lang=\"en\">defines the range of attribute values expressed as a single XML name taken from a list of\n    documented possibilities.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values expressed as a single XML name taken from a list of\n    documented possibilities.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "key" : "teidata.word" } ] },
       
       { "ident" : "teidata.language",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values used to identify a particular combination of human\n    language and writing system.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used to identify a particular combination of human\n    language and writing system.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "alternate",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "dataRef",
+                "name" : "language" },
+              
+              { "type" : "valList",
+                "valItem" : 
+                [ 
+                  { "ident" : "" } ] } ] } ] },
       
       { "ident" : "teidata.name",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values expressed as an XML Name.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values expressed as an XML Name.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "name" : "Name" } ] },
       
       { "ident" : "teidata.numeric",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values used for numeric values.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used for numeric values.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "alternate",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "dataRef",
+                "name" : "double" },
+              
+              { "type" : "dataRef",
+                "name" : "token",
+                "restriction" : "(\\-?[\\d]+\/\\-?[\\d]+)" },
+              
+              { "type" : "dataRef",
+                "name" : "decimal" } ] } ] },
       
       { "ident" : "teidata.outputMeasurement",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-03-26\" xml:lang=\"en\">defines a range of values for use in specifying the size of an object that is intended for\n    display.<\/desc>" ],
         "shortDesc" : "defines a range of values for use in specifying the size of an object that is intended for\n    display.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "name" : "token",
+            "restriction" : "[\\-+]?\\d+(\\.\\d+)?(%|cm|mm|in|pt|pc|px|em|ex|gd|rem|vw|vh|vm)" } ] },
       
       { "ident" : "teidata.pattern",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines attribute values which\n    are expressed as a regular expression.<\/desc>" ],
         "shortDesc" : "defines attribute values which\n    are expressed as a regular expression.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "name" : "token" } ] },
       
       { "ident" : "teidata.pointer",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-01-19\" xml:lang=\"en\">defines the range of attribute values used to provide a single\n  URI, absolute or relative, pointing to some other\nresource, either within the current document or elsewhere.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used to provide a single\n  URI, absolute or relative, pointing to some other\nresource, either within the current document or elsewhere.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "name" : "anyURI" } ] },
       
       { "ident" : "teidata.probCert",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines a range of attribute values which can be expressed either as a numeric probability or as a coded certainty value.<\/desc>" ],
         "shortDesc" : "defines a range of attribute values which can be expressed either as a numeric probability or as a coded certainty value.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "alternate",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "dataRef",
+                "key" : "teidata.probability" },
+              
+              { "type" : "dataRef",
+                "key" : "teidata.certainty" } ] } ] },
       
       { "ident" : "teidata.probability",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values expressing a probability.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values expressing a probability.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "name" : "double" } ] },
       
       { "ident" : "teidata.replacement",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-04-14\" xml:lang=\"en\">defines attribute values which contain a replacement template.<\/desc>" ],
         "shortDesc" : "defines attribute values which contain a replacement template.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "textNode" } ] },
       
       { "ident" : "teidata.temporal.w3c",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-04-08\" xml:lang=\"en\">defines the range of attribute values expressing a temporal\n  expression such as a date, a time, or a combination of them, that\n  conform to the W3C <title ref=\"#XSD2\">XML Schema Part 2: Datatypes Second Edition<\/title>\n  specification.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values expressing a temporal\n  expression such as a date, a time, or a combination of them, that\n  conform to the W3C XML Schema Part 2: Datatypes Second Edition\n  specification.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "alternate",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "dataRef",
+                "name" : "date" },
+              
+              { "type" : "dataRef",
+                "name" : "gYear" },
+              
+              { "type" : "dataRef",
+                "name" : "gMonth" },
+              
+              { "type" : "dataRef",
+                "name" : "gDay" },
+              
+              { "type" : "dataRef",
+                "name" : "gYearMonth" },
+              
+              { "type" : "dataRef",
+                "name" : "gMonthDay" },
+              
+              { "type" : "dataRef",
+                "name" : "time" },
+              
+              { "type" : "dataRef",
+                "name" : "dateTime" } ] } ] },
       
       { "ident" : "teidata.text",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2012-06-17\" xml:lang=\"en\">defines the range of attribute values used to express some\n  kind of identifying string as a single sequence\n  of unicode characters possibly including whitespace.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used to express some\n  kind of identifying string as a single sequence\n  of unicode characters possibly including whitespace.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "name" : "string" } ] },
       
       { "ident" : "teidata.truthValue",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-22\" xml:lang=\"en\">defines the range of attribute values used to express a truth\nvalue.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used to express a truth\nvalue.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "name" : "boolean" } ] },
       
       { "ident" : "teidata.versionNumber",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-04-14\" xml:lang=\"en\">defines the range of attribute values used for version numbers.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values used for version numbers.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "name" : "token",
+            "restriction" : "[\\d]+[a-z]*[\\d]*(\\.[\\d]+[a-z]*[\\d]*){0,3}" } ] },
       
       { "ident" : "teidata.word",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-22\" xml:lang=\"en\">defines the range of attribute values expressed as a single\n  word or token.<\/desc>" ],
         "shortDesc" : "defines the range of attribute values expressed as a single\n  word or token.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "dataRef",
+            "name" : "token",
+            "restriction" : "(\\p{L}|\\p{N}|\\p{P}|\\p{S})+" } ] },
       
       { "ident" : "teidata.xTruthValue",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-10-18\" xml:lang=\"en\">defines the range of attribute values used to express a truth value which may be unknown.<\/desc>" ],
         "shortDesc" : "(extended truth value) defines the range of attribute values used to express a truth value which may be unknown.",
         "gloss" : 
         [ "<gloss xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2007-07-04\" xml:lang=\"en\">extended truth value<\/gloss>" ],
         "altIdent" : 
-        [  ] },
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "alternate",
+            "minOccurs" : "1",
+            "maxOccurs" : "1",
+            "content" : 
+            [ 
+              { "type" : "dataRef",
+                "name" : "boolean" },
+              
+              { "type" : "valList",
+                "valItem" : 
+                [ 
+                  { "ident" : "unknown" },
+                  
+                  { "ident" : "inapplicable" } ] } ] } ] },
       
       { "ident" : "teidata.xpath",
+        "type" : "dataSpec",
         "module" : "tei",
-        "type" : "",
         "desc" : 
         [ "<desc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" versionDate=\"2013-04-14\" xml:lang=\"en\">defines attribute values which contain an XPath  expression.<\/desc>" ],
         "shortDesc" : "defines attribute values which contain an XPath  expression.",
         "gloss" : 
         [  ],
         "altIdent" : 
-        [  ] } ],
+        [  ],
+        "content" : 
+        [ 
+          { "type" : "textNode" } ] } ],
     "macroRefs" : 
     [  ] }

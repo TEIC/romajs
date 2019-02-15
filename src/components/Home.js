@@ -31,21 +31,21 @@ export default class Home extends Component {
           'TEI for Journal of the TEI'
         ],
         urls: [
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_all.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_minimal.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_bare.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_simplePrint.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_lite.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_tite.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_corpus.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_ms.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_drama.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_speech.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_odds.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_svg.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_math.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_xinclude.odd',
-          'http://www.tei-c.org/Vault/P5/current/xml/tei/custom/odd/tei_jtei.odd'
+          'http://mith.us/romajs/fakeData/tei_all.odd',
+          'http://mith.us/romajs/fakeData/tei_minimal.odd',
+          'http://mith.us/romajs/fakeData/tei_bare.odd',
+          'http://mith.us/romajs/fakeData/tei_simplePrint.odd',
+          'http://mith.us/romajs/fakeData/tei_lite.odd',
+          'http://mith.us/romajs/fakeData/tei_tite.odd',
+          'http://mith.us/romajs/fakeData/tei_corpus.odd',
+          'http://mith.us/romajs/fakeData/tei_ms.odd',
+          'http://mith.us/romajs/fakeData/tei_drama.odd',
+          'http://mith.us/romajs/fakeData/tei_speech.odd',
+          'http://mith.us/romajs/fakeData/tei_odds.odd',
+          'http://mith.us/romajs/fakeData/tei_svg.odd',
+          'http://mith.us/romajs/fakeData/tei_math.odd',
+          'http://mith.us/romajs/fakeData/tei_xinclude.odd',
+          'http://mith.us/romajs/fakeData/tei_jtei.odd'
         ]
       }
     }

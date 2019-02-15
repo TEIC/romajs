@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Documentation from './Documentation'
 import RevertDialog from './dialogs/Revert'
+import DatatypeContent from './DatatypeContent'
 
 export default class Datatype extends Component {
   constructor(props) {
@@ -63,6 +64,21 @@ export default class Datatype extends Component {
           <span className="mdc-chip__text">Documentation</span>
         </span>)
         break
+      case 'content':
+        content = (<DatatypeContent datatype={this.props.datatype}
+          setDataRefRestriction={this.props.setDataRefRestriction}
+          newDataRef={this.props.newDataRef}
+          newTextNode={this.props.newTextNode}
+          deleteDatatypeContent={this.props.deleteDatatypeContent}
+          moveDatatypeContent={this.props.moveDatatypeContent}
+          newDatatypeValList={this.props.newDatatypeValList}
+          addDatatypeValItem={this.props.addDatatypeValItem}
+          deleteDatatypeValItem={this.props.deleteDatatypeValItem}
+          setDatatypeContentGrouping={this.props.setDatatypeContentGrouping} />)
+        trail = (<span className="mdc-chip">
+          <span className="mdc-chip__text">Content</span>
+        </span>)
+        break
       case 'constraints':
         content = (<h1 className="mdc-typography--headline" style={{color: '#225688'}}>Coming soon.</h1>)
         trail = (<span className="mdc-chip">
@@ -113,5 +129,14 @@ Datatype.propTypes = {
   section: PropTypes.string,
   navigateTo: PropTypes.func.isRequired,
   discardChanges: PropTypes.func.isRequired,
-  revertToSource: PropTypes.func.isRequired
+  revertToSource: PropTypes.func.isRequired,
+  setDataRefRestriction: PropTypes.func.isRequired,
+  newDataRef: PropTypes.func.isRequired,
+  newTextNode: PropTypes.func.isRequired,
+  deleteDatatypeContent: PropTypes.func.isRequired,
+  moveDatatypeContent: PropTypes.func.isRequired,
+  newDatatypeValList: PropTypes.func.isRequired,
+  addDatatypeValItem: PropTypes.func.isRequired,
+  deleteDatatypeValItem: PropTypes.func.isRequired,
+  setDatatypeContentGrouping: PropTypes.func.isRequired
 }

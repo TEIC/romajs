@@ -66,11 +66,21 @@ export default class Attribute extends Component {
       </div>
       <Desc member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} />
       <Desc member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} valDesc/>
-      <ValList
-        member={this.props.member} attribute={this.props.attribute}
-        setValListType={this.props.setValListType} addValItem={this.props.addValItem}
-        deleteValItem={this.props.deleteValItem} />
-      <AttDatatype member={this.props.member} attribute={this.props.attribute}
+      <div className="mdc-layout-grid__inner romajs-formrow">
+        <div className="mdc-layout-grid__cell--span-3">
+          <label>Values</label>
+          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
+            Set values for this attribute.
+          </p>
+        </div>
+        <div className="mdc-layout-grid__cell--span-8">
+          <ValList
+            valList={this.props.attribute.valList || {}}
+            setValListType={this.props.setValListType} addValItem={this.props.addValItem}
+            deleteValItem={this.props.deleteValItem} />
+        </div>
+      </div>
+      <AttDatatype member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute}
         setDataTypeRestriction={this.props.setDataTypeRestriction}/>
       <AltIdent member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} />
       <div className="mdc-layout-grid__inner romajs-formrow">

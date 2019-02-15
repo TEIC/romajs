@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import AnchoredPicker from '../components/pickers/AnchoredPicker'
 import { setDatatype } from '../actions/attributes'
+import { setDataRef } from '../actions/datatypes'
 import primitiveDatatypes from '../utils/primitiveDatatypes'
 
 const mapStateToProps = (state) => {
@@ -18,9 +19,14 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  let set = (item) => setDatatype(ownProps.member, ownProps.memberType, ownProps.attribute, item.ident)
+
+  if (!ownProps.attribute) {
+    set = (item) => setDataRef(ownProps.member, item.ident, ownProps.index)
+  }
   return {
     add: (type, item) => {
-      dispatch(setDatatype(ownProps.member, 'element', ownProps.attribute, item.ident))
+      dispatch(set(item))
     }
   }
 }

@@ -1,6 +1,14 @@
 import { ReducerException } from '../utils/exceptions'
 import { clone } from '../utils/clone'
-import { UPDATE_DATATYPE_DOCS, DELETE_DATATYPE_DOCS, CREATE_NEW_DATATYPE, DISCARD_DATATYPE_CHANGES, REVERT_DATATYPE_TO_SOURCE } from '../actions/datatypes'
+import { UPDATE_DATATYPE_DOCS, DELETE_DATATYPE_DOCS, CREATE_NEW_DATATYPE,
+  DISCARD_DATATYPE_CHANGES, REVERT_DATATYPE_TO_SOURCE, SET_DATAREF,
+  SET_DATAREF_RESTRICTION, NEW_DATAREF, NEW_TEXTNODE, DELETE_DATATYPE_CONTENT,
+  MOVE_DATATYPE_CONTENT,
+  NEW_DATATYPE_VALLIST,
+  ADD_DATATYPE_VALITEM,
+  DELETE_DATATYPE_VALITEM,
+  SET_DATATYPE_CONTENT_GROUPING} from '../actions/datatypes'
+import primitiveDatatypes from '../utils/primitiveDatatypes'
 
 // TODO: this function can be shared with elements.js, etc.
 function markChange(member, whatChanged) {
@@ -57,6 +65,7 @@ export function oddDatatypes(state, action) {
       const newDatatype = {
         ident: action.name,
         module: action.module,
+        content: [],
         desc: [],
         shortDesc: '',
         gloss: [],
@@ -90,6 +99,223 @@ export function oddDatatypes(state, action) {
         }
         return acc
       }, [])
+      return newState
+    case SET_DATAREF:
+      const allDtypes = customization.datatypes.concat(primitiveDatatypes)
+      const setDataRef = (dataRef) => {
+        const datatype = allDtypes.filter(dt => dt.ident === action.keyOrName)[0]
+        if (datatype.type === 'primitive') {
+          dataRef.name = datatype.ident
+          delete dataRef.key
+          delete dataRef.ref
+        } else {
+          dataRef.key = datatype.ident
+          delete dataRef.name
+          delete dataRef.ref
+        }
+      }
+      customization.datatypes.forEach(dt => {
+        if (dt.ident === action.datatype) {
+          if (dt.content.alternate) {
+            setDataRef(dt.content.alternate[action.index])
+          } else if (dt.content.sequence) {
+            setDataRef(dt.content.sequence[action.index])
+          } else {
+            setDataRef(dt.content[action.index])
+          }
+        }
+      })
+      return newState
+    case SET_DATAREF_RESTRICTION:
+      const applyRestriction = (dataRef) => {
+        if (dataRef.key === action.keyOrName) {
+          dataRef.restriction = action.value
+        } else if (dataRef.name === action.keyOrName) {
+          dataRef.restriction = action.value
+        } else {
+          // Something's not right.
+          throw new ReducerException(`Could not add restriction to datatype.`)
+        }
+      }
+      customization.datatypes.forEach(dt => {
+        if (dt.ident === action.datatype) {
+          if (dt.content.alternate) {
+            applyRestriction(dt.content.alternate[action.index])
+          } else if (dt.content.sequence) {
+            applyRestriction(dt.content.sequence[action.index])
+          } else {
+            applyRestriction(dt.content[action.index])
+          }
+        }
+      })
+      return newState
+    case NEW_DATAREF:
+      const newDataRef = {
+        type: 'dataRef',
+        name: 'string'
+      }
+      customization.datatypes.forEach(dt => {
+        if (dt.ident === action.datatype) {
+          if (dt.content.alternate) {
+            dt.content.alternate.push(newDataRef)
+          } else if (dt.content.sequence) {
+            dt.content.sequence.push(newDataRef)
+          } else {
+            dt.content.push(newDataRef)
+          }
+        }
+      })
+      return newState
+    case NEW_TEXTNODE:
+      const newTextNode = {
+        type: 'textNode'
+      }
+      customization.datatypes.forEach(dt => {
+        if (dt.ident === action.datatype) {
+          if (dt.content.alternate) {
+            dt.content.alternate.push(newTextNode)
+          } else if (dt.content.sequence) {
+            dt.content.sequence.push(newTextNode)
+          } else {
+            dt.content.push(newTextNode)
+          }
+        }
+      })
+      return newState
+    case NEW_DATATYPE_VALLIST:
+      const newValList = {
+        type: 'valList'
+      }
+      customization.datatypes.forEach(dt => {
+        if (dt.ident === action.datatype) {
+          if (dt.content.alternate) {
+            dt.content.alternate.push(newValList)
+          } else if (dt.content.sequence) {
+            dt.content.sequence.push(newValList)
+          } else {
+            dt.content.push(newValList)
+          }
+        }
+      })
+      return newState
+    case ADD_DATATYPE_VALITEM:
+      const addValItem = (vi) => {
+        if (Array.isArray(vi)) {
+          const newVi = Array.from(vi)
+          newVi.push({
+            ident: action.value
+          })
+          return newVi
+        }
+        return [{
+          ident: action.value
+        }]
+      }
+      customization.datatypes.forEach(dt => {
+        if (dt.ident === action.datatype) {
+          if (dt.content.alternate) {
+            dt.content.alternate[action.index].valItem = addValItem(dt.content.alternate[action.index].valItem)
+          } else if (dt.content.sequence) {
+            dt.content.sequence[action.index].valItem = addValItem(dt.content.sequence[action.index].valItem)
+          } else {
+            dt.content[action.index].valItem = addValItem(dt.content[action.index].valItem)
+          }
+        }
+      })
+      return newState
+    case DELETE_DATATYPE_VALITEM:
+      customization.datatypes.forEach(dt => {
+        if (dt.ident === action.datatype) {
+          if (dt.content.alternate) {
+            dt.content.alternate[action.index].valItem = dt.content.alternate[action.index].valItem.reduce((acc, vi) => {
+              if (vi.ident !== action.value) {
+                acc.push(vi)
+              }
+              return acc
+            }, [])
+          } else if (dt.content.sequence) {
+            dt.content.sequence[action.index].valItem = dt.content.sequence[action.index].valItem.reduce((acc, vi) => {
+              if (vi.ident !== action.value) {
+                acc.push(vi)
+              }
+              return acc
+            }, [])
+          } else {
+            dt.content[action.index].valItem = dt.content[action.index].valItem.reduce((acc, vi) => {
+              if (vi.ident !== action.value) {
+                acc.push(vi)
+              }
+              return acc
+            }, [])
+          }
+        }
+      })
+      return newState
+    case DELETE_DATATYPE_CONTENT:
+      customization.datatypes.forEach(dt => {
+        if (dt.ident === action.datatype) {
+          if (dt.content.alternate) {
+            dt.content.alternate.splice(action.index, 1)
+          } else if (dt.content.sequence) {
+            dt.content.sequence.splice(action.index, 1)
+          } else {
+            dt.content.splice(action.index, 1)
+          }
+        }
+      })
+      return newState
+    case MOVE_DATATYPE_CONTENT:
+      if (action.indexFrom >= 0 && action.indexTo >= 0) {
+        customization.datatypes.forEach(dt => {
+          if (dt.ident === action.datatype) {
+            if (dt.content.alternate) {
+              if (action.indexTo < dt.content.alternate.length) {
+                const item = dt.content.alternate[action.indexFrom]
+                dt.content.alternate.splice(action.indexFrom, 1)
+                dt.content.alternate.splice(action.indexTo, 0, item)
+              }
+            } else if (dt.content.sequence) {
+              if (action.indexTo < dt.content.sequence.length) {
+                const item = dt.content.sequence[action.indexFrom]
+                dt.content.sequence.splice(action.indexFrom, 1)
+                dt.content.sequence.splice(action.indexTo, 0, item)
+              }
+            } else {
+              if (action.indexTo < dt.content.length) {
+                const item = dt.content[action.indexFrom]
+                dt.content.splice(action.indexFrom, 1)
+                dt.content.splice(action.indexTo, 0, item)
+              }
+            }
+          }
+        })
+        return newState
+      }
+      return state
+    case SET_DATATYPE_CONTENT_GROUPING:
+      customization.datatypes.forEach(dt => {
+        if (dt.ident === action.datatype) {
+          switch (dt.content[0].type) {
+            case 'alternate':
+            case 'sequence':
+              if (action.groupingType === 'unordered') {
+                // remove grouping
+                dt.content = dt.content[0].content
+              } else {
+                dt.content[0].type = action.groupingType
+              }
+              break
+            default:
+              if (action.groupingType !== 'unordered') {
+                // add grouping
+                dt.content = [{
+                  type: action.groupingType,
+                  content: dt.content
+                }]
+              }
+          }
+        }
+      })
       return newState
     default:
       return state

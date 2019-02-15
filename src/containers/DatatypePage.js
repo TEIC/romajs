@@ -1,7 +1,9 @@
 import { connect } from 'react-redux'
 import Datatype from '../components/Datatype'
 import { push } from 'react-router-redux'
-import { discardChanges, revertToSource } from '../actions/datatypes'
+import { discardChanges, revertToSource, setDataRefRestriction, newDataRef, newTextNode,
+  deleteDatatypeContent, moveDatatypeContent, newDatatypeValList, addDatatypeValItem,
+  deleteDatatypeValItem, setDatatypeContentGrouping } from '../actions/datatypes'
 
 const mapStateToProps = (state, ownProps) => {
   let datatype = {}
@@ -27,7 +29,16 @@ const mapDispatchToProps = (dispatch) => {
   return {
     navigateTo: (place) => dispatch(push(place)),
     discardChanges: (dt) => dispatch(discardChanges(dt)),
-    revertToSource: (dt) => dispatch(revertToSource(dt))
+    revertToSource: (dt) => dispatch(revertToSource(dt)),
+    setDataRefRestriction: (dt, keyOrName, value, index) => dispatch(setDataRefRestriction(dt, keyOrName, value, index)),
+    newDataRef: (dt) => dispatch(newDataRef(dt)),
+    newTextNode: (dt) => dispatch(newTextNode(dt)),
+    deleteDatatypeContent: (dt, index) => dispatch(deleteDatatypeContent(dt, index)),
+    moveDatatypeContent: (dt, indexFrom, indexTo) => dispatch(moveDatatypeContent(dt, indexFrom, indexTo)),
+    newDatatypeValList: (dt) => dispatch(newDatatypeValList(dt)),
+    addDatatypeValItem: (dt, index, value) => dispatch(addDatatypeValItem(dt, index, value)),
+    deleteDatatypeValItem: (dt, index, value) => dispatch(deleteDatatypeValItem(dt, index, value)),
+    setDatatypeContentGrouping: (dt, groupingType) => dispatch(setDatatypeContentGrouping(dt, groupingType))
   }
 }
 

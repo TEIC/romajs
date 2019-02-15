@@ -29,7 +29,12 @@ export default class AttributesOnMember extends Component {
               addOrRemove = (<i className={`material-icons romajs-clickable ${deleted}`} onClick={() =>
                 this.props.deleteMemberAttribute(this.props.member.ident, a.ident)}>clear</i>)
             }
-            return (<li key={`c${pos}`} className="mdc-list-item">
+            const noeffect = a.noeffect ? 'romajs-att-noeffect' : ''
+            let noeffectText = ''
+            if (a.noeffect) {
+              noeffectText = '(this change won\'t have any effect, check ODD source)'
+            }
+            return (<li key={`c${pos}`} className={`mdc-list-item ${noeffect}`}>
               <span className="mdc-list-item__graphic">
                 <i className={`material-icons romajs-clickable ${deleted}`}
                   onClick={() => this.props.editAttribute(this.props.member.ident, a.ident, this.props.path)}>
@@ -37,7 +42,7 @@ export default class AttributesOnMember extends Component {
                 {addOrRemove}
               </span>
               <span className="mdc-list-item__text">
-                {a.ident}
+                {a.ident} {noeffectText}
                 <span className="mdc-list-item__secondary-text">
                   {a.shortDesc}
                 </span>

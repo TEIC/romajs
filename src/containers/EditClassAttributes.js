@@ -44,7 +44,14 @@ const mapStateToProps = (state, ownProps) => {
   const localClass = state.odd.localsource.json.classes.attributes.filter(le => (le.ident === klass.ident))[0]
   for (const att of klass.attributes) {
     if (att.mode === 'delete') {
-      att.shortDesc = localClass.attributes.filter(a => (a.ident === att.ident))[0].shortDesc
+      const localAtt = localClass.attributes.filter(a => (a.ident === att.ident))[0]
+      if (!localAtt) {
+        // the attribute being deleted does not exist in the local source.
+        att.shortDesc = ''
+        att.noeffect = true
+      } else {
+        att.shortDesc = localAtt.shortDesc
+      }
       att.deleted = true
       att.onClass = true
     }
