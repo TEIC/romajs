@@ -9,6 +9,8 @@ const mapStateToProps = (state) => {
   let allMembers = []
   let elements = []
   let attclasses = []
+  let modelclasses = []
+  let datatypes = []
   const visibleMemberTypes = state.ui.visibleMemberTypes || ['elements']
   if (state.odd.customization && state.odd.localsource) {
     if (!state.odd.customization.isFetching && !state.odd.localsource.isFetching) {
@@ -81,19 +83,23 @@ const mapStateToProps = (state) => {
         attclasses = getMembers('classes', 'attributes')
       }
       if (visibleMemberTypes.indexOf('modelclasses') !== -1) {
-        attclasses = getMembers('classes', 'models')
+        modelclasses = getMembers('classes', 'models')
       }
       if (visibleMemberTypes.indexOf('datatypes') !== -1) {
-        attclasses = getMembers('datatypes')
+        datatypes = getMembers('datatypes')
       }
 
       // apply filter
       if (filter) {
         elements = filterMembers(elements)
         attclasses = filterMembers(attclasses)
+        modelclasses = filterMembers(modelclasses)
+        datatypes = filterMembers(datatypes)
       }
       // Finally, concat and sort alphabetically
       allMembers = elements.concat(attclasses)
+      allMembers = allMembers.concat(modelclasses)
+      allMembers = allMembers.concat(datatypes)
       allMembers.sort((a, b) => {
         if (a.ident.toLowerCase() > b.ident.toLowerCase()) {
           return 1

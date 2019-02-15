@@ -29,12 +29,36 @@ export function oddModules(state, action) {
           id: localMod.id,
           desc: localMod.desc
         })
-        // Include all elements from this module
+        // Include all elements, classes, and datatypes from this module
         for (const m of localsource.elements) {
           if (m.module === ident) {
             // if not in custom, add.
             if (!customization.elements.filter(x => (x.ident === m.ident))[0]) {
               customization.elements.push(m)
+            }
+          }
+        }
+        for (const m of localsource.classes.attributes) {
+          if (m.module === ident) {
+            // if not in custom, add.
+            if (!customization.classes.attributes.filter(x => (x.ident === m.ident))[0]) {
+              customization.classes.attributes.push(m)
+            }
+          }
+        }
+        for (const m of localsource.classes.models) {
+          if (m.module === ident) {
+            // if not in custom, add.
+            if (!customization.classes.models.filter(x => (x.ident === m.ident))[0]) {
+              customization.classes.models.push(m)
+            }
+          }
+        }
+        for (const m of localsource.datatypes) {
+          if (m.module === ident) {
+            // if not in custom, add.
+            if (!customization.datatypes.filter(x => (x.ident === m.ident))[0]) {
+              customization.datatypes.push(m)
             }
           }
         }
@@ -44,8 +68,17 @@ export function oddModules(state, action) {
       customization.modules = customization.modules.filter(m => {
         return (action.modules.indexOf(m.ident) === -1)
       })
-      // Exclude all elements from this module
+      // Exclude all elements, classes, and datatypes from this module
       customization.elements = customization.elements.filter(m => {
+        return action.modules.indexOf(m.module) === -1
+      })
+      customization.classes.attributes = customization.classes.attributes.filter(m => {
+        return action.modules.indexOf(m.module) === -1
+      })
+      customization.classes.models = customization.classes.models.filter(m => {
+        return action.modules.indexOf(m.module) === -1
+      })
+      customization.datatypes = customization.datatypes.filter(m => {
         return action.modules.indexOf(m.module) === -1
       })
       return Object.assign(state, {customization: customizationObj})

@@ -16,10 +16,12 @@ export default class YesNo extends Component {
         case 'accept':
           this.props.continue()
           this.props.hide()
+          this.dialog.close()
           break
         case 'cancel':
         default:
           this.props.hide()
+          this.dialog.close()
       }
     })
     this.dialog.listen('MDCDialog:opened', () => {
