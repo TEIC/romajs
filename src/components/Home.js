@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
 import * as local from '../localization/uiStrings'
+import datasource from '../utils/datasources'
 
 import {MDCTabBar} from '@material/tabs'
 import { MDCSelect } from '@material/select'
@@ -31,21 +32,21 @@ export default class Home extends Component {
           'TEI for Journal of the TEI'
         ],
         urls: [
-          'http://mith.us/romajs/fakeData/tei_all.odd',
-          'http://mith.us/romajs/fakeData/tei_minimal.odd',
-          'http://mith.us/romajs/fakeData/tei_bare.odd',
-          'http://mith.us/romajs/fakeData/tei_simplePrint.odd',
-          'http://mith.us/romajs/fakeData/tei_lite.odd',
-          'http://mith.us/romajs/fakeData/tei_tite.odd',
-          'http://mith.us/romajs/fakeData/tei_corpus.odd',
-          'http://mith.us/romajs/fakeData/tei_ms.odd',
-          'http://mith.us/romajs/fakeData/tei_drama.odd',
-          'http://mith.us/romajs/fakeData/tei_speech.odd',
-          'http://mith.us/romajs/fakeData/tei_odds.odd',
-          'http://mith.us/romajs/fakeData/tei_svg.odd',
-          'http://mith.us/romajs/fakeData/tei_math.odd',
-          'http://mith.us/romajs/fakeData/tei_xinclude.odd',
-          'http://mith.us/romajs/fakeData/tei_jtei.odd'
+          `${datasource}/tei_all.odd`,
+          `${datasource}/tei_minimal.odd`,
+          `${datasource}/tei_bare.odd`,
+          `${datasource}/tei_simplePrint.odd`,
+          `${datasource}/tei_lite.odd`,
+          `${datasource}/tei_tite.odd`,
+          `${datasource}/tei_corpus.odd`,
+          `${datasource}/tei_ms.odd`,
+          `${datasource}/tei_drama.odd`,
+          `${datasource}/tei_speech.odd`,
+          `${datasource}/tei_odds.odd`,
+          `${datasource}/tei_svg.odd`,
+          `${datasource}/tei_math.odd`,
+          `${datasource}/tei_xinclude.odd`,
+          `${datasource}/tei_jtei.odd`
         ]
       }
     }

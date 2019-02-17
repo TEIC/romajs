@@ -5,6 +5,7 @@ import { push } from 'react-router-redux'
 import Home from '../components/Home'
 import oxgarage from '../utils/oxgarage'
 import fetch from 'isomorphic-fetch'
+import datasource from '../utils/datasources'
 
 const mapStateToProps = (state) => {
   return {
@@ -26,9 +27,9 @@ const mapDispatchToProps = (dispatch) => {
           // 2. Get p5subset.
           // TODO: this is a terrible thing, but there are plans to fix it:
           // from next release it will be possible to get p5subset.json directly from the Vault.
-          dispatch(fetchLocalSource('http://mith.us/romajs/fakeData/p5subset.json'))
+          // dispatch(fetchLocalSource('http://mith.us/romajs/fakeData/p5subset.json'))
           // dispatch(fetchLocalSource('http://tei-c.org/Vault/P5/current/xml/tei/odd/p5subset.json'))
-          // dispatch(fetchLocalSource('/fakeData/p5subset.json'))
+          dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
         })
       })
     },
@@ -54,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
           // 2. Get p5subset.
           // TODO: this is a terrible thing, but there are plans to fix it:
           // from next release it will be possible to get p5susbet.json directly from the Vault.
-          dispatch(fetchLocalSource('http://mith.us/romajs/fakeData/p5subset.json'))
+          dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
           // dispatch(fetchLocalSource('/fakeData/p5subset.json'))
         })
       }
