@@ -15,12 +15,14 @@ const mapStateToProps = (state, ownProps) => {
     }
   }
   for (const lClass of localClasses) {
-    for (const lAtt of lClass.attributes) {
-      const idx = customAttsNames.indexOf(lAtt.ident)
-      if (idx > -1) {
-        attributes.push(customAtts.filter(ca => (ca.ident === customAttsNames[idx]))[0])
-      } else {
-        attributes.push(Object.assign({isLocal: true}, lAtt))
+    if (lClass.attributes) {
+      for (const lAtt of lClass.attributes) {
+        const idx = customAttsNames.indexOf(lAtt.ident)
+        if (idx > -1) {
+          attributes.push(customAtts.filter(ca => (ca.ident === customAttsNames[idx]))[0])
+        } else {
+          attributes.push(Object.assign({isLocal: true}, lAtt))
+        }
       }
     }
   }

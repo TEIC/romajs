@@ -17,7 +17,7 @@ export default class ContentModel extends Component {
           </p>
         </div>
         <div className="mdc-layout-grid__cell--span-8">
-          <ModelClassPicker element={this.props.element.ident}/>
+          <ModelClassPicker member={this.props.element.ident} memberType={this.props.element.type}/>
           <ul className="mdc-list mdc-list--two-line">{
             sortedClasses.map((c, pos) => {
               return (<li key={`c${pos}`} className="mdc-list-item">

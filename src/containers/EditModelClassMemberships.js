@@ -11,22 +11,31 @@ const mapStateToProps = (state, ownProps) => {
   const localClass = state.odd.localsource.json.classes.models.filter(le => (le.ident === klass.ident))[0]
 
   // Get member classes
+  // Merge local classes with custom classes (as they may be new)
+  const mergedClasses = new Set()
+  for (const lc of state.odd.localsource.json.classes.models) {
+    if (lc.classes && lc.classes.model) {
+      if (lc.classes.model.indexOf(klass.ident) !== -1) {
+        mergedClasses.add(lc.ident)
+      }
+    }
+  }
+  for (const lc of state.odd.customization.json.classes.models) {
+    if (lc.classes && lc.classes.model) {
+      if (lc.classes.model.indexOf(klass.ident) !== -1) {
+        mergedClasses.add(lc.ident)
+      }
+    }
+  }
   const memberClasses = []
 
-  const localClasses = state.odd.localsource.json.classes.models.filter((lc) => {
-    if (lc.classes) {
-      return lc.classes.model.indexOf(klass.ident) !== -1
-    }
-    return false
-  })
-
-  for (const lc of localClasses) {
+  for (const lc of Array.from(mergedClasses)) {
     let curClass
-    const c = state.odd.customization.json.classes.models.filter(ac => (ac.ident === lc.ident))[0]
+    const c = state.odd.customization.json.classes.models.filter(ac => (ac.ident === lc))[0]
     if (c) {
       curClass = clone(c)
     } else {
-      curClass = clone(lc)
+      curClass = clone(state.odd.localsource.json.classes.models.filter((ac) => ac.ident === lc )[0])
       curClass.deleted = true
       curClass.models.forEach(a => {
         a.deleted = true
@@ -41,24 +50,35 @@ const mapStateToProps = (state, ownProps) => {
   })
 
   // Get class memberships
-  const memberships = []
-  if (localClass.classes) {
+  // Merge local classes with custom classes (as they may be new)
+  const mergedSubClasses = new Set()
+  if (localClass && localClass.classes) {
     for (const ident of localClass.classes.model) {
-      let listed = true
-      if (klass.classes) {
-        if (klass.classes.model.indexOf(ident) === -1) listed = false
-      } else {
-        listed = false
-      }
-      const customClass = state.odd.customization.json.classes.models.filter(ac => (ac.ident === ident))[0]
-      const shortDesc = customClass ? customClass.shortDesc : localClass.shortDesc
-      if (customClass && listed) {
-        memberships.push({ident, mode: 'add', shortDesc})
-      } else if (customClass && !listed) {
-        memberships.push({ident, mode: 'deleted', shortDesc})
-      } else {
-        memberships.push({ident, mode: 'not available', shortDesc})
-      }
+      mergedSubClasses.add(ident)
+    }
+  }
+  if (klass.classes) {
+    for (const ident of klass.classes.model) {
+      mergedSubClasses.add(ident)
+    }
+  }
+
+  const memberships = []
+  for (const ident of Array.from(mergedSubClasses)) {
+    let listed = true
+    if (klass.classes) {
+      if (klass.classes.model.indexOf(ident) === -1) listed = false
+    } else {
+      listed = false
+    }
+    const customClass = state.odd.customization.json.classes.models.filter(ac => (ac.ident === ident))[0]
+    const shortDesc = customClass ? customClass.shortDesc : localClass.shortDesc
+    if (customClass && listed) {
+      memberships.push({ident, mode: 'add', shortDesc})
+    } else if (customClass && !listed) {
+      memberships.push({ident, mode: 'deleted', shortDesc})
+    } else {
+      memberships.push({ident, mode: 'not available', shortDesc})
     }
   }
 

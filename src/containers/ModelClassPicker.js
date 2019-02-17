@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import AnchoredPicker from '../components/pickers/AnchoredPicker'
 import { addElementModelClass } from '../actions/elements'
+import { addMembershipToClass } from '../actions/classes'
 
 const mapStateToProps = (state) => {
   const customClasses = state.odd.customization.json.classes.models
@@ -9,11 +10,15 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    add: (type, item) => {
-      dispatch(addElementModelClass(ownProps.element, item.ident))
+  let add = (type, item) => {
+    dispatch(addElementModelClass(ownProps.member, item.ident))
+  }
+  if (ownProps.memberType === 'classSpec') {
+    add = (type, item) => {
+      dispatch(addMembershipToClass(ownProps.member, item.ident, 'model'))
     }
   }
+  return { add }
 }
 
 const ModelClassPicker = connect(

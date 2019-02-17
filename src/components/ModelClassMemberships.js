@@ -15,7 +15,7 @@ export default class ModelClassMemberships extends Component {
           </p>
         </div>
         <div className="mdc-layout-grid__cell--span-8">
-          <ModelClassPicker member={this.props.member.ident}/>
+          <ModelClassPicker member={this.props.member.ident} memberType={this.props.member.type}/>
           <ul className="mdc-list mdc-list--two-line">{
             this.props.memberships.map((c, pos) => {
               let deleted = ''
@@ -90,8 +90,3 @@ ModelClassMemberships.propTypes = {
   addMembershipToClass: PropTypes.func.isRequired,
   clearPicker: PropTypes.func.isRequired
 }
-
-// [{c.attributes.map((at, ap) => {
-//  const attDeleted = at.mode === 'deleted' ? 'romajs-att-deleted' : ''
-//  return <span key={`at${ap}`} className={attDeleted}>&nbsp;{at.ident}&nbsp;</span>
-// })}]
