@@ -15,6 +15,9 @@ let localJson = null
 serializer
 customizationXML
 
+// RESTORE_MEMBERSHIPS_TO_CLASS and CLEAR_MEMBERSHIPS_TO_CLASS don't need testing here
+// as they do not affect ODD changes.
+
 describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () => {
   it('should change an attribute class\' documentation (desc, no previous change)', () => {
     customJson = JSON.parse(customization)
@@ -207,5 +210,74 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
     expect(xml.querySelector('classSpec[ident="att.global"] > classes > memberOf[key="att.global.rendition"]').getAttribute('mode')).toEqual('delete')
   })
 
-  // RESTORE_MEMBERSHIPS_TO_CLASS and CLEAR_MEMBERSHIPS_TO_CLASS don't need testing here.
+  it('should create a new class (attribute)', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    // Update JSON data directly
+    customJson.classes.attributes.push({
+      ident: 'att.newClass',
+      type: 'classSpec',
+      module: 'core',
+      mode: 'add',
+      desc: ['<desc>test desc</desc>'],
+      shortDesc: '',
+      gloss: [],
+      altIdent: ['att.nc'],
+      classes: {
+        model: [],
+        atts: ['att.datable'],
+        unknown: []
+      },
+      attributes: [
+        {
+          ident: 'new_att',
+          desc: [],
+          gloss: [],
+          altIdent: [],
+          datatype: {
+            dataRef: {
+              name: 'string',
+              dataFacet: [],
+              restriction: '[ab]'
+            }
+          },
+          valDesc: ['<valDesc xmlns="http://www.tei-c.org/ns/1.0">a string value.</valDesc>'],
+          valList: {
+            type: 'semi',
+            valItem: [
+              { ident: 'someval' }
+            ]
+          },
+          mode: 'add',
+          ns: '',
+          usage: '',
+          _isNew: true
+        }
+      ],
+      _isNew: true
+    })
+
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    const classSpec = xml.querySelector('classSpec[ident="att.newClass"]')
+    console.log(classSpec.outerHTML)
+    expect(classSpec).toExist()
+    expect(classSpec.querySelector('desc').textContent).toEqual('test desc')
+    expect(classSpec.querySelector('altIdent').textContent).toEqual('att.nc')
+    expect(classSpec.querySelector('classes > memberOf').getAttribute('key')).toEqual('att.datable')
+    expect(classSpec.querySelector('valList').getAttribute('type')).toEqual('semi')
+    expect(classSpec.querySelector('attDef > valDesc').textContent).toEqual('a string value.')
+    expect(classSpec.querySelector('attDef > datatype > dataRef').getAttribute('name')).toEqual('string')
+    expect(classSpec.querySelector('attDef > datatype > dataRef').getAttribute('restriction')).toEqual('[ab]')
+  })
 })

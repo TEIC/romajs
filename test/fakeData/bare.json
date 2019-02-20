@@ -2,7 +2,7 @@
   { "title" : "TEI Absolutely Bare",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2019-02-14T22:25:27Z",
+    "date" : "2019-02-20T19:30:42Z",
     "modules" : 
     [ 
       { "ident" : "core",
@@ -842,7 +842,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "gloss",
@@ -1248,7 +1248,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "main",
@@ -2578,7 +2578,7 @@
                 "dataRef" : 
                 { "key" : "teidata.truthValue" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "closed",
                 "valItem" : 
                 [ 
                   { "ident" : "true",
@@ -2978,7 +2978,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "semi",
                 "valItem" : 
                 [ 
                   { "ident" : "below",

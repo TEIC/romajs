@@ -285,3 +285,61 @@ export function processAttributes(specElement, specData, localData, localsource,
   }
   return odd
 }
+
+export function createAttributes(specElement, specData, odd) {
+  if (specData.attributes) {
+    const attList = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attList')
+    for (const att of specData.attributes) {
+      const attDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
+      attDef.setAttribute('ident', att.ident)
+      if (att.usage) {
+        attDef.setAttribute('usage', att.ident)
+      }
+      if (att.ns) {
+        attDef.setAttribute('ns', att.ns)
+      }
+      if (att.valDesc) {
+        for (const vd of att.valDesc) {
+          const dummyEl = odd.createElement('temp')
+          dummyEl.innerHTML = vd
+          const valDesc = dummyEl.firstChild
+          valDesc.removeAttribute('xmlns')
+          dummyEl.firstChild.remove()
+          attDef.appendChild(valDesc)
+        }
+      }
+      if (att.valList) {
+        const valList = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valList')
+        if (att.valList.type) {
+          valList.setAttribute('type', att.valList.type)
+        }
+        for (const val of att.valList.valItem) {
+          const valItem = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valItem')
+          valItem.setAttribute('ident', val.ident)
+          valList.appendChild(valItem)
+        }
+        attDef.appendChild(valList)
+      }
+      if (att.datatype) {
+        const datatype = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'datatype')
+        if (att.datatype.dataRef) {
+          const dataRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'dataRef')
+          if (att.datatype.dataRef.name) {
+            dataRef.setAttribute('name', att.datatype.dataRef.name)
+          } else if (att.datatype.dataRef.key) {
+            dataRef.setAttribute('key', att.datatype.dataRef.key)
+          }
+
+          if (att.datatype.dataRef.restriction) {
+            dataRef.setAttribute('restriction', att.datatype.dataRef.restriction)
+          }
+          datatype.appendChild(dataRef)
+        }
+        attDef.appendChild(datatype)
+      }
+      attList.appendChild(attDef)
+    }
+    specElement.appendChild(attList)
+  }
+  return odd
+}

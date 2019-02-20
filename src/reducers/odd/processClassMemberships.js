@@ -43,3 +43,16 @@ export function processClassMemberships(specElement, specData, localData, change
   }
   return odd
 }
+
+export function createClassMemberships(specElement, specData, odd) {
+  if (specData.classes) {
+    const classesEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'classes')
+    for (const cl of specData.classes.atts.concat(specData.classes.model)) {
+      const memberOf = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'memberOf')
+      memberOf.setAttribute('key', cl)
+      classesEl.appendChild(memberOf)
+    }
+    specElement.appendChild(classesEl)
+  }
+  return odd
+}

@@ -1,8 +1,8 @@
 import { deepCompare } from  '../../utils/deepCompare'
 import { insertBetween } from './utils'
-import { processDocEls } from './processDocEls'
-import { processClassMemberships } from './processClassMemberships'
-import { processAttributes } from './processAttributes'
+import { processDocEls, createDocEls } from './processDocEls'
+import { processClassMemberships, createClassMemberships } from './processClassMemberships'
+import { processAttributes, createAttributes } from './processAttributes'
 
 function getOrSetElementSpec(odd, ident) {
   let elSpec = odd.querySelectorAll(`elementSpec[ident='${ident}']`)[0]
@@ -24,7 +24,29 @@ export function updateElements(localsource, customization, odd) {
   // real change wouldn't really have happened.
 
   for (const el of customization.elements) {
-    if (el._changed) {
+    if (el._isNew) {
+      // Create new spec
+      const elSpec = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'elementSpec')
+      elSpec.setAttribute('ident', el.ident)
+      if (el.ns) {
+        elSpec.setAttribute('ns', el.ns)
+      }
+      elSpec.setAttribute('mode', 'add')
+
+      // Create documentation elements
+      createDocEls(elSpec, el, odd)
+
+      // Create class memberships
+      createClassMemberships(elSpec, el, odd)
+
+      // Create attributes
+      if (el.attributes) {
+        createAttributes(elSpec, el, odd)
+      }
+
+      const schemaSpec = odd.querySelector('schemaSpec')
+      schemaSpec.appendChild(elSpec)
+    } else if (el._changed) {
       // Check structures against localsource
       const localEl = localsource.elements.filter(le => le.ident === el.ident)[0]
       // Create a dummy element for isomorphic conversion of serialized XML from the state to actual XML

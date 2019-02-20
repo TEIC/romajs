@@ -2,7 +2,7 @@
   { "title" : "The TEI Guidelines",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2019-02-14T22:25:20Z",
+    "date" : "2019-02-20T19:30:40Z",
     "modules" : 
     [ 
       { "ident" : "analysis",
@@ -339,7 +339,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "suspension",
@@ -838,7 +838,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "sponsor",
@@ -924,7 +924,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "western",
@@ -1093,7 +1093,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "excl",
@@ -1177,7 +1177,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "excl",
@@ -1908,7 +1908,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "TEI",
@@ -2018,7 +2018,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "req",
@@ -2150,7 +2150,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "group",
@@ -2339,7 +2339,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "free",
@@ -3009,7 +3009,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "caesarean",
@@ -3664,7 +3664,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "role",
@@ -4046,7 +4046,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "name",
@@ -4252,7 +4252,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "s",
@@ -4721,7 +4721,7 @@
             "datatype" : 
             {  },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "alternate",
@@ -4852,7 +4852,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "model",
@@ -4893,7 +4893,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "alternation",
@@ -5015,7 +5015,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "change",
@@ -5406,7 +5406,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "single",
@@ -5522,7 +5522,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "schematron",
@@ -5593,7 +5593,7 @@
               "dataRef" : 
               { "key" : "teidata.truthValue" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "true",
@@ -5694,7 +5694,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "high",
@@ -5753,7 +5753,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "silent",
@@ -5819,7 +5819,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "sent",
@@ -6150,7 +6150,7 @@
               "dataRef" : 
               { "key" : "teidata.word" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "length",
@@ -6643,7 +6643,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "proclaimed",
@@ -6989,7 +6989,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "original",
@@ -7189,7 +7189,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "leaves",
@@ -8336,7 +8336,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "index",
@@ -8604,7 +8604,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "art",
@@ -8957,7 +8957,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "primary",
@@ -9082,7 +9082,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "true",
@@ -10235,7 +10235,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "fiction",
@@ -10321,7 +10321,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "practicing",
@@ -10794,7 +10794,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "simple",
@@ -11415,7 +11415,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "header",
@@ -11561,7 +11561,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "cancelled",
@@ -11647,7 +11647,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "rubbing",
@@ -11831,7 +11831,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "WGS84",
@@ -11970,7 +11970,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "TEI",
@@ -12162,7 +12162,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "pos",
@@ -12300,7 +12300,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "undirected",
@@ -13032,7 +13032,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "all",
@@ -13258,7 +13258,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "abbrev",
@@ -13352,7 +13352,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "ISBN",
@@ -13750,7 +13750,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "none",
@@ -13809,7 +13809,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "singular",
@@ -13868,7 +13868,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "self",
@@ -14102,7 +14102,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "root",
@@ -14477,7 +14477,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "listening",
@@ -15320,7 +15320,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "gloss",
@@ -16465,7 +16465,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "pe",
@@ -16787,7 +16787,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "add",
@@ -16916,7 +16916,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "met",
@@ -17210,7 +17210,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "alternate",
@@ -17507,7 +17507,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "web",
@@ -17639,7 +17639,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "web",
@@ -17779,7 +17779,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "web",
@@ -18262,7 +18262,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "entrance",
@@ -18312,7 +18312,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "L",
@@ -19045,7 +19045,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "birth",
@@ -19138,7 +19138,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "initial",
@@ -19331,7 +19331,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "silent",
@@ -19541,7 +19541,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "cardinal",
@@ -19593,7 +19593,9 @@
             "altIdent" : 
             [  ],
             "valDesc" : 
-            [ "<valDesc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">a numeric value.<\/valDesc>" ],
+            [ "<valDesc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">a numeric value.<\/valDesc>",
+              "<valDesc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"fr\">une valeur numérique.<\/valDesc>",
+              "<valDesc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"de\">ein numerischer Wert<\/valDesc>" ],
             "datatype" : 
             { "min" : "1",
               "max" : "1",
@@ -19810,7 +19812,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "cap",
@@ -19972,7 +19974,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "primary",
@@ -20473,7 +20475,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "first-line",
@@ -20618,7 +20620,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "alternate",
@@ -20985,7 +20987,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "strong",
@@ -22039,7 +22041,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "none",
@@ -22429,7 +22431,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "none",
@@ -22479,7 +22481,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "internal",
@@ -22543,7 +22545,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "persuade",
@@ -22646,7 +22648,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "spoken",
@@ -22774,7 +22776,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "none",
@@ -23082,7 +23084,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "audio",
@@ -23601,7 +23603,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "first-line",
@@ -23732,7 +23734,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "primary",
@@ -23900,7 +23902,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "name",
@@ -25442,7 +25444,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "explicit",
@@ -25527,7 +25529,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "tempo",
@@ -25789,7 +25791,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "atBirth",
@@ -26169,7 +26171,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "horizontal",
@@ -26562,7 +26564,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "setting",
@@ -27155,7 +27157,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "paper",
@@ -27256,7 +27258,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "glued",
@@ -27710,7 +27712,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "start",
@@ -27787,7 +27789,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "TEI",
@@ -28099,7 +28101,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "light",
@@ -28721,7 +28723,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "d",
@@ -28836,7 +28838,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "a",
@@ -28904,7 +28906,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "main",
@@ -29058,7 +29060,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "main",
@@ -29458,7 +29460,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "true",
@@ -29717,7 +29719,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "smooth",
@@ -29803,7 +29805,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "illegible",
@@ -29871,7 +29873,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "rubbing",
@@ -30061,7 +30063,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "geo",
@@ -30283,7 +30285,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "set",
@@ -30439,7 +30441,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "set",
@@ -30684,7 +30686,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "closed",
@@ -30781,7 +30783,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "location-referenced",
@@ -30831,7 +30833,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "closed",
               "valItem" : 
               [ 
                 { "ident" : "internal",
@@ -31071,7 +31073,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "semi",
               "valItem" : 
               [ 
                 { "ident" : "d",
@@ -31488,7 +31490,7 @@
               "dataRef" : 
               { "key" : "teidata.enumerated" } },
             "valList" : 
-            { "type" : "",
+            { "type" : "open",
               "valItem" : 
               [ 
                 { "ident" : "syn",
@@ -33656,7 +33658,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "semi",
                 "valItem" : 
                 [ 
                   { "ident" : "volume",
@@ -33810,7 +33812,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "closed",
                 "valItem" : 
                 [ 
                   { "ident" : "add",
@@ -34021,7 +34023,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "open",
                 "valItem" : 
                 [ 
                   { "ident" : "rubbing",
@@ -34612,7 +34614,7 @@
                 "dataRef" : 
                 { "key" : "teidata.truthValue" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "closed",
                 "valItem" : 
                 [ 
                   { "ident" : "true",
@@ -34736,7 +34738,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "semi",
                 "valItem" : 
                 [ 
                   { "ident" : "cm",
@@ -34864,7 +34866,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "open",
                 "valItem" : 
                 [ 
                   { "ident" : "all",
@@ -34934,7 +34936,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "closed",
                 "valItem" : 
                 [ 
                   { "ident" : "composite",
@@ -34975,7 +34977,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "closed",
                 "valItem" : 
                 [ 
                   { "ident" : "initial",
@@ -35055,7 +35057,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "open",
                 "valItem" : 
                 [ 
                   { "ident" : "approved",
@@ -35310,7 +35312,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "semi",
                 "valItem" : 
                 [ 
                   { "ident" : "internal",
@@ -35444,7 +35446,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "open",
                 "valItem" : 
                 [ 
                   { "ident" : "no",
@@ -35515,7 +35517,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "semi",
                 "valItem" : 
                 [ 
                   { "ident" : "main",
@@ -35613,7 +35615,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "closed",
                 "valItem" : 
                 [ 
                   { "ident" : "Y",
@@ -35786,7 +35788,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "closed",
                 "valItem" : 
                 [ 
                   { "ident" : "default",
@@ -36377,7 +36379,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "closed",
                 "valItem" : 
                 [ 
                   { "ident" : "sole",
@@ -36557,7 +36559,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "open",
                 "valItem" : 
                 [ 
                   { "ident" : "image",
@@ -36914,7 +36916,7 @@
                 "dataRef" : 
                 { "key" : "teidata.text" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "closed",
                 "valItem" : 
                 [ 
                   { "ident" : "no",
@@ -36994,7 +36996,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "semi",
                 "valItem" : 
                 [ 
                   { "ident" : "m",
@@ -37391,7 +37393,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "semi",
                 "valItem" : 
                 [ 
                   { "ident" : "page",
@@ -37730,7 +37732,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "semi",
                 "valItem" : 
                 [ 
                   { "ident" : "full",
@@ -37869,7 +37871,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "closed",
                 "valItem" : 
                 [ 
                   { "ident" : "yes",
@@ -37951,7 +37953,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "semi",
                 "valItem" : 
                 [ 
                   { "ident" : "below",
@@ -38116,7 +38118,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "closed",
                 "valItem" : 
                 [ 
                   { "ident" : "all",
@@ -38623,7 +38625,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "closed",
                 "valItem" : 
                 [ 
                   { "ident" : "css",
@@ -38714,7 +38716,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "semi",
                 "valItem" : 
                 [ 
                   { "ident" : "label",
@@ -38814,7 +38816,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "open",
                 "valItem" : 
                 [ 
                   { "ident" : "substantive",
@@ -38855,7 +38857,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "open",
                 "valItem" : 
                 [ 
                   { "ident" : "homeoteleuton",
@@ -39051,7 +39053,7 @@
                 "dataRef" : 
                 { "key" : "teidata.enumerated" } },
               "valList" : 
-              { "type" : "",
+              { "type" : "open",
                 "valItem" : 
                 [ 
                   { "ident" : "duplicate",

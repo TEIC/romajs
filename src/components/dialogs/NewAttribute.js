@@ -8,7 +8,8 @@ export default class NewAttributeDialog extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      attribute: {}
+      attribute: 'newAttribute',
+      canCreate: true
     }
     this.dialog
   }
@@ -51,6 +52,19 @@ export default class NewAttributeDialog extends Component {
     }
   }
 
+  setAttribute(val) {
+    if (val.length > 0) {
+      this.setState({
+        attribute: val,
+        canCreate: true
+      })
+    } else {
+      this.setState({
+        canCreate: false
+      })
+    }
+  }
+
   render() {
     return (
       <aside className="mdc-dialog"
@@ -73,12 +87,12 @@ export default class NewAttributeDialog extends Component {
                 <div className="mdc-layout-grid__cell--span-6">
                   <div className="mdc-text-field mdc-text-field--upgraded">
                     <input type="text" className="mdc-text-field__input"
-                      onChange={(e) => {this.setState({attribute: e.target.value})}} placeholder="newAttribute"/>
+                      onChange={(e) => this.setAttribute(e.target.value)} placeholder="newAttribute"/>
                     <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
                   </div>
                 </div>
                 <div className="mdc-layout-grid__cell--span-2">
-                  <button className="mdc-button mdc-dialog__button" data-mdc-dialog-action="add_attribute">
+                  <button className="mdc-button mdc-dialog__button" data-mdc-dialog-action="add_attribute" disabled={!this.state.canCreate}>
                     Create
                   </button>
                 </div>

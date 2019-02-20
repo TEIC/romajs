@@ -382,9 +382,16 @@ export function oddElements(state, action) {
     case CHANGE_ELEMENT_ATTRIBUTE:
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
-          const localAtt = localsource.elements.filter((e) => action.element === e.ident)[0].attributes
-            .filter((a) => action.attName === a.ident)[0]
-          const newAtt = Object.assign({}, localAtt, {mode: 'change', changed: false, _changedOnMember: true})
+          let newAtt
+          let localAtt
+          const lEl = localsource.elements.filter((e) => action.element === e.ident)[0]
+          if (lEl) {
+            localAtt = lEl.attributes
+              .filter((a) => action.attName === a.ident)[0]
+            newAtt = Object.assign({}, localAtt, {mode: 'change', changed: false, _changedOnMember: true})
+          } else {
+            newAtt = {mode: 'add', _isNew: true}
+          }
           let found = false
           if (m.attributes) {
             m.attributes.forEach(att => {

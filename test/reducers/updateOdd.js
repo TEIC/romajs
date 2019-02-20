@@ -1227,4 +1227,86 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(xml.querySelector('elementSpec[ident="title"] > content > alternate').getAttribute('maxOccurs')).toEqual('234')
     expect(xml.querySelector('elementSpec[ident="title"] > content > alternate > elementRef').getAttribute('key')).toEqual('abbr')
   })
+
+  it('should create a new element', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    // Update JSON data directly
+    customJson.elements.push({
+      ident: 'newElement',
+      type: 'elements',
+      module: 'core',
+      desc: [ '<desc xmlns="http://tei-c.org/ns/1.0" xml:lang="en">New Element Desc</desc>' ],
+      shortDesc: '',
+      gloss: [],
+      altIdent: ['newEl'],
+      classes: {
+        model: [
+          'model.biblLike'
+        ],
+        atts: []
+      },
+      attributes: [
+        {
+          ident: 'newAttribute',
+          desc: ['<desc xmlns="http://tei-c.org/ns/1.0" xml:lang="en">sdf</desc>'],
+          gloss: [],
+          altIdent: ['now'],
+          datatype: {
+            dataRef: {
+              name: 'string',
+              dataFacet: [],
+              restriction: '[ba]'
+            }
+          },
+          valDesc: ['<valDesc xmlns="http://tei-c.org/ns/1.0" xml:lang="en">afsfg</valDesc>'],
+          mode: 'add',
+          ns: 'http://example.com/newNS',
+          usage: 'req',
+          _isNew: true,
+          valList: {
+            type: 'semi',
+            valItem: [
+              {
+                ident: 'a'
+              }
+            ]
+          }
+        }
+      ],
+      content: [
+        {
+          key: 'ab',
+          type: 'elementRef'
+        }
+      ],
+      ns: 'http://example.com/ns',
+      _isNew: true
+    })
+
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    const elSpec = xml.querySelector('elementSpec[ident="newElement"]')
+    // console.log(elSpec.outerHTML)
+    expect(elSpec).toExist()
+    expect(elSpec.getAttribute('ident')).toEqual('newElement')
+    expect(elSpec.getAttribute('ns')).toEqual('http://example.com/ns')
+    expect(elSpec.querySelector('desc').textContent).toEqual('New Element Desc')
+    expect(elSpec.querySelector('altIdent').textContent).toEqual('newEl')
+    expect(elSpec.querySelector('classes > memberOf').getAttribute('key')).toEqual('model.biblLike')
+    expect(elSpec.querySelector('valList').getAttribute('type')).toEqual('semi')
+    expect(elSpec.querySelector('attDef > valDesc').textContent).toEqual('afsfg')
+    expect(elSpec.querySelector('attDef > datatype > dataRef').getAttribute('name')).toEqual('string')
+    expect(elSpec.querySelector('attDef > datatype > dataRef').getAttribute('restriction')).toEqual('[ba]')
+  })
 })
