@@ -3,11 +3,8 @@ import { clone } from '../utils/clone'
 import { UPDATE_DATATYPE_DOCS, DELETE_DATATYPE_DOCS, CREATE_NEW_DATATYPE,
   DISCARD_DATATYPE_CHANGES, REVERT_DATATYPE_TO_SOURCE, SET_DATAREF,
   SET_DATAREF_RESTRICTION, NEW_DATAREF, NEW_TEXTNODE, DELETE_DATATYPE_CONTENT,
-  MOVE_DATATYPE_CONTENT,
-  NEW_DATATYPE_VALLIST,
-  ADD_DATATYPE_VALITEM,
-  DELETE_DATATYPE_VALITEM,
-  SET_DATATYPE_CONTENT_GROUPING} from '../actions/datatypes'
+  MOVE_DATATYPE_CONTENT, NEW_DATATYPE_VALLIST, ADD_DATATYPE_VALITEM,
+  DELETE_DATATYPE_VALITEM, SET_DATATYPE_CONTENT_GROUPING} from '../actions/datatypes'
 import primitiveDatatypes from '../utils/primitiveDatatypes'
 
 // TODO: this function can be shared with elements.js, etc.
@@ -116,13 +113,12 @@ export function oddDatatypes(state, action) {
       }
       customization.datatypes.forEach(dt => {
         if (dt.ident === action.datatype) {
-          if (dt.content.alternate) {
-            setDataRef(dt.content.alternate[action.index])
-          } else if (dt.content.sequence) {
-            setDataRef(dt.content.sequence[action.index])
+          if (dt.content.type === 'alternate' || dt.content[0].type === 'sequence') {
+            setDataRef(dt.content[0].content[action.index])
           } else {
             setDataRef(dt.content[action.index])
           }
+          markChange(dt, 'content')
         }
       })
       return newState
@@ -139,13 +135,12 @@ export function oddDatatypes(state, action) {
       }
       customization.datatypes.forEach(dt => {
         if (dt.ident === action.datatype) {
-          if (dt.content.alternate) {
-            applyRestriction(dt.content.alternate[action.index])
-          } else if (dt.content.sequence) {
-            applyRestriction(dt.content.sequence[action.index])
+          if (dt.content[0].type === 'alternate' || dt.content[0].type === 'sequence') {
+            applyRestriction(dt.content[0].content[action.index])
           } else {
             applyRestriction(dt.content[action.index])
           }
+          markChange(dt, 'content')
         }
       })
       return newState
@@ -156,13 +151,12 @@ export function oddDatatypes(state, action) {
       }
       customization.datatypes.forEach(dt => {
         if (dt.ident === action.datatype) {
-          if (dt.content.alternate) {
-            dt.content.alternate.push(newDataRef)
-          } else if (dt.content.sequence) {
-            dt.content.sequence.push(newDataRef)
+          if (dt.content[0] && (dt.content.type === 'alternate' || dt.content[0].type === 'sequence')) {
+            dt.content[0].content.push(newDataRef)
           } else {
             dt.content.push(newDataRef)
           }
+          markChange(dt, 'content')
         }
       })
       return newState
@@ -172,13 +166,12 @@ export function oddDatatypes(state, action) {
       }
       customization.datatypes.forEach(dt => {
         if (dt.ident === action.datatype) {
-          if (dt.content.alternate) {
-            dt.content.alternate.push(newTextNode)
-          } else if (dt.content.sequence) {
-            dt.content.sequence.push(newTextNode)
+          if (dt.content[0].type === 'alternate' || dt.content[0].type === 'sequence') {
+            dt.content[0].content.push(newTextNode)
           } else {
             dt.content.push(newTextNode)
           }
+          markChange(dt, 'content')
         }
       })
       return newState
@@ -188,13 +181,12 @@ export function oddDatatypes(state, action) {
       }
       customization.datatypes.forEach(dt => {
         if (dt.ident === action.datatype) {
-          if (dt.content.alternate) {
-            dt.content.alternate.push(newValList)
-          } else if (dt.content.sequence) {
-            dt.content.sequence.push(newValList)
+          if (dt.content[0].type === 'alternate' || dt.content[0].type === 'sequence') {
+            dt.content[0].content.push(newValList)
           } else {
             dt.content.push(newValList)
           }
+          markChange(dt, 'content')
         }
       })
       return newState
@@ -213,10 +205,8 @@ export function oddDatatypes(state, action) {
       }
       customization.datatypes.forEach(dt => {
         if (dt.ident === action.datatype) {
-          if (dt.content.alternate) {
-            dt.content.alternate[action.index].valItem = addValItem(dt.content.alternate[action.index].valItem)
-          } else if (dt.content.sequence) {
-            dt.content.sequence[action.index].valItem = addValItem(dt.content.sequence[action.index].valItem)
+          if (dt.content[0].type === 'alternate' || dt.content[0].type === 'sequence') {
+            dt.content[0].content[action.index].valItem = addValItem(dt.content[0].content[action.index].valItem)
           } else {
             dt.content[action.index].valItem = addValItem(dt.content[action.index].valItem)
           }
@@ -226,15 +216,8 @@ export function oddDatatypes(state, action) {
     case DELETE_DATATYPE_VALITEM:
       customization.datatypes.forEach(dt => {
         if (dt.ident === action.datatype) {
-          if (dt.content.alternate) {
-            dt.content.alternate[action.index].valItem = dt.content.alternate[action.index].valItem.reduce((acc, vi) => {
-              if (vi.ident !== action.value) {
-                acc.push(vi)
-              }
-              return acc
-            }, [])
-          } else if (dt.content.sequence) {
-            dt.content.sequence[action.index].valItem = dt.content.sequence[action.index].valItem.reduce((acc, vi) => {
+          if (dt.content[0].type === 'alternate' || dt.content[0].type === 'sequence') {
+            dt.content[0].content[action.index].valItem = dt.content[0].content[action.index].valItem.reduce((acc, vi) => {
               if (vi.ident !== action.value) {
                 acc.push(vi)
               }
@@ -248,19 +231,19 @@ export function oddDatatypes(state, action) {
               return acc
             }, [])
           }
+          markChange(dt, 'content')
         }
       })
       return newState
     case DELETE_DATATYPE_CONTENT:
       customization.datatypes.forEach(dt => {
         if (dt.ident === action.datatype) {
-          if (dt.content.alternate) {
-            dt.content.alternate.splice(action.index, 1)
-          } else if (dt.content.sequence) {
-            dt.content.sequence.splice(action.index, 1)
+          if (dt.content[0].type === 'alternate' || dt.content[0].type === 'sequence') {
+            dt.content[0].content.splice(action.index, 1)
           } else {
             dt.content.splice(action.index, 1)
           }
+          markChange(dt, 'content')
         }
       })
       return newState
@@ -268,17 +251,11 @@ export function oddDatatypes(state, action) {
       if (action.indexFrom >= 0 && action.indexTo >= 0) {
         customization.datatypes.forEach(dt => {
           if (dt.ident === action.datatype) {
-            if (dt.content.alternate) {
-              if (action.indexTo < dt.content.alternate.length) {
-                const item = dt.content.alternate[action.indexFrom]
-                dt.content.alternate.splice(action.indexFrom, 1)
-                dt.content.alternate.splice(action.indexTo, 0, item)
-              }
-            } else if (dt.content.sequence) {
-              if (action.indexTo < dt.content.sequence.length) {
-                const item = dt.content.sequence[action.indexFrom]
-                dt.content.sequence.splice(action.indexFrom, 1)
-                dt.content.sequence.splice(action.indexTo, 0, item)
+            if (dt.content[0].type === 'alternate' || dt.content[0].type === 'sequence') {
+              if (action.indexTo < dt.content[0].content.length) {
+                const item = dt.content[0].content[action.indexFrom]
+                dt.content[0].content.splice(action.indexFrom, 1)
+                dt.content[0].content.splice(action.indexTo, 0, item)
               }
             } else {
               if (action.indexTo < dt.content.length) {
@@ -287,6 +264,7 @@ export function oddDatatypes(state, action) {
                 dt.content.splice(action.indexTo, 0, item)
               }
             }
+            markChange(dt, 'content')
           }
         })
         return newState
@@ -314,6 +292,7 @@ export function oddDatatypes(state, action) {
                 }]
               }
           }
+          markChange(dt, 'content')
         }
       })
       return newState

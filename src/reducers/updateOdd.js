@@ -2,6 +2,7 @@ import { mergeModules } from './odd/mergeModules'
 import { mergeElements } from './odd/mergeElements'
 import { updateClasses } from './odd/updateClasses'
 import { updateElements } from './odd/updateElements'
+import { updateDatatypes } from './odd/updateDatatypes'
 
 const parser = new DOMParser()
 
@@ -27,6 +28,8 @@ export function updateOdd(localsourceObj, customizationObj) {
   odd = updateElements(localsource, customization, odd.cloneNode(true))
   // CHANGES TO CLASSES
   odd = updateClasses(localsource, customization, odd.cloneNode(true))
+  // CHANGES TO DATATYPES
+  odd = updateDatatypes(localsource, customization, odd.cloneNode(true))
 
   if (global.usejsdom) {
     return odd.documentElement.outerHTML
