@@ -26,7 +26,7 @@ export default class DatatypeContent extends Component {
   }
 
   render() {
-    let content = this.props.datatype.content
+    let content = this.props.datatype.content || []
     let contentType = null
     let grouping = null
     if (content[0]) {

@@ -53,18 +53,6 @@ export default class Element extends Component {
             <span>Class Membership <br/> &amp; Content Model</span>
           </div>
         </li>
-        <li className="mdc-image-list__item">
-          <div className="mdc-image-list__image-aspect-container romajs-clickable"
-            onClick={() => this.props.navigateTo(`${this.baseurl}/constraints`)}>
-            <span>Constraints</span>
-          </div>
-        </li>
-        <li className="mdc-image-list__item">
-          <div className="mdc-image-list__image-aspect-container romajs-clickable"
-            onClick={() => this.props.navigateTo(`${this.baseurl}/processing`)}>
-            <span>Processing Model</span>
-          </div>
-        </li>
       </ul>
     </div>)
     // TODO: This is ugly! Re-organize this into proper components

@@ -60,12 +60,6 @@ export default class Class extends Component {
           </div>
         </li>
         {mainSettings}
-        <li className="mdc-image-list__item romajs-classbackground">
-          <div className="mdc-image-list__image-aspect-container romajs-clickable"
-            onClick={() => this.props.navigateTo(`${this.baseurl}/constraints`)}>
-            <span>Constraints</span>
-          </div>
-        </li>
       </ul>
     </div>)
     // TODO: This is ugly! Re-organize this into proper components

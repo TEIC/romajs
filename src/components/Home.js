@@ -18,7 +18,7 @@ export default class Home extends Component {
           'TEI All (customize by reducing TEI)',
           'TEI Minimal (customize by building TEI up)',
           'TEI Absolutely Bare',
-          'TEI SimplePrint',
+          // 'TEI SimplePrint',
           'TEI Lite',
           'TEI Tite',
           'TEI for Linguistic Corpora',
@@ -29,13 +29,13 @@ export default class Home extends Component {
           'TEI with SVG',
           'TEI with MathML',
           'TEI with XInclude',
-          'TEI for Journal of the TEI'
+          // 'TEI for Journal of the TEI'
         ],
         urls: [
           `${datasource}/tei_all.odd`,
           `${datasource}/tei_minimal.odd`,
           `${datasource}/tei_bare.odd`,
-          `${datasource}/tei_simplePrint.odd`,
+          // `${datasource}/tei_simplePrint.odd`,
           `${datasource}/tei_lite.odd`,
           `${datasource}/tei_tite.odd`,
           `${datasource}/tei_corpus.odd`,
@@ -46,7 +46,7 @@ export default class Home extends Component {
           `${datasource}/tei_svg.odd`,
           `${datasource}/tei_math.odd`,
           `${datasource}/tei_xinclude.odd`,
-          `${datasource}/tei_jtei.odd`
+          // `${datasource}/tei_jtei.odd`
         ]
       }
     }

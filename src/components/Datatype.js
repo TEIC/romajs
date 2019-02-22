@@ -45,12 +45,6 @@ export default class Datatype extends Component {
             <span>Content</span>
           </div>
         </li>
-        <li className="mdc-image-list__item romajs-dtbackground">
-          <div className="mdc-image-list__image-aspect-container romajs-clickable"
-            onClick={() => this.props.navigateTo(`${this.baseurl}/constraints`)}>
-            <span>Constraints</span>
-          </div>
-        </li>
       </ul>
     </div>)
     // TODO: This is ugly! Re-organize this into proper components
@@ -118,7 +112,7 @@ export default class Datatype extends Component {
     </main>,
     <RevertDialog key="rd" show={this.state.showRevertDialog} hide={() => {this.setState({showRevertDialog: false})}}
       memberLabel={this.props.datatype.ident} member={this.props.datatype.ident} isNew={this.props.datatype._isNew || false}
-      discard={(cl) => {this.props.discardChanges(cl)}} revert={(cl) => {this.props.revertToSource(cl)}} />
+      discard={(dt) => {this.props.discardChanges(dt)}} revert={(dt) => {this.props.revertToSource(dt)}} />
     ]
   }
 }

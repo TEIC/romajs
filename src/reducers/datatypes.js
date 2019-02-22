@@ -90,6 +90,7 @@ export function oddDatatypes(state, action) {
           const lDt = localsource.datatypes.filter(dt => dt.ident === action.name)[0]
           if (lDt) {
             acc.push(clone(lDt))
+            markChange(m, 'all')
           }
         } else {
           acc.push(m)

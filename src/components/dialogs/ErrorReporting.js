@@ -13,6 +13,8 @@ export default class ErrorReporting extends Component {
     this.dialog = new MDCDialog(this.refs.na)
     this.dialog.listen('MDCDialog:closed', (event) => {
       switch (event.detail.action) {
+        case 'restart':
+          this.props.goHome()
         case 'cancel':
         default:
           this.props.hide()
@@ -51,13 +53,10 @@ export default class ErrorReporting extends Component {
               </p>
             </div>
             <footer className="mdc-dialog__actions">
-              <button type="button" className="mdc-button mdc-dialog__button" onClick={() => {
-                this.dialog.close()
-                this.props.goHome()
-              }}>
+              <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="restart">
                 Start Over
               </button>
-              <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
+              <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
                 <span className="mdc-button__label">OK</span>
               </button>
             </footer>
