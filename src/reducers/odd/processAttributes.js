@@ -164,12 +164,11 @@ export function processAttributes(specElement, specData, localData, localsource,
   for (const att of specData.attributes) {
     const isDefined = localAtts.indexOf(att.ident) !== -1
     const toRemove = isDefined && att.mode === 'delete'
-    const toChange = (att.mode === 'change' || (att.mode === 'add' && Boolean(att._changed)))
+    const toChange = ((att.mode === 'change' && Boolean(att._changed)) || (att.mode === 'add' && Boolean(att._changed)))
     const toAdd = !isDefined && !toChange
-    const toRestore = isDefined && !toRemove && att.mode !== 'change'
+    const toRestore = isDefined && !toRemove && (att.mode === 'change' && Boolean(att._changed))
 
     if (toRemove || toChange || toAdd) {
-      // elSpec = _getOrSetElementSpec(odd, el.ident)
       let attList = specElement.querySelector('attList')
       if (!attList) {
         attList = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attList')
