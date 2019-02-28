@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
-import * as local from '../localization/uiStrings'
+import * as i18n from '../localization/Home'
 import datasource from '../utils/datasources'
 
 import {MDCTabBar} from '@material/tabs'
@@ -87,14 +87,14 @@ export default class Home extends Component {
     if (index === 0) {
       this.setState({start: this.props.getCustomization})
     } else {
-      this.setState({start: () => this.props.uploadCustomization(this.state.selectedFile)})
+      this.setState({start: () => this.props.uploadCustomization(this.state.selectedFile, this.props.language)})
     }
     this.setState({panel: index})
   }
 
   _updateCustomizationUrl(url) {
     this.setState(
-      {start: () => {this.props.getCustomization(url)}}
+      {start: () => {this.props.getCustomization(url, this.props.language)}}
     )
   }
 
@@ -117,13 +117,13 @@ export default class Home extends Component {
           <div className="romajs-homebox mdc-card mdc-elevation--z10">
             <section className="mdc-card__primary">
               <nav id="basic-tab-bar" className="mdc-tab-bar" ref="tabs">
-                <a className="mdc-tab mdc-tab--active">{local.selectODD[this.props.language]}</a>
-                <a className="mdc-tab">{local.uploadODD[this.props.language]}</a>
+                <a className="mdc-tab mdc-tab--active">{i18n.selectODD[this.props.language]}</a>
+                <a className="mdc-tab">{i18n.uploadODD[this.props.language]}</a>
                 <span className="mdc-tab-bar__indicator" style={{transform: 'translateX(160px) scale(0.333333, 1)', visibility: 'visible'}}/>
               </nav>
               <div className="romajs-tabPanels">
                 <div className="romajs-tabPanel" role="tabpanel" style={this._setActivePanel(0)}>
-                  <h2 className="mdc-typography--title">{local.selectODD[this.props.language]}</h2>
+                  <h2 className="mdc-typography--title">{i18n.selectODD[this.props.language]}</h2>
                   <div className="mdc-select" ref="chooseodd">
                     <input type="hidden" name="enhanced-select"/>
                     <i className="mdc-select__dropdown-icon"/>
@@ -135,12 +135,12 @@ export default class Home extends Component {
                         })
                       }</ul>
                     </div>
-                    <span className="mdc-floating-label">Choose a preset</span>
+                    <span className="mdc-floating-label">{i18n.choose[this.props.language]}</span>
                     <div className="mdc-line-ripple"/>
                   </div>
                 </div>
                 <div className="romajs-tabPanel"role="tabpanel" style={this._setActivePanel(1)}>
-                  <h2 className="mdc-typography--title">{local.uploadODD[this.props.language]}</h2>
+                  <h2 className="mdc-typography--title">{i18n.uploadODD[this.props.language]}</h2>
                   <input type="file" id="files" accept=".xml,.tei,.odd" onChange={e => {
                     this.setState({selectedFile: e.target.files.length > 0 ? e.target.files : undefined})
                   }}/>
@@ -148,7 +148,7 @@ export default class Home extends Component {
               </div>
             </section>
             <section className="mdc-card__actions">
-              <button className="mdc-button mdc-button--compact mdc-card__action" onClick={this.state.start} {...disabled}>{local.start[this.props.language]}</button>
+              <button className="mdc-button mdc-button--compact mdc-card__action" onClick={this.state.start} {...disabled}>{i18n.start[this.props.language]}</button>
               <button className="mdc-button mdc-button--compact mdc-card__action" id="test"
                 onClick={this.props.loadTestData} {...disabled} style={{display: 'none'}}>(Test: Skip OxGarage)</button>
             </section>

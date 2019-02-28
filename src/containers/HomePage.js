@@ -6,6 +6,7 @@ import Home from '../components/Home'
 import oxgarage from '../utils/oxgarage'
 import fetch from 'isomorphic-fetch'
 import datasource from '../utils/datasources'
+import * as i18n from '../localization/HomePage'
 
 const mapStateToProps = (state) => {
   return {
@@ -15,34 +16,30 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCustomization: (url) => {
+    getCustomization: (url, lang) => {
       dispatch(clearState())
       dispatch(push('/members'))
-      dispatch(setLoadingStatus('1/3 Obtaining customization ODD...'))
+      dispatch(setLoadingStatus(i18n.step1[lang]))
       dispatch(fetchOdd(url)).then((odd) => {
         // 1. Get JSON via OxGarage
-        dispatch(setLoadingStatus('2/3 Importing customization ODD...'))
+        dispatch(setLoadingStatus(i18n.step2[lang]))
         dispatch(postToOxGarage(odd.xml, oxgarage.compile_json)).then(() => {
-          dispatch(setLoadingStatus('3/3 Importing full specification source...'))
+          dispatch(setLoadingStatus(i18n.step3[lang]))
           // 2. Get p5subset.
-          // TODO: this is a terrible thing, but there are plans to fix it:
-          // from next release it will be possible to get p5subset.json directly from the Vault.
-          // dispatch(fetchLocalSource('http://mith.us/romajs/fakeData/p5subset.json'))
-          // dispatch(fetchLocalSource('http://tei-c.org/Vault/P5/current/xml/tei/odd/p5subset.json'))
           dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
         })
       })
     },
-    uploadCustomization: (files) => {
+    uploadCustomization: (files, lang) => {
       dispatch(clearState())
       dispatch(push('/members'))
-      dispatch(setLoadingStatus('1/3 Obtaining customization ODD...'))
+      dispatch(setLoadingStatus(i18n.step1[lang]))
       const reader = new FileReader()
       reader.readAsText(files[0])
       reader.onload = (e) => {
         dispatch(receiveOdd(e.target.result))
         // 1. Get JSON via OxGarage
-        dispatch(setLoadingStatus('2/3 Importing customization ODD...'))
+        dispatch(setLoadingStatus(i18n.step2[lang]))
         const odd = new DOMParser().parseFromString(e.target.result, 'text/xml')
         if (odd.getElementsByTagNameNS('http://www.tei-c.org/ns/1.0', 'TEI').length !== 1 ) {
           throw Error('This does not appear to be a TEI document.')
@@ -51,10 +48,8 @@ const mapDispatchToProps = (dispatch) => {
           throw Error('ODDs with RELAX NG elements are not supported.')
         }
         dispatch(postToOxGarage(e.target.result, oxgarage.compile_json)).then(() => {
-          dispatch(setLoadingStatus('3/3 Importing full specification source...'))
+          dispatch(setLoadingStatus(i18n.step3[lang]))
           // 2. Get p5subset.
-          // TODO: this is a terrible thing, but there are plans to fix it:
-          // from next release it will be possible to get p5susbet.json directly from the Vault.
           dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
           // dispatch(fetchLocalSource('/fakeData/p5subset.json'))
         })

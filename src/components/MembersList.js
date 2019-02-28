@@ -5,6 +5,7 @@ import FilterSearch from '../containers/FilterSearch'
 import Member from './Member'
 import MembersFacet from './MemberFacet'
 import AddMemberFab from './AddMemberFab'
+import * as i18n from '../localization/MembersList'
 
 export default class MembersList extends Component {
   constructor(props) {
@@ -55,13 +56,13 @@ export default class MembersList extends Component {
       content = [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
         <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
           <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-            visibleMemberTypes={this.props.visibleMemberTypes} type="elements" label="Elements" />
+            visibleMemberTypes={this.props.visibleMemberTypes} type="elements" label={i18n.elements[this.props.language]} />
           <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-            visibleMemberTypes={this.props.visibleMemberTypes} type="attclasses" label="Attribute Classes" />
+            visibleMemberTypes={this.props.visibleMemberTypes} type="attclasses" label={i18n.atts[this.props.language]} />
           <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-            visibleMemberTypes={this.props.visibleMemberTypes} type="modelclasses" label="Model Classes" />
+            visibleMemberTypes={this.props.visibleMemberTypes} type="modelclasses" label={i18n.models[this.props.language]} />
           <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-            visibleMemberTypes={this.props.visibleMemberTypes} type="datatypes" label="Datatypes" />
+            visibleMemberTypes={this.props.visibleMemberTypes} type="datatypes" label={i18n.datatypes[this.props.language]} />
         </section>
         <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
           <FilterSearch/>
@@ -81,7 +82,7 @@ export default class MembersList extends Component {
           }
           )}
         </ul>
-        <AddMemberFab />
+        <AddMemberFab language={this.props.language}/>
       </main>]
     }
     return content
@@ -103,5 +104,6 @@ MembersList.propTypes = {
   loadingStatus: PropTypes.string,
   clearUiData: PropTypes.func.isRequired,
   setMemberTypeVisibility: PropTypes.func,
-  visibleMemberTypes: PropTypes.array
+  visibleMemberTypes: PropTypes.array,
+  language: PropTypes.string.isRequired
 }

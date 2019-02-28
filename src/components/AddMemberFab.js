@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import CreateNewElement from '../containers/CreateNewElement'
 import CreateNewClass from '../containers/CreateNewClass'
 import CreateNewDatatype from '../containers/CreateNewDatatype'
+import * as i18n from '../localization/AddMemberFab'
 
 export default class AddMemberFab extends Component {
   constructor(props) {
@@ -44,15 +46,15 @@ export default class AddMemberFab extends Component {
       members = [
         (<button key="el" className="mdc-fab mdc-fab--extended romajs-fab--absolute romajs-fab--secondary-el"
           onClick={() => {this.setState({type: 'element', showDialog: true, expanded: false})}}>
-          <span className="mdc-fab__label">Element</span>
+          <span className="mdc-fab__label">{i18n.element[this.props.language]}</span>
         </button>),
         (<button key="cl" className="mdc-fab mdc-fab--extended romajs-fab--absolute romajs-fab--secondary-cl"
           onClick={() => {this.setState({type: 'class', showDialog: true, expanded: false})}}>
-          <span className="mdc-fab__label">Class</span>
+          <span className="mdc-fab__label">{i18n.klass[this.props.language]}</span>
         </button>),
         (<button key="dt" className="mdc-fab mdc-fab--extended romajs-fab--absolute romajs-fab--secondary-dt"
           onClick={() => {this.setState({type: 'datatype', showDialog: true, expanded: false})}}>
-          <span className="mdc-fab__label">Datatype</span>
+          <span className="mdc-fab__label">{i18n.datatype[this.props.language]}</span>
         </button>),
       ]
     }
@@ -60,11 +62,15 @@ export default class AddMemberFab extends Component {
       <div id="romajs-fab">
         {dialog}
         <button key="new" className="mdc-fab mdc-fab--extended romajs-fab--absolute" onClick={() => {this.toggle()}}>
-          <span className="mdc-fab__label">New</span>
+          <span className="mdc-fab__label">{i18n.newBtn[this.props.language]}</span>
           <span className="mdc-fab__icon material-icons">library_add</span>
         </button>
         {members}
       </div>
     )
   }
+}
+
+AddMemberFab.propTypes = {
+  language: PropTypes.string.isRequired
 }

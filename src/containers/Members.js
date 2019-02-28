@@ -109,7 +109,10 @@ const mapStateToProps = (state) => {
       })
     }
   }
-  return {members: allMembers, visibleMemberTypes, loadingStatus: state.ui.loadingStatus}
+  return {
+    members: allMembers, visibleMemberTypes, loadingStatus: state.ui.loadingStatus,
+    language: state.ui.language
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -4,7 +4,7 @@ import { Component } from 'react'
 import { MDCSelect } from '@material/select'
 import { MDCDialog } from '@material/dialog'
 
-export default class NewElement extends Component {
+export default class NewDatatype extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -63,21 +63,21 @@ export default class NewElement extends Component {
         <div className="mdc-dialog__container">
           <div className="mdc-dialog__surface">
             <h2 className="mdc-dialog__title">
-              Create new Element
+              Create new Datatype
             </h2>
             <div className="mdc-dialog__content">
               <div className="mdc-layout-grid__inner romajs-formrow">
                 <div className="mdc-layout-grid__cell--span-3">
                   <label>Name</label>
                   <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                    Set the new element's name.
+                    Set the new datatype's name.
                   </p>
                 </div>
                 <div className="mdc-layout-grid__cell--span-6">
                   <div className="mdc-text-field mdc-text-field--upgraded">
                     <input type="text" className="mdc-text-field__input" value={this.state.name}
                       onChange={(v) => {
-                        if (this.doesElementExist(v.target.value)) {
+                        if (this.doesDatatypeExist(v.target.value)) {
                           this.setState({name: v.target.value, canCreate: false})
                         } else {
                           this.setState({name: v.target.value, canCreate: true})
@@ -91,7 +91,7 @@ export default class NewElement extends Component {
                 <div className="mdc-layout-grid__cell--span-3">
                   <label>Module</label>
                   <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                    Choose a module for this element.
+                    Choose a module for this datatype.
                   </p>
                 </div>
                 <div className="mdc-layout-grid__cell--span-6">
@@ -128,7 +128,7 @@ export default class NewElement extends Component {
   }
 }
 
-NewElement.propTypes = {
+NewDatatype.propTypes = {
   show: PropTypes.bool.isRequired,
   hide: PropTypes.func.isRequired,
   modules: PropTypes.array.isRequired,

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { MDCMenu } from '@material/menu'
-import * as local from '../localization/uiStrings'
+import * as i18n from '../localization/DownloadButton'
 
 export default class DonwloadButton extends Component {
   componentDidMount() {
@@ -15,7 +15,7 @@ export default class DonwloadButton extends Component {
         this.menu.open = !this.menu.open
         return e
       }}>
-        <i className="material-icons mdc-button__icon">file_download</i> {local.download[this.props.language]}
+        <i className="material-icons mdc-button__icon">file_download</i> {i18n.download[this.props.language]}
       </button>),
       (<div key="opts" className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="menu">
         <ul className="mdc-list" role="menu" aria-hidden="true">

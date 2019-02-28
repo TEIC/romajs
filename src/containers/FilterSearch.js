@@ -2,7 +2,11 @@ import { connect } from 'react-redux'
 import { setFilterTerm as setFilterTermAction } from '../actions/interface'
 import FilterSearchBar from '../components/FilterSearchBar'
 
-const mapStateToProps = () => { return {} }
+const mapStateToProps = (state) => {
+  return {
+    language: state.ui.language
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
