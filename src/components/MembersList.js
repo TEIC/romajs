@@ -55,14 +55,16 @@ export default class MembersList extends Component {
     if (this.props.members.length > 0) {
       content = [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
         <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-          <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-            visibleMemberTypes={this.props.visibleMemberTypes} type="elements" label={i18n.elements[this.props.language]} />
-          <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-            visibleMemberTypes={this.props.visibleMemberTypes} type="attclasses" label={i18n.atts[this.props.language]} />
-          <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-            visibleMemberTypes={this.props.visibleMemberTypes} type="modelclasses" label={i18n.models[this.props.language]} />
-          <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-            visibleMemberTypes={this.props.visibleMemberTypes} type="datatypes" label={i18n.datatypes[this.props.language]} />
+          <div className="mdc-chip-set mdc-chip-set--filter">
+            <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
+              visibleMemberTypes={this.props.visibleMemberTypes} type="elements" label={i18n.elements[this.props.language]} />
+            <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
+              visibleMemberTypes={this.props.visibleMemberTypes} type="attclasses" label={i18n.atts[this.props.language]} />
+            <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
+              visibleMemberTypes={this.props.visibleMemberTypes} type="modelclasses" label={i18n.models[this.props.language]} />
+            <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
+              visibleMemberTypes={this.props.visibleMemberTypes} type="datatypes" label={i18n.datatypes[this.props.language]} />
+          </div>
         </section>
         <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
           <FilterSearch/>

@@ -15,17 +15,17 @@ export default class MembersFacet extends Component {
   }
 
   render() {
-    let ico = 'add_circle_outline'
+    let checkmark = ''
     let activeClass = ''
     if (this.props.visibleMemberTypes.indexOf(this.props.type) !== -1) {
-      ico = 'cancel'
+      checkmark = <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">done</i>
       activeClass = 'romajs-active'
     }
     return (
-      <div className={`mdc-chip ${activeClass}`} onClick={() => {
+      <div className={`mdc-chip mdc-ripple-upgraded ${activeClass}`} onClick={() => {
         this.toggleMemberTypeVisibility(this.props.type)
       }}>
-        <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">{ico}</i>
+        {checkmark}
         <div className="mdc-chip__text">{this.props.label}</div>
       </div>
     )

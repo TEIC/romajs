@@ -2,14 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { MDCDialog } from '@material/dialog'
+import ReactDOM from 'react-dom'
 
 export default class YesNo extends Component {
   constructor(props) {
     super(props)
+    this.el = document.createElement('div')
     this.dialog
   }
 
   componentDidMount() {
+    document.body.appendChild(this.el)
     this.dialog = new MDCDialog(this.refs.na)
     this.dialog.listen('MDCDialog:closed', (event) => {
       switch (event.detail.action) {
@@ -27,6 +30,9 @@ export default class YesNo extends Component {
     this.dialog.listen('MDCDialog:opened', () => {
       this.dialog.layout()
     })
+    if (this.props.showImmediately) {
+      this.dialog.open()
+    }
   }
 
   componentDidUpdate() {
@@ -35,9 +41,13 @@ export default class YesNo extends Component {
     }
   }
 
+  componentWillUnmount() {
+    document.body.removeChild(this.el)
+  }
+
   render() {
-    return (
-      <aside className="mdc-dialog"
+    return ReactDOM.createPortal(
+      (<aside className="mdc-dialog"
         ref="na"
         role="alertdialog"
         aria-modal="true">
@@ -60,13 +70,15 @@ export default class YesNo extends Component {
           </div>
         </div>
         <div className="mdc-dialog__scrim"/>
-      </aside>
+      </aside>),
+      this.el
     )
   }
 }
 
 YesNo.propTypes = {
   show: PropTypes.bool.isRequired,
+  showImmediately: PropTypes.bool,
   hide: PropTypes.func,
   header: PropTypes.string.isRequired,
   body: PropTypes.string,
