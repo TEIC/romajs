@@ -108,7 +108,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
-    expect(xml.querySelector('classSpec[ident="att.global"] > attList > attDef[ident="xml:space"]')).toNotExist()
+    expect(xml.querySelector('classSpec[ident="att.global"] > attList > attDef[ident="xml:space"]')).toExist()
   })
 
   it('should change an attribute on an attribute class.', () => {
@@ -270,7 +270,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
     const classSpec = xml.querySelector('classSpec[ident="att.newClass"]')
-    console.log(classSpec.outerHTML)
+    // console.log(classSpec.outerHTML)
     expect(classSpec).toExist()
     expect(classSpec.querySelector('desc').textContent).toEqual('test desc')
     expect(classSpec.querySelector('altIdent').textContent).toEqual('att.nc')

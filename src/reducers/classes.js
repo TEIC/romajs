@@ -122,6 +122,7 @@ export function oddClasses(state, action) {
       localClass = allLocalClasses.filter(m => action.member === m.ident)[0]
       const latt = localClass.attributes.filter(la => la.ident === action.attribute)[0]
       const restoredAtt = clone(latt)
+      restoredAtt._changed = ['all']
       allCustomClasses.forEach(m => {
         if (m.ident === action.member) {
           if (m.attributes) {
