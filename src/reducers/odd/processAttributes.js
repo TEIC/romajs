@@ -108,7 +108,10 @@ function changeAttr(att, localAtt, attDef, odd) {
                 let datatype = attDef.querySelector('datatype')
                 if (!datatype) {
                   datatype = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'datatype')
-                  attDef.appendChild(datatype)
+                  insertBetween(
+                    attDef, datatype,
+                    'desc, gloss, altIdent, equiv',
+                    'constraintSpec, defaultVal, valList, valDesc, exemplum, remarks')
                 }
                 let dataRef = datatype.querySelector('dataRef')
                 if (!dataRef) {
@@ -130,7 +133,10 @@ function changeAttr(att, localAtt, attDef, odd) {
                 let datatype = attDef.querySelector('datatype')
                 if (!datatype) {
                   datatype = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'datatype')
-                  attDef.appendChild(datatype)
+                  insertBetween(
+                    attDef, datatype,
+                    'desc, gloss, altIdent, equiv',
+                    'constraintSpec, defaultVal, valList, valDesc, exemplum, remarks')
                 }
                 let dataRef = datatype.querySelector('dataRef')
                 if (!dataRef) {
@@ -334,7 +340,10 @@ export function createAttributes(specElement, specData, odd) {
           }
           datatype.appendChild(dataRef)
         }
-        attDef.appendChild(datatype)
+        insertBetween(
+          attDef, datatype,
+          'desc, gloss, altIdent, equiv',
+          'constraintSpec, defaultVal, valList, valDesc, exemplum, remarks')
       }
       attList.appendChild(attDef)
     }

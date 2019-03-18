@@ -16,21 +16,24 @@ export function processDocEls(specElement, specData, localData, change, odd) {
         continue
       }
       let newDocEl
-      // If the state keeps the full element as string (e.g. uses ACE editor), parse it.
-      if (d.startsWith('<')) {
-        dummyEl.innerHTML = d
-        newDocEl = dummyEl.firstChild
-        newDocEl.removeAttribute('xmlns')
-        dummyEl.firstChild.remove()
-      } else {
-        newDocEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', change)
-        const text = odd.createTextNode(d)
-        newDocEl.appendChild(text)
-      }
-      if (docEl) {
-        specElement.replaceChild(newDocEl, docEl)
-      } else {
-        specElement.appendChild(newDocEl)
+      // make sure the content is not ''
+      if (d.length > 0) {
+        // If the state keeps the full element as string (e.g. uses ACE editor), parse it.
+        if (d.startsWith('<')) {
+          dummyEl.innerHTML = d
+          newDocEl = dummyEl.firstChild
+          newDocEl.removeAttribute('xmlns')
+          dummyEl.firstChild.remove()
+        } else {
+          newDocEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', change)
+          const text = odd.createTextNode(d)
+          newDocEl.appendChild(text)
+        }
+        if (docEl) {
+          specElement.replaceChild(newDocEl, docEl)
+        } else {
+          specElement.insertBefore(newDocEl, specElement.firstChild)
+        }
       }
     } else if (!docEl) {
       // noop
@@ -49,13 +52,16 @@ export function createDocEls(specElement, specData, odd) {
     const newDocEl = dummyEl.firstChild
     newDocEl.removeAttribute('xmlns')
     dummyEl.firstChild.remove()
-    specElement.appendChild(newDocEl)
+    specElement.insertBefore(newDocEl, specElement.firstChild)
   }
   for (const altIdent of specData.altIdent) {
-    const newDocEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'altIdent')
-    const text = odd.createTextNode(altIdent)
-    newDocEl.appendChild(text)
-    specElement.appendChild(newDocEl)
+    // make sure the content is not ''
+    if (altIdent.length > 0) {
+      const newDocEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'altIdent')
+      const text = odd.createTextNode(altIdent)
+      newDocEl.appendChild(text)
+      specElement.insertBefore(newDocEl, specElement.firstChild)
+    }
   }
   return odd
 }

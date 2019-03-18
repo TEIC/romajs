@@ -62,41 +62,46 @@ export function mergeElements(localsource, customization, odd) {
   for (const el of Array.from(allOddElements)) {
     if (customizationElements.indexOf(el) === -1) {
       console.log('removing ' + el)
-      const mod = localsource.elements.filter(x => (x.ident === el))[0].module
-      // adjust @include or @except
-      const moduleRef = moduleRefs.filter(m => (m.getAttribute('key') === mod))[0]
-      const elementRef = Array.from(elementRefs).filter(er => (er.getAttribute('key') === el))[0]
-      const elementSpec = Array.from(elementSpecs).filter(er => (er.getAttribute('ident') === el))[0]
+      const localEl = localsource.elements.filter(x => (x.ident === el))[0]
+      if (localEl) {
+        const mod = localEl.module
+        // adjust @include or @except
+        const moduleRef = moduleRefs.filter(m => (m.getAttribute('key') === mod))[0]
+        const elementRef = Array.from(elementRefs).filter(er => (er.getAttribute('key') === el))[0]
+        const elementSpec = Array.from(elementSpecs).filter(er => (er.getAttribute('ident') === el))[0]
 
-      if (moduleRef) {
-        const include = moduleRef.getAttribute('include')
-        const except = moduleRef.getAttribute('except')
-        if (include) {
-          const includeParts = include.match(/\S+/g)
-          includeParts.splice(includeParts.indexOf(el), 1)
-          const includeString = includeParts.join(' ')
-          if (includeString) {
-            moduleRef.setAttribute('include', includeString)
+        if (moduleRef) {
+          const include = moduleRef.getAttribute('include')
+          const except = moduleRef.getAttribute('except')
+          if (include) {
+            const includeParts = include.match(/\S+/g)
+            includeParts.splice(includeParts.indexOf(el), 1)
+            const includeString = includeParts.join(' ')
+            if (includeString) {
+              moduleRef.setAttribute('include', includeString)
+            } else {
+              moduleRef.removeAttribute('include')
+            }
+          } else if (except) {
+            moduleRef.setAttribute('except', `${except} ${el}`)
           } else {
-            moduleRef.removeAttribute('include')
+            moduleRef.setAttribute('except', el)
           }
-        } else if (except) {
-          moduleRef.setAttribute('except', `${except} ${el}`)
-        } else {
-          moduleRef.setAttribute('except', el)
         }
-      }
-      // remove elementRef
-      if (elementRef) {
-        elementRef.parentNode.removeChild(elementRef)
-      }
-      // switch elementSpec to @mode='delete'
-      if (elementSpec) {
-        elementSpec.setAttribute('mode', 'delete')
-        // clear content
-        while (elementSpec.firstChild) {
-          elementSpec.removeChild(elementSpec.firstChild)
+        // remove elementRef
+        if (elementRef) {
+          elementRef.parentNode.removeChild(elementRef)
         }
+        // switch elementSpec to @mode='delete'
+        if (elementSpec) {
+          elementSpec.setAttribute('mode', 'delete')
+          // clear content
+          while (elementSpec.firstChild) {
+            elementSpec.removeChild(elementSpec.firstChild)
+          }
+        }
+      } else {
+        console.log('deleting an element that does not exist!', el)
       }
     }
   }

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 
 export default class AltIdent extends Component {
   render() {
+    const addBtn = this.props.altIdent.length > 0 ? null : (<i className="material-icons romajs-clickable" onClick={() => {
+      const pos = this.props.altIdent.length
+      this.props.update(this.props.ident, '', pos)
+    }}>add_circle_outline</i>)
     return (<div className="mdc-layout-grid__inner romajs-formrow">
       <div className="mdc-layout-grid__cell--span-3">
         <label>Alternative identifiers</label>
@@ -25,10 +29,7 @@ export default class AltIdent extends Component {
           return null
         })
       }
-      <i className="material-icons romajs-clickable" onClick={() => {
-        const pos = this.props.altIdent.length
-        this.props.update(this.props.ident, '', pos)
-      }}>add_circle_outline</i>
+      {addBtn}
       </div>
     </div>)
   }
