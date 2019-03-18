@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { includeElements, excludeElements, includeClasses, excludeClasses } from '../actions/modules'
+import { includeElements, excludeElements, includeClasses, excludeClasses, includeDatatypes, excludeDatatypes } from '../actions/modules'
 import { restoreElementMembershipsToClass, clearElementMembershipsToClass } from '../actions/elements'
 import { restoreMembershipsToClass, clearMembershipsToClass } from '../actions/classes'
 import { clearUiData, setMemberTypeVisibility } from '../actions/interface'
@@ -12,8 +12,10 @@ const mapStateToProps = (state) => {
   let modelclasses = []
   let datatypes = []
   const visibleMemberTypes = state.ui.visibleMemberTypes || ['elements']
+  let isLoading = true
   if (state.odd.customization && state.odd.localsource) {
     if (!state.odd.customization.isFetching && !state.odd.localsource.isFetching) {
+      isLoading = false
       const customization = state.odd.customization.json
       const localsource = state.odd.localsource.json
 
@@ -39,7 +41,7 @@ const mapStateToProps = (state) => {
               member.module_selected = false
             }
           }
-          member.visible = true
+          // member.visible = true
           member.type = memberType
           member.subType = memberSubType
           acc.push(member)
@@ -51,7 +53,7 @@ const mapStateToProps = (state) => {
             customMember.isNew = true
             customMember.selected = true
             customMember.module_selected = true
-            customMember.visible = true
+            // customMember.visible = true
             customMember.type = memberType
             customMember.subType = memberSubType
             acc.push(customMember)
@@ -63,16 +65,15 @@ const mapStateToProps = (state) => {
 
       // Function to filter members based on user input
       const filterMembers = (members) => {
-        return members.map(member => {
+        return members.reduce((acc, member) => {
           if (member.ident.toLowerCase().match(filter.toLowerCase()) ||
               member.module.toLowerCase().match(filter.toLowerCase())) {
-            member.visible = true
+            // member.visible = true
             member.highlight = filter
-          } else {
-            member.visible = false
+            acc.push(member)
           }
-          return member
-        })
+          return acc
+        }, [])
       }
 
       // Get the members, based on visibility
@@ -111,7 +112,7 @@ const mapStateToProps = (state) => {
   }
   return {
     members: allMembers, visibleMemberTypes, loadingStatus: state.ui.loadingStatus,
-    language: state.ui.language
+    language: state.ui.language, isLoading
   }
 }
 
@@ -123,10 +124,14 @@ const mapDispatchToProps = (dispatch) => {
           case 'element':
             dispatch(excludeElements([name], type))
             break
-          case 'attributes' || 'models':
+          case 'attributes':
+          case 'models':
             dispatch(excludeClasses([name], type))
             dispatch(clearMembershipsToClass(name, type))
             dispatch(clearElementMembershipsToClass(name, type))
+            break
+          case 'datatype':
+            dispatch(excludeDatatypes([name], type))
             break
           default:
         }
@@ -135,10 +140,14 @@ const mapDispatchToProps = (dispatch) => {
           case 'element':
             dispatch(includeElements([name], type))
             break
-          case 'attributes' || 'models':
+          case 'attributes':
+          case 'models':
             dispatch(includeClasses([name], type))
             dispatch(restoreMembershipsToClass(name, type))
             dispatch(restoreElementMembershipsToClass(name, type))
+            break
+          case 'datatype':
+            dispatch(includeDatatypes([name], type))
             break
           default:
         }

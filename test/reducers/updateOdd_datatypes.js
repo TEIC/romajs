@@ -406,4 +406,26 @@ describe('Update Customization Datatypes (handles UPDATE_CUSTOMIZATION_ODD)', ()
     expect(dataSpec.querySelector('alternate valList') ).toExist()
     expect(dataSpec.querySelector('alternate textNode') ).toExist()
   })
+
+  it('should deselect a datatype (module is selected, which is always the case in TEI)', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'EXCLUDE_DATATYPES',
+      datatypes: ['teidata.certainty']
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('dataSpec[ident="teidata.certainty"]').getAttribute('mode')).toEqual('delete')
+    expect(xml.querySelector('dataSpec[ident="teidata.certainty"]').children.length).toEqual(0)
+  })
 })

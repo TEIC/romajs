@@ -4,6 +4,7 @@ import DatatypePicker from '../containers/DatatypePicker'
 
 export default class DataRef extends Component {
   render() {
+    const unavailable = !this.props.available ? <span style={{color: 'red'}}> (Not available: deleted)</span> : null
     return [
       <div className="mdc-layout-grid__inner romajs-formrow" key="dtp">
         <div className="mdc-layout-grid__cell--span-1">
@@ -12,6 +13,7 @@ export default class DataRef extends Component {
         </div>
         <div className="mdc-layout-grid__cell--span-11">
           {this.props.datatype}
+          {unavailable}
         </div>
       </div>,
       <div className="mdc-layout-grid__inner" key="dtr">
@@ -34,6 +36,7 @@ DataRef.propTypes = {
   member: PropTypes.object.isRequired,
   memberType: PropTypes.string.isRequired,
   datatype: PropTypes.string.isRequired,
+  available: PropTypes.bool,
   restriction: PropTypes.string,
   attribute: PropTypes.string,
   index: PropTypes.number,

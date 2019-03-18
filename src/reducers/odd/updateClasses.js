@@ -18,6 +18,11 @@ function getOrSetClassSpec(classType, odd, ident) {
 
 function processClasses(classType, localsource, customization, odd) {
   for (const cl of customization.classes[classType]) {
+    const localCl = localsource.classes[classType].filter(lc => lc.ident === cl.ident)[0]
+    let isModuleSelected = true
+    if (localCl) {
+      isModuleSelected = customization.modules.filter(x => x.ident === localCl.module).length > 0
+    }
     if (cl._isNew) {
       // Create new spec
       const type = classType === 'attributes' ? 'atts' : 'model'
@@ -39,13 +44,13 @@ function processClasses(classType, localsource, customization, odd) {
 
       const schemaSpec = odd.querySelector('schemaSpec')
       schemaSpec.appendChild(clSpec)
-    } else if (cl._changed) {
+    } else if (cl._changed && isModuleSelected) {
       let changes = cl._changed
       if (cl._changed.indexOf('all') !== -1) {
         changes = ['desc', 'altIdent', 'attributes', 'models']
       }
       const clSpec = getOrSetClassSpec(classType, odd, cl.ident)
-      const localCl = localsource.classes[classType].filter(lc => lc.ident === cl.ident)[0]
+      // const localCl = localsource.classes[classType].filter(lc => lc.ident === cl.ident)[0]
       for (const whatChanged of changes) {
         switch (whatChanged) {
           case 'desc':
@@ -79,8 +84,44 @@ function processClasses(classType, localsource, customization, odd) {
           }
         }
       }
+    } else if (cl._changed && !isModuleSelected) {
+      // add classRef
+      const clRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'classRef')
+      clRef.setAttribute('key', cl.ident)
+      const schemaSpec = odd.querySelector('schemaSpec')
+      schemaSpec.appendChild(clRef)
     }
   }
+
+  // Check for deleted classes.
+  for (const cl of localsource.classes[classType]) {
+    const customCl = customization.classes[classType].filter(cc => cc.ident === cl.ident)[0]
+    const isModuleSelected = customization.modules.filter(x => x.ident === cl.module).length > 0
+    if (!customCl && isModuleSelected && customization.classes._deleted) {
+      // the class' module is selected, so it may need to be deleted explictely
+      // Since it's impossible to distinguish between classe that have been deleted by the user
+      // and classes that have been "zapped" during ODD compilation, we make sure that the class
+      // is explicitely listed in customization.classes._deleted
+      if (customization.classes._deleted.indexOf(cl.ident) !== -1) {
+        const clSpec = getOrSetClassSpec(classType, odd, cl.ident)
+        clSpec.setAttribute('mode', 'delete')
+        // remove content as it's not needed any longer.
+        let last
+        while (last = clSpec.lastChild) clSpec.removeChild(last)
+      }
+    } else if (!customCl && !isModuleSelected) {
+      // simply remove any existing declarations.
+      const clSpec = odd.querySelectorAll(`classSpec[ident='${cl.ident}']`)[0]
+      const clRef = odd.querySelectorAll(`classRef[key='${cl.ident}']`)[0]
+      if (clSpec) {
+        clSpec.parentNode.removeChild(clSpec)
+      }
+      if (clRef) {
+        clRef.parentNode.removeChild(clRef)
+      }
+    }
+  }
+
   return odd
 }
 

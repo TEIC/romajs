@@ -38,6 +38,19 @@ export default class MembersList extends Component {
   }
 
   render() {
+    let members = <h2 className="mdc-typography--headline5" style={{margin: '2em 0px 0px 40px'}}>No items found. Try searching for something else.</h2>
+    if (this.props.members.length > 0) {
+      members = (<ul key="list" className="mdc-list mdc-list--two-line romajs-itemlist">
+        {this.props.members.map(member => {
+          return (<Member
+            key={member.ident}
+            {...member}
+            toggleItem={this.props.toggleItem}
+          />)
+        }
+        )}
+      </ul>)
+    }
     let content = (
       <figure>
         <div role="progressbar" className="mdc-linear-progress mdc-linear-progress--indeterminate">
@@ -52,7 +65,7 @@ export default class MembersList extends Component {
         </div>
         <figcaption>{this.props.loadingStatus}</figcaption>
       </figure>)
-    if (this.props.members.length > 0) {
+    if (!this.props.isLoading) {
       content = [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
         <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
           <div className="mdc-chip-set mdc-chip-set--filter">
@@ -71,19 +84,7 @@ export default class MembersList extends Component {
         </section>
       </div>,
       <main key="main" style={{maxWidth: this.state.windowWidth}}>
-        <ul key="list" className="mdc-list mdc-list--two-line romajs-itemlist">
-          {this.props.members.map(member => {
-            if (member.visible) {
-              return (<Member
-                key={member.ident}
-                {...member}
-                toggleItem={this.props.toggleItem}
-              />)
-            }
-            return ''
-          }
-          )}
-        </ul>
+        {members}
         <AddMemberFab language={this.props.language}/>
       </main>]
     }
@@ -94,7 +95,6 @@ export default class MembersList extends Component {
 MembersList.propTypes = {
   members: PropTypes.arrayOf(PropTypes.shape({
     selected: PropTypes.bool.isRequired,
-    visible: PropTypes.bool.isRequired,
     highlight: PropTypes.string,
     ident: PropTypes.string.isRequired,
     shortDesc: PropTypes.string.isRequired,
@@ -103,6 +103,7 @@ MembersList.propTypes = {
     module_selected: PropTypes.bool.isRequired
   }).isRequired).isRequired,
   toggleItem: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   loadingStatus: PropTypes.string,
   clearUiData: PropTypes.func.isRequired,
   setMemberTypeVisibility: PropTypes.func,

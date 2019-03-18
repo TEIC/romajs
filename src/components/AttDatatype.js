@@ -5,6 +5,8 @@ import DataRef from './DataRef'
 export default class AttDatatype extends Component {
   render() {
     let datatype = this.props.attribute.datatype.dataRef.key
+    const available = this.props.attribute.datatype.dataRef._deleted ? false : true
+    console.log(available, this.props.attribute.datatype)
     if (!datatype) {
       datatype = this.props.attribute.datatype.dataRef.name
     }
@@ -25,6 +27,7 @@ export default class AttDatatype extends Component {
         <DataRef member={this.props.member}
           memberType={this.props.memberType}
           datatype={datatype}
+          available={available}
           restriction={restriction}
           attribute={this.props.attribute.ident}
           setRestriction={this.props.setDataTypeRestriction} />

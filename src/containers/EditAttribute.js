@@ -4,6 +4,13 @@ import { setNs, setUsage, setValListType, addValItem, deleteValItem, setDataType
 
 const mapStateToProps = (state, ownProps) => {
   const attribute = ownProps.member.attributes.filter(x => (x.ident === ownProps.attribute))[0]
+  // flag datatypes that don't exist
+  const dr = attribute.datatype.dataRef || {}
+  if (dr.key) {
+    if (state.odd.customization.json.datatypes.filter(dt => dt.ident === dr.key).length === 0) {
+      dr._deleted = true
+    }
+  }
   return {member: ownProps.member, attribute, path: state.router.location.pathname,
     memberType: ownProps.memberType, setRouteLeaveHook: state.router.setRouteLeaveHook}
 }

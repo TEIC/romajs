@@ -71,7 +71,6 @@ Member.propTypes = {
   desc: PropTypes.array.isRequired,
   module: PropTypes.string.isRequired,
   module_selected: PropTypes.bool.isRequired,
-  visible: PropTypes.bool.isRequired,
   highlight: PropTypes.string,
   type: PropTypes.string.isRequired,
   attributes: PropTypes.array

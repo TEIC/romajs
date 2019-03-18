@@ -2,15 +2,19 @@ import expect from 'expect'
 import fs from 'fs'
 import romajsApp from './combinedReducers'
 
-const customization = JSON.parse(fs.readFileSync('test/fakeData/bare.json', 'utf-8'))
-const localsource = JSON.parse(fs.readFileSync('test/fakeData/p5subset.json', 'utf-8'))
+const customization = fs.readFileSync('test/fakeData/bare.json', 'utf-8')
+const localsource = fs.readFileSync('test/fakeData/p5subset.json', 'utf-8')
+let customJSON = null
+let localJSON = null
 
 describe('ODD modules operation reducers', () => {
   it('should handle INCLUDE_MODULES', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
     const state = romajsApp({
       odd: {
-        customization: { isFetching: false, json: customization },
-        localsource: { isFetching: false, json: localsource }
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
       },
       selectedOdd: ''
     }, {
@@ -24,10 +28,12 @@ describe('ODD modules operation reducers', () => {
   })
 
   it('should handle INCLUDE_MODULES and include all module elements', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
     const state = romajsApp({
       odd: {
-        customization: { isFetching: false, json: customization },
-        localsource: { isFetching: false, json: localsource }
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
       },
       selectedOdd: ''
     }, {
@@ -41,10 +47,12 @@ describe('ODD modules operation reducers', () => {
   })
 
   it('should handle EXCLUDE_MODULES', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
     const state = romajsApp({
       odd: {
-        customization: { isFetching: false, json: customization },
-        localsource: { isFetching: false, json: localsource }
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
       },
       selectedOdd: ''
     }, {
@@ -58,10 +66,12 @@ describe('ODD modules operation reducers', () => {
   })
 
   it('should handle EXCLUDE_MODULES and exclude all module elements', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
     const state = romajsApp({
       odd: {
-        customization: { isFetching: false, json: customization },
-        localsource: { isFetching: false, json: localsource }
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
       },
       selectedOdd: ''
     }, {
@@ -75,10 +85,12 @@ describe('ODD modules operation reducers', () => {
   })
 
   it('should handle INCLUDE_ELEMENTS', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
     const state = romajsApp({
       odd: {
-        customization: { isFetching: false, json: customization },
-        localsource: { isFetching: false, json: localsource }
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
       },
       selectedOdd: ''
     }, {
@@ -96,10 +108,12 @@ describe('ODD modules operation reducers', () => {
   })
 
   it('should handle EXCLUDE_ELEMENTS', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
     const state = romajsApp({
       odd: {
-        customization: { isFetching: false, json: customization },
-        localsource: { isFetching: false, json: localsource }
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
       },
       selectedOdd: ''
     }, {
@@ -113,6 +127,84 @@ describe('ODD modules operation reducers', () => {
 
     expect(state.odd.customization.json.modules.filter(
       x => (x.ident === 'textstructure')
+    ).length).toEqual(0)
+  })
+
+  it('should handle INCLUDE_CLASSES', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'INCLUDE_CLASSES',
+      classes: ['model.applicationLike'],
+      classType: 'models'
+    })
+
+    expect(state.odd.customization.json.classes.models.filter(
+      x => (x.ident === 'model.applicationLike')
+    ).length).toEqual(1)
+  })
+
+  it('should handle EXCLUDE_CLASSES', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'EXCLUDE_CLASSES',
+      classes: ['model.biblLike'],
+      classType: 'models'
+    })
+
+    expect(state.odd.customization.json.classes.models.filter(
+      x => (x.ident === 'model.biblLike')
+    ).length).toEqual(0)
+  })
+
+  it('should handle INCLUDE_DATATYPES', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'INCLUDE_DATATYPES',
+      datatypes: ['teidata.duration.w3c']
+    })
+
+    expect(state.odd.customization.json.datatypes.filter(
+      x => (x.ident === 'teidata.duration.w3c')
+    ).length).toEqual(1)
+  })
+
+  it('should handle EXCLUDE_DATATYPES', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'EXCLUDE_DATATYPES',
+      datatypes: ['teidata.certainty']
+    })
+
+    expect(state.odd.customization.json.datatypes.filter(
+      x => (x.ident === 'teidata.certainty')
     ).length).toEqual(0)
   })
 })

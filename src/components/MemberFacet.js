@@ -3,15 +3,18 @@ import PropTypes from 'prop-types'
 
 export default class MembersFacet extends Component {
   toggleMemberTypeVisibility(type) {
-    const types = new Set(this.props.visibleMemberTypes)
-    if (types.has(type)) {
-      if (types.size > 1) {
-        types.delete(type)
-      }
-    } else {
-      types.add(type)
+    // Option of aggregating. Keeping it here in case after user testing we decide to switch back.
+    // const types = new Set(this.props.visibleMemberTypes)
+    // if (types.has(type)) {
+    //   if (types.size > 1) {
+    //     types.delete(type)
+    //   }
+    // } else {
+    //   types.add(type)
+    // }
+    if (this.props.visibleMemberTypes.indexOf(type) === -1) {
+      this.props.setMemberTypeVisibility([type])
     }
-    this.props.setMemberTypeVisibility(Array.from(types))
   }
 
   render() {

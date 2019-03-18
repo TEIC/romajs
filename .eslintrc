@@ -30,7 +30,7 @@
     /**
      * Possible errors
      */
-    "no-cond-assign": [2, "always"], // http://eslint.org/docs/rules/no-cond-assign
+    "no-cond-assign": [0, "always"], // http://eslint.org/docs/rules/no-cond-assign
     "no-console": 0,                 // http://eslint.org/docs/rules/no-console
     "no-debugger": 1,                // http://eslint.org/docs/rules/no-debugger
     "no-alert": 1,                   // http://eslint.org/docs/rules/no-alert

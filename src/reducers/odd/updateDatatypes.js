@@ -47,6 +47,11 @@ function cntToXml(content, parent, odd) {
 
 function processDatatypes(localsource, customization, odd) {
   for (const dt of customization.datatypes) {
+    const localDt = localsource.datatypes.filter(ldt => ldt.ident === dt.ident)[0]
+    let isModuleSelected = true
+    if (localDt) {
+      isModuleSelected = customization.modules.filter(x => x.ident === localDt.module).length > 0
+    }
     if (dt._isNew) {
       // Create new spec
       const dtSpec = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'dataSpec')
@@ -63,13 +68,12 @@ function processDatatypes(localsource, customization, odd) {
 
       const schemaSpec = odd.querySelector('schemaSpec')
       schemaSpec.appendChild(dtSpec)
-    } else if (dt._changed) {
+    } else if (dt._changed && isModuleSelected) {
       let changes = dt._changed
       if (dt._changed.indexOf('all') !== -1) {
         changes = ['desc', 'altIdent', 'content']
       }
       let dtSpec = getOrSetDataSpec(odd, dt.ident)
-      const localDt = localsource.datatypes.filter(ld => ld.ident === dt.ident)[0]
       for (const whatChanged of changes) {
         switch (whatChanged) {
           case 'desc':
@@ -105,8 +109,44 @@ function processDatatypes(localsource, customization, odd) {
           }
         }
       }
+    } else if (dt._changed && !isModuleSelected) {
+      // add dataRef
+      const dtRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'dataRef')
+      dtRef.setAttribute('key', dt.ident)
+      const schemaSpec = odd.querySelector('schemaSpec')
+      schemaSpec.appendChild(dtRef)
     }
   }
+
+  // Check for deleted datatypes.
+  for (const dt of localsource.datatypes) {
+    const customDt = customization.datatypes.filter(cdt => cdt.ident === dt.ident)[0]
+    const isModuleSelected = customization.modules.filter(x => x.ident === dt.module).length > 0
+    if (!customDt && isModuleSelected && customization.datatypes._deleted) {
+      // the datatype module is selected, so it may need to be deleted explicitely
+      // Since it's impossible to distinguish between datatypes that have been deleted by the user
+      // and datatypes that have been "zapped" during ODD compilation, we make sure that the datatypes
+      // is explicitely listed in customization.datatypes._deleted
+      if (customization.datatypes._deleted.indexOf(dt.ident) !== -1) {
+        const dtSpec = getOrSetDataSpec(odd, dt.ident)
+        dtSpec.setAttribute('mode', 'delete')
+        // remove content as it's not needed any longer.
+        let last
+        while (last = dtSpec.lastChild) dtSpec.removeChild(last)
+      }
+    } else if (!customDt && !isModuleSelected) {
+      // simply remove any existing declarations.
+      const dtSpec = odd.querySelectorAll(`dataSpec[ident='${dt.ident}']`)[0]
+      const dtRef = odd.querySelectorAll(`dataRef[key='${dt.ident}']`)[0]
+      if (dtSpec) {
+        dtSpec.parentNode.removeChild(dtSpec)
+      }
+      if (dtRef) {
+        dtRef.parentNode.removeChild(dtRef)
+      }
+    }
+  }
+
   return odd
 }
 

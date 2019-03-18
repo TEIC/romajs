@@ -280,4 +280,84 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
     expect(classSpec.querySelector('attDef > datatype > dataRef').getAttribute('name')).toEqual('string')
     expect(classSpec.querySelector('attDef > datatype > dataRef').getAttribute('restriction')).toEqual('[ab]')
   })
+
+  it('should select a class from a non-selected module (classRef)', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'INCLUDE_CLASSES',
+      classes: ['att.global.linking'],
+      classType: 'attributes'
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('classRef[key="att.global.linking"]')).toExist()
+  })
+
+  it('should deselect a class (module is selected)', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'EXCLUDE_CLASSES',
+      classes: ['att.typed'],
+      classType: 'attributes'
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('classSpec[ident="att.typed"]').getAttribute('mode')).toEqual('delete')
+    expect(xml.querySelector('classSpec[ident="att.typed"]').children.length).toEqual(0)
+  })
+
+  it('should deselect a class (module is not selected)', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    // Change ODD data for testing
+    const testXml = customizationXML.cloneNode(true)
+    const attGL = testXml.createElement('classRef')
+    attGL.setAttribute('key', 'att.global.linking')
+    testXml.getElementsByTagName('schemaSpec')[0].appendChild(attGL)
+    const testXmlString = serializer.serializeToString(testXml)
+
+    // Update JSON data accordingly
+    customJson.classes.attributes.push(
+      localJson.classes.attributes.filter(x => (x.ident === 'att.global.linking'))[0]
+    )
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: testXmlString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'EXCLUDE_CLASSES',
+      classes: ['att.global.linking'],
+      classType: 'attributes'
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('classSpec[ident="att.global.linking"]')).toNotExist()
+  })
 })

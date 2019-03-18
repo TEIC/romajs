@@ -1,5 +1,5 @@
 import {
-  INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS, INCLUDE_CLASSES, EXCLUDE_CLASSES
+  INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS, INCLUDE_CLASSES, EXCLUDE_CLASSES, INCLUDE_DATATYPES, EXCLUDE_DATATYPES
 } from '../actions/modules'
 import { clone } from '../utils/clone'
 
@@ -9,6 +9,10 @@ function getElementByIdent(source, ident) {
 
 function getClassByIdent(source, ident, type) {
   return source.classes[type].filter(m => { return m.ident === ident })[0]
+}
+
+function getDatatypeByIdent(source, ident) {
+  return source.datatypes.filter(m => { return m.ident === ident })[0]
 }
 
 export function oddModules(state, action) {
@@ -162,33 +166,49 @@ export function oddModules(state, action) {
             return acc
           }, [])
         }
-        // If the module for the added element was not selected, do it now.
-        if (customization.modules.filter(x => (x.ident === localCl.module)).length === 0) {
-          const localMod = localsource.modules.filter(x => (x.ident === localCl.module))[0]
-          customization.modules.push(localMod)
+        // remove from list of deleted classes
+        if (Array.isArray(customization.classes._deleted)) {
+          customization.classes._deleted = customization.classes._deleted.filter(c => c !== cl)
         }
       }
       return Object.assign(state, {customization: customizationObj})
     case EXCLUDE_CLASSES:
       for (const cl of action.classes) {
-        const localCl = getClassByIdent(localsource, cl, action.classType)
         customization.classes[action.classType] = customization.classes[action.classType].reduce((acc, m) => {
           if (m.ident !== cl) {
             acc.push(m)
           }
           return acc
         }, [])
-        // If there are no more elements belonging to the module, remove it
-        const moduleElements = customization.classes[action.classType].filter(x => {
-          return x.module === localCl.module
-        })
-        if (moduleElements.length === 0) {
-          customization.modules = customization.modules.reduce((acc, m) => {
-            if (m.ident !== localCl.module) {
-              acc.push(m)
-            }
-            return acc
-          }, [])
+        if (Array.isArray(customization.classes._deleted)) {
+          customization.classes._deleted.push(cl)
+        } else {
+          customization.classes._deleted = [cl]
+        }
+      }
+      return Object.assign(state, {customization: customizationObj})
+    case INCLUDE_DATATYPES:
+      for (const dt of action.datatypes) {
+        const localDt = getDatatypeByIdent(localsource, dt)
+        const newDt = clone(localDt)
+        newDt._changed = ['all']
+        if (!getDatatypeByIdent(customization, dt)) {
+          customization.datatypes.push(newDt)
+        }
+      }
+      return Object.assign(state, {customization: customizationObj})
+    case EXCLUDE_DATATYPES:
+      for (const dt of action.datatypes) {
+        customization.datatypes = customization.datatypes.reduce((acc, m) => {
+          if (m.ident !== dt) {
+            acc.push(m)
+          }
+          return acc
+        }, [])
+        if (Array.isArray(customization.datatypes._deleted)) {
+          customization.datatypes._deleted.push(dt)
+        } else {
+          customization.datatypes._deleted = [dt]
         }
       }
       return Object.assign(state, {customization: customizationObj})

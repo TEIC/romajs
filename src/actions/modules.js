@@ -4,6 +4,8 @@ export const INCLUDE_ELEMENTS = 'INCLUDE_ELEMENTS'
 export const EXCLUDE_ELEMENTS = 'EXCLUDE_ELEMENTS'
 export const INCLUDE_CLASSES = 'INCLUDE_CLASSES'
 export const EXCLUDE_CLASSES = 'EXCLUDE_CLASSES'
+export const INCLUDE_DATATYPES = 'INCLUDE_DATATYPES'
+export const EXCLUDE_DATATYPES = 'EXCLUDE_DATATYPES'
 
 export function includeModules(modules) {
   return {
@@ -46,5 +48,19 @@ export function excludeClasses(classes, classType) {
     type: EXCLUDE_CLASSES,
     classes,
     classType
+  }
+}
+
+export function includeDatatypes(datatypes) {
+  return {
+    type: INCLUDE_DATATYPES,
+    datatypes
+  }
+}
+
+export function excludeDatatypes(datatypes) {
+  return {
+    type: EXCLUDE_DATATYPES,
+    datatypes
   }
 }
