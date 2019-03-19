@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setFilterTerm as setFilterTermAction } from '../actions/interface'
+import { setFilterTerm, setFilterOptions } from '../actions/interface'
 import FilterSearchBar from '../components/FilterSearchBar'
 
 const mapStateToProps = (state) => {
@@ -10,9 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setFilterTerm: (term) => {
-      dispatch(setFilterTermAction(term))
-    }
+    setFilterTerm: (term) => dispatch(setFilterTerm(term)),
+    setFilterOptions: (options) => dispatch(setFilterOptions(options))
   }
 }
 

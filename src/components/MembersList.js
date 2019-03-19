@@ -51,6 +51,8 @@ export default class MembersList extends Component {
         )}
       </ul>)
     }
+    const newSort = this.props.sortBy === 'element' ? 'module' : 'element'
+    const newSortLabel = this.props.sortBy === 'element' ? 'by module' : 'alphabetically'
     let content = (
       <figure>
         <div role="progressbar" className="mdc-linear-progress mdc-linear-progress--indeterminate">
@@ -80,6 +82,10 @@ export default class MembersList extends Component {
           </div>
         </section>
         <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
+          <div className={`mdc-chip mdc-ripple-upgraded`} onClick={() => this.props.sortMembersBy(newSort)}>
+            <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">swap_vert</i>
+            <div className="mdc-chip__text">{newSortLabel}</div>
+          </div>
           <FilterSearch/>
         </section>
       </div>,
@@ -108,5 +114,7 @@ MembersList.propTypes = {
   clearUiData: PropTypes.func.isRequired,
   setMemberTypeVisibility: PropTypes.func,
   visibleMemberTypes: PropTypes.array,
-  language: PropTypes.string.isRequired
+  language: PropTypes.string.isRequired,
+  sortBy: PropTypes.string.isRequired,
+  sortMembersBy: PropTypes.func.isRequired
 }

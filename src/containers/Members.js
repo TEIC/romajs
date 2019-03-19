@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { includeElements, excludeElements, includeClasses, excludeClasses, includeDatatypes, excludeDatatypes } from '../actions/modules'
 import { restoreElementMembershipsToClass, clearElementMembershipsToClass } from '../actions/elements'
 import { restoreMembershipsToClass, clearMembershipsToClass } from '../actions/classes'
-import { clearUiData, setMemberTypeVisibility } from '../actions/interface'
+import { clearUiData, setMemberTypeVisibility, sortMembersBy } from '../actions/interface'
 import MembersList from '../components/MembersList'
 
 const mapStateToProps = (state) => {
@@ -66,11 +66,17 @@ const mapStateToProps = (state) => {
       // Function to filter members based on user input
       const filterMembers = (members) => {
         return members.reduce((acc, member) => {
-          if (member.ident.toLowerCase().match(filter.toLowerCase()) ||
-              member.module.toLowerCase().match(filter.toLowerCase())) {
-            // member.visible = true
-            member.highlight = filter
-            acc.push(member)
+          const options = state.ui.filterOptions || {}
+          if (options.fullMatch) {
+            if (member.ident.toLowerCase() === filter.toLowerCase()) {
+              member.highlight = filter
+              acc.push(member)
+            }
+          } else {
+            if (member.ident.toLowerCase().includes(filter.toLowerCase())) {
+              member.highlight = filter
+              acc.push(member)
+            }
           }
           return acc
         }, [])
@@ -108,11 +114,22 @@ const mapStateToProps = (state) => {
           return (b.ident.toLowerCase() > a.ident.toLowerCase()) ? -1 : 0
         }
       })
+
+      // sort by module
+      if (state.ui.sortMembersBy === 'module') {
+        allMembers.sort((a, b) => {
+          if (a.module.toLowerCase() > b.module.toLowerCase()) {
+            return 1
+          } else {
+            return (b.module.toLowerCase() > a.module.toLowerCase()) ? -1 : 0
+          }
+        })
+      }
     }
   }
   return {
     members: allMembers, visibleMemberTypes, loadingStatus: state.ui.loadingStatus,
-    language: state.ui.language, isLoading
+    language: state.ui.language, isLoading, sortBy: state.ui.sortMembersBy || 'element'
   }
 }
 
@@ -156,7 +173,8 @@ const mapDispatchToProps = (dispatch) => {
     setMemberTypeVisibility: (visibleMemberTypes) => {
       dispatch(setMemberTypeVisibility(visibleMemberTypes))
     },
-    clearUiData: () => dispatch(clearUiData())
+    clearUiData: () => dispatch(clearUiData()),
+    sortMembersBy: (mode) => dispatch(sortMembersBy(mode))
   }
 }
 

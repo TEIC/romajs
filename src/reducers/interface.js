@@ -1,5 +1,5 @@
 import { SET_FILTER_TERM, CLEAR_UI_DATA, ADD_FROM_PICKER, CLEAR_PICKER, SET_LOADING_STATUS, SET_LANGUAGE,
-  SET_MEMBERTYPE_VISIBILITY
+  SET_MEMBERTYPE_VISIBILITY, SORT_MEMBERS_BY, SET_FILTER_OPTIONS
 } from '../actions/interface'
 
 const initialState = {
@@ -16,6 +16,9 @@ export function ui(state = initialState, action) {
       return Object.assign({}, state,
         {filterTerm: action.term}
       )
+    case SET_FILTER_OPTIONS:
+      return Object.assign({}, state,
+        {filterOptions: Object.assign({}, state.filterOptions || {}, action.options)})
     case ADD_FROM_PICKER:
       return Object.assign({}, state,
         {pickerItem: {type: action.pickerType, item: action.item}}
@@ -36,6 +39,9 @@ export function ui(state = initialState, action) {
     case SET_MEMBERTYPE_VISIBILITY:
       return Object.assign({}, state,
         {visibleMemberTypes: action.visibleMemberTypes})
+    case SORT_MEMBERS_BY:
+      return Object.assign({}, state,
+        {sortMembersBy: action.mode})
     default:
       return state
   }

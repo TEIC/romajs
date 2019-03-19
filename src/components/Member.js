@@ -55,8 +55,7 @@ export default class Member extends Component {
         <span className="mdc-list-item__end-detail">
           <SingleModule
             selected={this.props.module_selected}
-            ident={this.props.module}
-            highlight={this.props.highlight} />
+            ident={this.props.module} />
         </span>
       </li>
     )
