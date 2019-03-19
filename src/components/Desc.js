@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AceEditor from 'react-ace'
+import ReactResizeDetector from 'react-resize-detector'
 
 import 'brace/mode/xml'
 import 'brace/theme/tomorrow'
@@ -150,6 +151,10 @@ export default class Desc extends Component {
     })
   }
 
+  onResize(pos) {
+    this.aceEditors[pos].editor.resize()
+  }
+
   render() {
     let info = (<div className="mdc-layout-grid__cell--span-3">
       <label>Descriptions</label>
@@ -178,8 +183,9 @@ export default class Desc extends Component {
         this.props.desc.map((d, pos) => {
           return (<div className="mdc-layout-grid__inner" key={`d${pos}`}>
             <h4 className="mdc-layout-grid__cell--span-1">English</h4>
-            <div className="mdc-layout-grid__cell--span-10">
+            <div className="mdc-layout-grid__cell--span-10" style={{resize: 'both'}}>
               <AceEditor
+                style={{resize: 'both'}}
                 ref={(ae) => { ae ? this.aceEditors[pos] = ae : null }}
                 mode="xml"
                 theme="tomorrow"
@@ -190,11 +196,13 @@ export default class Desc extends Component {
                 highlightActiveLine
                 value={d}
                 onChange={(text) => this.props.update(this.props.ident, text, pos)}
+                onresize={() => {console.log('res')}}
                 height="100px"
                 width="80%"
                 editorProps={{
                   $blockScrolling: Infinity
                 }}/>
+              <ReactResizeDetector handleWidth handleHeight onResize={() => {this.onResize(pos)}} />
             </div>
           </div>)
         })

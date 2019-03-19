@@ -76,6 +76,7 @@ function setDatatype(m, datatype, action) {
   if (m.ident === action.member) {
     markChange(m)
     const att = m.attributes.filter(a => (a.ident === action.attr))[0]
+    att.datatype.dataRef = att.datatype.dataRef || {}
     if (datatype.type === 'primitive') {
       att.datatype.dataRef.name = datatype.ident
       delete att.datatype.dataRef.key

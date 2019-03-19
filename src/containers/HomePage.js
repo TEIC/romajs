@@ -47,6 +47,9 @@ const mapDispatchToProps = (dispatch) => {
         if (odd.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*').length > 0) {
           throw Error('ODDs with RELAX NG elements are not supported.')
         }
+        if (odd.getElementsByTagName('schemaSpec').length === 0) {
+          throw Error('This does not appear to be a TEI ODD document.')
+        }
         dispatch(postToOxGarage(e.target.result, oxgarage.compile_json)).then(() => {
           dispatch(setLoadingStatus(i18n.step3[lang]))
           // 2. Get p5subset.
