@@ -125,6 +125,7 @@ main {
 
   .romajs-active {
     background-color: $mdc-theme-accent;
+    border: 2px solid White;
   }
 
 }
@@ -336,6 +337,12 @@ main {
 
 .romajs-dtbackground {
   background-color: $romajs-theme-datatypes !important;
+  color: White !important;
+}
+
+.romajs-elbackground {
+  background-color: $mdc-theme-primary !important;
+  color: White !important;
 }
 
 // FAB

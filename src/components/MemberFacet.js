@@ -22,7 +22,16 @@ export default class MembersFacet extends Component {
     let activeClass = ''
     if (this.props.visibleMemberTypes.indexOf(this.props.type) !== -1) {
       checkmark = <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">done</i>
-      activeClass = 'romajs-active'
+      switch (this.props.type) {
+        case 'elements':
+          activeClass = 'romajs-active romajs-elbackground'
+          break
+        case 'datatypes':
+          activeClass = 'romajs-active romajs-dtbackground'
+          break
+        default:
+          activeClass = 'romajs-active'
+      }
     }
     return (
       <div className={`mdc-chip mdc-ripple-upgraded ${activeClass}`} onClick={() => {
