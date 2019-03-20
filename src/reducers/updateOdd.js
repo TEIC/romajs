@@ -6,6 +6,38 @@ import { updateDatatypes } from './odd/updateDatatypes'
 
 const parser = new DOMParser()
 
+function updateMetadata(customization, odd) {
+  const schemaSpec = odd.querySelector('schemaSpec')
+  // We assume these elements exist because they are required in TEI
+  const titleStmt = odd.querySelector('teiHeader fileDesc titleStmt')
+  const titleEl = titleStmt.querySelector('title')
+  const authorEl = titleStmt.querySelector('author')
+  if (customization.title !== titleEl.textContent) {
+    titleEl.textContent = customization.title
+  }
+  if (customization.author !== authorEl.textContent) {
+    authorEl.textContent = customization.author
+  }
+  const filename = schemaSpec.getAttribute('ident')
+  if (customization.filename !== filename) {
+    schemaSpec.setAttribute('ident', customization.filename)
+  }
+  const prefix = schemaSpec.getAttribute('prefix')
+  if (customization.prefix !== prefix) {
+    schemaSpec.setAttribute('prefix', customization.prefix)
+  }
+  const targetLang = schemaSpec.getAttribute('targetLang')
+  if (customization.targetLang !== targetLang) {
+    schemaSpec.setAttribute('targetLang', customization.targetLang)
+  }
+  const docLang = schemaSpec.getAttribute('docLang')
+  if (customization.docLang !== docLang) {
+    schemaSpec.setAttribute('docLang', customization.docLang)
+  }
+
+  return odd
+}
+
 export function updateOdd(localsourceObj, customizationObj) {
   // NB: localsource and customization are READ ONLY
   //     odd XML gets cloned every time to keep sub-routines pure
@@ -20,7 +52,11 @@ export function updateOdd(localsourceObj, customizationObj) {
     odd = global.usejsdom(odd)
   }
 
-  // These operations need to happen synchronously
+  // The following operations need to happen synchronously
+
+  // SETTINGS (METADATA)
+  odd = updateMetadata(customization, odd.cloneNode(true))
+
   // MODULE OPERATIONS (including excluding and including elements)
   odd = mergeModules(localsource, customization, odd.cloneNode(true))
   odd = mergeElements(localsource, customization, odd.cloneNode(true))

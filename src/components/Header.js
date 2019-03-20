@@ -21,14 +21,19 @@ export default class Header extends Component {
   render() {
     let download = null
     let startOver = null
+    let settings = null
     if (this.props.location !== '/') {
+      const isSettingsPage = this.props.location === '/settings'
       startOver = (
         <button className="mdc-button mdc-button--raised toggle" onClick={() => {
           this.setState({showStartOver: true})
         }}>
           <i className="material-icons mdc-button__icon">replay</i> {i18n.startOver[this.props.language]}
         </button>)
-      download = (<Download/>)
+      download = <Download/>
+      settings = (<button className="mdc-button mdc-button--raised" disabled={isSettingsPage} onClick={() => this.props.navigateTo('/settings')}>
+        <i className="material-icons mdc-button__icon">settings</i> settings
+      </button>)
     }
 
     return [
@@ -38,6 +43,7 @@ export default class Header extends Component {
             <span className="mdc-toolbar__title">{i18n.title[this.props.language]}</span>
           </section>
           <section className="mdc-toolbar__section mdc-toolbar__section--align-end mdc-menu-surface--anchor" style={{right: '15px'}}>
+            {settings}
             <button className="mdc-button mdc-button--raised toggle" onClick={(e) => {
               this.lang.open = !this.lang.open
               return e

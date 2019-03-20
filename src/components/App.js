@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 import HeaderContainer from '../containers/HeaderContainer'
 import HomePage from '../containers/HomePage'
 import Members from '../containers/Members'
+import SettingsPage from '../containers/SettingsPage'
 import ElementPage from '../containers/ElementPage'
 import ClassPage from '../containers/ClassPage'
 import DatatypePage from '../containers/DatatypePage'
@@ -20,6 +21,7 @@ class App extends Component {
 
   componentDidMount() {
     window.onerror = (error) => {
+      console.log('h')
       this.setState({showErrorDialog: true, errorMsg: error})
     }
   }
@@ -29,6 +31,7 @@ class App extends Component {
       <HeaderContainer />
       <div className="romajs-content">
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/settings" component={SettingsPage} />
         <Route exact path="/members" component={Members} />
         <Route exact path="/element/:el" component={ElementPage} />
         <Route exact path="/element/:el/:section" component={ElementPage} />

@@ -11,7 +11,7 @@ export default class DonwloadButton extends Component {
 
   render() {
     return [
-      (<button key="dwnbtn" className="mdc-button mdc-button--raised toggle" onClick={(e) => {
+      (<button disabled={!this.props.isLoaded} key="dwnbtn" className="mdc-button mdc-button--raised toggle" onClick={(e) => {
         this.menu.open = !this.menu.open
         return e
       }}>
@@ -29,6 +29,7 @@ export default class DonwloadButton extends Component {
 }
 
 DonwloadButton.propTypes = {
+  isLoaded: PropTypes.bool.isRequired,
   language: PropTypes.string.isRequired,
   downloadCustomization: PropTypes.func.isRequired,
   downloadRng: PropTypes.func.isRequired,

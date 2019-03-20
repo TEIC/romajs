@@ -1309,4 +1309,40 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(elSpec.querySelector('attDef > datatype > dataRef').getAttribute('name')).toEqual('string')
     expect(elSpec.querySelector('attDef > datatype > dataRef').getAttribute('restriction')).toEqual('[ba]')
   })
+
+  it('should handle apply changes to ODD settings (metadata)', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    customJson.title = 'a title'
+    customJson.author = 'an author'
+    customJson.filename = 'tei_test'
+    customJson.prefix = 'tei_'
+    customJson.targetLang = 'it'
+    customJson.docLang = 'it'
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'APPLY_ODD_SETTINGS'
+    })
+
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    const titleStmt = xml.querySelector('fileDesc titleStmt')
+    const schemaSpec = xml.querySelector('schemaSpec')
+    expect(titleStmt.querySelector('title').textContent).toEqual('a title')
+    expect(titleStmt.querySelector('author').textContent).toEqual('an author')
+    expect(schemaSpec.getAttribute('ident')).toEqual('tei_test')
+    expect(schemaSpec.getAttribute('prefix')).toEqual('tei_')
+    expect(schemaSpec.getAttribute('targetLang')).toEqual('it')
+    expect(schemaSpec.getAttribute('docLang')).toEqual('it')
+  })
 })

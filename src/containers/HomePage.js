@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getCustomization: (url, lang) => {
       dispatch(clearState())
-      dispatch(push('/members'))
+      dispatch(push('/settings'))
       dispatch(setLoadingStatus(i18n.step1[lang]))
       dispatch(fetchOdd(url)).then((odd) => {
         // 1. Get JSON via OxGarage
@@ -40,24 +40,10 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(receiveOdd(e.target.result))
         // 1. Get JSON via OxGarage
         dispatch(setLoadingStatus(i18n.step2[lang]))
-        const odd = new DOMParser().parseFromString(e.target.result, 'text/xml')
-        if (odd.getElementsByTagNameNS('http://www.tei-c.org/ns/1.0', 'TEI').length !== 1 ) {
-          throw Error('This does not appear to be a TEI document.')
-        }
-        if (odd.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*').length > 0) {
-          throw Error('ODDs with RELAX NG elements are not supported.')
-        }
-        if (odd.getElementsByTagName('schemaSpec').length === 0) {
-          throw Error('This does not appear to be a TEI ODD document.')
-        }
-        if (odd.querySelectorAll('*[source]').length > 0) {
-          throw Error('RomaJS does not support TEI ODD with @source attributes at the moment.')
-        }
         dispatch(postToOxGarage(e.target.result, oxgarage.compile_json)).then(() => {
           dispatch(setLoadingStatus(i18n.step3[lang]))
           // 2. Get p5subset.
           dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
-          // dispatch(fetchLocalSource('/fakeData/p5subset.json'))
         })
       }
     },

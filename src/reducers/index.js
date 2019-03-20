@@ -1,8 +1,10 @@
+import RomaJSversion from '../utils/version'
 import {
   SELECT_ODD, REQUEST_ODD, RECEIVE_ODD, REQUEST_LOCAL_SOURCE, RECEIVE_LOCAL_SOURCE,
   REQUEST_OXGARAGE_TRANSFORM, RECEIVE_FROM_OXGARAGE, UPDATE_CUSTOMIZATION_ODD, EXPORT_ODD, EXPORT_SCHEMA, CLEAR_STATE,
   REPORT_ERROR
 } from '../actions'
+import { SET_ODD_SETTING, APPLY_ODD_SETTINGS } from '../actions/settings'
 import {
   INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS, INCLUDE_CLASSES, EXCLUDE_CLASSES,
   INCLUDE_DATATYPES, EXCLUDE_DATATYPES
@@ -26,6 +28,7 @@ import { DELETE_CLASS_DOCS, UPDATE_CLASS_DOCS, DELETE_CLASS_ATTRIBUTE, RESTORE_C
   REVERT_CLASS_TO_SOURCE } from '../actions/classes'
 import { UPDATE_DATATYPE_DOCS, DELETE_DATATYPE_DOCS, CREATE_NEW_DATATYPE, DISCARD_DATATYPE_CHANGES, REVERT_DATATYPE_TO_SOURCE,
   SET_DATAREF, SET_DATAREF_RESTRICTION, NEW_DATAREF, DELETE_DATATYPE_CONTENT, MOVE_DATATYPE_CONTENT, NEW_TEXTNODE, NEW_DATATYPE_VALLIST, ADD_DATATYPE_VALITEM, DELETE_DATATYPE_VALITEM, SET_DATATYPE_CONTENT_GROUPING } from '../actions/datatypes'
+import { oddSettings } from './settings'
 import { oddModules } from './modules'
 import { oddElements } from './elements'
 import { oddClasses } from './classes'
@@ -38,6 +41,8 @@ import { routerReducer } from 'react-router-redux'
 import oxgarage from '../utils/oxgarage'
 
 import { clone } from '../utils/clone'
+
+const parser = new DOMParser()
 
 export function postToOxGarage(input, endpoint) {
   const fd = new FormData()
@@ -91,9 +96,61 @@ function customization(state = {
         isFetching: true
       })
     case RECEIVE_ODD:
+      let oddData = parser.parseFromString(action.xml, 'text/xml')
+      // For testing. TODO: figure out a way to only do this in dev mode.
+      if (global.usejsdom) {
+        // replace DOM with JSDOM
+        oddData = global.usejsdom(oddData)
+      }
+      const isBrowser = typeof window !== 'undefined'
+
+      const schemaSpec = oddData.querySelector('schemaSpec')
+      // Check whether this is a ODD we can handle
+      // NB: it seems that using throw for the errors stops the code too soon for the popup to catch it.
+      //     using window.onerror explicitly fixes it. But throwing is still necessary to stop.
+      if (!schemaSpec) {
+        if (isBrowser) window.onerror('This does not appear to be a TEI ODD document.')
+        throw Error()
+      }
+      if (oddData.getElementsByTagNameNS('http://www.tei-c.org/ns/1.0', 'TEI').length !== 1 ) {
+        if (isBrowser) window.onerror('This does not appear to be a TEI document.')
+        throw Error()
+      }
+      if (schemaSpec.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*').length > 0) {
+        if (isBrowser) window.onerror('ODDs with RELAX NG elements are not supported.')
+        throw Error()
+      }
+      let hasSource = false
+      for (const el of Array.from(schemaSpec.getElementsByTagNameNS('http://www.tei-c.org/ns/1.0', '*'))) {
+        if (el.getAttribute('source')) {
+          hasSource = true
+          break
+        }
+      }
+      if (schemaSpec.getAttribute('source') || hasSource) {
+        if (isBrowser) window.onerror('RomaJS does not support TEI ODD with @source attributes at the moment.')
+        throw Error()
+      }
+      // Get basic settings data
+      const settings = {}
+      const titleStmt = oddData.querySelector('teiHeader titleStmt')
+      if (titleStmt) {
+        settings.title = titleStmt.querySelector('title') ? titleStmt.querySelector('title').textContent : ''
+        settings.author = titleStmt.querySelector('author') ? titleStmt.querySelector('author').textContent : `generated with RomaJS vesion ${RomaJSversion}`
+      } else {
+        settings.title = ''
+        settings.author = ''
+      }
+      settings.filename = schemaSpec.getAttribute('ident')
+      settings.namespace = schemaSpec.getAttribute('ns') || `http://www.example.org/ns/${settings.filename}`
+      settings.nsToAtts = false
+      settings.prefix = schemaSpec.getAttribute('prefix') || 'tei_'
+      settings.targetLang = schemaSpec.getAttribute('targetLang') || 'en'
+      settings.docLang = schemaSpec.getAttribute('docLang') || 'en'
       return Object.assign({}, state, {
         isFetching: false,
         xml: action.xml,
+        settings,
         lastUpdated: Date.now()
       })
     case REQUEST_OXGARAGE_TRANSFORM:
@@ -147,6 +204,9 @@ function odd(state = {}, action) {
       return Object.assign({}, state,
         {customization: customization(state.customization, action)}
       )
+    case SET_ODD_SETTING:
+    case APPLY_ODD_SETTINGS:
+      return Object.assign({}, oddSettings(state, action))
     case INCLUDE_MODULES:
     case EXCLUDE_MODULES:
     case INCLUDE_ELEMENTS:

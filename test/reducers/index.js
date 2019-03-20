@@ -31,7 +31,7 @@ describe('Input ODD reducers', () => {
   })
 
   it('should handle RECEIVE_ODD', () => {
-    const xml = '<TEI><teiHeader/><text><body><schemaSpec></schemaSpec></body></text></TEI>'
+    const xml = '<TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader/><text><body><schemaSpec></schemaSpec></body></text></TEI>'
     const newState = Object.assign({}, initialState,
       { selectedOdd: './fakeData/bare.odd',
         odd: {customization: { isFetching: true }, localsource: {} } }

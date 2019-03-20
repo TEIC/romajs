@@ -3,7 +3,14 @@ import { updateCustomizationOdd, exportOdd, exportSchema } from '../actions'
 import DownloadButton from '../components/DownloadButton'
 
 const mapStateToProps = (state) => {
+  let isLoaded = false
+  if (state.odd.localsource) {
+    if (!state.odd.localsource.isFetching) {
+      isLoaded = true
+    }
+  }
   return {
+    isLoaded,
     language: state.ui.language
   }
 }
