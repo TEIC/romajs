@@ -21,7 +21,6 @@ class App extends Component {
 
   componentDidMount() {
     window.onerror = (error) => {
-      console.log('h')
       this.setState({showErrorDialog: true, errorMsg: error})
     }
   }

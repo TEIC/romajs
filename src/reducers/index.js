@@ -1,7 +1,7 @@
 import RomaJSversion from '../utils/version'
 import {
   SELECT_ODD, REQUEST_ODD, RECEIVE_ODD, REQUEST_LOCAL_SOURCE, RECEIVE_LOCAL_SOURCE,
-  REQUEST_OXGARAGE_TRANSFORM, RECEIVE_FROM_OXGARAGE, UPDATE_CUSTOMIZATION_ODD, EXPORT_ODD, EXPORT_SCHEMA, CLEAR_STATE,
+  REQUEST_ODD_JSON, RECEIVE_ODD_JSON, UPDATE_CUSTOMIZATION_ODD, EXPORT_ODD, EXPORT_SCHEMA, CLEAR_STATE,
   REPORT_ERROR
 } from '../actions'
 import { SET_ODD_SETTING, APPLY_ODD_SETTINGS } from '../actions/settings'
@@ -153,11 +153,11 @@ function customization(state = {
         settings,
         lastUpdated: Date.now()
       })
-    case REQUEST_OXGARAGE_TRANSFORM:
+    case REQUEST_ODD_JSON:
       return Object.assign({}, state, {
         isFetching: true
       })
-    case RECEIVE_FROM_OXGARAGE:
+    case RECEIVE_ODD_JSON:
       return Object.assign({}, state, {
         isFetching: false,
         json: action.json,
@@ -199,8 +199,8 @@ function odd(state = {}, action) {
       )
     case REQUEST_ODD:
     case RECEIVE_ODD:
-    case REQUEST_OXGARAGE_TRANSFORM:
-    case RECEIVE_FROM_OXGARAGE:
+    case REQUEST_ODD_JSON:
+    case RECEIVE_ODD_JSON:
       return Object.assign({}, state,
         {customization: customization(state.customization, action)}
       )

@@ -4,6 +4,7 @@ import { push } from 'react-router-redux'
 import { setOddSetting, applySettings} from '../actions/settings'
 
 const mapStateToProps = (state) => {
+  let settingsReady = false
   let isLoading = true
   let title = ''
   let filename = ''
@@ -15,6 +16,7 @@ const mapStateToProps = (state) => {
   let author = ''
   if (state.odd.customization) {
     if (state.odd.customization.settings !== undefined) {
+      settingsReady = true
       title = state.odd.customization.settings.title
       filename = state.odd.customization.settings.filename
       namespace = state.odd.customization.settings.namespace
@@ -40,6 +42,7 @@ const mapStateToProps = (state) => {
     docLang,
     author,
     isLoading,
+    settingsReady,
     loadingStatus: state.ui.loadingStatus
   }
 }

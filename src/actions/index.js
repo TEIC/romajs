@@ -5,8 +5,8 @@ export const RECEIVE_ODD = 'RECEIVE_ODD'
 export const SELECT_ODD = 'SELECT_ODD'
 export const REQUEST_LOCAL_SOURCE = 'REQUEST_LOCAL_SOURCE'
 export const RECEIVE_LOCAL_SOURCE = 'RECEIVE_LOCAL_SOURCE'
-export const REQUEST_OXGARAGE_TRANSFORM = 'REQUEST_OXGARAGE_TRANSFORM'
-export const RECEIVE_FROM_OXGARAGE = 'RECEIVE_FROM_OXGARAGE'
+export const REQUEST_ODD_JSON = 'REQUEST_ODD_JSON'
+export const RECEIVE_ODD_JSON = 'RECEIVE_ODD_JSON'
 
 export const UPDATE_CUSTOMIZATION_ODD = 'UPDATE_CUSTOMIZATION_ODD'
 export const EXPORT_ODD = 'EXPORT_ODD'
@@ -66,19 +66,17 @@ export function receiveLocalSource(json) {
   }
 }
 
-export function receiveFromOxGarage(json) {
+export function receiveOddJson(json) {
   return {
-    type: RECEIVE_FROM_OXGARAGE,
+    type: RECEIVE_ODD_JSON,
     json,
     receivedAt: Date.now()
   }
 }
 
-function requestOxGarageTransform(input, endpoint) {
+function requestOddJson() {
   return {
-    type: REQUEST_OXGARAGE_TRANSFORM,
-    input,
-    endpoint
+    type: REQUEST_ODD_JSON
   }
 }
 
@@ -122,6 +120,20 @@ export function fetchOdd(odd) {
   }
 }
 
+export function fetchKnownCustomization(url) {
+  return dispatch => {
+    dispatch(requestOddJson())
+    return fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText)
+        }
+        return response.json()
+      })
+      .then(json => dispatch(receiveOddJson(json)))
+  }
+}
+
 export function fetchLocalSource(url) {
   return dispatch => {
     dispatch(requestLocalSource(url))
@@ -138,7 +150,7 @@ export function fetchLocalSource(url) {
 
 export function postToOxGarage(input, endpoint) {
   return dispatch => {
-    dispatch(requestOxGarageTransform(input, endpoint))
+    dispatch(requestOddJson())
     const fd = new FormData()
     fd.append('fileToConvert', new Blob([input], {'type': 'application\/octet-stream'}), 'file.odd')
     return new Promise((res)=>{
@@ -149,7 +161,7 @@ export function postToOxGarage(input, endpoint) {
       })
         .then(response => response.json())
         .then((json) => {
-          return res(dispatch(receiveFromOxGarage(json)))
+          return res(dispatch(receiveOddJson(json)))
         })
         .catch( (err) => {
           dispatch(reportError(err))

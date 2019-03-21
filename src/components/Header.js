@@ -10,7 +10,8 @@ export default class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showStartOver: false
+      showStartOver: false,
+      showLang: false
     }
   }
 
@@ -52,8 +53,14 @@ export default class Header extends Component {
             </button>
             <div className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="lang">
               <ul className="mdc-list" role="menu" aria-hidden="true">
-                <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.setLanguage('en')}}>English</li>
-                <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.setLanguage('it')}}>Italiano</li>
+                <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
+                  this.props.setLanguage('en')
+                  this.setState({showLang: true})
+                }}>English</li>
+                <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
+                  this.props.setLanguage('it')
+                  this.setState({showLang: true})
+                }}>Italiano</li>
               </ul>
             </div>
             {startOver}
@@ -64,6 +71,10 @@ export default class Header extends Component {
       (<YesNoDialog key="ynd" show={this.state.showStartOver} continue={() => {this.props.navigateTo('/')}}
         header={'Do you want to start over? All changes will be lost.'} hide={() => {
           this.setState({showStartOver: false})
+        }}/>),
+      (<YesNoDialog key="lang" show={this.state.showLang} continue={() => {console.log('applying settings')}}
+        header={'Do you want to apply this language to element, attributes, and documentation as well?'} hide={() => {
+          this.setState({showLang: false})
         }}/>)
     ]
   }

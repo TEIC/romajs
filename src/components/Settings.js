@@ -5,83 +5,87 @@ import { MDCSelect } from '@material/select'
 
 export default class Settings extends Component {
   componentDidMount() {
-    const tlSelect = new MDCSelect(this.refs.targetLang)
-    switch (this.props.targetLang) {
-      case 'en':
-        tlSelect.foundation_.setSelectedIndex(0)
-        break
-      case 'de':
-        tlSelect.foundation_.setSelectedIndex(1)
-        break
-      case 'it':
-        tlSelect.foundation_.setSelectedIndex(2)
-        break
-      case 'es':
-        tlSelect.foundation_.setSelectedIndex(3)
-        break
-      case 'fr':
-        tlSelect.foundation_.setSelectedIndex(4)
-        break
-      case 'pt':
-        tlSelect.foundation_.setSelectedIndex(5)
-        break
-      case 'ru':
-        tlSelect.foundation_.setSelectedIndex(6)
-        break
-      case 'sv':
-        tlSelect.foundation_.setSelectedIndex(7)
-        break
-      case 'jp':
-        tlSelect.foundation_.setSelectedIndex(8)
-        break
-      case 'zh':
-        tlSelect.foundation_.setSelectedIndex(9)
-        break
-      default:
-        tlSelect.foundation_.setSelectedIndex(0)
+    if (this.refs.targetLang) {
+      const tlSelect = new MDCSelect(this.refs.targetLang)
+      switch (this.props.targetLang) {
+        case 'en':
+          tlSelect.foundation_.setSelectedIndex(0)
+          break
+        case 'de':
+          tlSelect.foundation_.setSelectedIndex(1)
+          break
+        case 'it':
+          tlSelect.foundation_.setSelectedIndex(2)
+          break
+        case 'es':
+          tlSelect.foundation_.setSelectedIndex(3)
+          break
+        case 'fr':
+          tlSelect.foundation_.setSelectedIndex(4)
+          break
+        case 'pt':
+          tlSelect.foundation_.setSelectedIndex(5)
+          break
+        case 'ru':
+          tlSelect.foundation_.setSelectedIndex(6)
+          break
+        case 'sv':
+          tlSelect.foundation_.setSelectedIndex(7)
+          break
+        case 'jp':
+          tlSelect.foundation_.setSelectedIndex(8)
+          break
+        case 'zh':
+          tlSelect.foundation_.setSelectedIndex(9)
+          break
+        default:
+          tlSelect.foundation_.setSelectedIndex(0)
+      }
+      tlSelect.listen('MDCSelect:change', () => {
+        this.props.setOddSetting('targetLang', tlSelect.value)
+      })
     }
-    tlSelect.listen('MDCSelect:change', () => {
-      this.props.setOddSetting('targetLang', tlSelect.value)
-    })
 
-    const dlSelect = new MDCSelect(this.refs.docLang)
-    switch (this.props.docLang) {
-      case 'en':
-        dlSelect.foundation_.setSelectedIndex(0)
-        break
-      case 'de':
-        dlSelect.foundation_.setSelectedIndex(1)
-        break
-      case 'it':
-        dlSelect.foundation_.setSelectedIndex(2)
-        break
-      case 'es':
-        dlSelect.foundation_.setSelectedIndex(3)
-        break
-      case 'fr':
-        dlSelect.foundation_.setSelectedIndex(4)
-        break
-      case 'pt':
-        dlSelect.foundation_.setSelectedIndex(5)
-        break
-      case 'ru':
-        dlSelect.foundation_.setSelectedIndex(6)
-        break
-      case 'sv':
-        dlSelect.foundation_.setSelectedIndex(7)
-        break
-      case 'jp':
-        dlSelect.foundation_.setSelectedIndex(8)
-        break
-      case 'zh':
-        dlSelect.foundation_.setSelectedIndex(9)
-        break
-      default:
-        dlSelect.foundation_.setSelectedIndex(0)
+    if (this.refs.docLang) {
+      const dlSelect = new MDCSelect(this.refs.docLang)
+      switch (this.props.docLang) {
+        case 'en':
+          dlSelect.foundation_.setSelectedIndex(0)
+          break
+        case 'de':
+          dlSelect.foundation_.setSelectedIndex(1)
+          break
+        case 'it':
+          dlSelect.foundation_.setSelectedIndex(2)
+          break
+        case 'es':
+          dlSelect.foundation_.setSelectedIndex(3)
+          break
+        case 'fr':
+          dlSelect.foundation_.setSelectedIndex(4)
+          break
+        case 'pt':
+          dlSelect.foundation_.setSelectedIndex(5)
+          break
+        case 'ru':
+          dlSelect.foundation_.setSelectedIndex(6)
+          break
+        case 'sv':
+          dlSelect.foundation_.setSelectedIndex(7)
+          break
+        case 'jp':
+          dlSelect.foundation_.setSelectedIndex(8)
+          break
+        case 'zh':
+          dlSelect.foundation_.setSelectedIndex(9)
+          break
+        default:
+          dlSelect.foundation_.setSelectedIndex(0)
+      }
+      dlSelect.listen('MDCSelect:change', () => {
+        this.props.setOddSetting('targetLang', dlSelect.value)
+      })
     }
-    dlSelect.listen('MDCSelect:change', () => {
-      this.props.setOddSetting('targetLang', dlSelect.value)
-    })
   }
 
   componentDidUpdate() {
@@ -146,7 +150,7 @@ export default class Settings extends Component {
       </div>
       <figcaption>{this.props.loadingStatus}</figcaption>
     </figure>)
-    if (this.props.title !== undefined) {
+    if (this.props.settingsReady) {
       content = (
         <div className="mdc-layout-grid">
           <div className="mdc-layout-grid__inner romajs-formrow">
@@ -297,6 +301,7 @@ Settings.propTypes = {
   author: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
   loadingStatus: PropTypes.string,
+  settingsReady: PropTypes.bool.isRequired,
   goToMemberPage: PropTypes.func.isRequired,
   setOddSetting: PropTypes.func.isRequired,
   applySettings: PropTypes.func.isRequired

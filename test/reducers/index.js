@@ -65,21 +65,19 @@ describe('Input ODD reducers', () => {
     expect(state.odd.localsource.json).toIncludeKey('modules')
   })
 
-  it('should handle REQUEST_OXGARAGE_TRANSFORM', () => {
+  it('should handle REQUEST_ODD_JSON', () => {
     const nextState = romajsApp(initialState, {
-      type: 'REQUEST_OXGARAGE_TRANSFORM',
-      input: '<TEI><teiHeader/><text><body><schemaSpec></schemaSpec></body></text></TEI>',
-      endpoint: 'http://www.tei-c.org/ege-webservice//Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/oddjson%3Aapplication%3Ajson/'
+      type: 'REQUEST_ODD_JSON'
     })
     expect(nextState.odd.customization).toEqual({ isFetching: true })
   })
 
-  it('should handle RECEIVE_FROM_OXGARAGE', () => {
+  it('should handle RECEIVE_ODD_JSON', () => {
     const json = {'title': 'The TEI Guidelines', 'edition': '', 'generator': 'odd2json',
       'modules': [{'ident': 'analysis', 'id': 'AI', 'desc': 'Simple analytic mechanisms'}]}
     const receivedAt = Date.now()
     const nextState = romajsApp(initialState, {
-      type: 'RECEIVE_FROM_OXGARAGE',
+      type: 'RECEIVE_ODD_JSON',
       json,
       orig: json,
       receivedAt

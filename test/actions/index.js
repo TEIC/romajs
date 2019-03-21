@@ -64,26 +64,4 @@ describe('I/O ODD actions', () => {
     })
     store.dispatch(actions.fetchOdd('http://localhost:3000/fakeData/bare.odd'))
   })
-
-  // Muted to avoid too many requests to oxGarage
-  // it('postToOxGarage should obtain a compiled version of the ODD', (done) => {
-  //   const store = mockStore({})
-  //   const odd2json = 'http://www.tei-c.org/ege-webservice//Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/oddjson%3Aapplication%3Ajson/'
-  //   return fs.readFile('test/fakeData/bare.odd', 'utf-8', (err, data) => {
-  //     if (err) {
-  //       throw new Error('Unable to read file')
-  //     }
-  //
-  //     store.subscribe(() => {
-  //       const receiveAct = store.getActions().find((act)=>{
-  //         return act.type === 'RECEIVE_FROM_OXGARAGE'
-  //       })
-  //       if (receiveAct) {
-  //         expect(receiveAct.json.elements.length).toBeGreaterThan(0)
-  //         done()
-  //       }
-  //     })
-  //     store.dispatch(actions.postToOxGarage(data, odd2json))
-  //   })
-  // }).timeout(30000) // giving a long time for slower connections
 })
