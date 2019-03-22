@@ -8,6 +8,8 @@ const mapStateToProps = (state, ownProps) => {
   let customAtts = []
   const customAttsNames = []
   const attributes = []
+  const associatedAttributes = ownProps.member.attributes.map(att => att.ident)
+  // TODO: look for inherited attributes as well
   for (const cClass of customClasses) {
     customAtts = customAtts.concat(cClass.attributes)
     for (const cAtt of cClass.attributes) {
@@ -27,17 +29,18 @@ const mapStateToProps = (state, ownProps) => {
     }
   }
 
+
   attributes.sort((a, b) => {
     return a.ident > b.ident
   })
-  return {show: ownProps.show, items: attributes}
+  return {show: ownProps.show, items: attributes, associatedAttributes}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     navigateToAttribute: (attName) => {dispatch(push(`attributes/${attName}`))},
     add: (attribute) => {
-      dispatch(ownProps.add(ownProps.member, attribute))
+      dispatch(ownProps.add(ownProps.member.ident, attribute))
     }
   }
 }

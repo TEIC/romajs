@@ -173,7 +173,7 @@ export default class Desc extends Component {
     let nodesc
     if (this.props.desc.length === 0) {
       nodesc = (<i className="material-icons romajs-clickable" onClick={() => {
-        this.props.update(this.props.ident, `<${this.descTag} xmlns="http://tei-c.org/ns/1.0" xml:lang="en"></${this.descTag}>`, 0)
+        this.props.update(this.props.ident, `<${this.descTag} xmlns="http://tei-c.org/ns/1.0" xml:lang="${this.props.docLang}"></${this.descTag}>`, 0)
       }}>add_circle_outline</i>)
     }
     return (<div className="mdc-layout-grid__inner romajs-formrow">
@@ -181,8 +181,7 @@ export default class Desc extends Component {
       {nodesc}
       <div className="mdc-layout-grid__cell--span-8">{
         this.props.desc.map((d, pos) => {
-          return (<div className="mdc-layout-grid__inner" key={`d${pos}`}>
-            <h4 className="mdc-layout-grid__cell--span-1">English</h4>
+          return (
             <div className="mdc-layout-grid__cell--span-10" style={{resize: 'both'}}>
               <AceEditor
                 style={{resize: 'both'}}
@@ -196,15 +195,13 @@ export default class Desc extends Component {
                 highlightActiveLine
                 value={d}
                 onChange={(text) => this.props.update(this.props.ident, text, pos)}
-                onresize={() => {console.log('res')}}
                 height="100px"
                 width="80%"
                 editorProps={{
                   $blockScrolling: Infinity
                 }}/>
               <ReactResizeDetector handleWidth handleHeight onResize={() => {this.onResize(pos)}} />
-            </div>
-          </div>)
+            </div>)
         })
       }
       </div>
@@ -225,5 +222,5 @@ Desc.propTypes = {
   update: PropTypes.func.isRequired,
   delete: PropTypes.func.isRequired,
   valDesc: PropTypes.bool,
-  lang: PropTypes.string
+  docLang: PropTypes.string.isRequired
 }

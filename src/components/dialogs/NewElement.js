@@ -11,7 +11,7 @@ export default class NewElement extends Component {
       canCreate: !this.doesElementExist('newElement'),
       name: 'newElement',
       module: this.props.modules[0].ident,
-      ns: 'http://example.com/ns'
+      ns: this.props.ns || ''
     }
     this.dialog
   }
@@ -151,5 +151,6 @@ NewElement.propTypes = {
   modules: PropTypes.array.isRequired,
   createNewElement: PropTypes.func.isRequired,
   allElementIdents: PropTypes.array.isRequired,
-  navigateTo: PropTypes.func.isRequired
+  navigateTo: PropTypes.func.isRequired,
+  ns: PropTypes.string
 }

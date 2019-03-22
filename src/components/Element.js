@@ -64,7 +64,7 @@ export default class Element extends Component {
     }
     switch (this.props.section) {
       case 'documentation':
-        content = <Documentation member={this.props.element}  memberType="element"/>
+        content = <Documentation member={this.props.element} docLang={this.props.docLang} memberType="element"/>
         trail = (<span className="mdc-chip">
           <div className="mdc-chip__text">Documentation</div>
         </span>)
@@ -151,5 +151,6 @@ Element.propTypes = {
   clearPicker: PropTypes.func.isRequired,
   deleteElementModelClass: PropTypes.func.isRequired,
   discardChanges: PropTypes.func.isRequired,
-  revertToSource: PropTypes.func.isRequired
+  revertToSource: PropTypes.func.isRequired,
+  docLang: PropTypes.string.isRequired
 }

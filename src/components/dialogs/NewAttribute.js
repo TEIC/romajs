@@ -7,8 +7,9 @@ import AttPicker from '../pickers/AttPicker'
 export default class NewAttributeDialog extends Component {
   constructor(props) {
     super(props)
+    this.defaultValue = 'newAttribute'
     this.state = {
-      attribute: 'newAttribute',
+      attribute: this.defaultValue,
       canCreate: true
     }
     this.dialog
@@ -25,12 +26,16 @@ export default class NewAttributeDialog extends Component {
         case 'add_from_picker':
         case 'cancel':
         default:
+          this.setState({attribute: this.defaultValue})
           this.props.hide()
           this.dialog.close()
       }
     })
     this.dialog.listen('MDCDialog:opened', () => {
       this.dialog.layout()
+      if (this.props.associatedAttributes.indexOf(this.state.attribute) !== -1) {
+        this.setState({canCreate: false})
+      }
     })
   }
 
@@ -60,8 +65,11 @@ export default class NewAttributeDialog extends Component {
       })
     } else {
       this.setState({
-        canCreate: false
+        attribute: this.defaultValue
       })
+    }
+    if (this.props.associatedAttributes.indexOf(val) !== -1) {
+      this.setState({canCreate: false})
     }
   }
 
@@ -87,7 +95,7 @@ export default class NewAttributeDialog extends Component {
                 <div className="mdc-layout-grid__cell--span-6">
                   <div className="mdc-text-field mdc-text-field--upgraded">
                     <input type="text" className="mdc-text-field__input"
-                      onChange={(e) => this.setAttribute(e.target.value)} placeholder="newAttribute"/>
+                      onChange={(e) => this.setAttribute(e.target.value)} placeholder={this.state.attribute}/>
                     <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
                   </div>
                 </div>
@@ -129,6 +137,7 @@ export default class NewAttributeDialog extends Component {
 NewAttributeDialog.propTypes = {
   show: PropTypes.bool.isRequired,
   items: PropTypes.array.isRequired,
+  associatedAttributes: PropTypes.array.isRequired,
   add: PropTypes.func,
   hide: PropTypes.func,
   navigateToAttribute: PropTypes.func.isRequired

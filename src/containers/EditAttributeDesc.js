@@ -3,8 +3,6 @@ import Desc from '../components/Desc'
 import { updateAttributeDocs, deleteAttributeDocs } from '../actions/attributes'
 
 const mapStateToProps = (state, ownProps) => {
-  // TODO: parametrize language
-
   // Special case for valDesc, which acts just like desc, but has a different name
   let desc = ownProps.attribute.desc
   if (ownProps.valDesc) {
@@ -14,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     ident: ownProps.attribute.ident,
     valDesc: ownProps.valDesc,
     desc,
-    lang: 'en'}
+    docLang: state.odd.customization.settings.docLang || 'en'}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

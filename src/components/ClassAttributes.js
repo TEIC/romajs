@@ -22,7 +22,7 @@ export default class Attributes extends Component {
           <div className="mdc-layout-grid__cell--span-3">
             <label>{this.props.memberType[0].toUpperCase() + this.props.memberType.substring(1)} attributes</label>
             <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-              Edit attributes defined on this {this.props.memberType}.
+              Edit attributes defined as part of this {this.props.memberType}.
             </p>
           </div>
           <div className="mdc-layout-grid__cell--span-8">

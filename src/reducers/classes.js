@@ -136,6 +136,12 @@ export function oddClasses(state, action) {
       return newState
     case ADD_CLASS_ATTRIBUTE:
       let newAttribute = {}
+      let ns = ''
+      if (customizationObj.settings.nsToAtts) {
+        if (customizationObj.settings.namespace) {
+          ns = customizationObj.settings.namespace
+        }
+      }
       if (typeof action.attribute === 'string') {
         newAttribute = {
           ident: action.attribute,
@@ -150,7 +156,7 @@ export function oddClasses(state, action) {
           },
           valDesc: [],
           mode: 'add',
-          ns: 'http://example.com/newNS',
+          ns,
           usage: '',
           _isNew: true
         }

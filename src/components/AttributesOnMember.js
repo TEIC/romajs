@@ -15,7 +15,7 @@ export default class AttributesOnMember extends Component {
       <i key="i" className="material-icons romajs-clickable" onClick={() => {
         this.setState({show: true})
       }}>add_circle_outline</i>,
-      <NewAttributeDialog key="nad" show={this.state.show} add={this.props.addMemberAttribute} member={this.props.member.ident}
+      <NewAttributeDialog key="nad" show={this.state.show} add={this.props.addMemberAttribute} member={this.props.member}
         hide={() => {this.setState({show: false})}} />,
       <ul key="u" className="mdc-list" key="elatts">{
         this.props.member.attributes.map((a, pos) => {

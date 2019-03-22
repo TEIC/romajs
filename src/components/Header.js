@@ -57,11 +57,16 @@ export default class Header extends Component {
     //   </ul>
     // </div>
 
+    let oddtitle
+    if (this.props.oddtitle) {
+      oddtitle = `(${this.props.oddtitle})`
+    }
+
     return [
       (<header key="header" className="mdc-toolbar mdc-elevation--z4 mdc-toolbar--fixed romajs-toolbar">
         <div className="mdc-toolbar__row">
           <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-            <span className="mdc-toolbar__title">{i18n.title[this.props.language]}</span>
+            <span className="mdc-toolbar__title">{i18n.title[this.props.language]} {oddtitle}</span>
           </section>
           <section className="mdc-toolbar__section mdc-toolbar__section--align-end mdc-menu-surface--anchor" style={{right: '15px'}}>
             {settings}
@@ -86,5 +91,6 @@ Header.propTypes = {
   language: PropTypes.string.isRequired,
   location: PropTypes.string,
   navigateTo: PropTypes.func,
-  setLanguage: PropTypes.func
+  setLanguage: PropTypes.func,
+  oddtitle: PropTypes.string
 }

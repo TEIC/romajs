@@ -2,7 +2,7 @@ import RomaJSversion from '../utils/version'
 import {
   SELECT_ODD, REQUEST_ODD, RECEIVE_ODD, REQUEST_LOCAL_SOURCE, RECEIVE_LOCAL_SOURCE,
   REQUEST_ODD_JSON, RECEIVE_ODD_JSON, UPDATE_CUSTOMIZATION_ODD, EXPORT_ODD, EXPORT_SCHEMA, CLEAR_STATE,
-  REPORT_ERROR, REQUEST_LANGUAGE
+  REPORT_ERROR
 } from '../actions'
 import { SET_ODD_SETTING, APPLY_ODD_SETTINGS } from '../actions/settings'
 import {
@@ -194,10 +194,6 @@ function odd(state = {}, action) {
           })
       })
       return state
-    case REQUEST_LANGUAGE:
-      return Object.assign({}, state,
-        {langRequested: action.lang}
-      )
     case RECEIVE_LOCAL_SOURCE:
     case REQUEST_LOCAL_SOURCE:
       return Object.assign({}, state,
