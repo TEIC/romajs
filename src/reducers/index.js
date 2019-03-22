@@ -183,16 +183,22 @@ function odd(state = {}, action) {
         })
       return Object.assign({}, state, {customization: xml})
     case EXPORT_ODD:
+      let filename = 'new_odd'
+      try {
+        filename = state.customization.settings.filename
+      } catch (e) { e }
       const toExport = state.customization.updatedXml ? state.customization.updatedXml : state.customization.xml
-      fileSaver.saveAs(new Blob([toExport], {'type': 'text\/xml'}), 'new_odd.xml')
+      fileSaver.saveAs(new Blob([toExport], {'type': 'text\/xml'}), `${filename}.odd`)
       return state
     case EXPORT_SCHEMA:
-      postToOxGarage(state.customization.updatedXml, oxgarage.compile).then((compiled) => {
-        postToOxGarage(compiled, oxgarage[action.format])
-          .then((res) => {
-            fileSaver.saveAs(new Blob([res], {'type': 'text\/xml'}), 'schema.' + action.format)
-          })
-      })
+      filename = 'schema'
+      try {
+        filename = state.customization.settings.filename
+      } catch (e) { e }
+      postToOxGarage(state.customization.updatedXml, oxgarage[action.format])
+        .then((res) => {
+          fileSaver.saveAs(new Blob([res], {'type': 'text\/xml'}), `${filename}.${action.format}`)
+        })
       return state
     case RECEIVE_LOCAL_SOURCE:
     case REQUEST_LOCAL_SOURCE:

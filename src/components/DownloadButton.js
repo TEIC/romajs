@@ -10,21 +10,33 @@ export default class DonwloadButton extends Component {
   }
 
   render() {
-    return [
-      (<button disabled={!this.props.isLoaded} key="dwnbtn" className="mdc-button mdc-button--raised toggle" onClick={(e) => {
-        this.menu.open = !this.menu.open
-        return e
-      }}>
-        <i className="material-icons mdc-button__icon">file_download</i> {i18n.download[this.props.language]}
-      </button>),
-      (<div key="opts" className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="menu">
-        <ul className="mdc-list" role="menu" aria-hidden="true">
-          <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadCustomization()}}>ODD</li>
-          <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadRng()}}>RelaxNG schema</li>
-          <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadW3c()}}>W3C schema</li>
-        </ul>
-      </div>)
-    ]
+    return (
+      <div style={{position: 'relative'}}>
+        <button disabled={!this.props.isLoaded} className="mdc-button mdc-button--raised toggle" onClick={(e) => {
+          this.menu.open = !this.menu.open
+          return e
+        }}>
+          <i className="material-icons mdc-button__icon">file_download</i> {i18n.download[this.props.language]}
+        </button>
+        <div style={{position: 'relative'}}>
+          <div key="opts" className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="menu">
+            <ul className="mdc-list" role="menu" aria-hidden="true">
+              <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadCustomization()}}>Save customization</li>
+              <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('rng')}}>RelaxNG schema</li>
+              <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('rnc')}}>RelaxNG compact</li>
+              <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('w3c')}}>W3C schema</li>
+              <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('dtd')}}>DTD</li>
+              <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('isosch')}}>ISO Schematron constraints</li>
+              <li className="mdc-list-divider" role="separator"/>
+              <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('html')}}>Documentation as HTML</li>
+              <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('tei')}}>Documentation as TEI Lite</li>
+              <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('docx')}}>Documentation as MS Word</li>
+              <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('latex')}}>Documentation as LaTeX</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    )
   }
 }
 
@@ -32,6 +44,5 @@ DonwloadButton.propTypes = {
   isLoaded: PropTypes.bool.isRequired,
   language: PropTypes.string.isRequired,
   downloadCustomization: PropTypes.func.isRequired,
-  downloadRng: PropTypes.func.isRequired,
-  downloadW3c: PropTypes.func.isRequired
+  downloadSchema: PropTypes.func.isRequired
 }
