@@ -74,7 +74,7 @@ export function receiveOddJson(json) {
   }
 }
 
-function requestOddJson() {
+export function requestOddJson() {
   return {
     type: REQUEST_ODD_JSON
   }
@@ -145,6 +145,28 @@ export function fetchLocalSource(url) {
         return response.json()
       })
       .then(json => dispatch(receiveLocalSource(json)))
+  }
+}
+
+export function compileWithOxGarage(input, endpoint) {
+  return dispatch => {
+    dispatch(requestOdd())
+    const fd = new FormData()
+    fd.append('fileToConvert', new Blob([input], {'type': 'application\/octet-stream'}), 'file.odd')
+    return new Promise((res)=>{
+      fetch(endpoint, {
+        mode: 'cors',
+        method: 'post',
+        body: fd
+      })
+        .then(response => response.text())
+        .then((data) => {
+          return res(data)
+        })
+        .catch( (err) => {
+          dispatch(reportError(err))
+        })
+    })
   }
 }
 

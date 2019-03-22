@@ -110,7 +110,6 @@ export default class Home extends Component {
     if (this.state.panel === 1 && !this.state.selectedFile) {
       disabled = {disabled: 'disabled'}
     }
-    console.log(this.props.language)
     return (
       <main>
         <div className="romajs-hero">

@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     uploadCustomization: (files, lang) => {
       dispatch(clearState())
-      dispatch(push('/members'))
+      dispatch(push('/settings'))
       dispatch(setLoadingStatus(i18n.step1[lang]))
       const reader = new FileReader()
       reader.readAsText(files[0])
@@ -58,7 +58,7 @@ const mapDispatchToProps = (dispatch) => {
           .then((json) => {
             dispatch(receiveOddJson(JSON.parse(json)))
             dispatch(fetchLocalSource('fakeData/p5subset.json'))
-            dispatch(push('/members'))
+            dispatch(push('/settings'))
           })
       })
     }

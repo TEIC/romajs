@@ -2,7 +2,7 @@ import RomaJSversion from '../utils/version'
 import {
   SELECT_ODD, REQUEST_ODD, RECEIVE_ODD, REQUEST_LOCAL_SOURCE, RECEIVE_LOCAL_SOURCE,
   REQUEST_ODD_JSON, RECEIVE_ODD_JSON, UPDATE_CUSTOMIZATION_ODD, EXPORT_ODD, EXPORT_SCHEMA, CLEAR_STATE,
-  REPORT_ERROR
+  REPORT_ERROR, REQUEST_LANGUAGE
 } from '../actions'
 import { SET_ODD_SETTING, APPLY_ODD_SETTINGS } from '../actions/settings'
 import {
@@ -116,13 +116,15 @@ function customization(state = {
         if (isBrowser) window.onerror('This does not appear to be a TEI document.')
         throw Error()
       }
-      if (schemaSpec.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*').length > 0) {
-        if (isBrowser) window.onerror('ODDs with RELAX NG elements are not supported.')
-        throw Error()
+      for (const el of Array.from(schemaSpec.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*'))) {
+        if (!el.closest('egXML')) {
+          if (isBrowser) window.onerror('ODDs with RELAX NG elements are not supported.')
+          throw Error()
+        }
       }
       let hasSource = false
       for (const el of Array.from(schemaSpec.getElementsByTagNameNS('http://www.tei-c.org/ns/1.0', '*'))) {
-        if (el.getAttribute('source')) {
+        if (!el.closest('egXML') && el.getAttribute('source')) {
           hasSource = true
           break
         }
@@ -192,6 +194,10 @@ function odd(state = {}, action) {
           })
       })
       return state
+    case REQUEST_LANGUAGE:
+      return Object.assign({}, state,
+        {langRequested: action.lang}
+      )
     case RECEIVE_LOCAL_SOURCE:
     case REQUEST_LOCAL_SOURCE:
       return Object.assign({}, state,

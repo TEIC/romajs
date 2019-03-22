@@ -53,48 +53,31 @@ export default class MembersList extends Component {
     }
     const newSort = this.props.sortBy === 'element' ? 'module' : 'element'
     const newSortLabel = this.props.sortBy === 'element' ? 'by module' : 'alphabetically'
-    let content = (
-      <figure>
-        <div role="progressbar" className="mdc-linear-progress mdc-linear-progress--indeterminate">
-          <div className="mdc-linear-progress__buffering-dots"/>
-          <div className="mdc-linear-progress__buffer"/>
-          <div className="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
-            <span className="mdc-linear-progress__bar-inner"/>
-          </div>
-          <div className="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
-            <span className="mdc-linear-progress__bar-inner"/>
-          </div>
+    return [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
+      <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
+        <div className="mdc-chip-set mdc-chip-set--filter">
+          <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
+            visibleMemberTypes={this.props.visibleMemberTypes} type="elements" label={i18n.elements[this.props.language]} />
+          <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
+            visibleMemberTypes={this.props.visibleMemberTypes} type="attclasses" label={i18n.atts[this.props.language]} />
+          <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
+            visibleMemberTypes={this.props.visibleMemberTypes} type="modelclasses" label={i18n.models[this.props.language]} />
+          <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
+            visibleMemberTypes={this.props.visibleMemberTypes} type="datatypes" label={i18n.datatypes[this.props.language]} />
         </div>
-        <figcaption>{this.props.loadingStatus}</figcaption>
-      </figure>)
-    if (!this.props.isLoading) {
-      content = [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
-        <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-          <div className="mdc-chip-set mdc-chip-set--filter">
-            <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-              visibleMemberTypes={this.props.visibleMemberTypes} type="elements" label={i18n.elements[this.props.language]} />
-            <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-              visibleMemberTypes={this.props.visibleMemberTypes} type="attclasses" label={i18n.atts[this.props.language]} />
-            <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-              visibleMemberTypes={this.props.visibleMemberTypes} type="modelclasses" label={i18n.models[this.props.language]} />
-            <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-              visibleMemberTypes={this.props.visibleMemberTypes} type="datatypes" label={i18n.datatypes[this.props.language]} />
-          </div>
-        </section>
-        <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
-          <div className={`mdc-chip mdc-ripple-upgraded`} onClick={() => this.props.sortMembersBy(newSort)}>
-            <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">swap_vert</i>
-            <div className="mdc-chip__text">{newSortLabel}</div>
-          </div>
-          <FilterSearch/>
-        </section>
-      </div>,
-      <main key="main" style={{maxWidth: this.state.windowWidth}}>
-        {members}
-        <AddMemberFab language={this.props.language}/>
-      </main>]
-    }
-    return content
+      </section>
+      <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
+        <div className={`mdc-chip mdc-ripple-upgraded`} onClick={() => this.props.sortMembersBy(newSort)}>
+          <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">swap_vert</i>
+          <div className="mdc-chip__text">{newSortLabel}</div>
+        </div>
+        <FilterSearch/>
+      </section>
+    </div>,
+    <main key="main" style={{maxWidth: this.state.windowWidth}}>
+      {members}
+      <AddMemberFab language={this.props.language}/>
+    </main>]
   }
 }
 
@@ -109,8 +92,6 @@ MembersList.propTypes = {
     module_selected: PropTypes.bool.isRequired
   }).isRequired).isRequired,
   toggleItem: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  loadingStatus: PropTypes.string,
   clearUiData: PropTypes.func.isRequired,
   setMemberTypeVisibility: PropTypes.func,
   visibleMemberTypes: PropTypes.array,

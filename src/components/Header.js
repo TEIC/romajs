@@ -4,7 +4,7 @@ import { Component } from 'react'
 import Download from '../containers/Download'
 import YesNoDialog from './dialogs/YesNo'
 import * as i18n from '../localization/Header'
-import { MDCMenu } from '@material/menu'
+// import { MDCMenu } from '@material/menu'
 
 export default class Header extends Component {
   constructor(props) {
@@ -15,9 +15,9 @@ export default class Header extends Component {
     }
   }
 
-  componentDidMount() {
-    this.lang = new MDCMenu(this.refs.lang)
-  }
+  // componentDidMount() {
+  //   this.lang = new MDCMenu(this.refs.lang)
+  // }
 
   render() {
     let download = null
@@ -37,6 +37,26 @@ export default class Header extends Component {
       </button>)
     }
 
+    // Leaving language button out for now.
+    // <button className="mdc-button mdc-button--raised toggle" onClick={(e) => {
+    //   this.lang.open = !this.lang.open
+    //   return e
+    // }}>
+    //   <i className="material-icons mdc-button__icon">language</i> {i18n.language[this.props.language]} ({this.props.language})
+    // </button>
+    // <div className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="lang">
+    //   <ul className="mdc-list" role="menu" aria-hidden="true">
+    //     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
+    //       this.props.setLanguage('en')
+    //       this.setState({showLang: true})
+    //     }}>English</li>
+    //     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
+    //       this.props.setLanguage('it')
+    //       this.setState({showLang: true})
+    //     }}>Italiano</li>
+    //   </ul>
+    // </div>
+
     return [
       (<header key="header" className="mdc-toolbar mdc-elevation--z4 mdc-toolbar--fixed romajs-toolbar">
         <div className="mdc-toolbar__row">
@@ -45,24 +65,6 @@ export default class Header extends Component {
           </section>
           <section className="mdc-toolbar__section mdc-toolbar__section--align-end mdc-menu-surface--anchor" style={{right: '15px'}}>
             {settings}
-            <button className="mdc-button mdc-button--raised toggle" onClick={(e) => {
-              this.lang.open = !this.lang.open
-              return e
-            }}>
-              <i className="material-icons mdc-button__icon">language</i> {i18n.language[this.props.language]} ({this.props.language})
-            </button>
-            <div className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="lang">
-              <ul className="mdc-list" role="menu" aria-hidden="true">
-                <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
-                  this.props.setLanguage('en')
-                  this.setState({showLang: true})
-                }}>English</li>
-                <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
-                  this.props.setLanguage('it')
-                  this.setState({showLang: true})
-                }}>Italiano</li>
-              </ul>
-            </div>
             {startOver}
             {download}
           </section>

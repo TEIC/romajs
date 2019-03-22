@@ -5,93 +5,82 @@ import { MDCSelect } from '@material/select'
 
 export default class Settings extends Component {
   componentDidMount() {
-    if (this.refs.targetLang) {
-      const tlSelect = new MDCSelect(this.refs.targetLang)
-      switch (this.props.targetLang) {
-        case 'en':
-          tlSelect.foundation_.setSelectedIndex(0)
-          break
-        case 'de':
-          tlSelect.foundation_.setSelectedIndex(1)
-          break
-        case 'it':
-          tlSelect.foundation_.setSelectedIndex(2)
-          break
-        case 'es':
-          tlSelect.foundation_.setSelectedIndex(3)
-          break
-        case 'fr':
-          tlSelect.foundation_.setSelectedIndex(4)
-          break
-        case 'pt':
-          tlSelect.foundation_.setSelectedIndex(5)
-          break
-        case 'ru':
-          tlSelect.foundation_.setSelectedIndex(6)
-          break
-        case 'sv':
-          tlSelect.foundation_.setSelectedIndex(7)
-          break
-        case 'jp':
-          tlSelect.foundation_.setSelectedIndex(8)
-          break
-        case 'zh':
-          tlSelect.foundation_.setSelectedIndex(9)
-          break
-        default:
-          tlSelect.foundation_.setSelectedIndex(0)
-      }
-      tlSelect.listen('MDCSelect:change', () => {
-        this.props.setOddSetting('targetLang', tlSelect.value)
-      })
+    const tlSelect = new MDCSelect(this.refs.targetLang)
+    switch (this.props.targetLang) {
+      case 'en':
+        tlSelect.foundation_.setSelectedIndex(0)
+        break
+      case 'de':
+        tlSelect.foundation_.setSelectedIndex(1)
+        break
+      case 'es':
+        tlSelect.foundation_.setSelectedIndex(2)
+        break
+      case 'fr':
+        tlSelect.foundation_.setSelectedIndex(3)
+        break
+      case 'it':
+        tlSelect.foundation_.setSelectedIndex(4)
+        break
+      case 'ja':
+        tlSelect.foundation_.setSelectedIndex(5)
+        break
+      case 'ko':
+        tlSelect.foundation_.setSelectedIndex(6)
+        break
+      case 'zh-TW':
+        tlSelect.foundation_.setSelectedIndex(7)
+        break
+      default:
+        tlSelect.foundation_.setSelectedIndex(0)
     }
+    tlSelect.listen('MDCSelect:change', () => {
+      this.props.setOddSetting('targetLang', tlSelect.value)
+    })
 
-    if (this.refs.docLang) {
-      const dlSelect = new MDCSelect(this.refs.docLang)
-      switch (this.props.docLang) {
-        case 'en':
-          dlSelect.foundation_.setSelectedIndex(0)
-          break
-        case 'de':
-          dlSelect.foundation_.setSelectedIndex(1)
-          break
-        case 'it':
-          dlSelect.foundation_.setSelectedIndex(2)
-          break
-        case 'es':
-          dlSelect.foundation_.setSelectedIndex(3)
-          break
-        case 'fr':
-          dlSelect.foundation_.setSelectedIndex(4)
-          break
-        case 'pt':
-          dlSelect.foundation_.setSelectedIndex(5)
-          break
-        case 'ru':
-          dlSelect.foundation_.setSelectedIndex(6)
-          break
-        case 'sv':
-          dlSelect.foundation_.setSelectedIndex(7)
-          break
-        case 'jp':
-          dlSelect.foundation_.setSelectedIndex(8)
-          break
-        case 'zh':
-          dlSelect.foundation_.setSelectedIndex(9)
-          break
-        default:
-          dlSelect.foundation_.setSelectedIndex(0)
-      }
-      dlSelect.listen('MDCSelect:change', () => {
-        this.props.setOddSetting('targetLang', dlSelect.value)
-      })
+    const dlSelect = new MDCSelect(this.refs.docLang)
+    switch (this.props.docLang) {
+      case 'en':
+        dlSelect.foundation_.setSelectedIndex(0)
+        break
+      case 'de':
+        dlSelect.foundation_.setSelectedIndex(1)
+        break
+      case 'es':
+        dlSelect.foundation_.setSelectedIndex(2)
+        break
+      case 'fr':
+        dlSelect.foundation_.setSelectedIndex(3)
+        break
+      case 'it':
+        dlSelect.foundation_.setSelectedIndex(4)
+        break
+      case 'ja':
+        dlSelect.foundation_.setSelectedIndex(5)
+        break
+      case 'ko':
+        dlSelect.foundation_.setSelectedIndex(6)
+        break
+      case 'zh-TW':
+        dlSelect.foundation_.setSelectedIndex(7)
+        break
+      default:
+        dlSelect.foundation_.setSelectedIndex(0)
     }
+    dlSelect.listen('MDCSelect:change', () => {
+      this.props.setOddSetting('docLang', dlSelect.value)
+      this.props.chooseNewDocLang(dlSelect.value)
+    })
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     // if the data is all loaded, apply changes to settings
     if (!this.props.isLoading) {
       this.props.applySettings()
+    }
+    // if a new language is required, trigger transformations
+    if ((prevProps.oddLastUpdated < this.props.oddLastUpdated) && this.props.newDataForLanguage.length > 0) {
+      this.props.getNewDocForLang(this.props.newDataForLanguage, this.props.docLang)
     }
   }
 
@@ -108,35 +97,28 @@ export default class Settings extends Component {
           <li className="mdc-list-item" data-value="de" tabIndex={1}>
             Deutsch
           </li>
-          <li className="mdc-list-item" data-value="it" tabIndex={2}>
-            Italiano
-          </li>
-          <li className="mdc-list-item" data-value="es" tabIndex={3}>
+          <li className="mdc-list-item" data-value="es" tabIndex={2}>
             Español
           </li>
-          <li className="mdc-list-item" data-value="fr" tabIndex={4}>
+          <li className="mdc-list-item" data-value="fr" tabIndex={3}>
             Français
           </li>
-          <li className="mdc-list-item" data-value="pr" tabIndex={5}>
-            Portugues
+          <li className="mdc-list-item" data-value="it" tabIndex={4}>
+            Italiano
           </li>
-          <li className="mdc-list-item" data-value="ru" tabIndex={6}>
-            Russian
-          </li>
-          <li className="mdc-list-item" data-value="sv" tabIndex={7}>
-            Svenska
-          </li>
-          <li className="mdc-list-item" data-value="jp" tabIndex={8}>
+          <li className="mdc-list-item" data-value="ja" tabIndex={5}>
             日本語
           </li>
-          <li className="mdc-list-item" data-value="zh" tabIndex={9}>
+          <li className="mdc-list-item" data-value="ko" tabIndex={6}>
+            한국어
+          </li>
+          <li className="mdc-list-item" data-value="zh-TW" tabIndex={7}>
             中文
           </li>
         </ul>
       </div>,
       <div key="e" className="mdc-line-ripple"/>
     ]
-    let content = null
     const loading = !this.props.isLoading ? null : (<figure>
       <div role="progressbar" className="mdc-linear-progress mdc-linear-progress--indeterminate">
         <div className="mdc-linear-progress__buffering-dots"/>
@@ -150,8 +132,10 @@ export default class Settings extends Component {
       </div>
       <figcaption>{this.props.loadingStatus}</figcaption>
     </figure>)
-    if (this.props.settingsReady) {
-      content = (
+    const visible = this.props.settingsReady ? 'block' : 'none'
+    return (
+      <div style={{display: visible}}>
+        {loading}
         <div className="mdc-layout-grid">
           <div className="mdc-layout-grid__inner romajs-formrow">
             <div className="mdc-layout-grid__cell--span-9"/>
@@ -280,12 +264,6 @@ export default class Settings extends Component {
             </div>
           </div>
         </div>
-      )
-    }
-    return (
-      <div>
-        {loading}
-        {content}
       </div>)
   }
 }
@@ -304,5 +282,9 @@ Settings.propTypes = {
   settingsReady: PropTypes.bool.isRequired,
   goToMemberPage: PropTypes.func.isRequired,
   setOddSetting: PropTypes.func.isRequired,
-  applySettings: PropTypes.func.isRequired
+  applySettings: PropTypes.func.isRequired,
+  oddLastUpdated: PropTypes.number.isRequired,
+  newDataForLanguage: PropTypes.string,
+  chooseNewDocLang: PropTypes.func.isRequired,
+  getNewDocForLang: PropTypes.func.isRequired
 }
