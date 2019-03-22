@@ -144,9 +144,11 @@ export function oddElements(state, action) {
     case ADD_ELEMENT_ATTRIBUTE:
       let newAttribute = {}
       let ns = ''
-      if (customizationObj.settings.nsToAtts) {
-        if (customizationObj.settings.namespace) {
-          ns = customizationObj.settings.namespace
+      if (customizationObj.settings) {
+        if (customizationObj.settings.nsToAtts) {
+          if (customizationObj.settings.namespace) {
+            ns = customizationObj.settings.namespace
+          }
         }
       }
       if (typeof action.attribute === 'string') {
