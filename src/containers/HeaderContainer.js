@@ -5,11 +5,9 @@ import { setLanguage } from '../actions/interface'
 
 const mapStateToProps = (state) => {
   let oddtitle
-  if (state.odd.customization) {
-    if (state.odd.customization.settings.title) {
-      oddtitle = state.odd.customization.settings.title
-    }
-  }
+  try {
+    oddtitle = state.odd.customization.settings.title
+  } catch (e) { e }
   return {
     location: state.router.location.pathname,
     language: state.ui.language,
