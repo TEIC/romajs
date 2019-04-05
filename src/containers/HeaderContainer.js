@@ -4,12 +4,15 @@ import { push } from 'react-router-redux'
 import { setLanguage } from '../actions/interface'
 
 const mapStateToProps = (state) => {
+  const location = state.router.location.pathname
   let oddtitle
-  try {
-    oddtitle = state.odd.customization.settings.title
-  } catch (e) { e }
+  if (location !== '/') {
+    try {
+      oddtitle = state.odd.customization.settings.title
+    } catch (e) { e }
+  }
   return {
-    location: state.router.location.pathname,
+    location,
     language: state.ui.language,
     oddtitle
   }

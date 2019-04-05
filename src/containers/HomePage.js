@@ -7,7 +7,7 @@ import Home from '../components/Home'
 import oxgarage from '../utils/oxgarage'
 import fetch from 'isomorphic-fetch'
 import datasource from '../utils/datasources'
-import * as i18n from '../localization/HomePage'
+import { i18n as _i18n } from '../localization/HomePage'
 
 const mapStateToProps = (state) => {
   return {
@@ -18,31 +18,33 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getCustomization: (url, lang) => {
+      const i18n = _i18n(lang)
       dispatch(clearState())
       dispatch(push('/settings'))
-      dispatch(setLoadingStatus(i18n.step1[lang]))
+      dispatch(setLoadingStatus(i18n('1/3 Obtaining customization ODD...')))
       dispatch(fetchOdd(url)).then(() => {
         // 1. This is a known customization, so get the JSON directly
-        dispatch(setLoadingStatus(i18n.step2[lang]))
+        dispatch(setLoadingStatus(i18n('2/3 Importing customization ODD...')))
         dispatch(fetchKnownCustomization(url.replace(/(xml|odd)$/, 'json'))).then(() => {
-          dispatch(setLoadingStatus(i18n.step3[lang]))
+          dispatch(setLoadingStatus(i18n('3/3 Importing full specification source...')))
           // 2. Get p5subset.
           dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
         })
       })
     },
     uploadCustomization: (files, lang) => {
+      const i18n = _i18n(lang)
       dispatch(clearState())
       dispatch(push('/settings'))
-      dispatch(setLoadingStatus(i18n.step1[lang]))
+      dispatch(setLoadingStatus(i18n('1/3 Obtaining customization ODD...')))
       const reader = new FileReader()
       reader.readAsText(files[0])
       reader.onload = (e) => {
         dispatch(receiveOdd(e.target.result))
         // 1. Convert to JSON via OxGarage
-        dispatch(setLoadingStatus(i18n.step2[lang]))
+        dispatch(setLoadingStatus(i18n('2/3 Importing customization ODD...')))
         dispatch(postToOxGarage(e.target.result, oxgarage.compile_json)).then(() => {
-          dispatch(setLoadingStatus(i18n.step3[lang]))
+          dispatch(setLoadingStatus(i18n('3/3 Importing full specification source...')))
           // 2. Get p5subset.
           dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
         })

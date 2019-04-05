@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { Component } from 'react'
 import Download from '../containers/Download'
 import YesNoDialog from './dialogs/YesNo'
-import * as i18n from '../localization/Header'
-// import { MDCMenu } from '@material/menu'
+import { i18n as _i18n } from '../localization/Header'
+import { MDCMenu } from '@material/menu'
 
 export default class Header extends Component {
   constructor(props) {
@@ -15,47 +15,38 @@ export default class Header extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.lang = new MDCMenu(this.refs.lang)
-  // }
+  componentDidMount() {
+    this.lang = new MDCMenu(this.refs.lang)
+  }
 
   render() {
+    // Set language function
+    const i18n = _i18n(this.props.language)
     let download = null
     let startOver = null
     let settings = null
+    let langBtn = null
+    if (this.state.showLang) {
+      langBtn = (<button className="mdc-button mdc-button--raised toggle" onClick={(e) => {
+        this.lang.open = !this.lang.open
+        return e
+      }}>
+        <i className="material-icons mdc-button__icon">language</i> {i18n('Language')} ({this.props.language})
+      </button>)
+    }
     if (this.props.location !== '/') {
       const isSettingsPage = this.props.location === '/settings'
       startOver = (
         <button className="mdc-button mdc-button--raised toggle" onClick={() => {
           this.setState({showStartOver: true})
         }}>
-          <i className="material-icons mdc-button__icon">replay</i> {i18n.startOver[this.props.language]}
+          <i className="material-icons mdc-button__icon">replay</i> {i18n('Start Over')}
         </button>)
       download = <Download/>
       settings = (<button className="mdc-button mdc-button--raised" disabled={isSettingsPage} onClick={() => this.props.navigateTo('/settings')}>
         <i className="material-icons mdc-button__icon">settings</i> settings
       </button>)
     }
-
-    // Leaving language button out for now.
-    // <button className="mdc-button mdc-button--raised toggle" onClick={(e) => {
-    //   this.lang.open = !this.lang.open
-    //   return e
-    // }}>
-    //   <i className="material-icons mdc-button__icon">language</i> {i18n.language[this.props.language]} ({this.props.language})
-    // </button>
-    // <div className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="lang">
-    //   <ul className="mdc-list" role="menu" aria-hidden="true">
-    //     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
-    //       this.props.setLanguage('en')
-    //       this.setState({showLang: true})
-    //     }}>English</li>
-    //     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
-    //       this.props.setLanguage('it')
-    //       this.setState({showLang: true})
-    //     }}>Italiano</li>
-    //   </ul>
-    // </div>
 
     let oddtitle
     if (this.props.oddtitle) {
@@ -66,12 +57,23 @@ export default class Header extends Component {
       (<header key="header" className="mdc-toolbar mdc-elevation--z4 mdc-toolbar--fixed romajs-toolbar">
         <div className="mdc-toolbar__row">
           <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-            <span className="mdc-toolbar__title">{i18n.title[this.props.language]} {oddtitle}</span>
+            <span className="mdc-toolbar__title">{i18n('Roma - ODD Customization')} {oddtitle}</span>
           </section>
           <section className="mdc-toolbar__section mdc-toolbar__section--align-end mdc-menu-surface--anchor" style={{right: '15px'}}>
             {settings}
             {startOver}
+            {langBtn}
             {download}
+            <div className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="lang">
+              <ul className="mdc-list" role="menu" aria-hidden="true">
+                <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
+                  this.props.setLanguage('en')
+                }}>English</li>
+                <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
+                  this.props.setLanguage('it')
+                }}>Italiano</li>
+              </ul>
+            </div>
           </section>
         </div>
       </header>),
@@ -79,7 +81,7 @@ export default class Header extends Component {
         header={'Do you want to start over? All changes will be lost.'} hide={() => {
           this.setState({showStartOver: false})
         }}/>),
-      (<YesNoDialog key="lang" show={this.state.showLang} continue={() => {console.log('applying settings')}}
+      (<YesNoDialog key="lang" show={false} continue={() => {console.log('applying settings')}}
         header={'Do you want to apply this language to element, attributes, and documentation as well?'} hide={() => {
           this.setState({showLang: false})
         }}/>)

@@ -2,7 +2,7 @@
   { "title" : "The TEI Guidelines",
     "edition" : "",
     "generator" : "odd2json3",
-    "date" : "2019-03-22T11:48:58Z",
+    "date" : "2019-03-29T18:50:03Z",
     "modules" : 
     [ 
       { "ident" : "analysis",
@@ -19593,9 +19593,7 @@
             "altIdent" : 
             [  ],
             "valDesc" : 
-            [ "<valDesc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">a numeric value.<\/valDesc>",
-              "<valDesc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"fr\">une valeur numérique.<\/valDesc>",
-              "<valDesc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\" xml:lang=\"de\">ein numerischer Wert<\/valDesc>" ],
+            [ "<valDesc xmlns=\"http:\/\/www.tei-c.org\/ns\/1.0\">a numeric value.<\/valDesc>" ],
             "datatype" : 
             { "min" : "1",
               "max" : "1",

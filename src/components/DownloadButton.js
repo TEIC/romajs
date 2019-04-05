@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { MDCMenu } from '@material/menu'
-import * as i18n from '../localization/DownloadButton'
+import { i18n as _i18n } from '../localization/DownloadButton'
 
 export default class DonwloadButton extends Component {
   componentDidMount() {
@@ -10,13 +10,15 @@ export default class DonwloadButton extends Component {
   }
 
   render() {
+    // Set language function
+    const i18n = _i18n(this.props.language)
     return (
       <div style={{position: 'relative'}}>
         <button disabled={!this.props.isLoaded} className="mdc-button mdc-button--raised toggle" onClick={(e) => {
           this.menu.open = !this.menu.open
           return e
         }}>
-          <i className="material-icons mdc-button__icon">file_download</i> {i18n.download[this.props.language]}
+          <i className="material-icons mdc-button__icon">file_download</i> {i18n('Download')}
         </button>
         <div style={{position: 'relative'}}>
           <div key="opts" className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="menu">

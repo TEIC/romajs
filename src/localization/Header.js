@@ -1,19 +1,20 @@
-export const title = {
-  en: 'Roma - ODD Customization',
-  it: 'Roma - Personalizzazione ODD'
+import { _i18n } from './i18n'
+
+const strings = {
+  'Roma - ODD Customization': {
+    it: 'Roma - Personalizzazione ODD'
+  },
+  'Start Over': {
+    it: 'Ricomincia'
+  },
+  'Download': {
+    it: 'Scarica'
+  },
+  'Language': {
+    it: 'Lingua'
+  },
 }
 
-export const startOver = {
-  en: 'Start Over',
-  it: 'Ricomincia'
-}
-
-export const download = {
-  en: 'Download',
-  it: 'Scarica'
-}
-
-export const language = {
-  en: 'Language',
-  it: 'Lingua'
+export function i18n(lang) {
+  return _i18n(lang, strings)
 }

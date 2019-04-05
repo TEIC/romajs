@@ -5,7 +5,7 @@ import FilterSearch from '../containers/FilterSearch'
 import Member from './Member'
 import MembersFacet from './MemberFacet'
 import AddMemberFab from './AddMemberFab'
-import * as i18n from '../localization/MembersList'
+import { i18n as _i18n } from '../localization/MembersList'
 
 export default class MembersList extends Component {
   constructor(props) {
@@ -38,6 +38,8 @@ export default class MembersList extends Component {
   }
 
   render() {
+    // Set language function
+    const i18n = _i18n(this.props.language)
     let members = <h2 className="mdc-typography--headline5" style={{margin: '2em 0px 0px 40px'}}>No items found. Try searching for something else.</h2>
     if (this.props.members.length > 0) {
       members = (<ul key="list" className="mdc-list mdc-list--two-line romajs-itemlist">
@@ -57,13 +59,13 @@ export default class MembersList extends Component {
       <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
         <div className="mdc-chip-set mdc-chip-set--filter">
           <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-            visibleMemberTypes={this.props.visibleMemberTypes} type="elements" label={i18n.elements[this.props.language]} />
+            visibleMemberTypes={this.props.visibleMemberTypes} type="elements" label={i18n('Elements')} />
           <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-            visibleMemberTypes={this.props.visibleMemberTypes} type="attclasses" label={i18n.atts[this.props.language]} />
+            visibleMemberTypes={this.props.visibleMemberTypes} type="attclasses" label={i18n('Attribute Classes')} />
           <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-            visibleMemberTypes={this.props.visibleMemberTypes} type="modelclasses" label={i18n.models[this.props.language]} />
+            visibleMemberTypes={this.props.visibleMemberTypes} type="modelclasses" label={i18n('Model Classes')} />
           <MembersFacet setMemberTypeVisibility={this.props.setMemberTypeVisibility}
-            visibleMemberTypes={this.props.visibleMemberTypes} type="datatypes" label={i18n.datatypes[this.props.language]} />
+            visibleMemberTypes={this.props.visibleMemberTypes} type="datatypes" label={i18n('Datatypes')} />
         </div>
       </section>
       <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
