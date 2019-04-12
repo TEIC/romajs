@@ -5,6 +5,7 @@ import Download from '../containers/Download'
 import YesNoDialog from './dialogs/YesNo'
 import { i18n as _i18n } from '../localization/Header'
 import { MDCMenu } from '@material/menu'
+import RomaJSversion from '../utils/version'
 
 export default class Header extends Component {
   constructor(props) {
@@ -58,6 +59,9 @@ export default class Header extends Component {
         <div className="mdc-toolbar__row">
           <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
             <span className="mdc-toolbar__title">{i18n('Roma - ODD Customization')} {oddtitle}</span>
+            <span style={{position: 'absolute', top: '4em', fontSize: '70%', marginLeft: '24px'}}>
+              Version {RomaJSversion}
+            </span>
           </section>
           <section className="mdc-toolbar__section mdc-toolbar__section--align-end mdc-menu-surface--anchor" style={{right: '15px'}}>
             {settings}
