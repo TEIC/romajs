@@ -13,6 +13,7 @@ export default class Home extends Component {
     this.state = {
       panel: 0,
       selectedFile: undefined,
+      selectedKnown: undefined,
       odds: {
         labels: [
           'TEI All (customize by reducing TEI)',
@@ -73,28 +74,31 @@ export default class Home extends Component {
       this.updatePanel(tabs.activeTabIndex)
     })
     // Set start function to first option
-    this._updateCustomizationUrl(this.state.odds.urls[0])
+    this.setState({selectedKnown: this.state.odds.urls[0]})
+    this._updateCustomizationUrl()
 
     const select = new MDCSelect(this.refs.chooseodd)
     select.foundation_.setSelectedIndex(0)
     select.listen('MDCSelect:change', () => {
       const idx = this.state.odds.labels.indexOf(select.value)
-      this._updateCustomizationUrl(this.state.odds.urls[idx])
+      this.setState({selectedKnown: this.state.odds.urls[idx]})
+      this._updateCustomizationUrl()
     })
   }
 
   updatePanel(index) {
     if (index === 0) {
-      this.setState({start: this.props.getCustomization})
+      // this.setState({start: this.props.getCustomization})
+      this._updateCustomizationUrl()
     } else {
       this.setState({start: () => this.props.uploadCustomization(this.state.selectedFile, this.props.language)})
     }
     this.setState({panel: index})
   }
 
-  _updateCustomizationUrl(url) {
+  _updateCustomizationUrl() {
     this.setState(
-      {start: () => {this.props.getCustomization(url, this.props.language)}}
+      {start: () => {this.props.getCustomization(this.state.selectedKnown, this.props.language)}}
     )
   }
 
