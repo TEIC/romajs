@@ -102,14 +102,27 @@ export function exportSchema(format) {
 /** ********
  * thunks *
  ******** **/
+
+const isBrowser = typeof window !== 'undefined'
+const fetchRetry = (url, n, errorMsg) => fetch(url).catch(function(err) {
+  if (n === 1) {
+    const msg = errorMsg ? errorMsg : err
+    if (isBrowser) window.onerror(msg)
+    throw msg
+  }
+  return fetchRetry(url, n - 1)
+})
+
 export function fetchOdd(odd) {
   return dispatch => {
     dispatch(requestOdd(odd))
+    const errMsg = 'Failed to fetch ODD data'
     return new Promise((res)=>{
-      fetch(odd)
+      fetchRetry(odd, 10, errMsg)
         .then(response => {
           if (!response.ok) {
-            throw Error(response.statusText)
+            if (isBrowser) window.onerror(errMsg)
+            throw Error(errMsg)
           }
           return response.text()
         })
@@ -123,10 +136,12 @@ export function fetchOdd(odd) {
 export function fetchKnownCustomization(url) {
   return dispatch => {
     dispatch(requestOddJson())
-    return fetch(url)
+    const errMsg = 'Failed to fetch known ODD customization'
+    return fetchRetry(url, 10, errMsg)
       .then(response => {
         if (!response.ok) {
-          throw Error(response.statusText)
+          if (isBrowser) window.onerror(errMsg)
+          throw Error(errMsg)
         }
         return response.json()
       })
@@ -137,10 +152,12 @@ export function fetchKnownCustomization(url) {
 export function fetchLocalSource(url) {
   return dispatch => {
     dispatch(requestLocalSource(url))
-    return fetch(url)
+    const errMsg = 'Failed to fetch source data'
+    return fetchRetry(url, 10, errMsg)
       .then(response => {
         if (!response.ok) {
-          throw Error(response.statusText)
+          if (isBrowser) window.onerror(errMsg)
+          throw Error(errMsg)
         }
         return response.json()
       })
