@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import Desc from '../components/Desc'
 import { updateAttributeDocs, deleteAttributeDocs } from '../actions/attributes'
+import { setValid } from '../actions/interface'
 
 const mapStateToProps = (state, ownProps) => {
   // Special case for valDesc, which acts just like desc, but has a different name
@@ -23,7 +24,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     delete: (index) => {
       dispatch(deleteAttributeDocs(ownProps.member.ident, ownProps.memberType, ownProps.attribute.ident, tagName, index))
-    }
+    },
+    setValid: (valid) => dispatch(setValid(valid))
   }
 }
 

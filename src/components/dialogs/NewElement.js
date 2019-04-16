@@ -55,6 +55,20 @@ export default class NewElement extends Component {
     return this.props.allElementIdents.indexOf(ident) > -1
   }
 
+  checkName(v) {
+    if (this.doesElementExist(v)) {
+      this.setState({name: v, canCreate: false})
+    } else {
+      // test the localname
+      try {
+        document.createElement(v)
+        this.setState({name: v, canCreate: true})
+      } catch (e) {
+        this.setState({name: v, canCreate: false})
+      }
+    }
+  }
+
   render() {
     return (
       <aside className="mdc-dialog"
@@ -77,13 +91,7 @@ export default class NewElement extends Component {
                 <div className="mdc-layout-grid__cell--span-6">
                   <div className="mdc-text-field mdc-text-field--upgraded">
                     <input type="text" className="mdc-text-field__input" value={this.state.name}
-                      onChange={(v) => {
-                        if (this.doesElementExist(v.target.value)) {
-                          this.setState({name: v.target.value, canCreate: false})
-                        } else {
-                          this.setState({name: v.target.value, canCreate: true})
-                        }
-                      }}/>
+                      onChange={(v) => this.checkName(v.target.value)}/>
                     <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
                   </div>
                 </div>

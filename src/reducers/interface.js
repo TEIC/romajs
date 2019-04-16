@@ -1,9 +1,10 @@
 import { SET_FILTER_TERM, CLEAR_UI_DATA, ADD_FROM_PICKER, CLEAR_PICKER, SET_LOADING_STATUS, SET_LANGUAGE,
-  SET_MEMBERTYPE_VISIBILITY, SORT_MEMBERS_BY, SET_FILTER_OPTIONS
+  SET_MEMBERTYPE_VISIBILITY, SORT_MEMBERS_BY, SET_FILTER_OPTIONS, SET_VALID
 } from '../actions/interface'
 
 const initialState = {
-  language: 'en'
+  language: 'en',
+  isOddValid: true
 }
 
 export function ui(state = initialState, action) {
@@ -29,9 +30,9 @@ export function ui(state = initialState, action) {
       )
     case CLEAR_UI_DATA:
       // Clear everything except language
-      return {
+      return Object.assign({}, initialState, {
         language: state.language
-      }
+      })
     case SET_LANGUAGE:
       return Object.assign({}, state,
         {language: action.language}
@@ -42,6 +43,9 @@ export function ui(state = initialState, action) {
     case SORT_MEMBERS_BY:
       return Object.assign({}, state,
         {sortMembersBy: action.mode})
+    case SET_VALID:
+      return Object.assign({}, state,
+        {isOddValid: action.valid})
     default:
       return state
   }

@@ -3,6 +3,7 @@ import Desc from '../components/Desc'
 import { deleteElementDocs, updateElementDocs } from '../actions/elements'
 import { deleteClassDocs, updateClassDocs } from '../actions/classes'
 import { deleteDatatypeDocs, updateDatatypeDocs } from '../actions/datatypes'
+import { setValid } from '../actions/interface'
 
 const mapStateToProps = (state, ownProps) => {
   // TODO: parametrize language
@@ -17,22 +18,26 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     case 'element':
       return {
         update: (member, content, index) => {dispatch(updateElementDocs(member, 'desc', content, index))},
-        delete: (member, index) => dispatch(deleteElementDocs(member, 'desc', index))
+        delete: (member, index) => dispatch(deleteElementDocs(member, 'desc', index)),
+        setValid: (valid) => dispatch(setValid(valid))
       }
     case 'class':
       return {
         update: (member, content, index) => {dispatch(updateClassDocs(member, 'desc', content, index))},
-        delete: (member, index) => dispatch(deleteClassDocs(member, 'desc', index))
+        delete: (member, index) => dispatch(deleteClassDocs(member, 'desc', index)),
+        setValid: (valid) => dispatch(setValid(valid))
       }
     case 'datatype':
       return {
         update: (member, content, index) => {dispatch(updateDatatypeDocs(member, 'desc', content, index))},
-        delete: (member, index) => dispatch(deleteDatatypeDocs(member, 'desc', index))
+        delete: (member, index) => dispatch(deleteDatatypeDocs(member, 'desc', index)),
+        setValid: (valid) => dispatch(setValid(valid))
       }
     default:
       return {
         update: () => {},
-        delete: () => {}
+        delete: () => {},
+        setValid: (valid) => dispatch(setValid(valid))
       }
   }
 }

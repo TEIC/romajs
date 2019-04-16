@@ -55,6 +55,20 @@ export default class NewClass extends Component {
     return this.props.allClassIdents.indexOf(ident) > -1
   }
 
+  checkName(v) {
+    if (this.doesClassExist(v)) {
+      this.setState({name: v, canCreate: false})
+    } else {
+      // test the localname
+      try {
+        document.createElement(v)
+        this.setState({name: v, canCreate: true})
+      } catch (e) {
+        this.setState({name: v, canCreate: false})
+      }
+    }
+  }
+
   render() {
     const selectedTypeAttributes = this.state.classType === 'attributes' ? 'mdc-chip--selected' : null
     const selectedTypeModel = this.state.classType === 'models' ? 'mdc-chip--selected' : null
@@ -103,13 +117,7 @@ export default class NewClass extends Component {
                 <div className="mdc-layout-grid__cell--span-6">
                   <div className="mdc-text-field mdc-text-field--upgraded">
                     <input type="text" className="mdc-text-field__input" value={this.state.name}
-                      onChange={(v) => {
-                        if (this.doesClassExist(v.target.value)) {
-                          this.setState({name: v.target.value, canCreate: false})
-                        } else {
-                          this.setState({name: v.target.value, canCreate: true})
-                        }
-                      }}/>
+                      onChange={(v) => this.checkName(v.target.value)}/>
                     <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
                   </div>
                 </div>

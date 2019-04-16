@@ -3,25 +3,27 @@ import * as actions from '../../src/actions/attributes'
 
 describe('Attribute actions', () => {
   it('updateAttributeDocs should pass documentation element changes to an attDef', () =>{
-    expect(actions.updateAttributeDocs('list', 'element', 'type', 'desc', 'new desc', 0)).toEqual({
+    expect(actions.updateAttributeDocs('list', 'element', 'type', 'desc', 'new desc', 0, false)).toEqual({
       type: 'UPDATE_ATTRIBUTE_DOCS',
       member: 'list',
       memberType: 'element',
       attr: 'type',
       docEl: 'desc',
       content: 'new desc',
-      index: 0
+      index: 0,
+      valItem: false
     })
   })
 
   it('deleteAttributeDocs should pass documentation element changes to an attDef', () =>{
-    expect(actions.deleteAttributeDocs('list', 'element', 'type', 'desc', 0)).toEqual({
+    expect(actions.deleteAttributeDocs('list', 'element', 'type', 'desc', 0, false)).toEqual({
       type: 'DELETE_ATTRIBUTE_DOCS',
       member: 'list',
       memberType: 'element',
       attr: 'type',
       docEl: 'desc',
-      index: 0
+      index: 0,
+      valItem: false
     })
   })
 

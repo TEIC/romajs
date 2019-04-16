@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import ValItem from './ValItem'
 import { MDCSelect } from '@material/select'
 
 export default class ValList extends Component {
   componentDidMount() {
+    const valList = this.props.attribute.valList || {}
     if (this.props.setValListType) {
       const select = new MDCSelect(this.refs.usage)
-      switch (this.props.valList.type) {
+      switch (valList.type) {
         case '':
           select.foundation_.setSelectedIndex(0)
           break
@@ -29,12 +31,20 @@ export default class ValList extends Component {
   }
 
   render() {
+    const valList = this.props.attribute.valList || {}
     let valItems = []
-    if (this.props.valList) {
-      if (this.props.valList.valItem) {
-        valItems = this.props.valList.valItem
+    if (valList) {
+      if (valList.valItem) {
+        valItems = Array.from(valList.valItem)
       }
     }
+    valItems.sort((a, b) => {
+      if (a.ident.toLowerCase() > b.ident.toLowerCase()) {
+        return 1
+      } else {
+        return 0
+      }
+    })
 
     let usage = null
     if (this.props.setValListType) {
@@ -78,13 +88,12 @@ export default class ValList extends Component {
           </div>
         </div>,
         valItems.map(valItem => {
-          return (<div key={valItem.ident} className="mdc-layout-grid__inner romajs-formrow">
-            <div className="mdc-layout-grid__cell--span-4">
-              <i className={`material-icons romajs-clickable`} onClick={() =>
-                this.props.deleteValItem(valItem.ident)}>clear</i>
-              {valItem.ident}</div>
-            <div className="mdc-layout-grid__cell--span-8"/>
-          </div>)
+          return (<ValItem key={valItem.ident}
+            valItem={valItem}
+            member={this.props.member}
+            memberType={this.props.memberType}
+            attribute={this.props.attribute}
+            deleteValItem={this.props.deleteValItem}/>)
         })
       ]}</div>
     </div>)
@@ -92,7 +101,9 @@ export default class ValList extends Component {
 }
 
 ValList.propTypes = {
-  valList: PropTypes.object.isRequired,
+  member: PropTypes.object.isRequired,
+  memberType: PropTypes.string.isRequired,
+  attribute: PropTypes.object.isRequired,
   setValListType: PropTypes.func,
   deleteValItem: PropTypes.func.isRequired,
   addValItem: PropTypes.func.isRequired

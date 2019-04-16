@@ -9,6 +9,7 @@ export const CLEAR_UI_DATA = 'CLEAR_UI_DATA'
 export const SET_LOADING_STATUS = 'SET_LOADING_STATUS'
 export const SET_LANGUAGE = 'SET_LANGUAGE'
 export const SORT_MEMBERS_BY = 'SORT_MEMBERS_BY'
+export const SET_VALID = 'SET_VALID'
 
 export function setFilterTerm(term) {
   return {
@@ -69,5 +70,12 @@ export function setFilterOptions(options) {
   return {
     type: SET_FILTER_OPTIONS,
     options
+  }
+}
+
+export function setValid(valid) {
+  return {
+    type: SET_VALID,
+    valid
   }
 }

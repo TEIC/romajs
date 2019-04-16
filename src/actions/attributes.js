@@ -8,7 +8,7 @@ export const SET_VALLIST_TYPE = 'SET_VALLIST_TYPE'
 export const ADD_VALITEM = 'ADD_VALITEM'
 export const DELETE_VALITEM = 'DELETE_VALITEM'
 
-export function updateAttributeDocs(member, memberType, attr, docEl, content, index) {
+export function updateAttributeDocs(member, memberType, attr, docEl, content, index, valItem = false) {
   return {
     type: UPDATE_ATTRIBUTE_DOCS,
     member,
@@ -16,18 +16,20 @@ export function updateAttributeDocs(member, memberType, attr, docEl, content, in
     attr,
     docEl,
     content,
-    index
+    index,
+    valItem
   }
 }
 
-export function deleteAttributeDocs(member, memberType, attr, docEl, index) {
+export function deleteAttributeDocs(member, memberType, attr, docEl, index, valItem = false) {
   return {
     type: DELETE_ATTRIBUTE_DOCS,
     member,
     memberType,
     attr,
     docEl,
-    index
+    index,
+    valItem
   }
 }
 

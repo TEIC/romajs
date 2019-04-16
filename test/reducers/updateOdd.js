@@ -1345,4 +1345,32 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(schemaSpec.getAttribute('targetLang')).toEqual('it')
     expect(schemaSpec.getAttribute('docLang')).toEqual('it')
   })
+
+  it('should change the desc of an attribute value on an element.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_ATTRIBUTE_DOCS',
+      member: 'list',
+      memberType: 'element',
+      attr: 'type',
+      docEl: 'desc',
+      content: `<desc>!!!</desc>`,
+      index: 0,
+      valItem: 'gloss'
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="list"] > attList > attDef[ident="type"] valItem[ident="gloss"] > desc').textContent).toEqual('!!!')
+  })
 })

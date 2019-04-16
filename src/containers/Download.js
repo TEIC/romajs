@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
   }
   return {
     isLoaded,
-    language: state.ui.language
+    language: state.ui.language,
+    isOddValid: state.ui.isOddValid
   }
 }
 

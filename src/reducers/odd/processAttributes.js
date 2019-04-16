@@ -3,6 +3,7 @@ import { insertBetween } from './utils'
 
 function changeAttr(att, localAtt, attDef, odd) {
   for (const whatChanged of att._changed) {
+    console.log(whatChanged)
     switch (whatChanged) {
       case 'desc':
       case 'altIdent':
@@ -52,7 +53,8 @@ function changeAttr(att, localAtt, attDef, odd) {
               }
               // add
               for (const item of att.valList.valItem) {
-                if (!comparison.filter(v => v.ident === item.ident)[0]) {
+                const compValItem = comparison.filter(v => v.ident === item.ident)[0]
+                if (!compValItem) {
                   let valListEl = attDef.querySelector('valList')
                   if (!valListEl) {
                     valListEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valList')
@@ -66,6 +68,27 @@ function changeAttr(att, localAtt, attDef, odd) {
                   }
                   valItem.setAttribute('mode', 'change')
                   valItem.setAttribute('ident', item.ident)
+                } else {
+                  // change
+                  // check descs
+                  for (const [i, desc] of compValItem.desc.entries()) {
+                    if (desc !== item.desc[i]) {
+                      let valListEl = attDef.querySelector('valList')
+                      if (!valListEl) {
+                        valListEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valList')
+                        attDef.appendChild(valListEl)
+                      }
+                      valListEl.setAttribute('mode', 'change')
+                      let valItem = valListEl.querySelector(`valItem[ident="${item.ident}"]`)
+                      if (!valItem) {
+                        valItem = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valItem')
+                        valListEl.appendChild(valItem)
+                      }
+                      valItem.setAttribute('mode', 'change')
+                      valItem.setAttribute('ident', item.ident)
+                      processDocEls(valItem, item, compValItem, 'desc', odd)
+                    }
+                  }
                 }
               }
               // remove

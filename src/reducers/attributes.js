@@ -7,6 +7,7 @@ import {
   SET_DATATYPE_RESTRICTION
 } from '../actions/attributes'
 import primitiveDatatypes from '../utils/primitiveDatatypes'
+import {escapeAttrData} from '../utils/escape'
 
 function markChange(member) {
   if (member._changed) {
@@ -32,11 +33,21 @@ function updateDocEl(m, action) {
   if (m.ident === action.member) {
     markChange(m)
     const att = m.attributes.filter(a => (a.ident === action.attr))[0]
-    if (Array.isArray(att[action.docEl]) && action.index !== undefined) {
-      att[action.docEl][action.index] = action.content
-      markAttChange(att, action.docEl)
+    if (action.valItem) {
+      att.valList.valItem = att.valList.valItem.map(vi => {
+        if (vi.ident === action.valItem) {
+          vi[action.docEl][action.index] = action.content
+        }
+        return vi
+      })
+      markAttChange(att, 'valList')
     } else {
-      throw new ReducerException(`Description element content does not match ${action.content}.`)
+      if (Array.isArray(att[action.docEl]) && action.index !== undefined) {
+        att[action.docEl][action.index] = action.content
+        markAttChange(att, action.docEl)
+      } else {
+        throw new ReducerException(`Description element content does not match ${action.content}.`)
+      }
     }
   }
 }
@@ -114,19 +125,28 @@ function setValListType(m, action) {
 
 function addValItem(m, action) {
   if (m.ident === action.member) {
+    let escapedValue = escapeAttrData(action.value)
+    escapedValue = escapedValue.replace(/\s+/, '')
+    const newValItem = {
+      ident: escapedValue,
+      desc: [],
+      shortDesc: '',
+      gloss: [],
+      altIdent: []
+    }
     markChange(m)
     const att = m.attributes.filter(a => (a.ident === action.attr))[0]
     if (att.valList) {
       if (att.valList.valItem) {
-        const isDefined = att.valList.valItem.filter(v => v.ident === action.value)[0]
+        const isDefined = att.valList.valItem.filter(v => v.ident === escapedValue)[0]
         if (!isDefined) {
-          att.valList.valItem.push({ident: action.value.replace(/\s+/, '')})
+          att.valList.valItem.push(newValItem)
         }
       } else {
-        att.valList.valItem = [{ident: action.value.replace(/\s+/, '')}]
+        att.valList.valItem = [newValItem]
       }
     } else {
-      att.valList = {valItem: [{ident: action.value.replace(/\s+/, '')}]}
+      att.valList = {valItem: [newValItem]}
     }
     markAttChange(att, 'valList')
   }

@@ -75,7 +75,9 @@ export default class Attribute extends Component {
         </div>
         <div className="mdc-layout-grid__cell--span-8">
           <ValList
-            valList={this.props.attribute.valList || {}}
+            attribute={this.props.attribute}
+            member={this.props.member}
+            memberType={this.props.memberType}
             setValListType={this.props.setValListType} addValItem={this.props.addValItem}
             deleteValItem={this.props.deleteValItem} />
         </div>

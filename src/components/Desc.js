@@ -29,17 +29,20 @@ export default class Desc extends Component {
         editor.setOption('wrap', true)
 
         const updateVersionDate = () => {
+          const d = new Date()
+          const monthNum = d.getUTCMonth()
+          const month = monthNum.toString().length === 2 ? monthNum : '0' + monthNum
+          const dayNum = d.getUTCDate()
+          const day = dayNum.toString().length === 2 ? dayNum : '0' + dayNum
+          const newDate = `versionDate="${d.getUTCFullYear()}-${month}-${day}"`
           const match = /[dD]esc.*?versionDate="[^""]+"/.exec(this.props.desc[descIndex])
+          let text = this.props.desc[descIndex]
           if (match) {
-            const d = new Date()
-            const monthNum = d.getUTCMonth()
-            const month = monthNum.toString().length === 2 ? monthNum : '0' + monthNum
-            const dayNum = d.getUTCDate()
-            const day = dayNum.toString().length === 2 ? dayNum : '0' + dayNum
-            const newDate = `versionDate="${d.getUTCFullYear()}-${month}-${day}"`
-            const text = this.props.desc[descIndex].replace(/[dD]esc(.*?)versionDate="[^""]+"/, `desc$1${newDate}`)
-            this.props.update(this.props.ident, text, descIndex)
+            text = text.replace(/[dD]esc(.*?)versionDate="[^""]+"/, `desc$1${newDate}`)
+          } else {
+            text = text.replace(/[dD]esc\s/, `desc ${newDate} `)
           }
+          this.props.update(this.props.ident, text, descIndex, this.props.valItem)
         }
         const getRootElRanges = () => {
           // Determine character range of root opening and closing tag
@@ -81,26 +84,22 @@ export default class Desc extends Component {
           }
         })
 
-        // editor.commands.addCommand({
-        //   name: 'deleteKey',
-        //   bindKey: {win: 'Ctrl-A', mac: 'Command-A'},
-        //   exec: function(ed) {
-        //     const ranges = getRootElRanges()
-        //     const dummyRange = ed.session.selection.getRange()
-        //     dummyRange.start.row = ranges.openingTag.row
-        //     dummyRange.start.column = ranges.openingTag.end
-        //     dummyRange.end.row = ranges.closingTag.row
-        //     dummyRange.end.column = ranges.closingTag.start
-        //     ed.session.selection.setSelectionRange(dummyRange)
-        //   }
-        // })
-
         // Force cursor and anchor to not get into root element tags.
         editor.session.on('change', () => {
           updateVersionDate()
           rootElRanges = getRootElRanges()
           openingTagRange = rootElRanges.openingTag
           closingTagRange = rootElRanges.closingTag
+        })
+
+        editor.session.$worker.on('error', (e) => {
+          if (e.data.length > 0) {
+            editor.container.style.border = '5px solid red'
+            this.props.setValid(false)
+          } else {
+            editor.container.style.border = '1px solid lightgrey'
+            this.props.setValid(true)
+          }
         })
 
         const preventHomeEnd = () => {
@@ -157,14 +156,14 @@ export default class Desc extends Component {
 
   render() {
     let info = (<div className="mdc-layout-grid__cell--span-3">
-      <label>Descriptions</label>
+      <label>Description</label>
       <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
         Contains a brief description of the object documented by its parent element, typically a documentation element or an entity.
       </p>
     </div>)
     if (this.props.valDesc) {
       info = ( <div className="mdc-layout-grid__cell--span-3">
-        <label>Value descriptions</label>
+        <label>Value description</label>
         <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
           Specifies any semantic or syntactic constraint on the value that an attribute may take, additional to the information carried by the datatype element.
         </p>
@@ -173,7 +172,7 @@ export default class Desc extends Component {
     let nodesc
     if (this.props.desc.length === 0) {
       nodesc = (<i className="material-icons romajs-clickable" onClick={() => {
-        this.props.update(this.props.ident, `<${this.descTag} xmlns="http://tei-c.org/ns/1.0" xml:lang="${this.props.docLang}"></${this.descTag}>`, 0)
+        this.props.update(this.props.ident, `<${this.descTag} xmlns="http://tei-c.org/ns/1.0" xml:lang="${this.props.docLang}"></${this.descTag}>`, 0, this.props.valItem)
       }}>add_circle_outline</i>)
     }
     return (<div className="mdc-layout-grid__inner romajs-formrow">
@@ -182,7 +181,7 @@ export default class Desc extends Component {
       <div className="mdc-layout-grid__cell--span-8">{
         this.props.desc.map((d, pos) => {
           return (
-            <div className="mdc-layout-grid__cell--span-10" style={{resize: 'both'}}>
+            <div key={`d${pos}`} className="mdc-layout-grid__cell--span-10" style={{resize: 'both'}}>
               <AceEditor
                 style={{resize: 'both'}}
                 ref={(ae) => { ae ? this.aceEditors[pos] = ae : null }}
@@ -194,7 +193,9 @@ export default class Desc extends Component {
                 showGutter
                 highlightActiveLine
                 value={d}
-                onChange={(text) => this.props.update(this.props.ident, text, pos)}
+                onChange={(text) => {
+                  this.props.update(this.props.ident, text, pos, this.props.valItem)
+                }}
                 height="100px"
                 width="80%"
                 editorProps={{
@@ -222,5 +223,7 @@ Desc.propTypes = {
   update: PropTypes.func.isRequired,
   delete: PropTypes.func.isRequired,
   valDesc: PropTypes.bool,
-  docLang: PropTypes.string.isRequired
+  docLang: PropTypes.string.isRequired,
+  valItem: PropTypes.string,
+  setValid: PropTypes.func
 }

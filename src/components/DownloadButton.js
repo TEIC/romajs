@@ -3,8 +3,16 @@ import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { MDCMenu } from '@material/menu'
 import { i18n as _i18n } from '../localization/DownloadButton'
+import InfoDialog from './dialogs/Info'
 
-export default class DonwloadButton extends Component {
+export default class DownloadButton extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showInfoDialog: false
+    }
+  }
+
   componentDidMount() {
     this.menu = new MDCMenu(this.refs.menu)
   }
@@ -14,9 +22,12 @@ export default class DonwloadButton extends Component {
     const i18n = _i18n(this.props.language)
     return (
       <div style={{position: 'relative'}}>
-        <button disabled={!this.props.isLoaded} className="mdc-button mdc-button--raised toggle" onClick={(e) => {
-          this.menu.open = !this.menu.open
-          return e
+        <button disabled={!this.props.isLoaded} className="mdc-button mdc-button--raised toggle" onClick={() => {
+          if (!this.props.isOddValid) {
+            this.setState({showInfoDialog: true})
+          } else {
+            this.menu.open = !this.menu.open
+          }
         }}>
           <i className="material-icons mdc-button__icon">file_download</i> {i18n('Download')}
         </button>
@@ -37,14 +48,18 @@ export default class DonwloadButton extends Component {
             </ul>
           </div>
         </div>
+        <InfoDialog key="id" show={this.state.showInfoDialog} hide={() => {this.setState({showInfoDialog: false})}}
+          header="The cutomization is not valid" body="The ODD cannot be processed because it is not well-formed XML or it is invalid!
+          Please check your customization, particularly documentation fields with XML data." />
       </div>
     )
   }
 }
 
-DonwloadButton.propTypes = {
+DownloadButton.propTypes = {
   isLoaded: PropTypes.bool.isRequired,
   language: PropTypes.string.isRequired,
   downloadCustomization: PropTypes.func.isRequired,
-  downloadSchema: PropTypes.func.isRequired
+  downloadSchema: PropTypes.func.isRequired,
+  isOddValid: PropTypes.bool.isRequired
 }

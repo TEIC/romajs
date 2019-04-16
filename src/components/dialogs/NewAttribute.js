@@ -71,6 +71,14 @@ export default class NewAttributeDialog extends Component {
     if (this.props.associatedAttributes.indexOf(val) !== -1) {
       this.setState({canCreate: false})
     }
+    // test the localname
+    let d = document.createElement('dummy')
+    try {
+      d.setAttribute(val, '')
+    } catch (e) {
+      this.setState({canCreate: false})
+    }
+    d = null
   }
 
   render() {
