@@ -13,8 +13,8 @@ module.exports = {
 
   output: {
     path:   DIST_DIR,
-    publicPath: "/",
-    filename: 'bundle.js'
+    publicPath: "",
+    filename: 'romajs_[hash].js'
   },
 
   plugins: [
