@@ -93,7 +93,7 @@ export default class Attribute extends Component {
           </p>
         </div>
         <div className="mdc-layout-grid__cell--span-8">
-          <div className="mdc-text-field mdc-text-field--upgraded">
+          <div className="mdc-text-field mdc-text-field--upgraded mdc-text-field--fullwidth">
             <input type="text" className="mdc-text-field__input" value={this.props.attribute.ns}
               onChange={(e) => this.props.setNs(e.target.value)} placeholder="(null)"/>
             <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
