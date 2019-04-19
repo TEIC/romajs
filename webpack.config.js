@@ -6,6 +6,10 @@ var path = require('path'),
 var DIST_DIR = path.join(__dirname, 'dist'),
     CLIENT_DIR = path.join(__dirname, 'src')
 
+const isDevelopment = process.env.NODE_ENV !== 'production'
+
+const publicPath = isDevelopment ? '/' : ''
+
 module.exports = {
   context: CLIENT_DIR,
 
@@ -13,7 +17,7 @@ module.exports = {
 
   output: {
     path:   DIST_DIR,
-    publicPath: "",
+    publicPath,
     filename: 'romajs_[hash].js'
   },
 
