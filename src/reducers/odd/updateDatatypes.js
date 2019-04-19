@@ -106,6 +106,7 @@ function processDatatypes(localsource, customization, odd) {
         if (dtSpec) {
           if (dtSpec.children.length === 0) {
             dtSpec.parentNode.removeChild(dtSpec)
+            dtSpec = null
           }
         }
       }
@@ -122,12 +123,12 @@ function processDatatypes(localsource, customization, odd) {
   for (const dt of localsource.datatypes) {
     const customDt = customization.datatypes.filter(cdt => cdt.ident === dt.ident)[0]
     const isModuleSelected = customization.modules.filter(x => x.ident === dt.module).length > 0
-    if (!customDt && isModuleSelected && customization.datatypes._deleted) {
+    if (!customDt && isModuleSelected && customization._deleteddatatypes) {
       // the datatype module is selected, so it may need to be deleted explicitely
       // Since it's impossible to distinguish between datatypes that have been deleted by the user
       // and datatypes that have been "zapped" during ODD compilation, we make sure that the datatypes
-      // is explicitely listed in customization.datatypes._deleted
-      if (customization.datatypes._deleted.indexOf(dt.ident) !== -1) {
+      // is explicitely listed in customization._deleteddatatypes
+      if (customization._deleteddatatypes.indexOf(dt.ident) !== -1) {
         const dtSpec = getOrSetDataSpec(odd, dt.ident)
         dtSpec.setAttribute('mode', 'delete')
         // remove content as it's not needed any longer.

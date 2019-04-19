@@ -195,6 +195,9 @@ export function oddModules(state, action) {
         if (!getDatatypeByIdent(customization, dt)) {
           customization.datatypes.push(newDt)
         }
+        if (Array.isArray(customization._deleteddatatypes)) {
+          customization._deleteddatatypes = customization._deleteddatatypes.filter(ddt => ddt !== dt)
+        }
       }
       return Object.assign(state, {customization: customizationObj})
     case EXCLUDE_DATATYPES:
@@ -205,10 +208,10 @@ export function oddModules(state, action) {
           }
           return acc
         }, [])
-        if (Array.isArray(customization.datatypes._deleted)) {
-          customization.datatypes._deleted.push(dt)
+        if (Array.isArray(customization._deleteddatatypes)) {
+          customization._deleteddatatypes.push(dt)
         } else {
-          customization.datatypes._deleted = [dt]
+          customization._deleteddatatypes = [dt]
         }
       }
       return Object.assign(state, {customization: customizationObj})
