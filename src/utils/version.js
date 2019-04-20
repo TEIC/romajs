@@ -1,2 +1,2 @@
 // RomaJS version
-export default '0.1.0'
+export default '0.2.0'
