@@ -9,9 +9,9 @@ const parser = new DOMParser()
 function updateMetadata(customization, odd) {
   const schemaSpec = odd.querySelector('schemaSpec')
   // We assume these elements exist because they are required in TEI
-  const titleStmt = odd.querySelector('teiHeader fileDesc titleStmt')
-  const titleEl = titleStmt.querySelector('title')
-  const authorEl = titleStmt.querySelector('author')
+  const titleStmt = odd.querySelector('teiHeader fileDesc titleStmt') || {}
+  const titleEl = titleStmt.querySelector('title') || {}
+  const authorEl = titleStmt.querySelector('author') || {}
   if (customization.title !== titleEl.textContent) {
     titleEl.textContent = customization.title
   }
