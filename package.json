@@ -43,7 +43,7 @@
     "@material/menu": "^0.43.0",
     "@material/notched-outline": "^0.43.0",
     "@material/radio": "^0.43.0",
-    "@material/select": "^0.43.0",
+    "@material/select": "^2.0.0",
     "@material/tabs": "^0.43.0",
     "@material/textfield": "^0.43.0",
     "@material/theme": "^0.43.0",
