@@ -1,7 +1,16 @@
 #!/bin/sh
 
+# overwrite the OxGarage protocol variable
+sed -i -e "s+exports.OXGARAGE_PROTOCOL\s*=\s*['\'].*['\']\s*;+exports.OXGARAGE_PROTOCOL = '${OXGARAGE_PROTOCOL}';+" /usr/share/nginx/html/romajs_*
+
 # overwrite the OxGarage location variable
-sed -i -e "s+var location\s*=\s*['\"].*['\"]\s*;+var location = '${OXGARAGE_LOCATION}';+" /usr/share/nginx/html/bundle.js
+sed -i -e "s+exports.OXGARAGE_LOCATION\s*=\s*['\"].*['\"]\s*;+exports.OXGARAGE_LOCATION = '${OXGARAGE_LOCATION}';+" /usr/share/nginx/html/romajs_*
+
+# overwrite the TEI data source protocol variable
+sed -i -e "s+exports.DATASOURCES_PROTOCOL\s*=\s*['\"].*['\"]\s*;+exports.DATASOURCES_PROTOCOL = '${DATASOURCES_PROTOCOL}';+" /usr/share/nginx/html/romajs_*
+
+# overwrite the TEI data source location variable
+sed -i -e "s+exports.DATASOURCES_LOCATION\s*=\s*['\"].*['\"]\s*;+exports.DATASOURCES_LOCATION = '${DATASOURCES_LOCATION}';+" /usr/share/nginx/html/romajs_*
 
 # call the command given in the (original) Dockerfile as CMD
 exec "$@"
