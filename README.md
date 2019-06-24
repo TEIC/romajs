@@ -43,6 +43,7 @@ $ npm start
 $ npm run build
 ```
 
-### Change URL to OxGarage service
+### Change URL to OxGarage service and TEI static data (TEI Vault)
 
-Edit `src/utils/oxgarage.js` and rebuild.
+Edit `src/utils/urls.js` and rebuild.
+Alternatively, these variables can also be overridden from the Docker configuration.
