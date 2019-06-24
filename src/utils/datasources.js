@@ -1,4 +1,3 @@
-const location = 'mith.us/romajs/fakeData'
-const protocol = 'https'
+import { DATASOURCES_LOCATION, DATASOURCES_PROTOCOL } from './urls'
 
-export default `${protocol}://${location}`
+export default `${DATASOURCES_PROTOCOL}://${DATASOURCES_LOCATION}`
