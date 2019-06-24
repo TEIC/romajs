@@ -42,7 +42,9 @@ export default class Desc extends Component {
           } else {
             text = text.replace(/[dD]esc\s/, `desc ${newDate} `)
           }
-          this.props.update(this.props.ident, text, descIndex, this.props.valItem)
+          if (this.props.desc[descIndex] !== text) {
+            this.props.update(this.props.ident, text, descIndex, this.props.valItem)
+          }
         }
         const getRootElRanges = () => {
           // Determine character range of root opening and closing tag
