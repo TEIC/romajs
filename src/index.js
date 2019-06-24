@@ -18,8 +18,10 @@ if (module.hot) {
   module.hot.accept()
 }
 
-const history = createHistory({ basename: '/romajs' })
-// const history = createHistory()
+const romajsElement = document.getElementById('romajs')
+const basename = romajsElement.getAttribute('data-basename')
+
+const history = createHistory({ basename })
 
 const persistConf = {
   key: 'root',
@@ -59,5 +61,5 @@ render(
       </ConnectedRouter>
     </PersistGate>
   </Provider>,
-  document.getElementById('romajs')
+  romajsElement
 )
