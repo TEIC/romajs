@@ -5,7 +5,7 @@
 #########################################
 
 FROM node:8 as builder
-LABEL maintainer="Peter Stadler for the TEI Council"
+LABEL maintainer="Raffaele Viglianti and Peter Stadler for the TEI Council"
 
 WORKDIR /var/romajs
 
