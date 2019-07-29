@@ -9,4 +9,7 @@ export const OXGARAGE_PROTOCOL = 'https'
 export const OXGARAGE_LOCATION = 'oxgarage.mith.us'
 
 export const DATASOURCES_PROTOCOL = 'https'
-export const DATASOURCES_LOCATION = 'mith.us/romajs/fakeData'
+export const DATASOURCES_LOCATION = 'tei-c.org/Vault/P5/current/xml/tei/odd'
+
+export const PRESETS_PROTOCOL = 'https'
+export const PRESETS_LOCATION = 'tei-c.org/Vault/P5/current/xml/tei/Exemplars'

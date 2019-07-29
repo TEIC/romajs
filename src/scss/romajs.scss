@@ -211,11 +211,17 @@ main {
 /* HOMEBOX */
 .romajs-homebox {
   width: 75%;
+  margin: 0 auto;
 }
 
 .romajs-hero {
   display: flex;
   justify-content: center;
+}
+
+.romajs-homeText {
+  width: 70%;
+  margin: 4em auto 4em auto;
 }
 
 /* LOADER */

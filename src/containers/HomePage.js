@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchOdd, receiveOdd, postToOxGarage, fetchLocalSource, fetchKnownCustomization,
+import { fetchOdd, receiveOdd, postToOxGarage, fetchLocalSource,
   receiveOddJson, clearState } from '../actions'
 import { clearUiData, setLoadingStatus } from '../actions/interface'
 import { push } from 'react-router-redux'
@@ -22,10 +22,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(clearState())
       dispatch(push('/settings'))
       dispatch(setLoadingStatus(i18n('1/3 Obtaining customization ODD...')))
-      dispatch(fetchOdd(url)).then(() => {
-        // 1. This is a known customization, so get the JSON directly
+      dispatch(fetchOdd(url)).then((odd) => {
+        // 1. Convert to JSON via OxGarage
         dispatch(setLoadingStatus(i18n('2/3 Importing customization ODD...')))
-        dispatch(fetchKnownCustomization(url.replace(/(xml|odd)$/, 'json'))).then(() => {
+        dispatch(postToOxGarage(odd.xml, oxgarage.compile_json)).then(() => {
           dispatch(setLoadingStatus(i18n('3/3 Importing full specification source...')))
           // 2. Get p5subset.
           dispatch(fetchLocalSource(`${datasource}/p5subset.json`))

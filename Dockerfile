@@ -28,7 +28,12 @@ ENV OXGARAGE_LOCATION="oxgarage.euryanthe.de"
 # You can overwrite the variable of TEI data sources protocol and location
 # by setting docker ENV variables
 ENV DATASOURCES_PROTOCOL="https"
-ENV DATASOURCES_LOCATION="mith.us/romajs/fakeData"
+ENV DATASOURCES_LOCATION="tei-c.org/Vault/P5/current/xml/tei/odd"
+
+# You can overwrite the variable of TEI customization presets protocol and location
+# by setting docker ENV variables
+ENV PRESETS_PROTOCOL="https"
+ENV PRESETS_LOCATION="tei-c.org/Vault/P5/current/xml/tei/Exemplars"
 
 COPY --from=builder /var/romajs/dist/* /usr/share/nginx/html/
 COPY docker-entrypoint.sh /usr/bin/
