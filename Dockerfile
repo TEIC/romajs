@@ -5,7 +5,7 @@
 #########################################
 
 FROM node:8 as builder
-LABEL maintainer="Peter Stadler for the TEI Council"
+LABEL maintainer="Raffaele Viglianti and Peter Stadler for the TEI Council"
 
 WORKDIR /var/romajs
 
@@ -23,7 +23,7 @@ FROM nginx:alpine
 # You can overwrite the variable of the oxgarage protocol and location 
 # by setting docker ENV variables
 ENV OXGARAGE_PROTOCOL="https"
-ENV OXGARAGE_LOCATION="oxgarage.euryanthe.de"
+ENV OXGARAGE_LOCATION="oxgarage.tei-c.org"
 
 # You can overwrite the variable of TEI data sources protocol and location
 # by setting docker ENV variables
