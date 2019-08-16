@@ -68,6 +68,8 @@ function changeAttr(att, localAtt, attDef, odd) {
                   }
                   valItem.setAttribute('mode', 'change')
                   valItem.setAttribute('ident', item.ident)
+                  // add descs
+                  processDocEls(valItem, item, compValItem, 'desc', odd)
                 } else {
                   // change
                   // check descs

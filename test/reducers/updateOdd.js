@@ -1373,4 +1373,45 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     xml = global.usejsdom(xml)
     expect(xml.querySelector('elementSpec[ident="list"] > attList > attDef[ident="type"] valItem[ident="gloss"] > desc').textContent).toEqual('!!!')
   })
+
+  it('should change the desc of an inherited attribute value on an element.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
+      element: 'div',
+      className: 'att.typed',
+      attName: 'type'
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'ADD_VALITEM',
+      member: 'div',
+      memberType: 'element',
+      attr: 'type',
+      value: 'chapter'
+    })
+    const thirdState = romajsApp(secondState, {
+      type: 'UPDATE_ATTRIBUTE_DOCS',
+      member: 'div',
+      memberType: 'element',
+      attr: 'type',
+      docEl: 'desc',
+      content: `<desc>!!!</desc>`,
+      index: 0,
+      valItem: 'chapter'
+    })
+    const state = romajsApp(thirdState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="div"] > attList > attDef[ident="type"] > valList > valItem > desc').textContent).toEqual('!!!')
+  })
 })

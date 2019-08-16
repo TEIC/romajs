@@ -174,7 +174,7 @@ export default class Desc extends Component {
     let nodesc
     if (this.props.desc.length === 0) {
       nodesc = (<i className="material-icons romajs-clickable" onClick={() => {
-        this.props.update(this.props.ident, `<${this.descTag} xmlns="http://tei-c.org/ns/1.0" xml:lang="${this.props.docLang}"></${this.descTag}>`, 0, this.props.valItem)
+        this.props.update(this.props.ident, `<${this.descTag} xmlns="http://www.tei-c.org/ns/1.0" xml:lang="${this.props.docLang}"></${this.descTag}>`, 0, this.props.valItem)
       }}>add_circle_outline</i>)
     }
     return (<div className="mdc-layout-grid__inner romajs-formrow">

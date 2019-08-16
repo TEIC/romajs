@@ -8,8 +8,8 @@ export function processDocEls(specElement, specData, localData, change, odd) {
     if (localData) {
       comparison = localData[change][i]
     }
-    if (!areDocElsEqual(d, comparison)) {
-      // Change is differnet from the local source: apply changes
+    if (!comparison || !areDocElsEqual(d, comparison)) {
+      // Change is different from the local source: apply changes
       if (d.deleted) {
         // Something got deleted, so apply
         docEl.parentNode.removeChild(docEl)
