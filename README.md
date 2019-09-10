@@ -19,7 +19,7 @@ RewriteRule ^(.*)$ index.html [L,QSA]
 
 You can also deploy it via [Docker](https://hub.docker.com/r/teic/romajs).
 
-## How to develp
+## How to develop
 
 Make sure node.js is installed then:
 
