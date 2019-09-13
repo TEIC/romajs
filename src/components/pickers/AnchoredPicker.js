@@ -40,6 +40,6 @@ AnchoredPicker.propTypes = {
   items: PropTypes.array,
   pickerType: PropTypes.string,
   add: PropTypes.func,
-  message: PropTypes.string,
+  message: PropTypes.object,
   icon: PropTypes.string
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import DatatypePicker from '../containers/DatatypePicker'
+import { Link } from 'react-router-dom'
 
 export default class DataRef extends Component {
   render() {
@@ -8,8 +9,10 @@ export default class DataRef extends Component {
     return [
       <div className="mdc-layout-grid__inner romajs-formrow" key="dtp">
         <div className="mdc-layout-grid__cell--span-1">
-          <DatatypePicker member={this.props.member.ident} memberType={this.props.memberType}
-            attribute={this.props.attribute} index={this.props.index}/>
+          <DatatypePicker message={
+            <span>Not seeing something you're looking for? Add it on the&nbsp;
+              <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>
+          }/>
         </div>
         <div className="mdc-layout-grid__cell--span-11">
           {this.props.datatype}

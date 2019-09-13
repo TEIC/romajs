@@ -37,7 +37,7 @@ export default class ModalPicker extends Component {
           <div className="mdc-dialog__surface">
             <div className="mdc-dialog__content">
               <Picker showAll items={this.props.items} pickerType={this.props.pickerType} add={this.addItem} />
-              <div dangerouslySetInnerHTML={{__html: this.props.message}}/>
+              <div>{this.props.message}</div>
             </div>
             <footer className="mdc-dialog__actions">
               <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
@@ -57,5 +57,5 @@ ModalPicker.propTypes = {
   pickerType: PropTypes.string,
   add: PropTypes.func,
   cancel: PropTypes.func,
-  message: PropTypes.string
+  message: PropTypes.object
 }

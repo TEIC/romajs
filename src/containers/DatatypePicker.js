@@ -4,7 +4,7 @@ import { setDatatype } from '../actions/attributes'
 import { setDataRef } from '../actions/datatypes'
 import primitiveDatatypes from '../utils/primitiveDatatypes'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   const customDtypes = state.odd.customization.json.datatypes
   const allDtypes = customDtypes.concat(primitiveDatatypes)
   allDtypes.sort((a, b) => {
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
     return 0
   })
   return {items: allDtypes, pickerType: 'datatypes', icon: 'mode_edit',
-    message: `Not seeing a datatype you're looking for? <a href='#'>Manage datatypes</a>`}
+    message: ownProps.message}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

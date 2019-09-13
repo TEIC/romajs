@@ -49,7 +49,10 @@ export default class Attributes extends Component {
             </ul>
           </div>
           <div className="mdc-layout-grid__cell--span-8">
-            <AttClassPicker element={this.props.member.ident}/>
+            <AttClassPicker message={
+              <span>Not seeing something you're looking for? Add it on the&nbsp;
+                <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>
+            }/>
             {this.props.attsfromClasses.map((cl, cpos) => {
               let sub = ''
               if (cl.sub) {

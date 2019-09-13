@@ -2,10 +2,10 @@ import { connect } from 'react-redux'
 import AnchoredPicker from '../components/pickers/AnchoredPicker'
 import { addMembershipToClass } from '../actions/classes'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   const customClasses = state.odd.customization.json.classes.attributes
   return {items: customClasses, pickerType: 'attributes',
-    message: `Not seeing a class you're looking for? Return to <a href="/members">members selection page</a>.`}
+    message: ownProps.message}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

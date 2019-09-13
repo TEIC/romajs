@@ -5,6 +5,7 @@ import Blockly from 'node-blockly/browser'
 import { content, alternate, sequence, elementRef, classRef, dataRef, macroRef,
   anyElement, empty, textNode } from '../utils/blocks'
 import ModalPicker from './pickers/ModalPicker'
+import { Link } from 'react-router-dom'
 
 const xmlParser = new DOMParser()
 const xmlSerializer = new XMLSerializer()
@@ -242,13 +243,15 @@ export default class BlocklyRomaJsEditor extends Component {
         }
       }
     }
+    const msg = (<span>Not seeing something you're looking for? Add it on the&nbsp;
+      <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>)
     return (<div>
       <ModalPicker visible={this.state.pickerVisible} items={this.state.pickerOptions} pickerType="blockly"
         cancel={() => {this.setState({pickerVisible: false})}}
         add={ (t, i) => {
           this.setState({pickerVisible: false})
           this.state.pickerAdd(i)
-        }} message="Not seeing something you're looking for? <a href='#'>Manage members</a> (Coming soon)"/>
+        }} message={msg}/>
       {React.createElement(ReactBlocklyComponent.BlocklyEditor, config)}
     </div>)
   }

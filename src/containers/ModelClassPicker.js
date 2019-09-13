@@ -3,10 +3,10 @@ import AnchoredPicker from '../components/pickers/AnchoredPicker'
 import { addElementModelClass } from '../actions/elements'
 import { addMembershipToClass } from '../actions/classes'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   const customClasses = state.odd.customization.json.classes.models
   return {items: customClasses, pickerType: 'models',
-    message: `Not seeing a class you're looking for? <a href='#'>Manage classes</a>  (Coming soon)`}
+    message: ownProps.message}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

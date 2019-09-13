@@ -44,7 +44,10 @@ export default class Attributes extends Component {
             </p>
           </div>
           <div className="mdc-layout-grid__cell--span-8">
-            <AttClassAttPicker member={this.props.member.ident}/>
+            <AttClassAttPicker message={
+              <span>Not seeing something you're looking for? Add it on the&nbsp;
+                <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>
+            }/>
             <ul className="mdc-list mdc-list--two-line">{
               this.props.memberships.map((c, pos) => {
                 let deleted = ''

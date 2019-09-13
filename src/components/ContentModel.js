@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ModelClassPicker from '../containers/ModelClassPicker'
 import BlocklyContainer from '../containers/BlocklyContainer'
+import { Link } from 'react-router-dom'
 
 export default class ContentModel extends Component {
   render() {
@@ -17,7 +18,10 @@ export default class ContentModel extends Component {
           </p>
         </div>
         <div className="mdc-layout-grid__cell--span-8">
-          <ModelClassPicker member={this.props.element.ident} memberType={this.props.element.type}/>
+          <ModelClassPicker message={
+            <span>Not seeing something you're looking for? Add it on the&nbsp;
+              <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>
+          }/>
           <ul className="mdc-list mdc-list--two-line">{
             sortedClasses.map((c, pos) => {
               return (<li key={`c${pos}`} className="mdc-list-item">
