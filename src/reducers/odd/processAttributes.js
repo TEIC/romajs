@@ -66,7 +66,7 @@ function changeAttr(att, localAtt, attDef, odd) {
                     valItem = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valItem')
                     valListEl.appendChild(valItem)
                   }
-                  valItem.setAttribute('mode', 'change')
+                  valItem.setAttribute('mode', 'add')
                   valItem.setAttribute('ident', item.ident)
                   // add descs
                   processDocEls(valItem, item, compValItem, 'desc', odd)
@@ -217,7 +217,7 @@ export function processAttributes(specElement, specData, localData, localsource,
           const attDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
           attDef.setAttribute('ident', att.ident)
           // The mode is based on the customization:
-          // e.g. we may be "adding" an addDef to delete an attribute defined in a class.
+          // e.g. we may be "adding" an attDef to delete an attribute defined in a class.
           // Default is add
           attDef.setAttribute('mode', att.mode || 'add')
           if (att.ns) {

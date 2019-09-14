@@ -1045,6 +1045,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"] > valList > valItem').getAttribute('ident')).toEqual('new')
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"] > valList > valItem').getAttribute('mode')).toEqual('add')
   })
 
   it('should remove a valItem from a valList of an attribute inherited from a class.', () => {
