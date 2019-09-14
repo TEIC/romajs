@@ -18,7 +18,7 @@ export default class ContentModel extends Component {
           </p>
         </div>
         <div className="mdc-layout-grid__cell--span-8">
-          <ModelClassPicker message={
+          <ModelClassPicker member={this.props.element.ident} memberType={this.props.element.type} message={
             <span>Not seeing something you're looking for? Add it on the&nbsp;
               <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>
           }/>

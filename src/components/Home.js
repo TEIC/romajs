@@ -195,12 +195,10 @@ export default class Home extends Component {
                   </div>
                   <div>
                     <h2 className="mdc-typography--headline4">Known issues</h2>
-                    <p className="mdc-typography--body1">
-                      <ul>
-                        <li>If Roma stalls on loading an existing ODD or template customisation then refresh or reload your browser.</li>
-                        <li>In Safari, reloading a page may cause loss of data due to limited data storage.</li>
-                      </ul>
-                    </p>
+                    <ul className="mdc-typography--body1">
+                      <li>If Roma stalls on loading an existing ODD or template customisation then refresh or reload your browser.</li>
+                      <li>In Safari, reloading a page may cause loss of data due to limited data storage.</li>
+                    </ul>
                   </div>
                   <div>
                     <h2 className="mdc-typography--headline4">Contribute</h2>

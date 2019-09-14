@@ -9,10 +9,11 @@ export default class DataRef extends Component {
     return [
       <div className="mdc-layout-grid__inner romajs-formrow" key="dtp">
         <div className="mdc-layout-grid__cell--span-1">
-          <DatatypePicker message={
-            <span>Not seeing something you're looking for? Add it on the&nbsp;
-              <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>
-          }/>
+          <DatatypePicker member={this.props.member.ident} memberType={this.props.memberType}
+            attribute={this.props.attribute} index={this.props.index} message={
+              <span>Not seeing something you're looking for? Add it on the&nbsp;
+                <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>
+            }/>
         </div>
         <div className="mdc-layout-grid__cell--span-11">
           {this.props.datatype}
