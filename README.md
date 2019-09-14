@@ -1,6 +1,6 @@
 # RomaJS
 
-[![Build Status](https://travis-ci.com/TEIC/romajs.svg?branch=dev)](https://travis-ci.org/TEIC/romajs)
+[![Build Status](https://travis-ci.com/TEIC/romajs.svg?branch=dev)](https://travis-ci.com/TEIC/romajs)
 
 RomaJS is a web app for creating and editing ODD documents to customize and generate schemata for the [Text Encoding Initiative](http://www.tei-c.org/).
 
