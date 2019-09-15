@@ -18,6 +18,7 @@ export function processClassMemberships(specElement, specData, localData, change
       let classesEl = specElement.querySelector('classes')
       if (!classesEl) {
         classesEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'classes')
+        classesEl.setAttribute('mode', 'change')
         // Place <classes> after documentation elements if present, or first.
         const lastDocEl = Array.from(specElement.querySelectorAll('desc, gloss, altIdent, equiv')).pop()
         if (lastDocEl) {
