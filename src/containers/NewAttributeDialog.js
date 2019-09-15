@@ -21,9 +21,11 @@ const mapStateToProps = (state, ownProps) => {
       for (const lAtt of lClass.attributes) {
         const idx = customAttsNames.indexOf(lAtt.ident)
         if (idx > -1) {
-          attributes.push(customAtts.filter(ca => (ca.ident === customAttsNames[idx]))[0])
+          attributes.push(
+            Object.assign({isLocal: false, fromClass: lClass.ident}, customAtts.filter(ca => (ca.ident === customAttsNames[idx]))[0])
+          )
         } else {
-          attributes.push(Object.assign({isLocal: true}, lAtt))
+          attributes.push(Object.assign({isLocal: true, fromClass: lClass.ident}, lAtt))
         }
       }
     }

@@ -578,7 +578,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     state
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
-    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="newAtt"]').getAttribute('mode')).toEqual('add')
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="newAtt"]')).toExist()
   })
 
   // Add test for cloned attribute

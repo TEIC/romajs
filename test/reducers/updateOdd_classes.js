@@ -161,7 +161,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
-    expect(xml.querySelector('classSpec[ident="att.global"] > attList > attDef[ident="dummy"]').getAttribute('mode')).toEqual('add')
+    expect(xml.querySelector('classSpec[ident="att.global"] > attList > attDef[ident="dummy"]')).toExist()
   })
 
   it('should change a class\' attribute classes (add membership)', () => {

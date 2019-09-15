@@ -1,9 +1,63 @@
 import { processDocEls } from './processDocEls'
 import { insertBetween } from './utils'
 
+function createAttribute(attList, att, odd) {
+  const attDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
+  attDef.setAttribute('ident', att.ident)
+  if (att.usage) {
+    attDef.setAttribute('usage', att.usage)
+  }
+  if (att.ns) {
+    attDef.setAttribute('ns', att.ns)
+  }
+  if (att.valDesc) {
+    for (const vd of att.valDesc) {
+      const dummyEl = odd.createElement('temp')
+      dummyEl.innerHTML = vd
+      const valDesc = dummyEl.firstChild
+      valDesc.removeAttribute('xmlns')
+      dummyEl.firstChild.remove()
+      attDef.appendChild(valDesc)
+    }
+  }
+  if (att.valList) {
+    const valList = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valList')
+    if (att.valList.type) {
+      valList.setAttribute('type', att.valList.type)
+    }
+    for (const val of att.valList.valItem) {
+      const valItem = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valItem')
+      valItem.setAttribute('ident', val.ident)
+      valList.appendChild(valItem)
+    }
+    attDef.appendChild(valList)
+  }
+  if (att.datatype) {
+    const datatype = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'datatype')
+    if (att.datatype.dataRef) {
+      const dataRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'dataRef')
+      if (att.datatype.dataRef.name) {
+        dataRef.setAttribute('name', att.datatype.dataRef.name)
+      } else if (att.datatype.dataRef.key) {
+        dataRef.setAttribute('key', att.datatype.dataRef.key)
+      }
+
+      if (att.datatype.dataRef.restriction) {
+        dataRef.setAttribute('restriction', att.datatype.dataRef.restriction)
+      }
+      datatype.appendChild(dataRef)
+    }
+    insertBetween(
+      attDef, datatype,
+      'desc, gloss, altIdent, equiv',
+      'constraintSpec, defaultVal, valList, valDesc, exemplum, remarks')
+  }
+  attList.appendChild(attDef)
+  return odd
+}
+
 function changeAttr(att, localAtt, attDef, odd) {
   for (const whatChanged of att._changed) {
-    console.log(whatChanged)
     switch (whatChanged) {
       case 'desc':
       case 'altIdent':
@@ -196,7 +250,7 @@ export function processAttributes(specElement, specData, localData, localsource,
     const isDefined = localAtts.indexOf(att.ident) !== -1
     const toRemove = isDefined && att.mode === 'delete'
     const toChange = ((att.mode === 'change' && Boolean(att._changed)) || (att.mode === 'add' && Boolean(att._changed)))
-    const toAdd = !isDefined && !toChange
+    const toAdd = Boolean(att.clonedFrom) || (!isDefined && !toChange)
     const toRestore = isDefined && !toRemove && (att.mode === 'change' && Boolean(att._changed))
 
     if (toRemove || toChange || toAdd) {
@@ -214,43 +268,17 @@ export function processAttributes(specElement, specData, localData, localsource,
         // This may be caused by users attempting to remove or change attributes that
         // are not available on the spec.
         if (!specElement.querySelector(`attDef[ident="${att.ident}"]`)) {
-          const attDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
-          attDef.setAttribute('ident', att.ident)
-          // The mode is based on the customization:
-          // e.g. we may be "adding" an attDef to delete an attribute defined in a class.
-          // Default is add
-          attDef.setAttribute('mode', att.mode || 'add')
-          if (att.ns) {
-            attDef.setAttribute('ns', att.ns)
+          // Also make sure this is not an attribute cloned from another class,
+          // in which case use <attRef>
+          if (att.clonedFrom && !toChange) {
+            // Only use attRef if there are no changes
+            const attRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attRef')
+            attRef.setAttribute('name', att.ident)
+            attRef.setAttribute('class', att.clonedFrom)
+            attList.appendChild(attRef)
+          } else {
+            createAttribute(attList, att, odd)
           }
-          if (!att.mode || att.mode === 'add') {
-            const dummyEl = odd.createElement('temp')
-            if (att.usage) {
-              attDef.setAttribute('usage', att.usage)
-            }
-            if (att.desc.length > 0) {
-              for (const desc of att.desc) {
-                dummyEl.innerHTML = desc
-                const docEl = dummyEl.firstChild
-                docEl.removeAttribute('xmlns')
-                dummyEl.firstChild.remove()
-                attDef.insertBefore(docEl, attDef.firstChild)
-              }
-            }
-            if (att.valDesc.length > 0) {
-              for (const valDesc of att.valDesc) {
-                dummyEl.innerHTML = valDesc
-                const docEl = dummyEl.firstChild
-                docEl.removeAttribute('xmlns')
-                dummyEl.firstChild.remove()
-                insertBetween(
-                  attDef, docEl,
-                  'desc, gloss, altIdent, equiv, datatype, constraintSpec, defaultVal',
-                  'exemplum, remarks')
-              }
-            }
-          }
-          attList.appendChild(attDef)
         }
       } else if (toRemove) {
         let attDef = attList.querySelector(`attDef[ident='${att.ident}'][mode='delete']`)
@@ -320,57 +348,7 @@ export function createAttributes(specElement, specData, odd) {
   if (specData.attributes) {
     const attList = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attList')
     for (const att of specData.attributes) {
-      const attDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
-      attDef.setAttribute('ident', att.ident)
-      if (att.usage) {
-        attDef.setAttribute('usage', att.ident)
-      }
-      if (att.ns) {
-        attDef.setAttribute('ns', att.ns)
-      }
-      if (att.valDesc) {
-        for (const vd of att.valDesc) {
-          const dummyEl = odd.createElement('temp')
-          dummyEl.innerHTML = vd
-          const valDesc = dummyEl.firstChild
-          valDesc.removeAttribute('xmlns')
-          dummyEl.firstChild.remove()
-          attDef.appendChild(valDesc)
-        }
-      }
-      if (att.valList) {
-        const valList = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valList')
-        if (att.valList.type) {
-          valList.setAttribute('type', att.valList.type)
-        }
-        for (const val of att.valList.valItem) {
-          const valItem = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valItem')
-          valItem.setAttribute('ident', val.ident)
-          valList.appendChild(valItem)
-        }
-        attDef.appendChild(valList)
-      }
-      if (att.datatype) {
-        const datatype = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'datatype')
-        if (att.datatype.dataRef) {
-          const dataRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'dataRef')
-          if (att.datatype.dataRef.name) {
-            dataRef.setAttribute('name', att.datatype.dataRef.name)
-          } else if (att.datatype.dataRef.key) {
-            dataRef.setAttribute('key', att.datatype.dataRef.key)
-          }
-
-          if (att.datatype.dataRef.restriction) {
-            dataRef.setAttribute('restriction', att.datatype.dataRef.restriction)
-          }
-          datatype.appendChild(dataRef)
-        }
-        insertBetween(
-          attDef, datatype,
-          'desc, gloss, altIdent, equiv',
-          'constraintSpec, defaultVal, valList, valDesc, exemplum, remarks')
-      }
-      attList.appendChild(attDef)
+      createAttribute(attList, att, odd)
     }
     specElement.appendChild(attList)
   }

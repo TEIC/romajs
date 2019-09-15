@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { MDCDialog } from '@material/dialog'
 import AttPicker from '../pickers/AttPicker'
+import { clone } from '../../utils/clone'
 
 export default class NewAttributeDialog extends Component {
   constructor(props) {
@@ -46,15 +47,12 @@ export default class NewAttributeDialog extends Component {
   }
 
   cloneAttribute(type, attribute) {
-    return {
-      ident: attribute.ident,
-      desc: attribute.desc,
-      gloss: attribute.gloss,
-      mode: 'add',
-      ns: '',
-      shortDesc: attribute.shortDesc,
-      usage: attribute.usage
-    }
+    const newAtt = clone(attribute)
+    newAtt.onElement = true
+    newAtt.mode = 'add'
+    newAtt._isNew = true
+    newAtt.clonedFrom = attribute.fromClass
+    return newAtt
   }
 
   setAttribute(val) {
