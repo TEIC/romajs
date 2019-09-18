@@ -35,6 +35,7 @@ export default class DownloadButton extends Component {
           <div key="opts" className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="menu">
             <ul className="mdc-list" role="menu" aria-hidden="true">
               <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadCustomization()}}>Customization as ODD</li>
+              <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('compiled.odd')}}>Compiled ODD</li>
               <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('rng')}}>RelaxNG schema</li>
               <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('rnc')}}>RelaxNG compact</li>
               <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('w3c')}}>W3C schema</li>

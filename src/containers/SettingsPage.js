@@ -76,7 +76,7 @@ const mapDispatchToProps = (dispatch) => {
       }
     },
     getNewDocForLang: (data, lang) => {
-      dispatch(compileWithOxGarage(data, oxgarage.compile)).then((compiledOdd) => {
+      dispatch(compileWithOxGarage(data, oxgarage['compile.odd'])).then((compiledOdd) => {
         dispatch(postToOxGarage(compiledOdd, oxgarage.json.replace('%3Een%3C', `%3E${lang}%3C`)))
       })
     }

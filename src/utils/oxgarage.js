@@ -8,7 +8,7 @@ export default {
   xml: `${OXGARAGE_PROTOCOL}://${OXGARAGE_LOCATION}/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/xsd%3Aapplication%3Axml-xsd/conversion?properties=<conversions><conversion index="0"><property id="oxgarage.getImages">false</property><property id="oxgarage.getOnlineImages">false</property><property id="oxgarage.lang">en</property><property id="oxgarage.textOnly">true</property><property id="pl.psnc.dl.ege.tei.profileNames">default</property></conversion></conversions>`,
   dtd: `${OXGARAGE_PROTOCOL}://${OXGARAGE_LOCATION}/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/dtd%3Aapplication%3Axml-dtd/conversion`,
   isosch: `${OXGARAGE_PROTOCOL}://${OXGARAGE_LOCATION}/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/isosch%3Atext%3Axml/conversion`,
-  compile: `${OXGARAGE_PROTOCOL}://${OXGARAGE_LOCATION}/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/conversion`,
+  'compiled.odd': `${OXGARAGE_PROTOCOL}://${OXGARAGE_LOCATION}/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/conversion`,
   html: `${OXGARAGE_PROTOCOL}://${OXGARAGE_LOCATION}/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/oddhtml%3Aapplication%3Axhtml%2Bxml/`,
   tei: `${OXGARAGE_PROTOCOL}://${OXGARAGE_LOCATION}/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/TEI%3Atext%3Axml/conversion`,
   docx: `${OXGARAGE_PROTOCOL}://${OXGARAGE_LOCATION}/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document`,
