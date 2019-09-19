@@ -48,8 +48,9 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              localIdentName: '[local]'
+              modules: {
+                localIdentName: '[local]'
+              }
             }
           }
         ]
@@ -64,8 +65,9 @@ module.exports = {
             loader: 'css-loader',
             options: {
               importLoaders: 2,
-              modules: true,
-              localIdentName: '[local]'
+              modules: {
+                localIdentName: '[local]'
+              }
             }
           },
           {

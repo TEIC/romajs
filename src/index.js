@@ -6,7 +6,8 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
-import { routerMiddleware, ConnectedRouter } from 'react-router-redux'
+// import { routerMiddleware, ConnectedRouter } from 'react-router-redux'
+import { routerMiddleware, ConnectedRouter, connectRouter } from 'connected-react-router'
 import createHistory from 'history/createBrowserHistory'
 import { persistStore, persistCombineReducers } from 'redux-persist'
 import storage from 'redux-persist/es/storage'
@@ -28,7 +29,9 @@ const persistConf = {
   storage
 }
 
-const romajsApp = persistCombineReducers(persistConf, reducers)
+const router = {router: connectRouter(history)}
+
+const romajsApp = persistCombineReducers(persistConf, Object.assign(reducers, router))
 let store
 
 if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
@@ -50,6 +53,8 @@ if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
     )
   )
 }
+
+console.log(store)
 
 const persistor = persistStore(store)
 

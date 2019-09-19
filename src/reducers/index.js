@@ -37,7 +37,6 @@ import { oddDatatypes } from './datatypes'
 import { updateOdd } from './updateOdd'
 import { ui } from  './interface'
 import * as fileSaver from 'file-saver'
-import { routerReducer } from 'react-router-redux'
 import oxgarage from '../utils/oxgarage'
 
 import { clone } from '../utils/clone'
@@ -302,8 +301,7 @@ function odd(state = {}, action) {
 const reducers = {
   selectedOdd,
   odd,
-  ui,
-  router: routerReducer
+  ui
 }
 
 export default reducers
