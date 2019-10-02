@@ -78,7 +78,7 @@
     "node-blockly": "^1.0.35",
     "node-sass": "^4.9.3",
     "react": "^16.9.0",
-    "react-ace": "^6.4.0",
+    "react-ace": "^7.0.4",
     "react-blockly-component": "^3.0.3",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
