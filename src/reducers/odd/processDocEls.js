@@ -37,7 +37,7 @@ export function processDocEls(specElement, specData, localData, change, odd) {
       }
     } else if (!docEl) {
       // noop
-    } else if (!areDocElsEqual(d !== docEl.outerHTML)) {
+    } else if (!areDocElsEqual(d, docEl.outerHTML)) {
       // If we're returning to local source values, remove customization operation
       specElement.parentNode.removeChild(specElement)
     }
