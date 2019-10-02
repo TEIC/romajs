@@ -89,9 +89,11 @@ export default class Desc extends Component {
         // Force cursor and anchor to not get into root element tags.
         editor.session.on('change', () => {
           updateVersionDate()
-          rootElRanges = getRootElRanges()
-          openingTagRange = rootElRanges.openingTag
-          closingTagRange = rootElRanges.closingTag
+          if (editor.session.getValue() !== '') {
+            rootElRanges = getRootElRanges()
+            openingTagRange = rootElRanges.openingTag
+            closingTagRange = rootElRanges.closingTag
+          }
         })
 
         editor.session.$worker.on('error', (e) => {
@@ -147,7 +149,7 @@ export default class Desc extends Component {
           preventHomeEnd()
         })
         // TODO: this is for tinkering in browser, remove:
-        // window.editor = editor
+        window.editor = editor
       }
     })
   }
