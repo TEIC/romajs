@@ -54,8 +54,6 @@ if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
   )
 }
 
-console.log(store)
-
 const persistor = persistStore(store)
 
 render(
