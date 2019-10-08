@@ -6,7 +6,6 @@ export function processDocEls(specElement, specData, localData, change, odd) {
     // Wish I could use a CSS selector here, but nth-child won't do.
     const docEl = Array.from(specElement.children).filter(x =>
       x.tagName.toLowerCase() === change.toLowerCase())[i]
-    console.log(Array.from(specElement.children))
     let comparison = null
     if (localData) {
       comparison = localData[change][i]
