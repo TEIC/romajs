@@ -11,6 +11,12 @@ export default class Desc extends Component {
     super(props)
     this.aceEditors = []
     this.descTag = props.valDesc ? 'valDesc' : 'desc'
+    const d = new Date()
+    const monthNum = d.getUTCMonth()
+    const month = monthNum.toString().length === 2 ? monthNum : '0' + monthNum
+    const dayNum = d.getUTCDate()
+    const day = dayNum.toString().length === 2 ? dayNum : '0' + dayNum
+    this.newDate = `versionDate="${d.getUTCFullYear()}-${month}-${day}"`
   }
 
   componentDidMount() {
@@ -28,36 +34,18 @@ export default class Desc extends Component {
         editor._amSetUp = true
         editor.setOption('wrap', true)
 
-        const updateVersionDate = () => {
-          const d = new Date()
-          const monthNum = d.getUTCMonth()
-          const month = monthNum.toString().length === 2 ? monthNum : '0' + monthNum
-          const dayNum = d.getUTCDate()
-          const day = dayNum.toString().length === 2 ? dayNum : '0' + dayNum
-          const newDate = `versionDate="${d.getUTCFullYear()}-${month}-${day}"`
-          const match = /[dD]esc.*?versionDate="[^""]+"/.exec(this.props.desc[descIndex])
-          let text = this.props.desc[descIndex]
-          if (match) {
-            text = text.replace(/[dD]esc(.*?)versionDate="[^""]+"/, `desc$1${newDate}`)
-          } else {
-            text = text.replace(/[dD]esc\s/, `desc ${newDate} `)
-          }
-          if (this.props.desc[descIndex] !== text) {
-            this.props.update(this.props.ident, text, descIndex, this.props.valItem)
-          }
-        }
         const getRootElRanges = () => {
           // Determine character range of root opening and closing tag
           const descLines = this.props.desc[descIndex].split(/\r\n|[\n\v\f\r\x85\u2028\u2029]/)
 
-          const openingTagMatch = new RegExp(`<${this.descTag}[^>]*>`).exec(descLines[0])
+          const openingTagMatch = new RegExp(`<${this.descTag}[^>]*?>`).exec(descLines[0])
           const openingTag = {
             row: 0,
             start: openingTagMatch.index,
             end: openingTagMatch.index + openingTagMatch[0].length
           }
 
-          const closingTagMatch = new RegExp(`<\/${this.descTag}\s*>`).exec(descLines[descLines.length - 1])
+          const closingTagMatch = new RegExp(`<\/${this.descTag}\s*?>`).exec(descLines[descLines.length - 1])
           const closingTag = {
             row: descLines.length - 1,
             start: closingTagMatch.index,
@@ -88,7 +76,6 @@ export default class Desc extends Component {
 
         // Force cursor and anchor to not get into root element tags.
         editor.session.on('change', () => {
-          updateVersionDate()
           if (editor.session.getValue() !== '') {
             rootElRanges = getRootElRanges()
             openingTagRange = rootElRanges.openingTag
@@ -158,6 +145,17 @@ export default class Desc extends Component {
     this.aceEditors[pos].editor.resize()
   }
 
+  updateText(pos, input) {
+    let output = input
+    if (input.includes('versionDate=')) {
+      const updatedText = input.replace(/([dD])esc(.*?)versionDate="[^""]+"/, `$1esc$2${this.newDate}`)
+      if (input !== updatedText) {
+        output = updatedText
+      }
+    }
+    this.props.update(this.props.ident, output, pos, this.props.valItem)
+  }
+
   render() {
     let info = (<div className="mdc-layout-grid__cell--span-3">
       <label>Description</label>
@@ -176,7 +174,7 @@ export default class Desc extends Component {
     let nodesc
     if (this.props.desc.length === 0) {
       nodesc = (<i className="material-icons romajs-clickable" onClick={() => {
-        this.props.update(this.props.ident, `<${this.descTag} xmlns="http://www.tei-c.org/ns/1.0" xml:lang="${this.props.docLang}"></${this.descTag}>`, 0, this.props.valItem)
+        this.props.update(this.props.ident, `<${this.descTag} xmlns="http://www.tei-c.org/ns/1.0" ${this.newDate} xml:lang="${this.props.docLang}"></${this.descTag}>`, 0, this.props.valItem)
       }}>add_circle_outline</i>)
     }
     return (<div className="mdc-layout-grid__inner romajs-formrow">
@@ -195,11 +193,9 @@ export default class Desc extends Component {
                 fontSize={14}
                 showPrintMargin={false}
                 showGutter
+                onChange={(text) => this.updateText(pos, text)}
                 highlightActiveLine
                 value={d}
-                onChange={(text) => {
-                  this.props.update(this.props.ident, text, pos, this.props.valItem)
-                }}
                 height="100px"
                 width="80%"
                 editorProps={{
