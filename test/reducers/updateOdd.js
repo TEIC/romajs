@@ -688,7 +688,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
-    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="level"]').getAttribute('usage')).toNotExist()
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="level"]')).toNotExist()
   })
 
   it('should change an attribute defined on local element and some changes are already done. (desc returning to localsource value)', () => {
@@ -938,7 +938,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     xml = global.usejsdom(xml)
     // Returning to original definition means that usage should not be there any longer.
     // This test may need to be updated if better cleanup is implemented.
-    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]').getAttribute('usage')).toNotExist()
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]')).toNotExist()
   })
 
   it('should change the valList type of an attribute defined on an element.', () => {
@@ -1414,5 +1414,56 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.usejsdom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > attList > attDef[ident="type"] > valList > valItem > desc').textContent).toEqual('!!!')
+  })
+
+  it('should remove a valItem added in a previous customization step.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
+      element: 'div',
+      className: 'att.typed',
+      attName: 'type'
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'ADD_VALITEM',
+      member: 'div',
+      memberType: 'element',
+      attr: 'type',
+      value: 'chapter'
+    })
+    const thirdState = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+
+    // We simulate an upload of the previous state
+    const fourthState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: thirdState.odd.customization.json, xml: thirdState.odd.customization.updatedXml },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'DELETE_VALITEM',
+      member: 'div',
+      memberType: 'element',
+      attr: 'type',
+      value: 'chapter'
+    })
+    const state = romajsApp(fourthState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    // console.log(state.odd.customization.json.elements.filter(e => e.ident === 'div')[0].attributes[0].valList)
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    // No other changes exist in this element, so the elementSpec should no longer be there.
+    expect(xml.querySelector('elementSpec[ident="div"]')).toNotExist()
   })
 })

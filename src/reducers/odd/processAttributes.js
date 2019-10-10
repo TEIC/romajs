@@ -165,6 +165,26 @@ function changeAttr(att, localAtt, attDef, odd) {
                   valItem.setAttribute('ident', item.ident)
                 }
               }
+              // finally check that the XML actually reflects the JSON and drop what doesn't.
+              // This may happen when a valItem was specified in an uploaded customization and
+              // now it has been deleted. In this case it won't be in the comparison BUT it will be in the XML
+              for (const vi of attDef.querySelectorAll('valItem')) {
+                // if there is an element, but no definition in either customization or localsource,
+                // get rid of the element
+                const valItemIdent = vi.getAttribute('ident')
+                if (!comparison.filter(c => c.ident === valItemIdent)[0] &&
+                  !att.valList.valItem.filter(v => v.ident === valItemIdent)[0]) {
+                  const valList = vi.parentNode
+                  valList.removeChild(vi)
+                }
+              }
+              // remove empty valList without a type change
+              const valListEl = attDef.querySelector('valList')
+              if (valListEl) {
+                if (valListEl.children.length === 0 && !valListEl.getAttribute('type')) {
+                  attDef.removeChild(valListEl)
+                }
+              }
               break
             default:
           }
@@ -338,6 +358,23 @@ export function processAttributes(specElement, specData, localData, localsource,
         }
       } else {
         // noop. We're attempting to restore an unchanged attribute.
+      }
+    }
+    // remove empty attDef without other attributes
+    const attDef = specElement.querySelector(`attDef[ident="${att.ident}"]`)
+    if (attDef) {
+      if (
+        (!attDef.getAttribute('mode') || attDef.getAttribute('mode') === 'change') &&
+        attDef.getAttribute('ident') &&
+        attDef.attributes.length <= 2 && attDef.children.length === 0) {
+        attDef.parentNode.removeChild(attDef)
+      }
+    }
+    // remove empty valLists without @org
+    const attList = specElement.querySelector('attList')
+    if (attList) {
+      if (!attList.getAttribute('org') && attList.children.length === 0) {
+        attList.parentNode.removeChild(attList)
       }
     }
   }
