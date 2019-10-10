@@ -50,7 +50,6 @@ function processClasses(classType, localsource, customization, odd) {
         changes = ['desc', 'altIdent', 'attributes', 'models']
       }
       const clSpec = getOrSetClassSpec(classType, odd, cl.ident)
-      // const localCl = localsource.classes[classType].filter(lc => lc.ident === cl.ident)[0]
       for (const whatChanged of changes) {
         switch (whatChanged) {
           case 'desc':
@@ -77,11 +76,11 @@ function processClasses(classType, localsource, customization, odd) {
           default:
             false
         }
-        // Cleanup
-        if (clSpec) {
-          if (clSpec.children.length === 0) {
-            clSpec.parentNode.removeChild(clSpec)
-          }
+      }
+      // Cleanup
+      if (clSpec) {
+        if (clSpec.children.length === 0) {
+          clSpec.parentNode.removeChild(clSpec)
         }
       }
     } else if (cl._changed && !isModuleSelected) {
