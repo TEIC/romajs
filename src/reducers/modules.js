@@ -144,11 +144,12 @@ export function oddModules(state, action) {
     case INCLUDE_CLASSES:
       for (const cl of action.classes) {
         const localCl = getClassByIdent(localsource, cl, action.classType)
-        localCl._changed = ['all']
-        if (!getClassByIdent(customization, cl, action.classType)) {
-          customization.classes[action.classType].push(localCl)
-        }
         const newCl = clone(localCl)
+        newCl._changed = ['all']
+        if (!getClassByIdent(customization, cl, action.classType)) {
+          newCl.cloned = true
+          customization.classes[action.classType].push(newCl)
+        }
         // Make sure only references to classes that are in the customization are included.
         if (newCl.classes) {
           newCl.classes.atts = newCl.classes.atts.reduce((acc, lcl) => {
