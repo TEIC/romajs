@@ -26,7 +26,8 @@ const history = createHistory({ basename })
 
 const persistConf = {
   key: 'root',
-  storage
+  storage,
+  blacklist: ['router']
 }
 
 const router = {router: connectRouter(history)}
