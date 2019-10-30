@@ -12,7 +12,7 @@ export default class Desc extends Component {
     this.aceEditors = []
     this.descTag = props.valDesc ? 'valDesc' : 'desc'
     const d = new Date()
-    const monthNum = d.getUTCMonth()
+    const monthNum = d.getUTCMonth() + 1
     const month = monthNum.toString().length === 2 ? monthNum : '0' + monthNum
     const dayNum = d.getUTCDate()
     const day = dayNum.toString().length === 2 ? dayNum : '0' + dayNum
