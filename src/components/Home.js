@@ -63,7 +63,7 @@ export default class Home extends Component {
                      |||       |||       |||
                      |||       |||       |||
                     (___)     (___)     (___)
-                             Roma JS
+                              Roma
    If you're checking out the console, maybe you want to contribute?
               Please do! https://github.com/TEIC/romajs
    `)

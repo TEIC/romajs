@@ -29,7 +29,7 @@ export default class Class extends Component {
     if (!this.props.success) {
       return null
     }
-    const typeLabel = this.props.klass.attributes ? 'Attributes' : 'Model'
+    const typeLabel = this.props.klass.attributes ? 'Attribute' : 'Model'
     const type = this.props.klass.attributes ? 'attributes' : 'models'
     let content = null
     let trail

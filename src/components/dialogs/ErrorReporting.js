@@ -45,7 +45,7 @@ export default class ErrorReporting extends Component {
             </h2>
             <div className="mdc-dialog__content">
               <p className="mdc-typography--body2">
-                Roma JS is still in alpha. The following error occurred:
+                Roma is still in beta. The following error occurred:
               </p>
               <pre>{this.props.error}</pre>
               <p className="mdc-typography--body2">
