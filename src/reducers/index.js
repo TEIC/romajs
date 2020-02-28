@@ -53,7 +53,7 @@ export function postToOxGarage(input, endpoint) {
       body: fd
     })
       .then(response => {
-        res(response.text())
+        res(response.blob())
       })
   })
 }
