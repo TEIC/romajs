@@ -6,7 +6,7 @@
 */
 
 export const OXGARAGE_PROTOCOL = 'https'
-export const OXGARAGE_LOCATION = 'oxgarage.mith.us'
+export const OXGARAGE_LOCATION = 'oxgarage.tei-c.org'
 
 export const DATASOURCES_PROTOCOL = 'https'
 export const DATASOURCES_LOCATION = 'tei-c.org/Vault/P5/current/xml/tei/odd'
