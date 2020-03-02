@@ -286,7 +286,10 @@ export function oddClasses(state, action) {
         if (m.ident === action.name) {
           const lCl = localsource.classes[action.classType].filter(cl => cl.ident === action.name)[0]
           if (lCl) {
-            acc.push(clone(lCl))
+            const clonedLCl = clone(lCl)
+            clonedLCl._changed = ['all']
+            clonedLCl._revert = true
+            acc.push(clonedLCl)
           }
         } else {
           acc.push(m)

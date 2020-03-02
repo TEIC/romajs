@@ -360,4 +360,26 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
     xml = global.usejsdom(xml)
     expect(xml.querySelector('classSpec[ident="att.global.linking"]')).toNotExist()
   })
+
+  it('should revert a class to source (ie remove customization spec)', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'REVERT_CLASS_TO_SOURCE',
+      name: 'att.global',
+      classType: 'attributes'
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('classRef[key="att.global"]')).toNotExist()
+  })
 })

@@ -314,9 +314,6 @@ describe('ODD class operations reducers', () => {
     )[0]._changed).toExist()
     expect(state.odd.customization.json.classes.attributes.filter(
       x => (x.ident === 'att.divLike')
-    )[0]._changed).toNotExist()
-    expect(state.odd.customization.json.classes.attributes.filter(
-      x => (x.ident === 'att.divLike')
     )[0].attributes.filter(a => a.ident === 'org')[0]).toExist()
   })
 })

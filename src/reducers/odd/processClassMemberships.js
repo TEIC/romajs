@@ -41,6 +41,11 @@ export function processClassMemberships(specElement, specData, localData, change
         classesEl.appendChild(mOf)
       }
     }
+  } else if (specData._revert && Boolean(specData._changed)) {
+    // remove customization element to return to source.
+    if (specElement.parentNode) {
+      specElement.parentNode.removeChild(specElement)
+    }
   }
   return odd
 }
