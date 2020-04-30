@@ -268,10 +268,10 @@ export function processAttributes(specElement, specData, localData, localsource,
   }, [])
   for (const att of specData.attributes) {
     const isDefined = localAtts.indexOf(att.ident) !== -1
-    const toRemove = isDefined && att.mode === 'delete'
+    const toRemove = att.mode === 'delete'
     const toChange = ((att.mode === 'change' && Boolean(att._changed)) || (att.mode === 'add' && Boolean(att._changed)))
-    const toAdd = Boolean(att.clonedFrom) || (!isDefined && !toChange)
-    const toRestore = isDefined && !toRemove && (att.mode === 'change' && Boolean(att._changed))
+    const toRestore = (isDefined || att.inheritedFrom) && !toRemove && (att.mode === 'change' && !Boolean(att._changed))
+    const toAdd = Boolean(att.clonedFrom) || (!isDefined && !toChange && !toRemove && !toRestore)
 
     if (toRemove || toChange || toAdd) {
       let attList = specElement.querySelector('attList')
@@ -284,7 +284,7 @@ export function processAttributes(specElement, specData, localData, localsource,
           'model, modelGrp, modelSequence, exemplum, remarks, listRef')
       }
       if (toAdd) {
-        // Make sure the element isn't define already
+        // Make sure the element isn't defined already
         // This may be caused by users attempting to remove or change attributes that
         // are not available on the spec.
         if (!specElement.querySelector(`attDef[ident="${att.ident}"]`)) {
@@ -354,7 +354,7 @@ export function processAttributes(specElement, specData, localData, localsource,
         const attList = attDef.parentNode
         attList.removeChild(attDef)
         if (attList.children.length === 0) {
-          specElement.querySelector(`attList`).parentNode.remove()
+          attList.parentNode.removeChild(attList)
         }
       } else {
         // noop. We're attempting to restore an unchanged attribute.

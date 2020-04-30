@@ -13,6 +13,8 @@ let customJson = null
 let localJson = null
 
 describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
+  // MODULES
+
   it('should add modules', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)
@@ -111,6 +113,8 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       return m.getAttribute('key') === 'msDesc'
     }).length).toEqual(0)
   })
+
+  // ELEMENTS
 
   it('should include elements by adjusting @include', () => {
     customJson = JSON.parse(customization)
@@ -301,6 +305,8 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     })[0]).toNotExist()
   })
 
+  // ELEMENT DOCUMENTATION
+
   it('should change an element\'s documentation (desc, no previous change)', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)
@@ -481,6 +487,8 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(xml.querySelector('elementSpec[ident="div"] > desc')).toNotExist()
   })
 
+  // ELEMENT ATTRIBUTE CLASSES
+
   it('should change an element\'s attribute classes (add membership)', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)
@@ -557,6 +565,8 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(xml.querySelector('elementSpec[ident="div"] > classes > memberOf[key="att.global"]').getAttribute('mode')).toEqual('delete')
   })
 
+  // ELEMENT ATTRIBUTES
+
   it('should create a new attribute on element', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)
@@ -585,9 +595,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
 
   // Add test for deleting attribute defined of element
 
-  // Add test for deleting attribute defined on class
-
-  // Add test for restorting attribute currently deleted in customization
+  // Add test for restoring attribute currently deleted in customization
 
   it('should change an attribute defined on local element and some changes are already done.', () => {
     customJson = JSON.parse(customization)
@@ -941,6 +949,59 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]')).toNotExist()
   })
 
+  it('should delete an element attribute inherited from a class.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'DELETE_CLASS_ATTRIBUTE_ON_ELEMENT',
+      element: 'title',
+      className: 'att.canonical',
+      attName: 'key'
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]').getAttribute('mode')).toEqual('delete')
+  })
+
+  it('should restore a deleted element attribute inherited from a class.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'DELETE_CLASS_ATTRIBUTE_ON_ELEMENT',
+      element: 'title',
+      className: 'att.canonical',
+      attName: 'key'
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT',
+      element: 'title',
+      attName: 'key'
+    })
+    const state = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]')).toNotExist()
+  })
+
   it('should change the valList type of an attribute defined on an element.', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)
@@ -1079,274 +1140,6 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type"] > valList > valItem[ident="desc"]').getAttribute('mode')).toEqual('delete')
   })
 
-  it('should set a datatype for an element attribute inherited from a class.', () => {
-    customJson = JSON.parse(customization)
-    localJson = JSON.parse(localsource)
-
-    const firstState = romajsApp({
-      odd: {
-        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
-        localsource: { isFetching: false, json: localJson }
-      },
-      selectedOdd: ''
-    }, {
-      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
-      element: 'title',
-      className: 'att.typed',
-      attName: 'type'
-    })
-    const secondState = romajsApp(firstState, {
-      type: 'SET_DATATYPE',
-      member: 'title',
-      memberType: 'element',
-      attr: 'type',
-      datatype: 'string'
-    })
-    const state = romajsApp(secondState, {
-      type: 'UPDATE_CUSTOMIZATION_ODD'
-    })
-    let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
-    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type"] > datatype > dataRef').getAttribute('name')).toEqual('string')
-  })
-
-  it('should set a restriction on a datatype for an element attribute inherited from a class.', () => {
-    customJson = JSON.parse(customization)
-    localJson = JSON.parse(localsource)
-
-    const firstState = romajsApp({
-      odd: {
-        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
-        localsource: { isFetching: false, json: localJson }
-      },
-      selectedOdd: ''
-    }, {
-      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
-      element: 'title',
-      className: 'att.typed',
-      attName: 'type'
-    })
-    const secondState = romajsApp(firstState, {
-      type: 'SET_DATATYPE_RESTRICTION',
-      member: 'title',
-      memberType: 'element',
-      attr: 'type',
-      value: '[ab]'
-    })
-    const state = romajsApp(secondState, {
-      type: 'UPDATE_CUSTOMIZATION_ODD'
-    })
-    let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
-    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type"] > datatype > dataRef[key="teidata.enumerated"]').getAttribute('restriction')).toEqual('[ab]')
-  })
-
-  it('should make an element member of model class', () => {
-    customJson = JSON.parse(customization)
-    localJson = JSON.parse(localsource)
-
-    const firstState = romajsApp({
-      odd: {
-        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
-        localsource: { isFetching: false, json: localJson }
-      },
-      selectedOdd: ''
-    }, {
-      type: 'ADD_ELEMENT_MODEL_CLASS',
-      element: 'div',
-      className: 'model.pLike'
-    })
-    const state = romajsApp(firstState, {
-      type: 'UPDATE_CUSTOMIZATION_ODD'
-    })
-    let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
-    expect(xml.querySelector('elementSpec[ident="div"] > classes > memberOf').getAttribute('key')).toEqual('model.pLike')
-  })
-
-  it('should remove an element from a model class', () => {
-    customJson = JSON.parse(customization)
-    localJson = JSON.parse(localsource)
-
-    const firstState = romajsApp({
-      odd: {
-        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
-        localsource: { isFetching: false, json: localJson }
-      },
-      selectedOdd: ''
-    }, {
-      type: 'DELETE_ELEMENT_MODEL_CLASS',
-      element: 'div',
-      className: 'model.divLike'
-    })
-    const state = romajsApp(firstState, {
-      type: 'UPDATE_CUSTOMIZATION_ODD'
-    })
-    let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
-    expect(xml.querySelector('elementSpec[ident="div"] > classes > memberOf[key="model.divLike"]').getAttribute('mode')).toEqual('delete')
-  })
-
-  it('should update element\'s content model', () => {
-    customJson = JSON.parse(customization)
-    localJson = JSON.parse(localsource)
-
-    const firstState = romajsApp({
-      odd: {
-        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
-        localsource: { isFetching: false, json: localJson }
-      },
-      selectedOdd: ''
-    }, {
-      type: 'UPDATE_CONTENT_MODEL',
-      element: 'title',
-      content: [
-        {
-          key: 'macro.phraseSeq.limited',
-          type: 'macroRef'
-        },
-        {
-          minOccurs: '2',
-          maxOccurs: '234',
-          content: [
-            {
-              key: 'abbr',
-              type: 'elementRef'
-            }
-          ],
-          type: 'alternate'
-        }
-      ]
-    })
-    const state = romajsApp(firstState, {
-      type: 'UPDATE_CUSTOMIZATION_ODD'
-    })
-    let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
-    expect(xml.querySelector('elementSpec[ident="title"] > content > macroRef').getAttribute('key')).toEqual('macro.phraseSeq.limited')
-    expect(xml.querySelector('elementSpec[ident="title"] > content > alternate').getAttribute('minOccurs')).toEqual('2')
-    expect(xml.querySelector('elementSpec[ident="title"] > content > alternate').getAttribute('maxOccurs')).toEqual('234')
-    expect(xml.querySelector('elementSpec[ident="title"] > content > alternate > elementRef').getAttribute('key')).toEqual('abbr')
-  })
-
-  it('should create a new element', () => {
-    customJson = JSON.parse(customization)
-    localJson = JSON.parse(localsource)
-
-    // Update JSON data directly
-    customJson.elements.push({
-      ident: 'newElement',
-      type: 'elements',
-      module: 'core',
-      desc: [ '<desc xmlns="http://tei-c.org/ns/1.0" xml:lang="en">New Element Desc</desc>' ],
-      shortDesc: '',
-      gloss: [],
-      altIdent: ['newEl'],
-      classes: {
-        model: [
-          'model.biblLike'
-        ],
-        atts: []
-      },
-      attributes: [
-        {
-          ident: 'newAttribute',
-          desc: ['<desc xmlns="http://tei-c.org/ns/1.0" xml:lang="en">sdf</desc>'],
-          gloss: [],
-          altIdent: ['now'],
-          datatype: {
-            dataRef: {
-              name: 'string',
-              dataFacet: [],
-              restriction: '[ba]'
-            }
-          },
-          valDesc: ['<valDesc xmlns="http://tei-c.org/ns/1.0" xml:lang="en">afsfg</valDesc>'],
-          mode: 'add',
-          ns: 'http://example.com/newNS',
-          usage: 'req',
-          _isNew: true,
-          valList: {
-            type: 'semi',
-            valItem: [
-              {
-                ident: 'a'
-              }
-            ]
-          }
-        }
-      ],
-      content: [
-        {
-          key: 'ab',
-          type: 'elementRef'
-        }
-      ],
-      ns: 'http://example.com/ns',
-      _isNew: true
-    })
-
-    const state = romajsApp({
-      odd: {
-        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
-        localsource: { isFetching: false, json: localJson }
-      },
-      selectedOdd: ''
-    }, {
-      type: 'UPDATE_CUSTOMIZATION_ODD'
-    })
-    let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
-    const elSpec = xml.querySelector('elementSpec[ident="newElement"]')
-    // console.log(elSpec.outerHTML)
-    expect(elSpec).toExist()
-    expect(elSpec.getAttribute('ident')).toEqual('newElement')
-    expect(elSpec.getAttribute('ns')).toEqual('http://example.com/ns')
-    expect(elSpec.querySelector('desc').textContent).toEqual('New Element Desc')
-    expect(elSpec.querySelector('altIdent').textContent).toEqual('newEl')
-    expect(elSpec.querySelector('classes > memberOf').getAttribute('key')).toEqual('model.biblLike')
-    expect(elSpec.querySelector('valList').getAttribute('type')).toEqual('semi')
-    expect(elSpec.querySelector('attDef > valDesc').textContent).toEqual('afsfg')
-    expect(elSpec.querySelector('attDef > datatype > dataRef').getAttribute('name')).toEqual('string')
-    expect(elSpec.querySelector('attDef > datatype > dataRef').getAttribute('restriction')).toEqual('[ba]')
-  })
-
-  it('should handle apply changes to ODD settings (metadata)', () => {
-    customJson = JSON.parse(customization)
-    localJson = JSON.parse(localsource)
-
-    customJson.title = 'a title'
-    customJson.author = 'an author'
-    customJson.filename = 'tei_test'
-    customJson.prefix = 'tei_'
-    customJson.targetLang = 'it'
-    customJson.docLang = 'it'
-
-    const firstState = romajsApp({
-      odd: {
-        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
-        localsource: { isFetching: false, json: localJson }
-      },
-      selectedOdd: ''
-    }, {
-      type: 'APPLY_ODD_SETTINGS'
-    })
-
-    const state = romajsApp(firstState, {
-      type: 'UPDATE_CUSTOMIZATION_ODD'
-    })
-    let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
-    const titleStmt = xml.querySelector('fileDesc titleStmt')
-    const schemaSpec = xml.querySelector('schemaSpec')
-    expect(titleStmt.querySelector('title').textContent).toEqual('a title')
-    expect(titleStmt.querySelector('author').textContent).toEqual('an author')
-    expect(schemaSpec.getAttribute('ident')).toEqual('tei_test')
-    expect(schemaSpec.getAttribute('prefix')).toEqual('tei_')
-    expect(schemaSpec.getAttribute('targetLang')).toEqual('it')
-    expect(schemaSpec.getAttribute('docLang')).toEqual('it')
-  })
-
   it('should change the desc of an attribute value on an element.', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)
@@ -1465,5 +1258,281 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     xml = global.usejsdom(xml)
     // No other changes exist in this element, so the elementSpec should no longer be there.
     expect(xml.querySelector('elementSpec[ident="div"]')).toNotExist()
+  })
+
+  it('should set a datatype for an element attribute inherited from a class.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
+      element: 'title',
+      className: 'att.typed',
+      attName: 'type'
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'SET_DATATYPE',
+      member: 'title',
+      memberType: 'element',
+      attr: 'type',
+      datatype: 'string'
+    })
+    const state = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type"] > datatype > dataRef').getAttribute('name')).toEqual('string')
+  })
+
+  it('should set a restriction on a datatype for an element attribute inherited from a class.', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT',
+      element: 'title',
+      className: 'att.typed',
+      attName: 'type'
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'SET_DATATYPE_RESTRICTION',
+      member: 'title',
+      memberType: 'element',
+      attr: 'type',
+      value: '[ab]'
+    })
+    const state = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type"] > datatype > dataRef[key="teidata.enumerated"]').getAttribute('restriction')).toEqual('[ab]')
+  })
+
+  // ELEMENT MODEL CLASSES
+
+  it('should make an element member of model class', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'ADD_ELEMENT_MODEL_CLASS',
+      element: 'div',
+      className: 'model.pLike'
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="div"] > classes > memberOf').getAttribute('key')).toEqual('model.pLike')
+  })
+
+  it('should remove an element from a model class', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'DELETE_ELEMENT_MODEL_CLASS',
+      element: 'div',
+      className: 'model.divLike'
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="div"] > classes > memberOf[key="model.divLike"]').getAttribute('mode')).toEqual('delete')
+  })
+
+  // ELEMENT CONTENT MODEL
+
+  it('should update element\'s content model', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_CONTENT_MODEL',
+      element: 'title',
+      content: [
+        {
+          key: 'macro.phraseSeq.limited',
+          type: 'macroRef'
+        },
+        {
+          minOccurs: '2',
+          maxOccurs: '234',
+          content: [
+            {
+              key: 'abbr',
+              type: 'elementRef'
+            }
+          ],
+          type: 'alternate'
+        }
+      ]
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    expect(xml.querySelector('elementSpec[ident="title"] > content > macroRef').getAttribute('key')).toEqual('macro.phraseSeq.limited')
+    expect(xml.querySelector('elementSpec[ident="title"] > content > alternate').getAttribute('minOccurs')).toEqual('2')
+    expect(xml.querySelector('elementSpec[ident="title"] > content > alternate').getAttribute('maxOccurs')).toEqual('234')
+    expect(xml.querySelector('elementSpec[ident="title"] > content > alternate > elementRef').getAttribute('key')).toEqual('abbr')
+  })
+
+  // NEW ELEMENTS
+
+  it('should create a new element', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    // Update JSON data directly
+    customJson.elements.push({
+      ident: 'newElement',
+      type: 'elements',
+      module: 'core',
+      desc: [ '<desc xmlns="http://tei-c.org/ns/1.0" xml:lang="en">New Element Desc</desc>' ],
+      shortDesc: '',
+      gloss: [],
+      altIdent: ['newEl'],
+      classes: {
+        model: [
+          'model.biblLike'
+        ],
+        atts: []
+      },
+      attributes: [
+        {
+          ident: 'newAttribute',
+          desc: ['<desc xmlns="http://tei-c.org/ns/1.0" xml:lang="en">sdf</desc>'],
+          gloss: [],
+          altIdent: ['now'],
+          datatype: {
+            dataRef: {
+              name: 'string',
+              dataFacet: [],
+              restriction: '[ba]'
+            }
+          },
+          valDesc: ['<valDesc xmlns="http://tei-c.org/ns/1.0" xml:lang="en">afsfg</valDesc>'],
+          mode: 'add',
+          ns: 'http://example.com/newNS',
+          usage: 'req',
+          _isNew: true,
+          valList: {
+            type: 'semi',
+            valItem: [
+              {
+                ident: 'a'
+              }
+            ]
+          }
+        }
+      ],
+      content: [
+        {
+          key: 'ab',
+          type: 'elementRef'
+        }
+      ],
+      ns: 'http://example.com/ns',
+      _isNew: true
+    })
+
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    const elSpec = xml.querySelector('elementSpec[ident="newElement"]')
+    // console.log(elSpec.outerHTML)
+    expect(elSpec).toExist()
+    expect(elSpec.getAttribute('ident')).toEqual('newElement')
+    expect(elSpec.getAttribute('ns')).toEqual('http://example.com/ns')
+    expect(elSpec.querySelector('desc').textContent).toEqual('New Element Desc')
+    expect(elSpec.querySelector('altIdent').textContent).toEqual('newEl')
+    expect(elSpec.querySelector('classes > memberOf').getAttribute('key')).toEqual('model.biblLike')
+    expect(elSpec.querySelector('valList').getAttribute('type')).toEqual('semi')
+    expect(elSpec.querySelector('attDef > valDesc').textContent).toEqual('afsfg')
+    expect(elSpec.querySelector('attDef > datatype > dataRef').getAttribute('name')).toEqual('string')
+    expect(elSpec.querySelector('attDef > datatype > dataRef').getAttribute('restriction')).toEqual('[ba]')
+  })
+
+  // ODD SETTINGS / METADATA
+
+  it('should handle apply changes to ODD settings (metadata)', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    customJson.title = 'a title'
+    customJson.author = 'an author'
+    customJson.filename = 'tei_test'
+    customJson.prefix = 'tei_'
+    customJson.targetLang = 'it'
+    customJson.docLang = 'it'
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'APPLY_ODD_SETTINGS'
+    })
+
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.usejsdom(xml)
+    const titleStmt = xml.querySelector('fileDesc titleStmt')
+    const schemaSpec = xml.querySelector('schemaSpec')
+    expect(titleStmt.querySelector('title').textContent).toEqual('a title')
+    expect(titleStmt.querySelector('author').textContent).toEqual('an author')
+    expect(schemaSpec.getAttribute('ident')).toEqual('tei_test')
+    expect(schemaSpec.getAttribute('prefix')).toEqual('tei_')
+    expect(schemaSpec.getAttribute('targetLang')).toEqual('it')
+    expect(schemaSpec.getAttribute('docLang')).toEqual('it')
   })
 })

@@ -16,7 +16,8 @@ import {
 } from '../actions/elements'
 
 function deleteAttribute(m, attribute) {
-  const newAtt = Object.assign({}, attribute, {mode: 'delete'})
+  const newAtt = clone(attribute)
+  newAtt.mode = 'delete'
   if (!m.attributes) {
     m.attributes = [newAtt]
   } else {
@@ -38,7 +39,11 @@ function restoreClassAttributeDeletedOnClass(element, className, attName, locals
   const attribute = localClass.attributes.filter(a => a.ident === attName)[0]
   customization.elements.forEach(m => {
     if (m.ident === element) {
-      m.attributes.push(Object.assign({}, attribute, {mode: 'change', changed: 'false'}))
+      m.attributes.push(Object.assign({}, attribute, {
+        mode: 'change',
+        _changed: false,
+        inheritedFrom: className
+      }))
     }
   })
 }

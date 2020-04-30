@@ -49,6 +49,7 @@ const mapStateToProps = (state, ownProps) => {
           if (redefinedAtt) {
             att.overridden = false
             att.deleted = false
+            att.mode = redefinedAtt.mode
             if (redefinedAtt.mode === 'delete') {
               att.deleted = true
               curClass.deletedAttributes.add(att.ident)
@@ -96,7 +97,7 @@ const mapStateToProps = (state, ownProps) => {
   // Check for deleted attributes that were defined on the element only
   // ie are not inherited from a class.
   for (const att of element.attributes) {
-    if (att.mode === 'delete' && att.onElement) {
+    if (att.mode === 'delete' && att.onElement && att._isNew) {
       att.shortDesc = localElement.attributes.filter(a => (a.ident === att.ident))[0].shortDesc
       att.deleted = true
     }
