@@ -94,7 +94,7 @@ export default class Attributes extends Component {
               this.props.memberClasses.map((c, pos) => {
                 let deleted = ''
                 let content = <Link to={`/class/${c.ident}`}>{c.ident}</Link>
-                if (c.mode === 'deleted') {
+                if (c.mode === 'deleted' || c.deleted) {
                   deleted = 'romajs-att-deleted'
                   content = `${c.ident} (not available)`
                 }
