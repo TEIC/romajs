@@ -11,6 +11,8 @@ const mapStateToProps = (state, ownProps) => {
   const element = clone(ownProps.element)
   const localElement = state.odd.localsource.json.elements.filter(le => (le.ident === element.ident))[0]
 
+  let deletedAttributesFromClasses = new Set()
+
   const getClasses = (classNames, sub = false, from = '') => {
     // Get attribute classes
     return classNames.reduce((acc, className) => {
@@ -75,6 +77,9 @@ const mapStateToProps = (state, ownProps) => {
         if (subClasses.size > 0) {
           tempAcc = tempAcc.concat(getClasses(Array.from(subClasses), true, curClass.ident))
         }
+
+        // store list of deleted attribures
+        deletedAttributesFromClasses = new Set([...deletedAttributesFromClasses, ...curClass.deletedAttributes])
         return tempAcc
       }
 
@@ -94,12 +99,15 @@ const mapStateToProps = (state, ownProps) => {
     return a.ident > b.ident
   })
 
-  // Check for deleted attributes that were defined on the element only
-  // ie are not inherited from a class.
   for (const att of element.attributes) {
+    // Check for deleted attributes that were defined on the element only
+    // ie are not inherited from a class.
     if (att.mode === 'delete' && att.onElement && att._isNew) {
       att.shortDesc = localElement.attributes.filter(a => (a.ident === att.ident))[0].shortDesc
       att.deleted = true
+    } else if (deletedAttributesFromClasses.has(att.ident)) {
+      // Skip this attribute if it's modifying a class element
+      att.onElement = false
     }
   }
 
