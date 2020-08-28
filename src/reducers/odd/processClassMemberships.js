@@ -22,9 +22,11 @@ export function processClassMemberships(specElement, specData, localData, change
         // Place <classes> after documentation elements if present, or first.
         const lastDocEl = Array.from(specElement.querySelectorAll('desc, gloss, altIdent, equiv')).pop()
         if (lastDocEl) {
-          specElement.insertBefore(classesEl, lastDocEl.nextSibling)
+          specElement.insertBefore(classesEl, lastDocEl.nextElementSibling)
+        } else if (specElement.firstChild) {
+          specElement.insertBefore(classesEl, specElement.firstElementChild)
         } else {
-          specElement.insertBefore(classesEl, specElement.firstChild)
+          specElement.appendChild(classesEl)
         }
       }
       // Add
