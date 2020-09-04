@@ -49,8 +49,8 @@ function createAttribute(attList, att, odd) {
     }
     insertBetween(
       attDef, datatype,
-      'desc, gloss, altIdent, equiv',
-      'constraintSpec, defaultVal, valList, valDesc, exemplum, remarks')
+      ['desc', 'gloss', 'altIdent', 'equiv'],
+      ['constraintSpec', 'defaultVal', 'valList', 'valDesc', 'exemplum', 'remarks'])
   }
   attList.appendChild(attDef)
   return odd
@@ -209,8 +209,8 @@ function changeAttr(att, localAtt, attDef, odd) {
                   datatype = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'datatype')
                   insertBetween(
                     attDef, datatype,
-                    'desc, gloss, altIdent, equiv',
-                    'constraintSpec, defaultVal, valList, valDesc, exemplum, remarks')
+                    ['desc', 'gloss', 'altIdent', 'equiv'],
+                    ['constraintSpec', 'defaultVal', 'valList', 'valDesc', 'exemplum', 'remarks'])
                 }
                 let dataRef = datatype.querySelector('dataRef')
                 if (!dataRef) {
@@ -234,8 +234,8 @@ function changeAttr(att, localAtt, attDef, odd) {
                   datatype = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'datatype')
                   insertBetween(
                     attDef, datatype,
-                    'desc, gloss, altIdent, equiv',
-                    'constraintSpec, defaultVal, valList, valDesc, exemplum, remarks')
+                    ['desc', 'gloss', 'altIdent', 'equiv'],
+                    ['constraintSpec', 'defaultVal', 'valList', 'valDesc', 'exemplum', 'remarks'])
                 }
                 let dataRef = datatype.querySelector('dataRef')
                 if (!dataRef) {
@@ -280,8 +280,8 @@ export function processAttributes(specElement, specData, localData, localsource,
         // Place <attList> after documentation elements in right position
         insertBetween(
           specElement, attList,
-          'desc, gloss, altIdent, equiv, classes, content, valList, constraintSpec',
-          'model, modelGrp, modelSequence, exemplum, remarks, listRef')
+          ['desc', 'gloss', 'altIdent', 'equiv', 'classes', 'content', 'valList', 'constraintSpec'],
+          ['model', 'modelGrp', 'modelSequence', 'exemplum', 'remarks', 'listRef'])
       }
       if (toAdd) {
         // Make sure the element isn't defined already

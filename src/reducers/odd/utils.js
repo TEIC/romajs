@@ -19,11 +19,12 @@ export function areDocElsEqual(a, b) {
 }
 
 export function insertBetween(parent, element, before, after) {
-  const lastElBefore = Array.from(parent.querySelectorAll(before)).pop()
+  const lastElBefore = Array.from(parent.children).filter(e => before.indexOf(e.tagName) !== -1).pop()
   if (lastElBefore) {
-    parent.insertBefore(element, lastElBefore.nextSibling)
+    parent.insertBefore(element, lastElBefore.nextElementSibling)
   } else {
-    const firstElAfter = Array.from(parent.querySelectorAll(after)).shift()
+    const firstElAfter = Array.from(parent.children).filter(e => after.indexOf(e.tagName) !== -1).shift()
+    console.log(firstElAfter)
     if (firstElAfter) {
       parent.insertBefore(element, firstElAfter)
     } else {

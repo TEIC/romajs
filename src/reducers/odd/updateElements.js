@@ -103,8 +103,9 @@ export function updateElements(localsource, customization, odd) {
                 // Place <content> after documentation elements in right position
                 insertBetween(
                   elSpec, contentEl,
-                  'desc, gloss, altIdent, equiv, classes',
-                  'valList, constraintSpec, attList, model, modelGrp, modelSequence, exemplum, remarks, listRef')
+                  ['desc', 'gloss', 'altIdent', 'equiv', 'classes'],
+                  ['valList', 'constraintSpec', 'attList', 'model', 'modelGrp',
+                    'modelSequence', 'exemplum', 'remarks', 'listRef'])
               }
               // JSON -> XML
               _cntToXml(el.content, contentEl)
