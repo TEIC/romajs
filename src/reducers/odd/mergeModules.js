@@ -18,7 +18,10 @@ export function mergeModules(localsource, customization, odd) {
   // Add modules based on elementRef classRef dataRef macroRef (attRef?)
   // Using schemaSpec > elementRef to make sure content > elementRef is ignored
   const memberRefs = Array.from(
-    schemaSpec.querySelectorAll('schemaSpec > elementRef, schemaSpec > classRef, schemaSpec > dataRef, schemaSpec > macroRef'))
+    odd.querySelectorAll(
+      `specGrp > elementRef, specGrp > classRef, specGrp > specGrp, specGrp > macroRef,
+      schemaSpec > elementRef, schemaSpec > classRef, schemaSpec > dataRef, schemaSpec > macroRef`
+    ))
   memberRefs.map(el => {
     const ident = el.getAttribute('key')
     oddModuleNames.add(allLocalMembers.filter(m => m.ident === ident)[0].module)

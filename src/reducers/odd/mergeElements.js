@@ -3,9 +3,9 @@ export function mergeElements(localsource, customization, odd) {
   // changes in element selection via moduleRef or elementRef. It applies those changes and returns a new ODD.
   // NB It operates on the FIRST schemaSpec; this could be an issue.
   const schemaSpec = odd.querySelector('schemaSpec')
-  const moduleRefs = Array.from(schemaSpec.querySelectorAll('moduleRef'))
-  const elementSpecs = schemaSpec.querySelectorAll('elementSpec')
-  const elementRefs = schemaSpec.querySelectorAll('elementRef')
+  const moduleRefs = Array.from(odd.querySelectorAll('schemaSpec > moduleRef, specGrp > moduleRef'))
+  const elementSpecs = odd.querySelectorAll('schemaSpec > elementSpec, specGrp > elementSpec')
+  const elementRefs = odd.querySelectorAll('schemaSpec > elementRef, specGrp > elementRef')
 
   // Get all elements from the XML ODD
   let allOddElements = moduleRefs.reduce((includedElements, mod) => {
