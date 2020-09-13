@@ -43,7 +43,7 @@ const mapStateToProps = (state, ownProps) => {
   const macros = []
   // TODO: sort by ident
   for (const ac of localMacros.concat(customMacros)) {
-    macros.push([ac.ident, ac.shortDesc])
+    macros.push([ac.ident, ac.ident])
   }
 
   // Get all datatypes from state
@@ -70,7 +70,7 @@ const mapStateToProps = (state, ownProps) => {
   const elements = []
   // TODO: sort by ident
   for (const ac of localElements.concat(customElements)) {
-    elements.push([ac.ident, ac.shortDesc])
+    elements.push([ac.ident, ac.ident])
   }
 
   // Get all classes from state
@@ -82,10 +82,10 @@ const mapStateToProps = (state, ownProps) => {
   // TODO: sort by ident
   const classes = []
   for (const ac of attClasses) {
-    classes.push([ac.ident, ac.shortDesc])
+    classes.push([ac.ident, ac.ident])
   }
   for (const mc of modClasses) {
-    classes.push([mc.ident, mc.shortDesc])
+    classes.push([mc.ident, mc.ident])
   }
   return {flattenedContent, macros, classes, elements, datatypes}
 }
