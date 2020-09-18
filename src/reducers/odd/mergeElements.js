@@ -138,7 +138,7 @@ export function mergeElements(localsource, customization, odd) {
         const newModuleRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'moduleRef')
         newModuleRef.setAttribute('key', mod)
         newModuleRef.setAttribute('include', el)
-        schemaSpec.insertBefore(newModuleRef, moduleRefs[0])
+        schemaSpec.append(newModuleRef)
         // add to list of existing moduleRefs
         moduleRefs.unshift(newModuleRef)
       }
