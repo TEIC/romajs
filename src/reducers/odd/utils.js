@@ -24,7 +24,6 @@ export function insertBetween(parent, element, before, after) {
     parent.insertBefore(element, lastElBefore.nextElementSibling)
   } else {
     const firstElAfter = Array.from(parent.children).filter(e => after.indexOf(e.tagName) !== -1).shift()
-    console.log(firstElAfter)
     if (firstElAfter) {
       parent.insertBefore(element, firstElAfter)
     } else {

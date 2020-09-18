@@ -309,13 +309,17 @@ export function oddElements(state, action) {
             // Remove membership to this class
             m.classes.atts.splice(idx, 1)
             // Also remove all attributes from this class that have been redefined
-            const lClass = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
+            const lClass = localsource.classes.attributes.filter(c => {
+              return c.ident === action.className
+            })[0]
             if (m.attributes) {
               m.attributes = m.attributes.filter(att => {
-                if (!lClass.attributes.filter(la => {la.ident === att.ident})[0]) {
-                  return false
+                if (lClass.attributes.filter(la => {
+                  return la.ident === att.ident
+                }).length === 0) {
+                  return true
                 }
-                return true
+                return false
               })
             }
             markChange(m, 'attClasses')
