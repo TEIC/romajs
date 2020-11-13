@@ -32,3 +32,39 @@ export function insertBetween(parent, element, before, after) {
   }
   return element
 }
+
+export function isMemberExplicitlyDeleted(odd, ident, type, module) {
+  // A utility function that looks in the ODD XML for an explicit exclusion or deletion.
+
+  // Look for element with ident
+  const memberDef = odd.querySelector(`schemaSpec > *[ident='${ident}'], specGrp > *[ident='${ident}']`)
+  if (memberDef) {
+    return memberDef.getAttribute('mode') === 'delete'
+  }
+
+  // Look on moduleRef
+  const moduleRef = odd.querySelector(`schemaSpec > moduleRef[key='${module}'], specGrp > moduleRef[key='${module}']`)
+
+  if (moduleRef) {
+    // If it's a class, it's always included.
+    if (type === 'class') {
+      return false
+    }
+
+    // Elements can be excluded on the moduleRef, so check.
+    if (moduleRef.hasAttribute('include')) {
+      const include = moduleRef.getAttribute('include')
+      if (include.split(' ').indexOf(ident) === -1) {
+        return true
+      }
+    } else if (moduleRef.hasAttribute('except')) {
+      const except = moduleRef.getAttribute('except')
+      if (except.split(' ').indexOf(ident) > -1) {
+        return true
+      }
+    }
+  }
+
+  // at this point we assume that if there's no moduleRef, that counts as being explicitly excluded.
+  return true
+}

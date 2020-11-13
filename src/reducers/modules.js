@@ -2,6 +2,36 @@ import {
   INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS, INCLUDE_CLASSES, EXCLUDE_CLASSES, INCLUDE_DATATYPES, EXCLUDE_DATATYPES
 } from '../actions/modules'
 import { clone } from '../utils/clone'
+import { isMemberExplicitlyDeleted } from './odd/utils'
+
+class ODDCache {
+  // A Cache for a parsed ODD document that gets instanced if any of these reducers need to
+  // look at the ODD XML specifically.
+  setParser() {
+    this.parser = new DOMParser()
+  }
+
+  parseODD(odd) {
+    this.stringOdd = odd
+    this.odd = this.parser.parseFromString(odd, 'text/xml')
+    if (global.usejsdom) {
+      // replace DOM with JSDOM
+      this.odd = global.usejsdom(this.odd)
+    }
+  }
+
+  setup(odd) {
+    // parse odd if necessary
+    if (!this.odd || this.stringOdd !== odd) {
+      if (!this.parser) {
+        this.setParser()
+      }
+      this.parseODD(odd)
+    }
+  }
+}
+
+const oddCache = new ODDCache()
 
 function getElementByIdent(source, ident) {
   return source.elements.filter(m => { return m.ident === ident })[0]
@@ -91,18 +121,21 @@ export function oddModules(state, action) {
         const localEl = getElementByIdent(localsource, el)
         const newEl = clone(localEl)
         newEl._changed = ['all']
-        // Make sure only references to classes that are in the customization are included.
+        // Make sure to add only references to classes that are not explicitly removed
+        // Need to look at XML ODD because some classes may have been orphaned
+        // and ZAPped (dropped) during ODD compilation.
         if (newEl.classes) {
+          oddCache.setup(state.customization.xml)
           newEl.classes.atts = newEl.classes.atts.reduce((acc, cl) => {
-            const customCl = customization.classes.attributes.filter(ccl => (cl === ccl.ident))[0]
-            if (customCl) {
+            const localCl = localsource.classes.attributes.filter(ccl => (cl === ccl.ident))[0]
+            if (!isMemberExplicitlyDeleted(oddCache.odd, localCl.ident, 'class', localCl.module)) {
               acc.push(cl)
             }
             return acc
           }, [])
           newEl.classes.model = newEl.classes.model.reduce((acc, cl) => {
-            const customCl = customization.classes.models.filter(ccl => (cl === ccl.ident))[0]
-            if (customCl) {
+            const localCl = localsource.classes.models.filter(ccl => (cl === ccl.ident))[0]
+            if (!isMemberExplicitlyDeleted(oddCache.odd, localCl.ident, 'class', localCl.module)) {
               acc.push(cl)
             }
             return acc
@@ -150,19 +183,22 @@ export function oddModules(state, action) {
           newCl.cloned = true
           customization.classes[action.classType].push(newCl)
         }
-        // Make sure only references to classes that are in the customization are included.
+        // Make sure only references to classes that are not explicitly removed
+        // Need to look at XML ODD because some classes may have been orphaned
+        // and ZAPped (dropped) during ODD compilation.
         if (newCl.classes) {
+          oddCache.setup(state.customization.xml)
           newCl.classes.atts = newCl.classes.atts.reduce((acc, lcl) => {
-            const customCl = customization.classes.attributes.filter(ccl => (lcl === ccl.ident))[0]
-            if (customCl) {
-              acc.push(lcl)
+            const lCl = localsource.classes.attributes.filter(ccl => (lcl === ccl.ident))[0]
+            if (!isMemberExplicitlyDeleted(oddCache.odd, lCl.ident, 'class', lCl.module)) {
+              acc.push(cl)
             }
             return acc
           }, [])
           newCl.classes.model = newCl.classes.model.reduce((acc, lcl) => {
-            const customCl = customization.classes.models.filter(ccl => (lcl === ccl.ident))[0]
-            if (customCl) {
-              acc.push(lcl)
+            const lCl = localsource.classes.models.filter(ccl => (lcl === ccl.ident))[0]
+            if (!isMemberExplicitlyDeleted(oddCache.odd, lCl.ident, 'class', lCl.module)) {
+              acc.push(cl)
             }
             return acc
           }, [])

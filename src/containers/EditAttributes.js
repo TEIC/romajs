@@ -45,7 +45,7 @@ const mapStateToProps = (state, ownProps) => {
           }
         }
 
-        // Check if a definition in the element overrides or deletes an inhereted attribute
+        // Check if a definition in the element overrides or deletes an inherited attribute
         for (const att of curClass.attributes) {
           const redefinedAtt = element.attributes.filter((a) => (a.ident === att.ident))[0]
           if (redefinedAtt) {
@@ -81,9 +81,25 @@ const mapStateToProps = (state, ownProps) => {
         // store list of deleted attribures
         deletedAttributesFromClasses = new Set([...deletedAttributesFromClasses, ...curClass.deletedAttributes])
         return tempAcc
+      } else {
+        // The class requested doesn't appear to be in the customization,
+        // but if its module is selected, it may have been zapped. So include it.
+        if (state.odd.localsource.json.modules.filter(m => m.ident === localClass.module)[0]) {
+          let tempAcc = Array.from(acc)
+          const curClass = clone(localClass)
+          curClass.sub = sub
+          curClass.from = from
+          tempAcc.push(curClass)
+          // Get inherited classes
+          if (curClass.classes) {
+            if (curClass.classes.atts.length > 0) {
+              tempAcc = tempAcc.concat(getClasses(curClass.classes.atts, true, curClass.ident))
+            }
+          }
+          return tempAcc
+        }
+        return acc
       }
-
-      return acc
     }, [])
   }
 

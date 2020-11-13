@@ -89,7 +89,7 @@ describe('ODD modules operation reducers', () => {
     localJSON = JSON.parse(localsource)
     const state = romajsApp({
       odd: {
-        customization: { isFetching: false, json: customJSON },
+        customization: { isFetching: false, json: customJSON, xml: '<TEI/>' },
         localsource: { isFetching: false, json: localJSON }
       },
       selectedOdd: ''
