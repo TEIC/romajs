@@ -32,6 +32,7 @@ export function updateElements(localsource, customization, odd) {
         elSpec.setAttribute('ns', el.ns)
       }
       elSpec.setAttribute('mode', 'add')
+      elSpec.setAttribute('module', el.module)
 
       // Create documentation elements
       createDocEls(elSpec, el, odd)
