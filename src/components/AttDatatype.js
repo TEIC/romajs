@@ -4,15 +4,11 @@ import DataRef from './DataRef'
 
 export default class AttDatatype extends Component {
   render() {
-    let datatype = this.props.attribute.datatype.dataRef.key
+    const refType = this.props.attribute.datatype.dataRef.key
+      ? 'key'
+      : 'name'
     const available = this.props.attribute.datatype.dataRef._deleted ? false : true
-    if (!datatype) {
-      datatype = this.props.attribute.datatype.dataRef.name
-    }
-    if (!datatype) {
-      datatype = this.props.attribute.datatype.dataRef.ref
-    }
-
+    const datatype = this.props.attribute.datatype.dataRef[refType]
     const restriction = this.props.attribute.datatype.dataRef.restriction || ''
 
     return (<div className="mdc-layout-grid__inner romajs-formrow">
@@ -24,6 +20,7 @@ export default class AttDatatype extends Component {
       </div>
       <div className="mdc-layout-grid__cell--span-9">
         <DataRef member={this.props.member}
+          refType={refType}
           memberType={this.props.memberType}
           datatype={datatype}
           available={available}
