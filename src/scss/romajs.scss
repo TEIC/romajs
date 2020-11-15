@@ -100,7 +100,19 @@ body {
 }
 
 main {
-  margin-top: 70px;
+  margin-top: 195px;
+}
+
+@media screen and (min-width: 530px) {
+  main {
+    margin-top: 125px;
+  }
+}
+
+@media screen and (min-width: 1090px) {
+  main {
+    margin-top: 70px;
+  }
 }
 
 /* TOOLBAR */
