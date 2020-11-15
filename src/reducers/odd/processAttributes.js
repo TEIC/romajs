@@ -262,16 +262,19 @@ function changeAttr(att, localAtt, attDef, odd) {
 }
 
 export function processAttributes(specElement, specData, localData, localsource, odd) {
-  const localAtts = localData.attributes.reduce((acc, att) => {
-    acc.push(att.ident)
-    return acc
-  }, [])
+  let localAtts = []
+  if (localData) {
+    localAtts = localData.attributes.reduce((acc, att) => {
+      acc.push(att.ident)
+      return acc
+    }, [])
+  }
   for (const att of specData.attributes) {
     const isDefined = localAtts.indexOf(att.ident) !== -1
     const toRemove = att.mode === 'delete'
     const toChange = ((att.mode === 'change' && Boolean(att._changed)) || (att.mode === 'add' && Boolean(att._changed)))
     const toRestore = (isDefined || att.inheritedFrom) && !toRemove && (att.mode === 'change' && !Boolean(att._changed))
-    const toAdd = Boolean(att.clonedFrom) || (!isDefined && !toChange && !toRemove && !toRestore)
+    const toAdd = att._isNew || Boolean(att.clonedFrom) || (!isDefined && !toChange && !toRemove && !toRestore)
 
     if (toRemove || toChange || toAdd) {
       let attList = specElement.querySelector('attList')
@@ -313,38 +316,40 @@ export function processAttributes(specElement, specData, localData, localsource,
         }
       } else if (toChange && att._changed) {
         // First deal with attributes defined on elements.
-        const localAtt = localData.attributes.filter(la => att.ident === la.ident)[0]
-        let comparisonAtt = localAtt
-        if (att._fromClass) {
-          // Is the attribute changed from the class? Otherwise get it from the class
-          // get from class
-          comparisonAtt = localAtt ? localAtt : localsource.classes.attributes
-            .filter(lc => lc.ident === att._fromClass)[0].attributes
-            .filter(lca => lca.ident === att.ident)[0]
-        }
-        if (!isDefined && !att._fromClass) {
-          // We are updating a new attribute defined on this customization
-          const attDef = attList.querySelector(`attDef[ident='${att.ident}']`)
-          if (attDef) {
-            changeAttr(att, null, attDef, odd)
-          } else {
-            const newAttDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
-            newAttDef.setAttribute('ident', att.ident)
-            newAttDef.setAttribute('mode', 'change')
-            changeAttr(att, null, newAttDef, odd)
-            attList.append(newAttDef)
+        if (localData) {
+          const localAtt = localData.attributes.filter(la => att.ident === la.ident)[0]
+          let comparisonAtt = localAtt
+          if (att._fromClass) {
+            // Is the attribute changed from the class? Otherwise get it from the class
+            // get from class
+            comparisonAtt = localAtt ? localAtt : localsource.classes.attributes
+              .filter(lc => lc.ident === att._fromClass)[0].attributes
+              .filter(lca => lca.ident === att.ident)[0]
           }
-        } else {
-          const attDef = attList.querySelector(`attDef[ident='${att.ident}']`)
-          if (attDef) {
-            // there are already some changes from the customization and there are new adjustments
-            changeAttr(att, comparisonAtt, attDef, odd)
+          if (!isDefined && !att._fromClass) {
+            // We are updating a new attribute defined on this customization
+            const attDef = attList.querySelector(`attDef[ident='${att.ident}']`)
+            if (attDef) {
+              changeAttr(att, null, attDef, odd)
+            } else {
+              const newAttDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
+              newAttDef.setAttribute('ident', att.ident)
+              newAttDef.setAttribute('mode', 'change')
+              changeAttr(att, null, newAttDef, odd)
+              attList.append(newAttDef)
+            }
           } else {
-            const newAttDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
-            newAttDef.setAttribute('ident', att.ident)
-            newAttDef.setAttribute('mode', 'change')
-            changeAttr(att, comparisonAtt, newAttDef, odd)
-            attList.append(newAttDef)
+            const attDef = attList.querySelector(`attDef[ident='${att.ident}']`)
+            if (attDef) {
+              // there are already some changes from the customization and there are new adjustments
+              changeAttr(att, comparisonAtt, attDef, odd)
+            } else {
+              const newAttDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
+              newAttDef.setAttribute('ident', att.ident)
+              newAttDef.setAttribute('mode', 'change')
+              changeAttr(att, comparisonAtt, newAttDef, odd)
+              attList.append(newAttDef)
+            }
           }
         }
       }
