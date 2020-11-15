@@ -1,6 +1,6 @@
 {
   "name": "romajs",
-  "version": "0.2.10",
+  "version": "0.3.0",
   "description": "Javascript implementation of Roma in React-Redux",
   "main": "index.js",
   "scripts": {
