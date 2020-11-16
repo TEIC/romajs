@@ -24,6 +24,25 @@ export function updateElements(localsource, customization, odd) {
   // real change wouldn't really have happened.
 
   for (const el of customization.elements) {
+    const _cntToXml = (content, parent) => {
+      for (const cntItem of content) {
+        const cntItemEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', cntItem.type)
+        if (cntItem.key) {
+          cntItemEl.setAttribute('key', cntItem.key)
+        }
+        if (cntItem.maxOccurs) {
+          cntItemEl.setAttribute('maxOccurs', cntItem.maxOccurs)
+        }
+        if (cntItem.minOccurs) {
+          cntItemEl.setAttribute('minOccurs', cntItem.minOccurs)
+        }
+        if (cntItem.content) {
+          _cntToXml(cntItem.content, cntItemEl)
+        }
+        parent.appendChild(cntItemEl)
+      }
+    }
+
     if (el._isNew) {
       // Create new spec
       const elSpec = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'elementSpec')
@@ -41,8 +60,24 @@ export function updateElements(localsource, customization, odd) {
       createClassMemberships(elSpec, el, odd)
 
       // Create attributes
-      if (el.attributes) {
+      if (el.attributes.length > 0) {
         createAttributes(elSpec, el, odd)
+      }
+
+      // Create content
+      if (el.content.length > 0) {
+        let contentEl = elSpec.querySelector('content')
+        if (!contentEl) {
+          contentEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'content')
+          // Place <content> after documentation elements in right position
+          insertBetween(
+            elSpec, contentEl,
+            ['desc', 'gloss', 'altIdent', 'equiv', 'classes'],
+            ['valList', 'constraintSpec', 'attList', 'model', 'modelGrp',
+              'modelSequence', 'exemplum', 'remarks', 'listRef'])
+        }
+        // JSON -> XML
+        _cntToXml(el.content, contentEl)
       }
 
       const schemaSpec = odd.querySelector('schemaSpec')
@@ -78,24 +113,6 @@ export function updateElements(localsource, customization, odd) {
             processAttributes(elSpec, el, localEl, localsource, odd)
             break
           case 'content':
-            const _cntToXml = (content, parent) => {
-              for (const cntItem of content) {
-                const cntItemEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', cntItem.type)
-                if (cntItem.key) {
-                  cntItemEl.setAttribute('key', cntItem.key)
-                }
-                if (cntItem.maxOccurs) {
-                  cntItemEl.setAttribute('maxOccurs', cntItem.maxOccurs)
-                }
-                if (cntItem.minOccurs) {
-                  cntItemEl.setAttribute('minOccurs', cntItem.minOccurs)
-                }
-                if (cntItem.content) {
-                  _cntToXml(cntItem.content, cntItemEl)
-                }
-                parent.appendChild(cntItemEl)
-              }
-            }
             if (!deepCompare(el.content, localEl.content)) {
               elSpec = getOrSetElementSpec(odd, el.ident)
               let contentEl = elSpec.querySelector('content')
