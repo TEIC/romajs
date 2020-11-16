@@ -272,7 +272,7 @@ export function oddElements(state, action) {
           }
         }
       })
-      const localClass = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
+      let localClass = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
       if (customization.classes.attributes.filter(c => (c.ident === action.className)).length === 0) {
         customization.classes.attributes.push(localClass)
       }
@@ -374,7 +374,13 @@ export function oddElements(state, action) {
       return newState
     case DELETE_CLASS_ATTRIBUTE_ON_ELEMENT:
       let customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
-      const attribute = customClass.attributes.filter(a => a.ident === action.attName)[0]
+      let attribute
+      if (customClass) {
+        attribute = customClass.attributes.filter(a => a.ident === action.attName)[0]
+      } else {
+        localClass = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
+        attribute = localClass.attributes.filter(a => a.ident === action.attName)[0]
+      }
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
           deleteAttribute(m, attribute)
@@ -384,7 +390,13 @@ export function oddElements(state, action) {
       return newState
     case CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT:
       customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
-      const attributeToChange = customClass.attributes.filter(a => a.ident === action.attName)[0]
+      let attributeToChange
+      if (customClass) {
+        attributeToChange = customClass.attributes.filter(a => a.ident === action.attName)[0]
+      } else {
+        localClass = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
+        attributeToChange = localClass.attributes.filter(a => a.ident === action.attName)[0]
+      }
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
           const newAtt = Object.assign({}, attributeToChange, {mode: 'change', changed: false, _fromClass: action.className})
