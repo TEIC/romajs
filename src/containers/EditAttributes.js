@@ -82,6 +82,7 @@ const mapStateToProps = (state, ownProps) => {
         deletedAttributesFromClasses = new Set([...deletedAttributesFromClasses, ...curClass.deletedAttributes])
         return tempAcc
       } else {
+        // TODO: code is repeated from above. Needs optimization.
         // The class requested doesn't appear to be in the customization,
         // but if its module is selected, it may have been zapped. So include it.
         if (state.odd.localsource.json.modules.filter(m => m.ident === localClass.module)[0]) {
@@ -89,6 +90,30 @@ const mapStateToProps = (state, ownProps) => {
           const curClass = clone(localClass)
           curClass.sub = sub
           curClass.from = from
+          curClass.deletedAttributes = new Set()
+
+          // Check if a definition in the element overrides or deletes an inherited attribute
+          for (const att of curClass.attributes) {
+            const redefinedAtt = element.attributes.filter((a) => (a.ident === att.ident))[0]
+            if (redefinedAtt) {
+              att.overridden = false
+              att.deleted = false
+              att.mode = redefinedAtt.mode
+              if (redefinedAtt.mode === 'delete') {
+                att.deleted = true
+                curClass.deletedAttributes.add(att.ident)
+              } else if (redefinedAtt.mode === 'change' || redefinedAtt.mode === 'add') {
+                curClass.deletedAttributes.delete(att.ident)
+                if (redefinedAtt._changed === undefined || redefinedAtt._changed.length > 0) {
+                  att.overridden = true
+                }
+              }
+            }
+          }
+          if (curClass.deletedAttributes.size >= curClass.attributes.length) {
+            curClass.inactive = true
+          }
+
           tempAcc.push(curClass)
           // Get inherited classes
           if (curClass.classes) {

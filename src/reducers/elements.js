@@ -331,7 +331,17 @@ export function oddElements(state, action) {
                 deleteAttribute(m, clAtt)
               }
             } else {
-              throw new ReducerException(`Could not locate class ${action.className}.`)
+              // The class must be inherited, but currently not present in the customization
+              // This may happen the a module has recently been added by the user,
+              // or via adding an element from a previously unselected module.
+              const lClass = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
+              if (lClass) {
+                for (const clAtt of lClass.attributes) {
+                  deleteAttribute(m, clAtt)
+                }
+              } else {
+                throw new ReducerException(`Could not locate class ${action.className}.`)
+              }
             }
             markChange(m, 'attributes')
           }
