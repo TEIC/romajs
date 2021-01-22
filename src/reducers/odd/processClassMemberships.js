@@ -53,7 +53,12 @@ export function processClassMemberships(specElement, specData, localData, change
 }
 
 export function createClassMemberships(specElement, specData, odd) {
-  if (specData.classes.atts.length > 0 && specData.classes.model.length > 0) {
+  // If the element is new, just check that the object is well-formed, ie it has the property "classes"
+  // If the element is not new, the check is stricter to make sure that some attributes are already defined
+  if (
+    (specData._isNew && specData.classes)
+    || (specData.classes.atts.length > 0 && specData.classes.model.length > 0)
+  ) {
     const classesEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'classes')
     for (const cl of specData.classes.atts.concat(specData.classes.model)) {
       const memberOf = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'memberOf')
