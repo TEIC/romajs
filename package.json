@@ -10,7 +10,7 @@
     "test:single": "eslint $SCRIPT && mocha --require babel-core/register --require ./test/setup.js $SCRIPT",
     "echo": "echo",
     "start": "node server.js",
-    "build": "rimraf ./dist && cross-env NODE_ENV=\"production\" webpack",
+    "build": "rimraf ./dist && npm run test && cross-env NODE_ENV=\"production\" webpack",
     "lint-break-on-errors": "eslint ./source/js ./webpack.config.js -f table --ext .js --ext .jsx",
     "eslint": "eslint src test"
   },
