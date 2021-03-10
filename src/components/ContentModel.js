@@ -27,7 +27,7 @@ export default class ContentModel extends Component {
               return (<li key={`c${pos}`} className="mdc-list-item">
                 <span className="mdc-list-item__graphic">
                   <i className="material-icons romajs-clickable" onClick={() =>
-                    this.props.deleteElementModelClass(this.props.element.ident, c.key)}>clear</i>
+                    this.props.deleteElementModelClass(this.props.element.ident, c)}>clear</i>
                 </span>
                 <span className="mdc-list-item__text">
                   <span className="mdc-list-item__primary-text">{c}</span>
