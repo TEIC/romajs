@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
   for (const cl of allCustomClasses) {
     allClassIdents.add(cl.ident)
   }
-  return { modules: state.odd.customization.json.modules, allClassIdents: Array.from(allClassIdents) }
+  return { oddname: state.odd.customization.settings.filename, modules: state.odd.customization.json.modules, allClassIdents: Array.from(allClassIdents) }
 }
 
 const mapDispatchToProps = (dispatch) => {

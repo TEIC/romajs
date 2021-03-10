@@ -10,7 +10,7 @@ export default class NewClass extends Component {
     this.state = {
       canCreate: !this.doesClassExist('att.newClass'),
       name: 'att.newClass',
-      module: this.props.modules[0].ident,
+      module: this.props.oddname,
       classType: 'attributes'
     }
     this.dialog
@@ -126,7 +126,8 @@ export default class NewClass extends Component {
                 <div className="mdc-layout-grid__cell--span-3">
                   <label>Module</label>
                   <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                    Choose a module for this class.
+                    Choose a module for this class. NB: it is recommended to only add new elements
+                    to modules defined in the customization.
                   </p>
                 </div>
                 <div className="mdc-layout-grid__cell--span-6">
@@ -136,7 +137,7 @@ export default class NewClass extends Component {
                     <div className="mdc-select__selected-text">{this.state.module}</div>
                     <div className="mdc-select__menu mdc-menu mdc-menu-surface" style={{zIndex: 99}}>
                       <ul className="mdc-list">{
-                        this.props.modules.map((m, i) => {
+                        [{ident: this.props.oddname}, ...this.props.modules].map((m, i) => {
                           return <li key={i} className="mdc-list-item" data-value={m.ident} tabIndex={i}> {m.ident} </li>
                         })
                       }</ul>
@@ -166,6 +167,7 @@ export default class NewClass extends Component {
 NewClass.propTypes = {
   show: PropTypes.bool.isRequired,
   hide: PropTypes.func.isRequired,
+  oddname: PropTypes.string.isRequired,
   modules: PropTypes.array.isRequired,
   createNewClass: PropTypes.func.isRequired,
   allClassIdents: PropTypes.array.isRequired,

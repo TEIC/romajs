@@ -10,13 +10,14 @@ export default class NewElement extends Component {
     this.state = {
       canCreate: !this.doesElementExist('newElement'),
       name: 'newElement',
-      module: this.props.modules[0].ident,
+      module: this.props.oddname,
       ns: this.props.ns || ''
     }
     this.dialog
   }
 
   componentDidMount() {
+    console.log(this.props)
     this.dialog = new MDCDialog(this.refs.na)
     this.dialog.listen('MDCDialog:closed', (event) => {
       switch (event.detail.action) {
@@ -100,7 +101,8 @@ export default class NewElement extends Component {
                 <div className="mdc-layout-grid__cell--span-3">
                   <label>Module</label>
                   <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                    Choose a module for this element.
+                    Choose a module for this element. NB: it is recommended to only add new elements
+                    to modules defined in the customization.
                   </p>
                 </div>
                 <div className="mdc-layout-grid__cell--span-6">
@@ -110,7 +112,7 @@ export default class NewElement extends Component {
                     <div className="mdc-select__selected-text">{this.state.module}</div>
                     <div className="mdc-select__menu mdc-menu mdc-menu-surface" style={{zIndex: 99}}>
                       <ul className="mdc-list">{
-                        this.props.modules.map((m, i) => {
+                        [{ident: this.props.oddname}, ...this.props.modules].map((m, i) => {
                           return <li key={i} className="mdc-list-item" data-value={m.ident} tabIndex={i}> {m.ident} </li>
                         })
                       }</ul>
@@ -156,6 +158,7 @@ export default class NewElement extends Component {
 NewElement.propTypes = {
   show: PropTypes.bool.isRequired,
   hide: PropTypes.func.isRequired,
+  oddname: PropTypes.string.isRequired,
   modules: PropTypes.array.isRequired,
   createNewElement: PropTypes.func.isRequired,
   allElementIdents: PropTypes.array.isRequired,

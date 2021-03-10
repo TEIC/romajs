@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
   for (const dt of state.odd.customization.json.datatypes) {
     allDtIdents.add(dt.ident)
   }
-  return { modules: state.odd.customization.json.modules, allDatatypeIdents: Array.from(allDtIdents) }
+  return { oddname: state.odd.customization.settings.filename, modules: state.odd.customization.json.modules, allDatatypeIdents: Array.from(allDtIdents) }
 }
 
 const mapDispatchToProps = (dispatch) => {
