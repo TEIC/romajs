@@ -17,7 +17,6 @@ export default class NewElement extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     this.dialog = new MDCDialog(this.refs.na)
     this.dialog.listen('MDCDialog:closed', (event) => {
       switch (event.detail.action) {
