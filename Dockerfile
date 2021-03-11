@@ -4,7 +4,7 @@
 # 2. install a NGinx server with the web application from step 1
 #########################################
 
-FROM node:8 as builder
+FROM node:12 as builder
 LABEL maintainer="Raffaele Viglianti and Peter Stadler for the TEI Council"
 
 WORKDIR /var/romajs
