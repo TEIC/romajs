@@ -255,8 +255,10 @@ export function oddElements(state, action) {
               } else {
                 for (const cl of member.classes.atts) {
                   const subClass = customization.classes.attributes.filter(c => (c.ident === cl))[0]
-                  if (hasClass(subClass, className)) {
-                    return true
+                  if (subClass) {
+                    if (hasClass(subClass, className)) {
+                      return true
+                    }
                   }
                 }
                 return false
