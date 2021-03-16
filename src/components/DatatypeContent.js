@@ -127,6 +127,7 @@ export default class DatatypeContent extends Component {
                 <DataRef member={this.props.datatype}
                   memberType="datatype"
                   datatype={c.key || c.name}
+                  available="true"
                   restriction={c.restriction || ''}
                   index={i}
                   setRestriction={(v) => this.setDataRefRestriction(v, c.key || c.name, i)} />
