@@ -54,6 +54,9 @@ export default class Attributes extends Component {
                 <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>
             }/>
             {this.props.attsfromClasses.map((cl, cpos) => {
+              const noattributes = cl.noattributes
+                ? <span key="noatt">This class doesn't define any attributes</span>
+                : ''
               let sub = ''
               if (cl.sub) {
                 sub = `(inherited from ${cl.from})`
@@ -63,8 +66,11 @@ export default class Attributes extends Component {
               if (cl.inactive) {
                 addRemove = (<i className="material-icons romajs-clickable" onClick={() =>
                   this.props.restoreElementAttributeClass(this.props.member.ident, cl.ident, Array.from(cl.deletedAttributes))}>add_circle_outline</i>)
+              } else if (cl.noattributes) {
+                addRemove = null
               }
               return [<h4 key={`clh${cpos}`}>{addRemove} From <Link to={`/class/${cl.ident}`}>{cl.ident}</Link> {sub}</h4>,
+                noattributes,
                 (<ul className="mdc-list" key={`cl${cpos}`}>{
                   cl.attributes.map((a, pos) => {
                     let overridden = ''

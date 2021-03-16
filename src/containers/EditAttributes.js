@@ -18,19 +18,18 @@ const mapStateToProps = (state, ownProps) => {
     return classNames.reduce((acc, className) => {
       const localClass = state.odd.localsource.json.classes.attributes.filter((lc) => (lc.ident === className))[0]
       const c = state.odd.customization.json.classes.attributes.filter(ac => (ac.ident === className))[0]
-      if (c) {
+      const _computeAtts = (classToClone) => {
         let tempAcc = Array.from(acc)
         // clone class
-        const curClass = clone(c)
+        const curClass = clone(classToClone)
         curClass.sub = sub
         curClass.from = from
         curClass.deletedAttributes = new Set()
-
         // We check against the localsource to obtain attributes that have been deleted
         // (ie do not appear in customization)
         if (localClass) {
           for (const localAtt of localClass.attributes) {
-            if (!c.attributes.filter((a) => (a.ident === localAtt.ident))[0]) {
+            if (!classToClone.attributes.filter((a) => (a.ident === localAtt.ident))[0]) {
               curClass.deletedAttributes.add(localAtt.ident)
               curClass.attributes.push(Object.assign({}, localAtt, {mode: 'delete', deleted: true, overridden: false, deletedOnClass: true}))
             }
@@ -63,8 +62,12 @@ const mapStateToProps = (state, ownProps) => {
             }
           }
         }
-        if (curClass.deletedAttributes.size >= curClass.attributes.length) {
+
+        if (curClass.attributes.length > 0
+          && curClass.deletedAttributes.size >= curClass.attributes.length) {
           curClass.inactive = true
+        } else if (curClass.attributes.length === 0) {
+          curClass.noattributes = true
         }
         tempAcc.push(curClass)
         // Get inherited classes from both customization and localsource
@@ -78,50 +81,17 @@ const mapStateToProps = (state, ownProps) => {
           tempAcc = tempAcc.concat(getClasses(Array.from(subClasses), true, curClass.ident))
         }
 
-        // store list of deleted attribures
+        // store list of deleted attributes
         deletedAttributesFromClasses = new Set([...deletedAttributesFromClasses, ...curClass.deletedAttributes])
         return tempAcc
+      }
+      if (c) {
+        return _computeAtts(c)
       } else {
-        // TODO: code is repeated from above. Needs optimization.
         // The class requested doesn't appear to be in the customization,
         // but if its module is selected, it may have been zapped. So include it.
         if (state.odd.localsource.json.modules.filter(m => m.ident === localClass.module)[0]) {
-          let tempAcc = Array.from(acc)
-          const curClass = clone(localClass)
-          curClass.sub = sub
-          curClass.from = from
-          curClass.deletedAttributes = new Set()
-
-          // Check if a definition in the element overrides or deletes an inherited attribute
-          for (const att of curClass.attributes) {
-            const redefinedAtt = element.attributes.filter((a) => (a.ident === att.ident))[0]
-            if (redefinedAtt) {
-              att.overridden = false
-              att.deleted = false
-              att.mode = redefinedAtt.mode
-              if (redefinedAtt.mode === 'delete') {
-                att.deleted = true
-                curClass.deletedAttributes.add(att.ident)
-              } else if (redefinedAtt.mode === 'change' || redefinedAtt.mode === 'add') {
-                curClass.deletedAttributes.delete(att.ident)
-                if (redefinedAtt._changed === undefined || redefinedAtt._changed.length > 0) {
-                  att.overridden = true
-                }
-              }
-            }
-          }
-          if (curClass.deletedAttributes.size >= curClass.attributes.length) {
-            curClass.inactive = true
-          }
-
-          tempAcc.push(curClass)
-          // Get inherited classes
-          if (curClass.classes) {
-            if (curClass.classes.atts.length > 0) {
-              tempAcc = tempAcc.concat(getClasses(curClass.classes.atts, true, curClass.ident))
-            }
-          }
-          return tempAcc
+          return _computeAtts(localClass)
         }
         return acc
       }
