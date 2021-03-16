@@ -5,7 +5,11 @@ function createAttribute(attList, att, odd) {
   const attDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
   attDef.setAttribute('ident', att.ident)
   if (att.usage) {
-    attDef.setAttribute('usage', att.usage)
+    if (att.usage === 'def' && attDef.getAttribute('usage')) {
+      attDef.removeAttribute('usage')
+    } else if (att.usage !== 'def') {
+      attDef.setAttribute('usage', att.usage)
+    }
   }
   if (att.ns) {
     attDef.setAttribute('ns', att.ns)
