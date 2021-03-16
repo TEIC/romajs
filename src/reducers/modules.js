@@ -161,16 +161,19 @@ export function oddModules(state, action) {
           return acc
         }, [])
         // If there are no more elements belonging to the module, remove it
-        const moduleElements = customization.elements.filter(x => {
-          return x.module === localEl.module
-        })
-        if (moduleElements.length === 0) {
-          customization.modules = customization.modules.reduce((acc, m) => {
-            if (m.ident !== localEl.module) {
-              acc.push(m)
-            }
-            return acc
-          }, [])
+        if (localEl) {
+          const moduleElements = customization.elements.filter(x => {
+            return x.module === localEl.module
+          })
+
+          if (moduleElements.length === 0) {
+            customization.modules = customization.modules.reduce((acc, m) => {
+              if (m.ident !== localEl.module) {
+                acc.push(m)
+              }
+              return acc
+            }, [])
+          }
         }
       }
       return Object.assign(state, {customization: customizationObj})
