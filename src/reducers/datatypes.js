@@ -152,7 +152,9 @@ export function oddDatatypes(state, action) {
       }
       customization.datatypes.forEach(dt => {
         if (dt.ident === action.datatype) {
-          if (dt.content[0] && (dt.content.type === 'alternate' || dt.content[0].type === 'sequence')) {
+          if (!dt.content[0]) {
+            dt.content.push(newDataRef)
+          } else if (dt.content[0].type === 'alternate' || dt.content[0].type === 'sequence') {
             dt.content[0].content.push(newDataRef)
           } else {
             dt.content.push(newDataRef)
@@ -167,7 +169,9 @@ export function oddDatatypes(state, action) {
       }
       customization.datatypes.forEach(dt => {
         if (dt.ident === action.datatype) {
-          if (dt.content[0].type === 'alternate' || dt.content[0].type === 'sequence') {
+          if (!dt.content[0]) {
+            dt.content.push(newTextNode)
+          } else if (dt.content[0].type === 'alternate' || dt.content[0].type === 'sequence') {
             dt.content[0].content.push(newTextNode)
           } else {
             dt.content.push(newTextNode)
@@ -182,7 +186,9 @@ export function oddDatatypes(state, action) {
       }
       customization.datatypes.forEach(dt => {
         if (dt.ident === action.datatype) {
-          if (dt.content[0].type === 'alternate' || dt.content[0].type === 'sequence') {
+          if (!dt.content[0]) {
+            dt.content.push(newValList)
+          } else if (dt.content[0].type === 'alternate' || dt.content[0].type === 'sequence') {
             dt.content[0].content.push(newValList)
           } else {
             dt.content.push(newValList)

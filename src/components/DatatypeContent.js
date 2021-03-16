@@ -168,6 +168,7 @@ export default class DatatypeContent extends Component {
                 <div>Closed list of values</div>
                 <ValList key={`vl${i}`}
                   valList={c}
+                  memberType="dt"
                   addValItem={(val) => this.props.addDatatypeValItem(this.props.datatype.ident, i, val)}
                   deleteValItem={(val) => this.props.deleteDatatypeValItem(this.props.datatype.ident, i, val)} />
               </div>

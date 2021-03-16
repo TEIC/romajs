@@ -5,7 +5,9 @@ import { MDCSelect } from '@material/select'
 
 export default class ValList extends Component {
   componentDidMount() {
-    const valList = this.props.attribute.valList || {}
+    const valList = this.props.memberType === 'dt'
+      ? this.props.valList
+      : this.props.attribute.valList || {}
     if (this.props.setValListType) {
       const select = new MDCSelect(this.refs.usage)
       switch (valList.type) {
@@ -31,7 +33,9 @@ export default class ValList extends Component {
   }
 
   render() {
-    const valList = this.props.attribute.valList || {}
+    const valList = this.props.memberType === 'dt'
+      ? this.props.valList
+      : this.props.attribute.valList || {}
     let valItems = []
     if (valList) {
       if (valList.valItem) {
@@ -103,7 +107,8 @@ export default class ValList extends Component {
 ValList.propTypes = {
   member: PropTypes.object.isRequired,
   memberType: PropTypes.string.isRequired,
-  attribute: PropTypes.object.isRequired,
+  attribute: PropTypes.object,
+  valList: PropTypes.object,
   setValListType: PropTypes.func,
   deleteValItem: PropTypes.func.isRequired,
   addValItem: PropTypes.func.isRequired
