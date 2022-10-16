@@ -12,7 +12,7 @@ export default class Header extends Component {
     super(props)
     this.state = {
       showStartOver: false,
-      showLang: false
+      showLang: true
     }
   }
 
