@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Component } from 'react'
 import Download from '../containers/Download'
 import YesNoDialog from './dialogs/YesNo'
-import { i18n as _i18n } from '../localization/Header'
+import { _i18n } from '../localization/i18n'
 import { MDCMenu } from '@material/menu'
 import RomaJSversion from '../utils/version'
 
@@ -22,7 +22,7 @@ export default class Header extends Component {
 
   render() {
     // Set language function
-    const i18n = _i18n(this.props.language)
+    const i18n = _i18n(this.props.language, 'Header')
     let download = null
     let startOver = null
     let settings = null

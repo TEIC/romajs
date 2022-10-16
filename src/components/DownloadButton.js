@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { MDCMenu } from '@material/menu'
-import { i18n as _i18n } from '../localization/DownloadButton'
+import { _i18n } from '../localization/i18n'
 import InfoDialog from './dialogs/Info'
 
 export default class DownloadButton extends Component {
@@ -19,7 +19,7 @@ export default class DownloadButton extends Component {
 
   render() {
     // Set language function
-    const i18n = _i18n(this.props.language)
+    const i18n = _i18n(this.props.language, 'DownloadButton')
     return (
       <div style={{position: 'relative'}}>
         <button disabled={!this.props.isLoaded} className="mdc-button mdc-button--raised toggle" onClick={() => {

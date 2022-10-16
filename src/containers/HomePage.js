@@ -7,7 +7,7 @@ import Home from '../components/Home'
 import oxgarage from '../utils/oxgarage'
 import fetch from 'isomorphic-fetch'
 import datasource from '../utils/datasources'
-import { i18n as _i18n } from '../localization/HomePage'
+import { _i18n } from '../localization/i18n'
 
 const mapStateToProps = (state) => {
   return {
@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getCustomization: (url, lang) => {
-      const i18n = _i18n(lang)
+      const i18n = _i18n(lang, 'HomePage')
       dispatch(clearState())
       dispatch(push('/settings'))
       dispatch(setLoadingStatus(i18n('1/3 Obtaining customization ODD...')))

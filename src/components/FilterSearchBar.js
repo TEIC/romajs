@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { i18n as _i18n } from '../localization/FilterSearchBar'
+import { _i18n } from '../localization/i18n'
 
 export default class FilterSearchBar extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class FilterSearchBar extends Component {
 
   render() {
     // Set language function
-    const i18n = _i18n(this.props.language)
+    const i18n = _i18n(this.props.language, 'FilterSearchBar')
     const style = {}
     if (this.state.fullMatch) {
       style.color = '#225688'

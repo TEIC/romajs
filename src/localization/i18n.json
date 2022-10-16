@@ -1,0 +1,79 @@
+{
+  "AddMemberFab": {
+    "New": {
+      "it": "Nuovo"
+    },
+    "Element": {
+      "it": "Elemento"
+    },
+    "Class": {
+      "it": "Classe"
+    },
+    "Datatype": {
+      "it": "Tipo di dati"
+    }
+  },
+  "DownloadButton": {
+    "Download": {
+      "it": "Scarica"
+    }
+  },
+  "FilterSearchBar": {
+    "filter items": {
+      "it": "cerca"
+    }
+  },
+  "Header": {
+    "Roma - ODD Customization": {
+      "it": "Roma - Personalizzazione ODD"
+    },
+    "Start Over": {
+      "it": "Ricomincia"
+    },
+    "Download": {
+      "it": "Scarica"
+    },
+    "Language": {
+      "it": "Lingua"
+    }
+  },
+  "Home": {
+    "Select ODD": {
+      "it": "Scegli un ODD"
+    },
+    "Upload ODD": {
+      "it": "Carica un ODD"
+    },
+    "Start": {
+      "it": "Comincia"
+    },
+    "Choose a preset": {
+      "it": "Scegli tra i predefiniti"
+    }
+  },
+  "HomePage": {
+    "1/3 Obtaining customization ODD...": {
+      "it": "1/3 Acquisendo customizzazione ODD..."
+    },
+    "2/3 Importing customization ODD...": {
+      "it": "2/3 Importando customizzazione ODD..."
+    },
+    "3/3 Importing full specification source...": {
+      "it": "3/3 Importando la fonte completa..."
+    }
+  },
+  "MembersList": {
+    "Elements": {
+      "it": "Elementi"
+    },
+    "Attribute Classes": {
+      "it": "Classi di attributi"
+    },
+    "Model Classes": {
+      "it": "Classi di modelli"
+    },
+    "Datatypes": {
+      "it": "Tipi di dati"
+    }
+  }
+}

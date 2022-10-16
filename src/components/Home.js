@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
-import { i18n as _i18n } from '../localization/Home'
+import { _i18n } from '../localization/i18n'
 import presets from '../utils/presets'
 
 import {MDCTabBar} from '@material/tabs'
@@ -111,7 +111,7 @@ export default class Home extends Component {
 
   render() {
     // Set language function
-    const i18n = _i18n(this.props.language)
+    const i18n = _i18n(this.props.language, 'Home')
     let disabled = null
     if (this.state.panel === 1 && !this.state.selectedFile) {
       disabled = {disabled: 'disabled'}

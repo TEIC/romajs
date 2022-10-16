@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import CreateNewElement from '../containers/CreateNewElement'
 import CreateNewClass from '../containers/CreateNewClass'
 import CreateNewDatatype from '../containers/CreateNewDatatype'
-import { i18n as _i18n } from '../localization/AddMemberFab'
+import { _i18n } from '../localization/i18n'
 
 export default class AddMemberFab extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export default class AddMemberFab extends Component {
 
   render() {
     // Set language function
-    const i18n = _i18n(this.props.language)
+    const i18n = _i18n(this.props.language, 'AddMemberFab')
     let dialog = null
     switch (this.state.type) {
       case 'element':

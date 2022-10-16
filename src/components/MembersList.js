@@ -5,7 +5,7 @@ import FilterSearch from '../containers/FilterSearch'
 import Member from './Member'
 import MembersFacet from './MemberFacet'
 import AddMemberFab from './AddMemberFab'
-import { i18n as _i18n } from '../localization/MembersList'
+import { _i18n } from '../localization/i18n'
 
 export default class MembersList extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ export default class MembersList extends Component {
 
   render() {
     // Set language function
-    const i18n = _i18n(this.props.language)
+    const i18n = _i18n(this.props.language, 'MembersList')
     let members = <h2 className="mdc-typography--headline5" style={{margin: '2em 0px 0px 40px'}}>No items found. Try searching for something else.</h2>
     if (this.props.members.length > 0) {
       members = (<ul key="list" className="mdc-list mdc-list--two-line romajs-itemlist">
