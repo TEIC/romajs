@@ -25,7 +25,7 @@ You can also deploy it via [Docker](https://hub.docker.com/r/teic/romajs).
 Make sure node.js is installed then:
 
 ```
-$ npm install
+$ npm install --legacy-peer-deps
 ```
 
 ### Test
