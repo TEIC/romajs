@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
       }
     }
   }
-  return {datatype, success, section: ownProps.match.params.section}
+  return {datatype, success, section: ownProps.match.params.section, language: state.ui.language}
 }
 
 const mapDispatchToProps = (dispatch) => {

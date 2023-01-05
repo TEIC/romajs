@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
     allElementIdents.add(el.ident)
   }
   return { oddname: state.odd.customization.settings.filename, modules: state.odd.customization.json.modules,
-    allElementIdents: Array.from(allElementIdents), ns: state.odd.customization.settings.namespace}
+    allElementIdents: Array.from(allElementIdents), ns: state.odd.customization.settings.namespace,
+    language: state.ui.language}
 }
 
 const mapDispatchToProps = (dispatch) => {

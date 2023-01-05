@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { MDCSelect } from '@material/select'
 import { MDCDialog } from '@material/dialog'
+import { _i18n } from '../../localization/i18n'
 
 export default class NewClass extends Component {
   constructor(props) {
@@ -70,6 +71,7 @@ export default class NewClass extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'NewItem')
     const selectedTypeAttributes = this.state.classType === 'attributes' ? 'mdc-chip--selected' : null
     const selectedTypeModel = this.state.classType === 'models' ? 'mdc-chip--selected' : null
     return (
@@ -80,14 +82,14 @@ export default class NewClass extends Component {
         <div className="mdc-dialog__container">
           <div className="mdc-dialog__surface">
             <h2 className="mdc-dialog__title">
-              Create new Class
+              {i18n('Create new Class')}
             </h2>
             <div className="mdc-dialog__content">
               <div className="mdc-layout-grid__inner romajs-formrow">
                 <div className="mdc-layout-grid__cell--span-3">
-                  <label>Class Type</label>
+                  <label>{i18n('Class Type')}</label>
                   <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                    Choose a class type.
+                    {i18n('Choose a class type.')}
                   </p>
                 </div>
                 <div className="mdc-layout-grid__cell--span-9">
@@ -96,12 +98,12 @@ export default class NewClass extends Component {
                       <div className={`mdc-chip ${selectedTypeAttributes}`} tabIndex="0" onClick={() => {
                         this.setState({classType: 'attributes'})
                       }}>
-                        <div className="mdc-chip__text">Attributes</div>
+                        <div className="mdc-chip__text">{i18n('Attributes')}</div>
                       </div>
                       <div className={`mdc-chip ${selectedTypeModel}`} tabIndex="1" onClick={() => {
                         this.setState({classType: 'models'})
                       }}>
-                        <div className="mdc-chip__text mdc-ripple-upgraded">Model</div>
+                        <div className="mdc-chip__text mdc-ripple-upgraded">{i18n('Model')}</div>
                       </div>
                     </div>
                   </div>
@@ -109,9 +111,9 @@ export default class NewClass extends Component {
               </div>
               <div className="mdc-layout-grid__inner romajs-formrow">
                 <div className="mdc-layout-grid__cell--span-3">
-                  <label>Name</label>
+                  <label>{i18n('Name')}</label>
                   <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                    Set the new class name.
+                    {i18n('Set the new class name.')}
                   </p>
                 </div>
                 <div className="mdc-layout-grid__cell--span-6">
@@ -124,11 +126,9 @@ export default class NewClass extends Component {
               </div>
               <div className="mdc-layout-grid__inner romajs-formrow">
                 <div className="mdc-layout-grid__cell--span-3">
-                  <label>Module</label>
-                  <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                    Choose a module for this class. NB: it is recommended to only add new elements
-                    to modules defined in the customization.
-                  </p>
+                  <label>{i18n('Module')}</label>
+                  <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+                    dangerouslySetInnerHTML={{__html: i18n('HelperTextModule')}} />
                 </div>
                 <div className="mdc-layout-grid__cell--span-6">
                   <div className="mdc-select" ref="module">
@@ -149,11 +149,11 @@ export default class NewClass extends Component {
             </div>
             <footer className="mdc-dialog__actions">
               <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
-                Cancel
+                {i18n('Cancel')}
               </button>
               <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="add"
                 disabled={!this.state.canCreate}>
-                Create
+                {i18n('Create')}
               </button>
             </footer>
           </div>
@@ -171,5 +171,6 @@ NewClass.propTypes = {
   modules: PropTypes.array.isRequired,
   createNewClass: PropTypes.func.isRequired,
   allClassIdents: PropTypes.array.isRequired,
-  navigateTo: PropTypes.func.isRequired
+  navigateTo: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired
 }

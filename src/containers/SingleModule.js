@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { includeModules, excludeModules } from '../actions/modules'
 import Module from '../components/Module'
 
-const mapStateToProps = (state, ownProps) => { return ownProps }
+const mapStateToProps = (state, ownProps) => { return {language: state.ui.language, ...ownProps} }
 
 const mapDispatchToProps = (dispatch) => {
   return {

@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import DataRef from './DataRef'
+import { _i18n } from '../localization/i18n'
 
 export default class AttDatatype extends Component {
   render() {
+    const i18n = _i18n(this.props.language, 'AltIdent')
     const refType = this.props.attribute.datatype.dataRef.key
       ? 'key'
       : 'name'
@@ -13,13 +15,13 @@ export default class AttDatatype extends Component {
 
     return (<div className="mdc-layout-grid__inner romajs-formrow">
       <div className="mdc-layout-grid__cell--span-3">
-        <label>Datatype</label>
-        <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-          Set data type for this attribute.
-        </p>
+        <label>{i18n('Datatype')}</label>
+        <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+          dangerouslySetInnerHTML={{__html: i18n('HelperText')}} />
       </div>
       <div className="mdc-layout-grid__cell--span-9">
         <DataRef member={this.props.member}
+          language={this.props.language}
           refType={refType}
           memberType={this.props.memberType}
           datatype={datatype}
@@ -36,5 +38,6 @@ AttDatatype.propTypes = {
   member: PropTypes.object.isRequired,
   memberType: PropTypes.string.isRequired,
   attribute: PropTypes.object.isRequired,
-  setDataTypeRestriction: PropTypes.func.isRequired
+  setDataTypeRestriction: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired
 }

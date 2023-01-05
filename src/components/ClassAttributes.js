@@ -4,8 +4,9 @@ import AttClassAttPicker from '../containers/AttClassAttPicker'
 import EditAttribute from '../containers/EditAttribute'
 import AttributesOnMember from './AttributesOnMember'
 import { Link } from 'react-router-dom'
+import { _i18n } from '../localization/i18n'
 
-export default class Attributes extends Component {
+export default class ClassAttributes extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,16 +15,17 @@ export default class Attributes extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'ClassAttributes')
+    const i18nNotSeeing = _i18n(this.props.language, 'NotSeeingMessage')
     if (this.props.attribute) {
       return <EditAttribute member={this.props.member} memberType="class" attribute={this.props.attribute}/>
     } else {
       return (<div className="mdc-layout-grid">
         <div className="mdc-layout-grid__inner romajs-formrow">
           <div className="mdc-layout-grid__cell--span-3">
-            <label>{this.props.memberType[0].toUpperCase() + this.props.memberType.substring(1)} attributes</label>
-            <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-              Edit attributes defined as part of this {this.props.memberType}.
-            </p>
+            <label>{i18n('Class Attributes')}</label>
+            <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+              dangerouslySetInnerHTML={{__html: i18n('HelperText')}} />
           </div>
           <div className="mdc-layout-grid__cell--span-8">
             <AttributesOnMember
@@ -38,15 +40,14 @@ export default class Attributes extends Component {
         </div>
         <div className="mdc-layout-grid__inner romajs-formrow">
           <div className="mdc-layout-grid__cell--span-3">
-            <label>Class Membership</label>
-            <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-              Attributes inherited from classes. Change class membership here.
-            </p>
+            <label>{i18n('Class Membership')}</label>
+            <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+              dangerouslySetInnerHTML={{__html: i18n('HelperTextClass')}} />
           </div>
           <div className="mdc-layout-grid__cell--span-8">
             <AttClassAttPicker member={this.props.member.ident} message={
-              <span>Not seeing something you're looking for? Add it on the&nbsp;
-                <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>
+              <span>{i18nNotSeeing('q')}&nbsp;
+                <Link to="/members" target="_blank">{i18nNotSeeing('Members Page')}</Link> {i18nNotSeeing('(opens in new tab)')}.</span>
             }/>
             <ul className="mdc-list mdc-list--two-line">{
               this.props.memberships.map((c, pos) => {
@@ -84,10 +85,9 @@ export default class Attributes extends Component {
         </div>
         <div className="mdc-layout-grid__inner romajs-formrow">
           <div className="mdc-layout-grid__cell--span-3">
-            <label>Member Classes</label>
-            <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-              The classes listed here inherit attributes from this class.
-            </p>
+            <label>{i18n('Member Classes')}</label>
+            <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+              dangerouslySetInnerHTML={{__html: i18n('HelperTextMembers')}} />
           </div>
           <div className="mdc-layout-grid__cell--span-8">
             <ul className="mdc-list mdc-list--two-line">{
@@ -96,7 +96,7 @@ export default class Attributes extends Component {
                 let content = <Link to={`/class/${c.ident}`}>{c.ident}</Link>
                 if (c.mode === 'deleted' || c.deleted) {
                   deleted = 'romajs-att-deleted'
-                  content = `${c.ident} (not available)`
+                  content = `${c.ident} (${i18n('not available')})`
                 }
                 return (<li key={`c${pos}`} className={`mdc-list-item ${deleted}`}>
                   <span className="mdc-list-item__text">
@@ -115,7 +115,7 @@ export default class Attributes extends Component {
   }
 }
 
-Attributes.propTypes = {
+ClassAttributes.propTypes = {
   path: PropTypes.string.isRequired,
   member: PropTypes.object.isRequired,
   memberType: PropTypes.string.isRequired,
@@ -129,5 +129,6 @@ Attributes.propTypes = {
   navigateTo: PropTypes.func.isRequired,
   addMemberAttribute: PropTypes.func.isRequired,
   removeMembershipToClass: PropTypes.func.isRequired,
-  addMembershipToClass: PropTypes.func.isRequired
+  addMembershipToClass: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired
 }

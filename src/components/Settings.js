@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { MDCSelect } from '@material/select'
+import { _i18n } from '../localization/i18n'
 
 export default class Settings extends Component {
   componentDidMount() {
@@ -69,7 +70,7 @@ export default class Settings extends Component {
     }
     dlSelect.listen('MDCSelect:change', () => {
       this.props.setOddSetting('docLang', dlSelect.value)
-      this.props.chooseNewDocLang(dlSelect.value)
+      this.props.chooseNewDocLang(dlSelect.value, this.props.language)
     })
   }
 
@@ -85,6 +86,7 @@ export default class Settings extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'Settings')
     const langSelect = [
       <input key="a" type="hidden" name="enhanced-select"/>,
       <i key="b" className="mdc-select__dropdown-icon"/>,
@@ -144,17 +146,16 @@ export default class Settings extends Component {
                 <button className="mdc-button mdc-button--raised toggle"
                   disabled={this.props.isLoading}
                   onClick={() => this.props.goToMemberPage()}>
-                  <i className="material-icons mdc-button__icon">arrow_forward</i> Customize ODD
+                  <i className="material-icons mdc-button__icon">arrow_forward</i> {i18n('Customize ODD')}
                 </button>
               </div>
             </div>
           </div>
           <div className="mdc-layout-grid__inner romajs-formrow">
             <div className="mdc-layout-grid__cell--span-3">
-              <label>Title</label>
-              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                The title of this customization
-              </p>
+              <label>{i18n('Title')}</label>
+              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+                dangerouslySetInnerHTML={{__html: i18n('HelperText')}} />
             </div>
             <div className="mdc-layout-grid__cell--span-9">
               <div className="mdc-text-field mdc-text-field--upgraded mdc-text-field--fullwidth">
@@ -166,10 +167,9 @@ export default class Settings extends Component {
           </div>
           <div className="mdc-layout-grid__inner romajs-formrow">
             <div className="mdc-layout-grid__cell--span-3">
-              <label>Identifier</label>
-              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                The identifier of this customization. This will also be the filename of the ODD and schemata on export.
-              </p>
+              <label>{i18n('Identifier')}</label>
+              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+                dangerouslySetInnerHTML={{__html: i18n('HelperTextIdentifier')}} />
             </div>
             <div className="mdc-layout-grid__cell--span-9">
               <div className="mdc-text-field mdc-text-field--upgraded mdc-text-field--fullwidth">
@@ -181,10 +181,9 @@ export default class Settings extends Component {
           </div>
           <div className="mdc-layout-grid__inner romajs-formrow">
             <div className="mdc-layout-grid__cell--span-3">
-              <label>Customization Namespace</label>
-              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                This is the default XML namespace for new elements you create.
-              </p>
+              <label>{i18n('Customization Namespace')}</label>
+              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+                dangerouslySetInnerHTML={{__html: i18n('HelperTextCustomNamespace')}} />
             </div>
             <div className="mdc-layout-grid__cell--span-9">
               <div className="mdc-text-field mdc-text-field--upgraded mdc-text-field--fullwidth">
@@ -203,16 +202,15 @@ export default class Settings extends Component {
                     <div className="mdc-checkbox__mixedmark"/>
                   </div>
                 </div>
-                <label htmlFor="atts">Apply to new attributes as well.</label>
+                <label htmlFor="atts">{i18n('Apply to new attributes as well.')}</label>
               </div>
             </div>
           </div>
           <div className="mdc-layout-grid__inner romajs-formrow">
             <div className="mdc-layout-grid__cell--span-3">
-              <label>Prefix</label>
-              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                The prefix for pattern names in the schema.
-              </p>
+              <label>{i18n('Prefix')}</label>
+              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+                dangerouslySetInnerHTML={{__html: i18n('HelperTextPrefix')}} />
             </div>
             <div className="mdc-layout-grid__cell--span-9">
               <div className="mdc-text-field mdc-text-field--upgraded mdc-text-field--fullwidth">
@@ -224,10 +222,9 @@ export default class Settings extends Component {
           </div>
           <div className="mdc-layout-grid__inner romajs-formrow">
             <div className="mdc-layout-grid__cell--span-3">
-              <label>Language of elements and attributes</label>
-              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                When element and attributes support multiple languages, choose this one.
-              </p>
+              <label>{i18n('Language of elements and attributes')}</label>
+              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+                dangerouslySetInnerHTML={{__html: i18n('HelperTextLang')}} />
             </div>
             <div className="mdc-layout-grid__cell--span-9">
               <div className="mdc-select" ref="targetLang">
@@ -237,10 +234,9 @@ export default class Settings extends Component {
           </div>
           <div className="mdc-layout-grid__inner romajs-formrow">
             <div className="mdc-layout-grid__cell--span-3">
-              <label>Documentation Language</label>
-              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                Documentation will be shown and generated in this language.
-              </p>
+              <label>{i18n('Documentation Language')}</label>
+              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+                dangerouslySetInnerHTML={{__html: i18n('HelperTextDocLang')}} />
             </div>
             <div className="mdc-layout-grid__cell--span-9">
               <div className="mdc-select" ref="docLang">
@@ -250,10 +246,9 @@ export default class Settings extends Component {
           </div>
           <div className="mdc-layout-grid__inner romajs-formrow">
             <div className="mdc-layout-grid__cell--span-3">
-              <label>Author</label>
-              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                Who created this customization
-              </p>
+              <label>{i18n('Author')}</label>
+              <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+                dangerouslySetInnerHTML={{__html: i18n('HelperTextAuthor')}} />
             </div>
             <div className="mdc-layout-grid__cell--span-9">
               <div className="mdc-text-field mdc-text-field--upgraded mdc-text-field--fullwidth">
@@ -286,5 +281,6 @@ Settings.propTypes = {
   oddLastUpdated: PropTypes.number.isRequired,
   newDataForLanguage: PropTypes.string,
   chooseNewDocLang: PropTypes.func.isRequired,
-  getNewDocForLang: PropTypes.func.isRequired
+  getNewDocForLang: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired
 }

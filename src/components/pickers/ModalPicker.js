@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Picker from './Picker'
 import { MDCDialog } from '@material/dialog'
+import { _i18n } from '../../localization/i18n'
 
 export default class ModalPicker extends Component {
   componentDidMount() {
@@ -28,6 +29,7 @@ export default class ModalPicker extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'Pickers')
     return (
       <aside className="mdc-dialog"
         ref="picker"
@@ -36,12 +38,13 @@ export default class ModalPicker extends Component {
         <div className="mdc-dialog__container">
           <div className="mdc-dialog__surface">
             <div className="mdc-dialog__content">
-              <Picker showAll items={this.props.items} pickerType={this.props.pickerType} add={this.addItem} />
+              <Picker showAll items={this.props.items} pickerType={this.props.pickerType} add={this.addItem}
+                language={this.props.language}/>
               <div>{this.props.message}</div>
             </div>
             <footer className="mdc-dialog__actions">
               <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
-                <span className="mdc-button__label">Cancel</span>
+                <span className="mdc-button__label">{i18n('Cancel')}</span>
               </button>
             </footer>
           </div>
@@ -57,5 +60,6 @@ ModalPicker.propTypes = {
   pickerType: PropTypes.string,
   add: PropTypes.func,
   cancel: PropTypes.func,
-  message: PropTypes.object
+  message: PropTypes.object,
+  language: PropTypes.string.isRequired
 }

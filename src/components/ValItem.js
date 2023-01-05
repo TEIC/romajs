@@ -7,6 +7,7 @@ export default class ValItem extends Component {
     const valItem = this.props.valItem
     const desc = this.props.memberType === 'dt' ? ''
       : (<Desc key="d"
+        language={this.props.language}
         member={this.props.member}
         memberType={this.props.memberType}
         attribute={this.props.attribute}
@@ -30,5 +31,6 @@ ValItem.propTypes = {
   member: PropTypes.object.isRequired,
   memberType: PropTypes.string.isRequired,
   attribute: PropTypes.object,
-  deleteValItem: PropTypes.func.isRequired
+  deleteValItem: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired
 }

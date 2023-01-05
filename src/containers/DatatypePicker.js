@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
     return 0
   })
   return {items: allDtypes, pickerType: 'datatypes', icon: 'mode_edit',
-    message: ownProps.message}
+    message: ownProps.message, language: state.ui.language}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

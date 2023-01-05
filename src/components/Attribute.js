@@ -5,6 +5,7 @@ import Desc from '../containers/EditAttributeDesc'
 import ValList from './ValList'
 import AttDatatype from './AttDatatype'
 import { MDCSelect } from '@material/select'
+import { _i18n } from '../localization/i18n'
 
 export default class Attribute extends Component {
   componentDidMount() {
@@ -31,13 +32,13 @@ export default class Attribute extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'Attribute')
     return (<div className="mdc-layout-grid">
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">
-          <label>Usage</label>
-          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-            Set attribute usage.
-          </p>
+          <label>{i18n('Usage')}</label>
+          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+            dangerouslySetInnerHTML={{__html: i18n('HelperText')}} />
         </div>
         <div className="mdc-layout-grid__cell--span-8">
           <div className="mdc-select" ref="usage">
@@ -47,16 +48,16 @@ export default class Attribute extends Component {
             <div className="mdc-select__menu mdc-menu mdc-menu-surface">
               <ul className="mdc-list">
                 <li className="mdc-list-item" data-value="opt" tabIndex={0}>
-                  Default (optional)
+                  {i18n('Default (optional)')}
                 </li>
                 <li className="mdc-list-item" data-value="req" tabIndex={1}>
-                  Required
+                  {i18n('Required')}
                 </li>
                 <li className="mdc-list-item" data-value="rec" tabIndex={2}>
-                  Recommended
+                  {i18n('Recommended')}
                 </li>
                 <li className="mdc-list-item" data-value="opt" tabIndex={3}>
-                  Optional
+                  {i18n('Optional')}
                 </li>
               </ul>
             </div>
@@ -64,17 +65,17 @@ export default class Attribute extends Component {
           </div>
         </div>
       </div>
-      <Desc member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} />
-      <Desc member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} valDesc/>
+      <Desc member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} language={this.props.language} />
+      <Desc member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} valDesc language={this.props.language}/>
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">
-          <label>Values</label>
-          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-            Set values for this attribute.
-          </p>
+          <label>{i18n('Values')}</label>
+          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+            dangerouslySetInnerHTML={{__html: i18n('HelperTextValues')}} />
         </div>
         <div className="mdc-layout-grid__cell--span-8">
           <ValList
+            language={this.props.language}
             attribute={this.props.attribute}
             member={this.props.member}
             memberType={this.props.memberType}
@@ -83,14 +84,13 @@ export default class Attribute extends Component {
         </div>
       </div>
       <AttDatatype member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute}
-        setDataTypeRestriction={this.props.setDataTypeRestriction}/>
-      <AltIdent member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} />
+        setDataTypeRestriction={this.props.setDataTypeRestriction} language={this.props.language} />
+      <AltIdent member={this.props.member} memberType={this.props.memberType} attribute={this.props.attribute} language={this.props.language} />
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">
-          <label>Namespace</label>
-          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-            Set a namespace for this attribute. Leave empty for null namespace.
-          </p>
+          <label>{i18n('Namespace')}</label>
+          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+            dangerouslySetInnerHTML={{__html: i18n('HelperTextNs')}} />
         </div>
         <div className="mdc-layout-grid__cell--span-8">
           <div className="mdc-text-field mdc-text-field--upgraded mdc-text-field--fullwidth">
@@ -113,5 +113,6 @@ Attribute.propTypes = {
   setValListType: PropTypes.func.isRequired,
   addValItem: PropTypes.func.isRequired,
   deleteValItem: PropTypes.func.isRequired,
-  setDataTypeRestriction: PropTypes.func.isRequired
+  setDataTypeRestriction: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired,
 }

@@ -2,22 +2,23 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ModelClassPicker from '../containers/ModelClassPicker'
 import { Link } from 'react-router-dom'
+import { _i18n } from '../localization/i18n'
 
 export default class ModelClassMemberships extends Component {
   render() {
+    const i18n = _i18n(this.props.language, 'ModelClassMemberships')
+    const i18nNotSeeing = _i18n(this.props.language, 'NotSeeingMessage')
     return (<div className="mdc-layout-grid">
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">
-          <label>Class Membership</label>
-          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-            Elements member of this class will also inherit content from the classes listed here. <br/>
-            Change class membership here.
-          </p>
+          <label>{i18n('Class Membership')}</label>
+          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+            dangerouslySetInnerHTML={{__html: i18n('HelperTextClasses')}} />
         </div>
         <div className="mdc-layout-grid__cell--span-8">
           <ModelClassPicker member={this.props.member.ident} memberType={this.props.member.type} message={
-            <span>Not seeing something you're looking for? Add it on the&nbsp;
-              <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>
+            <span>{i18nNotSeeing('q')}&nbsp;
+              <Link to="/members" target="_blank">{i18nNotSeeing('Members Page')}</Link> {i18nNotSeeing('(opens in new tab)')}.</span>
           }/>
           <ul className="mdc-list mdc-list--two-line">{
             this.props.memberships.map((c, pos) => {
@@ -52,10 +53,9 @@ export default class ModelClassMemberships extends Component {
       </div>
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">
-          <label>Member Classes</label>
-          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-            The classes listed here inherit content from this class.
-          </p>
+          <label>{i18n('Member Classes')}</label>
+          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+            dangerouslySetInnerHTML={{__html: i18n('HelperTextMembers')}} />
         </div>
         <div className="mdc-layout-grid__cell--span-8">
           <ul className="mdc-list mdc-list--two-line">{
@@ -91,5 +91,6 @@ ModelClassMemberships.propTypes = {
   navigateTo: PropTypes.func.isRequired,
   removeMembershipToClass: PropTypes.func.isRequired,
   addMembershipToClass: PropTypes.func.isRequired,
-  clearPicker: PropTypes.func.isRequired
+  clearPicker: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired
 }

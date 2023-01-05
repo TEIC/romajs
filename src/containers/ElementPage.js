@@ -45,7 +45,7 @@ const mapStateToProps = (state, ownProps) => {
     section = 'attributes'
     attribute = ownProps.match.params.attr
   }
-  return {element, success, section, attribute, docLang: state.odd.customization.settings.docLang}
+  return {element, success, section, attribute, docLang: state.odd.customization.settings.docLang, language: state.ui.language}
 }
 
 const mapDispatchToProps = (dispatch) => {

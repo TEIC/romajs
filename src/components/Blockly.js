@@ -6,6 +6,7 @@ import { content, alternate, sequence, elementRef, classRef, dataRef, macroRef,
   anyElement, empty, textNode } from '../utils/blocks'
 import ModalPicker from './pickers/ModalPicker'
 import { Link } from 'react-router-dom'
+import { _i18n } from '../localization/i18n'
 
 const xmlParser = new DOMParser()
 const xmlSerializer = new XMLSerializer()
@@ -157,10 +158,12 @@ export default class BlocklyRomaJsEditor extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'Blockly')
+    const i18nNotSeeing = _i18n(this.props.language, 'NotSeeingMessage')
     const config = {
       toolboxCategories: [{
         type: 'groups',
-        name: 'Groups',
+        name: i18n('Groups'),
         colour: '#6da55b',
         blocks: [
           { type: 'alternate' },
@@ -168,7 +171,7 @@ export default class BlocklyRomaJsEditor extends Component {
         ]
       }, {
         type: 'references',
-        name: 'References',
+        name: i18n('References'),
         colour: '#6d5ba5',
         blocks: [
           { type: 'elementRef' },
@@ -178,7 +181,7 @@ export default class BlocklyRomaJsEditor extends Component {
         ]
       }, {
         type: 'nodes',
-        name: 'Nodes',
+        name: i18n('Nodes'),
         colour: '#a55b5b',
         blocks: [
           { type: 'anyElement' },
@@ -243,15 +246,15 @@ export default class BlocklyRomaJsEditor extends Component {
         }
       }
     }
-    const msg = (<span>Not seeing something you're looking for? Add it on the&nbsp;
-      <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>)
+    const msg = (<span>{i18nNotSeeing('q')}&nbsp;
+      <Link to="/members" target="_blank">{i18nNotSeeing('Members Page')}</Link> {i18nNotSeeing('(opens in new tab)')}.</span>)
     return (<div>
       <ModalPicker visible={this.state.pickerVisible} items={this.state.pickerOptions} pickerType="blockly"
         cancel={() => {this.setState({pickerVisible: false})}}
         add={ (t, i) => {
           this.setState({pickerVisible: false})
           this.state.pickerAdd(i)
-        }} message={msg}/>
+        }} message={msg} language={this.props.language}/>
       {React.createElement(ReactBlocklyComponent.BlocklyEditor, config)}
     </div>)
   }
@@ -263,5 +266,6 @@ BlocklyRomaJsEditor.propTypes = {
   elements: PropTypes.array,
   macros: PropTypes.array,
   classes: PropTypes.array,
-  datatypes: PropTypes.array
+  datatypes: PropTypes.array,
+  language: PropTypes.string.isRequired
 }

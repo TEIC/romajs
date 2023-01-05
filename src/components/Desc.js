@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AceEditor from 'react-ace'
 import ReactResizeDetector from 'react-resize-detector'
+import { _i18n } from '../localization/i18n'
 
 import 'brace/mode/xml'
 import 'brace/theme/tomorrow'
@@ -157,18 +158,17 @@ export default class Desc extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'Desc')
     let info = (<div className="mdc-layout-grid__cell--span-3">
-      <label>Description</label>
-      <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-        Contains a brief description of the object documented by its parent element, typically a documentation element or an entity.
-      </p>
+      <label>{i18n('Description')}</label>
+      <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+        dangerouslySetInnerHTML={{__html: i18n('HelperText')}} />
     </div>)
     if (this.props.valDesc) {
       info = ( <div className="mdc-layout-grid__cell--span-3">
-        <label>Value description</label>
-        <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-          Specifies any semantic or syntactic constraint on the value that an attribute may take, additional to the information carried by the datatype element.
-        </p>
+        <label>{i18n('Value description')}</label>
+        <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+          dangerouslySetInnerHTML={{__html: i18n('HelperTextValueDesc')}} />
       </div>)
     }
     let nodesc
@@ -225,5 +225,6 @@ Desc.propTypes = {
   valDesc: PropTypes.bool,
   docLang: PropTypes.string.isRequired,
   valItem: PropTypes.string,
-  setValid: PropTypes.func
+  setValid: PropTypes.func,
+  language: PropTypes.string.isRequired
 }

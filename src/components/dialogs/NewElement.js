@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { MDCSelect } from '@material/select'
 import { MDCDialog } from '@material/dialog'
+import { _i18n } from '../../localization/i18n'
 
 export default class NewElement extends Component {
   constructor(props) {
@@ -70,6 +71,7 @@ export default class NewElement extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'NewItem')
     return (
       <aside className="mdc-dialog"
         ref="na"
@@ -78,15 +80,14 @@ export default class NewElement extends Component {
         <div className="mdc-dialog__container">
           <div className="mdc-dialog__surface">
             <h2 className="mdc-dialog__title">
-              Create new Element
+              {i18n('Create new Element')}
             </h2>
             <div className="mdc-dialog__content">
               <div className="mdc-layout-grid__inner romajs-formrow">
                 <div className="mdc-layout-grid__cell--span-3">
-                  <label>Name</label>
-                  <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                    Set the new element's name.
-                  </p>
+                  <label>{i18n('Name')}</label>
+                  <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+                    dangerouslySetInnerHTML={{__html: i18n('HelperTextElName')}} />
                 </div>
                 <div className="mdc-layout-grid__cell--span-6">
                   <div className="mdc-text-field mdc-text-field--upgraded">
@@ -98,11 +99,9 @@ export default class NewElement extends Component {
               </div>
               <div className="mdc-layout-grid__inner romajs-formrow">
                 <div className="mdc-layout-grid__cell--span-3">
-                  <label>Module</label>
-                  <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                    Choose a module for this element. NB: it is recommended to only add new elements
-                    to modules defined in the customization.
-                  </p>
+                  <label>{i18n('Module')}</label>
+                  <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+                    dangerouslySetInnerHTML={{__html: i18n('HelperTextModule')}} />
                 </div>
                 <div className="mdc-layout-grid__cell--span-6">
                   <div className="mdc-select" ref="module">
@@ -122,10 +121,9 @@ export default class NewElement extends Component {
               </div>
               <div className="mdc-layout-grid__inner romajs-formrow" key="namespace">
                 <div className="mdc-layout-grid__cell--span-3">
-                  <label>Namespace</label>
-                  <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                    Set a namespace for a new element (it cannot be TEI's namespace).
-                  </p>
+                  <label>{i18n('Namespace')}</label>
+                  <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+                    dangerouslySetInnerHTML={{__html: i18n('HelperTextNs')}} />
                 </div>
                 <div className="mdc-layout-grid__cell--span-6">
                   <div className="mdc-text-field mdc-text-field--upgraded">
@@ -139,11 +137,11 @@ export default class NewElement extends Component {
             </div>
             <footer className="mdc-dialog__actions">
               <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
-                Cancel
+                {i18n('Cancel')}
               </button>
               <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="add"
                 disabled={!this.state.canCreate}>
-                Create
+                {i18n('Create')}
               </button>
             </footer>
           </div>
@@ -162,5 +160,6 @@ NewElement.propTypes = {
   createNewElement: PropTypes.func.isRequired,
   allElementIdents: PropTypes.array.isRequired,
   navigateTo: PropTypes.func.isRequired,
-  ns: PropTypes.string
+  ns: PropTypes.string,
+  language: PropTypes.string.isRequired
 }

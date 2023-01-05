@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import YesNoDialog from './dialogs/YesNo'
+import { _i18n } from '../localization/i18n'
 
 export default class Module extends Component {
   constructor(props) {
@@ -13,15 +14,17 @@ export default class Module extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'Module')
     let dialog = <span/>
     if (this.state.deleting) {
       dialog = (<YesNoDialog key="ynd" show showImmediately continue={() => {
         this.toggle()
       }}
-      header={'This will remove the entire module from your customization. All changes to this module\'s members will be lost. Are you sure you want to continue?'}
+      header={i18n('q')}
       hide={() => {
         this.setState({deleting: false})
-      }}/>)
+      }}
+      language={this.props.language}/>)
     }
     const iconClass = this.props.selected ? 'romajs-color-no' : 'romajs-color-yes'
     const iconType = this.props.selected ? 'cancel' : 'add_circle'
@@ -41,5 +44,6 @@ export default class Module extends Component {
 Module.propTypes = {
   toggleModule: PropTypes.func.isRequired,
   ident: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired
+  selected: PropTypes.bool.isRequired,
+  language: PropTypes.string.isRequired
 }

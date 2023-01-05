@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
     attribute.datatype.dataRef = {name: 'string'}
   }
   return {member: ownProps.member, attribute, path: state.router.location.pathname,
-    memberType: ownProps.memberType, setRouteLeaveHook: state.router.setRouteLeaveHook}
+    memberType: ownProps.memberType, setRouteLeaveHook: state.router.setRouteLeaveHook, language: state.ui.language}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

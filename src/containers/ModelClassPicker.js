@@ -6,7 +6,7 @@ import { addMembershipToClass } from '../actions/classes'
 const mapStateToProps = (state, ownProps) => {
   const customClasses = state.odd.customization.json.classes.models
   return {items: customClasses, pickerType: 'models',
-    message: ownProps.message}
+    message: ownProps.message, language: state.ui.language}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

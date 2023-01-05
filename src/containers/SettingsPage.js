@@ -6,6 +6,7 @@ import { setLoadingStatus } from '../actions/interface'
 import { updateCustomizationOdd, compileWithOxGarage, postToOxGarage, fetchLocalSource } from '../actions'
 import oxgarage from '../utils/oxgarage'
 import datasource from '../utils/datasources'
+import { _i18n } from '../localization/i18n'
 
 const mapStateToProps = (state) => {
   let settingsReady = false
@@ -57,7 +58,8 @@ const mapStateToProps = (state) => {
     settingsReady,
     oddLastUpdated,
     newDataForLanguage,
-    loadingStatus: state.ui.loadingStatus
+    loadingStatus: state.ui.loadingStatus,
+    language: state.ui.language
   }
 }
 
@@ -66,8 +68,9 @@ const mapDispatchToProps = (dispatch) => {
     goToMemberPage: () => dispatch(push('/members')),
     setOddSetting: (key, value) => dispatch(setOddSetting(key, value)),
     applySettings: () => dispatch(applySettings()),
-    chooseNewDocLang: (lang) => {
-      dispatch(setLoadingStatus(`Obtaining new language documentation (${lang}).`))
+    chooseNewDocLang: (lang, uilang) => {
+      const i18n = _i18n(uilang, 'SettingsPage')
+      dispatch(setLoadingStatus(`${i18n('Obtaining new language documentation')} (${lang}).`))
       dispatch(updateCustomizationOdd())
       if (lang !== 'en') {
         dispatch(fetchLocalSource(`${datasource}/p5subset_${lang}.json`))

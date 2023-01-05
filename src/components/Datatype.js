@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Documentation from './Documentation'
 import RevertDialog from './dialogs/Revert'
 import DatatypeContent from './DatatypeContent'
+import { _i18n } from '../localization/i18n'
 
 export default class Datatype extends Component {
   constructor(props) {
@@ -28,21 +29,22 @@ export default class Datatype extends Component {
     if (!this.props.success) {
       return null
     }
+    const i18n = _i18n(this.props.language, 'LandingPages')
     let content = null
     let trail
     let arrow
     const home = (<div className="romajs-squares">
       <ul className="mdc-image-list">
         <li className="mdc-image-list__item romajs-dtbackground">
-          <div className="mdc-image-list__image-aspect-container romajs-clickable"
+          <div className="mdc-image-list__image-aspect-container romajs-clickable mdc-elevation--z3"
             onClick={() => this.props.navigateTo(`${this.baseurl}/documentation`)}>
-            <span>Documentation</span>
+            <span>{i18n('Documentation')}</span>
           </div>
         </li>
         <li className="mdc-image-list__item romajs-dtbackground">
-          <div className="mdc-image-list__image-aspect-container romajs-clickable"
+          <div className="mdc-image-list__image-aspect-container romajs-clickable mdc-elevation--z3"
             onClick={() => this.props.navigateTo(`${this.baseurl}/content`)}>
-            <span>Content</span>
+            <span>{i18n('Content')}</span>
           </div>
         </li>
       </ul>
@@ -53,13 +55,14 @@ export default class Datatype extends Component {
     }
     switch (this.props.section) {
       case 'documentation':
-        content = <Documentation member={this.props.datatype} memberType="datatype"/>
+        content = <Documentation member={this.props.datatype} memberType="datatype" language={this.props.language} />
         trail = (<span className="mdc-chip">
-          <span className="mdc-chip__text">Documentation</span>
+          <span className="mdc-chip__text">{i18n('Documentation')}</span>
         </span>)
         break
       case 'content':
         content = (<DatatypeContent datatype={this.props.datatype}
+          language={this.props.language}
           setDataRefRestriction={this.props.setDataRefRestriction}
           newDataRef={this.props.newDataRef}
           newTextNode={this.props.newTextNode}
@@ -70,13 +73,13 @@ export default class Datatype extends Component {
           deleteDatatypeValItem={this.props.deleteDatatypeValItem}
           setDatatypeContentGrouping={this.props.setDatatypeContentGrouping} />)
         trail = (<span className="mdc-chip">
-          <span className="mdc-chip__text">Content</span>
+          <span className="mdc-chip__text">{i18n('Content')}</span>
         </span>)
         break
       case 'constraints':
-        content = (<h1 className="mdc-typography--headline" style={{color: '#225688'}}>Coming soon.</h1>)
+        content = (<h1 className="mdc-typography--headline" style={{color: '#225688'}}>{i18n('Not available.')}</h1>)
         trail = (<span className="mdc-chip">
-          <span className="mdc-chip__text">Contraints</span>
+          <span className="mdc-chip__text">{i18n('Contraints')}</span>
         </span>)
         break
       default:
@@ -85,7 +88,7 @@ export default class Datatype extends Component {
     return [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2 romajs-dtbackground">
       <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
         <span className="mdc-chip romajs-clickable" onClick={this.goBack}>
-          <span className="mdc-chip__text">Members</span>
+          <span className="mdc-chip__text">{i18n('Members')}</span>
           <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">keyboard_arrow_left</i>
         </span>
         <span className="mdc-chip romajs-clickable" onClick={() => this.props.navigateTo(this.baseurl)}>
@@ -99,20 +102,21 @@ export default class Datatype extends Component {
           this.setState({showRevertDialog: true})
         }}>
           <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">undo</i>
-          <span className="mdc-chip__text">Revert to source</span>
+          <span className="mdc-chip__text">{i18n('Revert to source')}</span>
         </span>
       </section>
     </div>,
     <main key="main">
       <div className="romajs-form">
-        <h1 className="mdc-typography--headline mdc-typography--headline4">Datatype {this.props.datatype.ident}</h1>
+        <h1 className="mdc-typography--headline mdc-typography--headline4">{i18n('Datatype')} {this.props.datatype.ident}</h1>
         <h2 className="mdc-typography--headline mdc-typography--subtitle1">{this.props.datatype.shortDesc}</h2>
         {content}
       </div>
     </main>,
     <RevertDialog key="rd" show={this.state.showRevertDialog} hide={() => {this.setState({showRevertDialog: false})}}
       memberLabel={this.props.datatype.ident} member={this.props.datatype.ident} isNew={this.props.datatype._isNew || false}
-      discard={(dt) => {this.props.discardChanges(dt)}} revert={(dt) => {this.props.revertToSource(dt)}} />
+      discard={(dt) => {this.props.discardChanges(dt)}} revert={(dt) => {this.props.revertToSource(dt)}}
+      language={this.props.language} />
     ]
   }
 }
@@ -132,5 +136,6 @@ Datatype.propTypes = {
   newDatatypeValList: PropTypes.func.isRequired,
   addDatatypeValItem: PropTypes.func.isRequired,
   deleteDatatypeValItem: PropTypes.func.isRequired,
-  setDatatypeContentGrouping: PropTypes.func.isRequired
+  setDatatypeContentGrouping: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired,
 }

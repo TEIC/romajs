@@ -35,7 +35,7 @@ const mapStateToProps = (state, ownProps) => {
   attributes.sort((a, b) => {
     return a.ident > b.ident
   })
-  return {show: ownProps.show, items: attributes, associatedAttributes}
+  return {show: ownProps.show, items: attributes, associatedAttributes, language: state.ui.language}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

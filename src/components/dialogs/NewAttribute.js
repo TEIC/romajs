@@ -4,6 +4,7 @@ import { Component } from 'react'
 import { MDCDialog } from '@material/dialog'
 import AttPicker from '../pickers/AttPicker'
 import { clone } from '../../utils/clone'
+import { _i18n } from '../../localization/i18n'
 
 export default class NewAttributeDialog extends Component {
   constructor(props) {
@@ -80,6 +81,7 @@ export default class NewAttributeDialog extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'NewItem')
     return (
       <aside className="mdc-dialog"
         ref="na"
@@ -88,14 +90,14 @@ export default class NewAttributeDialog extends Component {
         <div className="mdc-dialog__container">
           <div className="mdc-dialog__surface">
             <h2 className="mdc-dialog__title">
-              Create new attribute
+              {i18n('Create new attribute')}
             </h2>
             <div className="mdc-dialog__content">
               <div className="mdc-layout-grid__inner romajs-formrow">
                 <div className="mdc-layout-grid__cell--span-3">
-                  <label>New</label>
+                  <label>{i18n('New')}</label>
                   <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                    Create an entirely new attribute.
+                    {i18n('Create an entirely new attribute.')}
                   </p>
                 </div>
                 <div className="mdc-layout-grid__cell--span-6">
@@ -107,15 +109,15 @@ export default class NewAttributeDialog extends Component {
                 </div>
                 <div className="mdc-layout-grid__cell--span-2">
                   <button className="mdc-button mdc-dialog__button" data-mdc-dialog-action="add_attribute" disabled={!this.state.canCreate}>
-                    Create
+                    {i18n('Create')}
                   </button>
                 </div>
               </div>
               <div className="mdc-layout-grid__inner romajs-formrow">
                 <div className="mdc-layout-grid__cell--span-3">
-                  <label>Copy</label>
+                  <label>{i18n('Copy')}</label>
                   <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-                    Duplicate an existing attribute.
+                    {i18n('Duplicate an existing attribute.')}
                   </p>
                 </div>
                 <div className="mdc-layout-grid__cell--span-8">
@@ -123,13 +125,13 @@ export default class NewAttributeDialog extends Component {
                     this.props.add(this.cloneAttribute(t, a))
                     this.props.hide()
                     this.dialog.close()
-                  }} />
+                  }} language={this.props.language}/>
                 </div>
               </div>
             </div>
             <footer className="mdc-dialog__actions">
               <button ref="cancelBtn" type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
-                Cancel
+                {i18n('Cancel')}
               </button>
             </footer>
           </div>
@@ -146,5 +148,6 @@ NewAttributeDialog.propTypes = {
   associatedAttributes: PropTypes.array.isRequired,
   add: PropTypes.func,
   hide: PropTypes.func,
-  navigateToAttribute: PropTypes.func.isRequired
+  navigateToAttribute: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired
 }

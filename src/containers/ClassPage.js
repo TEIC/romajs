@@ -52,7 +52,7 @@ const mapStateToProps = (state, ownProps) => {
     attribute = ownProps.match.params.attr
   }
   !klass.classes ? klass.classes = {atts: [], model: []} : null
-  return {klass, success, section, attribute}
+  return {klass, success, section, attribute, language: state.ui.language}
 }
 
 const mapDispatchToProps = (dispatch) => {

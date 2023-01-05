@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import DataRef from './DataRef'
 import ValList from './ValList'
+import { _i18n } from '../localization/i18n'
 
 export default class DatatypeContent extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ export default class DatatypeContent extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'DatatypeContent')
     let content = this.props.datatype.content || []
     let contentType = null
     let grouping = null
@@ -41,27 +43,25 @@ export default class DatatypeContent extends Component {
       grouping = (
         <div className="mdc-layout-grid__inner romajs-formrow">
           <div className="mdc-layout-grid__cell--span-3">
-            <label>Content Grouping Type</label>
-            <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-              Choose whether the datatype content definitions should aternate, be in a strict sequence,
-              or unordered.
-            </p>
+            <label>{i18n('Content Grouping Type')}</label>
+            <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+              dangerouslySetInnerHTML={{__html: i18n('HelperText')}} />
           </div>
           <div className="mdc-layout-grid__cell--span-8 mdc-chip-set mdc-chip-set--choice">
             <div className={`mdc-chip ${!contentType ? 'mdc-chip--selected' : ''}`} tabIndex="0" onClick={() => {
               this.props.setDatatypeContentGrouping(this.props.datatype.ident, 'unordered')
             }}>
-              <div className="mdc-chip__text">Unordered</div>
+              <div className="mdc-chip__text">{i18n('Unordered')}</div>
             </div>
             <div className={`mdc-chip ${contentType === 'alternate' ? 'mdc-chip--selected' : ''}`} tabIndex="1" onClick={() => {
               this.props.setDatatypeContentGrouping(this.props.datatype.ident, 'alternate')
             }}>
-              <div className="mdc-chip__text">Alternate</div>
+              <div className="mdc-chip__text">{i18n('Alternate')}</div>
             </div>
             <div className={`mdc-chip ${contentType === 'sequence' ? 'mdc-chip--selected' : ''}`} tabIndex="2" onClick={() => {
               this.props.setDatatypeContentGrouping(this.props.datatype.ident, 'sequence')
             }}>
-              <div className="mdc-chip__text">Sequence</div>
+              <div className="mdc-chip__text">{i18n('Sequence')}</div>
             </div>
           </div>
         </div>)
@@ -73,29 +73,28 @@ export default class DatatypeContent extends Component {
           <div className="mdc-chip__text" onClick={() =>{
             this.props.newDataRef(this.props.datatype.ident)
             this.toggleAddOptions()
-          }}>Reference to another datatype</div>
+          }}>{i18n('Reference to another datatype')}</div>
         </div>,
         <div className="mdc-chip" tabIndex="1" key="l">
           <div className="mdc-chip__text" onClick={() =>{
             this.props.newDatatypeValList(this.props.datatype.ident)
             this.toggleAddOptions()
-          }}>Closed list of values</div>
+          }}>{i18n('Closed list of values')}</div>
         </div>,
         <div className="mdc-chip" tabIndex="2" key="t">
           <div className="mdc-chip__text" onClick={() =>{
             this.props.newTextNode(this.props.datatype.ident)
             this.toggleAddOptions()
-          }}>Text content</div>
+          }}>{i18n('Text content')}</div>
         </div>
       ]
     }
     return (<div className="mdc-layout-grid">
       <div className="mdc-layout-grid__inner romajs-formrow">
         <div className="mdc-layout-grid__cell--span-3">
-          <label>Datatype Content</label>
-          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-            Change the content of the datatype here.
-          </p>
+          <label>{i18n('Datatype Content')}</label>
+          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+            dangerouslySetInnerHTML={{__html: i18n('HelperTextDt')}} />
         </div>
         <div className="mdc-layout-grid__cell--span-8">
           <div className="mdc-chip-set">
@@ -125,6 +124,7 @@ export default class DatatypeContent extends Component {
                   }}>keyboard_arrow_down</i>
                 </span>
                 <DataRef member={this.props.datatype}
+                  language={this.props.language}
                   memberType="datatype"
                   datatype={c.key || c.name}
                   available="true"
@@ -168,6 +168,7 @@ export default class DatatypeContent extends Component {
                 </span>
                 <div>Closed list of values</div>
                 <ValList key={`vl${i}`}
+                  language={this.props.language}
                   valList={c}
                   memberType="dt"
                   addValItem={(val) => this.props.addDatatypeValItem(this.props.datatype.ident, i, val)}
@@ -192,5 +193,6 @@ DatatypeContent.propTypes = {
   newDatatypeValList: PropTypes.func.isRequired,
   addDatatypeValItem: PropTypes.func.isRequired,
   deleteDatatypeValItem: PropTypes.func.isRequired,
-  setDatatypeContentGrouping: PropTypes.func.isRequired
+  setDatatypeContentGrouping: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired,
 }

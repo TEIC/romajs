@@ -5,7 +5,7 @@ import { addElementAttributeClass } from '../actions/elements'
 const mapStateToProps = (state, ownProps) => {
   const customClasses = state.odd.customization.json.classes.attributes
   return {items: customClasses, pickerType: 'attributes',
-    message: ownProps.message}
+    message: ownProps.message, language: state.ui.language}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

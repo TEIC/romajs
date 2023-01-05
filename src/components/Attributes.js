@@ -4,6 +4,7 @@ import AttClassPicker from '../containers/AttClassPicker'
 import EditAttribute from '../containers/EditAttribute'
 import AttributesOnMember from './AttributesOnMember'
 import { Link } from 'react-router-dom'
+import { _i18n } from '../localization/i18n'
 
 export default class Attributes extends Component {
   constructor(props) {
@@ -14,16 +15,17 @@ export default class Attributes extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'Attributes')
+    const i18nNotSeeing = _i18n(this.props.language, 'NotSeeingMessage')
     if (this.props.attribute) {
       return <EditAttribute member={this.props.member} memberType="element" attribute={this.props.attribute}/>
     } else {
       return (<div className="mdc-layout-grid">
         <div className="mdc-layout-grid__inner romajs-formrow">
           <div className="mdc-layout-grid__cell--span-3">
-            <label>{this.props.memberType[0].toUpperCase() + this.props.memberType.substring(1)} attributes</label>
-            <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-              Edit attributes defined on this {this.props.memberType}.
-            </p>
+            <label>{i18n(this.props.memberType)}</label>
+            <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+              dangerouslySetInnerHTML={{__html: i18n(`HelperText-${this.props.memberType}`)}} />
           </div>
           <div className="mdc-layout-grid__cell--span-8">
             <AttributesOnMember
@@ -38,28 +40,22 @@ export default class Attributes extends Component {
         </div>
         <div className="mdc-layout-grid__inner romajs-formrow">
           <div className="mdc-layout-grid__cell--span-3">
-            <label>Attribute From Classes</label>
-            <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-              Elements can be members of attribute classes to inherit the attributes defined in a class. Here you can:
-            </p>
-            <ul className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
-              <li>Edit class attributes for this element only</li>
-              <li>Delete / restore class attributes for this element only</li>
-              <li>Change class memberships</li>
-            </ul>
+            <label>{i18n('Attribute From Classes')}</label>
+            <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+              dangerouslySetInnerHTML={{__html: i18n('HelperTextAtt')}} />
           </div>
           <div className="mdc-layout-grid__cell--span-8">
             <AttClassPicker element={this.props.member.ident} message={
-              <span>Not seeing something you're looking for? Add it on the&nbsp;
-                <Link to="/members" target="_blank">Members Page</Link> (opens in new tab).</span>
+              <span>{i18nNotSeeing('q')}&nbsp;
+                <Link to="/members" target="_blank">{i18nNotSeeing('Members Page')}</Link> {i18nNotSeeing('(opens in new tab)')}.</span>
             }/>
             {this.props.attsfromClasses.map((cl, cpos) => {
               const noattributes = cl.noattributes
-                ? <span key="noatt">This class doesn't define any attributes</span>
+                ? <span key="noatt">{i18n(`This class doesn't define any attributes`)}</span>
                 : ''
               let sub = ''
               if (cl.sub) {
-                sub = `(inherited from ${cl.from})`
+                sub = `(${i18n('inherited from')} ${cl.from})`
               }
               let addRemove = (<i className="material-icons romajs-clickable" onClick={() =>
                 this.props.deleteElementAttributeClass(this.props.member.ident, cl.ident)}>clear</i>)
@@ -69,7 +65,7 @@ export default class Attributes extends Component {
               } else if (cl.noattributes) {
                 addRemove = null
               }
-              return [<h4 key={`clh${cpos}`}>{addRemove} From <Link to={`/class/${cl.ident}`}>{cl.ident}</Link> {sub}</h4>,
+              return [<h4 key={`clh${cpos}`}>{addRemove} {i18n('From')} <Link to={`/class/${cl.ident}`}>{cl.ident}</Link> {sub}</h4>,
                 noattributes,
                 (<ul className="mdc-list" key={`cl${cpos}`}>{
                   cl.attributes.map((a, pos) => {
@@ -77,13 +73,13 @@ export default class Attributes extends Component {
                     let overriddenText = ''
                     if (a.overridden) {
                       overridden = 'romajs-att-overridden'
-                      overriddenText = '(changed for this element)'
+                      overriddenText = `(${i18n('changed for this element')})`
                     }
                     const deleted = a.deleted ? 'romajs-att-deleted' : ''
                     const noeffect = a.noeffect ? 'romajs-att-noeffect' : ''
                     let noeffectText = ''
                     if (a.noeffect) {
-                      noeffectText = '(this change won\'t have any effect, check ODD source)'
+                      noeffectText = `(${i18n(`this change won't have any effect, check ODD source`)})`
                     }
                     let addOrRemove
                     if (a.deleted && a.deletedOnClass) {
@@ -140,5 +136,6 @@ Attributes.propTypes = {
   restoreClassAttributeDeletedOnClass: PropTypes.func.isRequired,
   clearPicker: PropTypes.func.isRequired,
   navigateTo: PropTypes.func.isRequired,
-  addMemberAttribute: PropTypes.func.isRequired
+  addMemberAttribute: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired
 }

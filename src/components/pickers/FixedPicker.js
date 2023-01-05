@@ -33,7 +33,7 @@ export default class FixedPicker extends Component {
     return (<div className="romajs-clickable">
       {icon}
       <div style={visible}>
-        <Picker items={this.props.items} pickerType={this.props.pickerType} add={this.addItem} />
+        <Picker items={this.props.items} pickerType={this.props.pickerType} add={this.addItem} language={this.props.language} />
       </div>
     </div>)
   }
@@ -42,5 +42,6 @@ export default class FixedPicker extends Component {
 FixedPicker.propTypes = {
   items: PropTypes.array,
   pickerType: PropTypes.string,
-  add: PropTypes.func
+  add: PropTypes.func,
+  language: PropTypes.string.isRequired
 }

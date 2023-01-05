@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { _i18n } from '../../localization/i18n'
 
 export default class Picker extends Component {
   constructor(props) {
@@ -19,9 +20,10 @@ export default class Picker extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'Pickers')
     return (<div className="romajs-editable-list-add romajs-clickable">
       <div className="mdc-text-field mdc-text-field--outlined">
-        <input className="mdc-text-field__input" placeholder="Find..." type="text"
+        <input className="mdc-text-field__input" placeholder={i18n('Find...')} type="text"
           value={this.state.filterTerm}
           onChange={this.setFilterTerm}/>
       </div>
@@ -49,5 +51,6 @@ Picker.propTypes = {
   showAll: PropTypes.bool,
   items: PropTypes.array,
   pickerType: PropTypes.string,
-  add: PropTypes.func
+  add: PropTypes.func,
+  language: PropTypes.string.isRequired
 }

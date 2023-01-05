@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { MDCDialog } from '@material/dialog'
 import ReactDOM from 'react-dom'
+import { _i18n } from '../../localization/i18n'
 
 export default class YesNo extends Component {
   constructor(props) {
@@ -46,6 +47,7 @@ export default class YesNo extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'YesNo')
     return ReactDOM.createPortal(
       (<aside className="mdc-dialog"
         ref="na"
@@ -61,10 +63,10 @@ export default class YesNo extends Component {
             </div>
             <footer className="mdc-dialog__actions">
               <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
-                <span className="mdc-button__label">No</span>
+                <span className="mdc-button__label">{i18n('No')}</span>
               </button>
               <button type="button" className="mdc-button mdc-dialog__button" data-mdc-dialog-action="accept">
-                <span className="mdc-button__label">Yes</span>
+                <span className="mdc-button__label">{i18n('Yes')}</span>
               </button>
             </footer>
           </div>
@@ -82,5 +84,6 @@ YesNo.propTypes = {
   hide: PropTypes.func,
   header: PropTypes.string.isRequired,
   body: PropTypes.string,
-  continue: PropTypes.func.isRequired
+  continue: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired
 }

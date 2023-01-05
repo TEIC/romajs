@@ -96,7 +96,8 @@ const mapStateToProps = (state, ownProps) => {
 
   const memberShipsSorted = [...availableSorted, ...deletedSorted, ...notAvailableSorted]
 
-  return {member: klass, memberType: 'class', memberships: memberShipsSorted, memberClasses, path: state.router.location.pathname}
+  return {member: klass, memberType: 'class', memberships: memberShipsSorted, memberClasses, path: state.router.location.pathname,
+    language: state.ui.language}
 }
 
 const mapDispatchToProps = (dispatch) => {

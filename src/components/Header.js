@@ -45,7 +45,7 @@ export default class Header extends Component {
         </button>)
       download = <Download/>
       settings = (<button className="mdc-button mdc-button--raised" disabled={isSettingsPage} onClick={() => this.props.navigateTo('/settings')}>
-        <i className="material-icons mdc-button__icon">settings</i> settings
+        <i className="material-icons mdc-button__icon">settings</i> {i18n('settings')}
       </button>)
     }
 
@@ -60,35 +60,42 @@ export default class Header extends Component {
           <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
             <span className="mdc-toolbar__title">{i18n('Roma - ODD Customization')} {oddtitle}</span>
             <span style={{position: 'absolute', top: '4em', fontSize: '70%', marginLeft: '24px'}}>
-              Version {RomaJSversion}
+              v {RomaJSversion}
             </span>
           </section>
           <section className="mdc-toolbar__section mdc-toolbar__section--align-end mdc-menu-surface--anchor" style={{right: '15px'}}>
             {settings}
             {startOver}
-            {langBtn}
-            {download}
-            <div className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="lang">
-              <ul className="mdc-list" role="menu" aria-hidden="true">
-                <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
-                  this.props.setLanguage('en')
-                }}>English</li>
-                <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
-                  this.props.setLanguage('it')
-                }}>Italiano</li>
-              </ul>
+            <div style={{position: 'relative'}}>
+              {langBtn}
+              <div style={{position: 'relative'}}>
+                <div className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="lang">
+                  <ul className="mdc-list" role="menu" aria-hidden="true">
+                    <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
+                      this.props.setLanguage('en')
+                    }}>English</li>
+                    <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
+                      this.props.setLanguage('fr')
+                    }}>Français</li>
+                    <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
+                      this.props.setLanguage('it')
+                    }}>Italiano</li>
+                  </ul>
+                </div>
+              </div>
             </div>
+            {download}
           </section>
         </div>
       </header>),
       (<YesNoDialog key="ynd" show={this.state.showStartOver} continue={() => {this.props.navigateTo('/')}}
         header={'Do you want to start over? All changes will be lost.'} hide={() => {
           this.setState({showStartOver: false})
-        }}/>),
+        }} language={this.props.language}/>),
       (<YesNoDialog key="lang" show={false} continue={() => {console.log('applying settings')}}
         header={'Do you want to apply this language to element, attributes, and documentation as well?'} hide={() => {
           this.setState({showLang: false})
-        }}/>)
+        }} language={this.props.language}/>)
     ]
   }
 }

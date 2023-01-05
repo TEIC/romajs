@@ -1,11 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Picker from './Picker'
+import { _i18n } from '../../localization/i18n'
 
 export default class AttPicker extends Picker {
   render() {
+    const i18n = _i18n(this.props.language, 'Pickers')
     return (<div className="romajs-editable-list-add romajs-clickable">
       <div className="mdc-text-field mdc-text-field--outlined">
-        <input className="mdc-text-field__input" placeholder="Find..." type="text"
+        <input className="mdc-text-field__input" placeholder={i18n('Find...')} type="text"
           value={this.state.filterTerm}
           onChange={this.setFilterTerm}/>
       </div>
@@ -15,7 +18,7 @@ export default class AttPicker extends Picker {
           let local = ''
           let localClass = ''
           if (c.isLocal) {
-            local = '(currently not in customization)'
+            local = i18n('(currently not in customization)')
             localClass = 'romajs-localatt'
           }
           if ((t === '' && this.props.showAll) || (t !== '' && c.ident.toLowerCase().match(t))) {
@@ -33,4 +36,9 @@ export default class AttPicker extends Picker {
       }</ul>
     </div>)
   }
+}
+
+AttPicker.propTypes = {
+  language: PropTypes.string.isRequired,
+  showAll: PropTypes.bool
 }

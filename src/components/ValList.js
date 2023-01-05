@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ValItem from './ValItem'
 import { MDCSelect } from '@material/select'
+import { _i18n } from '../localization/i18n'
 
 export default class ValList extends Component {
   componentDidMount() {
@@ -33,6 +34,7 @@ export default class ValList extends Component {
   }
 
   render() {
+    const i18n = _i18n(this.props.language, 'ValList')
     const valList = this.props.memberType === 'dt'
       ? this.props.valList
       : this.props.attribute.valList || {}
@@ -59,16 +61,16 @@ export default class ValList extends Component {
         <div className="mdc-select__menu mdc-menu mdc-menu-surface">
           <ul className="mdc-list">
             <li className="mdc-list-item" data-value="" tabIndex={0}>
-              Default (open)
+              {i18n('Default (open)')}
             </li>
             <li className="mdc-list-item" data-value="closed" tabIndex={1}>
-              Closed
+              {i18n('Closed')}
             </li>
             <li className="mdc-list-item" data-value="semi" tabIndex={2}>
-              Semi-Open
+              {i18n('Semi-Open')}
             </li>
             <li className="mdc-list-item" data-value="open" tabIndex={3}>
-              Open
+              {i18n('Open')}
             </li>
           </ul>
         </div>
@@ -93,6 +95,7 @@ export default class ValList extends Component {
         </div>,
         valItems.map(valItem => {
           return (<ValItem key={valItem.ident}
+            language={this.props.language}
             valItem={valItem}
             member={this.props.member}
             memberType={this.props.memberType}
@@ -111,5 +114,6 @@ ValList.propTypes = {
   valList: PropTypes.object,
   setValListType: PropTypes.func,
   deleteValItem: PropTypes.func.isRequired,
-  addValItem: PropTypes.func.isRequired
+  addValItem: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired
 }

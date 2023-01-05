@@ -4,6 +4,7 @@ import Documentation from './Documentation'
 import EditClassAttributes from '../containers/EditClassAttributes'
 import EditModelClassMemberships from '../containers/EditModelClassMemberships'
 import RevertDialog from './dialogs/Revert'
+import { _i18n } from '../localization/i18n'
 
 export default class Class extends Component {
   constructor(props) {
@@ -29,7 +30,8 @@ export default class Class extends Component {
     if (!this.props.success) {
       return null
     }
-    const typeLabel = this.props.klass.attributes ? 'Attribute' : 'Model'
+    const i18n = _i18n(this.props.language, 'LandingPages')
+    const typeLabel = this.props.klass.attributes ? i18n('Attribute class') : i18n('Model class')
     const type = this.props.klass.attributes ? 'attributes' : 'models'
     let content = null
     let trail
@@ -38,25 +40,25 @@ export default class Class extends Component {
     let mainSettings
     if (this.props.klass.attributes) {
       mainSettings = (<li className="mdc-image-list__item romajs-classbackground">
-        <div className="mdc-image-list__image-aspect-container romajs-clickable"
+        <div className="mdc-image-list__image-aspect-container romajs-clickable mdc-elevation--z3"
           onClick={() => this.props.navigateTo(`${this.baseurl}/attributes`)}>
-          <span>Attributes</span>
+          <span>{i18n('Attributes')}</span>
         </div>
       </li>)
     } else {
       mainSettings = (<li className="mdc-image-list__item romajs-classbackground">
-        <div className="mdc-image-list__image-aspect-container romajs-clickable"
+        <div className="mdc-image-list__image-aspect-container romajs-clickable mdc-elevation--z3"
           onClick={() => this.props.navigateTo(`${this.baseurl}/memberships`)}>
-          <span>Class Membership</span>
+          <span>{i18n('Class Membership')}</span>
         </div>
       </li>)
     }
     const home = (<div className="romajs-squares">
       <ul className="mdc-image-list">
         <li className="mdc-image-list__item romajs-classbackground">
-          <div className="mdc-image-list__image-aspect-container romajs-clickable"
+          <div className="mdc-image-list__image-aspect-container romajs-clickable mdc-elevation--z3"
             onClick={() => this.props.navigateTo(`${this.baseurl}/documentation`)}>
-            <span>Documentation</span>
+            <span>{i18n('Documentation')}</span>
           </div>
         </li>
         {mainSettings}
@@ -71,9 +73,9 @@ export default class Class extends Component {
     }
     switch (this.props.section) {
       case 'documentation':
-        content = <Documentation member={this.props.klass} memberType="class"/>
+        content = <Documentation member={this.props.klass} memberType="class" language={this.props.language}/>
         trail = (<span className="mdc-chip">
-          <span className="mdc-chip__text">Documentation</span>
+          <span className="mdc-chip__text">{i18n('Documentation')}</span>
         </span>)
         break
       case 'attributes':
@@ -85,7 +87,7 @@ export default class Class extends Component {
           </span>)
         }
         trail = (<span><span className="mdc-chip romajs-clickable" onClick={() => this.props.navigateTo(`${this.baseurl}/attributes`)}>
-          <span className="mdc-chip__text">Attributes</span>
+          <span className="mdc-chip__text">{i18n('Attributes')}</span>
           <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">{subArrow}</i>
         </span>
         {editAtt}</span>)
@@ -93,19 +95,19 @@ export default class Class extends Component {
       case 'memberships':
         content = (<EditModelClassMemberships member={this.props.klass} />)
         trail = (<span className="mdc-chip">
-          <span className="mdc-chip__text">Content</span>
+          <span className="mdc-chip__text">{i18n('Content')}</span>
         </span>)
         break
       case 'constraints':
-        content = (<h1 className="mdc-typography--headline" style={{color: '#225688'}}>Coming soon.</h1>)
+        content = (<h1 className="mdc-typography--headline" style={{color: '#225688'}}>{i18n('Not available.')}</h1>)
         trail = (<span className="mdc-chip">
-          <span className="mdc-chip__text">Contraints</span>
+          <span className="mdc-chip__text">{i18n('Contraints')}</span>
         </span>)
         break
       case 'processing':
-        content = (<h1 className="mdc-typography--headline" style={{color: '#225688'}}>Coming soon.</h1>)
+        content = (<h1 className="mdc-typography--headline" style={{color: '#225688'}}>{i18n('Not available.')}</h1>)
         trail = (<span className="mdc-chip">
-          <span className="mdc-chip__text">Processing Model</span>
+          <span className="mdc-chip__text">{i18n('Processing Model')}</span>
         </span>)
         break
       default:
@@ -114,7 +116,7 @@ export default class Class extends Component {
     return [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2 romajs-classbackground">
       <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
         <span className="mdc-chip romajs-clickable" onClick={this.goBack}>
-          <span className="mdc-chip__text">Members</span>
+          <span className="mdc-chip__text">{i18n('Members')}</span>
           <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">keyboard_arrow_left</i>
         </span>
         <span className="mdc-chip romajs-clickable" onClick={() => this.props.navigateTo(this.baseurl)}>
@@ -128,20 +130,21 @@ export default class Class extends Component {
           this.setState({showRevertDialog: true})
         }}>
           <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">undo</i>
-          <span className="mdc-chip__text">Revert to source</span>
+          <span className="mdc-chip__text">{i18n('Revert to source')}</span>
         </span>
       </section>
     </div>,
     <main key="main">
       <div className="romajs-form">
-        <h1 className="mdc-typography--headline mdc-typography--headline4">{typeLabel} class {this.props.klass.ident}</h1>
+        <h1 className="mdc-typography--headline mdc-typography--headline4">{typeLabel} {this.props.klass.ident}</h1>
         <h2 className="mdc-typography--headline mdc-typography--subtitle1">{this.props.klass.shortDesc}</h2>
         {content}
       </div>
     </main>,
     <RevertDialog key="rd" show={this.state.showRevertDialog} hide={() => {this.setState({showRevertDialog: false})}}
       memberLabel={this.props.klass.ident} member={this.props.klass.ident} isNew={this.props.klass._isNew || false}
-      discard={(cl) => {this.props.discardChanges(cl, type)}} revert={(cl) => {this.props.revertToSource(cl, type)}} />
+      discard={(cl) => {this.props.discardChanges(cl, type)}} revert={(cl) => {this.props.revertToSource(cl, type)}}
+      language={this.props.language} />
     ]
   }
 }
@@ -153,5 +156,6 @@ Class.propTypes = {
   attribute: PropTypes.string,
   navigateTo: PropTypes.func.isRequired,
   discardChanges: PropTypes.func.isRequired,
-  revertToSource: PropTypes.func.isRequired
+  revertToSource: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired,
 }

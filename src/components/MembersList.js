@@ -40,7 +40,7 @@ export default class MembersList extends Component {
   render() {
     // Set language function
     const i18n = _i18n(this.props.language, 'MembersList')
-    let members = <h2 className="mdc-typography--headline5" style={{margin: '2em 0px 0px 40px'}}>No items found. Try searching for something else.</h2>
+    let members = <h2 className="mdc-typography--headline5" style={{margin: '2em 0px 0px 40px'}}>{i18n('No items found. Try searching for something else.')}</h2>
     if (this.props.members.length > 0) {
       members = (<ul key="list" className="mdc-list mdc-list--two-line romajs-itemlist">
         {this.props.members.map(member => {
@@ -54,7 +54,7 @@ export default class MembersList extends Component {
       </ul>)
     }
     const newSort = this.props.sortBy === 'element' ? 'module' : 'element'
-    const newSortLabel = this.props.sortBy === 'element' ? 'by module' : 'alphabetically'
+    const newSortLabel = this.props.sortBy === 'element' ? i18n('by module') : i18n('alphabetically')
     return [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2">
       <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
         <div className="mdc-chip-set mdc-chip-set--filter">

@@ -87,7 +87,7 @@ const mapStateToProps = (state, ownProps) => {
   for (const mc of modClasses) {
     classes.push([mc.ident, mc.ident])
   }
-  return {flattenedContent, macros, classes, elements, datatypes}
+  return {flattenedContent, macros, classes, elements, datatypes, language: state.ui.language}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

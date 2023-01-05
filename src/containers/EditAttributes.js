@@ -127,7 +127,8 @@ const mapStateToProps = (state, ownProps) => {
     return a.ident > b.ident
   })
 
-  return {member: element, memberType: 'element', attsfromClasses, path: state.router.location.pathname}
+  return {member: element, memberType: 'element', attsfromClasses, path: state.router.location.pathname,
+    language: state.ui.language}
 }
 
 const mapDispatchToProps = (dispatch) => {

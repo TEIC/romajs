@@ -1,79 +1,673 @@
 {
-  "AddMemberFab": {
-    "New": {
-      "it": "Nuovo"
+  "NotSeeingMessage": {
+      "q": {
+          "en": "Not seeing something you're looking for? Add it on the",
+          "it": "Non trovi qualcosa che stai cercando? Aggiungilo sulla"
+      },
+      "Members Page": {"it": "Pagina dei componenti"},
+      "(opens in new tab)": {"it": "(si apre in una nuova tab)"}
+  },
+  "AltIdent": {
+      "Alternative identifiers": {
+          "it": "identificatori alternativi",
+          "fr": "identifiants alternatifs"
+      },
+      "HelperText": {
+          "en": "Every specification element in an ODD has a canonical name, which is the value of its ident attribute.<br/>The altIdent element may be used to supply an alternative version of this canonical name, for example in a different language.",
+          "fr": "Tout élément de spécification d'un ODD porte un nom canonique, qui correspond à la valeur de son attribut ident.<br/>L'élément altIdent peut être utilisé pour fournir une version alternative de ce nom canonique, par exemple dans une autre langue.",
+          "it": "Ogni elemento di specifica in un ODD ha un nome canonico, che è il valore del suo attributo ident. L'elemento altIdent può essere utilizzato per fornire una versione alternativa di questo nome canonico, ad esempio in una lingua diversa."
+      }
+  },
+  "AttDatatype": {
+      "Datatype": {
+          "fr": "Type de données",
+          "it": "Tipo di dati"
+      },
+      "HelperText": {
+          "en": "Set data type for this attribute",
+          "fr": "Préciser le type de données de cet attribut",
+          "it": "Impostare il tipo di dati per questo attributo"
+      }
+  },
+  "Attribute": {
+      "Usage": {
+          "fr": "Utilisation",
+          "it": "Modalità d'uso"
+      },
+      "HelperText": {
+          "en": "Set attribute usage.",
+          "fr": "Préciser l'utilisation de cet attribut.",
+          "it": "Impostala modalità d'uso di questo attributo."
+      },
+      "Default (optional)": {
+          "it": "Predefinito (opzionale)",
+          "fr": "Défaut (optionnel)"
+      },
+      "Required": {
+          "it": "Obbligatorio",
+          "fr": "Obligatoire"
+      },
+      "Recommended": {
+          "it": "Consigliato",
+          "fr": "Recommandé"
+      },
+      "Optional": {
+          "it": "Facoltativo",
+          "fr": "Facultatif"
+      },
+      "Values": {
+          "fr": "Valeurs",
+          "it": "Valori"
+      },
+      "HelperTextValues": {
+          "en": "Set values for this attribute.",
+          "fr": "Préciser les valeurs de cet attribut.",
+          "it": "Imposta i valori di questo attributo."
+      },
+      "Namespace": {
+          "fr": "Espace de nommage",
+          "it": "namespace"
+      },
+      "HelperTextNs": {
+          "en": "Set a namespace for this attribute. Leave empty for null namespace.",
+          "fr": "Préciser l'espace de nommage de cet attribut, ou laisser vide pour l'espace de nommage nul.",
+          "it": "Imposta un namespace per questo attributo. Lasciare vuoto per un namespace nullo."
+      }
+  },
+  "Attributes": {
+      "element": {
+          "en": "Element attributes",
+          "it": "Attributi dell'elemento",
+          "fr": "Attributs de l'élément"
+      },
+      "class": {
+          "en": "Class attributes",
+          "it": "Attributi della class",
+          "fr": "Attributs de la classe"
+      },
+      "HelperText-element": {
+          "en": "Edit attributes defined on this element",
+          "fr": "Modifier les attributs de cet élément",
+          "it": "Modificare gli attributi di questo elemento"
+      },
+      "HelperText-class": {
+          "en": "Edit attributes defined on this class",
+          "fr": "Modifier les attributs de cette classe",
+          "it": "Modificare gli attributi di questa classe"
+      },
+      "Attribute From Classes": {
+          "fr": "Attributs hérités d'une classe",
+          "it": "Attributs eriditati da altre classi"
+      },
+      "HelperTextAtt": {
+          "en": "Elements can be members of attribute classes to inherit the attributes defined in a class. Here you can: <ul><li>Edit class attributes for this element only<\/li><li>Delete or restore class attributes for this element only<\/li><li>Change class memberships<\/li><\/ul>",
+          "fr": "Les attributs d'un élément sont souvent définis par la ou les classes auxquelles il appartient. Vous pouvez modifier ou supprimer une classe entière ou les attributs fournis par une classe.",
+          "it": "Gli elementi possono essere membri di classi di attributi per ereditare gli attributi definiti in una classe. È possibile: <ul><li>Modificare gli attributi della classe solo per questo elemento<\/li><li>Cancellare o ripristinare gli attributi di classe solo per questo elemento<\/li><li>Modificare l'appartenenza alla classe<\/li><\/ul>"
+      },
+      "This class doesn't define any attributes": {"it": "Questa classe non definisce nessun attributo"},
+      "inherited from": {"it": "ereditato da"},
+      "From": {"it": "Da"},
+      "changed for this element": {"it": "modificato per questo elemento"},
+      "this change won't have any effect, check ODD source": {"it": "questa modifica non avrà alcun effetto, controllare la fonte ODD"}
+  },
+  "Blockly": {
+      "Groups": {"it": "Gruppi"},
+      "References": {"it": "Riferimenti"},
+      "Nodes": {"it": "Nodi"}
+  },
+  "ClassAttributes": {
+      "Class Attributes": {
+          "it": "Attributi della class",
+          "fr": "Attributs de la classe"
+      },
+      "HelperText": {
+          "en": "Edit attributes defined as part of this class.",
+          "fr": "Modifier les attributs fournis par cette classe.",
+          "it": "Modificare gli attributi definiti come parte di questa classe."
+      },
+      "Class Membership": {
+          "fr": "Classes associées",
+          "it": "Membri della classe"
+      },
+      "HelperTextClass": {
+          "en": "Attributes inherited from classes. Change class membership here.",
+          "fr": "Modifier les classes d'attributs auxquelles appartient cet élément.",
+          "it": "Attributi ereditati dalle classi. Modificare qui l'appartenenza alla classe."
+      },
+      "Member Classes": {
+          "fr": "Sous-Classes associées",
+          "it": "Classi membro"
+      },
+      "HelperTextMembers": {
+          "en": "The classes listed here inherit attributes from this class.",
+          "fr": "Modifier les classes auxquelles appartient cette classe.",
+          "it": "Le classi qui elencate ereditano gli attributi da questa classe."
+      },
+      "not available": {
+          "it": "non disponibile",
+          "fr": "non disponible"
+      }
+  },
+  "ContentModel": {
+      "Model Classes": {
+          "fr": "Classes Modèles",
+          "it": "Classi modello"
+      },
+      "HelperText": {
+          "en": "Change model class membership here.",
+          "fr": "Modifier les classes modèles auxquelles appartient cet élément.",
+          "it": "Modificare l'appartenenza alla classe del modello qui."
+      },
+      "Content": {
+          "fr": "Contenu",
+          "it": "Contenuto"
+      },
+      "HelperTextContent": {
+          "en": "Edit element content.",
+          "fr": "Modifier le contenu de cet élément.",
+          "it": "Modifica del contenuto dell'elemento."
+      }
+  },
+  "DatatypeContent": {
+      "Content Grouping Type": {
+          "fr": "Mode de combinaison",
+          "it": "Modalità di raggruppamento dei contenuti"
+      },
+      "HelperText": {
+          "en": "Choose whether the datatype content definitions should alternate, be in a strict sequence, or unordered.",
+          "fr": "Indiquer la mode de combinaison des composants de la définition de type de données.",
+          "it": "Scegliere se le definizioni del contenuto del tipo di dato devono essere alternate, in sequenza rigorosa o non ordinate."
+      },
+      "Unordered": {"it": "non ordinate"},
+      "Alternate": {"it": "alternate"},
+      "Sequence": {"it": "in sequenza"},
+      "Reference to another datatype": {"it": "Riferimento a un altro tipo di dato"},
+      "Closed list of values": {"it": "Lista chiusa di valori"},
+      "Text content": {"it": "Contenuto testuale"},
+      "Datatype Content": {"it": "Contenuto del tipo di dati"},
+      "HelperTextDt": {
+          "en": "Change the content of the datatype here.",
+          "fr": "Modifier le type de données",
+          "it": "Modificare qui il contenuto del tipo di dati."
+      }
+  },
+  "Desc": {
+      "Description": {
+          "fr": "Description",
+          "it": "Descrizione"
+      },
+      "HelperText": {
+          "en": "Contains a brief description of the object documented by its parent element, typically a specification element or an entity.",
+          "fr": "Fournit une brève description de l'objet (élément ou entité) concerné.",
+          "it": "Contiene una breve descrizione dell'oggetto documentato dal suo elemento padre, tipicamente un elemento di specifica o un'entità."
+      },
+      "Value description": {
+          "fr": "Description de valeur",
+          "it": "Descrizione del valore"
+      },
+      "HelperTextValueDesc": {
+          "en": "Specifies any semantic or syntactic constraint on the value that an attribute may take, additional to the information carried by the datatype element.",
+          "fr": "Précise d'éventuelles contraintes sémantiques ou syntaxiques sur la valeur d'un attribut, en complément à celles fournies par l'élément datatype.",
+          "it": "Specifica un eventuale vincolo semantico o sintattico sul valore che un attributo può assumere, oltre alle informazioni contenute nell'elemento datatype."
+      }
+  },
+  "LandingPages": {
+    "Documentation": {
+      "it": "Documentazione"
     },
-    "Element": {
-      "it": "Elemento"
+    "Attributes": {
+      "it": "Attributi"
     },
-    "Class": {
-      "it": "Classe"
+    "CMCM": {
+      "en": "Class Membership <br/> &amp; Content Model",
+      "it": "Appartenenza alle classi <br/> &amp; Modello del contenuto"
+    },
+    "Class Membership": {
+      "it": "Appartenenza alle classi"
+    },
+    "Content": {
+      "it": "Contenuto"
+    },
+    "Not available.": {
+      "it": "Non disponibile."
+    },
+    "Contraints": {
+      "it": "Restrizioni"
+    },
+    "Processing Model": {
+      "it": "Modello di elaborazione (Processing Model)"
+    },
+    "Members": {
+      "it": "Componenti"
+    },
+    "Revert changes": {
+      "it": "Annullamento delle modifiche"
+    },
+    "Revert to source": {
+      "it": "Ripristina la definizione della fonte ODD"
+    },
+    "Attribute class": {
+      "it": "Classe di attributi"
+    },
+    "Model class": {
+      "it": "Classe di modelli"
     },
     "Datatype": {
       "it": "Tipo di dati"
     }
   },
-  "DownloadButton": {
-    "Download": {
-      "it": "Scarica"
+  "ModelClassMemberships": {
+      "Class Membership": {
+          "fr": "Classes associées",
+          "it": "Appartenenza ad altre classi"
+      },
+      "HelperTextClasses": {
+          "en": "Elements which are members of this class also inherit content from the classes listed here.<br/>You can change class membership here.",
+          "fr": "Les éléments membres de cette classe héritent leur modèle de contenu des classes indiquées.<br/>Modifiez leur appartenance aux classes ici.",
+          "it": "Gli elementi che sono membri di questa classe ereditano anche il contenuto delle classi elencate qui.<br/>È possibile modificare l'appartenenza alle classi qui."
+      },
+      "Member Classes": {
+          "fr": "Classes sous-jacentes",
+          "it": "Classi membro"
+      },
+      "HelperTextMembers": {
+          "en": "The classes listed here inherit content from this class.",
+          "fr": "Les classes listées ici héritent leur contenu de cette classe.",
+          "it": "Le classi elencate qui ereditano il contenuto da questa classe."
+      }
+  },
+  "Settings": {
+      "Customize ODD": {"it": "Personalizza ODD"},
+      "Title": {
+          "fr": "Titre",
+          "it": "Titolo"
+      },
+      "HelperText": {
+          "en": "The title of this customization.",
+          "fr": "Le titre de cette personnalisation.",
+          "it": "It titolo di questa personalizzazione."
+      },
+      "Identifier": {"fr": "Identifiant", "it": "Codice identificativo"},
+      "HelperTextIdentifier": {
+          "en": "The identifier of this customization. This will also be the filename of the ODD and schemata on export.",
+          "fr": "L'identifiant de cette personnalisation. Il sera utilisé comme nom de fichier de l'ODD et des schémas lors de l'export.",
+          "it": "Il codice identificativo di questa personalizzazione. Questo sarà anche il nome del file dell'ODD e degli schemi all'esportazione."
+      },
+      "Customization Namespace": {"fr": "Espace de nommage", "it": "Namespace della personalizzazione"},
+      "HelperTextCustomNamespace": {
+          "en": "This is the default XML namespace for new elements you create.",
+          "fr": "Par défaut, les nouveaux éléments générés appartiennent à cet espace de nommage.",
+          "it": "Il namespace XML predefinito per i nuovi elementi creati."
+      },
+      "Apply to new attributes as well.": {
+        "it": "Applicare anche ai nuovi attributi."
+      },
+      "Prefix": {"fr": "Préfix", "it": "Prefisso"},
+      "HelperTextPrefix": {
+          "en": "The prefix for pattern names in the schema.",
+          "fr": "Préfix utilisé pour désambiguiser les noms des composants du schéma généré.",
+          "it": "Il prefisso per i nomi dei modelli nello schema."
+      },
+      "Language of elements and attributes": {
+        "it": "Lingua degli elementi e degli attributi"
+      },
+      "HelperTextLang": {
+          "en": "When element and attributes support multiple languages, choose this one.",
+          "fr": "Langue préférée des identifiants.",
+          "it": "Quando l'elemento e gli attributi supportano più lingue, questa è la lingua da utilizzare."
+      },
+      "Documentation Language": {
+        "it": "Lingua per la documentazione"
+      },
+      "HelperTextDocLang": {
+          "en": "Documentation will be shown and generated in this language.",
+          "fr": "Langue préférée de la documentation.",
+          "it": "La documentazione verrà mostrata e generata in questa lingua."
+      },
+      "Author": {"fr": "Auteur", "it": "Autore"},
+      "HelperTextAuthor": {
+          "en": "Who created this customization.",
+          "fr": "Responsable de la personnalisation.",
+          "it": "La persona responsabile di questa personalizzazione."
+      }
+  },
+  "SettingsPage": {
+    "Obtaining new language documentation": {
+      "it": "Recuperando la documentazione nella nuova lingua selezionata."
     }
+  },
+  "AddMemberFab": {
+      "New": {
+          "it": "Nuovo",
+          "fr": "Nouveau"
+      },
+      "Element": {
+          "it": "Elemento",
+          "fr": "Élément"
+      },
+      "Class": {
+          "it": "Classe",
+          "fr": "Classe"
+      },
+      "Datatype": {
+          "it": "Tipo di dati",
+          "fr": "Type de données"
+      }
+  },
+  "DataRef": {
+      "Not available: deleted": {"it": "Non disponibile: rimosso"},
+      "Restriction": {"it": "Restrizione"}
+  },
+  "DownloadButton": {
+      "Download": {
+          "it": "Scaricare",
+          "fr": "Télécharger"
+      },
+      "Customization as ODD": {"it": "Personalizzazione in formato ODD"},
+      "Compiled ODD": {"it": "ODD compilato"},
+      "RelaxNG schema": {"it": "Schema RelaxNG"},
+      "RelaxNG compact": {},
+      "W3C schema": {"it": "Schema W3C"},
+      "DTD": {},
+      "ISO Schematron constraints": {"it": "Restrizioni in formato ISO Schematron"},
+      "Documentation as HTML": {"it": "Documentazione in formato HTML"},
+      "Documentation as TEI Lite": {"it": "Documentazione in formato TEI Lite"},
+      "Documentation as MS Word": {"it": "Documentazione in formato MS Word"},
+      "Documentation as LaTeX": {"it": "Documentazione in formato LaTeX"},
+      "The customization is not valid": {"it": "La personalizzazione non è valida"},
+      "errormsg": {
+          "en": "The ODD cannot be processed because it is not well-formed XML or it is invalid! Please check your customization, particularly documentation fields with XML data.",
+          "it": "L'ODD non può essere elaborato perché non è XML ben formato o non è valido! Controllare la personalizzazione, in particolare i campi della documentazione con dati XML."
+      }
   },
   "FilterSearchBar": {
-    "filter items": {
-      "it": "cerca"
-    }
+      "filter items": {
+          "it": "cercare",
+          "fr": "rechercher"
+      }
   },
   "Header": {
-    "Roma - ODD Customization": {
-      "it": "Roma - Personalizzazione ODD"
-    },
-    "Start Over": {
-      "it": "Ricomincia"
-    },
-    "Download": {
-      "it": "Scarica"
-    },
-    "Language": {
-      "it": "Lingua"
-    }
+      "Roma - ODD Customization": {
+          "it": "Roma - Personalizzazione ODD",
+          "fr": "Roma - personnalisation ODD"
+      },
+      "Start Over": {
+          "it": "Ricominciare",
+          "fr": "Recharger"
+      },
+      "Download": {
+          "it": "Scaricare",
+          "fr": "Télécharger"
+      },
+      "Language": {
+          "it": "Lingua",
+          "fr": "Langue"
+      },
+      "settings": {"it": "impostazioni"}
   },
   "Home": {
-    "Select ODD": {
-      "it": "Scegli un ODD"
-    },
-    "Upload ODD": {
-      "it": "Carica un ODD"
-    },
-    "Start": {
-      "it": "Comincia"
-    },
-    "Choose a preset": {
-      "it": "Scegli tra i predefiniti"
-    }
+      "intro": {
+        "en": "Roma is an ODD Editor, using the TEI ODD (One Document Does-it-all) format for meta-schema documentation and local encoding guidelines as created by the <a href=\"https://tei-c.org\">Text Encoding Initiative</a>.",
+        "it": "Roma è uno strumento per editare file ODD, cioè il format TEI ODD (One Document Does-it-all) per la documentazione del meta-schema TEI e per la personalizzazione delle linee di guida della <a href=\"https://tei-c.org\">Text Encoding Initiative</a>."
+      },
+      "What it is supposed to do": {
+        "it": "Cosa può fare"
+      },
+      "does": {
+        "en": "Roma enables you to create a customization of the TEI. It provides a user-friendly interface to pick and choose Elements, Attribute Classes, Model Classes, and Datatypes used in a schema. For each element the documentation, attributes, class memberships and content models are able to be modified. You may start from a previously saved ODD customization or load one of the pre-defined templates as a starting point.",
+        "it": "Roma consente di creare una personalizzazione dello schema della TEI. Fornisce un'interfaccia facile da usare per scegliere elementi, classi di attributi, classi di modelli e tipi di dati utilizzati in uno schema. Per ogni elemento è possibile modificare la documentazione, gli attributi, le appartenenze alle classi e i modelli di contenuto. Si può partire da una personalizzazione ODD precedentemente salvata o caricare uno dei modelli predefiniti come punto di partenza."
+      },
+      "What it does not do": {
+        "it": "Cosa non può fare"
+      },
+      "doesnot": {
+        "en": "The conversions of the ODD customisation to other formats (both schemas and documentation formats) is handled by passing the document to the TEI-C’s Oxgarage service. In addition there are a number of tasks that this version of Roma does not yet handle, including: <ul><li><strong>No support for RelaxNG content models.</strong> Only PureODD is supported (that is, ODD expressed only with TEI elements).</li><li><strong>No support for <code>@source</code> attributes.</strong> Currently only the latest stable version of the TEI is used by this tool.</li></ul>",
+        "it": "Le conversioni della personalizzazione ODD in altri formati (sia schemi che formati di documentazione) sono gestite passando il documento al servizio Oxgarage della TEI-C. Inoltre ci sono una serie di operazioni che questa versione di Roma non gestisce, tra cui: <ul><li>Nessun supporto per i modelli di contenuto RelaxNG.</li> <li>È supportato solo PureODD (cioè ODD espresso solo con element TEI).</li> <li>Nessun supporto per gli attributi @source.</li> <li>Al momento solo l'ultima versione stabile della TEI è utilizzata da questo strumento.</li></ul>"
+      },
+      "Known issues": {
+        "it": "Problemi noti"
+      },
+      "known": {
+        "en": "<li>If Roma stalls on loading an existing ODD or template customisation then refresh or reload your browser.</li><li>In Safari, reloading a page may cause loss of data due to limited data storage.</li>",
+        "it": "<li>Se Roma si blocca durante il caricamento di un ODD esistente o di una personalizzazione del modello, aggiornare o ricaricare il browser.</li><li>In Safari, il ricaricamento di una pagina può causare la perdita di dati a causa della memoria limitata.</li>"
+      },
+      "Contribute": {
+        "it": "Per contribuire"
+      },
+      "contrib": {
+        "en": "Report any issues or make feature requests on the TEI-C GitHub repository: <a href=\"https://github.com/TEIC/romajs\">https://github.com/TEIC/romajs</a>",
+        "it": "Segnalare eventuali problemi o fare richieste di funzionalità sul repository GitHub di TEI-C: <a href=\"https://github.com/TEIC/romajs\">https://github.com/TEIC/romajs</a>"
+      },
+      "Select ODD": {
+          "it": "Scegliere un ODD",
+          "fr": "Choisir un ODD"
+      },
+      "Upload ODD": {
+          "it": "Caricare un ODD",
+          "fr": "Télécharger un ODD"
+      },
+      "Start": {
+          "it": "Cominciare",
+          "fr": "Commencer"
+      },
+      "Choose a preset": {
+          "it": "Scegliere tra i predefiniti",
+          "fr": "Choisir un ODD prédéfini"
+      },
+      "TEI All (customize by reducing TEI)": {"it": "TEI All (personalizza riducendo)"},
+      "TEI Minimal (customize by building TEI up)": {"it": "TEI Minimal (personalizza aggiungendo)"},
+      "TEI Absolutely Bare": {"it": "TEI ridotta all'osso"},
+      "TEI for Linguistic Corpora": {"it": "TEI per corpora linguistici"},
+      "TEI for Manuscript Description": {"it": "TEI per la descrizione di manoscritti"},
+      "TEI with Drama": {"it": "TEI con testo teatrale"},
+      "TEI for Speech Representation": {"it": "TEI per la trascrizione vocale"},
+      "TEI for Authoring ODDs": {"it": "TEI per creare ODD"},
+      "TEI for Journal of the TEI": {"it": "TEI per gli articoli della rivista \"Journal of the TEI\""}
   },
   "HomePage": {
-    "1/3 Obtaining customization ODD...": {
-      "it": "1/3 Acquisendo customizzazione ODD..."
-    },
-    "2/3 Importing customization ODD...": {
-      "it": "2/3 Importando customizzazione ODD..."
-    },
-    "3/3 Importing full specification source...": {
-      "it": "3/3 Importando la fonte completa..."
-    }
+      "1/3 Obtaining customization ODD...": {
+          "it": "1/3 Acquisendo customizzazione ODD...",
+          "fr": "1/3 Recherche de la personnalisation ODD..."
+      },
+      "2/3 Importing customization ODD...": {
+          "it": "2/3 Importando customizzazione ODD...",
+          "fr": "2/3 Importation de la personnalisation ODD..."
+      },
+      "3/3 Importing full specification source...": {
+          "it": "3/3 Importando la fonte completa...",
+          "fr": "3/3 Importation de la spécification complète..."
+      }
   },
   "MembersList": {
-    "Elements": {
-      "it": "Elementi"
+      "module": {
+        "it": "modulo"
+      },
+      "element": {
+        "it": "elemento"
+      },
+      "by module": {
+        "it": "ordine per modulo"
+      },
+      "alphabetically": {
+        "it": "ordine alfabetico"
+      },
+      "Elements": {
+          "it": "Elementi",
+          "fr": "Éléments"
+      },
+      "Attribute Classes": {
+          "it": "Classi di attributi",
+          "fr": "Classes d'attributs"
+      },
+      "Model Classes": {
+          "it": "Classi di modelli",
+          "fr": "Classes modèles"
+      },
+      "Datatypes": {
+          "it": "Tipi di dati",
+          "fr": "Types de données"
+      },
+      "No items found. Try searching for something else.": {"it": "Nessun componente trovato. Provare a cercare qualcos'altro."}
+  },
+  "Module": {
+      "q": {
+          "en": "This will remove the entire module from your customization. All changes to this module's members will be lost. Are you sure you want to continue?",
+          "it": "Questa operazione rimuoverà l'intero modulo dalla personalizzazione. Tutte le modifiche apportate ai membri di questo modulo andranno perse. Continuare?"
+      }
+  },
+  "ValList": {
+    "Default (open)": {
+      "it": "Predefinito (aperta)"
     },
-    "Attribute Classes": {
-      "it": "Classi di attributi"
+    "Closed": {
+      "it": "Chiusa"
     },
-    "Model Classes": {
-      "it": "Classi di modelli"
+    "Semi-Open": {
+      "it": "Semi-Aperta"
     },
-    "Datatypes": {
-      "it": "Tipi di dati"
+    "Open": {
+      "it": "Open"
+    }
+  },
+  "ErrorReporting": {
+    "Oh-oh... Something went wrong": {
+      "it": "Oh-oh... Qualcosa è andato storto"
+    },
+    "The following error occurred:": {
+      "it": "Si è verificato il seguente errore:"
+    },
+    "report": {
+      "en": "Please consider <a href=\"https://github.com/TEIC/romajs/issues\">reporting an issue on GitHub</a>.",
+      "it": "Se possibile, <a href=\"https://github.com/TEIC/romajs/issues\">segnalare il problema su GitHub</a>."
+    },
+    "Start Over": {
+      "it": "Ricominciare"
+    }
+  },
+  "NewItem": {
+    "Create new attribute": {
+      "it": "Crea un nuovo attributo"
+    },
+    "New": {
+      "it": "Nuovo"
+    },
+    "Create an entirely new attribute.": {
+      "It": "Crea un attribute interamente nuovo."
+    },
+    "Create": {
+      "it": "Crea"
+    },
+    "Copy": {
+      "it": "Copia"
+    },
+    "Duplicate an existing attribute.": {
+      "it": "Duplica un attributo già esistente."
+    },
+    "Cancel": {
+      "it": "Annulla"
+    },
+    "Create new Class": {
+      "it": "Crea una nuova classe"
+    },
+    "Class Type": {
+      "it": "Tipo di classe"
+    },
+    "Choose a class type.": {
+      "it": "Scegliere il tipo di classe."
+    },
+    "Attributes": {
+      "it": "Attributi"
+    },
+    "Model": {
+      "it": "Modello"
+    },
+    "Name": {
+      "it": "Nome"
+    },
+    "Set the new class name.": {
+      "it": "Imposta il nome della nuova classe"
+    },
+    "Module": {
+      "it": "Modulo"
+    },
+    "HelperTextModule": {
+      "en": "Choose a module for this class. NB: it is recommended to only add new elements to modules defined in the customization.",
+      "it": "Scegliere un modulo per questa classe. NB: si raccomanda di aggiungere nuovi elementi solo ai moduli definiti nella personalizzazione."
+    },
+    "Create new Datatype": {
+      "it": "Crea un nuovo tipo di dati"
+    },
+    "HelperTextName": {
+      "en": "Set the new datatype's name.",
+      "it": "Imposta il nome del nuovo tipo di dati."
+    },
+    "Create new Element": {
+      "it": "Crea un nuovo elemento"
+    },
+    "HelperTextElName": {
+      "en": "Set the new element's name."
+    },
+    "Namespace": { },
+    "HelperTextNs": {
+      "en": "Set a namespace for a new element (it cannot be TEI's namespace).",
+      "it": "Imposta il namespace per il nuovo elemento (non può essere il namespace TEI)."
+    }
+  },
+  "Revert": {
+    "Revert to source (delete": {
+      "it": "Ripristina la fonte ODD (cancella"
+    },
+    "HelperText1": {
+      "en": "Discard <i>all</i> changes to",
+      "it": "Scartare <i>tutte</i> le modifiche a"
+    },
+    "HelperText2": {
+      "en": "and revert to its original definition.",
+      "it": "e tornare alla definizione originale."
+    },
+    "HelperText3": {
+      "en": "<br/> Since this is a newly added item, it will be deleted. <br/> <b>This action cannot be undone!</b>",
+      "it": "<br/> L'elemento verrà eleminato poiché aggiunto di recente. <br/> <b>Questa azione non può essere ripristinata!</b>"
+    },
+    "Revert": {
+      "it": "Ripristinare"
+    },
+    "Revert to source": {
+      "it": "Ripristinare la definizione della fonte ODD"
+    },
+    "Revert changes": {
+      "it": "Annulla i cambiamenti"
+    },
+    "You have two options for reverting changes to": {
+      "it": "Sono disponibili due opzioni per ripristinare le modifiche a"
+    },
+    "Discard latest changes": {
+      "it": "Scartare i cambiamenti recenti"
+    },
+    "HelperTextDiscard": {
+      "en": "Discard changes you have made in Roma in this session. This item will return to same settings as the customization you picked or uploaded.",
+      "it":"Annulla le modifiche apportate in questa sessione. Il componente editato ritornerà le stesse impostazioni della personalizzazione scelta o caricata."
+    },
+    "Discard": {
+      "it": "Scartare"
+    },
+    "Cancel": {
+      "it": "Annulla"
+    }
+  },
+  "YesNo": {
+    "Yes": {"fr": "Oui", "it": "Sì"},
+    "No": {"fr": "non"}
+  },
+  "Pickers": {
+    "(currently not in customization)": {
+      "it": "(al momento non è presente nella personalizzazione)"
+    },
+    "Cancel": {
+      "it": "Annulla"
+    },
+    "Find...": {
+      "it": "Cerca..."
     }
   }
 }
