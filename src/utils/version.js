@@ -1,2 +1,2 @@
 // Roma version
-export default '0.3.1'
+export default '1.0.0'
