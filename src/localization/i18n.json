@@ -10,18 +10,21 @@
   "AltIdent": {
       "Alternative identifiers": {
           "it": "identificatori alternativi",
-          "fr": "identifiants alternatifs"
+          "fr": "identifiants alternatifs",
+          "es": "identificadores alternativos"
       },
       "HelperText": {
           "en": "Every specification element in an ODD has a canonical name, which is the value of its ident attribute.<br/>The altIdent element may be used to supply an alternative version of this canonical name, for example in a different language.",
           "fr": "Tout élément de spécification d'un ODD porte un nom canonique, qui correspond à la valeur de son attribut ident.<br/>L'élément altIdent peut être utilisé pour fournir une version alternative de ce nom canonique, par exemple dans une autre langue.",
-          "it": "Ogni elemento di specifica in un ODD ha un nome canonico, che è il valore del suo attributo ident. L'elemento altIdent può essere utilizzato per fornire una versione alternativa di questo nome canonico, ad esempio in una lingua diversa."
+          "it": "Ogni elemento di specifica in un ODD ha un nome canonico, che è il valore del suo attributo ident. L'elemento altIdent può essere utilizzato per fornire una versione alternativa di questo nome canonico, ad esempio in una lingua diversa.",
+          "es": "Cada elemento de especificación en un ODD tiene un nombre canónico, que es el valor de su atributo ident.<br/>El elemento altIdent puede utilizarse para proporcionar una versión alternativa de este nombre canónico, por ejemplo en otra lengua."
       }
   },
   "AttDatatype": {
       "Datatype": {
           "fr": "Type de données",
-          "it": "Tipo di dati"
+          "it": "Tipo di dati",
+          "es": "Tipo de dato"
       },
       "HelperText": {
           "en": "Set data type for this attribute",
