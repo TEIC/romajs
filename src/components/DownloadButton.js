@@ -44,11 +44,11 @@ export default class DownloadButton extends Component {
               <li className="mdc-list-divider" role="separator"/>
               <li className="mdc-list-divider" role="separator"/>
               <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('rng')}}>
-                {i18n('RelaxNG schema')}
+                {i18n('RELAX NG schema')}
               </li>
               <li className="mdc-list-divider" role="separator"/>
               <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('rnc')}}>
-                {i18n('RelaxNG compact')}
+                {i18n('RELAX NG compact')}
               </li>
               <li className="mdc-list-divider" role="separator"/>
               <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('w3c')}}>

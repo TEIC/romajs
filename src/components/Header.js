@@ -89,11 +89,11 @@ export default class Header extends Component {
         </div>
       </header>),
       (<YesNoDialog key="ynd" show={this.state.showStartOver} continue={() => {this.props.navigateTo('/')}}
-        header={'Do you want to start over? All changes will be lost.'} hide={() => {
+        header={i18n('Do you want to start over? All changes will be lost.')} hide={() => {
           this.setState({showStartOver: false})
         }} language={this.props.language}/>),
       (<YesNoDialog key="lang" show={false} continue={() => {console.log('applying settings')}}
-        header={'Do you want to apply this language to element, attributes, and documentation as well?'} hide={() => {
+        header={i18n('Do you want to apply this language to elements, attributes, and documentation as well?')} hide={() => {
           this.setState({showLang: false})
         }} language={this.props.language}/>)
     ]

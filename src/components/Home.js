@@ -10,28 +10,27 @@ import { MDCSelect } from '@material/select'
 export default class Home extends Component {
   constructor(props) {
     super(props)
-    this.i18n = _i18n(this.props.language, 'Home')
     this.state = {
       panel: 0,
       selectedFile: undefined,
       selectedKnown: undefined,
       odds: {
         labels: [
-          this.i18n('TEI All (customize by reducing TEI)'),
-          this.i18n('TEI Minimal (customize by building TEI up)'),
-          this.i18n('TEI Absolutely Bare'),
+          'TEI All (customize by reducing TEI)',
+          'TEI Minimal (customize by building TEI up)',
+          'TEI Absolutely Bare',
           'TEI SimplePrint',
           'TEI Lite',
           'TEI Tite',
-          this.i18n('TEI for Linguistic Corpora'),
-          this.i18n('TEI for Manuscript Description'),
-          this.i18n('TEI with Drama'),
-          this.i18n('TEI for Speech Representation'),
-          this.i18n('TEI for Authoring ODDs'),
+          'TEI for Linguistic Corpora',
+          'TEI for Manuscript Description',
+          'TEI with Drama',
+          'TEI for Speech Representation',
+          'TEI for Authoring ODDs',
           // 'TEI with SVG',
           // 'TEI with MathML',
           // 'TEI with XInclude',
-          this.i18n('TEI for Journal of the TEI')
+          'TEI for Journal of the TEI'
         ],
         urls: [
           `${presets}/tei_all.odd`,
@@ -140,7 +139,9 @@ export default class Home extends Component {
                           <div className="mdc-select__menu mdc-menu mdc-menu-surface">
                             <ul className="mdc-list">{
                               this.state.odds.urls.map((url, i) => {
-                                return <li className="mdc-list-item" data-value={this.state.odds.labels[i]} key={i} tabIndex={i}>{this.state.odds.labels[i]}</li>
+                                return (<li className="mdc-list-item" data-value={this.state.odds.labels[i]} key={i} tabIndex={i}>{
+                                  i18n(this.state.odds.labels[i])
+                                }</li>)
                               })
                             }</ul>
                           </div>
@@ -166,7 +167,7 @@ export default class Home extends Component {
               <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6" style={{backgroundColor: '#d9d9d9'}}>
                 <div className="romajs-homeText">
                   <div>
-                    <h2 className="mdc-typography--headline4">Roma</h2>
+                    <h2 className="mdc-typography--headline3">Roma</h2>
                     <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('intro')}} />
                   </div>
                   <div>
@@ -184,6 +185,19 @@ export default class Home extends Component {
                   <div>
                     <h2 className="mdc-typography--headline4">{i18n('Contribute')}</h2>
                     <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('contrib')}} />
+                  </div>
+                  <div>
+                    <h2 className="mdc-typography--headline4">{i18n('Contributors')}</h2>
+                    <ul className="mdc-list">
+                      <li><span className="mdc-list-item__text">Raff Viglianti (lead)</span></li>
+                      <li><span className="mdc-list-item__text">Peter Stadler</span></li>
+                    </ul>
+                    <h3 className="mdc-typography--headline5">{i18n('Localization')}</h3>
+                    <ul className="mdc-list">
+                      <li className=""><span className="mdc-list-item__graphic" aria-hidden="true">FR</span>Lou Burnard</li>
+                      <li className=""><span className="mdc-list-item__graphic" aria-hidden="true">IT</span>Raff Viglianti</li>
+                      <li className=""><span className="mdc-list-item__graphic" aria-hidden="true">JP</span>Kiyonori Nagasaki</li>
+                    </ul>
                   </div>
                 </div>
               </div>

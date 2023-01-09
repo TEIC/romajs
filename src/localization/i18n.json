@@ -3,7 +3,7 @@
     "q": {
       "en": "Not seeing something you're looking for? Add it on the",
       "it": "Non trovi qualcosa che stai cercando? Aggiungilo sulla",
-      "fr-notchecked": "Vous ne trouvez pas ce que vous cherchez ? Ajoutez-le sur le",
+      "fr": "Vous ne voyez pas ce qu'il vous faut ? Ajoutez-le sur la",
       "es-notchecked": "¿No encuentra lo que busca? Añádalo en la",
       "de-notchecked": "Sie sehen nicht, wonach Sie suchen? Fügen Sie es auf der",
       "pt-notchecked": "Não está a ver algo que procura? Adicione-a no",
@@ -12,7 +12,7 @@
     },
     "Members Page": {
       "it": "Pagina dei componenti",
-      "fr-notchecked": "Page des membres",
+      "fr": "page des composants",
       "es-notchecked": "Página de miembros",
       "de-notchecked": "Mitglieder Seite",
       "pt-notchecked": "Página de Membros",
@@ -21,7 +21,7 @@
     },
     "(opens in new tab)": {
       "it": "(si apre in una nuova tab)",
-      "fr-notchecked": "(s'ouvre dans un nouvel onglet)",
+      "fr": "(s'ouvre dans un nouvel onglet)",
       "es-notchecked": "(se abre en una nueva pestaña)",
       "de-notchecked": "(öffnet in neuem Tab)",
       "pt-notchecked": "(abre em novo separador)",
@@ -228,7 +228,7 @@
     },
     "This class doesn't define any attributes": {
       "it": "Questa classe non definisce nessun attributo",
-      "fr-notchecked": "Cette classe ne définit pas d'attributs",
+      "fr": "Cette classe ne definit aucun attribut",
       "es-notchecked": "Esta clase no define ningún atributo",
       "de-notchecked": "Diese Klasse definiert keine Attribute",
       "pt-notchecked": "Esta classe não define nenhum atributo",
@@ -237,7 +237,7 @@
     },
     "inherited from": {
       "it": "ereditato da",
-      "fr-notchecked": "hérité de",
+      "fr": "hérité de",
       "es-notchecked": "heredado de",
       "de-notchecked": "geerbt von",
       "pt-notchecked": "herdados de",
@@ -246,7 +246,7 @@
     },
     "From": {
       "it": "Da",
-      "fr-notchecked": "De",
+      "fr": "De",
       "es-notchecked": "En",
       "de-notchecked": "Von",
       "pt-notchecked": "A partir de",
@@ -255,7 +255,7 @@
     },
     "changed for this element": {
       "it": "modificato per questo elemento",
-      "fr-notchecked": "modifié pour cet élément",
+      "fr": "modifié pour cet élément",
       "es-notchecked": "cambiado para este elemento",
       "de-notchecked": "für dieses Element geändert",
       "pt-notchecked": "alterado para este elemento",
@@ -264,7 +264,7 @@
     },
     "this change won't have any effect, check ODD source": {
       "it": "questa modifica non avrà alcun effetto, controllare la fonte ODD",
-      "fr-notchecked": "ce changement n'aura aucun effet, vérifiez la source ODD",
+      "fr": "cette modification n'aura aucun effet: reverrez votre source ODD",
       "es-notchecked": "este cambio no tendrá ningún efecto, compruebe la fuente ODD",
       "de-notchecked": "diese Änderung hat keine Auswirkung, prüfen Sie die ODD-Quelle",
       "pt-notchecked": "esta alteração não terá qualquer efeito, verificar fonte ODD",
@@ -275,7 +275,7 @@
   "Blockly": {
     "Groups": {
       "it": "Gruppi",
-      "fr-notchecked": "Groupes",
+      "fr": "Groupes",
       "es-notchecked": "Grupos",
       "de-notchecked": "Gruppen",
       "pt-notchecked": "Grupos",
@@ -284,7 +284,7 @@
     },
     "References": {
       "it": "Riferimenti",
-      "fr-notchecked": "Références",
+      "fr": "Références",
       "es-notchecked": "Referencias",
       "de-notchecked": "Referenzen",
       "pt-notchecked": "Referências",
@@ -293,7 +293,7 @@
     },
     "Nodes": {
       "it": "Nodi",
-      "fr-notchecked": "Nœuds",
+      "fr": "Nœuds",
       "es-notchecked": "Nodos",
       "de-notchecked": "Knotenpunkte",
       "pt-notchecked": "Nodos",
@@ -431,7 +431,7 @@
     },
     "Unordered": {
       "it": "non ordinate",
-      "fr-notchecked": "Non ordonné",
+      "fr": "sans ordre",
       "es-notchecked": "Sin ordenar",
       "de-notchecked": "Ungeordnete",
       "pt-notchecked": "Desordenado",
@@ -440,7 +440,7 @@
     },
     "Alternate": {
       "it": "alternate",
-      "fr-notchecked": "Alternate",
+      "fr": "en alternance",
       "es-notchecked": "Alternativa",
       "de-notchecked": "Alternative",
       "pt-notchecked": "Suplente",
@@ -449,7 +449,7 @@
     },
     "Sequence": {
       "it": "in sequenza",
-      "fr-notchecked": "Séquence",
+      "fr": "en séquence",
       "es-notchecked": "Secuencia",
       "de-notchecked": "Sequenz",
       "pt-notchecked": "Sequência",
@@ -458,7 +458,7 @@
     },
     "Reference to another datatype": {
       "it": "Riferimento a un altro tipo di dato",
-      "fr-notchecked": "Référence à un autre type de données",
+      "fr": "Par référence à un autre type de données",
       "es-notchecked": "Referencia a otro tipo de datos",
       "de-notchecked": "Verweis auf einen anderen Datentyp",
       "pt-notchecked": "Referência a outro tipo de dados",
@@ -467,7 +467,7 @@
     },
     "Closed list of values": {
       "it": "Lista chiusa di valori",
-      "fr-notchecked": "Liste fermée de valeurs",
+      "fr": "Liste fermée de valeurs",
       "es-notchecked": "Lista cerrada de valores",
       "de-notchecked": "Geschlossene Liste von Werten",
       "pt-notchecked": "Lista fechada de valores",
@@ -476,7 +476,7 @@
     },
     "Text content": {
       "it": "Contenuto testuale",
-      "fr-notchecked": "Contenu du texte",
+      "fr": "Contenu textuel",
       "es-notchecked": "Contenido del texto",
       "de-notchecked": "Inhalt des Textes",
       "pt-notchecked": "Conteúdo do texto",
@@ -485,7 +485,7 @@
     },
     "Datatype Content": {
       "it": "Contenuto del tipo di dati",
-      "fr-notchecked": "Contenu du type de données",
+      "fr": "Contenu du type de donnée",
       "es-notchecked": "Tipo de datos Contenido",
       "de-notchecked": "Datentyp Inhalt",
       "pt-notchecked": "Conteúdo do tipo de dados",
@@ -546,7 +546,7 @@
   "LandingPages": {
     "Documentation": {
       "it": "Documentazione",
-      "fr-notchecked": "Documentation",
+      "fr": "Documentation",
       "es-notchecked": "Documentación",
       "de-notchecked": "Dokumentation",
       "pt-notchecked": "Documentação",
@@ -555,7 +555,7 @@
     },
     "Attributes": {
       "it": "Attributi",
-      "fr-notchecked": "Attributs",
+      "fr": "Attributs",
       "es-notchecked": "Atributos",
       "de-notchecked": "Attribute",
       "pt-notchecked": "Atributos",
@@ -565,7 +565,7 @@
     "CMCM": {
       "en": "Class Membership <br/> &amp; Content Model",
       "it": "Appartenenza alle classi <br/> &amp; Modello del contenuto",
-      "fr-notchecked": "Adhésion à la classe &amp ; Modèle de contenu",
+      "fr": "Appartenance aux classes <br/> &amp; modèle de contenu",
       "es-notchecked": "Pertenencia a una clase &amp; Modelo de contenido",
       "de-notchecked": "Klassenmitgliedschaft &amp; Inhaltsmodell",
       "pt-notchecked": "Afiliação em classe &amp; Modelo de conteúdo",
@@ -574,7 +574,7 @@
     },
     "Class Membership": {
       "it": "Appartenenza alle classi",
-      "fr-notchecked": "Adhésion à la classe",
+      "fr": "Appartenance aux classes",
       "es-notchecked": "Afiliación",
       "de-notchecked": "Mitgliedschaft in der Klasse",
       "pt-notchecked": "Afiliação em classe",
@@ -583,7 +583,7 @@
     },
     "Content": {
       "it": "Contenuto",
-      "fr-notchecked": "Contenu",
+      "fr": "Contenu",
       "es-notchecked": "Contenido",
       "de-notchecked": "Inhalt",
       "pt-notchecked": "Conteúdo",
@@ -592,7 +592,7 @@
     },
     "Not available.": {
       "it": "Non disponibile.",
-      "fr-notchecked": "Non disponible.",
+      "fr": "Pas disponible.",
       "es-notchecked": "No disponible.",
       "de-notchecked": "Nicht verfügbar.",
       "pt-notchecked": "Não disponível.",
@@ -601,7 +601,7 @@
     },
     "Contraints": {
       "it": "Restrizioni",
-      "fr-notchecked": "Contraintes",
+      "fr": "Contraintes",
       "es-notchecked": "Restricciones",
       "de-notchecked": "Beschränkungen",
       "pt-notchecked": "Contratos",
@@ -610,7 +610,7 @@
     },
     "Processing Model": {
       "it": "Modello di elaborazione (Processing Model)",
-      "fr-notchecked": "Modèle de traitement",
+      "fr": "Modèle de traitement",
       "es-notchecked": "Modelo de procesamiento",
       "de-notchecked": "Verarbeitungsmodell",
       "pt-notchecked": "Modelo de processamento",
@@ -619,7 +619,7 @@
     },
     "Members": {
       "it": "Componenti",
-      "fr-notchecked": "Membres",
+      "fr": "Membres",
       "es-notchecked": "Miembros",
       "de-notchecked": "Mitglieder",
       "pt-notchecked": "Membros",
@@ -628,7 +628,7 @@
     },
     "Revert changes": {
       "it": "Annullamento delle modifiche",
-      "fr-notchecked": "Annuler les changements",
+      "fr": "Annuler les modifications",
       "es-notchecked": "Revertir cambios",
       "de-notchecked": "Änderungen rückgängig machen",
       "pt-notchecked": "Reverter alterações",
@@ -637,7 +637,7 @@
     },
     "Revert to source": {
       "it": "Ripristina la definizione della fonte ODD",
-      "fr-notchecked": "Revenir à la source",
+      "fr": "Repasser à la version de la source ODD",
       "es-notchecked": "Volver a la fuente",
       "de-notchecked": "Zur Quelle zurückkehren",
       "pt-notchecked": "Voltar à fonte",
@@ -646,7 +646,7 @@
     },
     "Attribute class": {
       "it": "Classe di attributi",
-      "fr-notchecked": "Classe d'attributs",
+      "fr": "Classe d'attribut",
       "es-notchecked": "Clase de atributo",
       "de-notchecked": "Attribut Klasse",
       "pt-notchecked": "Classe de atributo",
@@ -655,7 +655,7 @@
     },
     "Model class": {
       "it": "Classe di modelli",
-      "fr-notchecked": "Classe de modèle",
+      "fr": "Classe de modèle",
       "es-notchecked": "Clase de modelo",
       "de-notchecked": "Modellklasse",
       "pt-notchecked": "Classe do modelo",
@@ -664,7 +664,7 @@
     },
     "Datatype": {
       "it": "Tipo di dati",
-      "fr-notchecked": "Type de données",
+      "fr": "Type de donnée",
       "es-notchecked": "Tipo de datos",
       "de-notchecked": "Datentyp",
       "pt-notchecked": "Tipo de dados",
@@ -715,7 +715,7 @@
   "Settings": {
     "Customize ODD": {
       "it": "Personalizza ODD",
-      "fr-notchecked": "Personnaliser ODD",
+      "fr": "Personnaliser ODD",
       "es-notchecked": "Personalizar ODD",
       "de-notchecked": "ODD anpassen",
       "pt-notchecked": "Personalizar ODD",
@@ -781,7 +781,7 @@
     },
     "Apply to new attributes as well.": {
       "it": "Applicare anche ai nuovi attributi.",
-      "fr-notchecked": "S'applique également aux nouveaux attributs.",
+      "fr": "S'appliquant également aux nouvels attributs.",
       "es-notchecked": "Aplíquese también a los nuevos atributos.",
       "de-notchecked": "Dies gilt auch für neue Attribute.",
       "pt-notchecked": "Aplicar também a novos atributos.",
@@ -809,7 +809,7 @@
     },
     "Language of elements and attributes": {
       "it": "Lingua degli elementi e degli attributi",
-      "fr-notchecked": "Langage des éléments et des attributs",
+      "fr": "Langage des éléments et des attributs",
       "es-notchecked": "Lenguaje de elementos y atributos",
       "de-notchecked": "Sprache der Elemente und Attribute",
       "pt-notchecked": "Linguagem de elementos e atributos",
@@ -828,7 +828,7 @@
     },
     "Documentation Language": {
       "it": "Lingua per la documentazione",
-      "fr-notchecked": "Documentation Langue",
+      "fr": "Langue de la documentation",
       "es-notchecked": "Documentación Lengua",
       "de-notchecked": "Dokumentation Sprache",
       "pt-notchecked": "Língua de Documentação",
@@ -837,7 +837,7 @@
     },
     "HelperTextDocLang": {
       "en": "Documentation will be shown and generated in this language.",
-      "fr": "Langue préférée de la documentation.",
+      "fr": "La documentation sera générée et affichée dans cette langue.",
       "it": "La documentazione verrà mostrata e generata in questa lingua.",
       "es-notchecked": "La documentación se mostrará y generará en este idioma.",
       "de-notchecked": "Die Dokumentation wird in dieser Sprache angezeigt und erstellt.",
@@ -868,7 +868,7 @@
   "SettingsPage": {
     "Obtaining new language documentation": {
       "it": "Recuperando la documentazione nella nuova lingua selezionata.",
-      "fr-notchecked": "Obtenir une nouvelle documentation linguistique",
+      "fr": "Récupération de la documentation dans une nouvelle langue en cours.",
       "es-notchecked": "Obtener nueva documentación lingüística",
       "de-notchecked": "Beschaffung einer neuen Sprachdokumentation",
       "pt-notchecked": "Obtenção de nova documentação linguística",
@@ -917,7 +917,7 @@
   "DataRef": {
     "Not available: deleted": {
       "it": "Non disponibile: rimosso",
-      "fr-notchecked": "Non disponible : supprimé",
+      "fr": "Pas disponible : supprimé",
       "es-notchecked": "No disponible: suprimido",
       "de-notchecked": "Nicht verfügbar: gelöscht",
       "pt-notchecked": "Não disponível: apagado",
@@ -926,7 +926,7 @@
     },
     "Restriction": {
       "it": "Restrizione",
-      "fr-notchecked": "Restriction",
+      "fr": "Contrainte",
       "es-notchecked": "Restricción",
       "de-notchecked": "Einschränkung",
       "pt-notchecked": "Restrição",
@@ -946,7 +946,7 @@
     },
     "Customization as ODD": {
       "it": "Personalizzazione in formato ODD",
-      "fr-notchecked": "La personnalisation comme ODD",
+      "fr": "Personalisation en format ODD",
       "es-notchecked": "Personalización como ODD",
       "de-notchecked": "Personalisierung als ODD",
       "pt-notchecked": "Personalização como ODD",
@@ -955,50 +955,43 @@
     },
     "Compiled ODD": {
       "it": "ODD compilato",
-      "fr-notchecked": "ODD compilé",
+      "fr": "ODD compilé",
       "es-notchecked": "ODD compilado",
       "de-notchecked": "Kompilierte ODD",
       "pt-notchecked": "ODD compilada",
       "ja-notchecked": "コンパイル済みODD",
       "zh-notchecked": "编译的ODD"
     },
-    "RelaxNG schema": {
-      "it": "Schema RelaxNG",
-      "fr-notchecked": "Schéma RelaxNG",
-      "es-notchecked": "Régimen RelaxNG",
-      "de-notchecked": "RelaxNG schema",
-      "pt-notchecked": "Esquema RelaxNG",
-      "ja-notchecked": "RelaxNGスキーム",
+    "RELAX NG schema": {
+      "it": "Schema RELAX NG",
+      "fr": "Schéma RELAX NG",
+      "es-notchecked": "Régimen RELAX NG",
+      "de-notchecked": "RELAX NG schema",
+      "pt-notchecked": "Esquema RELAX NG",
+      "ja-notchecked": "RELAX NGスキーム",
       "zh-notchecked": "放松NG计划"
     },
-    "RelaxNG compact": {
-      "fr-notchecked": "RelaxNG compact",
-      "es-notchecked": "RelaxNG compacto",
-      "de-notchecked": "RelaxNG kompakt",
-      "pt-notchecked": "RelaxNG compacto",
-      "ja-notchecked": "RelaxNGコンパクト",
-      "zh-notchecked": "紧凑的RelaxNG"
+    "RELAX NG compact": {
+      "fr": "Schéma RELAX NG en syntaxe compacte",
+      "es-notchecked": "RELAX NG compacto",
+      "de-notchecked": "RELAX NG kompakt",
+      "pt-notchecked": "RELAX NG compacto",
+      "ja-notchecked": "RELAX NGコンパクト",
+      "zh-notchecked": "紧凑的RELAX NG"
     },
     "W3C schema": {
       "it": "Schema W3C",
-      "fr-notchecked": "Schéma W3C",
+      "fr": "Schéma W3C",
       "es-notchecked": "Esquema W3C",
       "de-notchecked": "W3C schema",
       "pt-notchecked": "Esquema do W3C",
       "ja-notchecked": "W3Cスキーマ",
       "zh-notchecked": "W3C模式"
     },
-    "DTD": {
-      "fr-notchecked": "DTD",
-      "es-notchecked": "DTD",
-      "de-notchecked": "DTD",
-      "pt-notchecked": "DTD",
-      "ja-notchecked": "文書型定義",
-      "zh-notchecked": "DTD"
-    },
+    "DTD": { },
     "ISO Schematron constraints": {
       "it": "Restrizioni in formato ISO Schematron",
-      "fr-notchecked": "Contraintes ISO Schematron",
+      "fr": "Contraintes en format ISO Schematron",
       "es-notchecked": "Restricciones ISO Schematron",
       "de-notchecked": "ISO-Schematron-Einschränkungen",
       "pt-notchecked": "Restrições ISO Schematron",
@@ -1007,7 +1000,7 @@
     },
     "Documentation as HTML": {
       "it": "Documentazione in formato HTML",
-      "fr-notchecked": "Documentation en HTML",
+      "fr": "Documentation en format HTML",
       "es-notchecked": "Documentación en HTML",
       "de-notchecked": "Dokumentation als HTML",
       "pt-notchecked": "Documentação como HTML",
@@ -1016,7 +1009,7 @@
     },
     "Documentation as TEI Lite": {
       "it": "Documentazione in formato TEI Lite",
-      "fr-notchecked": "Documentation en tant que TEI Lite",
+      "fr": "Documentation en format TEI Lite",
       "es-notchecked": "Documentación como TEI Lite",
       "de-notchecked": "Dokumentation als TEI Lite",
       "pt-notchecked": "Documentação como TEI Lite",
@@ -1025,7 +1018,7 @@
     },
     "Documentation as MS Word": {
       "it": "Documentazione in formato MS Word",
-      "fr-notchecked": "Documentation en MS Word",
+      "fr": "Documentation en format MS Word",
       "es-notchecked": "Documentación en MS Word",
       "de-notchecked": "Dokumentation als MS Word",
       "pt-notchecked": "Documentação como MS Word",
@@ -1034,7 +1027,7 @@
     },
     "Documentation as LaTeX": {
       "it": "Documentazione in formato LaTeX",
-      "fr-notchecked": "Documentation en LaTeX",
+      "fr": "Documentation en format LaTeX",
       "es-notchecked": "Documentación en LaTeX",
       "de-notchecked": "Dokumentation als LaTeX",
       "pt-notchecked": "Documentação como LaTeX",
@@ -1043,7 +1036,7 @@
     },
     "The customization is not valid": {
       "it": "La personalizzazione non è valida",
-      "fr-notchecked": "La personnalisation n'est pas valide",
+      "fr": "La personnalisation n'est pas valide",
       "es-notchecked": "La personalización no es válida",
       "de-notchecked": "Die Anpassung ist nicht gültig",
       "pt-notchecked": "A personalização não é válida",
@@ -1053,7 +1046,7 @@
     "errormsg": {
       "en": "The ODD cannot be processed because it is not well-formed XML or it is invalid! Please check your customization, particularly documentation fields with XML data.",
       "it": "L'ODD non può essere elaborato perché non è XML ben formato o non è valido! Controllare la personalizzazione, in particolare i campi della documentazione con dati XML.",
-      "fr-notchecked": "L'ODD ne peut pas être traité car il ne s'agit pas d'un XML bien formé ou il est invalide ! Veuillez vérifier votre personnalisation, en particulier les champs de documentation contenant des données XML.",
+      "fr": "Nous n'arrivons pas à traiter cet ODD: peut etre il ne conforme pas au syntax XML, ou il est invalide. Controllez bien vos modifications éventuelles, surtout là où il s'agit des exemples d'usage XML.",
       "es-notchecked": "El ODD no puede procesarse porque no está bien formado en XML o no es válido. Por favor, compruebe su personalización, especialmente los campos de documentación con datos XML.",
       "de-notchecked": "Die ODD kann nicht verarbeitet werden, weil sie kein wohlgeformtes XML ist oder ungültig ist! Bitte überprüfen Sie Ihre Anpassungen, insbesondere Dokumentationsfelder mit XML-Daten.",
       "pt-notchecked": "A ODD não pode ser processada porque não está bem formada em XML ou é inválida! Por favor, verifique a sua personalização, particularmente os campos de documentação com dados XML.",
@@ -1111,19 +1104,25 @@
     },
     "settings": {
       "it": "impostazioni",
-      "fr-notchecked": "paramètres",
+      "fr": "réglage",
       "es-notchecked": "ajustes",
       "de-notchecked": "Einstellungen",
       "pt-notchecked": "definições",
       "ja-notchecked": "設定",
       "zh-notchecked": "设置"
+    },
+    "Do you want to start over? All changes will be lost.": {
+      "it": "Ricominciare da capo? Tutti i cambiamenti saranno perduti." 
+    },
+    "Do you want to apply this language to elements, attributes, and documentation as well?": {
+      "it": "Utilizzare la lingua anche per gli elementi, attributi e documentazione?"
     }
   },
   "Home": {
     "intro": {
       "en": "Roma is an ODD Editor, using the TEI ODD (One Document Does-it-all) format for meta-schema documentation and local encoding guidelines as created by the <a href=\"https://tei-c.org\">Text Encoding Initiative</a>.",
       "it": "Roma è uno strumento per editare file ODD, cioè il format TEI ODD (One Document Does-it-all) per la documentazione del meta-schema TEI e per la personalizzazione delle linee di guida della <a href=\"https://tei-c.org\">Text Encoding Initiative</a>.",
-      "fr-notchecked": "Roma est un éditeur ODD, qui utilise le format TEI ODD (One Document Does-it-all) pour la documentation du méta-schéma et les directives d'encodage local créées par la Text Encoding Initiative.",
+      "fr": "Roma facilite l&apos;édition d&apos;un fichier ODD  (One Document Does-it-all/ Un seul document fait tout); ODD est le format TEI XML conçu par la <a href=\"https://tei-c.org\">Text Encoding Initiative</a> pour à la fois  documenter et définir toute personnalisation de la TEI",
       "es-notchecked": "Roma es un editor ODD que utiliza el formato TEI ODD (One Document Does-it-all) para la documentación de metaesquemas y las directrices locales de codificación creadas por la Text Encoding Initiative.",
       "de-notchecked": "Roma ist ein ODD-Editor, der das TEI ODD (One Document Does-it-all)-Format für die Meta-Schema-Dokumentation und lokale Kodierungsrichtlinien verwendet, die von der Text Encoding Initiative erstellt wurden.",
       "pt-notchecked": "Roma é um editor ODD, utilizando o formato TEI ODD (One Document Does-it-all) para documentação de meta-esquema e directrizes de codificação local, tal como criado pela Iniciativa de Codificação de Texto.",
@@ -1132,7 +1131,7 @@
     },
     "What it is supposed to do": {
       "it": "Cosa può fare",
-      "fr-notchecked": "Ce qu'il est censé faire",
+      "fr": "Qu'est-ce qu'il est censé faire",
       "es-notchecked": "Para qué sirve",
       "de-notchecked": "Was es bewirken soll",
       "pt-notchecked": "O que é suposto fazer",
@@ -1142,7 +1141,7 @@
     "does": {
       "en": "Roma enables you to create a customization of the TEI. It provides a user-friendly interface to pick and choose Elements, Attribute Classes, Model Classes, and Datatypes used in a schema. For each element the documentation, attributes, class memberships and content models are able to be modified. You may start from a previously saved ODD customization or load one of the pre-defined templates as a starting point.",
       "it": "Roma consente di creare una personalizzazione dello schema della TEI. Fornisce un'interfaccia facile da usare per scegliere elementi, classi di attributi, classi di modelli e tipi di dati utilizzati in uno schema. Per ogni elemento è possibile modificare la documentazione, gli attributi, le appartenenze alle classi e i modelli di contenuto. Si può partire da una personalizzazione ODD precedentemente salvata o caricare uno dei modelli predefiniti come punto di partenza.",
-      "fr-notchecked": "Roma vous permet de créer une personnalisation de la TEI. Il fournit une interface conviviale pour choisir les éléments, les classes d'attributs, les classes de modèles et les types de données utilisés dans un schéma. Pour chaque élément, la documentation, les attributs, les appartenances aux classes et les modèles de contenu peuvent être modifiés. Vous pouvez partir d'une personnalisation ODD précédemment enregistrée ou charger l'un des modèles prédéfinis comme point de départ.",
+      "fr": "Roma vous permet de créer une personnalisation du système TEI en utilisant une interface simple et intuitive pour séléctionner parmi ses éléments, ses classes d'attributs, ses classes de modèle, et ses types de données. Il vous permet également de modifier ces objets ou leur descriptions et d'y ajouter de nouveaux composants. Vous pouvez éffectuer cela à partir d'une personnalisation ODD déjà éxistante, ou en utilisant un template prédéfini.",
       "es-notchecked": "Roma permite crear una personalización del TEI. Proporciona una interfaz fácil de usar para elegir los elementos, clases de atributos, clases de modelos y tipos de datos utilizados en un esquema. Para cada elemento se puede modificar la documentación, los atributos, la pertenencia a clases y los modelos de contenido. Puede partir de una personalización ODD previamente guardada o cargar una de las plantillas predefinidas como punto de partida.",
       "de-notchecked": "Roma ermöglicht es Ihnen, eine Anpassung der TEI zu erstellen. Es bietet eine benutzerfreundliche Schnittstelle zur Auswahl von Elementen, Attributklassen, Modellklassen und Datentypen, die in einem Schema verwendet werden. Für jedes Element können die Dokumentation, die Attribute, die Klassenmitgliedschaften und die Inhaltsmodelle geändert werden. Sie können von einer zuvor gespeicherten ODD-Anpassung ausgehen oder eine der vordefinierten Vorlagen als Ausgangspunkt laden.",
       "pt-notchecked": "Os Roma permitem-lhe criar uma personalização do TEI. Fornece uma interface de fácil utilização para escolher Elementos, Classes de Atributos, Classes de Modelos, e Tipos de Dados utilizados num esquema. Para cada elemento, a documentação, os atributos, as classes de membros e os modelos de conteúdo podem ser modificados. Pode começar a partir de uma personalização ODD previamente guardada ou carregar um dos modelos pré-definidos como ponto de partida.",
@@ -1151,7 +1150,7 @@
     },
     "What it does not do": {
       "it": "Cosa non può fare",
-      "fr-notchecked": "Ce qu'il ne fait pas",
+      "fr": "Qu'est-ce qu'il ne fait pas",
       "es-notchecked": "Lo que no hace",
       "de-notchecked": "Was es nicht tut",
       "pt-notchecked": "O que não faz",
@@ -1161,7 +1160,7 @@
     "doesnot": {
       "en": "The conversions of the ODD customisation to other formats (both schemas and documentation formats) is handled by passing the document to the TEI-C’s Oxgarage service. In addition there are a number of tasks that this version of Roma does not yet handle, including: <ul><li><strong>No support for RelaxNG content models.</strong> Only PureODD is supported (that is, ODD expressed only with TEI elements).</li><li><strong>No support for <code>@source</code> attributes.</strong> Currently only the latest stable version of the TEI is used by this tool.</li></ul>",
       "it": "Le conversioni della personalizzazione ODD in altri formati (sia schemi che formati di documentazione) sono gestite passando il documento al servizio Oxgarage della TEI-C. Inoltre ci sono una serie di operazioni che questa versione di Roma non gestisce, tra cui: <ul><li>Nessun supporto per i modelli di contenuto RelaxNG.</li> <li>È supportato solo PureODD (cioè ODD espresso solo con element TEI).</li> <li>Nessun supporto per gli attributi @source.</li> <li>Al momento solo l'ultima versione stabile della TEI è utilizzata da questo strumento.</li></ul>",
-      "fr-notchecked": "Les conversions de la personnalisation ODD vers d'autres formats (à la fois schémas et formats de documentation) sont gérées en passant le document au service Oxgarage de la TEI-C. En outre, il y a un certain nombre de tâches que cette version de Roma ne gère pas encore, notamment : Aucun support pour les modèles de contenu RelaxNG. Seul PureODD est supporté (c'est-à-dire ODD exprimé uniquement avec des éléments TEI).Pas de support pour les attributs @source. Actuellement, seule la dernière version stable de la TEI est utilisée par cet outil.",
+      "fr": "Pour convertir du format ODD en format de documentation ou en schéma, Roma se sert de la service OxGarage fournie par le TEI-C. Quelques fonctionalités  ne sont pas encore prises en main per cette version du logiciel, notamment: <ul><li><strong>Les modèles de contenu doivent etre exprimées en pure ODD : leur expression en RELAX NG n'est pas supportée. </li><li>Comme source de définition des composants TEI, seule la version courante de la TEI n'est permise: l'usage de l'attribut @source pour varier cela donc n'est pas supporté.</li></ul>",
       "es-notchecked": "Las conversiones de la personalización ODD a otros formatos (tanto esquemas como formatos de documentación) se gestionan pasando el documento al servicio Oxgarage de TEI-C. Además, hay una serie de tareas que esta versión de Roma aún no gestiona, entre las que se incluyen: No es compatible con los modelos de contenido RelaxNG. Sólo soporta PureODD (es decir, ODD expresado sólo con elementos TEI).No soporta atributos @source. Actualmente esta herramienta sólo utiliza la última versión estable del TEI.",
       "de-notchecked": "Die Konvertierung der ODD-Anpassung in andere Formate (sowohl Schemata als auch Dokumentationsformate) erfolgt durch Übergabe des Dokuments an den TEI-C-Dienst Oxgarage. Darüber hinaus gibt es eine Reihe von Aufgaben, die diese Version von Roma noch nicht bewältigen kann, darunter: Keine Unterstützung für RelaxNG-Inhaltsmodelle. Nur PureODD wird unterstützt (d.h. ODD wird nur mit TEI-Elementen ausgedrückt), keine Unterstützung für @source-Attribute. Derzeit wird nur die letzte stabile Version der TEI von diesem Werkzeug verwendet.",
       "pt-notchecked": "As conversões da personalização do ODD para outros formatos (tanto esquemas como formatos de documentação) são tratadas passando o documento para o serviço de Oxgarage do TEI-C. Além disso, há uma série de tarefas que esta versão dos ciganos ainda não trata, incluindo Nenhum suporte para modelos de conteúdo RelaxNG. Apenas PureODD é suportado (ou seja, ODD expresso apenas com elementos TEI). Não há suporte para @source attributes. Actualmente apenas a última versão estável do TEI é utilizada por esta ferramenta.",
@@ -1170,7 +1169,7 @@
     },
     "Known issues": {
       "it": "Problemi noti",
-      "fr-notchecked": "Problèmes connus",
+      "fr": "Problèmes connus",
       "es-notchecked": "Problemas conocidos",
       "de-notchecked": "Bekannte Probleme",
       "pt-notchecked": "Questões conhecidas",
@@ -1178,9 +1177,9 @@
       "zh-notchecked": "已知问题"
     },
     "known": {
-      "en": "<li>If Roma stalls on loading an existing ODD or template customisation then refresh or reload your browser.</li><li>In Safari, reloading a page may cause loss of data due to limited data storage.</li>",
+      "en": "",
       "it": "<li>Se Roma si blocca durante il caricamento di un ODD esistente o di una personalizzazione del modello, aggiornare o ricaricare il browser.</li><li>In Safari, il ricaricamento di una pagina può causare la perdita di dati a causa della memoria limitata.</li>",
-      "fr-notchecked": "Si Roma se bloque lors du chargement d'un ODD existant ou d'une personnalisation de modèle, actualisez ou rechargez votre navigateur. Dans Safari, le rechargement d'une page peut entraîner une perte de données en raison du stockage limité des données.",
+      "fr": "<li>Si roma se bloque en essayant de charger un ODD existant, ou un template, essayez de relancer votre navigateur web</l><l>Avec Safari, un rechargement risque de perdre des informations à cause du stockage limite des donnees</l>",
       "es-notchecked": "Si Roma se bloquea al cargar un ODD existente o una personalización de plantilla, actualice o vuelva a cargar el navegador. En Safari, la recarga de una página puede provocar la pérdida de datos debido a su almacenamiento limitado.",
       "de-notchecked": "Wenn Roma beim Laden eines bestehenden ODD oder einer Vorlagenanpassung stehen bleibt, aktualisieren Sie Ihren Browser oder laden Sie ihn neu. in Safari kann das Neuladen einer Seite aufgrund des begrenzten Datenspeichers zu Datenverlusten führen.",
       "pt-notchecked": "Se os romanichéis bloquearem o carregamento de uma ODD ou personalização de modelos existentes, então actualize ou recarregue o seu navegador. No Safari, recarregar uma página pode causar perda de dados devido ao armazenamento limitado de dados.",
@@ -1189,7 +1188,7 @@
     },
     "Contribute": {
       "it": "Per contribuire",
-      "fr-notchecked": "Contribuez à",
+      "fr": "Pour contribuer",
       "es-notchecked": "Contribuir",
       "de-notchecked": "Beitragen",
       "pt-notchecked": "Contribua",
@@ -1199,12 +1198,20 @@
     "contrib": {
       "en": "Report any issues or make feature requests on the TEI-C GitHub repository: <a href=\"https://github.com/TEIC/romajs\">https://github.com/TEIC/romajs</a>",
       "it": "Segnalare eventuali problemi o fare richieste di funzionalità sul repository GitHub di TEI-C: <a href=\"https://github.com/TEIC/romajs\">https://github.com/TEIC/romajs</a>",
-      "fr-notchecked": "Signalez tout problème ou faites des demandes de fonctionnalités sur le dépôt GitHub de TEI-C : https://github.com/TEIC/romajs.",
+      "fr": "Nous informer de tout problème ou proposer des ameliorations en utilisant le repo du TEI-C sur github :  <a href=\"https://github.com/TEIC/romajs\">https://github.com/TEIC/romajs</a>.",
       "es-notchecked": "Notifique cualquier problema o solicite funciones en el repositorio GitHub de TEI-C: https://github.com/TEIC/romajs",
       "de-notchecked": "Melden Sie Probleme oder Funktionswünsche auf dem TEI-C GitHub Repository: https://github.com/TEIC/romajs",
       "pt-notchecked": "Relatar quaisquer problemas ou fazer pedidos de funcionalidades no repositório TEI-C GitHub: https://github.com/TEIC/romajs",
       "ja-notchecked": "TEI-CのGitHubリポジトリで問題点の報告や機能要望を行うことができます: https://github.com/TEIC/romajs",
       "zh-notchecked": "在TEI-C的GitHub存储库中报告任何问题或提出功能请求：https://github.com/TEIC/romajs。"
+    },
+    "Contributors": {
+      "it": "Contributori",
+      "fr": "Contributeurs"
+    },
+    "Localization": {
+      "it": "Localizzazione linguistica",
+      "fr": "Localisation linguistique"
     },
     "Select ODD": {
       "it": "Scegliere un ODD",
@@ -1244,7 +1251,7 @@
     },
     "TEI All (customize by reducing TEI)": {
       "it": "TEI All (personalizza riducendo)",
-      "fr-notchecked": "TEI All (personnaliser en réduisant le TEI)",
+      "fr": "TEI All (pour personnaliser en reduisant)",
       "es-notchecked": "TEI Todos (personalizar reduciendo TEI)",
       "de-notchecked": "TEI All (Anpassung durch Reduzierung der TEI)",
       "pt-notchecked": "TEI All (personalizar reduzindo TEI)",
@@ -1253,7 +1260,7 @@
     },
     "TEI Minimal (customize by building TEI up)": {
       "it": "TEI Minimal (personalizza aggiungendo)",
-      "fr-notchecked": "TEI Minimal (à personnaliser en construisant la TEI)",
+      "fr": "TEI Minimal (pour personnaliser en ajoutant)",
       "es-notchecked": "TEI Minimal (personalizar construyendo TEI)",
       "de-notchecked": "TEI Minimal (Anpassung durch Aufbau von TEI)",
       "pt-notchecked": "TEI Minimal (personalizar através da construção de TEI)",
@@ -1262,7 +1269,7 @@
     },
     "TEI Absolutely Bare": {
       "it": "TEI ridotta all'osso",
-      "fr-notchecked": "TEI Absolutely Bare",
+      "fr": "Un ODD minimal",
       "es-notchecked": "TEI Absolutamente desnudo",
       "de-notchecked": "TEI Völlig entblößt",
       "pt-notchecked": "TEI Absolutamente Desnudo",
@@ -1271,7 +1278,7 @@
     },
     "TEI for Linguistic Corpora": {
       "it": "TEI per corpora linguistici",
-      "fr-notchecked": "TEI pour les corpus linguistiques",
+      "fr": "Un ODD pour les corpus linguistiques",
       "es-notchecked": "TEI para corpus lingüísticos",
       "de-notchecked": "TEI für linguistische Korpora",
       "pt-notchecked": "TEI para Cabo Linguístico",
@@ -1280,7 +1287,7 @@
     },
     "TEI for Manuscript Description": {
       "it": "TEI per la descrizione di manoscritti",
-      "fr-notchecked": "TEI pour la description des manuscrits",
+      "fr": "Un ODD pour la description des manuscrits",
       "es-notchecked": "TEI para la descripción de manuscritos",
       "de-notchecked": "TEI für Manuskriptbeschreibung",
       "pt-notchecked": "TEI para Manuscrito Descrição",
@@ -1289,7 +1296,7 @@
     },
     "TEI with Drama": {
       "it": "TEI con testo teatrale",
-      "fr-notchecked": "TEI avec Drama",
+      "fr": "Un ODD pour les textes dramatiques",
       "es-notchecked": "TEI con teatro",
       "de-notchecked": "TEI mit Drama",
       "pt-notchecked": "TEI com Drama",
@@ -1298,7 +1305,7 @@
     },
     "TEI for Speech Representation": {
       "it": "TEI per la trascrizione vocale",
-      "fr-notchecked": "TEI pour la représentation de la parole",
+      "fr": "Un ODD pour les transcriptions orales",
       "es-notchecked": "TEI para la representación del habla",
       "de-notchecked": "TEI für die Darstellung von Sprache",
       "pt-notchecked": "TEI para Representação da Fala",
@@ -1307,7 +1314,7 @@
     },
     "TEI for Authoring ODDs": {
       "it": "TEI per creare ODD",
-      "fr-notchecked": "TEI pour la création d'ODD",
+      "fr": "Un ODD pour les ODD",
       "es-notchecked": "TEI para la creación de ODD",
       "de-notchecked": "TEI für die Erstellung von ODDs",
       "pt-notchecked": "TEI para autores de ODDs",
@@ -1316,13 +1323,16 @@
     },
     "TEI for Journal of the TEI": {
       "it": "TEI per gli articoli della rivista \"Journal of the TEI\"",
-      "fr-notchecked": "TEI pour Journal of the TEI",
+      "fr": "Un ODD pour les articles scientifiques soumis au \"Journal of the TEI\"",
       "es-notchecked": "TEI para Journal of the TEI",
       "de-notchecked": "TEI für Journal of the TEI",
       "pt-notchecked": "TEI para Jornal da TEI",
       "ja-notchecked": "TEI for the Journal of the TEI",
       "zh-notchecked": "TEI杂志的TEI"
-    }
+    },
+    "TEI SimplePrint": {},
+    "TEI Lite": {},
+    "TEI Tite": {}
   },
   "HomePage": {
     "1/3 Obtaining customization ODD...": {
@@ -1356,7 +1366,7 @@
   "MembersList": {
     "module": {
       "it": "modulo",
-      "fr-notchecked": "module",
+      "fr": "module",
       "es-notchecked": "módulo",
       "de-notchecked": "Modul",
       "pt-notchecked": "módulo",
@@ -1365,7 +1375,7 @@
     },
     "element": {
       "it": "elemento",
-      "fr-notchecked": "élément",
+      "fr": "élément",
       "es-notchecked": "elemento",
       "de-notchecked": "Element",
       "pt-notchecked": "elemento",
@@ -1374,7 +1384,7 @@
     },
     "by module": {
       "it": "ordine per modulo",
-      "fr-notchecked": "par module",
+      "fr": "par module",
       "es-notchecked": "por módulo",
       "de-notchecked": "nach Modul",
       "pt-notchecked": "por módulo",
@@ -1383,7 +1393,7 @@
     },
     "alphabetically": {
       "it": "ordine alfabetico",
-      "fr-notchecked": "par ordre alphabétique",
+      "fr": "par ordre alphabétique",
       "es-notchecked": "alfabéticamente",
       "de-notchecked": "alphabetisch",
       "pt-notchecked": "por ordem alfabética",
@@ -1428,7 +1438,7 @@
     },
     "No items found. Try searching for something else.": {
       "it": "Nessun componente trovato. Provare a cercare qualcos'altro.",
-      "fr-notchecked": "Aucun élément trouvé. Essayez de chercher autre chose.",
+      "fr": "Aucun composant n'est retrouvé. Essayer une nouvelle recherche.",
       "es-notchecked": "No se han encontrado artículos. Intente buscar otra cosa.",
       "de-notchecked": "Keine Artikel gefunden. Versuchen Sie, nach etwas anderem zu suchen.",
       "pt-notchecked": "Não foram encontrados artigos. Tente procurar outra coisa.",
@@ -1440,7 +1450,7 @@
     "q": {
       "en": "This will remove the entire module from your customization. All changes to this module's members will be lost. Are you sure you want to continue?",
       "it": "Questa operazione rimuoverà l'intero modulo dalla personalizzazione. Tutte le modifiche apportate ai membri di questo modulo andranno perse. Continuare?",
-      "fr-notchecked": "Cela supprimera le module entier de votre personnalisation. Toutes les modifications apportées aux membres de ce module seront perdues. Êtes-vous sûr de vouloir continuer ?",
+      "fr": "Vous proposez d'enlever un module complet de votre personnalisation, y compris les modifications deja faites à ses composants. Vous en êtes sur?",
       "es-notchecked": "Esto eliminará todo el módulo de su personalización. Se perderán todos los cambios realizados en los miembros de este módulo. ¿Está seguro de que desea continuar?",
       "de-notchecked": "Dadurch wird das gesamte Modul aus Ihren Anpassungen entfernt. Alle Änderungen an den Mitgliedern dieses Moduls gehen verloren. Sind Sie sicher, dass Sie fortfahren möchten?",
       "pt-notchecked": "Isto irá remover todo o módulo da sua personalização. Todas as alterações aos membros deste módulo serão perdidas. Tem a certeza de que quer continuar?",
@@ -1451,7 +1461,7 @@
   "ValList": {
     "Default (open)": {
       "it": "Predefinito (aperta)",
-      "fr-notchecked": "Par défaut (ouvert)",
+      "fr": "Par défaut (ouvert)",
       "es-notchecked": "Por defecto (abierto)",
       "de-notchecked": "Standard (offen)",
       "pt-notchecked": "Default (aberto)",
@@ -1460,7 +1470,7 @@
     },
     "Closed": {
       "it": "Chiusa",
-      "fr-notchecked": "Fermé",
+      "fr": "Fermé",
       "es-notchecked": "Cerrado",
       "de-notchecked": "Geschlossen",
       "pt-notchecked": "Fechado",
@@ -1469,7 +1479,7 @@
     },
     "Semi-Open": {
       "it": "Semi-Aperta",
-      "fr-notchecked": "Semi-Open",
+      "fr": "Quasi-Open",
       "es-notchecked": "Semiabierto",
       "de-notchecked": "Semi-Open",
       "pt-notchecked": "Semi-Aberto",
@@ -1478,7 +1488,7 @@
     },
     "Open": {
       "it": "Open",
-      "fr-notchecked": "Ouvrir",
+      "fr": "Ouvert",
       "es-notchecked": "Abrir",
       "de-notchecked": "Öffnen Sie",
       "pt-notchecked": "Aberto",
@@ -1489,7 +1499,7 @@
   "ErrorReporting": {
     "Oh-oh... Something went wrong": {
       "it": "Oh-oh... Qualcosa è andato storto",
-      "fr-notchecked": "Oh-oh... Quelque chose a mal tourné",
+      "fr": "Aïe! Quelque chose n'a pas bien marché !",
       "es-notchecked": "Oh-oh... Algo salió mal",
       "de-notchecked": "Oh-oh... Etwas ist schief gelaufen",
       "pt-notchecked": "Oh-oh... Algo correu mal",
@@ -1498,7 +1508,7 @@
     },
     "The following error occurred:": {
       "it": "Si è verificato il seguente errore:",
-      "fr-notchecked": "L'erreur suivante s'est produite :",
+      "fr": "L'erreur suivante s'est produite :",
       "es-notchecked": "Se ha producido el siguiente error:",
       "de-notchecked": "Der folgende Fehler ist aufgetreten:",
       "pt-notchecked": "Ocorreu o seguinte erro:",
@@ -1508,7 +1518,7 @@
     "report": {
       "en": "Please consider <a href=\"https://github.com/TEIC/romajs/issues\">reporting an issue on GitHub</a>.",
       "it": "Se possibile, <a href=\"https://github.com/TEIC/romajs/issues\">segnalare il problema su GitHub</a>.",
-      "fr-notchecked": "Veuillez envisager de signaler un problème sur GitHub.",
+      "fr": "Veuillez <a href=\"https://github.com/TEIC/romajs/issues\">faire un rapport du problème sur GitHub</a>.",
       "es-notchecked": "Considera la posibilidad de informar de un problema en GitHub.",
       "de-notchecked": "Bitte denken Sie daran, einen Fehler auf GitHub zu melden.",
       "pt-notchecked": "Por favor, considere a possibilidade de relatar um problema sobre o GitHub.",
@@ -1517,7 +1527,7 @@
     },
     "Start Over": {
       "it": "Ricominciare",
-      "fr-notchecked": "Recommencer",
+      "fr": "Recommencer",
       "es-notchecked": "Volver a empezar",
       "de-notchecked": "Neu anfangen",
       "pt-notchecked": "Começar de novo",
@@ -1528,7 +1538,7 @@
   "NewItem": {
     "Create new attribute": {
       "it": "Crea un nuovo attributo",
-      "fr-notchecked": "Créer un nouvel attribut",
+      "fr": "Créer un nouvel attribut",
       "es-notchecked": "Crear nuevo atributo",
       "de-notchecked": "Neues Attribut erstellen",
       "pt-notchecked": "Criar novo atributo",
@@ -1537,7 +1547,7 @@
     },
     "New": {
       "it": "Nuovo",
-      "fr-notchecked": "Nouveau",
+      "fr": "Nouveau",
       "es-notchecked": "Nuevo",
       "de-notchecked": "Neu",
       "pt-notchecked": "Novo",
@@ -1546,7 +1556,7 @@
     },
     "Create an entirely new attribute.": {
       "It": "Crea un attribute interamente nuovo.",
-      "fr-notchecked": "Créez un attribut entièrement nouveau.",
+      "fr": "Créer un attribut tout à fait nouveau.",
       "es-notchecked": "Crear un atributo completamente nuevo.",
       "de-notchecked": "Erstellen Sie ein völlig neues Attribut.",
       "pt-notchecked": "Criar um atributo inteiramente novo.",
@@ -1555,7 +1565,7 @@
     },
     "Create": {
       "it": "Crea",
-      "fr-notchecked": "Créer",
+      "fr": "Créer",
       "es-notchecked": "Cree",
       "de-notchecked": "erstellen.",
       "pt-notchecked": "Criar",
@@ -1564,7 +1574,7 @@
     },
     "Copy": {
       "it": "Copia",
-      "fr-notchecked": "Copie",
+      "fr": "Copie",
       "es-notchecked": "Copia",
       "de-notchecked": "Kopieren",
       "pt-notchecked": "Cópia",
@@ -1573,7 +1583,7 @@
     },
     "Duplicate an existing attribute.": {
       "it": "Duplica un attributo già esistente.",
-      "fr-notchecked": "Dupliquer un attribut existant.",
+      "fr": "Créer un doublon d'un attribut existant.",
       "es-notchecked": "Duplicar un atributo existente.",
       "de-notchecked": "Duplizieren Sie ein vorhandenes Attribut.",
       "pt-notchecked": "Duplicar um atributo existente.",
@@ -1582,7 +1592,7 @@
     },
     "Cancel": {
       "it": "Annulla",
-      "fr-notchecked": "Annuler",
+      "fr": "Annuler",
       "es-notchecked": "Cancelar",
       "de-notchecked": "Abbrechen",
       "pt-notchecked": "Cancel",
@@ -1591,7 +1601,7 @@
     },
     "Create new Class": {
       "it": "Crea una nuova classe",
-      "fr-notchecked": "Créer une nouvelle classe",
+      "fr": "Créer une classe nouvelle",
       "es-notchecked": "Crear nueva clase",
       "de-notchecked": "Neue Klasse erstellen",
       "pt-notchecked": "Criar nova Classe",
@@ -1600,7 +1610,7 @@
     },
     "Class Type": {
       "it": "Tipo di classe",
-      "fr-notchecked": "Type de classe",
+      "fr": "Type de classe",
       "es-notchecked": "Tipo de clase",
       "de-notchecked": "Klasse Typ",
       "pt-notchecked": "Tipo de classe",
@@ -1609,7 +1619,7 @@
     },
     "Choose a class type.": {
       "it": "Scegliere il tipo di classe.",
-      "fr-notchecked": "Choisissez un type de classe.",
+      "fr": "Préciser le type de classe.",
       "es-notchecked": "Elija un tipo de clase.",
       "de-notchecked": "Wählen Sie eine Klassenart.",
       "pt-notchecked": "Escolher um tipo de classe.",
@@ -1618,7 +1628,7 @@
     },
     "Attributes": {
       "it": "Attributi",
-      "fr-notchecked": "Attributs",
+      "fr": "Attributs",
       "es-notchecked": "Atributos",
       "de-notchecked": "Attribute",
       "pt-notchecked": "Atributos",
@@ -1627,7 +1637,7 @@
     },
     "Model": {
       "it": "Modello",
-      "fr-notchecked": "Modèle",
+      "fr": "Modèle",
       "es-notchecked": "Modelo",
       "de-notchecked": "Modell",
       "pt-notchecked": "Modelo",
@@ -1636,7 +1646,7 @@
     },
     "Name": {
       "it": "Nome",
-      "fr-notchecked": "Nom",
+      "fr": "Nom",
       "es-notchecked": "Nombre",
       "de-notchecked": "Name",
       "pt-notchecked": "Nome",
@@ -1645,7 +1655,7 @@
     },
     "Set the new class name.": {
       "it": "Imposta il nome della nuova classe",
-      "fr-notchecked": "Définissez le nouveau nom de la classe.",
+      "fr": "Préciser le nom de la classe nouvelle.",
       "es-notchecked": "Establece el nuevo nombre de la clase.",
       "de-notchecked": "Legen Sie den neuen Klassennamen fest.",
       "pt-notchecked": "Definir o novo nome da classe.",
@@ -1654,7 +1664,7 @@
     },
     "Module": {
       "it": "Modulo",
-      "fr-notchecked": "Module",
+      "fr": "Module",
       "es-notchecked": "Módulo",
       "de-notchecked": "Modul",
       "pt-notchecked": "Módulo",
@@ -1664,7 +1674,7 @@
     "HelperTextModule": {
       "en": "Choose a module for this class. NB: it is recommended to only add new elements to modules defined in the customization.",
       "it": "Scegliere un modulo per questa classe. NB: si raccomanda di aggiungere nuovi elementi solo ai moduli definiti nella personalizzazione.",
-      "fr-notchecked": "Choisissez un module pour cette classe. NB : il est recommandé de n'ajouter de nouveaux éléments qu'aux modules définis dans la personnalisation.",
+      "fr": "Choisir un module pour la classe. Attention: ce module devrait figurer dans votre personnalisation.",
       "es-notchecked": "Elija un módulo para esta clase. NB: se recomienda añadir nuevos elementos únicamente a los módulos definidos en la personalización.",
       "de-notchecked": "Wählen Sie ein Modul für diese Klasse. Hinweis: Es wird empfohlen, neue Elemente nur zu den in der Anpassung definierten Modulen hinzuzufügen.",
       "pt-notchecked": "Escolha um módulo para esta classe. NB: recomenda-se acrescentar apenas novos elementos aos módulos definidos na personalização.",
@@ -1673,7 +1683,7 @@
     },
     "Create new Datatype": {
       "it": "Crea un nuovo tipo di dati",
-      "fr-notchecked": "Créer un nouveau type de données",
+      "fr": "Créer un type de donnée nouveau",
       "es-notchecked": "Crear nuevo tipo de datos",
       "de-notchecked": "Neuen Datentyp erstellen",
       "pt-notchecked": "Criar novo tipo de dados",
@@ -1683,7 +1693,7 @@
     "HelperTextName": {
       "en": "Set the new datatype's name.",
       "it": "Imposta il nome del nuovo tipo di dati.",
-      "fr-notchecked": "Définir le nom du nouveau type de données.",
+      "fr": "Préciser le nom du type de donnee nouveau.",
       "es-notchecked": "Establece el nombre del nuevo tipo de datos.",
       "de-notchecked": "Legen Sie den Namen des neuen Datentyps fest.",
       "pt-notchecked": "Definir o nome do novo datatype.",
@@ -1692,7 +1702,7 @@
     },
     "Create new Element": {
       "it": "Crea un nuovo elemento",
-      "fr-notchecked": "Créer un nouvel élément",
+      "fr": "Créer un élément nouveau",
       "es-notchecked": "Crear nuevo elemento",
       "de-notchecked": "Neues Element erstellen",
       "pt-notchecked": "Criar novo Elemento",
@@ -1701,7 +1711,7 @@
     },
     "HelperTextElName": {
       "en": "Set the new element's name.",
-      "fr-notchecked": "Définissez le nom du nouvel élément.",
+      "fr": "Préciser le nom de l'element nouveau.",
       "es-notchecked": "Establece el nombre del nuevo elemento.",
       "de-notchecked": "Legen Sie den Namen des neuen Elements fest.",
       "pt-notchecked": "Definir o nome do novo elemento.",
@@ -1709,7 +1719,7 @@
       "zh-notchecked": "设置新元素的名称。"
     },
     "Namespace": {
-      "fr-notchecked": "Espace de nommage",
+      "fr": "Espace de nommage",
       "es-notchecked": "Espacio de nombres",
       "de-notchecked": "Namespace",
       "pt-notchecked": "Namespace",
@@ -1719,7 +1729,7 @@
     "HelperTextNs": {
       "en": "Set a namespace for a new element (it cannot be TEI's namespace).",
       "it": "Imposta il namespace per il nuovo elemento (non può essere il namespace TEI).",
-      "fr-notchecked": "Définir un espace de nom pour un nouvel élément (ce ne peut être l'espace de nom de la TEI).",
+      "fr": "Préciser l'espace de nommage de l'element nouveau. Attention:  l'espace de nommage TEI ne peut pas etre utilisé.",
       "es-notchecked": "Establece un espacio de nombres para un nuevo elemento (no puede ser el espacio de nombres de TEI).",
       "de-notchecked": "Setzt einen Namensraum für ein neues Element (es kann nicht der Namensraum der TEI sein).",
       "pt-notchecked": "Definir um namespace para um novo elemento (não pode ser o namespace da TEI).",
@@ -1730,7 +1740,7 @@
   "Revert": {
     "Revert to source (delete": {
       "it": "Ripristina la fonte ODD (cancella",
-      "fr-notchecked": "Revenir à la source (supprimer",
+      "fr":"Repasser à la source (supprimer",
       "es-notchecked": "Volver al origen (suprimir",
       "de-notchecked": "Zur Quelle zurückkehren (löschen",
       "pt-notchecked": "Voltar à fonte (apagar",
@@ -1740,7 +1750,7 @@
     "HelperText1": {
       "en": "Discard <i>all</i> changes to",
       "it": "Scartare <i>tutte</i> le modifiche a",
-      "fr-notchecked": "Rejeter toutes les modifications apportées à",
+      "fr": "Supprimer <i>toutes</i> les modifications déjà éffectuées sur",
       "es-notchecked": "Descartar todos los cambios en",
       "de-notchecked": "Verwerfen Sie alle Änderungen an",
       "pt-notchecked": "Deitar fora todas as alterações para",
@@ -1750,7 +1760,7 @@
     "HelperText2": {
       "en": "and revert to its original definition.",
       "it": "e tornare alla definizione originale.",
-      "fr-notchecked": "et revenir à sa définition initiale.",
+      "fr": "et repasser à sa définition d'origine.",
       "es-notchecked": "y volver a su definición original.",
       "de-notchecked": "und kehrt zu seiner ursprünglichen Definition zurück.",
       "pt-notchecked": "e voltar à sua definição original.",
@@ -1760,7 +1770,7 @@
     "HelperText3": {
       "en": "<br/> Since this is a newly added item, it will be deleted. <br/> <b>This action cannot be undone!</b>",
       "it": "<br/> L'elemento verrà eleminato poiché aggiunto di recente. <br/> <b>Questa azione non può essere ripristinata!</b>",
-      "fr-notchecked": " Comme il s'agit d'un élément nouvellement ajouté, il sera supprimé.  Cette action ne peut pas être annulée !",
+      "fr": " <br/>Cet ajout récent doit etre supprimé.<br/><b>Cette opération est irréversible.</b>",
       "es-notchecked": " Dado que se trata de un elemento recién añadido, será eliminado.  Esta acción no se puede deshacer.",
       "de-notchecked": " Da es sich um einen neu hinzugefügten Artikel handelt, wird er gelöscht.  Diese Aktion kann nicht rückgängig gemacht werden!",
       "pt-notchecked": " Uma vez que se trata de um item recentemente acrescentado, será eliminado.  Esta acção não pode ser desfeita!",
@@ -1769,7 +1779,7 @@
     },
     "Revert": {
       "it": "Ripristinare",
-      "fr-notchecked": "Revenir en arrière",
+      "fr": "Repasser",
       "es-notchecked": "Volver a",
       "de-notchecked": "Zurückkehren",
       "pt-notchecked": "Reverter",
@@ -1778,7 +1788,7 @@
     },
     "Revert to source": {
       "it": "Ripristinare la definizione della fonte ODD",
-      "fr-notchecked": "Revenir à la source",
+      "fr": "Repasser à la définition de la source ODD",
       "es-notchecked": "Volver a la fuente",
       "de-notchecked": "Zur Quelle zurückkehren",
       "pt-notchecked": "Voltar à fonte",
@@ -1787,7 +1797,7 @@
     },
     "Revert changes": {
       "it": "Annulla i cambiamenti",
-      "fr-notchecked": "Annuler les changements",
+      "fr": "Annuler toutes les modifications",
       "es-notchecked": "Revertir cambios",
       "de-notchecked": "Änderungen rückgängig machen",
       "pt-notchecked": "Reverter alterações",
@@ -1796,7 +1806,7 @@
     },
     "You have two options for reverting changes to": {
       "it": "Sono disponibili due opzioni per ripristinare le modifiche a",
-      "fr-notchecked": "Vous disposez de deux options pour annuler les modifications apportées à la base de données.",
+      "fr": "Vous disposez de deux options pour la suppressions des modifications à",
       "es-notchecked": "Tiene dos opciones para revertir los cambios",
       "de-notchecked": "Sie haben zwei Möglichkeiten, Änderungen rückgängig zu machen",
       "pt-notchecked": "Tem duas opções para reverter as alterações para",
@@ -1805,7 +1815,7 @@
     },
     "Discard latest changes": {
       "it": "Scartare i cambiamenti recenti",
-      "fr-notchecked": "Rejeter les dernières modifications",
+      "fr": "Supprimer les modifications récentes",
       "es-notchecked": "Descartar los últimos cambios",
       "de-notchecked": "Letzte Änderungen verwerfen",
       "pt-notchecked": "Descartar as últimas alterações",
@@ -1815,7 +1825,7 @@
     "HelperTextDiscard": {
       "en": "Discard changes you have made in Roma in this session. This item will return to same settings as the customization you picked or uploaded.",
       "it": "Annulla le modifiche apportate in questa sessione. Il componente editato ritornerà le stesse impostazioni della personalizzazione scelta o caricata.",
-      "fr-notchecked": "Supprimez les modifications que vous avez apportées à Roma au cours de cette session. Cet élément reviendra aux mêmes paramètres que la personnalisation que vous avez choisie ou téléchargée.",
+      "fr": "Supprimer les modifications effectuées par Roma dans cette session. L'objet retournera dans son état originel dans la personnalisation que vous avez selectionnée ou telechargée",
       "es-notchecked": "Descarta los cambios que hayas realizado en Roma en esta sesión. Este elemento volverá a la misma configuración que la personalización que eligió o cargó.",
       "de-notchecked": "Verwirft Änderungen, die Sie in Roma in dieser Sitzung vorgenommen haben. Dieses Element kehrt zu denselben Einstellungen zurück wie die von Ihnen ausgewählte oder hochgeladene Anpassung.",
       "pt-notchecked": "Descarte as alterações que fez nos Roma nesta sessão. Este item voltará às mesmas configurações que a personalização que escolheu ou carregou.",
@@ -1824,7 +1834,7 @@
     },
     "Discard": {
       "it": "Scartare",
-      "fr-notchecked": "Jeter",
+      "fr": "Abandonner",
       "es-notchecked": "Descartar",
       "de-notchecked": "Ablegen",
       "pt-notchecked": "Descartar",
@@ -1833,7 +1843,7 @@
     },
     "Cancel": {
       "it": "Annulla",
-      "fr-notchecked": "Annuler",
+      "fr": "Annuler",
       "es-notchecked": "Cancelar",
       "de-notchecked": "Abbrechen",
       "pt-notchecked": "Cancel",
@@ -1852,7 +1862,7 @@
       "zh-notchecked": "是"
     },
     "No": {
-      "fr": "non",
+      "fr": "Non",
       "es-notchecked": "No",
       "de-notchecked": "Nein",
       "pt-notchecked": "Não",
@@ -1863,7 +1873,7 @@
   "Pickers": {
     "(currently not in customization)": {
       "it": "(al momento non è presente nella personalizzazione)",
-      "fr-notchecked": "(actuellement pas dans la personnalisation)",
+      "fr": "(actuellement ne figure pas dans la personnalisation)",
       "es-notchecked": "(actualmente no en personalización)",
       "de-notchecked": "(derzeit nicht in der Anpassung)",
       "pt-notchecked": "(actualmente não está em customização)",
@@ -1872,7 +1882,7 @@
     },
     "Cancel": {
       "it": "Annulla",
-      "fr-notchecked": "Annuler",
+      "fr": "Annuler",
       "es-notchecked": "Cancelar",
       "de-notchecked": "Abbrechen",
       "pt-notchecked": "Cancel",
@@ -1881,7 +1891,7 @@
     },
     "Find...": {
       "it": "Cerca...",
-      "fr-notchecked": "Trouvez...",
+      "fr": "Rechercher...",
       "es-notchecked": "Encuentra...",
       "de-notchecked": "Finden Sie...",
       "pt-notchecked": "Encontrar...",
