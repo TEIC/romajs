@@ -75,6 +75,9 @@ export default class Header extends Component {
                       this.props.setLanguage('en')
                     }}>English</li>
                     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
+                      this.props.setLanguage('de')
+                    }}>Deutsch</li>
+                    <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
                       this.props.setLanguage('fr')
                     }}>Français</li>
                     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
