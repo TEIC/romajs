@@ -165,7 +165,7 @@ export function fetchLocalSource(url) {
   }
 }
 
-export function compileWithOxGarage(input, endpoint) {
+export function compileWithTEIGarage(input, endpoint) {
   return dispatch => {
     dispatch(requestOdd())
     const fd = new FormData()
@@ -187,7 +187,7 @@ export function compileWithOxGarage(input, endpoint) {
   }
 }
 
-export function postToOxGarage(input, endpoint) {
+export function postToTEIGarage(input, endpoint) {
   return dispatch => {
     dispatch(requestOddJson())
     const fd = new FormData()

@@ -37,13 +37,13 @@ import { oddDatatypes } from './datatypes'
 import { updateOdd } from './updateOdd'
 import { ui } from  './interface'
 import * as fileSaver from 'file-saver'
-import oxgarage from '../utils/oxgarage'
+import teigarage from '../utils/teigarage'
 
 import { clone } from '../utils/clone'
 
 const parser = new DOMParser()
 
-export function postToOxGarage(input, endpoint) {
+export function postToTEIGarage(input, endpoint) {
   const fd = new FormData()
   fd.append('fileToConvert', new Blob([input], {'type': 'application\/octet-stream'}), 'file.odd')
   return new Promise((res)=>{
@@ -199,7 +199,7 @@ function odd(state = {}, action) {
       try {
         filename = state.customization.settings.filename
       } catch (e) { e }
-      postToOxGarage(state.customization.updatedXml, oxgarage[action.format])
+      postToTEIGarage(state.customization.updatedXml, teigarage[action.format])
         .then((res) => {
           fileSaver.saveAs(new Blob([res], {'type': 'text\/xml'}), `${filename}.${action.format}`)
         })

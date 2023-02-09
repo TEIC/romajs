@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
-import { fetchOdd, receiveOdd, postToOxGarage, fetchLocalSource,
+import { fetchOdd, receiveOdd, postToTEIGarage, fetchLocalSource,
   receiveOddJson, clearState } from '../actions'
 import { clearUiData, setLoadingStatus } from '../actions/interface'
 import { push } from 'react-router-redux'
 import Home from '../components/Home'
-import oxgarage from '../utils/oxgarage'
+import teigarage from '../utils/teigarage'
 import fetch from 'isomorphic-fetch'
 import datasource from '../utils/datasources'
 import { _i18n } from '../localization/i18n'
@@ -23,9 +23,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(push('/settings'))
       dispatch(setLoadingStatus(i18n('1/3 Obtaining customization ODD...')))
       dispatch(fetchOdd(url)).then((odd) => {
-        // 1. Convert to JSON via OxGarage
+        // 1. Convert to JSON via TEIGarage
         dispatch(setLoadingStatus(i18n('2/3 Importing customization ODD...')))
-        dispatch(postToOxGarage(odd.xml, oxgarage.compile_json)).then(() => {
+        dispatch(postToTEIGarage(odd.xml, teigarage.compile_json)).then(() => {
           dispatch(setLoadingStatus(i18n('3/3 Importing full specification source...')))
           // 2. Get p5subset.
           dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
@@ -41,9 +41,9 @@ const mapDispatchToProps = (dispatch) => {
       reader.readAsText(files[0])
       reader.onload = (e) => {
         dispatch(receiveOdd(e.target.result))
-        // 1. Convert to JSON via OxGarage
+        // 1. Convert to JSON via TEIGarage
         dispatch(setLoadingStatus(i18n('2/3 Importing customization ODD...')))
-        dispatch(postToOxGarage(e.target.result, oxgarage.compile_json)).then(() => {
+        dispatch(postToTEIGarage(e.target.result, teigarage.compile_json)).then(() => {
           dispatch(setLoadingStatus(i18n('3/3 Importing full specification source...')))
           // 2. Get p5subset.
           dispatch(fetchLocalSource(`${datasource}/p5subset.json`))

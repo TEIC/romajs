@@ -3,8 +3,8 @@ import Settings from '../components/Settings'
 import { push } from 'react-router-redux'
 import { setOddSetting, applySettings} from '../actions/settings'
 import { setLoadingStatus } from '../actions/interface'
-import { updateCustomizationOdd, compileWithOxGarage, postToOxGarage, fetchLocalSource } from '../actions'
-import oxgarage from '../utils/oxgarage'
+import { updateCustomizationOdd, compileWithTEIGarage, postToTEIGarage, fetchLocalSource } from '../actions'
+import teigarage from '../utils/teigarage'
 import datasource from '../utils/datasources'
 import { _i18n } from '../localization/i18n'
 
@@ -79,8 +79,8 @@ const mapDispatchToProps = (dispatch) => {
       }
     },
     getNewDocForLang: (data, lang) => {
-      dispatch(compileWithOxGarage(data, oxgarage['compiled.odd'])).then((compiledOdd) => {
-        dispatch(postToOxGarage(compiledOdd, oxgarage.json.replace('%3Een%3C', `%3E${lang}%3C`)))
+      dispatch(compileWithTEIGarage(data, teigarage['compiled.odd'])).then((compiledOdd) => {
+        dispatch(postToTEIGarage(compiledOdd, teigarage.json.replace('%3Een%3C', `%3E${lang}%3C`)))
       })
     }
   }
