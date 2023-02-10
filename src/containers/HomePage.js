@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
       })
     },
     uploadCustomization: (files, lang) => {
-      const i18n = _i18n(lang)
+      const i18n = _i18n(lang, 'HomePage')
       dispatch(clearState())
       dispatch(push('/settings'))
       dispatch(setLoadingStatus(i18n('1/3 Obtaining customization ODD...')))
