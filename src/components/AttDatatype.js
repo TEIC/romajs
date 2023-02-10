@@ -5,7 +5,7 @@ import { _i18n } from '../localization/i18n'
 
 export default class AttDatatype extends Component {
   render() {
-    const i18n = _i18n(this.props.language, 'AltIdent')
+    const i18n = _i18n(this.props.language, 'AttDatatype')
     const refType = this.props.attribute.datatype.dataRef.key
       ? 'key'
       : 'name'
