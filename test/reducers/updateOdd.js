@@ -32,6 +32,9 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     const xml = parser.parseFromString(state.odd.customization.updatedXml)
+    console.log(Array.from(xml.getElementsByTagName('moduleRef')).map(m => {
+      return m.getAttribute('key')
+    }))
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'linking'
     }).length).toEqual(1)
@@ -327,7 +330,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > desc').textContent).toEqual('new desc')
   })
 
@@ -351,7 +354,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > altIdent').textContent).toEqual('myDiv')
   })
 
@@ -399,7 +402,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > altIdent').textContent).toEqual('alt2')
   })
 
@@ -442,7 +445,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > desc:nth-child(2)').textContent).toEqual('new desc')
   })
 
@@ -483,7 +486,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > desc')).toNotExist()
   })
 
@@ -507,7 +510,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > classes > memberOf').getAttribute('key')).toEqual('att.sortable')
   })
 
@@ -537,7 +540,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > classes > memberOf').getAttribute('key')).toEqual('att.sortable')
     // check that it's in the right place
   })
@@ -561,7 +564,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > classes > memberOf[key="att.global"]').getAttribute('mode')).toEqual('delete')
   })
 
@@ -587,7 +590,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     })
     state
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="newAtt"]')).toExist()
   })
 
@@ -602,7 +605,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     localJson = JSON.parse(localsource)
 
     // Change ODD data for testing
-    const testXml = global.usejsdom(customizationXML)
+    const testXml = global.uselocaldom(customizationXML)
     const attList = testXml.querySelector('elementSpec[ident="title"] attList')
     attList.innerHTML = '<attDef ident="level" mode="change"><desc>...</desc></attDef>'
     const testXmlString = testXml.documentElement.outerHTML
@@ -645,7 +648,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="level"] > desc').textContent).toEqual('!!!')
   })
 
@@ -654,7 +657,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     localJson = JSON.parse(localsource)
 
     // Change ODD data for testing
-    const testXml = global.usejsdom(customizationXML)
+    const testXml = global.uselocaldom(customizationXML)
     const attList = testXml.querySelector('elementSpec[ident="title"] attList')
     attList.innerHTML = '<attDef ident="level" mode="change" usage="req"/>'
     const testXmlString = testXml.documentElement.outerHTML
@@ -695,7 +698,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="level"]')).toNotExist()
   })
 
@@ -704,7 +707,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     localJson = JSON.parse(localsource)
 
     // Change ODD data for testing
-    const testXml = global.usejsdom(customizationXML)
+    const testXml = global.uselocaldom(customizationXML)
     const attList = testXml.querySelector('elementSpec[ident="title"] attList')
     attList.innerHTML = '<attDef ident="level" mode="change"><desc>...</desc></attDef>'
     const testXmlString = testXml.documentElement.outerHTML
@@ -749,7 +752,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="level"] > desc')).toNotExist()
   })
 
@@ -758,7 +761,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     localJson = JSON.parse(localsource)
 
     // Change ODD data for testing
-    const testXml = global.usejsdom(customizationXML)
+    const testXml = global.uselocaldom(customizationXML)
     const attList = testXml.querySelector('elementSpec[ident="title"] attList')
     attList.parentNode.removeChild(attList)
     const testXmlString = testXml.documentElement.outerHTML
@@ -793,7 +796,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="level"]').getAttribute('usage')).toEqual('req')
   })
 
@@ -802,7 +805,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     localJson = JSON.parse(localsource)
 
     // Change ODD data for testing
-    const testXml = global.usejsdom(customizationXML)
+    const testXml = global.uselocaldom(customizationXML)
     const attList = testXml.querySelector('elementSpec[ident="title"] attList')
     const attDef = testXml.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
     attDef.setAttribute('ident', 'type2')
@@ -851,7 +854,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type2"]').getAttribute('mode')).toEqual('add')
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type2"]').getAttribute('usage')).toEqual('opt')
   })
@@ -883,7 +886,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]').getAttribute('mode')).toEqual('change')
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]').getAttribute('usage')).toEqual('req')
   })
@@ -893,7 +896,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     localJson = JSON.parse(localsource)
 
     // Change ODD data for testing
-    const testXml = global.usejsdom(customizationXML)
+    const testXml = global.uselocaldom(customizationXML)
     const attList = testXml.querySelector('elementSpec[ident="title"] attList')
     const attDef = testXml.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
     attDef.setAttribute('ident', 'key')
@@ -943,7 +946,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     // Returning to original definition means that usage should not be there any longer.
     // This test may need to be updated if better cleanup is implemented.
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]')).toNotExist()
@@ -969,7 +972,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]').getAttribute('mode')).toEqual('delete')
   })
 
@@ -998,7 +1001,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]')).toNotExist()
   })
 
@@ -1007,7 +1010,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     localJson = JSON.parse(localsource)
 
     // Change ODD data for testing
-    const testXml = global.usejsdom(customizationXML)
+    const testXml = global.uselocaldom(customizationXML)
     const attList = testXml.querySelector('elementSpec[ident="title"] attList')
     attList.parentNode.removeChild(attList)
     const testXmlString = testXml.documentElement.outerHTML
@@ -1042,7 +1045,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="level"] > valList').getAttribute('type')).toEqual('semi')
   })
 
@@ -1073,7 +1076,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"] > valList').getAttribute('type')).toEqual('semi')
   })
 
@@ -1104,7 +1107,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"] > valList > valItem').getAttribute('ident')).toEqual('new')
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"] > valList > valItem').getAttribute('mode')).toEqual('add')
   })
@@ -1136,7 +1139,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type"] > valList > valItem[ident="desc"]').getAttribute('mode')).toEqual('delete')
   })
 
@@ -1164,7 +1167,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="list"] > attList > attDef[ident="type"] valItem[ident="gloss"] > desc').textContent).toEqual('!!!')
   })
 
@@ -1205,7 +1208,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > attList > attDef[ident="type"] > valList > valItem > desc').textContent).toEqual('!!!')
   })
 
@@ -1255,7 +1258,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     })
     // console.log(state.odd.customization.json.elements.filter(e => e.ident === 'div')[0].attributes[0].valList)
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     // No other changes exist in this element, so the elementSpec should no longer be there.
     expect(xml.querySelector('elementSpec[ident="div"]')).toNotExist()
   })
@@ -1287,7 +1290,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type"] > datatype > dataRef').getAttribute('name')).toEqual('string')
   })
 
@@ -1318,7 +1321,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="type"] > datatype > dataRef[key="teidata.enumerated"]').getAttribute('restriction')).toEqual('[ab]')
   })
 
@@ -1343,7 +1346,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > classes > memberOf').getAttribute('key')).toEqual('model.pLike')
   })
 
@@ -1366,7 +1369,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="div"] > classes > memberOf[key="model.divLike"]').getAttribute('mode')).toEqual('delete')
   })
 
@@ -1407,7 +1410,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('elementSpec[ident="title"] > content > macroRef').getAttribute('key')).toEqual('macro.phraseSeq.limited')
     expect(xml.querySelector('elementSpec[ident="title"] > content > alternate').getAttribute('minOccurs')).toEqual('2')
     expect(xml.querySelector('elementSpec[ident="title"] > content > alternate').getAttribute('maxOccurs')).toEqual('234')
@@ -1483,7 +1486,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     const elSpec = xml.querySelector('elementSpec[ident="newElement"]')
     // console.log(elSpec.outerHTML)
     expect(elSpec).toExist()
@@ -1525,7 +1528,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     const titleStmt = xml.querySelector('fileDesc titleStmt')
     const schemaSpec = xml.querySelector('schemaSpec')
     expect(titleStmt.querySelector('title').textContent).toEqual('a title')

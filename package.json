@@ -75,7 +75,7 @@
     "html-webpack-plugin": "^2.30.1",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
-    "jsdom": "^20.0.1",
+    "linkedom": "^0.14.21",
     "mocha": "^6.2.0",
     "node-blockly": "^1.2.8",
     "node-sass": "^7.0.3",

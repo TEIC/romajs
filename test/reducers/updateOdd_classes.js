@@ -39,7 +39,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('classSpec[ident="att.global.source"] > desc').textContent).toEqual('new desc')
   })
 
@@ -63,7 +63,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('classSpec[ident="model.resourceLike"] > altIdent').textContent).toEqual('resourceKinda')
   })
 
@@ -85,7 +85,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('classSpec[ident="att.global"] > attList > attDef[ident="n"]').getAttribute('mode')).toEqual('delete')
   })
 
@@ -107,7 +107,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('classSpec[ident="att.global"] > attList > attDef[ident="xml:space"]')).toExist()
   })
 
@@ -137,7 +137,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('classSpec[ident="att.global"] > attList attDef[ident="n"]').getAttribute('mode')).toEqual('change')
     expect(xml.querySelector('classSpec[ident="att.global"] > attList attDef[ident="n"]').getAttribute('usage')).toEqual('req')
   })
@@ -160,7 +160,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('classSpec[ident="att.global"] > attList > attDef[ident="dummy"]')).toExist()
   })
 
@@ -183,7 +183,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('classSpec[ident="att.global"] > classes > memberOf').getAttribute('key')).toEqual('att.divLike')
   })
 
@@ -206,7 +206,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('classSpec[ident="att.global"] > classes > memberOf[key="att.global.rendition"]').getAttribute('mode')).toEqual('delete')
   })
 
@@ -268,7 +268,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     const classSpec = xml.querySelector('classSpec[ident="att.newClass"]')
     // console.log(classSpec.outerHTML)
     expect(classSpec).toExist()
@@ -299,7 +299,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('classRef[key="att.global.linking"]')).toExist()
   })
 
@@ -321,7 +321,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('classSpec[ident="att.typed"]').getAttribute('mode')).toEqual('delete')
     expect(xml.querySelector('classSpec[ident="att.typed"]').children.length).toEqual(0)
   })
@@ -357,7 +357,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('classSpec[ident="att.global.linking"]')).toNotExist()
   })
 
@@ -379,7 +379,7 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
-    xml = global.usejsdom(xml)
+    xml = global.uselocaldom(xml)
     expect(xml.querySelector('classRef[key="att.global"]')).toNotExist()
   })
 })

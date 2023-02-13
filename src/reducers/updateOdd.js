@@ -47,9 +47,9 @@ export function updateOdd(localsourceObj, customizationObj) {
   const customization = customizationObj.json
   let odd = parser.parseFromString(customizationObj.xml, 'text/xml')
   // For testing. TODO: figure out a way to only do this in dev mode.
-  if (global.usejsdom) {
-    // replace DOM with JSDOM
-    odd = global.usejsdom(odd)
+  if (global.uselocaldom) {
+    // switch from browser to local DOM
+    odd = global.uselocaldom(odd)
   }
 
   // The following operations need to happen synchronously
@@ -67,7 +67,7 @@ export function updateOdd(localsourceObj, customizationObj) {
   // CHANGES TO DATATYPES
   odd = updateDatatypes(localsource, customization, odd.cloneNode(true))
 
-  if (global.usejsdom) {
+  if (global.uselocaldom) {
     return odd.documentElement.outerHTML
   }
   return new XMLSerializer().serializeToString(odd)

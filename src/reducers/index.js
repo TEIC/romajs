@@ -97,9 +97,9 @@ function customization(state = {
     case RECEIVE_ODD:
       let oddData = parser.parseFromString(action.xml, 'text/xml')
       // For testing. TODO: figure out a way to only do this in dev mode.
-      if (global.usejsdom) {
-        // replace DOM with JSDOM
-        oddData = global.usejsdom(oddData)
+      if (global.uselocaldom) {
+        // switch from browser to local DOM
+        oddData = global.uselocaldom(oddData)
       }
       const isBrowser = typeof window !== 'undefined'
 

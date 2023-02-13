@@ -14,9 +14,9 @@ class ODDCache {
   parseODD(odd) {
     this.stringOdd = odd
     this.odd = this.parser.parseFromString(odd, 'text/xml')
-    if (global.usejsdom) {
-      // replace DOM with JSDOM
-      this.odd = global.usejsdom(this.odd)
+    if (global.uselocaldom) {
+      // switch from browser to local DOM
+      this.odd = global.uselocaldom(this.odd)
     }
   }
 
