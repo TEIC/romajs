@@ -715,7 +715,7 @@
   "Settings": {
     "Customize ODD": {
       "it": "Personalizza ODD",
-      "fr": "Personnaliser ODD",
+      "fr": "Personnaliser l'ODD",
       "de": "ODD anpassen",
       "es": "Personalizar ODD",
       "pt-notchecked": "Personalizar ODD",
@@ -781,7 +781,7 @@
     },
     "Apply to new attributes as well.": {
       "it": "Applicare anche ai nuovi attributi.",
-      "fr": "S'appliquant également aux nouvels attributs.",
+      "fr": "S'applique également aux nouvels attributs.",
       "de": "Dies gilt auch für neue Attribute.",
       "es": "Aplíquese también a los nuevos atributos.",
       "pt-notchecked": "Aplicar também a novos atributos.",
@@ -789,7 +789,7 @@
       "zh-notchecked": "也适用于新的属性。"
     },
     "Prefix": {
-      "fr": "Préfix",
+      "fr": "Préfixe",
       "it": "Prefisso",
       "de": "Präfix",
       "es": "Prefijo",
@@ -1121,7 +1121,7 @@
     "Do you want to start over? All changes will be lost.": {
       "it": "Ricominciare da capo? Tutti i cambiamenti saranno perduti.",
       "de": "Wollen Sie neu beginnen? Alle Änderungen gehen dabei verloren.",
-      "fr-notchecked": "Voulez-vous recommencer ? Tous les changements seront perdus.",
+      "fr": "Voulez-vous recommencer ? Tous les changements seront perdus.",
       "es-notchecked": "¿Quieres empezar de nuevo? Se perderán todos los cambios.",
       "pt-notchecked": "Quer começar de novo? Todas as mudanças serão perdidas.",
       "ja-notchecked": "やり直しますか？すべての変更は失われます。",
@@ -1130,7 +1130,7 @@
     "Do you want to apply this language to elements, attributes, and documentation as well?": {
       "it": "Utilizzare la lingua anche per gli elementi, attributi e documentazione?",
       "de": "Möchten Sie diese Sprache auch auf Elemente, Attribute und Dokumentation anwenden?",
-      "fr-notchecked": "Voulez-vous appliquer ce langage aux éléments, aux attributs et à la documentation également ?",
+      "fr": "Voulez-vous appliquer ce langage également aux éléments, aux attributs et à la documentation ?",
       "es-notchecked": "¿Desea aplicar este lenguaje también a elementos, atributos y documentación?",
       "pt-notchecked": "Quer aplicar esta linguagem também a elementos, atributos e documentação?",
       "ja-notchecked": "この言語を要素、属性、ドキュメントにも適用しますか？",
@@ -1150,7 +1150,7 @@
     },
     "What it is supposed to do": {
       "it": "Cosa può fare",
-      "fr": "Qu'est-ce qu'il est censé faire",
+      "fr": "Qu'est-ce qu'il est censé faire?",
       "de": "Was es kann",
       "pt-notchecked": "O que é suposto fazer",
       "ja-notchecked": "想定していること",
@@ -1169,7 +1169,7 @@
     },
     "What it does not do": {
       "it": "Cosa non può fare",
-      "fr": "Qu'est-ce qu'il ne fait pas",
+      "fr": "Qu'est-ce qu'il ne fait pas?",
       "de": "Was es nicht kann",
       "pt-notchecked": "O que não faz",
       "ja-notchecked": "できないこと",
@@ -1179,7 +1179,7 @@
     "doesnot": {
       "en": "The conversions of the ODD customisation to other formats (both schemas and documentation formats) is handled by passing the document to the TEI-C’s TEIGarage service. In addition there are a number of tasks that this version of Roma does not yet handle, including: <ul><li><strong>No support for RelaxNG content models.</strong> Only PureODD is supported (that is, ODD expressed only with TEI elements).</li><li><strong>No support for <code>@source</code> attributes.</strong> Currently only the latest stable version of the TEI is used by this tool.</li></ul>",
       "it": "Le conversioni della personalizzazione ODD in altri formati (sia schemi che formati di documentazione) sono gestite passando il documento al servizio TEIGarage della TEI-C. Inoltre ci sono una serie di operazioni che questa versione di Roma non gestisce, tra cui: <ul><li>Nessun supporto per i modelli di contenuto RelaxNG.</li> <li>È supportato solo PureODD (cioè ODD espresso solo con element TEI).</li> <li>Nessun supporto per gli attributi @source.</li> <li>Al momento solo l'ultima versione stabile della TEI è utilizzata da questo strumento.</li></ul>",
-      "fr": "Pour convertir du format ODD en format de documentation ou en schéma, Roma se sert de la service TEIGarage fournie par le TEI-C. Quelques fonctionalités  ne sont pas encore prises en main per cette version du logiciel, notamment: <ul><li><strong>Les modèles de contenu doivent etre exprimées en pure ODD : leur expression en RELAX NG n'est pas supportée. </li><li>Comme source de définition des composants TEI, seule la version courante de la TEI n'est permise: l'usage de l'attribut @source pour varier cela donc n'est pas supporté.</li></ul>",
+      "fr": "Pour convertir du format ODD vers un format de documentation ou un schéma, Roma se sert du service TEIGarage fourni par le TEI-C. Quelques fonctionnalités  ne sont pas encore prises en charge per cette version du logiciel, notamment: <ul><li><strong>Les modèles de contenu doivent etre exprimées uniquement en format ODD : leur expression en RELAX NG n'est pas supportée. </li><li>Comme source de définition des composants TEI, seule la version courante de la TEI n'est permise: l'usage de l'attribut @source pour varier cela donc n'est pas supporté.</li></ul>",
       "de": "Die Konvertierung der ODD-Anpassung in andere Formate (sowohl Schemata als auch Dokumentationsformate) erfolgt durch Übergabe des Dokuments an den TEI-C-Dienst TEIGarage. Darüber hinaus gibt es eine Reihe von Aufgaben, die diese Version von Roma noch nicht verarbeitet, darunter: <ul><li><strong>Keine Unterstützung für RelaxNG-Inhaltsmodelle.</strong> Nur PureODD wird unterstützt (d.h. ODD, das nur mit TEI-Elementen ausgedrückt wird).</li><li><strong>Keine Unterstützung von <code>@source</code>-Attributen.</strong> Derzeit wird nur die letzte stabile Version der TEI von diesem Werkzeug verwendet.</li></ul>",
       "pt-notchecked": "As conversões da personalização do ODD para outros formatos (tanto esquemas como formatos de documentação) são tratadas passando o documento para o serviço TEI-C do TEIGarage. Além disso, há uma série de tarefas que esta versão dos ciganos ainda não trata, incluindo Nenhum suporte para modelos de conteúdo RelaxNG. Apenas PureODD é suportado (ou seja, ODD expresso apenas com elementos TEI). Não há suporte para @source attributes. Actualmente apenas a última versão estável do TEI é utilizada por esta ferramenta.",
       "ja-notchecked": "ODD カスタマイズの他の形式（スキーマと文書形式の両方）への変換は、TEI-C の TEIGarage サービスにドキュメントを渡すことで処理されます。さらに、このバージョンの Roma がまだ扱っていないタスクがいくつかあります。RelaxNGコンテンツモデルには対応していません。PureODDのみ対応（つまり、TEI要素のみで表現されるODD）、@source属性は未対応。現在、このツールでは最新の安定版TEIのみが使用されています。",
@@ -1217,7 +1217,7 @@
     "contrib": {
       "en": "Report any issues or make feature requests on the TEI-C GitHub repository: <a href=\"https://github.com/TEIC/romajs\">https://github.com/TEIC/romajs</a>",
       "it": "Segnalare eventuali problemi o fare richieste di funzionalità sul repository GitHub di TEI-C: <a href=\"https://github.com/TEIC/romajs\">https://github.com/TEIC/romajs</a>",
-      "fr": "Nous informer de tout problème ou proposer des ameliorations en utilisant le repo du TEI-C sur github :  <a href=\"https://github.com/TEIC/romajs\">https://github.com/TEIC/romajs</a>.",
+      "fr": "Nous informer de tout problème ou proposer des améliorations en utilisant le repo du TEI-C sur github :  <a href=\"https://github.com/TEIC/romajs\">https://github.com/TEIC/romajs</a>.",
       "de": "Melden Sie Probleme oder Wünsche nach neuen Funktionen im TEI-C GitHub Repository: https://github.com/TEIC/romajs",
       "pt-notchecked": "Relatar quaisquer problemas ou fazer pedidos de funcionalidades no repositório TEI-C GitHub: https://github.com/TEIC/romajs",
       "ja-notchecked": "TEI-CのGitHubリポジトリで問題点の報告や機能要望を行うことができます: https://github.com/TEIC/romajs",
@@ -1280,7 +1280,7 @@
     },
     "TEI All (customize by reducing TEI)": {
       "it": "TEI All (personalizza riducendo)",
-      "fr": "TEI All (pour personnaliser en reduisant)",
+      "fr": "TEI All (pour personnaliser en réduisant)",
       "de": "TEI All (Anpassung durch Reduzierung der TEI)",
       "pt-notchecked": "TEI All (personalizar reduzindo TEI)",
       "ja-notchecked": "TEI All (TEIを減らしてカスタマイズ)",
