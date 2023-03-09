@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
       const reader = new FileReader()
       reader.readAsText(files[0])
       reader.onload = (e) => {
-        dispatch(receiveOdd(e.target.result))
+        dispatch(receiveOdd(e.target.result, lang))
         // 1. Convert to JSON via TEIGarage
         dispatch(setLoadingStatus(i18n('2/3 Importing customization ODD...')))
         dispatch(postToTEIGarage(e.target.result, teigarage.compile_json)).then(() => {

@@ -43,10 +43,11 @@ function requestOdd(odd) {
   }
 }
 
-export function receiveOdd(string) {
+export function receiveOdd(string, localeLanguage = 'en') {
   return {
     type: RECEIVE_ODD,
     xml: string,
+    localeLanguage,
     receivedAt: Date.now()
   }
 }

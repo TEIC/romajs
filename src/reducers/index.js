@@ -41,6 +41,8 @@ import teigarage from '../utils/teigarage'
 
 import { clone } from '../utils/clone'
 
+import { _i18n } from '../localization/i18n'
+
 const parser = new DOMParser()
 
 export function postToTEIGarage(input, endpoint) {
@@ -95,9 +97,10 @@ function customization(state = {
         isFetching: true
       })
     case RECEIVE_ODD:
+      const i18n = _i18n(action.localeLanguage, 'reducer_index')
       let oddData = parser.parseFromString(action.xml, 'text/xml')
       // For testing. TODO: figure out a way to only do this in dev mode.
-      if (global.uselocaldom) {
+      if (typeof global !== 'undefined' && global.uselocaldom) {
         // switch from browser to local DOM
         oddData = global.uselocaldom(oddData)
       }
@@ -109,18 +112,18 @@ function customization(state = {
       //     using window.onerror explicitly fixes it. But throwing is still necessary to stop.
       let msg = ''
       if (!schemaSpec) {
-        msg = 'This does not appear to be a TEI ODD document.'
+        msg = i18n('This does not appear to be a TEI ODD document.')
         if (isBrowser) window.onerror(msg)
         throw Error(msg)
       }
       if (oddData.getElementsByTagNameNS('http://www.tei-c.org/ns/1.0', 'TEI').length !== 1 ) {
-        msg = 'This does not appear to be a TEI document.'
+        msg = i18n('This does not appear to be a TEI document.')
         if (isBrowser) window.onerror(msg)
         throw Error(msg)
       }
       for (const el of Array.from(schemaSpec.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*'))) {
         if (!el.closest('egXML')) {
-          msg = 'ODDs with RELAX NG elements are not supported.'
+          msg = i18n('ODD Documents with RELAX NG elements are not supported.')
           if (isBrowser) window.onerror(msg)
           throw Error(msg)
         }
@@ -133,7 +136,7 @@ function customization(state = {
         }
       }
       if (schemaSpec.getAttribute('source') || hasSource) {
-        msg = 'RomaJS does not support TEI ODD with @source attributes at the moment.'
+        msg = i18n('RomaJS does not support TEI ODD with @source attributes at the moment.')
         if (isBrowser) window.onerror(msg)
         throw Error(msg)
       }
@@ -142,7 +145,9 @@ function customization(state = {
       const titleStmt = oddData.querySelector('teiHeader titleStmt')
       if (titleStmt) {
         settings.title = titleStmt.querySelector('title') ? titleStmt.querySelector('title').textContent : ''
-        settings.author = titleStmt.querySelector('author') ? titleStmt.querySelector('author').textContent : `generated with RomaJS vesion ${RomaJSversion}`
+        settings.author = titleStmt.querySelector('author')
+          ? titleStmt.querySelector('author').textContent
+          : `${i18n('Generated with RomaJS version')} ${RomaJSversion}`
       } else {
         settings.title = ''
         settings.author = ''

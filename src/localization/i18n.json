@@ -781,7 +781,7 @@
     },
     "Apply to new attributes as well.": {
       "it": "Applicare anche ai nuovi attributi.",
-      "fr": "S'applique également aux nouvels attributs.",
+      "fr": "S'applique également aux nouveaux attributs.",
       "de": "Dies gilt auch für neue Attribute.",
       "es": "Aplíquese también a los nuevos atributos.",
       "pt-notchecked": "Aplicar também a novos atributos.",
@@ -1198,7 +1198,7 @@
     "known": {
       "en": "",
       "it": "<li>Se Roma si blocca durante il caricamento di un ODD esistente o di una personalizzazione del modello, aggiornare o ricaricare il browser.</li><li>In Safari, il ricaricamento di una pagina può causare la perdita di dati a causa della memoria limitata.</li>",
-      "fr": "<li>Si roma se bloque en essayant de charger un ODD existant, ou un template, essayez de relancer votre navigateur web</l><l>Avec Safari, un rechargement risque de perdre des informations à cause du stockage limite des donnees</l>",
+      "fr": "<li>Si roma se bloque en essayant de charger un ODD existant, ou un template, essayez de relancer votre navigateur web</li><li>Avec Safari, un rechargement risque de perdre des informations à cause du stockage limite des donnees</li>",
       "de": "Wenn Roma beim Laden einer bestehenden ODD-Datei oder einer Vorlage abstürzt, aktualisieren Sie Ihren Browser oder laden Sie ihn neu. In Safari kann das Neuladen einer Seite aufgrund des begrenzten Datenspeichers zu Datenverlusten führen.",
       "pt-notchecked": "conhecido",
       "ja-notchecked": "既知",
@@ -1947,6 +1947,53 @@
       "ja-notchecked": "探す...",
       "zh-notchecked": "找到...",
       "es-notchecked": "Encuentra..."
+    }
+  },
+  "reducer_index": {
+    "This does not appear to be a TEI ODD document.": {
+      "it": "Non sembra essere un document in formato TEI ODD.",
+      "es-notchecked": "No parece tratarse de un documento TEI ODD.",
+      "fr-notchecked": "Il ne semble pas s'agir d'un document TEI ODD.",
+      "de-notchecked": "Dies scheint kein TEI ODD-Dokument zu sein.",
+      "pt-notchecked": "Isto não parece ser um documento TEI ODD.",
+      "ja-notchecked": "これはTEI ODDの文書ではないようです。",
+      "zh-notchecked": "这似乎不是TEI的ODD文件。"
+    },
+    "This does not appear to be a TEI document.": {
+      "it": "Non sembra essere un document in formato TEI.",
+      "es-notchecked": "No parece tratarse de un documento TEI.",
+      "fr-notchecked": "Il ne semble pas s'agir d'un document TEI.",
+      "de-notchecked": "Dies scheint kein TEI-Dokument zu sein.",
+      "pt-notchecked": "Isto não parece ser um documento TEI.",
+      "ja-notchecked": "これはTEIの文書ではないようです。",
+      "zh-notchecked": "这似乎不是一份TEI文件。"
+    },
+    "ODD Documents with RELAX NG elements are not supported.": {
+      "it": "Document ODD con element RELAX NG non sono supportati.",
+      "fr-notchecked": "Les documents ODD contenant des éléments RELAX NG ne sont pas pris en charge.",
+      "es-notchecked": "No se admiten documentos ODD con elementos RELAX NG.",
+      "de-notchecked": "ODD-Dokumente mit RELAX NG-Elementen werden nicht unterstützt.",
+      "pt-notchecked": "Os documentos ODD com elementos RELAX NG não são suportados.",
+      "ja-notchecked": "RELAX NG 要素を含む ODD 文書はサポートされていません。",
+      "zh-notchecked": "不支持带有RELAX NG元素的ODD文档。"
+    },
+    "RomaJS does not support TEI ODD with @source attributes at the moment.": {
+      "it": "RomaJS non supporta al momento i documenti TEI ODD con attributi @source.",
+      "fr-notchecked": "RomaJS ne prend pas en charge les TEI ODD avec les attributs @source pour le moment.",
+      "es-notchecked": "RomaJS no admite TEI ODD con atributos @source por el momento.",
+      "de-notchecked": "RomaJS unterstützt TEI ODD mit @source-Attributen zur Zeit nicht.",
+      "pt-notchecked": "O RomaJS não suporta TEI ODD com atributos @source neste momento.",
+      "ja-notchecked": "RomaJSは現時点では@source属性を持つTEI ODDをサポートしていません。",
+      "zh-notchecked": "RomaJS目前不支持带有@source属性的TEI ODD。"
+    },
+    "Generated with RomaJS version": {
+      "it": "Generato con RomaJS versione",
+      "es-notchecked": "Generado con la versión RomaJS",
+      "fr-notchecked": "Généré avec la version de RomaJS",
+      "de-notchecked": "Erzeugt mit RomaJS Version",
+      "pt-notchecked": "Gerado com a versão RomaJS",
+      "ja-notchecked": "RomaJSのバージョンで生成されます",
+      "zh-notchecked": "用RomaJS版本生成的"
     }
   }
 }
