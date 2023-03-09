@@ -32,9 +32,6 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
     const xml = parser.parseFromString(state.odd.customization.updatedXml)
-    console.log(Array.from(xml.getElementsByTagName('moduleRef')).map(m => {
-      return m.getAttribute('key')
-    }))
     expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
       return m.getAttribute('key') === 'linking'
     }).length).toEqual(1)
@@ -1256,7 +1253,6 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     const state = romajsApp(fourthState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
     })
-    // console.log(state.odd.customization.json.elements.filter(e => e.ident === 'div')[0].attributes[0].valList)
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.uselocaldom(xml)
     // No other changes exist in this element, so the elementSpec should no longer be there.
@@ -1488,7 +1484,6 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.uselocaldom(xml)
     const elSpec = xml.querySelector('elementSpec[ident="newElement"]')
-    // console.log(elSpec.outerHTML)
     expect(elSpec).toExist()
     expect(elSpec.getAttribute('ident')).toEqual('newElement')
     expect(elSpec.getAttribute('ns')).toEqual('http://example.com/ns')
@@ -1499,6 +1494,51 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(elSpec.querySelector('attDef > valDesc').textContent).toEqual('afsfg')
     expect(elSpec.querySelector('attDef > datatype > dataRef').getAttribute('name')).toEqual('string')
     expect(elSpec.querySelector('attDef > datatype > dataRef').getAttribute('restriction')).toEqual('[ba]')
+  })
+
+  it('should create a new element and a new module if specified by the element', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    // Update JSON data directly
+    customJson.elements.push({
+      ident: 'newElement',
+      type: 'elements',
+      module: 'test',
+      desc: [ '<desc xmlns="http://tei-c.org/ns/1.0" xml:lang="en">New Element Desc</desc>' ],
+      shortDesc: '',
+      gloss: [],
+      altIdent: ['newEl'],
+      classes: {
+        model: [],
+        atts: []
+      },
+      attributes: [],
+      content: [
+        {
+          key: 'ab',
+          type: 'elementRef'
+        }
+      ],
+      ns: 'http://example.com/ns',
+      _isNew: true
+    })
+
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.uselocaldom(xml)
+    const elSpec = xml.querySelector('elementSpec[ident="newElement"]')
+    expect(elSpec).toExist()
+    const moduleSpec = xml.querySelector('moduleSpec[ident="test"]')
+    expect(moduleSpec).toExist()
   })
 
   // ODD SETTINGS / METADATA

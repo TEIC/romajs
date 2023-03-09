@@ -44,6 +44,7 @@ export function updateElements(localsource, customization, odd) {
     }
 
     if (el._isNew) {
+      const schemaSpec = odd.querySelector('schemaSpec')
       // Create new spec
       const elSpec = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'elementSpec')
       elSpec.setAttribute('ident', el.ident)
@@ -52,6 +53,16 @@ export function updateElements(localsource, customization, odd) {
       }
       elSpec.setAttribute('mode', 'add')
       elSpec.setAttribute('module', el.module)
+
+      // Should a new module be created?
+      // customization.modules contains all selected modules at this point.
+      if (customization.modules.filter(m => m.ident === el.module).length === 0) {
+        // Define a new module and place it in schemaSpec
+        const moduleSpec = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'moduleSpec')
+        moduleSpec.setAttribute('ident', el.module)
+        moduleSpec.setAttribute('mode', 'add')
+        schemaSpec.append(moduleSpec)
+      }
 
       // Create documentation elements
       createDocEls(elSpec, el, odd)
@@ -80,7 +91,6 @@ export function updateElements(localsource, customization, odd) {
         _cntToXml(el.content, contentEl)
       }
 
-      const schemaSpec = odd.querySelector('schemaSpec')
       schemaSpec.appendChild(elSpec)
     } else if (el._changed) {
       // Check structures against localsource

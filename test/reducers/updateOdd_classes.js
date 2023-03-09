@@ -270,7 +270,6 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.uselocaldom(xml)
     const classSpec = xml.querySelector('classSpec[ident="att.newClass"]')
-    // console.log(classSpec.outerHTML)
     expect(classSpec).toExist()
     expect(classSpec.querySelector('desc').textContent).toEqual('test desc')
     expect(classSpec.querySelector('altIdent').textContent).toEqual('att.nc')
