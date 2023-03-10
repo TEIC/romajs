@@ -1,11 +1,13 @@
+import safeSelect from '../../utils/safeSelect'
+
 export function mergeElements(localsource, customization, odd) {
   // This function compares the original ODD and the customization to locate
   // changes in element selection via moduleRef or elementRef. It applies those changes and returns a new ODD.
   // NB It operates on the FIRST schemaSpec; this could be an issue.
-  const schemaSpec = odd.querySelector('schemaSpec')
-  const moduleRefs = Array.from(odd.querySelectorAll('schemaSpec > moduleRef, specGrp > moduleRef'))
-  const elementSpecs = odd.querySelectorAll('schemaSpec > elementSpec, specGrp > elementSpec')
-  const elementRefs = odd.querySelectorAll('schemaSpec > elementRef, specGrp > elementRef')
+  const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
+  const moduleRefs = safeSelect(odd.querySelectorAll('schemaSpec > moduleRef, specGrp > moduleRef'))
+  const elementSpecs = safeSelect(odd.querySelectorAll('schemaSpec > elementSpec, specGrp > elementSpec'))
+  const elementRefs = safeSelect(odd.querySelectorAll('schemaSpec > elementRef, specGrp > elementRef'))
 
   // Get all elements from the XML ODD
   let allOddElements = moduleRefs.reduce((includedElements, mod) => {

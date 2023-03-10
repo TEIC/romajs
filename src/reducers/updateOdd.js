@@ -3,13 +3,14 @@ import { mergeElements } from './odd/mergeElements'
 import { updateClasses } from './odd/updateClasses'
 import { updateElements } from './odd/updateElements'
 import { updateDatatypes } from './odd/updateDatatypes'
+import safeSelect from '../utils/safeSelect'
 
 const parser = new DOMParser()
 
 function updateMetadata(customization, odd) {
-  const schemaSpec = odd.querySelector('schemaSpec')
+  const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
   // We assume these elements exist because they are required in TEI
-  const titleStmt = odd.querySelector('teiHeader fileDesc titleStmt') || {}
+  const titleStmt = safeSelect(odd.querySelectorAll('teiHeader fileDesc titleStmt'))[0] || {}
   const titleEl = titleStmt.querySelector('title') || {}
   const authorEl = titleStmt.querySelector('author') || {}
   if (customization.title !== titleEl.textContent) {

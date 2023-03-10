@@ -40,6 +40,7 @@ import * as fileSaver from 'file-saver'
 import teigarage from '../utils/teigarage'
 
 import { clone } from '../utils/clone'
+import safeSelect from '../utils/safeSelect'
 
 import { _i18n } from '../localization/i18n'
 
@@ -106,7 +107,7 @@ function customization(state = {
       }
       const isBrowser = typeof window !== 'undefined'
 
-      const schemaSpec = oddData.querySelector('schemaSpec')
+      const schemaSpec = safeSelect(oddData.querySelectorAll('schemaSpec'))[0]
       // Check whether this is a ODD we can handle
       // NB: it seems that using throw for the errors stops the code too soon for the popup to catch it.
       //     using window.onerror explicitly fixes it. But throwing is still necessary to stop.
@@ -142,7 +143,7 @@ function customization(state = {
       }
       // Get basic settings data
       const settings = {}
-      const titleStmt = oddData.querySelector('teiHeader titleStmt')
+      const titleStmt = safeSelect(oddData.querySelectorAll('teiHeader titleStmt'))[0]
       if (titleStmt) {
         settings.title = titleStmt.querySelector('title') ? titleStmt.querySelector('title').textContent : ''
         settings.author = titleStmt.querySelector('author')

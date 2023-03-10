@@ -1,3 +1,5 @@
+import safeSelect from '../../utils/safeSelect'
+
 export function areOddArraysEqual(a, b) {
   if (a === null || b === null) return false
   return a.length === b.length && a.every((value, index) => {
@@ -37,13 +39,13 @@ export function isMemberExplicitlyDeleted(odd, ident, type, module) {
   // A utility function that looks in the ODD XML for an explicit exclusion or deletion.
 
   // Look for element with ident
-  const memberDef = odd.querySelector(`schemaSpec > *[ident='${ident}'], specGrp > *[ident='${ident}']`)
+  const memberDef = safeSelect(odd.querySelectorAll(`schemaSpec > *[ident='${ident}'], specGrp > *[ident='${ident}']`))[0]
   if (memberDef) {
     return memberDef.getAttribute('mode') === 'delete'
   }
 
   // Look on moduleRef
-  const moduleRef = odd.querySelector(`schemaSpec > moduleRef[key='${module}'], specGrp > moduleRef[key='${module}']`)
+  const moduleRef = safeSelect(odd.querySelectorAll(`schemaSpec > moduleRef[key='${module}'], specGrp > moduleRef[key='${module}']`))[0]
 
   if (moduleRef) {
     // If it's a class, it's always included.

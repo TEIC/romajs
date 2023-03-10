@@ -1,14 +1,15 @@
 import { deepCompare } from  '../../utils/deepCompare'
 import { insertBetween } from './utils'
 import { processDocEls, createDocEls } from './processDocEls'
+import safeSelect from '../../utils/safeSelect'
 
 function getOrSetDataSpec(odd, ident) {
-  let dtSpec = odd.querySelectorAll(`dataSpec[ident='${ident}']`)[0]
+  let dtSpec = safeSelect(odd.querySelectorAll(`dataSpec[ident='${ident}']`))[0]
   if (!dtSpec) {
     dtSpec = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'dataSpec')
     dtSpec.setAttribute('ident', ident)
     dtSpec.setAttribute('mode', 'change')
-    const schemaSpec = odd.querySelector('schemaSpec')
+    const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
     schemaSpec.appendChild(dtSpec)
   }
   return dtSpec
@@ -66,7 +67,7 @@ function processDatatypes(localsource, customization, odd) {
       cntToXml(dt.content, contentEl, odd)
       dtSpec.appendChild(contentEl)
 
-      const schemaSpec = odd.querySelector('schemaSpec')
+      const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
       schemaSpec.appendChild(dtSpec)
     } else if (dt._changed && isModuleSelected) {
       let changes = dt._changed
@@ -115,7 +116,7 @@ function processDatatypes(localsource, customization, odd) {
       // add dataRef
       const dtRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'dataRef')
       dtRef.setAttribute('key', dt.ident)
-      const schemaSpec = odd.querySelector('schemaSpec')
+      const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
       schemaSpec.appendChild(dtRef)
     }
   }
@@ -138,8 +139,8 @@ function processDatatypes(localsource, customization, odd) {
       }
     } else if (!customDt && !isModuleSelected) {
       // simply remove any existing declarations.
-      const dtSpec = odd.querySelectorAll(`dataSpec[ident='${dt.ident}']`)[0]
-      const dtRef = odd.querySelectorAll(`dataRef[key='${dt.ident}']`)[0]
+      const dtSpec = safeSelect(odd.querySelectorAll(`dataSpec[ident='${dt.ident}']`))[0]
+      const dtRef = safeSelect(odd.querySelectorAll(`dataRef[key='${dt.ident}']`))[0]
       if (dtSpec) {
         dtSpec.parentNode.removeChild(dtSpec)
       }

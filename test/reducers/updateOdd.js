@@ -1578,4 +1578,53 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(schemaSpec.getAttribute('targetLang')).toEqual('it')
     expect(schemaSpec.getAttribute('docLang')).toEqual('it')
   })
+
+  it('should ignore elements inside egXML', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    // Change ODD data for testing
+    const testXml = global.uselocaldom(customizationXML)
+    const titleEl = testXml.documentElement.querySelector('elementSpec[ident="title"]')
+    const exemplum = testXml.createElementNS('http://www.tei-c.org/ns/1.0', 'exemplum')
+    const eg = testXml.createElementNS('http://www.tei-c.org/ns/Examples', 'egXML')
+    const es = testXml.createElement('elementSpec')
+    es.setAttribute('ident', 'lg')
+    es.setAttribute('mode', 'change')
+    const cl = testXml.createElement('classes')
+    const mem = testXml.createElement('memberOf')
+    mem.setAttribute('key', 'att.global')
+    cl.appendChild(mem)
+    es.appendChild(cl)
+    eg.appendChild(es)
+    exemplum.appendChild(eg)
+    titleEl.appendChild(exemplum)
+    const testXmlString = serializer.serializeToString(testXml)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: testXmlString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'INCLUDE_ELEMENTS',
+      elements: ['lg']
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'ADD_ELEMENT_ATTRIBUTE_CLASS',
+      element: 'lg',
+      className: 'att.sortable'
+    })
+    const state = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    const xml = parser.parseFromString(state.odd.customization.updatedXml)
+    const exemplumLg = Array.from(xml.getElementsByTagName('elementSpec')).filter(e => e.getAttribute('ident') === 'lg')[0]
+    // It must not have att.sortable added, which would be proof that if wasn't changed.
+    expect(Array.from(exemplumLg.getElementsByTagName('memberOf')).filter(e => e.getAttribute('key') === 'att.global').length)
+      .toEqual(1)
+    expect(Array.from(exemplumLg.getElementsByTagName('memberOf')).filter(e => e.getAttribute('key') === 'att.sortable').length)
+      .toEqual(0)
+  })
 })

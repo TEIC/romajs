@@ -1,16 +1,17 @@
 import { processDocEls, createDocEls } from './processDocEls'
 import { processClassMemberships, createClassMemberships } from './processClassMemberships'
 import { processAttributes, createAttributes } from './processAttributes'
+import safeSelect from '../../utils/safeSelect'
 
 function getOrSetClassSpec(classType, odd, ident) {
   const type = classType === 'attributes' ? 'atts' : 'model'
-  let clSpec = odd.querySelectorAll(`classSpec[ident='${ident}']`)[0]
+  let clSpec = safeSelect(odd.querySelectorAll(`classSpec[ident='${ident}']`))[0]
   if (!clSpec) {
     clSpec = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'classSpec')
     clSpec.setAttribute('ident', ident)
     clSpec.setAttribute('type', type)
     clSpec.setAttribute('mode', 'change')
-    const schemaSpec = odd.querySelector('schemaSpec')
+    const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
     schemaSpec.appendChild(clSpec)
   }
   return clSpec
@@ -42,7 +43,7 @@ function processClasses(classType, localsource, customization, odd) {
         createAttributes(clSpec, cl, odd)
       }
 
-      const schemaSpec = odd.querySelector('schemaSpec')
+      const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
       schemaSpec.appendChild(clSpec)
     } else if (cl._changed && isModuleSelected) {
       let changes = cl._changed
@@ -87,7 +88,7 @@ function processClasses(classType, localsource, customization, odd) {
       // add classRef
       const clRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'classRef')
       clRef.setAttribute('key', cl.ident)
-      const schemaSpec = odd.querySelector('schemaSpec')
+      const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
       schemaSpec.appendChild(clRef)
     }
   }
@@ -110,8 +111,8 @@ function processClasses(classType, localsource, customization, odd) {
       }
     } else if (!customCl && !isModuleSelected) {
       // simply remove any existing declarations.
-      const clSpec = odd.querySelectorAll(`classSpec[ident='${cl.ident}']`)[0]
-      const clRef = odd.querySelectorAll(`classRef[key='${cl.ident}']`)[0]
+      const clSpec = safeSelect(odd.querySelectorAll(`classSpec[ident='${cl.ident}']`))[0]
+      const clRef = safeSelect(odd.querySelectorAll(`classRef[key='${cl.ident}']`))[0]
       if (clSpec) {
         clSpec.parentNode.removeChild(clSpec)
       }

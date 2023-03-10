@@ -1,8 +1,10 @@
+import safeSelect from '../../utils/safeSelect'
+
 export function mergeModules(localsource, customization, odd) {
   // This function compares the original ODD and the customization to locate
   // changes in module selection. It applies those changes and returns a new ODD.
   // NB It operates on the FIRST schemaSpec; this could be an issue.
-  const schemaSpec = odd.querySelector('schemaSpec')
+  const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
   const oddModules = schemaSpec.querySelectorAll('moduleRef')
   const customModuleNames = customization.modules.map(m => m.ident)
   const allLocalMembers = localsource.elements
@@ -17,7 +19,7 @@ export function mergeModules(localsource, customization, odd) {
   }, new Set())
   // Add modules based on elementRef classRef dataRef macroRef (attRef?)
   // Using schemaSpec > elementRef to make sure content > elementRef is ignored
-  const memberRefs = Array.from(
+  const memberRefs = safeSelect(
     odd.querySelectorAll(
       `specGrp > elementRef, specGrp > classRef, specGrp > specGrp, specGrp > macroRef,
       schemaSpec > elementRef, schemaSpec > classRef, schemaSpec > dataRef, schemaSpec > macroRef`

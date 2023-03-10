@@ -3,15 +3,16 @@ import { insertBetween } from './utils'
 import { processDocEls, createDocEls } from './processDocEls'
 import { processClassMemberships, createClassMemberships } from './processClassMemberships'
 import { processAttributes, createAttributes } from './processAttributes'
+import safeSelect from '../../utils/safeSelect'
 
 function getOrSetElementSpec(odd, ident) {
-  let elSpec = odd.querySelectorAll(`elementSpec[ident='${ident}']`)[0]
+  let elSpec = safeSelect(odd.querySelectorAll(`elementSpec[ident='${ident}']`))[0]
   // TODO: watch out for the @ns attribute in case there are more than one element with the same ident
   if (!elSpec) {
     elSpec = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'elementSpec')
     elSpec.setAttribute('ident', ident)
     elSpec.setAttribute('mode', 'change')
-    const schemaSpec = odd.querySelector('schemaSpec')
+    const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
     schemaSpec.appendChild(elSpec)
   }
   return elSpec
@@ -44,7 +45,7 @@ export function updateElements(localsource, customization, odd) {
     }
 
     if (el._isNew) {
-      const schemaSpec = odd.querySelector('schemaSpec')
+      const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
       // Create new spec
       const elSpec = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'elementSpec')
       elSpec.setAttribute('ident', el.ident)
