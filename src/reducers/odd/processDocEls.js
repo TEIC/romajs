@@ -2,7 +2,7 @@ import { areDocElsEqual } from './utils'
 
 export function processDocEls(specElement, specData, localData, change, odd) {
   const dummyEl = odd.createElement('temp')
-  for (const [i, d] of specData[change].entries()) {
+  for (const [i, d] of (specData[change] || []).entries()) {
     // Wish I could use a CSS selector here, but nth-child won't do.
     const docEl = Array.from(specElement.children).filter(x =>
       x.tagName.toLowerCase() === change.toLowerCase())[i]
