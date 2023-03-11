@@ -4,6 +4,7 @@ import { updateClasses } from './odd/updateClasses'
 import { updateElements } from './odd/updateElements'
 import { updateDatatypes } from './odd/updateDatatypes'
 import safeSelect from '../utils/safeSelect'
+import version from '../utils/version'
 
 const parser = new DOMParser()
 
@@ -67,6 +68,31 @@ export function updateOdd(localsourceObj, customizationObj) {
   odd = updateClasses(localsource, customization, odd.cloneNode(true))
   // CHANGES TO DATATYPES
   odd = updateDatatypes(localsource, customization, odd.cloneNode(true))
+
+  // Add appInfo
+  const info = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'appInfo')
+  const iAppEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'application')
+  iAppEl.setAttribute('ident', 'RomaJS')
+  iAppEl.setAttribute('version', version)
+  iAppEl.setAttribute('when', new Date().toISOString())
+  const iDesc = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'desc')
+  iDesc.appendChild(odd.createTextNode('File edited with '))
+  const iRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'ref')
+  iRef.setAttribute('target', 'https://github.com/TEIC/romajs')
+  iRef.textContent = 'RomaJS'
+  iDesc.appendChild(iRef)
+  iAppEl.appendChild(iDesc)
+  info.appendChild(iAppEl)
+
+  const encodingDesc = safeSelect(odd.querySelectorAll('teiHeader encodingDesc'))[0]
+  if (encodingDesc) {
+    encodingDesc.appendChild(info)
+  } else {
+    const fileDesc = safeSelect(odd.querySelectorAll('teiHeader fileDesc'))[0]
+    const ed = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'encodingDesc')
+    ed.appendChild(info)
+    fileDesc.after(ed)
+  }
 
   if (global.uselocaldom) {
     return odd.documentElement.outerHTML
