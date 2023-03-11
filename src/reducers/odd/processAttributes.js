@@ -32,6 +32,8 @@ function createAttribute(attList, att, odd) {
     for (const val of att.valList.valItem) {
       const valItem = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'valItem')
       valItem.setAttribute('ident', val.ident)
+      // add descs
+      processDocEls(valItem, val, null, 'desc', odd)
       valList.appendChild(valItem)
     }
     attDef.appendChild(valList)
