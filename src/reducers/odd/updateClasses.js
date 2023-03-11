@@ -45,7 +45,7 @@ function processClasses(classType, localsource, customization, odd) {
 
       const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
       schemaSpec.appendChild(clSpec)
-    } else if (cl._changed && isModuleSelected) {
+    } else if (cl._changed && (cl._changed.join('') !== 'included') && isModuleSelected) {
       let changes = cl._changed
       if (cl._changed.indexOf('all') !== -1) {
         changes = ['desc', 'altIdent', 'attributes', 'models']
@@ -84,7 +84,7 @@ function processClasses(classType, localsource, customization, odd) {
           clSpec.parentNode.removeChild(clSpec)
         }
       }
-    } else if (cl._changed && !isModuleSelected) {
+    } else if (cl._changed && (cl._changed.join('') === 'included' || !isModuleSelected)) {
       // add classRef
       const clRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'classRef')
       clRef.setAttribute('key', cl.ident)

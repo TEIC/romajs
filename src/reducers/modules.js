@@ -181,7 +181,7 @@ export function oddModules(state, action) {
       for (const cl of action.classes) {
         const localCl = getClassByIdent(localsource, cl, action.classType)
         const newCl = clone(localCl)
-        newCl._changed = ['all']
+        newCl._changed = ['included']
         if (!getClassByIdent(customization, cl, action.classType)) {
           newCl.cloned = true
           customization.classes[action.classType].push(newCl)
