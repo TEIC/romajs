@@ -32,6 +32,10 @@ export default class Attribute extends Component {
   }
 
   render() {
+    if (!this.props.success) {
+      this.props.navigateTo(`/${this.props.memberType}/${this.props.member.ident}/attributes`)
+      return null
+    }
     const i18n = _i18n(this.props.language, 'Attribute')
     return (<div className="mdc-layout-grid">
       <div className="mdc-layout-grid__inner romajs-formrow">
@@ -115,4 +119,6 @@ Attribute.propTypes = {
   deleteValItem: PropTypes.func.isRequired,
   setDataTypeRestriction: PropTypes.func.isRequired,
   language: PropTypes.string.isRequired,
+  success: PropTypes.bool.isRequired,
+  navigateTo: PropTypes.func.isRequired,
 }
