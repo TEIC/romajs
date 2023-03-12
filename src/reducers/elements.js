@@ -395,7 +395,9 @@ export function oddElements(state, action) {
       let attributeToChange
       if (customClass) {
         attributeToChange = customClass.attributes.filter(a => a.ident === action.attName)[0]
-      } else {
+      }
+
+      if (!customClass | !attributeToChange) {
         localClass = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
         attributeToChange = localClass.attributes.filter(a => a.ident === action.attName)[0]
       }
