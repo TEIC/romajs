@@ -79,6 +79,10 @@ export default class DownloadButton extends Component {
               <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('latex')}}>
                 {i18n('Documentation as LaTeX')}
               </li>
+              <li className="mdc-list-divider" role="separator"/>
+              <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{this.props.downloadSchema('pdf')}}>
+                {i18n('Documentation as PDF')}
+              </li>
             </ul>
           </div>
         </div>
