@@ -1041,6 +1041,15 @@
       "ja": "解説 (LaTeX版)",
       "zh-notchecked": "作为LaTeX的文件"
     },
+    "Documentation as PDF": {
+      "it": "Documentazione in formato PDF",
+      "fr": "Documentation en format PDF",
+      "de": "Dokumentation als PDF",
+      "pt-notchecked": "Documentação como PDF",
+      "ja-notchecked": "PDFとしてのドキュメント",
+      "zh-notchecked": "作为PDF的文件",
+      "es-notchecked": "Documentación en PDF"
+    },
     "The customization is not valid": {
       "it": "La personalizzazione non è valida",
       "fr-notchecked": "La personnalisation n'est pas valide",
