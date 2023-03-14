@@ -1953,7 +1953,7 @@
     "This does not appear to be a TEI ODD document.": {
       "it": "Non sembra essere un document in formato TEI ODD.",
       "es-notchecked": "No parece tratarse de un documento TEI ODD.",
-      "fr-notchecked": "Il ne semble pas s'agir d'un document TEI ODD.",
+      "fr": "Ce document ne ressemble pas à un document TEI ODD.",
       "de-notchecked": "Dies scheint kein TEI ODD-Dokument zu sein.",
       "pt-notchecked": "Isto não parece ser um documento TEI ODD.",
       "ja-notchecked": "これはTEI ODDの文書ではないようです。",
@@ -1962,7 +1962,7 @@
     "This does not appear to be a TEI document.": {
       "it": "Non sembra essere un document in formato TEI.",
       "es-notchecked": "No parece tratarse de un documento TEI.",
-      "fr-notchecked": "Il ne semble pas s'agir d'un document TEI.",
+      "fr": "Ce document ne ressemble pas à un document TEI.",
       "de-notchecked": "Dies scheint kein TEI-Dokument zu sein.",
       "pt-notchecked": "Isto não parece ser um documento TEI.",
       "ja-notchecked": "これはTEIの文書ではないようです。",
@@ -1970,7 +1970,7 @@
     },
     "ODD Documents with RELAX NG elements are not supported.": {
       "it": "Document ODD con element RELAX NG non sono supportati.",
-      "fr-notchecked": "Les documents ODD contenant des éléments RELAX NG ne sont pas pris en charge.",
+      "fr": "Les documents ODD contenant des éléments RELAX NG ne sont pas pris en charge.",
       "es-notchecked": "No se admiten documentos ODD con elementos RELAX NG.",
       "de-notchecked": "ODD-Dokumente mit RELAX NG-Elementen werden nicht unterstützt.",
       "pt-notchecked": "Os documentos ODD com elementos RELAX NG não são suportados.",
@@ -1979,7 +1979,7 @@
     },
     "RomaJS does not support TEI ODD with @source attributes at the moment.": {
       "it": "RomaJS non supporta al momento i documenti TEI ODD con attributi @source.",
-      "fr-notchecked": "RomaJS ne prend pas en charge les TEI ODD avec les attributs @source pour le moment.",
+      "fr": "RomaJS ne prend pas en charge les TEI ODD avec les attributs @source pour le moment.",
       "es-notchecked": "RomaJS no admite TEI ODD con atributos @source por el momento.",
       "de-notchecked": "RomaJS unterstützt TEI ODD mit @source-Attributen zur Zeit nicht.",
       "pt-notchecked": "O RomaJS não suporta TEI ODD com atributos @source neste momento.",
@@ -1989,7 +1989,7 @@
     "Generated with RomaJS version": {
       "it": "Generato con RomaJS versione",
       "es-notchecked": "Generado con la versión RomaJS",
-      "fr-notchecked": "Généré avec la version de RomaJS",
+      "fr": "Généré avec la version de RomaJS:",
       "de-notchecked": "Erzeugt mit RomaJS Version",
       "pt-notchecked": "Gerado com a versão RomaJS",
       "ja-notchecked": "RomaJSのバージョンで生成されます",
