@@ -1627,4 +1627,29 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(Array.from(exemplumLg.getElementsByTagName('memberOf')).filter(e => e.getAttribute('key') === 'att.sortable').length)
       .toEqual(0)
   })
+
+  it('should clean start attribute', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    // Change ODD data for testing
+    const testXml = global.uselocaldom(customizationXML)
+    const schemaSpec = testXml.documentElement.querySelector('schemaSpec')
+    schemaSpec.setAttribute('start', 'TEI div excluded_element')
+    const testXmlString = serializer.serializeToString(testXml)
+
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: testXmlString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    const xml = parser.parseFromString(state.odd.customization.updatedXml)
+    const newSchemaSpec = xml.getElementsByTagName('schemaSpec')[0]
+    console.log(newSchemaSpec.getAttribute('start'))
+    expect(newSchemaSpec.getAttribute('start')).toNotContain('excluded_element')
+  })
 })

@@ -69,6 +69,15 @@ export function updateOdd(localsourceObj, customizationObj) {
   // CHANGES TO DATATYPES
   odd = updateDatatypes(localsource, customization, odd.cloneNode(true))
 
+  // Clean up start attribute: only keep elements that are in the customization
+  const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
+  if (schemaSpec.getAttribute('start')) {
+    const startEls = schemaSpec.getAttribute('start').split(/\s+/)
+    const cleanedStartEls = customization.elements.filter(e => startEls.includes(e.ident))
+      .map(e => e.ident).join(' ')
+    schemaSpec.setAttribute('start', cleanedStartEls)
+  }
+
   // Add appInfo
   const info = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'appInfo')
   const iAppEl = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'application')
