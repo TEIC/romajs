@@ -1136,7 +1136,7 @@
       "es-notchecked": "Roma es un editor ODD que utiliza el formato TEI ODD (One Document Does-it-all) para la documentación de metaesquemas y las directrices locales de codificación creadas por la Text Encoding Initiative.",
       "de-notchecked": "Roma ist ein ODD-Editor, der das TEI ODD (One Document Does-it-all)-Format für die Meta-Schema-Dokumentation und lokale Kodierungsrichtlinien verwendet, die von der Text Encoding Initiative erstellt wurden.",
       "pt-notchecked": "Roma é um editor ODD, utilizando o formato TEI ODD (One Document Does-it-all) para documentação de meta-esquema e directrizes de codificação local, tal como criado pela Iniciativa de Codificação de Texto.",
-      "ja": "RomaはODDエディターで、メタスキーマのドキュメントにTEI ODD (One Document Does-it-all) フォーマットと<a href="https://tei-c.org">Text Encoding Initiative</a>が作成したローカルエンコーディングガイドラインを使用しています。",
+      "ja": "RomaはODDエディターで、メタスキーマのドキュメントにTEI ODD (One Document Does-it-all) フォーマットと<a href=\"https://tei-c.org\">Text Encoding Initiative</a>が作成したローカルエンコーディングガイドラインを使用しています。",
       "zh-notchecked": "Roma是一个ODD编辑器，使用TEI ODD（One Document Does-it-all）格式，用于元模式文件和由文本编码倡议创建的本地编码指南。"
     },
     "What it is supposed to do": {
@@ -1212,7 +1212,7 @@
       "es-notchecked": "Notifique cualquier problema o solicite funciones en el repositorio GitHub de TEI-C: https://github.com/TEIC/romajs",
       "de-notchecked": "Melden Sie Probleme oder Funktionswünsche auf dem TEI-C GitHub Repository: https://github.com/TEIC/romajs",
       "pt-notchecked": "Relatar quaisquer problemas ou fazer pedidos de funcionalidades no repositório TEI-C GitHub: https://github.com/TEIC/romajs",
-      "ja": "TEI-CのGitHubリポジトリで問題点の報告や新規機能依頼を行うことができます: <a href="https://github.com/TEIC/romajs">https://github.com/TEIC/romajs</a>",
+      "ja": "TEI-CのGitHubリポジトリで問題点の報告や新規機能依頼を行うことができます: <a href=\"https://github.com/TEIC/romajs\">https://github.com/TEIC/romajs</a>",
       "zh-notchecked": "在TEI-C的GitHub存储库中报告任何问题或提出功能请求：https://github.com/TEIC/romajs。"
     },
     "Select ODD": {
@@ -1521,7 +1521,7 @@
       "es-notchecked": "Considera la posibilidad de informar de un problema en GitHub.",
       "de-notchecked": "Bitte denken Sie daran, einen Fehler auf GitHub zu melden.",
       "pt-notchecked": "Por favor, considere a possibilidade de relatar um problema sobre o GitHub.",
-      "ja": "GitHubで<a href="https://github.com/TEIC/romajs/issues">issueの報告</a>をご検討ください。",
+      "ja": "GitHubで<a href=\"https://github.com/TEIC/romajs/issues\">issueの報告</a>をご検討ください。",
       "zh-notchecked": "请考虑在GitHub上报告一个问题。"
     },
     "Start Over": {
@@ -1809,7 +1809,7 @@
       "es-notchecked": "Tiene dos opciones para revertir los cambios",
       "de-notchecked": "Sie haben zwei Möglichkeiten, Änderungen rückgängig zu machen",
       "pt-notchecked": "Tem duas opções para reverter as alterações para",
-      "ja": "変更を取り消すには、2つのオプションがあります。: "
+      "ja": "変更を取り消すには、2つのオプションがあります。: ",
       "zh-notchecked": "你有两个选项可以恢复对以下内容的修改"
     },
     "Discard latest changes": {
