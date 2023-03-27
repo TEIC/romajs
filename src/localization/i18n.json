@@ -7,7 +7,7 @@
       "es": "¿No encuentra lo que busca? Añádalo en la",
       "de-notchecked": "Sie sehen nicht, wonach Sie suchen? Fügen Sie es auf der",
       "pt-notchecked": "Não está a ver algo que procura? Adicione-a no",
-      "ja-notchecked": "お探しのものが見つからない場合、こちらに追加：",
+      "ja": "お探しのものが見つからない場合、こちらに追加：",
       "zh-notchecked": "没有看到你要找的东西？添加在"
     },
     "Members Page": {
@@ -16,7 +16,7 @@
       "es": "Página de miembros",
       "de-notchecked": "Mitglieder Seite",
       "pt-notchecked": "Página de Membros",
-      "ja-notchecked": "会員ページ",
+      "ja": "会員ページ",
       "zh-notchecked": "成员页"
     },
     "(opens in new tab)": {
@@ -25,7 +25,7 @@
       "es": "(se abre en una nueva pestaña)",
       "de-notchecked": "(öffnet in neuem Tab)",
       "pt-notchecked": "(abre em novo separador)",
-      "ja-notchecked": "(新しいタブで開く)",
+      "ja": "(新しいタブで開く)",
       "zh-notchecked": "(在新标签中打开)"
     }
   },
@@ -36,7 +36,7 @@
       "es": "Identificadores alternativos",
       "de-notchecked": "Alternative Identifikatoren",
       "pt-notchecked": "Identificadores alternativos",
-      "ja-notchecked": "代替識別子",
+      "ja": "代替識別子",
       "zh-notchecked": "替代标识符"
     },
     "HelperText": {
@@ -46,7 +46,7 @@
       "es": "Cada elemento de especificación de una ODD tiene un nombre canónico, que es el valor de su atributo ident. El elemento altIdent puede utilizarse para proporcionar una versión alternativa de este nombre canónico, por ejemplo en un idioma diferente.",
       "de-notchecked": "Jedes Spezifikationselement in einem ODD hat einen kanonischen Namen, der der Wert seines ident-Attributs ist. altIdent kann verwendet werden, um eine alternative Version dieses kanonischen Namens zu liefern, zum Beispiel in einer anderen Sprache.",
       "pt-notchecked": "Cada elemento de especificação numa ODD tem um nome canónico, que é o valor do seu atributo de ident. O elemento altIdent pode ser utilizado para fornecer uma versão alternativa deste nome canónico, por exemplo, numa língua diferente.",
-      "ja-notchecked": "ODDのすべての仕様要素には標準的な名前があり、これはident属性の値です。<br/>altIdent要素を使用して、この標準的な名前の代替バージョン（例えば、異なる言語）を指定することができます。",
+      "ja": "ODDのすべての仕様要素には標準的な名前があり、これはident属性の値です。<br/>altIdent要素を使用して、この標準的な名前の代替バージョン（例えば、異なる言語）を指定することができます。",
       "zh-notchecked": "ODD中的每个规范元素都有一个标准名称，这是其ident属性的值。altIdent元素可用于提供该标准名称的替代版本，例如，不同的语言。"
     }
   },
@@ -57,7 +57,7 @@
       "es": "Tipo de datos",
       "de-notchecked": "Datentyp",
       "pt-notchecked": "Tipo de dados",
-      "ja-notchecked": "データ型",
+      "ja": "データ型",
       "zh-notchecked": "数据类型"
     },
     "HelperText": {
@@ -67,7 +67,7 @@
       "es": "Establecer el tipo de dato para este atributo",
       "de-notchecked": "Datentyp für dieses Attribut festlegen",
       "pt-notchecked": "Definir o tipo de dados para este atributo",
-      "ja-notchecked": "この属性のデータ型を設定",
+      "ja": "この属性のデータ型を設定",
       "zh-notchecked": "设置该属性的数据类型"
     }
   },
@@ -78,7 +78,7 @@
       "es": "Utilización",
       "de-notchecked": "Verwendung",
       "pt-notchecked": "Utilização",
-      "ja-notchecked": "使用方法",
+      "ja": "使用方法",
       "zh-notchecked": "使用方法"
     },
     "HelperText": {
@@ -88,7 +88,7 @@
       "es": "Establecer el uso de atributos.",
       "de-notchecked": "Attributverwendung einstellen.",
       "pt-notchecked": "Utilização de atributos definidos.",
-      "ja-notchecked": "属性の用途を設定",
+      "ja": "属性の用途を設定",
       "zh-notchecked": "设置属性用法。"
     },
     "Default (optional)": {
@@ -97,7 +97,7 @@
       "es": "Por defecto (opcional)",
       "de-notchecked": "Standard (optional)",
       "pt-notchecked": "Default (opcional)",
-      "ja-notchecked": "デフォルト(オプション)",
+      "ja": "デフォルト(オプション)",
       "zh-notchecked": "默认（可选）"
     },
     "Required": {
@@ -106,7 +106,7 @@
       "es": "Obligatorio",
       "de-notchecked": "Erforderlich",
       "pt-notchecked": "Obrigatório",
-      "ja-notchecked": "必須",
+      "ja": "必須",
       "zh-notchecked": "需要"
     },
     "Recommended": {
@@ -115,7 +115,7 @@
       "es": "Recomendado",
       "de-notchecked": "Empfohlen",
       "pt-notchecked": "Recomendado",
-      "ja-notchecked": "おすすめ",
+      "ja": "おすすめ",
       "zh-notchecked": "建议"
     },
     "Optional": {
@@ -124,7 +124,7 @@
       "es": "Opcional",
       "de-notchecked": "Optional",
       "pt-notchecked": "Opcional",
-      "ja-notchecked": "オプション",
+      "ja": "オプション",
       "zh-notchecked": "可选"
     },
     "Values": {
@@ -133,7 +133,7 @@
       "es": "Valores",
       "de-notchecked": "Werte",
       "pt-notchecked": "Valores",
-      "ja-notchecked": "値",
+      "ja": "値",
       "zh-notchecked": "价值观"
     },
     "HelperTextValues": {
@@ -143,7 +143,7 @@
       "es": "Establece valores para este atributo.",
       "de-notchecked": "Legen Sie Werte für dieses Attribut fest.",
       "pt-notchecked": "Definir valores para este atributo.",
-      "ja-notchecked": "この属性に値を設定",
+      "ja": "この属性に値を設定",
       "zh-notchecked": "为这个属性设置值。"
     },
     "Namespace": {
@@ -152,7 +152,7 @@
       "es-notchecked": "Espacio de nombres",
       "de-notchecked": "Namespace",
       "pt-notchecked": "Namespace",
-      "ja-notchecked": "名前空間",
+      "ja": "名前空間",
       "zh-notchecked": "名称空间"
     },
     "HelperTextNs": {
@@ -162,7 +162,7 @@
       "es-notchecked": "Establece un espacio de nombres para este atributo. Dejar vacío para espacio de nombres nulo.",
       "de-notchecked": "Legen Sie einen Namespace für dieses Attribut fest. Leer lassen für null Namespace.",
       "pt-notchecked": "Definir um espaço de nomes para este atributo. Deixar em branco para espaço de nomes nulos.",
-      "ja-notchecked": "この属性に名前空間を設定。null の場合は空白",
+      "ja": "この属性に名前空間を設定。null の場合は空白",
       "zh-notchecked": "为这个属性设置一个命名空间。如果命名空间为空，则留空。"
     }
   },
@@ -174,7 +174,7 @@
       "es": "Atributos de los elementos",
       "de-notchecked": "Element-Attribute",
       "pt-notchecked": "Atributos dos elementos",
-      "ja-notchecked": "要素の属性",
+      "ja": "要素の属性",
       "zh-notchecked": "元素属性"
     },
     "class": {
@@ -184,7 +184,7 @@
       "es": "Atributos de clase",
       "de-notchecked": "Attribute der Klasse",
       "pt-notchecked": "Atributos de classe",
-      "ja-notchecked": "クラスの属性",
+      "ja": "クラスの属性",
       "zh-notchecked": "类属性"
     },
     "HelperText-element": {
@@ -194,7 +194,7 @@
       "es": "Editar atributos definidos en este elemento",
       "de-notchecked": "Bearbeiten von Attributen, die für dieses Element definiert sind",
       "pt-notchecked": "Atributos de edição definidos sobre este elemento",
-      "ja-notchecked": "この要素に定義された属性を編集",
+      "ja": "この要素に定義された属性を編集",
       "zh-notchecked": "编辑这个元素上定义的属性"
     },
     "HelperText-class": {
@@ -204,7 +204,7 @@
       "es": "Editar atributos definidos en esta clase",
       "de-notchecked": "Bearbeiten der für diese Klasse definierten Attribute",
       "pt-notchecked": "Atributos de edição definidos nesta classe",
-      "ja-notchecked": "このクラスで定義された属性を編集",
+      "ja": "このクラスで定義された属性を編集",
       "zh-notchecked": "编辑在该类上定义的属性"
     },
     "Attribute From Classes": {
@@ -213,7 +213,7 @@
       "es": "Atributos heredados de una clase",
       "de-notchecked": "Attribut von Klassen",
       "pt-notchecked": "Atributo das aulas",
-      "ja-notchecked": "クラスからの属性",
+      "ja": "クラスからの属性",
       "zh-notchecked": "来自类的属性"
     },
     "HelperTextAtt": {
@@ -223,7 +223,7 @@
       "es": "Los elementos pueden ser miembros de clases de atributos para heredar los atributos definidos en una clase. Aquí puede:  <ul><li>Editar atributos de clase sólo para este elemento</li><li>Borrar o restaurar atributos de clase sólo para este elemento</li><li>Cambiar la pertenencia a la clase</li></ul>",
       "de-notchecked": "Elemente können Mitglieder von Attributklassen sein, um die in einer Klasse definierten Attribute zu erben. Hier können Sie: Nur Klassenattribute für dieses Element bearbeitenNur Klassenattribute für dieses Element löschen oder wiederherstellenKlassenmitgliedschaften ändern",
       "pt-notchecked": "Os elementos podem ser membros de classes de atributos para herdar os atributos definidos numa classe. Aqui pode: Editar atributos de classe apenas para este elementoExcluir ou restaurar atributos de classe apenas para este elementoMudar afiliações de classe",
-      "ja-notchecked": "要素は、あるクラスで定義された属性を継承するために、属性クラスのメンバーになることができます。ここでは、以下の操作が可能です。<ul><li>この要素のクラス属性の編集</li><li>この要素のクラス属性の削除・復元</li><li>クラスのメンバーシップの変更</li></ul>",
+      "ja": "要素は、あるクラスで定義された属性を継承するために、属性クラスのメンバーになることができます。ここでは、以下の操作が可能です。<ul><li>この要素のクラス属性の編集</li><li>この要素のクラス属性の削除・復元</li><li>クラスのメンバーシップの変更</li></ul>",
       "zh-notchecked": "元素可以成为属性类的成员，以继承类中定义的属性。在这里你可以只编辑这个元素的类属性只删除或恢复这个元素的类属性改变类成员资格"
     },
     "This class doesn't define any attributes": {
@@ -232,7 +232,7 @@
       "es": "Esta clase no define ningún atributo",
       "de-notchecked": "Diese Klasse definiert keine Attribute",
       "pt-notchecked": "Esta classe não define nenhum atributo",
-      "ja-notchecked": "このクラスは属性を定義していません。",
+      "ja": "このクラスは属性を定義していません。",
       "zh-notchecked": "该类没有定义任何属性"
     },
     "inherited from": {
@@ -241,7 +241,7 @@
       "es": "heredado de",
       "de-notchecked": "geerbt von",
       "pt-notchecked": "herdados de",
-      "ja-notchecked": "次のものから継承：",
+      "ja": "次のものから継承：",
       "zh-notchecked": "继承自"
     },
     "From": {
@@ -250,7 +250,7 @@
       "es": "De",
       "de-notchecked": "Von",
       "pt-notchecked": "A partir de",
-      "ja-notchecked": "次のものから：",
+      "ja": "次のものから：",
       "zh-notchecked": "来自"
     },
     "changed for this element": {
@@ -259,7 +259,7 @@
       "es": "modificado para este elemento",
       "de-notchecked": "für dieses Element geändert",
       "pt-notchecked": "alterado para este elemento",
-      "ja-notchecked": "この要素に変更",
+      "ja": "この要素に変更",
       "zh-notchecked": "对该元素进行了修改"
     },
     "this change won't have any effect, check ODD source": {
@@ -268,7 +268,7 @@
       "es": "este cambio no tendrá ningún efecto, compruebe la fuente ODD",
       "de-notchecked": "diese Änderung hat keine Auswirkung, prüfen Sie die ODD-Quelle",
       "pt-notchecked": "esta alteração não terá qualquer efeito, verificar fonte ODD",
-      "ja-notchecked": "この変更には効果がありません。ODDソースを確認してください。",
+      "ja": "この変更には効果がありません。ODDソースを確認してください。",
       "zh-notchecked": "这一变化不会有任何影响，请检查ODD源。"
     }
   },
@@ -279,7 +279,7 @@
       "es": "Grupos",
       "de-notchecked": "Gruppen",
       "pt-notchecked": "Grupos",
-      "ja-notchecked": "グループ",
+      "ja": "グループ",
       "zh-notchecked": "群体"
     },
     "References": {
@@ -288,7 +288,7 @@
       "es": "Referencias",
       "de-notchecked": "Referenzen",
       "pt-notchecked": "Referências",
-      "ja-notchecked": "参考文献",
+      "ja": "参考文献",
       "zh-notchecked": "参考文献"
     },
     "Nodes": {
@@ -297,7 +297,7 @@
       "es": "Nodos",
       "de-notchecked": "Knotenpunkte",
       "pt-notchecked": "Nodos",
-      "ja-notchecked": "ノード",
+      "ja": "ノード",
       "zh-notchecked": "节点"
     }
   },
@@ -308,7 +308,7 @@
       "es": "Atributos de clase",
       "de-notchecked": "Klasse Attribute",
       "pt-notchecked": "Atributos de classe",
-      "ja-notchecked": "クラスの属性",
+      "ja": "クラスの属性",
       "zh-notchecked": "类属性"
     },
     "HelperText": {
@@ -318,7 +318,7 @@
       "es": "Editar atributos definidos como parte de esta clase.",
       "de-notchecked": "Bearbeiten Sie Attribute, die als Teil dieser Klasse definiert sind.",
       "pt-notchecked": "Editar atributos definidos como parte desta classe.",
-      "ja-notchecked": "このクラスの一部として定義された属性を編集",
+      "ja": "このクラスの一部として定義された属性を編集",
       "zh-notchecked": "编辑作为该类的一部分定义的属性。"
     },
     "Class Membership": {
@@ -327,7 +327,7 @@
       "es-notchecked": "Afiliación",
       "de-notchecked": "Mitgliedschaft in der Klasse",
       "pt-notchecked": "Afiliação em classe",
-      "ja-notchecked": "クラスのメンバーシップ",
+      "ja": "クラスのメンバーシップ",
       "zh-notchecked": "班级成员"
     },
     "HelperTextClass": {
@@ -337,7 +337,7 @@
       "es": "Atributos heredados de las clases. Cambia la pertenencia a una clase aquí.",
       "de-notchecked": "Von Klassen geerbte Attribute. Ändern Sie hier die Klassenzugehörigkeit.",
       "pt-notchecked": "Atributos herdados das aulas. Mude aqui a inscrição nas aulas.",
-      "ja-notchecked": "クラスから継承される属性。クラスのメンバーシップはここで変更",
+      "ja": "クラスから継承される属性。クラスのメンバーシップはここで変更",
       "zh-notchecked": "从类中继承的属性。在这里改变类的成员。"
     },
     "Member Classes": {
@@ -346,7 +346,7 @@
       "es-notchecked": "Clases para miembros",
       "de-notchecked": "Mitgliedsklassen",
       "pt-notchecked": "Classes de Membros",
-      "ja-notchecked": "メンバークラス",
+      "ja": "メンバークラス",
       "zh-notchecked": "会员班级"
     },
     "HelperTextMembers": {
@@ -356,7 +356,7 @@
       "es": "Las clases enumeradas aquí heredan atributos de esta clase.",
       "de-notchecked": "Die hier aufgeführten Klassen erben Attribute von dieser Klasse.",
       "pt-notchecked": "As classes aqui listadas herdam atributos desta classe.",
-      "ja-notchecked": "ここに挙げたクラスは、このクラスから属性を継承しています。",
+      "ja": "ここに挙げたクラスは、このクラスから属性を継承しています。",
       "zh-notchecked": "这里列出的类都是从这个类继承的属性。"
     },
     "not available": {
@@ -365,7 +365,7 @@
       "es": "no disponible",
       "de-notchecked": "nicht verfügbar",
       "pt-notchecked": "não disponível",
-      "ja-notchecked": "利用できません",
+      "ja": "利用できません",
       "zh-notchecked": "不详"
     }
   },
@@ -376,7 +376,7 @@
       "es": "Clases de modelos",
       "de-notchecked": "Modell-Klassen",
       "pt-notchecked": "Classes Modelo",
-      "ja-notchecked": "モデルクラス",
+      "ja": "モデルクラス",
       "zh-notchecked": "模型类"
     },
     "HelperText": {
@@ -386,7 +386,7 @@
       "es": "Cambie aquí la pertenencia a la clase del modelo.",
       "de-notchecked": "Ändern Sie hier die Zugehörigkeit zur Modellklasse.",
       "pt-notchecked": "Alterar aqui o modelo de associação de classe.",
-      "ja-notchecked": "ここでモデルクラスのメンバーシップを変更",
+      "ja": "ここでモデルクラスのメンバーシップを変更",
       "zh-notchecked": "在这里改变模型类成员。"
     },
     "Content": {
@@ -395,7 +395,7 @@
       "es": "Contenido",
       "de-notchecked": "Inhalt",
       "pt-notchecked": "Conteúdo",
-      "ja-notchecked": "コンテンツ",
+      "ja": "コンテンツ",
       "zh-notchecked": "内容"
     },
     "HelperTextContent": {
@@ -405,7 +405,7 @@
       "es": "Editar el contenido del elemento.",
       "de-notchecked": "Elementinhalt bearbeiten.",
       "pt-notchecked": "Editar o conteúdo dos elementos.",
-      "ja-notchecked": "要素のコンテンツを編集",
+      "ja": "要素のコンテンツを編集",
       "zh-notchecked": "编辑元素内容。"
     }
   },
@@ -416,7 +416,7 @@
       "es": "Tipo de agrupación de contenidos",
       "de-notchecked": "Typ der Inhaltsgruppierung",
       "pt-notchecked": "Tipo de agrupamento de conteúdos",
-      "ja-notchecked": "コンテンツグループ化タイプ",
+      "ja": "コンテンツグループ化タイプ",
       "zh-notchecked": "内容分组类型"
     },
     "HelperText": {
@@ -426,7 +426,7 @@
       "es": "Elija si las definiciones del contenido del tipo de datos deben alternarse, estar en una secuencia estricta o desordenadas.",
       "de-notchecked": "Wählen Sie, ob die Datentyp-Inhaltsdefinitionen abwechselnd, in strikter Reihenfolge oder ungeordnet sein sollen.",
       "pt-notchecked": "Escolher se as definições do conteúdo do tipo de dados devem alternar, estar numa sequência estrita, ou não ordenadas.",
-      "ja-notchecked": "データ型のコンテンツ定義を選択式か､順序通りに並べるか、順不同にするかを選択",
+      "ja": "データ型のコンテンツ定義を選択式か､順序通りに並べるか、順不同にするかを選択",
       "zh-notchecked": "选择数据类型的内容定义是否应该交替出现，是严格的顺序，还是无序的。"
     },
     "Unordered": {
@@ -435,7 +435,7 @@
       "es": "Sin ordenar",
       "de-notchecked": "Ungeordnete",
       "pt-notchecked": "Desordenado",
-      "ja-notchecked": "順不同",
+      "ja": "順不同",
       "zh-notchecked": "无序的"
     },
     "Alternate": {
@@ -444,7 +444,7 @@
       "es": "Alternativa",
       "de-notchecked": "Alternative",
       "pt-notchecked": "Suplente",
-      "ja-notchecked": "選択式",
+      "ja": "選択式",
       "zh-notchecked": "备选"
     },
     "Sequence": {
@@ -453,7 +453,7 @@
       "es": "Secuencia",
       "de-notchecked": "Sequenz",
       "pt-notchecked": "Sequência",
-      "ja-notchecked": "順序通り",
+      "ja": "順序通り",
       "zh-notchecked": "序列"
     },
     "Reference to another datatype": {
@@ -462,7 +462,7 @@
       "es": "Referencia a otro tipo de datos",
       "de-notchecked": "Verweis auf einen anderen Datentyp",
       "pt-notchecked": "Referência a outro tipo de dados",
-      "ja-notchecked": "別のデータ型への参照",
+      "ja": "別のデータ型への参照",
       "zh-notchecked": "对另一个数据类型的引用"
     },
     "Closed list of values": {
@@ -471,7 +471,7 @@
       "es": "Lista cerrada de valores",
       "de-notchecked": "Geschlossene Liste von Werten",
       "pt-notchecked": "Lista fechada de valores",
-      "ja-notchecked": "値の閉じたリスト",
+      "ja": "値の閉じたリスト",
       "zh-notchecked": "封闭的价值列表"
     },
     "Text content": {
@@ -480,7 +480,7 @@
       "es": "Contenido del texto",
       "de-notchecked": "Inhalt des Textes",
       "pt-notchecked": "Conteúdo do texto",
-      "ja-notchecked": "テキストコンテンツ",
+      "ja": "テキストコンテンツ",
       "zh-notchecked": "文本内容"
     },
     "Datatype Content": {
@@ -489,7 +489,7 @@
       "es": "Contenido del tipo de datos",
       "de-notchecked": "Datentyp Inhalt",
       "pt-notchecked": "Conteúdo do tipo de dados",
-      "ja-notchecked": "データ型コンテンツ",
+      "ja": "データ型コンテンツ",
       "zh-notchecked": "数据类型 内容"
     },
     "HelperTextDt": {
@@ -499,7 +499,7 @@
       "es": "Cambia aquí el contenido del tipo de datos.",
       "de-notchecked": "Ändern Sie hier den Inhalt des Datentyps.",
       "pt-notchecked": "Alterar aqui o conteúdo do datatype.",
-      "ja-notchecked": "ここでデータ型のコンテンツを変更",
+      "ja": "ここでデータ型のコンテンツを変更",
       "zh-notchecked": "在这里改变数据类型的内容。"
     }
   },
@@ -510,7 +510,7 @@
       "es": "Descripción",
       "de-notchecked": "Beschreibung",
       "pt-notchecked": "Descrição",
-      "ja-notchecked": "説明",
+      "ja": "説明",
       "zh-notchecked": "描述"
     },
     "HelperText": {
@@ -520,7 +520,7 @@
       "es": "Contiene una breve descripción del objeto documentado por su elemento padre, normalmente un elemento de especificación o una entidad.",
       "de-notchecked": "Enthält eine kurze Beschreibung des Objekts, das durch sein übergeordnetes Element dokumentiert wird, normalerweise ein Spezifikationselement oder eine Entität.",
       "pt-notchecked": "Contém uma breve descrição do objecto documentado pelo seu elemento principal, tipicamente um elemento de especificação ou uma entidade.",
-      "ja-notchecked": "親要素（通常は、要素の仕様を説明する要素または実体）によって記述されたオブジェクトの簡潔な説明を含んでいます。",
+      "ja": "親要素（通常は、要素の仕様を説明する要素または実体）によって記述されたオブジェクトの簡潔な説明を含んでいます。",
       "zh-notchecked": "包含对其父元素记录的对象的简要描述，通常是一个规范元素或一个实体。"
     },
     "Value description": {
@@ -529,7 +529,7 @@
       "es": "Descripción del valor",
       "de-notchecked": "Wertbeschreibung",
       "pt-notchecked": "Descrição do valor",
-      "ja-notchecked": "値の説明",
+      "ja": "値の説明",
       "zh-notchecked": "价值描述"
     },
     "HelperTextValueDesc": {
@@ -539,7 +539,7 @@
       "es": "Especifica cualquier restricción semántica o sintáctica sobre el valor que puede tomar un atributo, adicional a la información contenida en el elemento datatype.",
       "de-notchecked": "Spezifiziert jede semantische oder syntaktische Einschränkung des Wertes, den ein Attribut annehmen kann, zusätzlich zu den Informationen, die das Datentyp-Element enthält.",
       "pt-notchecked": "Especifica qualquer restrição semântica ou sintáctica sobre o valor que um atributo pode ter, além da informação transportada pelo elemento datatype.",
-      "ja-notchecked": "データ型要素が伝える情報に加えて，属性が取りうる値に関する意味論的または統語的な制約を指定する。",
+      "ja": "データ型要素が伝える情報に加えて，属性が取りうる値に関する意味論的または統語的な制約を指定する。",
       "zh-notchecked": "指定一个属性可能采取的任何语义或语法约束，除了数据类型元素所携带的信息外。"
     }
   },
@@ -550,7 +550,7 @@
       "es": "Documentación",
       "de-notchecked": "Dokumentation",
       "pt-notchecked": "Documentação",
-      "ja-notchecked": "ドキュメンテーション",
+      "ja": "ドキュメンテーション",
       "zh-notchecked": "文件"
     },
     "Attributes": {
@@ -559,7 +559,7 @@
       "es": "Atributos",
       "de-notchecked": "Attribute",
       "pt-notchecked": "Atributos",
-      "ja-notchecked": "属性",
+      "ja": "属性",
       "zh-notchecked": "属性"
     },
     "CMCM": {
@@ -569,7 +569,7 @@
       "es": "Pertenencia a una clase <br/> &amp; Modelo de contenido",
       "de-notchecked": "Klassenmitgliedschaft &amp; Inhaltsmodell",
       "pt-notchecked": "Afiliação em classe &amp; Modelo de conteúdo",
-      "ja-notchecked": "クラスメンバーシップとコンテンツモデル",
+      "ja": "クラスメンバーシップとコンテンツモデル",
       "zh-notchecked": "类成员&amp; 内容模型"
     },
     "Class Membership": {
@@ -578,7 +578,7 @@
       "es-notchecked": "Afiliación",
       "de-notchecked": "Mitgliedschaft in der Klasse",
       "pt-notchecked": "Afiliação em classe",
-      "ja-notchecked": "クラスメンバーシップ",
+      "ja": "クラスメンバーシップ",
       "zh-notchecked": "班级成员"
     },
     "Content": {
@@ -587,7 +587,7 @@
       "es": "Contenido",
       "de-notchecked": "Inhalt",
       "pt-notchecked": "Conteúdo",
-      "ja-notchecked": "コンテンツ",
+      "ja": "コンテンツ",
       "zh-notchecked": "内容"
     },
     "Not available.": {
@@ -596,7 +596,7 @@
       "es": "No disponible.",
       "de-notchecked": "Nicht verfügbar.",
       "pt-notchecked": "Não disponível.",
-      "ja-notchecked": "使用できません。",
+      "ja": "使用できません。",
       "zh-notchecked": "不提供。"
     },
     "Contraints": {
@@ -605,7 +605,7 @@
       "es": "Restricciones",
       "de-notchecked": "Beschränkungen",
       "pt-notchecked": "Contratos",
-      "ja-notchecked": "制約",
+      "ja": "制約",
       "zh-notchecked": "限制因素"
     },
     "Processing Model": {
@@ -614,7 +614,7 @@
       "es": "Modelo de procesamiento",
       "de-notchecked": "Verarbeitungsmodell",
       "pt-notchecked": "Modelo de processamento",
-      "ja-notchecked": "処理モデル",
+      "ja": "処理モデル",
       "zh-notchecked": "处理模式"
     },
     "Members": {
@@ -623,7 +623,7 @@
       "es": "Miembros",
       "de-notchecked": "Mitglieder",
       "pt-notchecked": "Membros",
-      "ja-notchecked": "メンバー",
+      "ja": "メンバー",
       "zh-notchecked": "成员"
     },
     "Revert changes": {
@@ -632,7 +632,7 @@
       "es": "Revertir cambios",
       "de-notchecked": "Änderungen rückgängig machen",
       "pt-notchecked": "Reverter alterações",
-      "ja-notchecked": "変更の取り消し",
+      "ja": "変更の取り消し",
       "zh-notchecked": "撤销修改"
     },
     "Revert to source": {
@@ -641,7 +641,7 @@
       "es": "Volver a la fuente",
       "de-notchecked": "Zur Quelle zurückkehren",
       "pt-notchecked": "Voltar à fonte",
-      "ja-notchecked": "元資料に戻す",
+      "ja": "元資料に戻す",
       "zh-notchecked": "回溯到源头"
     },
     "Attribute class": {
@@ -650,7 +650,7 @@
       "es": "Clase de atributo",
       "de-notchecked": "Attribut Klasse",
       "pt-notchecked": "Classe de atributo",
-      "ja-notchecked": "属性クラス",
+      "ja": "属性クラス",
       "zh-notchecked": "属性类"
     },
     "Model class": {
@@ -659,7 +659,7 @@
       "es": "Clase de modelo",
       "de-notchecked": "Modellklasse",
       "pt-notchecked": "Classe do modelo",
-      "ja-notchecked": "モデルクラス",
+      "ja": "モデルクラス",
       "zh-notchecked": "模型类"
     },
     "Datatype": {
@@ -668,7 +668,7 @@
       "es": "Tipo de datos",
       "de-notchecked": "Datentyp",
       "pt-notchecked": "Tipo de dados",
-      "ja-notchecked": "データ型",
+      "ja": "データ型",
       "zh-notchecked": "数据类型"
     }
   },
@@ -679,7 +679,7 @@
       "es-notchecked": "Afiliación",
       "de-notchecked": "Mitgliedschaft in der Klasse",
       "pt-notchecked": "Afiliação em classe",
-      "ja-notchecked": "クラスのメンバーシップ",
+      "ja": "クラスのメンバーシップ",
       "zh-notchecked": "班级成员"
     },
     "HelperTextClasses": {
@@ -689,7 +689,7 @@
       "es": "Los elementos que son miembros de esta clase también heredan el contenido de las clases enumeradas aquí.",
       "de-notchecked": "Elemente, die Mitglieder dieser Klasse sind, erben auch den Inhalt der hier aufgelisteten Klassen, die Sie hier ändern können.",
       "pt-notchecked": "Os elementos que são membros desta classe também herdam conteúdo das classes listadas aqui.",
-      "ja-notchecked": "このクラスのメンバーである要素は、ここに記載されているクラスの内容も継承します。<br/>クラスのメンバーシップはここから変更",
+      "ja": "このクラスのメンバーである要素は、ここに記載されているクラスの内容も継承します。<br/>クラスのメンバーシップはここから変更",
       "zh-notchecked": "作为这个类的成员的元素也继承了这里列出的类的内容。你可以在这里改变类的成员。"
     },
     "Member Classes": {
@@ -698,7 +698,7 @@
       "es-notchecked": "Clases para miembros",
       "de-notchecked": "Mitgliedsklassen",
       "pt-notchecked": "Classes de Membros",
-      "ja-notchecked": "メンバークラス",
+      "ja": "メンバークラス",
       "zh-notchecked": "会员班级"
     },
     "HelperTextMembers": {
@@ -708,7 +708,7 @@
       "es": "Las clases enumeradas aquí heredan el contenido de esta clase.",
       "de-notchecked": "Die hier aufgeführten Klassen erben den Inhalt von dieser Klasse.",
       "pt-notchecked": "As classes aqui listadas herdam conteúdo desta classe.",
-      "ja-notchecked": "ここに記載されているクラスは、このクラスから内容を継承しています。",
+      "ja": "ここに記載されているクラスは、このクラスから内容を継承しています。",
       "zh-notchecked": "这里列出的类都是从这个类继承内容的。"
     }
   },
@@ -719,7 +719,7 @@
       "es": "Personalizar ODD",
       "de-notchecked": "ODD anpassen",
       "pt-notchecked": "Personalizar ODD",
-      "ja-notchecked": "ODDをカスタマイズ",
+      "ja": "ODDをカスタマイズ",
       "zh-notchecked": "定制ODD"
     },
     "Title": {
@@ -728,7 +728,7 @@
       "es": "Título",
       "de-notchecked": "Titel",
       "pt-notchecked": "Título",
-      "ja-notchecked": "タイトル",
+      "ja": "タイトル",
       "zh-notchecked": "标题"
     },
     "HelperText": {
@@ -738,7 +738,7 @@
       "es": "El título de esta personalización.",
       "de-notchecked": "Der Titel dieser Anpassung.",
       "pt-notchecked": "O título desta personalização.",
-      "ja-notchecked": "このカスタマイズのタイトル",
+      "ja": "このカスタマイズのタイトル",
       "zh-notchecked": "这个定制的标题。"
     },
     "Identifier": {
@@ -747,7 +747,7 @@
       "es": "Identifique",
       "de-notchecked": "Identifizieren",
       "pt-notchecked": "Identificar",
-      "ja-notchecked": "識別子",
+      "ja": "識別子",
       "zh-notchecked": "识别"
     },
     "HelperTextIdentifier": {
@@ -757,7 +757,7 @@
       "es": "El identificador de esta personalización. También será el nombre de archivo de la ODD y los esquemas en la exportación.",
       "de-notchecked": "Der Bezeichner dieser Anpassung. Dies wird auch der Dateiname der ODD und der Schemata beim Export sein.",
       "pt-notchecked": "O identificador desta personalização. Este será também o nome do ficheiro do ODD e esquemas na exportação.",
-      "ja-notchecked": "このカスタマイズの識別子。これは、エクスポート時のODDとスキーマのファイル名にもなります。",
+      "ja": "このカスタマイズの識別子。これは、エクスポート時のODDとスキーマのファイル名にもなります。",
       "zh-notchecked": "该定制的标识符。这也将是ODD和模式导出时的文件名。"
     },
     "Customization Namespace": {
@@ -766,7 +766,7 @@
       "es": "Espacio de nombres de personalización",
       "de-notchecked": "Namespace für Anpassungen",
       "pt-notchecked": "Espaço de nomes de personalização",
-      "ja-notchecked": "カスタマイズ名前空間",
+      "ja": "カスタマイズ名前空間",
       "zh-notchecked": "定制名称空间"
     },
     "HelperTextCustomNamespace": {
@@ -776,7 +776,7 @@
       "es-notchecked": "Este es el espacio de nombres XML por defecto para los nuevos elementos que crees.",
       "de-notchecked": "Dies ist der Standard-XML-Namensraum für neue Elemente, die Sie erstellen.",
       "pt-notchecked": "Este é o espaço de nomes padrão XML para novos elementos criados por si.",
-      "ja-notchecked": "これは、新たに作成する要素のデフォルトのXML名前空間です。",
+      "ja": "これは、新たに作成する要素のデフォルトのXML名前空間です。",
       "zh-notchecked": "这是你创建的新元素的默认XML命名空间。"
     },
     "Apply to new attributes as well.": {
@@ -785,7 +785,7 @@
       "es": "Aplíquese también a los nuevos atributos.",
       "de-notchecked": "Dies gilt auch für neue Attribute.",
       "pt-notchecked": "Aplicar também a novos atributos.",
-      "ja-notchecked": "新しい属性にも適用",
+      "ja": "新しい属性にも適用",
       "zh-notchecked": "也适用于新的属性。"
     },
     "Prefix": {
@@ -794,7 +794,7 @@
       "es": "Prefijo",
       "de-notchecked": "Vorsilbe",
       "pt-notchecked": "Prefixo",
-      "ja-notchecked": "接頭辞",
+      "ja": "接頭辞",
       "zh-notchecked": "前缀"
     },
     "HelperTextPrefix": {
@@ -804,7 +804,7 @@
       "es": "El prefijo para los nombres de patrones en el esquema.",
       "de-notchecked": "Das Präfix für Musternamen im Schema.",
       "pt-notchecked": "O prefixo para os nomes dos padrões no esquema.",
-      "ja-notchecked": "スキーマのパターン名の接頭辞",
+      "ja": "スキーマのパターン名の接頭辞",
       "zh-notchecked": "模式中模式名称的前缀。"
     },
     "Language of elements and attributes": {
@@ -813,7 +813,7 @@
       "es": "Lenguaje de elementos y atributos",
       "de-notchecked": "Sprache der Elemente und Attribute",
       "pt-notchecked": "Linguagem de elementos e atributos",
-      "ja-notchecked": "要素・属性の言語",
+      "ja": "要素・属性の言語",
       "zh-notchecked": "元素和属性的语言"
     },
     "HelperTextLang": {
@@ -823,7 +823,7 @@
       "es": "Cuando el elemento y los atributos admitan varios idiomas, elija éste.",
       "de-notchecked": "Wenn Element und Attribute mehrere Sprachen unterstützen, wählen Sie diese.",
       "pt-notchecked": "Quando elementos e atributos suportam várias línguas, escolha esta.",
-      "ja-notchecked": "要素や属性が多言語に対応している場合、こちらを選択",
+      "ja": "要素や属性が多言語に対応している場合、こちらを選択",
       "zh-notchecked": "当元素和属性支持多种语言时，选择这个。"
     },
     "Documentation Language": {
@@ -832,7 +832,7 @@
       "es": "Lengua de la documentación",
       "de-notchecked": "Dokumentation Sprache",
       "pt-notchecked": "Língua de Documentação",
-      "ja-notchecked": "ドキュメントの言語",
+      "ja": "ドキュメントの言語",
       "zh-notchecked": "文档语言"
     },
     "HelperTextDocLang": {
@@ -842,7 +842,7 @@
       "es": "La documentación se mostrará y generará en este idioma.",
       "de-notchecked": "Die Dokumentation wird in dieser Sprache angezeigt und erstellt.",
       "pt-notchecked": "A documentação será mostrada e gerada nesta língua.",
-      "ja-notchecked": "ドキュメントはこの言語で表示・生成されます。",
+      "ja": "ドキュメントはこの言語で表示・生成されます。",
       "zh-notchecked": "文件将以这种语言显示和生成。"
     },
     "Author": {
@@ -851,7 +851,7 @@
       "es": "Autor",
       "de-notchecked": "Autor",
       "pt-notchecked": "Autor",
-      "ja-notchecked": "著者名",
+      "ja": "著者名",
       "zh-notchecked": "作者"
     },
     "HelperTextAuthor": {
@@ -861,7 +861,7 @@
       "es": "Responsable de esta personalización.",
       "de-notchecked": "Wer hat diese Anpassung vorgenommen?",
       "pt-notchecked": "Quem criou esta personalização.",
-      "ja-notchecked": "このカスタマイズ版の作成者",
+      "ja": "このカスタマイズ版の作成者",
       "zh-notchecked": "谁创造了这种定制。"
     }
   },
@@ -872,7 +872,7 @@
       "es-notchecked": "Obtener nueva documentación lingüística",
       "de-notchecked": "Beschaffung einer neuen Sprachdokumentation",
       "pt-notchecked": "Obtenção de nova documentação linguística",
-      "ja-notchecked": "新しい言語のドキュメント入手",
+      "ja": "新しい言語のドキュメント入手",
       "zh-notchecked": "获得新的语言文件"
     }
   },
@@ -883,7 +883,7 @@
       "es": "Nuevo",
       "de-notchecked": "Neu",
       "pt-notchecked": "Novo",
-      "ja-notchecked": "新規",
+      "ja": "新規",
       "zh-notchecked": "新的"
     },
     "Element": {
@@ -892,7 +892,7 @@
       "es": "Elemento",
       "de-notchecked": "Element",
       "pt-notchecked": "Elemento",
-      "ja-notchecked": "要素",
+      "ja": "要素",
       "zh-notchecked": "元素"
     },
     "Class": {
@@ -901,7 +901,7 @@
       "es-notchecked": "Clase",
       "de-notchecked": "Klasse",
       "pt-notchecked": "Classe",
-      "ja-notchecked": "クラス",
+      "ja": "クラス",
       "zh-notchecked": "级别"
     },
     "Datatype": {
@@ -910,7 +910,7 @@
       "es-notchecked": "Tipo de datos",
       "de-notchecked": "Datentyp",
       "pt-notchecked": "Tipo de dados",
-      "ja-notchecked": "データ型",
+      "ja": "データ型",
       "zh-notchecked": "数据类型"
     }
   },
@@ -921,7 +921,7 @@
       "es-notchecked": "No disponible: suprimido",
       "de-notchecked": "Nicht verfügbar: gelöscht",
       "pt-notchecked": "Não disponível: apagado",
-      "ja-notchecked": "非対応：削除済",
+      "ja": "非対応：削除済",
       "zh-notchecked": "不提供：已删除"
     },
     "Restriction": {
@@ -930,7 +930,7 @@
       "es-notchecked": "Restricción",
       "de-notchecked": "Einschränkung",
       "pt-notchecked": "Restrição",
-      "ja-notchecked": "制限",
+      "ja": "制限",
       "zh-notchecked": "限制性条款"
     }
   },
@@ -941,7 +941,7 @@
       "es-notchecked": "Descargar",
       "de-notchecked": "Herunterladen",
       "pt-notchecked": "Descarregar",
-      "ja-notchecked": "ダウンロード",
+      "ja": "ダウンロード",
       "zh-notchecked": "下载"
     },
     "Customization as ODD": {
@@ -950,7 +950,7 @@
       "es-notchecked": "Personalización como ODD",
       "de-notchecked": "Personalisierung als ODD",
       "pt-notchecked": "Personalização como ODD",
-      "ja-notchecked": "ODDとしてカスタマイズ",
+      "ja": "ODDとしてカスタマイズ",
       "zh-notchecked": "作为ODD的定制"
     },
     "Compiled ODD": {
@@ -959,7 +959,7 @@
       "es-notchecked": "ODD compilado",
       "de-notchecked": "Kompilierte ODD",
       "pt-notchecked": "ODD compilada",
-      "ja-notchecked": "コンパイル済みODD",
+      "ja": "コンパイル済みODD",
       "zh-notchecked": "编译的ODD"
     },
     "RelaxNG schema": {
@@ -968,7 +968,7 @@
       "es-notchecked": "Régimen RelaxNG",
       "de-notchecked": "RelaxNG schema",
       "pt-notchecked": "Esquema RelaxNG",
-      "ja-notchecked": "RelaxNGスキーマ",
+      "ja": "RelaxNGスキーマ",
       "zh-notchecked": "放松NG计划"
     },
     "RelaxNG compact": {
@@ -976,7 +976,7 @@
       "es-notchecked": "RelaxNG compacto",
       "de-notchecked": "RelaxNG kompakt",
       "pt-notchecked": "RelaxNG compacto",
-      "ja-notchecked": "RelaxNGコンパクト",
+      "ja": "RelaxNGコンパクト",
       "zh-notchecked": "紧凑的RelaxNG"
     },
     "W3C schema": {
@@ -985,7 +985,7 @@
       "es-notchecked": "Esquema W3C",
       "de-notchecked": "W3C schema",
       "pt-notchecked": "Esquema do W3C",
-      "ja-notchecked": "W3Cスキーマ",
+      "ja": "W3Cスキーマ",
       "zh-notchecked": "W3C模式"
     },
     "DTD": {
@@ -993,7 +993,7 @@
       "es-notchecked": "DTD",
       "de-notchecked": "DTD",
       "pt-notchecked": "DTD",
-      "ja-notchecked": "文書型定義",
+      "ja": "文書型定義",
       "zh-notchecked": "DTD"
     },
     "ISO Schematron constraints": {
@@ -1002,7 +1002,7 @@
       "es-notchecked": "Restricciones ISO Schematron",
       "de-notchecked": "ISO-Schematron-Einschränkungen",
       "pt-notchecked": "Restrições ISO Schematron",
-      "ja-notchecked": "ISO Schematron制約",
+      "ja": "ISO Schematron制約",
       "zh-notchecked": "ISO Schematron约束"
     },
     "Documentation as HTML": {
@@ -1011,7 +1011,7 @@
       "es-notchecked": "Documentación en HTML",
       "de-notchecked": "Dokumentation als HTML",
       "pt-notchecked": "Documentação como HTML",
-      "ja-notchecked": "解説 (HTML版)",
+      "ja": "解説 (HTML版)",
       "zh-notchecked": "作为HTML的文件"
     },
     "Documentation as TEI Lite": {
@@ -1020,7 +1020,7 @@
       "es-notchecked": "Documentación como TEI Lite",
       "de-notchecked": "Dokumentation als TEI Lite",
       "pt-notchecked": "Documentação como TEI Lite",
-      "ja-notchecked": "解説 (TEI Lite版)",
+      "ja": "解説 (TEI Lite版)",
       "zh-notchecked": "作为TEI Lite的文件"
     },
     "Documentation as MS Word": {
@@ -1029,7 +1029,7 @@
       "es-notchecked": "Documentación en MS Word",
       "de-notchecked": "Dokumentation als MS Word",
       "pt-notchecked": "Documentação como MS Word",
-      "ja-notchecked": "解説 (MS Word版)",
+      "ja": "解説 (MS Word版)",
       "zh-notchecked": "作为MS Word的文件"
     },
     "Documentation as LaTeX": {
@@ -1038,7 +1038,7 @@
       "es-notchecked": "Documentación en LaTeX",
       "de-notchecked": "Dokumentation als LaTeX",
       "pt-notchecked": "Documentação como LaTeX",
-      "ja-notchecked": "解説 (LaTeX版)",
+      "ja": "解説 (LaTeX版)",
       "zh-notchecked": "作为LaTeX的文件"
     },
     "The customization is not valid": {
@@ -1047,7 +1047,7 @@
       "es-notchecked": "La personalización no es válida",
       "de-notchecked": "Die Anpassung ist nicht gültig",
       "pt-notchecked": "A personalização não é válida",
-      "ja-notchecked": "カスタマイズは無効です",
+      "ja": "カスタマイズは無効です",
       "zh-notchecked": "该定制是无效的"
     },
     "errormsg": {
@@ -1057,7 +1057,7 @@
       "es-notchecked": "El ODD no puede procesarse porque no está bien formado en XML o no es válido. Por favor, compruebe su personalización, especialmente los campos de documentación con datos XML.",
       "de-notchecked": "Die ODD kann nicht verarbeitet werden, weil sie kein wohlgeformtes XML ist oder ungültig ist! Bitte überprüfen Sie Ihre Anpassungen, insbesondere Dokumentationsfelder mit XML-Daten.",
       "pt-notchecked": "A ODD não pode ser processada porque não está bem formada em XML ou é inválida! Por favor, verifique a sua personalização, particularmente os campos de documentação com dados XML.",
-      "ja-notchecked": "このODDは、適格なXMLでないか、無効であるため、処理できません！カスタマイズ、特にXMLデータを含むドキュメントフィールドを確認してください。",
+      "ja": "このODDは、適格なXMLでないか、無効であるため、処理できません！カスタマイズ、特にXMLデータを含むドキュメントフィールドを確認してください。",
       "zh-notchecked": "ODD不能被处理，因为它不是格式良好的XML，或者它是无效的!请检查你的定制，特别是带有XML数据的文档字段。"
     }
   },
@@ -1068,7 +1068,7 @@
       "es-notchecked": "filtrar elementos",
       "de-notchecked": "Artikel filtern",
       "pt-notchecked": "artigos de filtragem",
-      "ja-notchecked": "項目を絞り込む",
+      "ja": "項目を絞り込む",
       "zh-notchecked": "筛选项目"
     }
   },
@@ -1079,7 +1079,7 @@
       "es-notchecked": "Roma - Personalización ODD",
       "de-notchecked": "Roma - ODD-Anpassung",
       "pt-notchecked": "Roma - Personalização de ODD",
-      "ja-notchecked": "Roma - ODD カスタマイゼーション",
+      "ja": "Roma - ODD カスタマイゼーション",
       "zh-notchecked": "罗马--ODD定制"
     },
     "Start Over": {
@@ -1088,7 +1088,7 @@
       "es-notchecked": "Volver a empezar",
       "de-notchecked": "Neu anfangen",
       "pt-notchecked": "Começar de novo",
-      "ja-notchecked": "やり直す",
+      "ja": "やり直す",
       "zh-notchecked": "重新开始"
     },
     "Download": {
@@ -1097,7 +1097,7 @@
       "es-notchecked": "Descargar",
       "de-notchecked": "Herunterladen",
       "pt-notchecked": "Descarregar",
-      "ja-notchecked": "ダウンロード",
+      "ja": "ダウンロード",
       "zh-notchecked": "下载"
     },
     "Language": {
@@ -1106,7 +1106,7 @@
       "es-notchecked": "Idioma",
       "de-notchecked": "Sprache",
       "pt-notchecked": "Idioma",
-      "ja-notchecked": "言語",
+      "ja": "言語",
       "zh-notchecked": "语言"
     },
     "settings": {
@@ -1115,7 +1115,7 @@
       "es-notchecked": "ajustes",
       "de-notchecked": "Einstellungen",
       "pt-notchecked": "definições",
-      "ja-notchecked": "設定",
+      "ja": "設定",
       "zh-notchecked": "设置"
     }
   },
@@ -1127,7 +1127,7 @@
       "es-notchecked": "Roma es un editor ODD que utiliza el formato TEI ODD (One Document Does-it-all) para la documentación de metaesquemas y las directrices locales de codificación creadas por la Text Encoding Initiative.",
       "de-notchecked": "Roma ist ein ODD-Editor, der das TEI ODD (One Document Does-it-all)-Format für die Meta-Schema-Dokumentation und lokale Kodierungsrichtlinien verwendet, die von der Text Encoding Initiative erstellt wurden.",
       "pt-notchecked": "Roma é um editor ODD, utilizando o formato TEI ODD (One Document Does-it-all) para documentação de meta-esquema e directrizes de codificação local, tal como criado pela Iniciativa de Codificação de Texto.",
-      "ja-notchecked": "RomaはODDエディターで、メタスキーマのドキュメントにTEI ODD (One Document Does-it-all) フォーマットと<a href="https://tei-c.org">Text Encoding Initiative</a>が作成したローカルエンコーディングガイドラインを使用しています。",
+      "ja": "RomaはODDエディターで、メタスキーマのドキュメントにTEI ODD (One Document Does-it-all) フォーマットと<a href="https://tei-c.org">Text Encoding Initiative</a>が作成したローカルエンコーディングガイドラインを使用しています。",
       "zh-notchecked": "Roma是一个ODD编辑器，使用TEI ODD（One Document Does-it-all）格式，用于元模式文件和由文本编码倡议创建的本地编码指南。"
     },
     "What it is supposed to do": {
@@ -1136,7 +1136,7 @@
       "es-notchecked": "Para qué sirve",
       "de-notchecked": "Was es bewirken soll",
       "pt-notchecked": "O que é suposto fazer",
-      "ja-notchecked": "可能な操作",
+      "ja": "可能な操作",
       "zh-notchecked": "它应该做什么"
     },
     "does": {
@@ -1146,7 +1146,7 @@
       "es-notchecked": "Roma permite crear una personalización del TEI. Proporciona una interfaz fácil de usar para elegir los elementos, clases de atributos, clases de modelos y tipos de datos utilizados en un esquema. Para cada elemento se puede modificar la documentación, los atributos, la pertenencia a clases y los modelos de contenido. Puede partir de una personalización ODD previamente guardada o cargar una de las plantillas predefinidas como punto de partida.",
       "de-notchecked": "Roma ermöglicht es Ihnen, eine Anpassung der TEI zu erstellen. Es bietet eine benutzerfreundliche Schnittstelle zur Auswahl von Elementen, Attributklassen, Modellklassen und Datentypen, die in einem Schema verwendet werden. Für jedes Element können die Dokumentation, die Attribute, die Klassenmitgliedschaften und die Inhaltsmodelle geändert werden. Sie können von einer zuvor gespeicherten ODD-Anpassung ausgehen oder eine der vordefinierten Vorlagen als Ausgangspunkt laden.",
       "pt-notchecked": "Os Roma permitem-lhe criar uma personalização do TEI. Fornece uma interface de fácil utilização para escolher Elementos, Classes de Atributos, Classes de Modelos, e Tipos de Dados utilizados num esquema. Para cada elemento, a documentação, os atributos, as classes de membros e os modelos de conteúdo podem ser modificados. Pode começar a partir de uma personalização ODD previamente guardada ou carregar um dos modelos pré-definidos como ponto de partida.",
-      "ja-notchecked": "Romaは、TEIのカスタマイズを可能にします。スキーマで使用される要素、属性クラス、モデルクラス、データ型を選択するための使いやすいインターフェイスを提供します。各要素について、ドキュメント、属性、クラスメンバーシップ、コンテンツモデルを変更することが可能です。以前に保存した ODD カスタマイズから開始することも、事前に定義されたテンプレートのいずれかを開始点として読み込むこともできます。",
+      "ja": "Romaは、TEIのカスタマイズを可能にします。スキーマで使用される要素、属性クラス、モデルクラス、データ型を選択するための使いやすいインターフェイスを提供します。各要素について、ドキュメント、属性、クラスメンバーシップ、コンテンツモデルを変更することが可能です。以前に保存した ODD カスタマイズから開始することも、事前に定義されたテンプレートのいずれかを開始点として読み込むこともできます。",
       "zh-notchecked": "Roma使你能够创建一个定制的TEI。它提供了一个用户友好的界面来挑选模式中使用的元素、属性类、模型类和数据类型。对于每个元素的文档、属性、类成员资格和内容模型都可以进行修改。你可以从以前保存的ODD定制开始，或者加载一个预定义的模板作为起点。"
     },
     "What it does not do": {
@@ -1155,7 +1155,7 @@
       "es-notchecked": "Lo que no hace",
       "de-notchecked": "Was es nicht tut",
       "pt-notchecked": "O que não faz",
-      "ja-notchecked": "不可能な操作",
+      "ja": "不可能な操作",
       "zh-notchecked": "它不做什么"
     },
     "doesnot": {
@@ -1165,7 +1165,7 @@
       "es-notchecked": "Las conversiones de la personalización ODD a otros formatos (tanto esquemas como formatos de documentación) se gestionan pasando el documento al servicio Oxgarage de TEI-C. Además, hay una serie de tareas que esta versión de Roma aún no gestiona, entre las que se incluyen: No es compatible con los modelos de contenido RelaxNG. Sólo soporta PureODD (es decir, ODD expresado sólo con elementos TEI).No soporta atributos @source. Actualmente esta herramienta sólo utiliza la última versión estable del TEI.",
       "de-notchecked": "Die Konvertierung der ODD-Anpassung in andere Formate (sowohl Schemata als auch Dokumentationsformate) erfolgt durch Übergabe des Dokuments an den TEI-C-Dienst Oxgarage. Darüber hinaus gibt es eine Reihe von Aufgaben, die diese Version von Roma noch nicht bewältigen kann, darunter: Keine Unterstützung für RelaxNG-Inhaltsmodelle. Nur PureODD wird unterstützt (d.h. ODD wird nur mit TEI-Elementen ausgedrückt), keine Unterstützung für @source-Attribute. Derzeit wird nur die letzte stabile Version der TEI von diesem Werkzeug verwendet.",
       "pt-notchecked": "As conversões da personalização do ODD para outros formatos (tanto esquemas como formatos de documentação) são tratadas passando o documento para o serviço de Oxgarage do TEI-C. Além disso, há uma série de tarefas que esta versão dos ciganos ainda não trata, incluindo Nenhum suporte para modelos de conteúdo RelaxNG. Apenas PureODD é suportado (ou seja, ODD expresso apenas com elementos TEI). Não há suporte para @source attributes. Actualmente apenas a última versão estável do TEI é utilizada por esta ferramenta.",
-      "ja-notchecked": "ODD カスタマイズの他の形式（スキーマとドキュメンテーション形式の両方）への変換は、TEI-C の Oxgarage サービスにドキュメントを渡すことで処理されます。さらに、現行バージョンの Roma がまだ扱っていないタスクがいくつかあります。<ul><li><strong>RelaxNGコンテンツモデルには対応しておらず、</strong>PureODDのみ（つまりTEI要素でのみ表現されるODD）をサポートしています。</li><li><strong><code>@source</code>属性のサポートはありません。</strong>現在、このツールでは安定した最新バージョンのTEIのみが使用されています。</li></ul>",
+      "ja": "ODD カスタマイズの他の形式（スキーマとドキュメンテーション形式の両方）への変換は、TEI-C の Oxgarage サービスにドキュメントを渡すことで処理されます。さらに、現行バージョンの Roma がまだ扱っていないタスクがいくつかあります。<ul><li><strong>RelaxNGコンテンツモデルには対応しておらず、</strong>PureODDのみ（つまりTEI要素でのみ表現されるODD）をサポートしています。</li><li><strong><code>@source</code>属性のサポートはありません。</strong>現在、このツールでは安定した最新バージョンのTEIのみが使用されています。</li></ul>",
       "zh-notchecked": "将ODD定制的文件转换为其他格式（包括模式和文件格式）是通过将文件传递给TEI-C的Oxgarage服务来处理。此外，还有一些任务是这个版本的Roma还没有处理的，包括。不支持RelaxNG内容模型。只支持PureODD（即只用TEI元素表达的ODD）。不支持@source属性。目前这个工具只使用TEI的最新稳定版本。"
     },
     "Known issues": {
@@ -1174,7 +1174,7 @@
       "es-notchecked": "Problemas conocidos",
       "de-notchecked": "Bekannte Probleme",
       "pt-notchecked": "Questões conhecidas",
-      "ja-notchecked": "既存の問題",
+      "ja": "既存の問題",
       "zh-notchecked": "已知问题"
     },
     "known": {
@@ -1184,7 +1184,7 @@
       "es-notchecked": "Si Roma se bloquea al cargar un ODD existente o una personalización de plantilla, actualice o vuelva a cargar el navegador. En Safari, la recarga de una página puede provocar la pérdida de datos debido a su almacenamiento limitado.",
       "de-notchecked": "Wenn Roma beim Laden eines bestehenden ODD oder einer Vorlagenanpassung stehen bleibt, aktualisieren Sie Ihren Browser oder laden Sie ihn neu. in Safari kann das Neuladen einer Seite aufgrund des begrenzten Datenspeichers zu Datenverlusten führen.",
       "pt-notchecked": "Se os romanichéis bloquearem o carregamento de uma ODD ou personalização de modelos existentes, então actualize ou recarregue o seu navegador. No Safari, recarregar uma página pode causar perda de dados devido ao armazenamento limitado de dados.",
-      "ja-notchecked": "<li>Romaが既存のODDやテンプレートのカスタマイズを読み込む際に停止してしまう場合は、ブラウザを更新するか再読み込みしてください。</li><li>Safariでは、ページを再読み込みすると、データストレージの制限によりデータが失われる場合があります。</li>",
+      "ja": "<li>Romaが既存のODDやテンプレートのカスタマイズを読み込む際に停止してしまう場合は、ブラウザを更新するか再読み込みしてください。</li><li>Safariでは、ページを再読み込みすると、データストレージの制限によりデータが失われる場合があります。</li>",
       "zh-notchecked": "如果Roma在加载现有ODD或模板定制时停滞不前，那么刷新或重新加载你的浏览器。在Safari浏览器中，由于数据存储有限，重新加载页面可能导致数据丢失。"
     },
     "Contribute": {
@@ -1193,7 +1193,7 @@
       "es-notchecked": "Contribuir",
       "de-notchecked": "Beitragen",
       "pt-notchecked": "Contribua",
-      "ja-notchecked": "貢献",
+      "ja": "貢献",
       "zh-notchecked": "贡献"
     },
     "contrib": {
@@ -1203,7 +1203,7 @@
       "es-notchecked": "Notifique cualquier problema o solicite funciones en el repositorio GitHub de TEI-C: https://github.com/TEIC/romajs",
       "de-notchecked": "Melden Sie Probleme oder Funktionswünsche auf dem TEI-C GitHub Repository: https://github.com/TEIC/romajs",
       "pt-notchecked": "Relatar quaisquer problemas ou fazer pedidos de funcionalidades no repositório TEI-C GitHub: https://github.com/TEIC/romajs",
-      "ja-notchecked": "TEI-CのGitHubリポジトリで問題点の報告や新規機能依頼を行うことができます: <a href="https://github.com/TEIC/romajs">https://github.com/TEIC/romajs</a>",
+      "ja": "TEI-CのGitHubリポジトリで問題点の報告や新規機能依頼を行うことができます: <a href="https://github.com/TEIC/romajs">https://github.com/TEIC/romajs</a>",
       "zh-notchecked": "在TEI-C的GitHub存储库中报告任何问题或提出功能请求：https://github.com/TEIC/romajs。"
     },
     "Select ODD": {
@@ -1212,7 +1212,7 @@
       "es-notchecked": "Seleccione ODD",
       "de-notchecked": "ODD auswählen",
       "pt-notchecked": "Seleccione ODD",
-      "ja-notchecked": "ODDを選択",
+      "ja": "ODDを選択",
       "zh-notchecked": "选择ODD"
     },
     "Upload ODD": {
@@ -1221,7 +1221,7 @@
       "es-notchecked": "Cargar ODD",
       "de-notchecked": "ODD hochladen",
       "pt-notchecked": "Carregar ODD",
-      "ja-notchecked": "ODDのアップロード",
+      "ja": "ODDのアップロード",
       "zh-notchecked": "上传ODD"
     },
     "Start": {
@@ -1230,7 +1230,7 @@
       "es-notchecked": "Inicio",
       "de-notchecked": "Start",
       "pt-notchecked": "Início",
-      "ja-notchecked": "開始",
+      "ja": "開始",
       "zh-notchecked": "开始"
     },
     "Choose a preset": {
@@ -1239,7 +1239,7 @@
       "es-notchecked": "Elija un preajuste",
       "de-notchecked": "Wählen Sie eine Voreinstellung",
       "pt-notchecked": "Escolha uma predefinição",
-      "ja-notchecked": "プリセットを選択する",
+      "ja": "プリセットを選択する",
       "zh-notchecked": "选择一个预设"
     },
     "TEI All (customize by reducing TEI)": {
@@ -1248,7 +1248,7 @@
       "es-notchecked": "TEI Todos (personalizar reduciendo TEI)",
       "de-notchecked": "TEI All (Anpassung durch Reduzierung der TEI)",
       "pt-notchecked": "TEI All (personalizar reduzindo TEI)",
-      "ja-notchecked": "TEI All (TEIを縮小してカスタマイズ)",
+      "ja": "TEI All (TEIを縮小してカスタマイズ)",
       "zh-notchecked": "所有TEI（通过减少TEI来定制）。"
     },
     "TEI Minimal (customize by building TEI up)": {
@@ -1257,7 +1257,7 @@
       "es-notchecked": "TEI Minimal (personalizar construyendo TEI)",
       "de-notchecked": "TEI Minimal (Anpassung durch Aufbau von TEI)",
       "pt-notchecked": "TEI Minimal (personalizar através da construção de TEI)",
-      "ja-notchecked": "TEI Minimal (TEIを拡張してカスタマイズ)",
+      "ja": "TEI Minimal (TEIを拡張してカスタマイズ)",
       "zh-notchecked": "TEI Minimal（通过建立TEI来定制）。"
     },
     "TEI Absolutely Bare": {
@@ -1266,7 +1266,7 @@
       "es-notchecked": "TEI Absolutamente desnudo",
       "de-notchecked": "TEI Völlig entblößt",
       "pt-notchecked": "TEI Absolutamente Desnudo",
-      "ja-notchecked": "TEI Absolutely Bare (最小限のTEI)",
+      "ja": "TEI Absolutely Bare (最小限のTEI)",
       "zh-notchecked": "TEI绝对赤裸"
     },
     "TEI for Linguistic Corpora": {
@@ -1275,7 +1275,7 @@
       "es-notchecked": "TEI para corpus lingüísticos",
       "de-notchecked": "TEI für linguistische Korpora",
       "pt-notchecked": "TEI para Cabo Linguístico",
-      "ja-notchecked": "TEI for Linguistic Corpora（言語コーパスのためのTEI）",
+      "ja": "TEI for Linguistic Corpora（言語コーパスのためのTEI）",
       "zh-notchecked": "语料库的TEI"
     },
     "TEI for Manuscript Description": {
@@ -1284,7 +1284,7 @@
       "es-notchecked": "TEI para la descripción de manuscritos",
       "de-notchecked": "TEI für Manuskriptbeschreibung",
       "pt-notchecked": "TEI para Manuscrito Descrição",
-      "ja-notchecked": "TEI for Manuscript Description（写本記述のためのTEI）",
+      "ja": "TEI for Manuscript Description（写本記述のためのTEI）",
       "zh-notchecked": "稿件描述的TEI"
     },
     "TEI with Drama": {
@@ -1293,7 +1293,7 @@
       "es-notchecked": "TEI con teatro",
       "de-notchecked": "TEI mit Drama",
       "pt-notchecked": "TEI com Drama",
-      "ja-notchecked": "TEI with Drama（演劇のためのTEI）",
+      "ja": "TEI with Drama（演劇のためのTEI）",
       "zh-notchecked": "TEI与戏剧"
     },
     "TEI for Speech Representation": {
@@ -1302,7 +1302,7 @@
       "es-notchecked": "TEI para la representación del habla",
       "de-notchecked": "TEI für die Darstellung von Sprache",
       "pt-notchecked": "TEI para Representação da Fala",
-      "ja-notchecked": "TEI for Speech Representation（発話表現のためのTEI）",
+      "ja": "TEI for Speech Representation（発話表現のためのTEI）",
       "zh-notchecked": "用于语音表述的TEI"
     },
     "TEI for Authoring ODDs": {
@@ -1311,7 +1311,7 @@
       "es-notchecked": "TEI para la creación de ODD",
       "de-notchecked": "TEI für die Erstellung von ODDs",
       "pt-notchecked": "TEI para autores de ODDs",
-      "ja-notchecked": "TEI for Authoring ODDs (ODD作成のためのTEI)",
+      "ja": "TEI for Authoring ODDs (ODD作成のためのTEI)",
       "zh-notchecked": "用于编写ODD的TEI"
     },
     "TEI for Journal of the TEI": {
@@ -1320,7 +1320,7 @@
       "es-notchecked": "TEI para Journal of the TEI",
       "de-notchecked": "TEI für Journal of the TEI",
       "pt-notchecked": "TEI para Jornal da TEI",
-      "ja-notchecked": "TEI for the Journal of the TEI（TEIジャーナルのためのTEI）",
+      "ja": "TEI for the Journal of the TEI（TEIジャーナルのためのTEI）",
       "zh-notchecked": "TEI杂志的TEI"
     }
   },
@@ -1331,7 +1331,7 @@
       "es-notchecked": "1/3 Obtención de la personalización ODD...",
       "de-notchecked": "1/3 Erlangung von Anpassungen ODD...",
       "pt-notchecked": "1/3 Obtenção de ODD de personalização...",
-      "ja-notchecked": "1/3 ODDカスタマイズを取得しています...",
+      "ja": "1/3 ODDカスタマイズを取得しています...",
       "zh-notchecked": "1/3 获得定制的ODD..."
     },
     "2/3 Importing customization ODD...": {
@@ -1340,7 +1340,7 @@
       "es-notchecked": "2/3 Importar personalización ODD...",
       "de-notchecked": "2/3 Importieren von Anpassungen ODD...",
       "pt-notchecked": "2/3 Importar a personalização ODD...",
-      "ja-notchecked": "2/3 ODDカスタマイズをインポートしています...",
+      "ja": "2/3 ODDカスタマイズをインポートしています...",
       "zh-notchecked": "2/3 导入定制的ODD..."
     },
     "3/3 Importing full specification source...": {
@@ -1349,7 +1349,7 @@
       "es-notchecked": "3/3 Importación de especificaciones...",
       "de-notchecked": "3/3 Import der vollständigen Spezifikation der Quelle...",
       "pt-notchecked": "3/3 Importar fonte de especificação completa...",
-      "ja-notchecked": "3/3 すべての仕様のソースをインポートしています。",
+      "ja": "3/3 すべての仕様のソースをインポートしています。",
       "zh-notchecked": "3/3 导入全规格源..."
     }
   },
@@ -1360,7 +1360,7 @@
       "es-notchecked": "módulo",
       "de-notchecked": "Modul",
       "pt-notchecked": "módulo",
-      "ja-notchecked": "モジュール",
+      "ja": "モジュール",
       "zh-notchecked": "模块"
     },
     "element": {
@@ -1369,7 +1369,7 @@
       "es-notchecked": "elemento",
       "de-notchecked": "Element",
       "pt-notchecked": "elemento",
-      "ja-notchecked": "要素",
+      "ja": "要素",
       "zh-notchecked": "元素"
     },
     "by module": {
@@ -1378,7 +1378,7 @@
       "es-notchecked": "por módulo",
       "de-notchecked": "nach Modul",
       "pt-notchecked": "por módulo",
-      "ja-notchecked": "モジュール別",
+      "ja": "モジュール別",
       "zh-notchecked": "通过模块"
     },
     "alphabetically": {
@@ -1387,7 +1387,7 @@
       "es-notchecked": "alfabéticamente",
       "de-notchecked": "alphabetisch",
       "pt-notchecked": "por ordem alfabética",
-      "ja-notchecked": "アルファベット順",
+      "ja": "アルファベット順",
       "zh-notchecked": "按字母顺序排列"
     },
     "Elements": {
@@ -1396,7 +1396,7 @@
       "es-notchecked": "Elementos",
       "de-notchecked": "Elements",
       "pt-notchecked": "Elementos",
-      "ja-notchecked": "要素",
+      "ja": "要素",
       "zh-notchecked": "构成要素"
     },
     "Attribute Classes": {
@@ -1405,7 +1405,7 @@
       "es-notchecked": "Clases de atributos",
       "de-notchecked": "Attribut-Klassen",
       "pt-notchecked": "Aulas de Atributos",
-      "ja-notchecked": "属性クラス",
+      "ja": "属性クラス",
       "zh-notchecked": "属性类"
     },
     "Model Classes": {
@@ -1414,7 +1414,7 @@
       "es-notchecked": "Clases de modelos",
       "de-notchecked": "Modell-Klassen",
       "pt-notchecked": "Classes Modelo",
-      "ja-notchecked": "モデルクラス",
+      "ja": "モデルクラス",
       "zh-notchecked": "模型类"
     },
     "Datatypes": {
@@ -1423,7 +1423,7 @@
       "es-notchecked": "Tipos de datos",
       "de-notchecked": "Datentypen",
       "pt-notchecked": "Tipos de dados",
-      "ja-notchecked": "データ型",
+      "ja": "データ型",
       "zh-notchecked": "数据类型"
     },
     "No items found. Try searching for something else.": {
@@ -1432,7 +1432,7 @@
       "es-notchecked": "No se han encontrado artículos. Intente buscar otra cosa.",
       "de-notchecked": "Keine Artikel gefunden. Versuchen Sie, nach etwas anderem zu suchen.",
       "pt-notchecked": "Não foram encontrados artigos. Tente procurar outra coisa.",
-      "ja-notchecked": "該当する項目がありません。他のものを検索してみてください。",
+      "ja": "該当する項目がありません。他のものを検索してみてください。",
       "zh-notchecked": "没有找到项目。尝试搜索其他东西。"
     }
   },
@@ -1444,7 +1444,7 @@
       "es-notchecked": "Esto eliminará todo el módulo de su personalización. Se perderán todos los cambios realizados en los miembros de este módulo. ¿Está seguro de que desea continuar?",
       "de-notchecked": "Dadurch wird das gesamte Modul aus Ihren Anpassungen entfernt. Alle Änderungen an den Mitgliedern dieses Moduls gehen verloren. Sind Sie sicher, dass Sie fortfahren möchten?",
       "pt-notchecked": "Isto irá remover todo o módulo da sua personalização. Todas as alterações aos membros deste módulo serão perdidas. Tem a certeza de que quer continuar?",
-      "ja-notchecked": "これにより、モジュール全体がカスタマイズから削除されます。このモジュールのメンバーに対するすべての変更は失われます。本当に続けますか？",
+      "ja": "これにより、モジュール全体がカスタマイズから削除されます。このモジュールのメンバーに対するすべての変更は失われます。本当に続けますか？",
       "zh-notchecked": "这将从你的定制中删除整个模块。对该模块成员的所有修改都将丢失。你确定你要继续吗？"
     }
   },
@@ -1455,7 +1455,7 @@
       "es-notchecked": "Por defecto (abierto)",
       "de-notchecked": "Standard (offen)",
       "pt-notchecked": "Default (aberto)",
-      "ja-notchecked": "デフォルト（オープン）",
+      "ja": "デフォルト（オープン）",
       "zh-notchecked": "默认情况下（开放）。"
     },
     "Closed": {
@@ -1464,7 +1464,7 @@
       "es-notchecked": "Cerrado",
       "de-notchecked": "Geschlossen",
       "pt-notchecked": "Fechado",
-      "ja-notchecked": "クローズド",
+      "ja": "クローズド",
       "zh-notchecked": "关闭"
     },
     "Semi-Open": {
@@ -1473,7 +1473,7 @@
       "es-notchecked": "Semiabierto",
       "de-notchecked": "Semi-Open",
       "pt-notchecked": "Semi-Aberto",
-      "ja-notchecked": "セミオープン",
+      "ja": "セミオープン",
       "zh-notchecked": "半公开"
     },
     "Open": {
@@ -1482,7 +1482,7 @@
       "es-notchecked": "Abrir",
       "de-notchecked": "Öffnen Sie",
       "pt-notchecked": "Aberto",
-      "ja-notchecked": "オープン",
+      "ja": "オープン",
       "zh-notchecked": "开放式"
     }
   },
@@ -1493,7 +1493,7 @@
       "es-notchecked": "Oh-oh... Algo salió mal",
       "de-notchecked": "Oh-oh... Etwas ist schief gelaufen",
       "pt-notchecked": "Oh-oh... Algo correu mal",
-      "ja-notchecked": "おっと...何かが間違っています",
+      "ja": "おっと...何かが間違っています",
       "zh-notchecked": "哦，哦...出错了"
     },
     "The following error occurred:": {
@@ -1502,7 +1502,7 @@
       "es-notchecked": "Se ha producido el siguiente error:",
       "de-notchecked": "Der folgende Fehler ist aufgetreten:",
       "pt-notchecked": "Ocorreu o seguinte erro:",
-      "ja-notchecked": "以下のエラーが発生しました。",
+      "ja": "以下のエラーが発生しました。",
       "zh-notchecked": "发生了以下错误。"
     },
     "report": {
@@ -1512,7 +1512,7 @@
       "es-notchecked": "Considera la posibilidad de informar de un problema en GitHub.",
       "de-notchecked": "Bitte denken Sie daran, einen Fehler auf GitHub zu melden.",
       "pt-notchecked": "Por favor, considere a possibilidade de relatar um problema sobre o GitHub.",
-      "ja-notchecked": "GitHubで<a href="https://github.com/TEIC/romajs/issues">issueの報告</a>をご検討ください。",
+      "ja": "GitHubで<a href="https://github.com/TEIC/romajs/issues">issueの報告</a>をご検討ください。",
       "zh-notchecked": "请考虑在GitHub上报告一个问题。"
     },
     "Start Over": {
@@ -1521,7 +1521,7 @@
       "es-notchecked": "Volver a empezar",
       "de-notchecked": "Neu anfangen",
       "pt-notchecked": "Começar de novo",
-      "ja-notchecked": "やり直す",
+      "ja": "やり直す",
       "zh-notchecked": "重新开始"
     }
   },
@@ -1532,7 +1532,7 @@
       "es-notchecked": "Crear nuevo atributo",
       "de-notchecked": "Neues Attribut erstellen",
       "pt-notchecked": "Criar novo atributo",
-      "ja-notchecked": "新しい属性を作成",
+      "ja": "新しい属性を作成",
       "zh-notchecked": "创建新属性"
     },
     "New": {
@@ -1541,7 +1541,7 @@
       "es-notchecked": "Nuevo",
       "de-notchecked": "Neu",
       "pt-notchecked": "Novo",
-      "ja-notchecked": "新規",
+      "ja": "新規",
       "zh-notchecked": "新的"
     },
     "Create an entirely new attribute.": {
@@ -1550,7 +1550,7 @@
       "es-notchecked": "Crear un atributo completamente nuevo.",
       "de-notchecked": "Erstellen Sie ein völlig neues Attribut.",
       "pt-notchecked": "Criar um atributo inteiramente novo.",
-      "ja-notchecked": "全く新しい属性を作成",
+      "ja": "全く新しい属性を作成",
       "zh-notchecked": "创建一个全新的属性。"
     },
     "Create": {
@@ -1559,7 +1559,7 @@
       "es-notchecked": "Cree",
       "de-notchecked": "erstellen.",
       "pt-notchecked": "Criar",
-      "ja-notchecked": "作成",
+      "ja": "作成",
       "zh-notchecked": "创建"
     },
     "Copy": {
@@ -1568,7 +1568,7 @@
       "es-notchecked": "Copia",
       "de-notchecked": "Kopieren",
       "pt-notchecked": "Cópia",
-      "ja-notchecked": "コピー",
+      "ja": "コピー",
       "zh-notchecked": "拷贝"
     },
     "Duplicate an existing attribute.": {
@@ -1577,7 +1577,7 @@
       "es-notchecked": "Duplicar un atributo existente.",
       "de-notchecked": "Duplizieren Sie ein vorhandenes Attribut.",
       "pt-notchecked": "Duplicar um atributo existente.",
-      "ja-notchecked": "既存の属性を複製",
+      "ja": "既存の属性を複製",
       "zh-notchecked": "复制一个现有的属性。"
     },
     "Cancel": {
@@ -1586,7 +1586,7 @@
       "es-notchecked": "Cancelar",
       "de-notchecked": "Abbrechen",
       "pt-notchecked": "Cancel",
-      "ja-notchecked": "キャンセル",
+      "ja": "キャンセル",
       "zh-notchecked": "取消"
     },
     "Create new Class": {
@@ -1595,7 +1595,7 @@
       "es-notchecked": "Crear nueva clase",
       "de-notchecked": "Neue Klasse erstellen",
       "pt-notchecked": "Criar nova Classe",
-      "ja-notchecked": "新しいクラスの作成",
+      "ja": "新しいクラスの作成",
       "zh-notchecked": "创建新班级"
     },
     "Class Type": {
@@ -1604,7 +1604,7 @@
       "es-notchecked": "Tipo de clase",
       "de-notchecked": "Klasse Typ",
       "pt-notchecked": "Tipo de classe",
-      "ja-notchecked": "クラス型",
+      "ja": "クラス型",
       "zh-notchecked": "班级类型"
     },
     "Choose a class type.": {
@@ -1613,7 +1613,7 @@
       "es-notchecked": "Elija un tipo de clase.",
       "de-notchecked": "Wählen Sie eine Klassenart.",
       "pt-notchecked": "Escolher um tipo de classe.",
-      "ja-notchecked": "クラス型を選択",
+      "ja": "クラス型を選択",
       "zh-notchecked": "选择一个班级类型。"
     },
     "Attributes": {
@@ -1622,7 +1622,7 @@
       "es-notchecked": "Atributos",
       "de-notchecked": "Attribute",
       "pt-notchecked": "Atributos",
-      "ja-notchecked": "属性",
+      "ja": "属性",
       "zh-notchecked": "属性"
     },
     "Model": {
@@ -1631,7 +1631,7 @@
       "es-notchecked": "Modelo",
       "de-notchecked": "Modell",
       "pt-notchecked": "Modelo",
-      "ja-notchecked": "モデル",
+      "ja": "モデル",
       "zh-notchecked": "模型"
     },
     "Name": {
@@ -1640,7 +1640,7 @@
       "es-notchecked": "Nombre",
       "de-notchecked": "Name",
       "pt-notchecked": "Nome",
-      "ja-notchecked": "名称",
+      "ja": "名称",
       "zh-notchecked": "命名"
     },
     "Set the new class name.": {
@@ -1649,7 +1649,7 @@
       "es-notchecked": "Establece el nuevo nombre de la clase.",
       "de-notchecked": "Legen Sie den neuen Klassennamen fest.",
       "pt-notchecked": "Definir o novo nome da classe.",
-      "ja-notchecked": "新しいクラス名を設定",
+      "ja": "新しいクラス名を設定",
       "zh-notchecked": "设置新的类名。"
     },
     "Module": {
@@ -1658,7 +1658,7 @@
       "es-notchecked": "Módulo",
       "de-notchecked": "Modul",
       "pt-notchecked": "Módulo",
-      "ja-notchecked": "モジュール",
+      "ja": "モジュール",
       "zh-notchecked": "模块"
     },
     "HelperTextModule": {
@@ -1668,7 +1668,7 @@
       "es-notchecked": "Elija un módulo para esta clase. NB: se recomienda añadir nuevos elementos únicamente a los módulos definidos en la personalización.",
       "de-notchecked": "Wählen Sie ein Modul für diese Klasse. Hinweis: Es wird empfohlen, neue Elemente nur zu den in der Anpassung definierten Modulen hinzuzufügen.",
       "pt-notchecked": "Escolha um módulo para esta classe. NB: recomenda-se acrescentar apenas novos elementos aos módulos definidos na personalização.",
-      "ja-notchecked": "このクラスのモジュールを選択します。注意：新しい要素はカスタマイズで定義したモジュールにのみ追加することをお勧めします。",
+      "ja": "このクラスのモジュールを選択します。注意：新しい要素はカスタマイズで定義したモジュールにのみ追加することをお勧めします。",
       "zh-notchecked": "为这个类选择一个模块。注意：建议只向定制中定义的模块添加新元素。"
     },
     "Create new Datatype": {
@@ -1677,7 +1677,7 @@
       "es-notchecked": "Crear nuevo tipo de datos",
       "de-notchecked": "Neuen Datentyp erstellen",
       "pt-notchecked": "Criar novo tipo de dados",
-      "ja-notchecked": "新しいデータ型の作成",
+      "ja": "新しいデータ型の作成",
       "zh-notchecked": "创建新的数据类型"
     },
     "HelperTextName": {
@@ -1687,7 +1687,7 @@
       "es-notchecked": "Establece el nombre del nuevo tipo de datos.",
       "de-notchecked": "Legen Sie den Namen des neuen Datentyps fest.",
       "pt-notchecked": "Definir o nome do novo datatype.",
-      "ja-notchecked": "新しいデータ型の名称を設定",
+      "ja": "新しいデータ型の名称を設定",
       "zh-notchecked": "设置新数据类型的名称。"
     },
     "Create new Element": {
@@ -1696,7 +1696,7 @@
       "es-notchecked": "Crear nuevo elemento",
       "de-notchecked": "Neues Element erstellen",
       "pt-notchecked": "Criar novo Elemento",
-      "ja-notchecked": "新規要素の作成",
+      "ja": "新規要素の作成",
       "zh-notchecked": "创建新元素"
     },
     "HelperTextElName": {
@@ -1705,7 +1705,7 @@
       "es-notchecked": "Establece el nombre del nuevo elemento.",
       "de-notchecked": "Legen Sie den Namen des neuen Elements fest.",
       "pt-notchecked": "Definir o nome do novo elemento.",
-      "ja-notchecked": "新しい要素の名称を設定",
+      "ja": "新しい要素の名称を設定",
       "zh-notchecked": "设置新元素的名称。"
     },
     "Namespace": {
@@ -1713,7 +1713,7 @@
       "es-notchecked": "Espacio de nombres",
       "de-notchecked": "Namespace",
       "pt-notchecked": "Namespace",
-      "ja-notchecked": "名前空間",
+      "ja": "名前空間",
       "zh-notchecked": "名称空间"
     },
     "HelperTextNs": {
@@ -1723,7 +1723,7 @@
       "es-notchecked": "Establece un espacio de nombres para un nuevo elemento (no puede ser el espacio de nombres de TEI).",
       "de-notchecked": "Setzt einen Namensraum für ein neues Element (es kann nicht der Namensraum der TEI sein).",
       "pt-notchecked": "Definir um namespace para um novo elemento (não pode ser o namespace da TEI).",
-      "ja-notchecked": "新しい要素に名前空間を設定（TEIの名前空間であってはいけません｡）",
+      "ja": "新しい要素に名前空間を設定（TEIの名前空間であってはいけません｡）",
       "zh-notchecked": "为一个新元素设置一个命名空间（不能是TEI的命名空间）。"
     }
   },
@@ -1734,7 +1734,7 @@
       "es-notchecked": "Volver al origen (suprimir",
       "de-notchecked": "Zur Quelle zurückkehren (löschen",
       "pt-notchecked": "Voltar à fonte (apagar",
-      "ja-notchecked": "ソースに戻す(以下の内容は削除されます:",
+      "ja": "ソースに戻す(以下の内容は削除されます:",
       "zh-notchecked": "回归到源头（删除"
     },
     "HelperText1": {
@@ -1744,7 +1744,7 @@
       "es-notchecked": "Descartar todos los cambios en",
       "de-notchecked": "Verwerfen Sie alle Änderungen an",
       "pt-notchecked": "Deitar fora todas as alterações para",
-      "ja-notchecked": "これらの変更を<i>すべて</i>破棄：",
+      "ja": "これらの変更を<i>すべて</i>破棄：",
       "zh-notchecked": "丢弃所有对"
     },
     "HelperText2": {
@@ -1754,7 +1754,7 @@
       "es-notchecked": "y volver a su definición original.",
       "de-notchecked": "und kehrt zu seiner ursprünglichen Definition zurück.",
       "pt-notchecked": "e voltar à sua definição original.",
-      "ja-notchecked": "し、元の定義に戻す",
+      "ja": "し、元の定義に戻す",
       "zh-notchecked": "并恢复到其最初的定义。"
     },
     "HelperText3": {
@@ -1764,7 +1764,7 @@
       "es-notchecked": " Dado que se trata de un elemento recién añadido, será eliminado.  Esta acción no se puede deshacer.",
       "de-notchecked": " Da es sich um einen neu hinzugefügten Artikel handelt, wird er gelöscht.  Diese Aktion kann nicht rückgängig gemacht werden!",
       "pt-notchecked": " Uma vez que se trata de um item recentemente acrescentado, será eliminado.  Esta acção não pode ser desfeita!",
-      "ja-notchecked": "<br/> これは新しく追加された項目であるため削除されます。 <br/> <b> このアクションは元に戻せません</b>",
+      "ja": "<br/> これは新しく追加された項目であるため削除されます。 <br/> <b> このアクションは元に戻せません</b>",
       "zh-notchecked": "由于这是一个新添加的项目，它将被删除。  这个动作不能被撤销!"
     },
     "Revert": {
@@ -1773,7 +1773,7 @@
       "es-notchecked": "Volver a",
       "de-notchecked": "Zurückkehren",
       "pt-notchecked": "Reverter",
-      "ja-notchecked": "元に戻す",
+      "ja": "元に戻す",
       "zh-notchecked": "逆转"
     },
     "Revert to source": {
@@ -1782,7 +1782,7 @@
       "es-notchecked": "Volver a la fuente",
       "de-notchecked": "Zur Quelle zurückkehren",
       "pt-notchecked": "Voltar à fonte",
-      "ja-notchecked": "ソースに戻す",
+      "ja": "ソースに戻す",
       "zh-notchecked": "回溯到源头"
     },
     "Revert changes": {
@@ -1791,7 +1791,7 @@
       "es-notchecked": "Revertir cambios",
       "de-notchecked": "Änderungen rückgängig machen",
       "pt-notchecked": "Reverter alterações",
-      "ja-notchecked": "変更の取り消し",
+      "ja": "変更の取り消し",
       "zh-notchecked": "撤销修改"
     },
     "You have two options for reverting changes to": {
@@ -1800,7 +1800,7 @@
       "es-notchecked": "Tiene dos opciones para revertir los cambios",
       "de-notchecked": "Sie haben zwei Möglichkeiten, Änderungen rückgängig zu machen",
       "pt-notchecked": "Tem duas opções para reverter as alterações para",
-      "ja-notchecked": "変更を取り消すには、2つのオプションがあります。: "
+      "ja": "変更を取り消すには、2つのオプションがあります。: "
       "zh-notchecked": "你有两个选项可以恢复对以下内容的修改"
     },
     "Discard latest changes": {
@@ -1809,7 +1809,7 @@
       "es-notchecked": "Descartar los últimos cambios",
       "de-notchecked": "Letzte Änderungen verwerfen",
       "pt-notchecked": "Descartar as últimas alterações",
-      "ja-notchecked": "最新の変更点を破棄",
+      "ja": "最新の変更点を破棄",
       "zh-notchecked": "丢弃最新的修改"
     },
     "HelperTextDiscard": {
@@ -1819,7 +1819,7 @@
       "es-notchecked": "Descarta los cambios que hayas realizado en Roma en esta sesión. Este elemento volverá a la misma configuración que la personalización que eligió o cargó.",
       "de-notchecked": "Verwirft Änderungen, die Sie in Roma in dieser Sitzung vorgenommen haben. Dieses Element kehrt zu denselben Einstellungen zurück wie die von Ihnen ausgewählte oder hochgeladene Anpassung.",
       "pt-notchecked": "Descarte as alterações que fez nos Roma nesta sessão. Este item voltará às mesmas configurações que a personalização que escolheu ou carregou.",
-      "ja-notchecked": "このセッションにおいて、Romaで行った変更を破棄。この項目は選択またはアップロードしたカスタマイズと同じ設定に戻ります。",
+      "ja": "このセッションにおいて、Romaで行った変更を破棄。この項目は選択またはアップロードしたカスタマイズと同じ設定に戻ります。",
       "zh-notchecked": "放弃你在这个会话中在Roma所做的改变。这个项目将返回到与你挑选或上传的定制相同的设置。"
     },
     "Discard": {
@@ -1828,7 +1828,7 @@
       "es-notchecked": "Descartar",
       "de-notchecked": "Ablegen",
       "pt-notchecked": "Descartar",
-      "ja-notchecked": "破棄",
+      "ja": "破棄",
       "zh-notchecked": "弃置"
     },
     "Cancel": {
@@ -1837,7 +1837,7 @@
       "es-notchecked": "Cancelar",
       "de-notchecked": "Abbrechen",
       "pt-notchecked": "Cancel",
-      "ja-notchecked": "キャンセル",
+      "ja": "キャンセル",
       "zh-notchecked": "取消"
     }
   },
@@ -1848,7 +1848,7 @@
       "es-notchecked": "Sí",
       "de-notchecked": "Ja",
       "pt-notchecked": "Sim",
-      "ja-notchecked": "はい",
+      "ja": "はい",
       "zh-notchecked": "是"
     },
     "No": {
@@ -1856,7 +1856,7 @@
       "es-notchecked": "No",
       "de-notchecked": "Nein",
       "pt-notchecked": "Não",
-      "ja-notchecked": "いいえ",
+      "ja": "いいえ",
       "zh-notchecked": "没有"
     }
   },
@@ -1867,7 +1867,7 @@
       "es-notchecked": "(actualmente no en personalización)",
       "de-notchecked": "(derzeit nicht in der Anpassung)",
       "pt-notchecked": "(actualmente não está em customização)",
-      "ja-notchecked": "(現在、カスタマイズを行っていません)",
+      "ja": "(現在、カスタマイズを行っていません)",
       "zh-notchecked": "(目前不在定制中)"
     },
     "Cancel": {
@@ -1876,7 +1876,7 @@
       "es-notchecked": "Cancelar",
       "de-notchecked": "Abbrechen",
       "pt-notchecked": "Cancel",
-      "ja-notchecked": "キャンセル",
+      "ja": "キャンセル",
       "zh-notchecked": "取消"
     },
     "Find...": {
@@ -1885,7 +1885,7 @@
       "es-notchecked": "Encuentra...",
       "de-notchecked": "Finden Sie...",
       "pt-notchecked": "Encontrar...",
-      "ja-notchecked": "検索...",
+      "ja": "検索...",
       "zh-notchecked": "找到..."
     }
   }
