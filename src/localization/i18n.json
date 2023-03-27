@@ -1097,7 +1097,7 @@
       "pt-notchecked": "Começar de novo",
       "zh-notchecked": "重新开始",
       "es-notchecked": "Volver a empezar",
-      "ja": "やり直す"
+      "ja": "最初からやり直す"
     },
     "Download": {
       "it": "Scaricare",
@@ -1132,7 +1132,7 @@
       "fr": "Voulez-vous recommencer ? Tous les changements seront perdus.",
       "es-notchecked": "¿Quieres empezar de nuevo? Se perderán todos los cambios.",
       "pt-notchecked": "Quer começar de novo? Todas as mudanças serão perdidas.",
-      "ja-notchecked": "やり直しますか？すべての変更は失われます。",
+      "ja-notchecked": "最初からやり直しますか？これまでのすべての変更は失われます。",
       "zh-notchecked": "你想重新开始吗？所有的变化都会丢失。"
     },
     "Do you want to apply this language to elements, attributes, and documentation as well?": {
@@ -1238,7 +1238,7 @@
       "de": "Beitragende",
       "es-notchecked": "Colaboradores",
       "pt-notchecked": "Contribuintes",
-      "ja-notchecked": "投稿者",
+      "ja-notchecked": "貢献者",
       "zh-notchecked": "撰稿人"
     },
     "Development": {
@@ -1599,7 +1599,7 @@
       "pt-notchecked": "Começar de novo",
       "zh-notchecked": "重新开始",
       "es-notchecked": "Volver a empezar",
-      "ja": "やり直す"
+      "ja": "最初からやり直す"
     }
   },
   "NewItem": {
