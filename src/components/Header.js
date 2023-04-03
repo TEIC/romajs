@@ -72,11 +72,14 @@ export default class Header extends Component {
                 <div className="mdc-menu mdc-menu-surface" tabIndex="-1" ref="lang">
                   <ul className="mdc-list" role="menu" aria-hidden="true">
                     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
+                      this.props.setLanguage('de')
+                    }}>Deutsch</li>
+                    <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
                       this.props.setLanguage('en')
                     }}>English</li>
                     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
-                      this.props.setLanguage('de')
-                    }}>Deutsch</li>
+                      this.props.setLanguage('es')
+                    }}>Español</li>
                     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
                       this.props.setLanguage('fr')
                     }}>Français</li>
