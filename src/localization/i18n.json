@@ -1132,7 +1132,7 @@
       "fr": "Voulez-vous recommencer ? Tous les changements seront perdus.",
       "es": "¿Quiere empezar de nuevo? Se perderán todos los cambios.",
       "pt-notchecked": "Quer começar de novo? Todas as mudanças serão perdidas.",
-      "ja-notchecked": "最初からやり直しますか？これまでのすべての変更は失われます。",
+      "ja": "最初からやり直しますか？これまでのすべての変更は失われます。",
       "zh-notchecked": "你想重新开始吗？所有的变化都会丢失。"
     },
     "Do you want to apply this language to elements, attributes, and documentation as well?": {
@@ -1141,7 +1141,7 @@
       "fr": "Voulez-vous appliquer ce langage également aux éléments, aux attributs et à la documentation ?",
       "es": "¿Desea aplicar este lenguaje también a elementos, atributos y documentación?",
       "pt-notchecked": "Quer aplicar esta linguagem também a elementos, atributos e documentação?",
-      "ja-notchecked": "この言語を要素、属性、ドキュメントにも適用しますか？",
+      "ja": "この言語を要素、属性、ドキュメントにも適用しますか？",
       "zh-notchecked": "你想把这种语言也应用于元素、属性和文档吗？"
     }
   },
@@ -1238,7 +1238,7 @@
       "de": "Beitragende",
       "es": "Colaboradores",
       "pt-notchecked": "Contribuintes",
-      "ja-notchecked": "貢献者",
+      "ja": "貢献者",
       "zh-notchecked": "撰稿人"
     },
     "Development": {
@@ -1247,7 +1247,7 @@
       "de": "Entwicklung",
       "es": "Desarrollo",
       "pt-notchecked": "Desenvolvimento",
-      "ja-notchecked": "開発",
+      "ja": "開発",
       "zh-notchecked": "发展"
     },
     "Localization": {
@@ -1256,7 +1256,7 @@
       "de": "Sprachliche Lokalisierung",
       "es": "Localización",
       "pt-notchecked": "Localização",
-      "ja-notchecked": "多言語化",
+      "ja": "多言語化",
       "zh-notchecked": "本地化"
     },
     "Select ODD": {
