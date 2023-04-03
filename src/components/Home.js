@@ -169,6 +169,7 @@ export default class Home extends Component {
                   <div>
                     <h2 className="mdc-typography--headline3">Roma</h2>
                     <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('intro')}} />
+                    <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('antiqua')}} />
                   </div>
                   <div>
                     <h2 className="mdc-typography--headline4">{i18n('What it is supposed to do')}</h2>

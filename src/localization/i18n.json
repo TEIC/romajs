@@ -1156,6 +1156,9 @@
       "es": "Roma es un editor ODD que utiliza el formato TEI ODD (One Document Does-it-all) para la documentación de metaesquemas y las directrices locales de codificación creadas por la Text Encoding Initiative.",
       "ja": "RomaはODDエディターで、メタスキーマのドキュメントにTEI ODD (One Document Does-it-all) フォーマットと<a href=\"https://tei-c.org\">Text Encoding Initiative</a>が作成したローカルエンコーディングガイドラインを使用しています。"
     },
+    "antiqua": {
+      "en": "The old version of Roma can be found at <a href=\"https://romaantiqua.tei-c.org\">https://romaantiqua.tei-c.org</a>"
+    },
     "What it is supposed to do": {
       "it": "Cosa può fare",
       "fr": "Qu'est-ce qu'il est censé faire?",
