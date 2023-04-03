@@ -1,10 +1,10 @@
-var path = require('path'),
-    glob = require('glob'),
-    webpack = require('webpack'),
-    HtmlWebpackPlugin = require('html-webpack-plugin')
+let path = require('path'),
+  glob = require('glob'),
+  webpack = require('webpack'),
+  HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var DIST_DIR = path.join(__dirname, 'dist'),
-    CLIENT_DIR = path.join(__dirname, 'src')
+let DIST_DIR = path.join(__dirname, 'dist'),
+  CLIENT_DIR = path.join(__dirname, 'src')
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
@@ -16,7 +16,7 @@ module.exports = {
   entry: ['./index'],
 
   output: {
-    path:   DIST_DIR,
+    path: DIST_DIR,
     publicPath,
     filename: 'romajs_[hash].js'
   },
@@ -26,7 +26,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html',
       inject: 'body',
-      filename: 'index.html'
+      filename: 'index.html',
+      favicon: '../assets/favicon.ico',
     }),
   ],
 
@@ -34,12 +35,12 @@ module.exports = {
 
     rules: [
       {
-        test:  /\.jsx?$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        use:  ['babel-loader', 'eslint-loader']
-			},
+        use: ['babel-loader', 'eslint-loader']
+      },
       {
-        test:  /\.css$/,
+        test: /\.css$/,
         exclude: /node_modules/,
         use: [
           {
@@ -82,7 +83,7 @@ module.exports = {
         ]
       },
       {
-        test:  /\.(png|jpg|ttf|eot)$/,
+        test: /\.(png|jpg|ttf|eot)$/,
         exclude: /node_modules/,
         use: [
           {

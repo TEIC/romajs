@@ -1,4 +1,4 @@
-# RomaJS - [romabeta.tei-c.org](https://romabeta.tei-c.org)
+# RomaJS - [roma.tei-c.org](https://roma.tei-c.org)
 
 RomaJS is a web app for creating and editing ODD documents to customize and generate schemata for the [Text Encoding Initiative](https://www.tei-c.org/).
 
@@ -47,7 +47,7 @@ $ npm start
 $ npm run build
 ```
 
-### Change URL to OxGarage service and TEI static data (TEI Vault)
+### Change URL to TEIGarage service and TEI static data (TEI Vault)
 
 Edit `src/utils/urls.js` and rebuild.
 Alternatively, these variables can also be overridden from the Docker configuration.
