@@ -196,14 +196,14 @@ export default class Home extends Component {
                     <h3 className="mdc-typography--headline5">{i18n('Localization')}</h3>
                     <ul className="mdc-list">
                       <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">ES</span>Gimena del Rio Riande</li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JP</span>Jun Ogawa, Center for Open Data in the Humanities / CODH</li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JP</span>Kiyonori Nagasaki, International Institute for Digital Humanities</li>
+                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Jun Ogawa, Center for Open Data in the Humanities / CODH</li>
+                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Kiyonori Nagasaki, International Institute for Digital Humanities</li>
                       <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">FR</span>Lou Burnard</li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JP</span><span>Natsuko Nakagawa, National Institute for Japanese Language and Linguistics</span></li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JP</span>Shitnaro Seki, Graduate School of Humanities and Sociology, The University of Tokyo</li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JP</span>So Miyagawa, National Institute for Japanese Language and Linguistics</li>
+                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span><span>Natsuko Nakagawa, National Institute for Japanese Language and Linguistics</span></li>
+                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Shitnaro Seki, Graduate School of Humanities and Sociology, The University of Tokyo</li>
+                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>So Miyagawa, National Institute for Japanese Language and Linguistics</li>
                       <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">IT</span>Raff Viglianti</li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JP</span>Yuna Murata, National Diet Library</li>
+                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Yuna Murata, National Diet Library</li>
                     </ul>
                   </div>
                 </div>
