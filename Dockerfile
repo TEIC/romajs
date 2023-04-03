@@ -23,7 +23,7 @@ FROM nginx:alpine
 # You can overwrite the variable of the oxgarage protocol and location 
 # by setting docker ENV variables
 ENV OXGARAGE_PROTOCOL="https"
-ENV OXGARAGE_LOCATION="oxgarage.tei-c.org"
+ENV OXGARAGE_LOCATION="teigarage.tei-c.org"
 
 # You can overwrite the variable of TEI data sources protocol and location
 # by setting docker ENV variables
