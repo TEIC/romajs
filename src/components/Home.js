@@ -201,7 +201,7 @@ export default class Home extends Component {
                       <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Kiyonori Nagasaki, International Institute for Digital Humanities</li>
                       <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">FR</span>Lou Burnard</li>
                       <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span><span>Natsuko Nakagawa, National Institute for Japanese Language and Linguistics</span></li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Shitnaro Seki, Graduate School of Humanities and Sociology, The University of Tokyo</li>
+                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Shintaro Seki, Graduate School of Humanities and Sociology, The University of Tokyo</li>
                       <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>So Miyagawa, National Institute for Japanese Language and Linguistics</li>
                       <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">IT</span>Raff Viglianti</li>
                       <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Yuna Murata, National Diet Library</li>
