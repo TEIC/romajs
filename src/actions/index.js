@@ -104,11 +104,9 @@ export function exportSchema(format) {
  * thunks *
  ******** **/
 
-const isBrowser = typeof window !== 'undefined'
 const fetchRetry = (url, n, errorMsg) => fetch(url).catch(function(err) {
   if (n === 1) {
     const msg = errorMsg ? errorMsg : err
-    if (isBrowser) window.onerror(msg)
     throw msg
   }
   return fetchRetry(url, n - 1)
@@ -122,7 +120,6 @@ export function fetchOdd(odd) {
       fetchRetry(odd, 10, errMsg)
         .then(response => {
           if (!response.ok) {
-            if (isBrowser) window.onerror(errMsg)
             throw Error(errMsg)
           }
           return response.text()
@@ -141,7 +138,6 @@ export function fetchKnownCustomization(url) {
     return fetchRetry(url, 10, errMsg)
       .then(response => {
         if (!response.ok) {
-          if (isBrowser) window.onerror(errMsg)
           throw Error(errMsg)
         }
         return response.json()
@@ -157,7 +153,6 @@ export function fetchLocalSource(url) {
     return fetchRetry(url, 10, errMsg)
       .then(response => {
         if (!response.ok) {
-          if (isBrowser) window.onerror(errMsg)
           throw Error(errMsg)
         }
         return response.json()

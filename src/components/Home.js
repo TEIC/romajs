@@ -88,7 +88,6 @@ export default class Home extends Component {
 
   updatePanel(index) {
     if (index === 0) {
-      // this.setState({start: this.props.getCustomization})
       this._updateCustomizationUrl()
     } else {
       this.setState({start: () => this.props.uploadCustomization(this.state.selectedFile, this.props.language)})

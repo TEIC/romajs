@@ -21,7 +21,8 @@ class App extends Component {
 
   componentDidMount() {
     window.onerror = (error) => {
-      this.setState({showErrorDialog: true, errorMsg: error})
+      this.setState({showErrorDialog: true, errorMsg: error.replace('Uncaught Error: ', '')})
+      return true
     }
   }
 

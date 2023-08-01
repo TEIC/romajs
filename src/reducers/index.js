@@ -105,27 +105,20 @@ function customization(state = {
         // switch from browser to local DOM
         oddData = global.uselocaldom(oddData)
       }
-      const isBrowser = typeof window !== 'undefined'
-
       const schemaSpec = safeSelect(oddData.querySelectorAll('schemaSpec'))[0]
       // Check whether this is a ODD we can handle
-      // NB: it seems that using throw for the errors stops the code too soon for the popup to catch it.
-      //     using window.onerror explicitly fixes it. But throwing is still necessary to stop.
       let msg = ''
       if (!schemaSpec) {
         msg = i18n('This does not appear to be a TEI ODD document.')
-        if (isBrowser) window.onerror(msg)
         throw Error(msg)
       }
       if (oddData.getElementsByTagNameNS('http://www.tei-c.org/ns/1.0', 'TEI').length !== 1 ) {
         msg = i18n('This does not appear to be a TEI document.')
-        if (isBrowser) window.onerror(msg)
         throw Error(msg)
       }
       for (const el of Array.from(schemaSpec.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*'))) {
         if (!el.closest('egXML')) {
           msg = i18n('ODD Documents with RELAX NG elements are not supported.')
-          if (isBrowser) window.onerror(msg)
           throw Error(msg)
         }
       }
@@ -138,7 +131,6 @@ function customization(state = {
       }
       if (schemaSpec.getAttribute('source') || hasSource) {
         msg = i18n('RomaJS does not support TEI ODD with @source attributes at the moment.')
-        if (isBrowser) window.onerror(msg)
         throw Error(msg)
       }
       // Get basic settings data
