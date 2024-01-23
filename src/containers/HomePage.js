@@ -5,7 +5,6 @@ import { clearUiData, setLoadingStatus } from '../actions/interface'
 import { push } from 'react-router-redux'
 import Home from '../components/Home'
 import teigarage from '../utils/teigarage'
-import fetch from 'isomorphic-fetch'
 import datasource from '../utils/datasources'
 import { _i18n } from '../localization/i18n'
 

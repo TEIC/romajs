@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-fetch'
-
 export const REQUEST_ODD = 'REQUEST_ODD'
 export const RECEIVE_ODD = 'RECEIVE_ODD'
 export const SELECT_ODD = 'SELECT_ODD'
