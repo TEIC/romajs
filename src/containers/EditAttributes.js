@@ -90,7 +90,9 @@ const mapStateToProps = (state, ownProps) => {
       } else {
         // The class requested doesn't appear to be in the customization,
         // but if its module is selected, it may have been zapped. So include it.
-        if (state.odd.localsource.json.modules.filter(m => m.ident === localClass.module)[0]) {
+        // BUT do not restore it if it's been explicitly deleted by the user.
+        if (state.odd.localsource.json.modules.filter(m => m.ident === localClass.module)[0]
+          && !state.odd.customization.json.classes._deleted.includes(className)) {
           return _computeAtts(localClass)
         }
         return acc
