@@ -35,17 +35,22 @@ const mapStateToProps = (state, ownProps) => {
             }
           }
         }
-        // Deal with wrongly removed attributes (e.g. they don't exist in the localclass or customization)
+
         for (const att of curClass.attributes) {
           if (att.mode === 'delete') {
+            // Also keep track of attributes marked to be deleted (mode = delete) in the current session
+            // and adjust their data model for the UI
+            curClass.deletedAttributes.add(att.ident)
+            att.deleted = true
+            att.overridden = false
+            att.deletedOnClass = true
+
             if (!localClass.attributes.filter(a => (a.ident === att.ident))[0]) {
+            // Deal with wrongly removed attributes (e.g. they don't exist in the localclass or customization)
               att.noeffect = true
             }
           }
-        }
-
-        // Check if a definition in the element overrides or deletes an inherited attribute
-        for (const att of curClass.attributes) {
+          // Check if a definition in the element overrides or deletes an inherited attribute
           const redefinedAtt = element.attributes.filter((a) => (a.ident === att.ident))[0]
           if (redefinedAtt) {
             att.overridden = false
