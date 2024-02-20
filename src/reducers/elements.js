@@ -34,20 +34,6 @@ function deleteAttribute(m, attribute) {
   }
 }
 
-function restoreClassAttributeDeletedOnClass(element, className, attName, localsource, customization) {
-  const localClass = localsource.classes.attributes.filter(c => (c.ident === className))[0]
-  const attribute = localClass.attributes.filter(a => a.ident === attName)[0]
-  customization.elements.forEach(m => {
-    if (m.ident === element) {
-      m.attributes.push(Object.assign({}, attribute, {
-        mode: 'change',
-        _changed: false,
-        inheritedFrom: className
-      }))
-    }
-  })
-}
-
 function markChange(element, whatChanged) {
   if (element._changed) {
     const changes = new Set(element._changed)
@@ -56,6 +42,22 @@ function markChange(element, whatChanged) {
   } else {
     element._changed = [whatChanged]
   }
+}
+
+function restoreClassAttributeDeletedOnClass(element, className, attName, localsource, customization) {
+  const localClass = localsource.classes.attributes.filter(c => (c.ident === className))[0]
+  const attribute = localClass.attributes.filter(a => a.ident === attName)[0]
+  customization.elements.forEach(m => {
+    if (m.ident === element) {
+      m.attributes.push(Object.assign({}, attribute, {
+        onElement: true,
+        mode: 'add',
+        _changed: false,
+        inheritedFrom: className
+      }))
+      markChange(m, 'attributes')
+    }
+  })
 }
 
 export function oddElements(state, action) {
@@ -355,6 +357,7 @@ export function oddElements(state, action) {
     case RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT:
       customization.elements.forEach(m => {
         if (m.ident === action.element) {
+          // To restore the class attribute, remove the attribute declaration that was set to mode=delete.
           m.attributes = m.attributes.filter(a => {
             return (a.ident !== action.attName)
           })

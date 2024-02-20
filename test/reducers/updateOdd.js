@@ -1002,6 +1002,35 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]')).toNotExist()
   })
 
+  it('should restore an attribute inherited from a class and currently deleted on the class', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString},
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'DELETE_CLASS_ATTRIBUTE',
+      member: 'att.global.rendition',
+      attribute: 'rend'
+    })
+    const secondState = romajsApp(firstState, {
+      type: 'RESTORE_CLASS_ATTRIBUTE_DELETED_ON_CLASS',
+      element: 'div',
+      className: 'att.global.rendition',
+      attName: 'rend'
+    })
+    const state = romajsApp(secondState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.uselocaldom(xml)
+    expect(xml.querySelector('elementSpec[ident="div"] > attList > attDef[ident="rend"]')).toExist()
+    expect(xml.querySelector('elementSpec[ident="div"] > attList > attDef[ident="rend"][mode]')).toNotExist()
+  })
+
   it('should change the valList type of an attribute defined on an element.', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)
