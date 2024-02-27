@@ -1207,13 +1207,13 @@
       "ja": "既存の問題"
     },
     "known": {
-      "en": "",
+      "en": "<li>If Roma crashes while loading an existing ODD or template customization, refresh or reload your browser.</li><li>In Safari, reloading a page may cause data loss due to the default limit to local storage memory.</li>",
       "it": "<li>Se Roma si blocca durante il caricamento di un ODD esistente o di una personalizzazione del modello, aggiornare o ricaricare il browser.</li><li>In Safari, il ricaricamento di una pagina può causare la perdita di dati a causa della memoria limitata.</li>",
-      "fr": "<li>Si roma se bloque en essayant de charger un ODD existant, ou un template, essayez de relancer votre navigateur web</li><li>Avec Safari, un rechargement risque de perdre des informations à cause du stockage limite des donnees</li>",
+      "fr": "<li>Si Roma se bloque en essayant de charger un ODD existant, ou un template, essayez de relancer votre navigateur web</li><li>Avec Safari, un rechargement risque de perdre des informations à cause du stockage limite des donnees</li>",
       "de": "Wenn Roma beim Laden einer bestehenden ODD-Datei oder einer Vorlage abstürzt, aktualisieren Sie Ihren Browser oder laden Sie ihn neu. In Safari kann das Neuladen einer Seite aufgrund des begrenzten Datenspeichers zu Datenverlusten führen.",
       "pt-notchecked": "conhecido",
       "zh-notchecked": "已知",
-      "es": "conocido",
+      "es": "<li>Si Roma falla mientras carga un ODD existente o una plantilla personalizada, actualice o vuelva a cargar su navegador.</li><li>En Safari, recargar una página puede provocar la pérdida de datos debido a la memoria limitada.</li>",
       "ja": "<li>Romaが既存のODDやテンプレートのカスタマイズを読み込む際に停止してしまう場合は、ブラウザを更新するか再読み込みしてください。</li><li>Safariでは、ページを再読み込みすると、データストレージの制限によりデータが失われる場合があります。</li>"
     },
     "Contribute": {
