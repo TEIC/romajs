@@ -1002,7 +1002,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]')).toNotExist()
   })
 
-  it('should restore an attribute inherited from a class and currently deleted on the class', () => {
+  it('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAashould restore an attribute inherited from a class and currently deleted on the class', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)
     const firstState = romajsApp({

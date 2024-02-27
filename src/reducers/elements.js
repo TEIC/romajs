@@ -52,7 +52,8 @@ function restoreClassAttributeDeletedOnClass(element, className, attName, locals
       m.attributes.push(Object.assign({}, attribute, {
         onElement: true,
         mode: 'add',
-        _changed: false,
+        clonedFrom: className,
+        _restoredAfterDeletedOnClass: true,
         inheritedFrom: className
       }))
       markChange(m, 'attributes')

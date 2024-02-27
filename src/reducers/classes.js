@@ -126,6 +126,8 @@ export function oddClasses(state, action) {
       allCustomClasses.forEach(m => {
         if (m.ident === action.member) {
           if (m.attributes) {
+            // remove deleted attribute if it's still there
+            m.attributes = m.attributes.filter(a => a.ident !== action.attribute)
             m.attributes.push(restoredAtt)
           } else {
             m.attributes = [restoredAtt]

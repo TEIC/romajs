@@ -299,7 +299,7 @@ export function processAttributes(specElement, specData, localData, localsource,
         if (!specElement.querySelector(`attDef[ident="${att.ident}"]`)) {
           // Also make sure this is not an attribute cloned from another class,
           // in which case use <attRef>
-          if (att.clonedFrom && !toChange) {
+          if (att.clonedFrom && !toChange && !att._restoredAfterDeletedOnClass) {
             // Only use attRef if there are no changes
             const attRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attRef')
             attRef.setAttribute('name', att.ident)

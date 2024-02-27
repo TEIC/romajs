@@ -61,7 +61,8 @@ const mapStateToProps = (state, ownProps) => {
               curClass.deletedAttributes.add(att.ident)
             } else if (redefinedAtt.mode === 'change' || redefinedAtt.mode === 'add') {
               curClass.deletedAttributes.delete(att.ident)
-              if (redefinedAtt._changed === undefined || redefinedAtt._changed.length > 0) {
+              // TODO: setting overridden when _changed is NOT specified seems risky.
+              if (redefinedAtt._changed === undefined || redefinedAtt._changed.length > 0 || redefinedAtt._restoredAfterDeletedOnClass) {
                 att.overridden = true
               }
             }
