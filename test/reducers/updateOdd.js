@@ -1002,7 +1002,30 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     expect(xml.querySelector('elementSpec[ident="title"] > attList > attDef[ident="key"]')).toNotExist()
   })
 
-  it('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAashould restore an attribute inherited from a class and currently deleted on the class', () => {
+  it('should restore a deleted element attribute inherited from a class (deleted by custom ODD).', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT',
+      element: 'sourceDesc',
+      attName: 'default'
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.uselocaldom(xml)
+    expect(xml.querySelector('elementSpec[ident="sourceDesc"] > attList > attDef[ident="default"]')).toNotExist()
+  })
+
+  it('should restore an attribute inherited from a class and currently deleted on the class', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)
     const firstState = romajsApp({

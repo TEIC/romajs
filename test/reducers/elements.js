@@ -259,6 +259,26 @@ describe('ODD elements operation reducers', () => {
     )[0].attributes.filter(x => (x.ident === 'rend'))[0]).toNotExist()
   })
 
+  it('should handle RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT (deleted by custom ODD)', () => {
+    customJSON = JSON.parse(customization)
+    localJSON = JSON.parse(localsource)
+
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJSON },
+        localsource: { isFetching: false, json: localJSON }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'RESTORE_CLASS_ATTRIBUTE_ON_ELEMENT',
+      element: 'sourceDesc',
+      attName: 'default'
+    })
+    expect(state.odd.customization.json.elements.filter(
+      x => (x.ident === 'sourceDesc')
+    )[0].attributes.filter(x => (x.ident === 'default'))[0]).toNotExist()
+  })
+
   it('should handle CHANGE_CLASS_ATTRIBUTE_ON_ELEMENT', () => {
     customJSON = JSON.parse(customization)
     localJSON = JSON.parse(localsource)

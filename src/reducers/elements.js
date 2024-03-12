@@ -362,6 +362,7 @@ export function oddElements(state, action) {
           m.attributes = m.attributes.filter(a => {
             return (a.ident !== action.attName)
           })
+          markChange(m, 'attributes')
         }
       })
       return newState

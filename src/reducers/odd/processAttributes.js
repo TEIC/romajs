@@ -275,6 +275,14 @@ export function processAttributes(specElement, specData, localData, localsource,
       return acc
     }, [])
   }
+
+  // restored attributes can be determined by comparing the custom ODD (specElement) and the
+  // changes in Roma (specData). The rest should be determined against the localsource.
+
+  const specAttIdents = specData.attributes.map(a => a.ident)
+  const attsToRestore = Array.from(specElement.querySelectorAll('attList attDef')).filter(ad => !specAttIdents.includes(ad.getAttribute('ident')))
+  attsToRestore.forEach(a => a.parentElement.removeChild(a))
+
   for (const att of specData.attributes) {
     const isDefined = localAtts.indexOf(att.ident) !== -1
     const toRemove = att.mode === 'delete'
