@@ -116,6 +116,10 @@ function customization(state = {
         msg = i18n('This does not appear to be a TEI document.')
         throw Error(msg)
       }
+      if (oddData.getElementsByTagNameNS('http://www.tei-c.org/ns/1.0', 'teiHeader').length !== 1 ) {
+        msg = i18n('This does not appear to be a TEI document.')
+        throw Error(msg)
+      }
       for (const el of Array.from(schemaSpec.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*'))) {
         if (!el.closest('egXML')) {
           msg = i18n('ODD Documents with RELAX NG elements are not supported.')
