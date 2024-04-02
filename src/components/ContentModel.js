@@ -47,6 +47,10 @@ export default class ContentModel extends Component {
           <label>{i18n('Content')}</label>
           <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
             dangerouslySetInnerHTML={{__html: i18n('HelperTextContent')}} />
+          <h3 className="mdc-typography mdc-typography--subtitle2"
+            dangerouslySetInnerHTML={{__html: i18n('ExtendedHelperTextTitle')}} />
+          <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+            dangerouslySetInnerHTML={{__html: i18n('ExtendedHelperText')}} />
         </div>
         <div className="mdc-layout-grid__cell--span-8">
           <BlocklyContainer element={this.props.element}/>

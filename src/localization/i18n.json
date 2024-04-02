@@ -407,6 +407,12 @@
       "pt-notchecked": "Editar o conteúdo dos elementos.",
       "zh-notchecked": "编辑元素内容。",
       "ja": "要素のコンテンツを編集"
+    },
+    "ExtendedHelperTextTitle": {
+      "en": "How to use this editor"
+    },
+    "ExtendedHelperText": {
+      "en": "Add constituents to the content model by clicking the Groups, References or Nodes links. Drag the relevant constituents into the content container. Use the Groups link to include an alternate or sequence group in the model; they can be nested. Use the References link to include a reference to an element, macro, class or datatype already defined in your ODD. Use the Nodes link to allow any element, to declare your element as empty or to include a text node. While editing, you can drag constituents or groups of constituents in and out of the content container to reorganize its content. Dragging a constituent will also move constituents attached under the dragged constituents. To disconnect two constituents that are attached to each other, drag the bottom one away. Drag to the garbage can any constituents or groups of constituents that you no longer need."
     }
   },
   "DatatypeContent": {
