@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import ReactBlocklyComponent from 'react-blockly-component'
 import PropTypes from 'prop-types'
-import Blockly from 'node-blockly/browser'
 import { content, alternate, sequence, elementRef, classRef, dataRef, macroRef,
   anyElement, empty, textNode } from '../utils/blocks'
 import ModalPicker from './pickers/ModalPicker'
 import { Link } from 'react-router-dom'
 import { _i18n } from '../localization/i18n'
+import { BlocklyWorkspace } from 'react-blockly'
+import Blockly from 'blockly'
 
 const xmlParser = new DOMParser()
 const xmlSerializer = new XMLSerializer()
@@ -15,9 +15,8 @@ export default class BlocklyRomaJsEditor extends Component {
   constructor(props) {
     super(props)
 
-    window.Blockly = Blockly // TODO: This is bad, find fix.
-
     const thisEditor = this
+    // FIXME: This isn't running
     Blockly.FieldDropdown.prototype.showEditor_ = function() {
       const pickerOptions = []
       const opts = Array.from(this.getOptions())
@@ -161,89 +160,87 @@ export default class BlocklyRomaJsEditor extends Component {
     const i18n = _i18n(this.props.language, 'Blockly')
     const i18nNotSeeing = _i18n(this.props.language, 'NotSeeingMessage')
     const config = {
-      toolboxCategories: [{
-        type: 'groups',
-        name: i18n('Groups'),
-        colour: '#6da55b',
-        blocks: [
-          { type: 'alternate' },
-          { type: 'sequence' },
-        ]
-      }, {
-        type: 'references',
-        name: i18n('References'),
-        colour: '#6d5ba5',
-        blocks: [
-          { type: 'elementRef' },
-          { type: 'classRef' },
-          { type: 'macroRef' },
-          { type: 'dataRef' }
-        ]
-      }, {
-        type: 'nodes',
-        name: i18n('Nodes'),
-        colour: '#a55b5b',
-        blocks: [
-          { type: 'anyElement' },
-          { type: 'empty' },
-          { type: 'textNode' }
-        ]
-      }],
-      initialXml: this.state.initialXml,
-      wrapperDivClassName: 'romajs-blockly',
-      workspaceDidChange: function(workspace) {
-        workspace
-      },
-      xmlDidChange: (xml) => {
-        const blocklyXml = xmlParser.parseFromString(xml, 'text/xml')
-        const contentObject = []
-        let valid = true
-        function _processXml(block, curContent) {
-          const o = {}
-          const type = block.getAttribute('type')
-          // Do not update state if alternate|sequence is incomplete
-          if (type === 'alternate' || type === 'sequence') {
-            if (!Array.from(block.children).filter(c => c.tagName === 'statement').length > 0) {
-              valid = false
-            }
+      kind: 'categoryToolbox',
+      contents: [
+        {
+          kind: 'groups',
+          name: i18n('Groups'),
+          colour: '#6da55b',
+          blocks: [
+            { type: 'alternate' },
+            { type: 'sequence' },
+          ]
+        }, {
+          kind: 'references',
+          name: i18n('References'),
+          colour: '#6d5ba5',
+          blocks: [
+            { type: 'elementRef' },
+            { type: 'classRef' },
+            { type: 'macroRef' },
+            { type: 'dataRef' }
+          ]
+        }, {
+          kind: 'nodes',
+          name: i18n('Nodes'),
+          colour: '#a55b5b',
+          blocks: [
+            { type: 'anyElement' },
+            { type: 'empty' },
+            { type: 'textNode' }
+          ]
+        }
+      ]
+    }
+    const handleXmlChange = (xml) => {
+      const blocklyXml = xmlParser.parseFromString(xml, 'text/xml')
+      const contentObject = []
+      let valid = true
+      function _processXml(block, curContent) {
+        const o = {}
+        const type = block.getAttribute('type')
+        // Do not update state if alternate|sequence is incomplete
+        if (type === 'alternate' || type === 'sequence') {
+          if (!Array.from(block.children).filter(c => c.tagName === 'statement').length > 0) {
+            valid = false
           }
-          for (const blockChild of block.children) {
-            if (blockChild.tagName === 'field') {
-              const bName = blockChild.getAttribute('name')
-              // Do not update state if a key is not set.
-              if (blockChild.textContent !== '...') {
-                o[bName] = blockChild.textContent
-              } else valid = false
-              // Do no update state if (min|max)Occurs is not valid
-              if (bName === 'minOccurs' | bName === 'maxOccurs') {
-                if (!blockChild.textContent.match(/\d+|Infinity/)) {
-                  valid = false
-                }
+        }
+        for (const blockChild of block.children) {
+          if (blockChild.tagName === 'field') {
+            const bName = blockChild.getAttribute('name')
+            // Do not update state if a key is not set.
+            if (blockChild.textContent !== '...') {
+              o[bName] = blockChild.textContent
+            } else valid = false
+            // Do no update state if (min|max)Occurs is not valid
+            if (bName === 'minOccurs' | bName === 'maxOccurs') {
+              if (!blockChild.textContent.match(/\d+|Infinity/)) {
+                valid = false
               }
-            } else if (blockChild.tagName === 'next') {
-              _processXml(blockChild.querySelector('block'), curContent)
-            } else if (blockChild.tagName === 'statement') {
-              o.content = []
-              _processXml(blockChild.querySelector('block'), o.content)
             }
+          } else if (blockChild.tagName === 'next') {
+            _processXml(blockChild.querySelector('block'), curContent)
+          } else if (blockChild.tagName === 'statement') {
+            o.content = []
+            _processXml(blockChild.querySelector('block'), o.content)
           }
-          if (valid) {
-            curContent.unshift(o)
-            o.type = block.getAttribute('type')
-          }
-          return curContent
         }
-        // Only process if there's at least one block
-        const startBlock = blocklyXml.querySelector("block[type='content'] block")
-        if (startBlock) {
-          _processXml(startBlock, contentObject)
-        } else {
-          valid = false
-        }
-        // Now pass this to an action to update content
         if (valid) {
-          this.props.updateContentModel(contentObject)
+          curContent.unshift(o)
+          o.type = block.getAttribute('type')
         }
+        return curContent
+      }
+      // Only process if there's at least one block
+      const startBlock = blocklyXml.querySelector("block[type='content'] block")
+      if (startBlock) {
+        _processXml(startBlock, contentObject)
+      } else {
+        valid = false
+      }
+      // Now pass this to an action to update content
+      if (valid) {
+        this.props.updateContentModel(contentObject)
       }
     }
     const msg = (<span>{i18nNotSeeing('q')}&nbsp;
@@ -255,7 +252,12 @@ export default class BlocklyRomaJsEditor extends Component {
           this.setState({pickerVisible: false})
           this.state.pickerAdd(i)
         }} message={msg} language={this.props.language}/>
-      {React.createElement(ReactBlocklyComponent.BlocklyEditor, config)}
+      <BlocklyWorkspace
+        className="romajs-blockly"
+        toolboxConfiguration={config} // this must be a JSON toolbox definition
+        initialXml={this.state.initialXml}
+        onXmlChange={handleXmlChange}
+      />
     </div>)
   }
 }

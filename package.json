@@ -75,12 +75,9 @@
     "html-webpack-plugin": "^2.30.1",
     "linkedom": "0.14.21",
     "mocha": "^6.2.0",
-    "node-blockly": "^1.2.8",
     "node-sass": "^7.0.3",
     "react": "^16.9.0",
     "react-ace": "^7.0.4",
-    "react-blockly": "^7.0.1",
-    "react-blockly-component": "3.3.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
     "react-resize-detector": "^4.0.5",
@@ -99,5 +96,8 @@
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.23.1",
     "xmldom": "^0.6.0"
+  },
+  "dependencies": {
+    "react-blockly": "^8.1.1"
   }
 }
