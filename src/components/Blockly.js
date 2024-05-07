@@ -16,8 +16,8 @@ export default class BlocklyRomaJsEditor extends Component {
     super(props)
 
     const thisEditor = this
-    // FIXME: This isn't running
     Blockly.FieldDropdown.prototype.showEditor_ = function() {
+      console.log('h')
       const pickerOptions = []
       const opts = Array.from(this.getOptions())
       for (const opt of opts) {
@@ -158,39 +158,42 @@ export default class BlocklyRomaJsEditor extends Component {
 
   render() {
     const i18n = _i18n(this.props.language, 'Blockly')
+    i18n
     const i18nNotSeeing = _i18n(this.props.language, 'NotSeeingMessage')
     const config = {
       kind: 'categoryToolbox',
       contents: [
         {
-          kind: 'groups',
+          kind: 'category',
           name: i18n('Groups'),
           colour: '#6da55b',
-          blocks: [
-            { type: 'alternate' },
-            { type: 'sequence' },
-          ]
-        }, {
-          kind: 'references',
+          contents: [
+            { kind: 'block', type: 'alternate' },
+            { kind: 'block', type: 'sequence' }
+          ],
+        },
+        {
+          kind: 'category',
           name: i18n('References'),
           colour: '#6d5ba5',
-          blocks: [
-            { type: 'elementRef' },
-            { type: 'classRef' },
-            { type: 'macroRef' },
-            { type: 'dataRef' }
-          ]
-        }, {
-          kind: 'nodes',
+          contents: [
+            { kind: 'block', type: 'elementRef' },
+            { kind: 'block', type: 'classRef' },
+            { kind: 'block', type: 'macroRef' },
+            { kind: 'block', type: 'dataRef' }
+          ],
+        },
+        {
+          kind: 'category',
           name: i18n('Nodes'),
           colour: '#a55b5b',
-          blocks: [
-            { type: 'anyElement' },
-            { type: 'empty' },
-            { type: 'textNode' }
+          contents: [
+            { kind: 'block', type: 'anyElement' },
+            { kind: 'block', type: 'empty' },
+            { kind: 'block', type: 'textNode' }
           ]
         }
-      ]
+      ],
     }
     const handleXmlChange = (xml) => {
       const blocklyXml = xmlParser.parseFromString(xml, 'text/xml')
@@ -254,7 +257,7 @@ export default class BlocklyRomaJsEditor extends Component {
         }} message={msg} language={this.props.language}/>
       <BlocklyWorkspace
         className="romajs-blockly"
-        toolboxConfiguration={config} // this must be a JSON toolbox definition
+        toolboxConfiguration={config}
         initialXml={this.state.initialXml}
         onXmlChange={handleXmlChange}
       />
