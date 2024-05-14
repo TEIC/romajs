@@ -203,7 +203,8 @@ function odd(state = {}, action) {
       } catch (e) { e }
       postToTEIGarage(state.customization.updatedXml, teigarage[action.format])
         .then((res) => {
-          fileSaver.saveAs(new Blob([res], {'type': 'text\/xml'}), `${filename}.${action.format}`)
+          const ext = action.format !== 'rnc' ? action.format : 'zip'
+          fileSaver.saveAs(new Blob([res], {'type': 'text\/xml'}), `${filename}.${ext}`)
         })
       return state
     case RECEIVE_LOCAL_SOURCE:
