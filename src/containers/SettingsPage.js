@@ -36,7 +36,7 @@ const mapStateToProps = (state) => {
     if (state.odd.customization.lastUpdated) {
       oddLastUpdated = state.odd.customization.lastUpdated
     }
-    if (state.odd.customization.updatedXml) {
+    if (state.odd.customization.updatedXml && state.odd.customization.updatedFor === 'lang') {
       newDataForLanguage = state.odd.customization.updatedXml
     }
   }
@@ -71,7 +71,7 @@ const mapDispatchToProps = (dispatch) => {
     chooseNewDocLang: (lang, uilang) => {
       const i18n = _i18n(uilang, 'SettingsPage')
       dispatch(setLoadingStatus(`${i18n('Obtaining new language documentation')} (${lang}).`))
-      dispatch(updateCustomizationOdd())
+      dispatch(updateCustomizationOdd('lang'))
       if (lang !== 'en') {
         dispatch(fetchLocalSource(`${datasource}/p5subset_${lang}.json`))
       } else {

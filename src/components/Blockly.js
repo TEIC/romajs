@@ -17,7 +17,6 @@ export default class BlocklyRomaJsEditor extends Component {
 
     const thisEditor = this
     Blockly.FieldDropdown.prototype.showEditor_ = function() {
-      console.log('h')
       const pickerOptions = []
       const opts = Array.from(this.getOptions())
       for (const opt of opts) {

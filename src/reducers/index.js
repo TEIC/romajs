@@ -185,7 +185,8 @@ function odd(state = {}, action) {
       const xml = Object.assign({}, state.customization,
         {
           updatedXml: updateOdd(state.localsource, state.customization),
-          lastUpdated: Date.now()
+          lastUpdated: Date.now(),
+          updatedFor: action.updatedFor
         })
       return Object.assign({}, state, {customization: xml})
     case EXPORT_ODD:
@@ -203,7 +204,8 @@ function odd(state = {}, action) {
       } catch (e) { e }
       postToTEIGarage(state.customization.updatedXml, teigarage[action.format])
         .then((res) => {
-          fileSaver.saveAs(new Blob([res], {'type': 'text\/xml'}), `${filename}.${action.format}`)
+          const ext = action.format !== 'rnc' ? action.format : 'zip'
+          fileSaver.saveAs(new Blob([res], {'type': 'text\/xml'}), `${filename}.${ext}`)
         })
       return state
     case RECEIVE_LOCAL_SOURCE:
