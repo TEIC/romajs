@@ -1073,6 +1073,10 @@
       "zh-notchecked": "ODD不能被处理，因为它不是格式良好的XML，或者它是无效的!请检查你的定制，特别是带有XML数据的文档字段。",
       "es": "El ODD no puede ser procesado porque no está bien formado XML o no es válido. Por favor, compruebe su personalización, especialmente los campos de documentación con datos XML.",
       "ja": "このODDは、適格なXMLでないか、無効であるため、処理できません！カスタマイズ、特にXMLデータを含むドキュメントフィールドを確認してください。"
+    },
+    "Generating the Customization": {},
+    "geninfo": {
+      "en": "The download will begin shortly."
     }
   },
   "FilterSearchBar": {
