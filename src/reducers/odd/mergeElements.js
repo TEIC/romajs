@@ -28,9 +28,14 @@ export function mergeElements(localsource, customization, odd) {
       const deletedEls = Array.from(elementSpecs).reduce((acc, es) => {
         if (es.getAttribute('mode') === 'delete') {
           const el = es.getAttribute('ident')
-          const elMod = localsource.elements.filter(x => (x.ident === el))[0].module
-          if (moduleName === elMod) {
-            acc.push(el)
+          const elToDelete = localsource.elements.filter(x => (x.ident === el))[0]
+          if (elToDelete) {
+            const elMod = elToDelete.module
+            if (moduleName === elMod) {
+              acc.push(el)
+            }
+          } else {
+            console.log('attempting to delete an element that does not exist!', el)
           }
         }
         return acc
@@ -54,7 +59,7 @@ export function mergeElements(localsource, customization, odd) {
   }, []))
   allOddElements = new Set(allOddElements)
 
-  // Get all elemnets from the state for comparison
+  // Get all elements from the state for comparison
   const customizationElements = customization.elements.reduce((acc, x) => {
     acc.push(x.ident)
     return acc
