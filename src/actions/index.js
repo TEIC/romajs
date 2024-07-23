@@ -91,10 +91,11 @@ export function exportOdd() {
   }
 }
 
-export function exportSchema(format) {
+export function exportSchema(format, lang) {
   return {
     type: EXPORT_SCHEMA,
-    format
+    format,
+    lang
   }
 }
 
