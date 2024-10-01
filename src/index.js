@@ -10,7 +10,8 @@ import { createStore, applyMiddleware } from 'redux'
 import { routerMiddleware, ConnectedRouter, connectRouter } from 'connected-react-router'
 import createHistory from 'history/createBrowserHistory'
 import { persistStore, persistCombineReducers } from 'redux-persist'
-import storage from 'redux-persist/es/storage'
+/* import storage from 'redux-persist/es/storage' */
+import localForage from './localForageConfig'
 import { PersistGate } from 'redux-persist/es/integration/react'
 import reducers from './reducers'
 import App from './components/App'
@@ -26,7 +27,7 @@ const history = createHistory({ basename })
 
 const persistConf = {
   key: 'root',
-  storage,
+  storage: localForage,
   blacklist: ['router']
 }
 
