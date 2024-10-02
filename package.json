@@ -99,6 +99,9 @@
     "xmldom": "^0.6.0"
   },
   "dependencies": {
-    "react-blockly": "^8.1.1"
+    "@vitejs/plugin-react": "^4.3.2",
+    "react-blockly": "^8.1.1",
+    "sass": "^1.79.4",
+    "vite": "^5.4.8"
   }
 }
