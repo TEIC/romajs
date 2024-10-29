@@ -4,6 +4,7 @@ import ModelClassPicker from '../containers/ModelClassPicker'
 import BlocklyContainer from '../containers/BlocklyContainer'
 import { Link } from 'react-router-dom'
 import { _i18n } from '../localization/i18n'
+import Rng from './Rng'
 
 export default class ContentModel extends Component {
   render() {
@@ -53,7 +54,10 @@ export default class ContentModel extends Component {
             dangerouslySetInnerHTML={{__html: i18n('ExtendedHelperText')}} />
         </div>
         <div className="mdc-layout-grid__cell--span-8">
-          <BlocklyContainer element={this.props.element}/>
+          {this.props.element.content[0].type === 'rng'
+            ? <Rng language={this.props.language} rngContent={this.props.element.content[0].rngContent}/>
+            : <BlocklyContainer element={this.props.element}/>
+          }
         </div>
       </div>
     </div>)

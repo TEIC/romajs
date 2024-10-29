@@ -6,6 +6,7 @@ import { _i18n } from '../localization/i18n'
 export default class AttDatatype extends Component {
   render() {
     const i18n = _i18n(this.props.language, 'AttDatatype')
+    const rngContent = this.props.attribute.datatype.rngContent
     const refType = this.props.attribute.datatype.dataRef.key
       ? 'key'
       : 'name'
@@ -25,6 +26,7 @@ export default class AttDatatype extends Component {
           refType={refType}
           memberType={this.props.memberType}
           datatype={datatype}
+          rngContent={rngContent}
           available={available}
           restriction={restriction}
           attribute={this.props.attribute.ident}

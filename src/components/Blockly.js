@@ -195,6 +195,8 @@ export default class BlocklyRomaJsEditor extends Component {
       ],
     }
     const handleXmlChange = (xml) => {
+      // Only update if XML is different.
+      if (xml === this.state.initialXml) {return}
       const blocklyXml = xmlParser.parseFromString(xml, 'text/xml')
       const contentObject = []
       let valid = true

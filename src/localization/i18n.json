@@ -2020,5 +2020,15 @@
       "pt-notchecked": "Gerado com a versão RomaJS",
       "zh-notchecked": "用RomaJS版本生成的"
     }
+  },
+  "Rng": {
+    "RelaxNG elements cannot be edited in Roma.": {
+      "it": "Gli elementi RelaxNG non possono essere modificati con Roma.",
+      "fr-notchecked": "Les éléments RelaxNG ne peuvent pas être modifiés avec Roma.",
+      "es-notchecked": "Los elementos RelaxNG no pueden editarse con Roma.",
+      "de-notchecked": "RelaxNG-Elemente können nicht mit Roma bearbeitet werden.",
+      "pt-notchecked": "Os elementos RelaxNG não podem ser editados com Roma.",
+      "zh-notchecked": "RelaxNG 元素無法使用Roma編輯。"
+    }
   }
 }
