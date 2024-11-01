@@ -17,11 +17,11 @@ export default defineConfig({
     modules: {
       generateScopedName: '[local]',
     },
-    preprocessorOptions: {
+    /* preprocessorOptions: {
       scss: {
         additionalData: `@import "src/scss/romajs.scss";`,
       },
-    },
+    }, */
   },
   build: {
     outDir: 'dist',
@@ -39,7 +39,7 @@ export default defineConfig({
     open: true,
   },
   esbuild: {
-    loader: { '.js': '.jsx'},
+    loader: 'jsx',
     include: /src\/.*\.js$/,
     exclude: [],
   },

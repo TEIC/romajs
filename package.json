@@ -10,7 +10,7 @@
     "test:watch": "npm test -- --watch",
     "test:single": "eslint $SCRIPT && mocha --require babel-core/register --require ./test/setup.js $SCRIPT",
     "echo": "echo",
-    "start": "node server.js",
+    "start": "vite",
     "build": "rimraf ./dist && npm run test && cross-env NODE_ENV=\"production\" vite build",
     "lint-break-on-errors": "eslint ./source/js ./vite.config.js -f table --ext .js --ext .jsx",
     "eslint": "eslint src test"
