@@ -2,6 +2,7 @@ import './scss/romajs.scss'
 
 import 'babel-polyfill'
 import React from 'react'
+import ReactDOM from 'react-dom/client'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
@@ -12,15 +13,17 @@ import createHistory from 'history/createBrowserHistory'
 import { persistStore, persistCombineReducers } from 'redux-persist'
 /* import storage from 'redux-persist/es/storage' */
 import localForage from './localForageConfig'
-import { PersistGate } from 'redux-persist/es/integration/react'
+import { PersistGate } from 'redux-persist/integration/react'
 import reducers from './reducers'
 import App from './components/App'
 
-if (module.hot) {
-  module.hot.accept()
+if (import.meta.hot) {
+  import.meta.hot.accept()
 }
 
 const romajsElement = document.getElementById('romajs')
+const root = ReactDOM.createRoot(romajsElement);
+
 const basename = romajsElement.getAttribute('data-basename')
 
 const history = createHistory({ basename })
@@ -58,7 +61,7 @@ if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
 
 const persistor = persistStore(store)
 
-render(
+root.render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
       <ConnectedRouter history={history}>
