@@ -42,7 +42,7 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(receiveOdd(e.target.result, lang))
         // 1. Convert to JSON via TEIGarage
         dispatch(setLoadingStatus(i18n('2/3 Importing customization ODD...')))
-        dispatch(postToTEIGarage(e.target.result, teigarage.compile_json)).then(() => {
+        dispatch(postToTEIGarage(e.target.result, teigarage.compile_json(lang))).then(() => {
           dispatch(setLoadingStatus(i18n('3/3 Importing full specification source...')))
           // 2. Get p5subset.
           dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
