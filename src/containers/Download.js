@@ -24,10 +24,10 @@ const mapDispatchToProps = (dispatch) => {
       // you don't want it to fire before the customization update is completed.
       dispatch(exportOdd())
     },
-    downloadSchema: (type) => {
+    downloadSchema: (type, lang) => {
       console.log(type)
       dispatch(updateCustomizationOdd())
-      dispatch(exportSchema(type))
+      dispatch(exportSchema(type, lang))
     }
   }
 }

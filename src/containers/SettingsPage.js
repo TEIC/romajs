@@ -79,8 +79,8 @@ const mapDispatchToProps = (dispatch) => {
       }
     },
     getNewDocForLang: (data, lang) => {
-      dispatch(compileWithTEIGarage(data, teigarage['compiled.odd'])).then((compiledOdd) => {
-        dispatch(postToTEIGarage(compiledOdd, teigarage.json.replace('%3Een%3C', `%3E${lang}%3C`)))
+      dispatch(compileWithTEIGarage(data, teigarage['compiled.odd'](lang))).then((compiledOdd) => {
+        dispatch(postToTEIGarage(compiledOdd, teigarage.json(lang)))
       })
     }
   }

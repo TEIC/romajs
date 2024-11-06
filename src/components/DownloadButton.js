@@ -34,7 +34,7 @@ export default class DownloadButton extends Component {
           infoHeader: i18n('Generating the Customization'),
           infoBody: i18n('geninfo')
         })
-        this.props.downloadSchema(format)
+        this.props.downloadSchema(format, this.props.language)
       }
     }
 
