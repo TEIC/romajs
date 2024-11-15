@@ -3,7 +3,7 @@ import './scss/romajs.scss'
 import 'babel-polyfill'
 import React from 'react'
 /* import ReactDOM from 'react-dom/client' */
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
@@ -61,7 +61,8 @@ if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
 
 const persistor = persistStore(store)
 
-render(
+const root = createRoot(romajsElement)
+root.render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
       <ConnectedRouter history={history}>
@@ -69,5 +70,4 @@ render(
       </ConnectedRouter>
     </PersistGate>
   </Provider>,
-  romajsElement
 )
