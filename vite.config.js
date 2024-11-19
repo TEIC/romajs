@@ -17,21 +17,23 @@ export default defineConfig({
     modules: {
       generateScopedName: '[local]',
     },
-    /* preprocessorOptions: {
-      scss: {
-        additionalData: `@import "src/scss/romajs.scss";`,
-      },
-    }, */
   },
   build: {
+    minify: true,
     outDir: 'dist',
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'src/index.html'),
+        main: path.resolve(__dirname, './index.html'),
       },
       output: {
-        entryFileNames: 'romajs_[hash].js',
-      },
+        entryFileNames: 'romajs.js',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === "main.css") {
+            return "romajs.css"
+          }
+          return assetInfo.name
+        }
+      }
     },
   },
   server: {
