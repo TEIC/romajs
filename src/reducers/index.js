@@ -178,6 +178,7 @@ function customization(state = {
 }
 
 function odd(state = {}, action) {
+  let filename = ''
   switch (action.type) {
     case CLEAR_STATE:
       return {}
@@ -190,7 +191,7 @@ function odd(state = {}, action) {
         })
       return Object.assign({}, state, {customization: xml})
     case EXPORT_ODD:
-      let filename = 'new_odd'
+      filename = 'new_odd'
       try {
         filename = state.customization.settings.filename
       } catch (e) { e }
