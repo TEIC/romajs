@@ -205,7 +205,7 @@ function odd(state = {}, action) {
       } catch (e) { e }
       postToTEIGarage(state.customization.updatedXml, teigarage[action.format](action.lang))
         .then((res) => {
-          const ext = action.format !== 'rnc' ? action.format : 'zip'
+          const ext = action.format !== 'w3c' ? action.format : 'zip'
           fileSaver.saveAs(new Blob([res], {'type': 'text\/xml'}), `${filename}.${ext}`)
         })
       return state
