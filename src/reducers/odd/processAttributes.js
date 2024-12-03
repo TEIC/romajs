@@ -64,6 +64,7 @@ function createAttribute(attList, att, odd) {
 
 function changeAttr(att, localAtt, attDef, odd) {
   for (const whatChanged of att._changed) {
+    let comparison = null
     switch (whatChanged) {
       case 'desc':
       case 'altIdent':
@@ -71,7 +72,6 @@ function changeAttr(att, localAtt, attDef, odd) {
         break
       case 'usage':
       case 'ns':
-        let comparison = null
         if (localAtt) {
           comparison = localAtt[whatChanged]
         }

@@ -98,6 +98,8 @@ export function oddElements(state, action) {
     }
   }
 
+  let localClass = undefined
+  let customClass = undefined
   switch (action.type) {
     case UPDATE_ELEMENT_DOCS:
       customization.elements.forEach(m => {
@@ -277,7 +279,7 @@ export function oddElements(state, action) {
           }
         }
       })
-      let localClass = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
+      localClass = localsource.classes.attributes.filter(c => (c.ident === action.className))[0]
       if (customization.classes.attributes.filter(c => (c.ident === action.className)).length === 0) {
         customization.classes.attributes.push(localClass)
       }
@@ -330,7 +332,7 @@ export function oddElements(state, action) {
             markChange(m, 'attClasses')
           } else {
             // The class must be inherited, so remove all the attributes instead
-            const customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
+            customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
             if (customClass) {
               for (const clAtt of customClass.attributes) {
                 deleteAttribute(m, clAtt)
@@ -380,7 +382,7 @@ export function oddElements(state, action) {
       })
       return newState
     case DELETE_CLASS_ATTRIBUTE_ON_ELEMENT:
-      let customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
+      customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
       let attribute
       if (customClass) {
         attribute = customClass.attributes.filter(a => a.ident === action.attName)[0]

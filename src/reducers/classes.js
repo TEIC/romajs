@@ -65,6 +65,8 @@ export function oddClasses(state, action) {
     }
   }
 
+  let localClass = undefined
+  let customClass = undefined
   switch (action.type) {
     case UPDATE_CLASS_DOCS:
       allCustomClasses.forEach(m => {
@@ -80,7 +82,7 @@ export function oddClasses(state, action) {
       })
       return newState
     case DELETE_CLASS_DOCS:
-      let localClass = allLocalClasses.filter(m => action.member === m.ident)[0]
+      localClass = allLocalClasses.filter(m => action.member === m.ident)[0]
       allCustomClasses.forEach(m => {
         if (m.ident === action.member) {
           if (Array.isArray(m[action.docEl]) && action.index !== undefined) {
@@ -207,7 +209,7 @@ export function oddClasses(state, action) {
       })
       return newState
     case CHANGE_CLASS_ATTRIBUTE:
-      let customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
+      customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
       customClass.attributes = customClass.attributes.map(a => {
         if (a.ident === action.attName) {
           return Object.assign({}, a, {mode: 'change', changed: false, _changedOnMember: true})

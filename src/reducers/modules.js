@@ -178,6 +178,7 @@ export function oddModules(state, action) {
       }
       return Object.assign(state, {customization: customizationObj})
     case INCLUDE_CLASSES:
+      console.log(localsource)
       for (const cl of action.classes) {
         const localCl = getClassByIdent(localsource, cl, action.classType)
         const newCl = clone(localCl)
