@@ -70,3 +70,30 @@ export function isMemberExplicitlyDeleted(odd, ident, type, module) {
   // at this point we assume that if there's no moduleRef, that counts as being explicitly excluded.
   return true
 }
+
+export class ODDCache {
+  // A Cache for a parsed ODD document that gets instanced if any of these reducers need to
+  // look at the ODD XML specifically.
+  setParser() {
+    this.parser = new DOMParser()
+  }
+
+  parseODD(odd) {
+    this.stringOdd = odd
+    this.odd = this.parser.parseFromString(odd, 'text/xml')
+    if (global.uselocaldom) {
+      // switch from browser to local DOM
+      this.odd = global.uselocaldom(this.odd)
+    }
+  }
+
+  setup(odd) {
+    // parse odd if necessary
+    if (!this.odd || this.stringOdd !== odd) {
+      if (!this.parser) {
+        this.setParser()
+      }
+      this.parseODD(odd)
+    }
+  }
+}

@@ -2,34 +2,7 @@ import {
   INCLUDE_MODULES, EXCLUDE_MODULES, INCLUDE_ELEMENTS, EXCLUDE_ELEMENTS, INCLUDE_CLASSES, EXCLUDE_CLASSES, INCLUDE_DATATYPES, EXCLUDE_DATATYPES
 } from '../actions/modules'
 import { clone } from '../utils/clone'
-import { isMemberExplicitlyDeleted } from './odd/utils'
-
-class ODDCache {
-  // A Cache for a parsed ODD document that gets instanced if any of these reducers need to
-  // look at the ODD XML specifically.
-  setParser() {
-    this.parser = new DOMParser()
-  }
-
-  parseODD(odd) {
-    this.stringOdd = odd
-    this.odd = this.parser.parseFromString(odd, 'text/xml')
-    if (global.uselocaldom) {
-      // switch from browser to local DOM
-      this.odd = global.uselocaldom(this.odd)
-    }
-  }
-
-  setup(odd) {
-    // parse odd if necessary
-    if (!this.odd || this.stringOdd !== odd) {
-      if (!this.parser) {
-        this.setParser()
-      }
-      this.parseODD(odd)
-    }
-  }
-}
+import { isMemberExplicitlyDeleted, ODDCache } from './odd/utils'
 
 const oddCache = new ODDCache()
 
@@ -178,16 +151,16 @@ export function oddModules(state, action) {
       }
       return Object.assign(state, {customization: customizationObj})
     case INCLUDE_CLASSES:
-      console.log(localsource)
       for (const cl of action.classes) {
         const localCl = getClassByIdent(localsource, cl, action.classType)
         const newCl = clone(localCl)
         newCl._changed = ['included']
+        // Add class to customization as long as it's not already there
         if (!getClassByIdent(customization, cl, action.classType)) {
           newCl.cloned = true
           customization.classes[action.classType].push(newCl)
         }
-        // Make sure only references to classes that are not explicitly removed
+        // Make sure the newly included class is only member of classes that are not explicitly removed
         // Need to look at XML ODD because some classes may have been orphaned
         // and ZAPped (dropped) during ODD compilation.
         if (newCl.classes) {

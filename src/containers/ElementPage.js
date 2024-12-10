@@ -5,6 +5,7 @@ import { deleteElementModelClass, discardChanges, revertToSource } from '../acti
 import { clearPicker } from '../actions/interface'
 
 const mapStateToProps = (state, ownProps) => {
+  console.log('h')
   let element = {}
   let success = false
   if (state.odd.customization && state.odd.localsource) {
