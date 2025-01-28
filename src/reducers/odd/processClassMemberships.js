@@ -4,7 +4,22 @@ export function processClassMemberships(specElement, specData, localData, change
   const changeClasses = specData.classes ? Array.from(specData.classes[change]).sort() : []
   const localClasses = localData.classes ? Array.from(localData.classes[change]).sort() : []
   if (!areOddArraysEqual(changeClasses, localClasses)) {
-    const added = changeClasses.filter(scl => localClasses.indexOf(scl) === -1)
+    const added = changeClasses.filter(scl => {
+      if (localClasses.indexOf(scl) === -1) {
+        return true
+      } else {
+        // A class membership that was removed from a customization may need to be restored.
+        // Check the XML and if it's missing the expected memberOf, add this class `added`.
+        const classesEl = specElement.querySelector('classes')
+        if (classesEl) {
+          const memberOfEl = classesEl.querySelector(`memberOf[key="${scl}"]`)
+          if (!memberOfEl) {
+            return true
+          }
+        }
+        return false
+      }
+    })
     const removed = localClasses.filter(scl => {
       // Make sure the class isn't globally deleted.
       if (changeClasses.indexOf(scl) === -1) {
