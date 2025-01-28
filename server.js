@@ -26,7 +26,6 @@ async function startServer() {
     app.use(vite.middlewares);
 
     app.get('*', async (req, res, next) => {
-      console.log("H")
       try {
         const url = req.originalUrl;
         let template = fs.readFileSync(
@@ -42,29 +41,6 @@ async function startServer() {
         next(e);
       }
     });
-  /* } else {
-    app.use(express.static(distDir));
-    app.get('*', (req, res) => {console.log("Here"); res.sendFile(path.join(distDir, 'index.html'))});
-  } */
-
-/* if (isDevelopment) {
-  config.devtool = 'inline-source-map'
-  config.entry.push('webpack-hot-middleware/client')
-  config.plugins.push(new webpack.HotModuleReplacementPlugin())
-  const compiler = webpack(config)
-  app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
-  }))
-  app.use(webpackHotMiddleware(compiler))
-  app.get('*', (req, res) => {
-    res.write(compiler.outputFileSystem.readFileSync(htmlFile))
-    res.end()
-  })
-} else {
-  app.use(express.static(distDir))
-  app.get('*', (req, res) => res.sendFile(path.join(distDir, 'index.html')))
-} */
 
 
   app.listen(port, function(error) {
