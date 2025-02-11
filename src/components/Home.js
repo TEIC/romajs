@@ -14,42 +14,74 @@ export default class Home extends Component {
       panel: 0,
       selectedFile: undefined,
       selectedKnown: undefined,
-      odds: {
-        labels: [
-          'TEI All (customize by reducing TEI)',
-          'TEI Minimal (customize by building TEI up)',
-          'TEI Absolutely Bare',
-          'TEI SimplePrint',
-          'TEI Lite',
-          'TEI Tite',
-          'TEI for Linguistic Corpora',
-          'TEI for Manuscript Description',
-          'TEI with Drama',
-          'TEI for Speech Representation',
-          'TEI for Authoring ODDs',
-          // 'TEI with SVG',
-          // 'TEI with MathML',
-          // 'TEI with XInclude',
-          'TEI for Journal of the TEI'
-        ],
-        urls: [
-          `${presets}/tei_all.odd`,
-          `${presets}/tei_minimal.odd`,
-          `${presets}/tei_bare.odd`,
-          `${presets}/tei_simplePrint.odd`,
-          `${presets}/tei_lite.odd`,
-          `${presets}/tei_tite.odd`,
-          `${presets}/tei_corpus.odd`,
-          `${presets}/tei_ms.odd`,
-          `${presets}/tei_drama.odd`,
-          `${presets}/tei_speech.odd`,
-          `${presets}/tei_odds.odd`,
-          // `${presets}/tei_svg.odd`,
-          // `${presets}/tei_math.odd`,
-          // `${presets}/tei_xinclude.odd`,
-          `${presets}/tei_jtei.odd`
-        ]
-      }
+      localSource: undefined,
+      odds: [
+        {
+          label: 'TEI All (customize by reducing TEI)',
+          url: `${presets}/tei_all.odd`,
+        },
+        {
+          label: 'TEI Minimal (customize by building TEI up)',
+          url: `${presets}/tei_minimal.odd`,
+        },
+        {
+          label: 'TEI Absolutely Bare',
+          url: `${presets}/tei_bare.odd`,
+        },
+        {
+          label: 'TEI SimplePrint',
+          url: `${presets}/tei_simplePrint.odd`,
+        },
+        {
+          label: 'TEI Lite',
+          url: `${presets}/tei_lite.odd`,
+        },
+        {
+          label: 'TEI Tite',
+          url: `${presets}/tei_tite.odd`,
+        },
+        {
+          label: 'TEI for Linguistic Corpora',
+          url: `${presets}/tei_corpus.odd`,
+        },
+        {
+          label: 'TEI for Manuscript Description',
+          url: `${presets}/tei_ms.odd`,
+        },
+        {
+          label: 'TEI with Drama',
+          url: `${presets}/tei_drama.odd`,
+        },
+        {
+          label: 'TEI for Speech Representation',
+          url: `${presets}/tei_speech.odd`,
+        },
+        {
+          label: 'TEI for Authoring ODDs',
+          url: `${presets}/tei_odds.odd`,
+        },
+        // {
+        //   label: 'TEI with SVG',
+        //   url: `${presets}/tei_svg.odd`,
+        // },
+        // {
+        //   label: 'TEI with MathML',
+        //   url: `${presets}/tei_math.odd`,
+        // },
+        // {
+        //   label: 'TEI with XInclude',
+        //   url: `${presets}/tei_xinclude.odd`,
+        // },
+        {
+          label: 'TEI for Journal of the TEI',
+          url: `${presets}/tei_jtei.odd`,
+        },
+        {
+          label: 'MEI 5',
+          url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-all.xml`,
+          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.0/mei-source_canonicalized_v5.0.xml`
+        }
+      ]
     }
     this.updatePanel = this.updatePanel.bind(this)
   }
@@ -74,15 +106,17 @@ export default class Home extends Component {
       this.updatePanel(tabs.activeTabIndex)
     })
     // Set start function to first option
-    this.setState({selectedKnown: this.state.odds.urls[0]})
+    this.setState({selectedKnown: this.state.odds[0].url})
     this._updateCustomizationUrl()
 
     const select = new MDCSelect(this.refs.chooseodd)
     select.foundation_.setSelectedIndex(0)
     select.listen('MDCSelect:change', () => {
-      const idx = this.state.odds.labels.indexOf(select.value)
-      this.setState({selectedKnown: this.state.odds.urls[idx]})
-      this._updateCustomizationUrl()
+      const odd = this.state.odds.filter(o => o.label === select.value)[0]
+      if (odd) {
+        this.setState({selectedKnown: odd.url, localSource: odd.localSource || undefined})
+        this._updateCustomizationUrl()
+      }
     })
   }
 
@@ -90,14 +124,14 @@ export default class Home extends Component {
     if (index === 0) {
       this._updateCustomizationUrl()
     } else {
-      this.setState({start: () => this.props.uploadCustomization(this.state.selectedFile, this.props.language)})
+      this.setState({start: () => this.props.uploadCustomization(this.state.selectedFile, this.props.language, this.state.localSource)})
     }
     this.setState({panel: index})
   }
 
   _updateCustomizationUrl() {
     this.setState(
-      {start: () => {this.props.getCustomization(this.state.selectedKnown, this.props.language)}}
+      {start: () => {this.props.getCustomization(this.state.selectedKnown, this.props.language, this.state.localSource)}}
     )
   }
 
@@ -137,9 +171,9 @@ export default class Home extends Component {
                           <div className="mdc-select__selected-text"/>
                           <div className="mdc-select__menu mdc-menu mdc-menu-surface">
                             <ul className="mdc-list">{
-                              this.state.odds.urls.map((url, i) => {
-                                return (<li className="mdc-list-item" data-value={this.state.odds.labels[i]} key={i} tabIndex={i}>{
-                                  i18n(this.state.odds.labels[i])
+                              this.state.odds.map((odd, i) => {
+                                return (<li className="mdc-list-item" data-value={odd.label} key={`l${i}`} tabIndex={i}>{
+                                  i18n(odd.label)
                                 }</li>)
                               })
                             }</ul>

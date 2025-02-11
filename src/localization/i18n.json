@@ -1412,7 +1412,15 @@
       "pt-notchecked": "TEI Tite",
       "ja": "TEI Tite",
       "zh-notchecked": "TEI Tite"
-    }
+    },
+    "MEI 5": {
+      "fr": "MEI 5",
+      "es": "MEI 5",
+      "de": "MEI 5",
+      "pt": "MEI 5",
+      "ja": "MEI 5",
+      "zh": "MEI 5"
+     }
   },
   "HomePage": {
     "1/3 Obtaining customization ODD...": {

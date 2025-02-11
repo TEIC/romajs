@@ -145,6 +145,32 @@ export function fetchKnownCustomization(url) {
   }
 }
 
+export function fetchCustomLocalSource(url, endpoint) {
+  return dispatch => {
+    dispatch(requestLocalSource(url))
+    return new Promise((res) => {
+      fetch(url)
+        .then(response => response.text())
+        .then(xml => {
+          const fd = new FormData()
+          fd.append('fileToConvert', new Blob([xml], {'type': 'application\/octet-stream'}), 'file.odd')
+          fetch(endpoint, {
+            mode: 'cors',
+            method: 'post',
+            body: fd
+          })
+            .then(response => response.json())
+            .then((json) => {
+              return res(dispatch(receiveLocalSource(json)))
+            })
+            .catch( (err) => {
+              dispatch(reportError(err))
+            })
+        })
+    })
+  }
+}
+
 export function fetchLocalSource(url) {
   return dispatch => {
     dispatch(requestLocalSource(url))

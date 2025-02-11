@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchOdd, receiveOdd, postToTEIGarage, fetchLocalSource,
+import { fetchOdd, receiveOdd, postToTEIGarage, fetchLocalSource, fetchCustomLocalSource,
   receiveOddJson, clearState } from '../actions'
 import { clearUiData, setLoadingStatus } from '../actions/interface'
 import { push } from 'react-router-redux'
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCustomization: (url, lang) => {
+    getCustomization: (url, lang, localsourceUrl) => {
       const i18n = _i18n(lang, 'HomePage')
       dispatch(clearState())
       dispatch(push('/settings'))
@@ -27,11 +27,15 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(postToTEIGarage(odd.xml, teigarage.compile_json(lang))).then(() => {
           dispatch(setLoadingStatus(i18n('3/3 Importing full specification source...')))
           // 2. Get p5subset.
-          dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
+          if (localsourceUrl) {
+            dispatch(fetchCustomLocalSource(localsourceUrl, teigarage.json()))
+          } else {
+            dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
+          }
         })
       })
     },
-    uploadCustomization: (files, lang) => {
+    uploadCustomization: (files, lang, localsourceUrl) => {
       const i18n = _i18n(lang, 'HomePage')
       dispatch(clearState())
       dispatch(push('/settings'))
@@ -44,8 +48,12 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(setLoadingStatus(i18n('2/3 Importing customization ODD...')))
         dispatch(postToTEIGarage(e.target.result, teigarage.compile_json(lang))).then(() => {
           dispatch(setLoadingStatus(i18n('3/3 Importing full specification source...')))
-          // 2. Get p5subset.
-          dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
+          // 2. Get p5subset or other localsource
+          if (localsourceUrl) {
+            dispatch(fetchCustomLocalSource(localsourceUrl, teigarage.json()))
+          } else {
+            dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
+          }
         })
       }
     },
