@@ -2,27 +2,19 @@ import './scss/romajs.scss'
 
 import 'babel-polyfill'
 import React from 'react'
-/* import ReactDOM from 'react-dom/client' */
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
-// import { routerMiddleware, ConnectedRouter } from 'react-router-redux'
 import { routerMiddleware, ConnectedRouter, connectRouter } from 'connected-react-router'
 import createHistory from 'history/createBrowserHistory'
 import { persistStore, persistCombineReducers } from 'redux-persist'
-/* import storage from 'redux-persist/es/storage' */
 import localForage from './localForageConfig'
 import { PersistGate } from 'redux-persist/integration/react'
 import reducers from './reducers'
 import App from './components/App'
 
-/* if (import.meta.hot) {
-  import.meta.hot.accept()
-} */
-
 const romajsElement = document.getElementById('romajs')
-/* const root = ReactDOM.createRoot(romajsElement); */
 
 const basename = romajsElement.getAttribute('data-basename')
 

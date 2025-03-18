@@ -22,9 +22,19 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(push('/settings'))
       dispatch(setLoadingStatus(i18n('1/3 Obtaining customization ODD...')))
       dispatch(fetchOdd(url)).then((odd) => {
+        // If a localsourceUrl is provided, set it on <schemaSpec> if a @source isn't there already.
+        let oddXml = odd.xml
+        if (localsourceUrl) {
+          oddXml = oddXml.replace(/<([a-zA-Z]+:)?schemaSpec([\s\S]*?)>/, (match, prefix = '', attrs) => {
+            if (/schema\s*=/.test(attrs)) {
+              return match // return as is
+            }
+            return `<${prefix}schemaSpec${attrs} source="${localsourceUrl}">` // add localsourceUrl
+          })
+        }
         // 1. Convert to JSON via TEIGarage
         dispatch(setLoadingStatus(i18n('2/3 Importing customization ODD...')))
-        dispatch(postToTEIGarage(odd.xml, teigarage.compile_json(lang))).then(() => {
+        dispatch(postToTEIGarage(oddXml, teigarage.compile_json(lang))).then(() => {
           dispatch(setLoadingStatus(i18n('3/3 Importing full specification source...')))
           // 2. Get p5subset.
           if (localsourceUrl) {

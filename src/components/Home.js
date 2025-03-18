@@ -77,9 +77,34 @@ export default class Home extends Component {
           url: `${presets}/tei_jtei.odd`,
         },
         {
-          label: 'MEI 5',
+          label: 'MEI 5 - All',
           url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-all.xml`,
-          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.0/mei-source_canonicalized_v5.0.xml`
+          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.1/mei-source_canonicalized_v5.1.xml`
+        },
+        {
+          label: 'MEI 5 - All (Any Start)',
+          url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-all_anyStart.xml`,
+          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.1/mei-source_canonicalized_v5.1.xml`
+        },
+        {
+          label: 'MEI 5 - Common Music Notation',
+          url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-CMN.xml`,
+          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.1/mei-source_canonicalized_v5.1.xml`
+        },
+        {
+          label: 'MEI 5 - Mensural',
+          url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-Mensural.xml`,
+          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.1/mei-source_canonicalized_v5.1.xml`
+        },
+        {
+          label: 'MEI 5 - Neumes',
+          url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-Neumes.xml`,
+          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.1/mei-source_canonicalized_v5.1.xml`
+        },
+        {
+          label: 'MEI 5 - Basic',
+          url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-basic.xml`,
+          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.1/mei-source_canonicalized_v5.1.xml`
         }
       ]
     }
@@ -226,6 +251,7 @@ export default class Home extends Component {
                     <ul className="mdc-list">
                       <li><span className="mdc-list-item__text">Raff Viglianti (lead)</span></li>
                       <li><span className="mdc-list-item__text">Peter Stadler</span></li>
+                      <li><span className="mdc-list-item__text">Bryan Wang</span></li>
                     </ul>
                     <h3 className="mdc-typography--headline5">{i18n('Localization')}</h3>
                     <ul className="mdc-list">
