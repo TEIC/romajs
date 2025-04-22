@@ -2,10 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { _i18n } from '../localization/i18n'
-import presets from '../utils/presets'
 
 import {MDCTabBar} from '@material/tabs'
 import { MDCSelect } from '@material/select'
+
+import { TEI_VERSIONS, TEI_CURRENT, getTEISchemaBaseURL,
+  MEI_VERSIONS, MEI_CURRENT, getMEISchemaBaseURL
+} from '../utils/versions'
 
 export default class Home extends Component {
   constructor(props) {
@@ -15,100 +18,118 @@ export default class Home extends Component {
       selectedFile: undefined,
       selectedKnown: undefined,
       localSource: undefined,
+      format: undefined,
+      version: undefined,
       odds: [
         {
           label: 'TEI All (customize by reducing TEI)',
-          url: `${presets}/tei_all.odd`,
+          url: `tei_all.odd`,
+          format: 'TEI'
         },
         {
           label: 'TEI Minimal (customize by building TEI up)',
-          url: `${presets}/tei_minimal.odd`,
+          url: `tei_minimal.odd`,
+          format: 'TEI'
         },
         {
           label: 'TEI Absolutely Bare',
-          url: `${presets}/tei_bare.odd`,
+          url: `tei_bare.odd`,
+          format: 'TEI'
         },
         {
           label: 'TEI SimplePrint',
-          url: `${presets}/tei_simplePrint.odd`,
+          url: `tei_simplePrint.odd`,
+          format: 'TEI'
         },
         {
           label: 'TEI Lite',
-          url: `${presets}/tei_lite.odd`,
+          url: `tei_lite.odd`,
+          format: 'TEI'
         },
         {
           label: 'TEI Tite',
-          url: `${presets}/tei_tite.odd`,
+          url: `tei_tite.odd`,
+          format: 'TEI'
         },
         {
           label: 'TEI for Linguistic Corpora',
-          url: `${presets}/tei_corpus.odd`,
+          url: `tei_corpus.odd`,
+          format: 'TEI'
         },
         {
           label: 'TEI for Manuscript Description',
-          url: `${presets}/tei_ms.odd`,
+          url: `tei_ms.odd`,
+          format: 'TEI'
         },
         {
           label: 'TEI with Drama',
-          url: `${presets}/tei_drama.odd`,
+          url: `tei_drama.odd`,
+          format: 'TEI'
         },
         {
           label: 'TEI for Speech Representation',
-          url: `${presets}/tei_speech.odd`,
+          url: `tei_speech.odd`,
+          format: 'TEI'
         },
         {
           label: 'TEI for Authoring ODDs',
-          url: `${presets}/tei_odds.odd`,
+          url: `tei_odds.odd`,
+          format: 'TEI'
         },
         // {
         //   label: 'TEI with SVG',
-        //   url: `${presets}/tei_svg.odd`,
+        //   url: `tei_svg.odd`,
+        //  format: 'TEI'
         // },
         // {
         //   label: 'TEI with MathML',
-        //   url: `${presets}/tei_math.odd`,
+        //   url: `tei_math.odd`,
+        //   format: 'TEI'
         // },
         // {
         //   label: 'TEI with XInclude',
-        //   url: `${presets}/tei_xinclude.odd`,
+        //   url: `tei_xinclude.odd`,
+        //   format: 'TEI'
         // },
         {
           label: 'TEI for Journal of the TEI',
-          url: `${presets}/tei_jtei.odd`,
+          url: `tei_jtei.odd`,
+          format: 'TEI'
         },
         {
           label: 'MEI 5 - All',
-          url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-all.xml`,
-          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.1/mei-source_canonicalized_v5.1.xml`
+          url: `mei-all.xml`,
+          format: 'MEI'
         },
         {
           label: 'MEI 5 - All (Any Start)',
-          url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-all_anyStart.xml`,
-          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.1/mei-source_canonicalized_v5.1.xml`
+          url: `mei-all_anyStart.xml`,
+          format: 'MEI'
         },
         {
           label: 'MEI 5 - Common Music Notation',
-          url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-CMN.xml`,
-          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.1/mei-source_canonicalized_v5.1.xml`
+          url: `mei-CMN.xml`,
+          format: 'MEI'
         },
         {
           label: 'MEI 5 - Mensural',
-          url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-Mensural.xml`,
-          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.1/mei-source_canonicalized_v5.1.xml`
+          url: `mei-Mensural.xml`,
+          format: 'MEI'
         },
         {
           label: 'MEI 5 - Neumes',
-          url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-Neumes.xml`,
-          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.1/mei-source_canonicalized_v5.1.xml`
+          url: `mei-Neumes.xml`,
+          format: 'MEI'
         },
         {
           label: 'MEI 5 - Basic',
-          url: `https://raw.githubusercontent.com/music-encoding/music-encoding/refs/heads/develop/customizations/mei-basic.xml`,
-          localSource: `https://raw.githubusercontent.com/music-encoding/schema/refs/heads/main/5.1/mei-source_canonicalized_v5.1.xml`
+          url: `mei-basic.xml`,
+          format: 'MEI'
         }
       ]
     }
     this.updatePanel = this.updatePanel.bind(this)
+    this.selectVersion = null
   }
 
   componentDidMount() {
@@ -131,7 +152,7 @@ export default class Home extends Component {
       this.updatePanel(tabs.activeTabIndex)
     })
     // Set start function to first option
-    this.setState({selectedKnown: this.state.odds[0].url})
+    this.setState({selectedKnown: this.state.odds[0].url, format: this.state.odds[0].format})
     this._updateCustomizationUrl()
 
     const select = new MDCSelect(this.refs.chooseodd)
@@ -139,10 +160,24 @@ export default class Home extends Component {
     select.listen('MDCSelect:change', () => {
       const odd = this.state.odds.filter(o => o.label === select.value)[0]
       if (odd) {
-        this.setState({selectedKnown: odd.url, localSource: odd.localSource || undefined})
+        this.setState({selectedKnown: odd.url, format: odd.format, localSource: odd.localSource || undefined})
         this._updateCustomizationUrl()
       }
     })
+
+    this.selectVersion = new MDCSelect(this.refs.chooseversion)
+    this.selectVersion.foundation_.setSelectedIndex(0)
+    this.selectVersion.listen('MDCSelect:change', () => {
+      this.setState({version: this.selectVersion.value})
+      this._updateCustomizationUrl()
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.format && prevState.format !== this.state.format) {
+      this.selectVersion.foundation_.setValue(this.state.format === 'TEI' ? TEI_CURRENT : MEI_CURRENT)
+      this._updateCustomizationUrl()
+    }
   }
 
   updatePanel(index) {
@@ -155,8 +190,11 @@ export default class Home extends Component {
   }
 
   _updateCustomizationUrl() {
+    const baseUrl = this.state.format === 'MEI' ? getMEISchemaBaseURL(this.state.version || MEI_CURRENT) : getTEISchemaBaseURL(this.state.version || TEI_CURRENT)
+    const localSource = this.state.format === 'MEI' ? getMEISchemaBaseURL(this.state.version || MEI_CURRENT, true) : undefined
+    const selectedKnown = `${baseUrl}${this.state.selectedKnown}`
     this.setState(
-      {start: () => {this.props.getCustomization(this.state.selectedKnown, this.props.language, this.state.localSource)}}
+      {start: () => {this.props.getCustomization(selectedKnown, this.props.language, localSource)}}
     )
   }
 
@@ -190,7 +228,7 @@ export default class Home extends Component {
                     <div className="romajs-tabPanels">
                       <div className="romajs-tabPanel" role="tabpanel" style={this._setActivePanel(0)}>
                         <h2 className="mdc-typography--title">{i18n('Select ODD')}</h2>
-                        <div className="mdc-select" ref="chooseodd">
+                        <div className="mdc-select" ref="chooseodd" style={{width: '65%'}}>
                           <input type="hidden" name="enhanced-select"/>
                           <i className="mdc-select__dropdown-icon"/>
                           <div className="mdc-select__selected-text"/>
@@ -204,6 +242,24 @@ export default class Home extends Component {
                             }</ul>
                           </div>
                           <span className="mdc-floating-label">{i18n('Choose a preset')}</span>
+                          <div className="mdc-line-ripple"/>
+                        </div>
+                        <div className="mdc-select" ref="chooseversion" style={{width: '25%', marginLeft: '5%'}}>
+                          <input type="hidden" name="enhanced-select"/>
+                          <i className="mdc-select__dropdown-icon"/>
+                          <div className="mdc-select__selected-text"/>
+                          <div className="mdc-select__menu mdc-menu mdc-menu-surface">
+                            <ul className="mdc-list">
+                              <li className="mdc-list-item" data-value={this.state.format === 'TEI' ? TEI_CURRENT : MEI_CURRENT}>current ({this.state.format === 'TEI' || this.state.format === undefined ? TEI_VERSIONS[0] : MEI_CURRENT})</li>
+                              {
+                                (this.state.format === 'TEI' ? TEI_VERSIONS : MEI_VERSIONS).map((v, i) => {
+                                  if (i === 0) { return '' } // skip current version
+                                  return <li className="mdc-list-item" data-value={v} key={`lv${i}`} tabIndex={i}>{v}</li>
+                                })
+                              }
+                            </ul>
+                          </div>
+                          <span className="mdc-floating-label">Version</span>
                           <div className="mdc-line-ripple"/>
                         </div>
                       </div>
