@@ -122,7 +122,7 @@ const mapStateToProps = (state, ownProps) => {
   for (const att of element.attributes) {
     // Check for deleted attributes that were defined on the element only
     // ie are not inherited from a class.
-    if (att.mode === 'delete' && att.onElement && att._isNew) {
+    if (att.mode === 'delete' && att.onElement && !att._isNew) {
       att.shortDesc = localElement.attributes.filter(a => (a.ident === att.ident))[0].shortDesc
       att.deleted = true
     } else if (deletedAttributesFromClasses.has(att.ident)) {
