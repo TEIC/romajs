@@ -97,32 +97,32 @@ export default class Home extends Component {
           format: 'TEI'
         },
         {
-          label: 'MEI 5 - All',
+          label: 'MEI - All',
           url: `mei-all.xml`,
           format: 'MEI'
         },
         {
-          label: 'MEI 5 - All (Any Start)',
+          label: 'MEI - All (Any Start)',
           url: `mei-all_anyStart.xml`,
           format: 'MEI'
         },
         {
-          label: 'MEI 5 - Common Music Notation',
+          label: 'MEI - Common Music Notation',
           url: `mei-CMN.xml`,
           format: 'MEI'
         },
         {
-          label: 'MEI 5 - Mensural',
+          label: 'MEI - Mensural',
           url: `mei-Mensural.xml`,
           format: 'MEI'
         },
         {
-          label: 'MEI 5 - Neumes',
+          label: 'MEI - Neumes',
           url: `mei-Neumes.xml`,
           format: 'MEI'
         },
         {
-          label: 'MEI 5 - Basic',
+          label: 'MEI - Basic',
           url: `mei-basic.xml`,
           format: 'MEI'
         }

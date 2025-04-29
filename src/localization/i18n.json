@@ -1413,53 +1413,53 @@
       "ja": "TEI Tite",
       "zh-notchecked": "TEI Tite"
     },
-    "MEI 5 - All": {
-      "fr": "MEI 5 - All",
-      "es": "MEI 5 - All",
-      "de": "MEI 5 - All",
-      "pt": "MEI 5 - All",
-      "ja": "MEI 5 - All",
-      "zh": "MEI 5 - All"
+    "MEI - All": {
+      "fr": "MEI - All",
+      "es": "MEI - All",
+      "de": "MEI - All",
+      "pt": "MEI - All",
+      "ja": "MEI - All",
+      "zh": "MEI - All"
      },
-    "MEI 5 - All (Any Start)": {
-      "fr": "MEI 5 - All (Any Start)",
-      "es": "MEI 5 - All (Any Start)",
-      "de": "MEI 5 - All (Any Start)",
-      "pt": "MEI 5 - All (Any Start)",
-      "ja": "MEI 5 - All (Any Start)",
-      "zh": "MEI 5 - All (Any Start)"
+    "MEI - All (Any Start)": {
+      "fr": "MEI - All (Any Start)",
+      "es": "MEI - All (Any Start)",
+      "de": "MEI - All (Any Start)",
+      "pt": "MEI - All (Any Start)",
+      "ja": "MEI - All (Any Start)",
+      "zh": "MEI - All (Any Start)"
      },
-     "MEI 5 - Common Music Notation": {
-      "fr": "MEI 5 - Common Music Notation",
-      "es": "MEI 5 - Common Music Notation",
-      "de": "MEI 5 - Common Music Notation",
-      "pt": "MEI 5 - Common Music Notation",
-      "ja": "MEI 5 - Common Music Notation",
-      "zh": "MEI 5 - Common Music Notation"
+     "MEI - Common Music Notation": {
+      "fr": "MEI - Common Music Notation",
+      "es": "MEI - Common Music Notation",
+      "de": "MEI - Common Music Notation",
+      "pt": "MEI - Common Music Notation",
+      "ja": "MEI - Common Music Notation",
+      "zh": "MEI - Common Music Notation"
      },
-     "MEI 5 - Mensural": {
-      "fr": "MEI 5 - Mensural",
-      "es": "MEI 5 - Mensural",
-      "de": "MEI 5 - Mensural",
-      "pt": "MEI 5 - Mensural",
-      "ja": "MEI 5 - Mensural",
-      "zh": "MEI 5 - Mensural"
+     "MEI - Mensural": {
+      "fr": "MEI - Mensural",
+      "es": "MEI - Mensural",
+      "de": "MEI - Mensural",
+      "pt": "MEI - Mensural",
+      "ja": "MEI - Mensural",
+      "zh": "MEI - Mensural"
      },
-     "MEI 5 - Neumes": {
-      "fr": "MEI 5 - Neumes",
-      "es": "MEI 5 - Neumes",
-      "de": "MEI 5 - Neumes",
-      "pt": "MEI 5 - Neumes",
-      "ja": "MEI 5 - Neumes",
-      "zh": "MEI 5 - Neumes"
+     "MEI - Neumes": {
+      "fr": "MEI - Neumes",
+      "es": "MEI - Neumes",
+      "de": "MEI - Neumes",
+      "pt": "MEI - Neumes",
+      "ja": "MEI - Neumes",
+      "zh": "MEI - Neumes"
      },
-     "MEI 5 - Basic": {
-      "fr": "MEI 5 - Basic",
-      "es": "MEI 5 - Basic",
-      "de": "MEI 5 - Basic",
-      "pt": "MEI 5 - Basic",
-      "ja": "MEI 5 - Basic",
-      "zh": "MEI 5 - Basic"
+     "MEI - Basic": {
+      "fr": "MEI - Basic",
+      "es": "MEI - Basic",
+      "de": "MEI - Basic",
+      "pt": "MEI - Basic",
+      "ja": "MEI - Basic",
+      "zh": "MEI - Basic"
      }
   },
   "HomePage": {
