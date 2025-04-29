@@ -1412,7 +1412,55 @@
       "pt-notchecked": "TEI Tite",
       "ja": "TEI Tite",
       "zh-notchecked": "TEI Tite"
-    }
+    },
+    "MEI 5 - All": {
+      "fr": "MEI 5 - All",
+      "es": "MEI 5 - All",
+      "de": "MEI 5 - All",
+      "pt": "MEI 5 - All",
+      "ja": "MEI 5 - All",
+      "zh": "MEI 5 - All"
+     },
+    "MEI 5 - All (Any Start)": {
+      "fr": "MEI 5 - All (Any Start)",
+      "es": "MEI 5 - All (Any Start)",
+      "de": "MEI 5 - All (Any Start)",
+      "pt": "MEI 5 - All (Any Start)",
+      "ja": "MEI 5 - All (Any Start)",
+      "zh": "MEI 5 - All (Any Start)"
+     },
+     "MEI 5 - Common Music Notation": {
+      "fr": "MEI 5 - Common Music Notation",
+      "es": "MEI 5 - Common Music Notation",
+      "de": "MEI 5 - Common Music Notation",
+      "pt": "MEI 5 - Common Music Notation",
+      "ja": "MEI 5 - Common Music Notation",
+      "zh": "MEI 5 - Common Music Notation"
+     },
+     "MEI 5 - Mensural": {
+      "fr": "MEI 5 - Mensural",
+      "es": "MEI 5 - Mensural",
+      "de": "MEI 5 - Mensural",
+      "pt": "MEI 5 - Mensural",
+      "ja": "MEI 5 - Mensural",
+      "zh": "MEI 5 - Mensural"
+     },
+     "MEI 5 - Neumes": {
+      "fr": "MEI 5 - Neumes",
+      "es": "MEI 5 - Neumes",
+      "de": "MEI 5 - Neumes",
+      "pt": "MEI 5 - Neumes",
+      "ja": "MEI 5 - Neumes",
+      "zh": "MEI 5 - Neumes"
+     },
+     "MEI 5 - Basic": {
+      "fr": "MEI 5 - Basic",
+      "es": "MEI 5 - Basic",
+      "de": "MEI 5 - Basic",
+      "pt": "MEI 5 - Basic",
+      "ja": "MEI 5 - Basic",
+      "zh": "MEI 5 - Basic"
+     }
   },
   "HomePage": {
     "1/3 Obtaining customization ODD...": {
@@ -2019,6 +2067,16 @@
       "de-notchecked": "Erzeugt mit RomaJS Version",
       "pt-notchecked": "Gerado com a versão RomaJS",
       "zh-notchecked": "用RomaJS版本生成的"
+    }
+  },
+  "Rng": {
+    "RelaxNG elements cannot be edited in Roma.": {
+      "it": "Gli elementi RelaxNG non possono essere modificati con Roma.",
+      "fr-notchecked": "Les éléments RelaxNG ne peuvent pas être modifiés avec Roma.",
+      "es-notchecked": "Los elementos RelaxNG no pueden editarse con Roma.",
+      "de-notchecked": "RelaxNG-Elemente können nicht mit Roma bearbeitet werden.",
+      "pt-notchecked": "Os elementos RelaxNG não podem ser editados com Roma.",
+      "zh-notchecked": "RelaxNG 元素無法使用Roma編輯。"
     }
   }
 }

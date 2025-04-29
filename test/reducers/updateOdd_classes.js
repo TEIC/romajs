@@ -12,9 +12,6 @@ const customizationXML = parser.parseFromString(customizationXMLString)
 let customJson = null
 let localJson = null
 
-serializer
-customizationXML
-
 // RESTORE_MEMBERSHIPS_TO_CLASS and CLEAR_MEMBERSHIPS_TO_CLASS don't need testing here
 // as they do not affect ODD changes.
 
@@ -208,6 +205,45 @@ describe('Update Customization classes (handles UPDATE_CUSTOMIZATION_ODD)', () =
     let xml = parser.parseFromString(state.odd.customization.updatedXml)
     xml = global.uselocaldom(xml)
     expect(xml.querySelector('classSpec[ident="att.global"] > classes > memberOf[key="att.global.rendition"]').getAttribute('mode')).toEqual('delete')
+  })
+
+  it('should change a class\' attribute classes (restore membership deleted by loaded customization)', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    // Change ODD data for testing
+    const testXml = global.uselocaldom(customizationXML)
+    const classesEl = testXml.createElementNS('http://www.tei-c.org/ns/1.0', 'classes')
+    classesEl.innerHTML = `<memberOf key="att.global.linking"/><memberOf key="att.global.analytic"/>`
+    const attGlobalEl = testXml.querySelector('classSpec[ident="att.global"]')
+    attGlobalEl.insertBefore(classesEl, attGlobalEl.querySelector('attList'))
+    const testXmlString = serializer.serializeToString(testXml)
+
+    // Adjust JSON to match
+    customJson.classes.attributes.forEach(c => {
+      if (c.ident === 'att.global') {
+        c.classes.atts = ['att.global.linking']
+      }
+    })
+
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: testXmlString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'ADD_MEMBERSHIP_TO_CLASS',
+      member: 'att.global',
+      className: 'att.global.rendition',
+      classType: 'atts'
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    let xml = parser.parseFromString(state.odd.customization.updatedXml)
+    xml = global.uselocaldom(xml)
+    expect(xml.querySelector('classSpec[ident="att.global"] memberOf[key="att.global.rendition"]')).toExist()
   })
 
   it('should create a new class (attribute)', () => {

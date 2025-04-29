@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import DatatypePicker from '../containers/DatatypePicker'
+import Rng from './Rng'
 import { Link } from 'react-router-dom'
 import { _i18n } from '../localization/i18n'
 
@@ -22,6 +23,15 @@ export default class DataRef extends Component {
         </div>
       </div>)
     }
+
+    if (this.props.rngContent) {
+      return (<div className="mdc-layout-grid__inner romajs-formrow" key="dtp">
+        <div className="mdc-layout-grid__cell--span-12">
+          <Rng language={this.props.language} rngContent={this.props.rngContent}/>
+        </div>
+      </div>)
+    }
+
     return [
       <div className="mdc-layout-grid__inner romajs-formrow" key="dtp">
         <div className="mdc-layout-grid__cell--span-1">
@@ -48,6 +58,7 @@ DataRef.propTypes = {
   member: PropTypes.object.isRequired,
   memberType: PropTypes.string.isRequired,
   datatype: PropTypes.string.isRequired,
+  rngContent: PropTypes.bool,
   available: PropTypes.bool,
   restriction: PropTypes.string,
   attribute: PropTypes.string,

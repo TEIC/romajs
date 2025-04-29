@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchOdd, receiveOdd, postToTEIGarage, fetchLocalSource,
+import { fetchOdd, receiveOdd, postToTEIGarage, fetchLocalSource, fetchCustomLocalSource,
   receiveOddJson, clearState } from '../actions'
 import { clearUiData, setLoadingStatus } from '../actions/interface'
 import { push } from 'react-router-redux'
@@ -16,22 +16,36 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCustomization: (url, lang) => {
+    getCustomization: (url, lang, localsourceUrl) => {
       const i18n = _i18n(lang, 'HomePage')
       dispatch(clearState())
       dispatch(push('/settings'))
       dispatch(setLoadingStatus(i18n('1/3 Obtaining customization ODD...')))
       dispatch(fetchOdd(url)).then((odd) => {
+        // If a localsourceUrl is provided, set it on <schemaSpec> if a @source isn't there already.
+        let oddXml = odd.xml
+        if (localsourceUrl) {
+          oddXml = oddXml.replace(/<([a-zA-Z]+:)?schemaSpec([\s\S]*?)>/, (match, prefix = '', attrs) => {
+            if (/schema\s*=/.test(attrs)) {
+              return match // return as is
+            }
+            return `<${prefix}schemaSpec${attrs} source="${localsourceUrl}">` // add localsourceUrl
+          })
+        }
         // 1. Convert to JSON via TEIGarage
         dispatch(setLoadingStatus(i18n('2/3 Importing customization ODD...')))
-        dispatch(postToTEIGarage(odd.xml, teigarage.compile_json(lang))).then(() => {
+        dispatch(postToTEIGarage(oddXml, teigarage.compile_json(lang))).then(() => {
           dispatch(setLoadingStatus(i18n('3/3 Importing full specification source...')))
           // 2. Get p5subset.
-          dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
+          if (localsourceUrl) {
+            dispatch(fetchCustomLocalSource(localsourceUrl, teigarage.json()))
+          } else {
+            dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
+          }
         })
       })
     },
-    uploadCustomization: (files, lang) => {
+    uploadCustomization: (files, lang, localsourceUrl) => {
       const i18n = _i18n(lang, 'HomePage')
       dispatch(clearState())
       dispatch(push('/settings'))
@@ -44,8 +58,12 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(setLoadingStatus(i18n('2/3 Importing customization ODD...')))
         dispatch(postToTEIGarage(e.target.result, teigarage.compile_json(lang))).then(() => {
           dispatch(setLoadingStatus(i18n('3/3 Importing full specification source...')))
-          // 2. Get p5subset.
-          dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
+          // 2. Get p5subset or other localsource
+          if (localsourceUrl) {
+            dispatch(fetchCustomLocalSource(localsourceUrl, teigarage.json()))
+          } else {
+            dispatch(fetchLocalSource(`${datasource}/p5subset.json`))
+          }
         })
       }
     },

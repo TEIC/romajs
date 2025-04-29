@@ -8,6 +8,10 @@ import {
   DISCARD_CLASS_CHANGES,
   REVERT_CLASS_TO_SOURCE
 } from '../actions/classes'
+import { ODDCache } from './odd/utils'
+import safeSelect from '../utils/safeSelect'
+
+const oddCache = new ODDCache()
 
 // TODO: this function can be shared with elements.js
 function markChange(member, whatChanged) {
@@ -65,6 +69,8 @@ export function oddClasses(state, action) {
     }
   }
 
+  let localClass = undefined
+  let customClass = undefined
   switch (action.type) {
     case UPDATE_CLASS_DOCS:
       allCustomClasses.forEach(m => {
@@ -80,7 +86,7 @@ export function oddClasses(state, action) {
       })
       return newState
     case DELETE_CLASS_DOCS:
-      let localClass = allLocalClasses.filter(m => action.member === m.ident)[0]
+      localClass = allLocalClasses.filter(m => action.member === m.ident)[0]
       allCustomClasses.forEach(m => {
         if (m.ident === action.member) {
           if (Array.isArray(m[action.docEl]) && action.index !== undefined) {
@@ -207,7 +213,7 @@ export function oddClasses(state, action) {
       })
       return newState
     case CHANGE_CLASS_ATTRIBUTE:
-      let customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
+      customClass = customization.classes.attributes.filter(c => (c.ident === action.className))[0]
       customClass.attributes = customClass.attributes.map(a => {
         if (a.ident === action.attName) {
           return Object.assign({}, a, {mode: 'change', changed: false, _changedOnMember: true})
@@ -227,7 +233,19 @@ export function oddClasses(state, action) {
           if (isMember) {
             customClass = allCustomClasses.filter(c => (c.ident === localClass.ident))[0]
             if (customClass) {
-              addClass(customClass, action.className, type)
+              // Check the ODD: if the class is explicitly removed by the customization, do not restore it.
+              oddCache.setup(state.customization.xml)
+              const classSpec = safeSelect(oddCache.odd.querySelectorAll(`schemaSpec > classSpec[ident='${customClass.ident}'][mode='change'], specGrp > classSpec[ident='${customClass.ident}'][mode='change']`))[0]
+              if (classSpec) {
+                const memberOf = classSpec.querySelector(`classes > memberOf[key='${action.className}']`)
+                if (memberOf) {
+                  // Only restore class if the class from customization ODD is a member.
+                  addClass(customClass, action.className, type)
+                }
+              } else {
+                // If the customization ODD doesn't have a classSpec for this class, we're good to go.
+                addClass(customClass, action.className, type)
+              }
             }
           }
         }

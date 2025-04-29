@@ -29,8 +29,6 @@ $ npm install --legacy-peer-deps
 
 RomaJS was largely developed between 2017-2018 using technology available at the time. While we have little concerns about the longevity of the compiled tool, over time there will be issues with using outdated libraries when developing new features or fixing bugs. We will try to fix ostensibly broken dependencies, but otherwise will stick to the versions that worked when this tool was developed.
 
-We are currently pinned to React 16 and Webpack 3 (See #163).
-
 In particular, adding or fixing HTML components can be tricky: we used an early version of the Material Components Web library (v 0.43.0). The closest documentation is currently [available here](https://material-components.github.io/material-components-web-catalog/) ([Wayback machine link](https://web.archive.org/web/20221224181054/https://material-components.github.io/material-components-web-catalog/)).
 
 ### Test

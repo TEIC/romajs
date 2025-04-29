@@ -120,12 +120,12 @@ function customization(state = {
         msg = i18n('This does not appear to be a TEI document.')
         throw Error(msg)
       }
-      for (const el of Array.from(schemaSpec.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*'))) {
-        if (!el.closest('egXML')) {
-          msg = i18n('ODD Documents with RELAX NG elements are not supported.')
-          throw Error(msg)
-        }
-      }
+      // for (const el of Array.from(schemaSpec.getElementsByTagNameNS('http://relaxng.org/ns/structure/1.0', '*'))) {
+      //   if (!el.closest('egXML')) {
+      //     msg = i18n('ODD Documents with RELAX NG elements are not supported.')
+      //     throw Error(msg)
+      //   }
+      // }
       let hasSource = false
       for (const el of Array.from(schemaSpec.getElementsByTagNameNS('http://www.tei-c.org/ns/1.0', '*'))) {
         if (!el.closest('egXML') && el.getAttribute('source')) {
@@ -178,6 +178,7 @@ function customization(state = {
 }
 
 function odd(state = {}, action) {
+  let filename = ''
   switch (action.type) {
     case CLEAR_STATE:
       return {}
@@ -190,7 +191,7 @@ function odd(state = {}, action) {
         })
       return Object.assign({}, state, {customization: xml})
     case EXPORT_ODD:
-      let filename = 'new_odd'
+      filename = 'new_odd'
       try {
         filename = state.customization.settings.filename
       } catch (e) { e }
@@ -204,7 +205,7 @@ function odd(state = {}, action) {
       } catch (e) { e }
       postToTEIGarage(state.customization.updatedXml, teigarage[action.format](action.lang))
         .then((res) => {
-          const ext = action.format !== 'rnc' ? action.format : 'zip'
+          const ext = action.format !== 'w3c' ? action.format : 'zip'
           fileSaver.saveAs(new Blob([res], {'type': 'text\/xml'}), `${filename}.${ext}`)
         })
       return state

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import DataRef from './DataRef'
 import ValList from './ValList'
 import { _i18n } from '../localization/i18n'
+import Rng from './Rng'
 
 export default class DatatypeContent extends Component {
   constructor(props) {
@@ -32,6 +33,14 @@ export default class DatatypeContent extends Component {
     let contentType = null
     let grouping = null
     if (content[0]) {
+      if (content[0].type === 'rng') {
+        return (<div className="mdc-layout-grid__inner romajs-formrow">
+          <div className="mdc-layout-grid__cell--span-3"/>
+          <div className="mdc-layout-grid__cell--span-8">
+            <Rng language={this.props.language} rngContent={content[0].rngContent}/>
+          </div>
+        </div>)
+      }
       contentType = content[0].type !== 'sequence' && content[0].type !== 'alternate' ? null : content[0].type
       // Go down to sequence or alternate if needed.
       // We assume there is only one level, though more are possible.

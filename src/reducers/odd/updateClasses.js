@@ -85,11 +85,13 @@ function processClasses(classType, localsource, customization, odd) {
         }
       }
     } else if (cl._changed && (cl._changed.join('') === 'included' || !isModuleSelected)) {
-      // add classRef
-      const clRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'classRef')
-      clRef.setAttribute('key', cl.ident)
-      const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
-      schemaSpec.appendChild(clRef)
+      // add classRef if it isn't already there
+      if (!odd.querySelector(`classRef[key="${cl.ident}"]`)) {
+        const clRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'classRef')
+        clRef.setAttribute('key', cl.ident)
+        const schemaSpec = safeSelect(odd.querySelectorAll('schemaSpec'))[0]
+        schemaSpec.appendChild(clRef)
+      }
     }
   }
 
