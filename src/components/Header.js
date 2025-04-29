@@ -73,21 +73,33 @@ export default class Header extends Component {
                   <ul className="mdc-list" role="menu" aria-hidden="true">
                     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
                       this.props.setLanguage('de')
+                    }} onKeyDown={(e)=>{
+                      (e.key === 'Enter' || e.key === ' ') && this.props.setLanguage('de')
                     }}>Deutsch</li>
                     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
                       this.props.setLanguage('en')
+                    }} onKeyDown={(e)=>{
+                      (e.key === 'Enter' || e.key === ' ') && this.props.setLanguage('en')
                     }}>English</li>
                     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
                       this.props.setLanguage('es')
+                    }} onKeyDown={(e)=>{
+                      (e.key === 'Enter' || e.key === ' ') && this.props.setLanguage('es')
                     }}>Español</li>
                     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
                       this.props.setLanguage('fr')
+                    }} onKeyDown={(e)=>{
+                      (e.key === 'Enter' || e.key === ' ') && this.props.setLanguage('fr')
                     }}>Français</li>
                     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
                       this.props.setLanguage('it')
+                    }} onKeyDown={(e)=>{
+                      (e.key === 'Enter' || e.key === ' ') && this.props.setLanguage('it')
                     }}>Italiano</li>
                     <li className="mdc-list-item" role="menuitem" tabIndex="0" onClick={()=>{
                       this.props.setLanguage('ja')
+                    }} onKeyDown={(e)=>{
+                      (e.key === 'Enter' || e.key === ' ') && this.props.setLanguage('ja')
                     }}>日本語</li>
                   </ul>
                 </div>

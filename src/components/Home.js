@@ -221,8 +221,8 @@ export default class Home extends Component {
                 <div className="romajs-homebox mdc-card mdc-elevation--z10">
                   <section className="mdc-card__primary">
                     <nav id="basic-tab-bar" className="mdc-tab-bar" ref="tabs">
-                      <a className="mdc-tab mdc-tab--active">{i18n('Select ODD')}</a>
-                      <a className="mdc-tab">{i18n('Upload ODD')}</a>
+                      <a className="mdc-tab mdc-tab--active" tabIndex={0}>{i18n('Select ODD')}</a>
+                      <a className="mdc-tab" tabIndex={0}>{i18n('Upload ODD')}</a>
                       <span className="mdc-tab-bar__indicator" style={{transform: 'translateX(160px) scale(0.333333, 1)', visibility: 'visible'}}/>
                     </nav>
                     <div className="romajs-tabPanels">
@@ -263,7 +263,7 @@ export default class Home extends Component {
                           <div className="mdc-line-ripple"/>
                         </div>
                       </div>
-                      <div className="romajs-tabPanel"role="tabpanel" style={this._setActivePanel(1)}>
+                      <div className="romajs-tabPanel" role="tabpanel" style={this._setActivePanel(1)}>
                         <h2 className="mdc-typography--title">{i18n('Upload ODD')}</h2>
                         <input type="file" id="files" accept=".xml,.tei,.odd" onChange={e => {
                           this.setState({selectedFile: e.target.files.length > 0 ? e.target.files : undefined})

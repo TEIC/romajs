@@ -370,6 +370,7 @@ main {
 // FAB
 
 .romajs-fab--absolute {
+  z-index: 99999;
   position: fixed;
   bottom: 1rem;
   right: 1rem;
@@ -397,4 +398,8 @@ main {
 
 .romajs-credits {
   display: flex;
+}
+
+.romajs-focusablechip:focus {
+  background-color: $mdc-theme-accent !important;
 }

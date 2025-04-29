@@ -28,11 +28,11 @@ export default class Module extends Component {
     }
     const iconClass = this.props.selected ? 'romajs-color-no' : 'romajs-color-yes'
     const iconType = this.props.selected ? 'cancel' : 'add_circle'
-    return (<div>{dialog}<div key="chip" className="mdc-chip" onClick={() => {
-      if (this.props.selected) {
-        this.setState({deleting: true})
-      } else {
-        this.toggle()
+    return (<div>{dialog}<div key="chip" className="mdc-chip" tabIndex={0} onClick={() => {
+      this.props.selected ? this.setState({deleting: true}) : this.toggle()
+    }} onKeyDown={(e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        this.props.selected ? this.setState({deleting: true}) : this.toggle()
       }
     }}>
       <i className={`material-icons mdc-chip__icon mdc-chip__icon--leading ${iconClass}`}>{iconType}</i>

@@ -23,7 +23,12 @@ export default class FilterSearchBar extends Component {
         <i title="Match full word" className="mdc-text-field__icon material-icons" style={style} tabIndex="0" onClick={() => {
           this.props.setFilterOptions({fullMatch: !this.state.fullMatch})
           this.setState({fullMatch: !this.state.fullMatch})
-        }}>format_shapes</i>
+        }} onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            this.props.setFilterOptions({fullMatch: !this.state.fullMatch})
+            this.setState({fullMatch: !this.state.fullMatch})
+          }
+        }} >format_shapes</i>
         <div className="mdc-line-ripple"/>
       </div>
     )
