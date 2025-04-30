@@ -106,7 +106,28 @@ export function updateOdd(localsourceObj, customizationObj) {
   if (global.uselocaldom) {
     return odd.documentElement.outerHTML
   }
-  return new XMLSerializer().serializeToString(odd)
+
+  // Send TEIGarage request for validation
+  const fd = new FormData()
+  fd.append('fileToConvert', new Blob([new XMLSerializer().serializeToString(odd)], {'type': 'application\/octet-stream'}), 'file.odd')
+  fetch("https://teigarage.tei-c.org/ege-webservice/Validation/TEI%3atext%3Axml/", {
+    mode: 'cors',
+    method: 'POST',
+    body: fd
+  })
+  .then(response => response.text())
+  .then((data) => {
+    console.log(data)
+    if (data.includes('<status>SUCCESS</status>')) {
+      return data
+    } else {
+      dispatch(reportError(err))
+    }
+  })
+  .catch( (err) => {
+    console.log(err)
+  })
 }
 
 export default updateOdd
+
