@@ -152,24 +152,27 @@ export default class Home extends Component {
       this.updatePanel(tabs.activeTabIndex)
     })
     // Set start function to first option
-    this.setState({selectedKnown: this.state.odds[0].url, format: this.state.odds[0].format})
-    this._updateCustomizationUrl()
+    this.setState({selectedKnown: this.state.odds[0].url, format: this.state.odds[0].format},
+      this._updateCustomizationUrl
+    )
 
     const select = new MDCSelect(this.refs.chooseodd)
     select.foundation_.setSelectedIndex(0)
     select.listen('MDCSelect:change', () => {
       const odd = this.state.odds.filter(o => o.label === select.value)[0]
       if (odd) {
-        this.setState({selectedKnown: odd.url, format: odd.format, localSource: odd.localSource || undefined})
-        this._updateCustomizationUrl()
+        this.setState({selectedKnown: odd.url, format: odd.format, localSource: odd.localSource || undefined},
+          this._updateCustomizationUrl
+        )
       }
     })
 
     this.selectVersion = new MDCSelect(this.refs.chooseversion)
     this.selectVersion.foundation_.setSelectedIndex(0)
     this.selectVersion.listen('MDCSelect:change', () => {
-      this.setState({version: this.selectVersion.value})
-      this._updateCustomizationUrl()
+      this.setState({version: this.selectVersion.value},
+        this._updateCustomizationUrl
+      )
     })
   }
 
