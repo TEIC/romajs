@@ -75,6 +75,22 @@ export default class Desc extends Component {
           }
         })
 
+        editor.commands.addCommand({
+          name: 'defocusWithTab',
+          bindKey: {win: 'Shift-Tab', mac: 'Shift-Tab'},
+          exec: function(ed) {
+            ed.blur()
+          }
+        })
+
+        editor.commands.addCommand({
+          name: 'defocusWithEsc',
+          bindKey: {win: 'Esc', mac: 'Esc'},
+          exec: function(ed) {
+            ed.blur()
+          }
+        })
+
         // Force cursor and anchor to not get into root element tags.
         editor.session.on('change', () => {
           if (editor.session.getValue() !== '') {
@@ -136,8 +152,10 @@ export default class Desc extends Component {
           }
           preventHomeEnd()
         })
+        // Make sure the cursor is not after the closing tag
+        editor.moveCursorTo(0, 1)
         // TODO: this is for tinkering in browser, remove:
-        window.editor = editor
+        // window.editor = editor
       }
     })
   }
@@ -157,10 +175,14 @@ export default class Desc extends Component {
     this.props.update(this.props.ident, output, pos, this.props.valItem)
   }
 
+  createNew = () => {
+    this.props.update(this.props.ident, `<${this.descTag} xmlns="http://www.tei-c.org/ns/1.0" ${this.newDate} xml:lang="${this.props.docLang}"></${this.descTag}>`, 0, this.props.valItem)
+  }
+
   render() {
     const i18n = _i18n(this.props.language, 'Desc')
     let info = (<div className="mdc-layout-grid__cell--span-3">
-      <label>{i18n('Description')}</label>
+      <label>{i18n('Description')}yo</label>
       <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
         dangerouslySetInnerHTML={{__html: i18n('HelperText')}} />
     </div>)
@@ -173,9 +195,10 @@ export default class Desc extends Component {
     }
     let nodesc
     if (this.props.desc.length === 0) {
-      nodesc = (<i className="material-icons romajs-clickable" onClick={() => {
-        this.props.update(this.props.ident, `<${this.descTag} xmlns="http://www.tei-c.org/ns/1.0" ${this.newDate} xml:lang="${this.props.docLang}"></${this.descTag}>`, 0, this.props.valItem)
-      }}>add_circle_outline</i>)
+      nodesc = (<i className="material-icons romajs-clickable" tabIndex={0}
+        onClick={this.createNew}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.createNew()}
+      >add_circle_outline</i>)
     }
     return (<div className="mdc-layout-grid__inner romajs-formrow">
       {info}

@@ -283,6 +283,10 @@ main {
   cursor: pointer;
 }
 
+div.romajs-clickable:focus {
+  outline: 3px solid black;
+}
+
 .romajs-clickable-adjust {
   vertical-align: middle;
 }

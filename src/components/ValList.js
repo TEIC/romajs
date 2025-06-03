@@ -33,6 +33,11 @@ export default class ValList extends Component {
     }
   }
 
+  addNew = () => {
+    this.props.addValItem(this.refs.newValItem.value)
+    this.refs.newValItem.value = ''
+  }
+
   render() {
     const i18n = _i18n(this.props.language, 'ValList')
     const valList = this.props.memberType === 'dt'
@@ -83,14 +88,14 @@ export default class ValList extends Component {
       <div className="mdc-layout-grid">{[
         <div key="add" className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-12">
-            <i className={`material-icons romajs-clickable`} onClick={() => {
-              this.props.addValItem(this.refs.newValItem.value)
-              this.refs.newValItem.value = ''
-            }}>add_circle_outline</i>
             <div className="mdc-text-field mdc-text-field--upgraded">
               <input ref="newValItem" type="text" className="mdc-text-field__input" pattern="[^\s]+"/>
               <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
             </div>
+            <i className={`material-icons romajs-clickable`} tabIndex={0}
+              onClick={this.addNew}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.addNew()}
+            >add_circle_outline</i>
           </div>
         </div>,
         valItems.map(valItem => {

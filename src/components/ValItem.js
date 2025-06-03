@@ -14,8 +14,10 @@ export default class ValItem extends Component {
         valItem={valItem.ident} />)
     return [<div className="mdc-layout-grid__inner romajs-formrow" key="row1">
       <div className="mdc-layout-grid__cell--span-2">
-        <i className={`material-icons romajs-clickable`} onClick={() =>
-          this.props.deleteValItem(valItem.ident)}>clear</i>
+        <i className={`material-icons romajs-clickable`} tabIndex={0}
+          onClick={() => this.props.deleteValItem(valItem.ident)}
+          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.deleteValItem(valItem.ident)}
+        >clear</i>
         {valItem.ident ? valItem.ident : '(empty string)'}
       </div>
       <div className="mdc-layout-grid__cell--span-10">

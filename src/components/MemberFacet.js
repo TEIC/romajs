@@ -36,9 +36,7 @@ export default class MembersFacet extends Component {
     return (
       <div className={`mdc-chip mdc-ripple-upgraded ${activeClass} romajs-focusablechip`} tabIndex={0} onClick={() => {
         this.toggleMemberTypeVisibility(this.props.type)
-      }} onKeyDown={(e) => {
-        e.key === 'Enter' || e.key === ' ' ? this.toggleMemberTypeVisibility(this.props.type) : null
-      }}>
+      }} onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.toggleMemberTypeVisibility(this.props.type)}>
         {checkmark}
         <div className="mdc-chip__text">{this.props.label}</div>
       </div>

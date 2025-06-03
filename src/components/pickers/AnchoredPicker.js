@@ -29,7 +29,9 @@ export default class AnchoredPicker extends Component {
       icon = this.props.icon
     }
     return (<div className="romajs-clickable">
-      <i className="material-icons" onClick={this.show}>{icon}</i>
+      <i className="material-icons" tabIndex={0}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.show()}
+        onClick={this.show}>{icon}</i>
       <ModalPicker items={this.props.items} pickerType={this.props.pickerType} add={this.addItem}
         visible={this.state.visible} cancel={this.hide} message={this.props.message} language={this.props.language}/>
     </div>)

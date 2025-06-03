@@ -23,7 +23,9 @@ export default class AttPicker extends Picker {
           }
           if ((t === '' && this.props.showAll) || (t !== '' && c.ident.toLowerCase().match(t))) {
             return (<li className="mdc-list-item" key={`c${pos}`}>
-              <span className="mdc-list-item__graphic" onClick={() => this.addItem(c)}>
+              <span className="mdc-list-item__graphic" tabIndex={0}
+                onClick={() => this.addItem(c)}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.addItem(c)}>
                 <i className="material-icons">add_circle_outline</i>
               </span>
               <span className={`dc-list-item__text ${localClass}`}>

@@ -57,11 +57,13 @@ export default class Attributes extends Component {
               if (cl.sub) {
                 sub = `(${i18n('inherited from')} ${cl.from})`
               }
-              let addRemove = (<i className="material-icons romajs-clickable" onClick={() =>
-                this.props.deleteElementAttributeClass(this.props.member.ident, cl.ident)}>clear</i>)
+              let addRemove = (<i className="material-icons romajs-clickable" tabIndex={0}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.deleteElementAttributeClass(this.props.member.ident, cl.ident)}
+                onClick={() => this.props.deleteElementAttributeClass(this.props.member.ident, cl.ident)}>clear</i>)
               if (cl.inactive) {
-                addRemove = (<i className="material-icons romajs-clickable" onClick={() =>
-                  this.props.restoreElementAttributeClass(this.props.member.ident, cl.ident, Array.from(cl.deletedAttributes))}>add_circle_outline</i>)
+                addRemove = (<i className="material-icons romajs-clickable" tabIndex={0}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.restoreElementAttributeClass(this.props.member.ident, cl.ident, Array.from(cl.deletedAttributes))}
+                  onClick={() => this.props.restoreElementAttributeClass(this.props.member.ident, cl.ident, Array.from(cl.deletedAttributes))}>add_circle_outline</i>)
               } else if (cl.noattributes) {
                 addRemove = null
               }
@@ -83,21 +85,26 @@ export default class Attributes extends Component {
                     }
                     let addOrRemove
                     if (a.deleted && a.deletedOnClass) {
-                      addOrRemove = (<i className={`material-icons romajs-clickable`} onClick={() =>
-                        this.props.restoreClassAttributeDeletedOnClass(this.props.member.ident, cl.ident, a.ident)}>add_circle_outline</i>)
+                      addOrRemove = (<i className={`material-icons romajs-clickable`} tabIndex={0}
+                        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.restoreClassAttributeDeletedOnClass(this.props.member.ident, cl.ident, a.ident)}
+                        onClick={() => this.props.restoreClassAttributeDeletedOnClass(this.props.member.ident, cl.ident, a.ident)}>add_circle_outline</i>)
                     } else if (a.deleted) {
-                      addOrRemove = (<i className={`material-icons romajs-clickable`} onClick={() =>
-                        this.props.restoreClassAttribute(this.props.member.ident, a.ident)}>add_circle_outline</i>)
+                      addOrRemove = (<i className={`material-icons romajs-clickable`} tabIndex={0}
+                        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.restoreClassAttribute(this.props.member.ident, a.ident)}
+                        onClick={() => this.props.restoreClassAttribute(this.props.member.ident, a.ident)}>add_circle_outline</i>)
                     } else if (!a.deleted && a.deletedOnClass) {
-                      addOrRemove = (<i className={`material-icons romajs-clickable ${deleted}`} onClick={() =>
-                        this.props.useClassDefault(this.props.member.ident, a.ident)}>clear</i>)
+                      addOrRemove = (<i className={`material-icons romajs-clickable ${deleted}`} tabIndex={0}
+                        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.useClassDefault(this.props.member.ident, a.ident)}
+                        onClick={() => this.props.useClassDefault(this.props.member.ident, a.ident)}>clear</i>)
                     } else {
-                      addOrRemove = (<i className={`material-icons romajs-clickable ${deleted}`} onClick={() =>
-                        this.props.deleteClassAttribute(this.props.member.ident, cl.ident, a.ident)}>clear</i>)
+                      addOrRemove = (<i className={`material-icons romajs-clickable ${deleted}`} tabIndex={0}
+                        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.deleteClassAttribute(this.props.member.ident, cl.ident, a.ident)}
+                        onClick={() => this.props.deleteClassAttribute(this.props.member.ident, cl.ident, a.ident)}>clear</i>)
                     }
                     return (<li key={`c${pos}`} className={`mdc-list-item ${overridden}`}>
                       <span className="mdc-list-item__graphic">
-                        <i className={`material-icons romajs-clickable ${deleted}`}
+                        <i className={`material-icons romajs-clickable ${deleted}`} tabIndex={0}
+                          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.editClassAttribute(this.props.member.ident, cl.ident, a.ident, this.props.path)}
                           onClick={() => this.props.editClassAttribute(this.props.member.ident, cl.ident, a.ident, this.props.path)}>mode_edit</i>
                         {addOrRemove}
                       </span>

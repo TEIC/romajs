@@ -71,7 +71,7 @@ export default class MembersList extends Component {
       <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
         <div className={`mdc-chip mdc-ripple-upgraded romajs-focusablechip`} tabIndex={0}
           onClick={() => this.props.sortMembersBy(newSort)}
-          onKeyDown={(e) => e.key === 'Enter' || e.key === ' ' ? this.props.sortMembersBy(newSort) : null}>
+          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.sortMembersBy(newSort)}>
           <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">swap_vert</i>
           <div className="mdc-chip__text">{newSortLabel}</div>
         </div>

@@ -3,12 +3,20 @@ import PropTypes from 'prop-types'
 import { _i18n } from '../localization/i18n'
 
 export default class AltIdent extends Component {
+  handleAdd = () => {
+    const pos = this.props.altIdent.length
+    this.props.update(this.props.ident, '', pos)
+  }
+
+  handleClear = (pos) => {
+    this.props.delete(this.props.ident, pos)
+  }
+
   render() {
     const i18n = _i18n(this.props.language, 'AltIdent')
-    const addBtn = this.props.altIdent.length > 0 ? null : (<i className="material-icons romajs-clickable" onClick={() => {
-      const pos = this.props.altIdent.length
-      this.props.update(this.props.ident, '', pos)
-    }}>add_circle_outline</i>)
+    const addBtn = this.props.altIdent.length > 0 ? null : (<i className="material-icons romajs-clickable" tabIndex={0}
+      onClick={this.handleAdd}
+      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.handleAdd()}>add_circle_outline</i>)
     return (<div className="mdc-layout-grid__inner romajs-formrow">
       <div className="mdc-layout-grid__cell--span-3">
         <label>{i18n('Alternative identifiers')}</label>
@@ -23,7 +31,10 @@ export default class AltIdent extends Component {
                 onChange={(e) => this.props.update(this.props.ident, e.target.value, pos)}/>
               <div className="mdc-text-field__bottom-line" style={{transformOrigin: '145px center'}}/>
             </div>
-            <i className="material-icons romajs-clickable" onClick={() => { this.props.delete(this.props.ident, pos) }}>clear</i>
+            <i className="material-icons romajs-clickable" tabIndex={0}
+              onClick={() => { this.handleClear(this.props.ident, pos) }}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.handleClear(this.props.ident, pos) }
+            >clear</i>
             </div>)
           }
           return null
