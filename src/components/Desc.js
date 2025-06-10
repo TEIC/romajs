@@ -182,7 +182,7 @@ export default class Desc extends Component {
   render() {
     const i18n = _i18n(this.props.language, 'Desc')
     let info = (<div className="mdc-layout-grid__cell--span-3">
-      <label>{i18n('Description')}yo</label>
+      <label>{i18n('Description')}</label>
       <p className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
         dangerouslySetInnerHTML={{__html: i18n('HelperText')}} />
     </div>)
