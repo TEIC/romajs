@@ -57,19 +57,19 @@ export default class DatatypeContent extends Component {
               dangerouslySetInnerHTML={{__html: i18n('HelperText')}} />
           </div>
           <div className="mdc-layout-grid__cell--span-8 mdc-chip-set mdc-chip-set--choice">
-            <div className={`mdc-chip ${!contentType ? 'mdc-chip--selected' : ''}`} tabIndex="0" onClick={() => {
-              this.props.setDatatypeContentGrouping(this.props.datatype.ident, 'unordered')
-            }}>
+            <div className={`mdc-chip ${!contentType ? 'mdc-chip--selected' : ''}`} tabIndex="0"
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.setDatatypeContentGrouping(this.props.datatype.ident, 'unordered')}
+              onClick={() => this.props.setDatatypeContentGrouping(this.props.datatype.ident, 'unordered')}>
               <div className="mdc-chip__text">{i18n('Unordered')}</div>
             </div>
-            <div className={`mdc-chip ${contentType === 'alternate' ? 'mdc-chip--selected' : ''}`} tabIndex="1" onClick={() => {
-              this.props.setDatatypeContentGrouping(this.props.datatype.ident, 'alternate')
-            }}>
+            <div className={`mdc-chip ${contentType === 'alternate' ? 'mdc-chip--selected' : ''}`} tabIndex="0"
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.setDatatypeContentGrouping(this.props.datatype.ident, 'alternate')}
+              onClick={() => this.props.setDatatypeContentGrouping(this.props.datatype.ident, 'alternate')}>
               <div className="mdc-chip__text">{i18n('Alternate')}</div>
             </div>
-            <div className={`mdc-chip ${contentType === 'sequence' ? 'mdc-chip--selected' : ''}`} tabIndex="2" onClick={() => {
-              this.props.setDatatypeContentGrouping(this.props.datatype.ident, 'sequence')
-            }}>
+            <div className={`mdc-chip ${contentType === 'sequence' ? 'mdc-chip--selected' : ''}`} tabIndex="0"
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.setDatatypeContentGrouping(this.props.datatype.ident, 'sequence')}
+              onClick={() => this.props.setDatatypeContentGrouping(this.props.datatype.ident, 'sequence')}>
               <div className="mdc-chip__text">{i18n('Sequence')}</div>
             </div>
           </div>
@@ -78,23 +78,44 @@ export default class DatatypeContent extends Component {
     let addOptions = null
     if (this.state.addOptionsVisible) {
       addOptions = [
-        <div className="mdc-chip" tabIndex="0" key="r">
-          <div className="mdc-chip__text" onClick={() =>{
-            this.props.newDataRef(this.props.datatype.ident)
-            this.toggleAddOptions()
-          }}>{i18n('Reference to another datatype')}</div>
+        <div className="mdc-chip" key="r">
+          <div className="mdc-chip__text" tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                this.props.newDataRef(this.props.datatype.ident)
+                this.toggleAddOptions()
+              }
+            }}
+            onClick={() => {
+              this.props.newDataRef(this.props.datatype.ident)
+              this.toggleAddOptions()
+            }}>{i18n('Reference to another datatype')}</div>
         </div>,
-        <div className="mdc-chip" tabIndex="1" key="l">
-          <div className="mdc-chip__text" onClick={() =>{
-            this.props.newDatatypeValList(this.props.datatype.ident)
-            this.toggleAddOptions()
-          }}>{i18n('Closed list of values')}</div>
+        <div className="mdc-chip" key="l">
+          <div className="mdc-chip__text" tabIndex="0"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                this.props.newDatatypeValList(this.props.datatype.ident)
+                this.toggleAddOptions()
+              }
+            }}
+            onClick={() =>{
+              this.props.newDatatypeValList(this.props.datatype.ident)
+              this.toggleAddOptions()
+            }}>{i18n('Closed list of values')}</div>
         </div>,
-        <div className="mdc-chip" tabIndex="2" key="t">
-          <div className="mdc-chip__text" onClick={() =>{
-            this.props.newTextNode(this.props.datatype.ident)
-            this.toggleAddOptions()
-          }}>{i18n('Text content')}</div>
+        <div className="mdc-chip" key="t">
+          <div className="mdc-chip__text" tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                this.props.newTextNode(this.props.datatype.ident)
+                this.toggleAddOptions()
+              }
+            }}
+            onClick={() =>{
+              this.props.newTextNode(this.props.datatype.ident)
+              this.toggleAddOptions()
+            }}>{i18n('Text content')}</div>
         </div>
       ]
     }
@@ -107,7 +128,9 @@ export default class DatatypeContent extends Component {
         </div>
         <div className="mdc-layout-grid__cell--span-8">
           <div className="mdc-chip-set">
-            <span className="romajs-clickable material-icons" onClick={() => this.toggleAddOptions()}>
+            <span className="romajs-clickable material-icons" tabIndex={0}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.toggleAddOptions()}
+              onClick={() => this.toggleAddOptions()}>
               add_circle_outline
             </span>
             {addOptions}
@@ -122,15 +145,18 @@ export default class DatatypeContent extends Component {
               <div className="mdc-layout-grid__cell--span-3"/>
               <div className="mdc-layout-grid__cell--span-8">
                 <span style={{lineHeight: '3em'}}>
-                  <i className="material-icons romajs-clickable" onClick={() => {
-                    this.props.deleteDatatypeContent(this.props.datatype.ident, i)
-                  }}>clear</i>
-                  <i className="material-icons romajs-clickable" onClick={() => {
-                    this.props.moveDatatypeContent(this.props.datatype.ident, i, i - 1)
-                  }}>keyboard_arrow_up</i>
-                  <i className="material-icons romajs-clickable" onClick={() => {
-                    this.props.moveDatatypeContent(this.props.datatype.ident, i, i + 1)
-                  }}>keyboard_arrow_down</i>
+                  <i className="material-icons romajs-clickable" tabIndex={0}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.deleteDatatypeContent(this.props.datatype.ident, i)}
+                    onClick={() => this.props.deleteDatatypeContent(this.props.datatype.ident, i)}
+                  >clear</i>
+                  <i className="material-icons romajs-clickable"  tabIndex={0}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.deleteDatatypeContent(this.props.datatype.ident, i)}
+                    onClick={() => this.props.moveDatatypeContent(this.props.datatype.ident, i, i - 1)}
+                  >keyboard_arrow_up</i>
+                  <i className="material-icons romajs-clickable" tabIndex={0}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.moveDatatypeContent(this.props.datatype.ident, i, i + 1)}
+                    onClick={() => this.props.moveDatatypeContent(this.props.datatype.ident, i, i + 1)}
+                  >keyboard_arrow_down</i>
                 </span>
                 <DataRef member={this.props.datatype}
                   language={this.props.language}
@@ -147,15 +173,18 @@ export default class DatatypeContent extends Component {
               <div className="mdc-layout-grid__cell--span-3"/>
               <div className="mdc-layout-grid__cell--span-8">
                 <span style={{lineHeight: '3em'}}>
-                  <i className="material-icons romajs-clickable" onClick={() => {
-                    this.props.deleteDatatypeContent(this.props.datatype.ident, i)
-                  }}>clear</i>
-                  <i className="material-icons romajs-clickable" onClick={() => {
-                    this.props.moveDatatypeContent(this.props.datatype.ident, i, i - 1)
-                  }}>keyboard_arrow_up</i>
-                  <i className="material-icons romajs-clickable" onClick={() => {
-                    this.props.moveDatatypeContent(this.props.datatype.ident, i, i + 1)
-                  }}>keyboard_arrow_down</i>
+                  <i className="material-icons romajs-clickable" tabIndex={0}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.deleteDatatypeContent(this.props.datatype.ident, i)}
+                    onClick={() => this.props.deleteDatatypeContent(this.props.datatype.ident, i)}
+                  >clear</i>
+                  <i className="material-icons romajs-clickable" tabIndex={0}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.moveDatatypeContent(this.props.datatype.ident, i, i - 1)}
+                    onClick={() => this.props.moveDatatypeContent(this.props.datatype.ident, i, i - 1)}
+                  >keyboard_arrow_up</i>
+                  <i className="material-icons romajs-clickable" tabIndex={0}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.moveDatatypeContent(this.props.datatype.ident, i, i + 1)}
+                    onClick={() => this.props.moveDatatypeContent(this.props.datatype.ident, i, i + 1)}
+                  >keyboard_arrow_down</i>
                 </span>
                 Text content
               </div>
@@ -165,15 +194,18 @@ export default class DatatypeContent extends Component {
               <div className="mdc-layout-grid__cell--span-3"/>
               <div className="mdc-layout-grid__cell--span-8">
                 <span style={{lineHeight: '3em'}}>
-                  <i className="material-icons romajs-clickable" onClick={() => {
-                    this.props.deleteDatatypeContent(this.props.datatype.ident, i)
-                  }}>clear</i>
-                  <i className="material-icons romajs-clickable" onClick={() => {
-                    this.props.moveDatatypeContent(this.props.datatype.ident, i, i - 1)
-                  }}>keyboard_arrow_up</i>
-                  <i className="material-icons romajs-clickable" onClick={() => {
-                    this.props.moveDatatypeContent(this.props.datatype.ident, i, i + 1)
-                  }}>keyboard_arrow_down</i>
+                  <i className="material-icons romajs-clickable" tabIndex={0}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.deleteDatatypeContent(this.props.datatype.ident, i)}
+                    onClick={() => this.props.deleteDatatypeContent(this.props.datatype.ident, i)}
+                  >clear</i>
+                  <i className="material-icons romajs-clickable" tabIndex={0}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.moveDatatypeContent(this.props.datatype.ident, i, i - 1)}
+                    onClick={() => this.props.moveDatatypeContent(this.props.datatype.ident, i, i - 1)}
+                  >keyboard_arrow_up</i>
+                  <i className="material-icons romajs-clickable" tabIndex={0}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.moveDatatypeContent(this.props.datatype.ident, i, i + 1)}
+                    onClick={() => this.props.moveDatatypeContent(this.props.datatype.ident, i, i + 1)}
+                  >keyboard_arrow_down</i>
                 </span>
                 <div>Closed list of values</div>
                 <ValList key={`vl${i}`}

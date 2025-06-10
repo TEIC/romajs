@@ -36,13 +36,15 @@ export default class Datatype extends Component {
     const home = (<div className="romajs-squares">
       <ul className="mdc-image-list">
         <li className="mdc-image-list__item romajs-dtbackground">
-          <div className="mdc-image-list__image-aspect-container romajs-clickable mdc-elevation--z3"
+          <div className="mdc-image-list__image-aspect-container romajs-clickable mdc-elevation--z3" tabIndex={0}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.navigateTo(`${this.baseurl}/documentation`)}
             onClick={() => this.props.navigateTo(`${this.baseurl}/documentation`)}>
             <span>{i18n('Documentation')}</span>
           </div>
         </li>
         <li className="mdc-image-list__item romajs-dtbackground">
-          <div className="mdc-image-list__image-aspect-container romajs-clickable mdc-elevation--z3"
+          <div className="mdc-image-list__image-aspect-container romajs-clickable mdc-elevation--z3" tabIndex={0}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.navigateTo(`${this.baseurl}/content`)}
             onClick={() => this.props.navigateTo(`${this.baseurl}/content`)}>
             <span>{i18n('Content')}</span>
           </div>
@@ -87,20 +89,24 @@ export default class Datatype extends Component {
     }
     return [<div key="toolbar" className="mdc-toolbar--fixed mdc-toolbar__row romajs-toolbar2 romajs-dtbackground">
       <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-        <span className="mdc-chip romajs-clickable" onClick={this.goBack}>
+        <span className="mdc-chip romajs-clickable" tabIndex={0}
+          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.goBack(e)}
+          onClick={this.goBack}>
           <span className="mdc-chip__text">{i18n('Members')}</span>
           <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">keyboard_arrow_left</i>
         </span>
-        <span className="mdc-chip romajs-clickable" onClick={() => this.props.navigateTo(this.baseurl)}>
+        <span className="mdc-chip romajs-clickable" tabIndex={0}
+          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.navigateTo(this.baseurl)}
+          onClick={() => this.props.navigateTo(this.baseurl)}>
           <span className="mdc-chip__text">{this.props.datatype.ident}</span>
           <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">{arrow}</i>
         </span>
         {trail}
       </section>
       <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
-        <span className="mdc-chip" onClick={() => {
-          this.setState({showRevertDialog: true})
-        }}>
+        <span className="mdc-chip" tabIndex={0}
+          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.setState({showRevertDialog: true})}
+          onClick={() => this.setState({showRevertDialog: true})}>
           <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">undo</i>
           <span className="mdc-chip__text">{i18n('Revert to source')}</span>
         </span>

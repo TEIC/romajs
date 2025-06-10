@@ -28,13 +28,13 @@ export default class ModelClassMemberships extends Component {
                 deleted = 'romajs-att-deleted'
                 content = `${c.ident} (${c.mode})`
               }
-              let button = (<i className={`${deleted} material-icons romajs-clickable`} onClick={() => {
-                this.props.removeMembershipToClass(this.props.member.ident, c.ident)
-              }}>clear</i>)
+              let button = (<i className={`${deleted} material-icons romajs-clickable`} tabIndex={0}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.removeMembershipToClass(this.props.member.ident, c.ident)}
+                onClick={() => this.props.removeMembershipToClass(this.props.member.ident, c.ident)}>clear</i>)
               if (c.mode === 'deleted') {
-                button = (<i className="material-icons romajs-clickable" onClick={() => {
-                  this.props.addMembershipToClass(this.props.member.ident, c.ident)
-                }}>add_circle_outline</i>)
+                button = (<i className="material-icons romajs-clickable" tabIndex={0}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.addMembershipToClass(this.props.member.ident, c.ident)}
+                  onClick={() => this.props.addMembershipToClass(this.props.member.ident, c.ident)}>add_circle_outline</i>)
               } else if (c.mode === 'not available') {
                 button = ''
               }
