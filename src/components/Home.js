@@ -217,115 +217,111 @@ export default class Home extends Component {
     }
     return (
       <main>
-        <div className="romajs-hero">
-          <div className="mdc-layout-grid">
-            <div className="mdc-layout-grid__inner">
-              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
-                <div className="romajs-homebox mdc-card mdc-elevation--z10">
-                  <section className="mdc-card__primary">
-                    <nav id="basic-tab-bar" className="mdc-tab-bar" ref="tabs">
-                      <a className="mdc-tab mdc-tab--active" tabIndex={0}>{i18n('Select ODD')}</a>
-                      <a className="mdc-tab" tabIndex={0}>{i18n('Upload ODD')}</a>
-                      <span className="mdc-tab-bar__indicator" style={{transform: 'translateX(160px) scale(0.333333, 1)', visibility: 'visible'}}/>
-                    </nav>
-                    <div className="romajs-tabPanels">
-                      <div className="romajs-tabPanel" role="tabpanel" style={this._setActivePanel(0)}>
-                        <h2 className="mdc-typography--title">{i18n('Select ODD')}</h2>
-                        <div className="mdc-select" ref="chooseodd" style={{width: '65%'}}>
-                          <input type="hidden" name="enhanced-select"/>
-                          <i className="mdc-select__dropdown-icon"/>
-                          <div className="mdc-select__selected-text"/>
-                          <div className="mdc-select__menu mdc-menu mdc-menu-surface">
-                            <ul className="mdc-list">{
-                              this.state.odds.map((odd, i) => {
-                                return (<li className="mdc-list-item" data-value={odd.label} key={`l${i}`} tabIndex={i}>{
-                                  i18n(odd.label)
-                                }</li>)
-                              })
-                            }</ul>
-                          </div>
-                          <span className="mdc-floating-label">{i18n('Choose a preset')}</span>
-                          <div className="mdc-line-ripple"/>
-                        </div>
-                        <div className="mdc-select" ref="chooseversion" style={{width: '25%', marginLeft: '5%'}}>
-                          <input type="hidden" name="enhanced-select"/>
-                          <i className="mdc-select__dropdown-icon"/>
-                          <div className="mdc-select__selected-text"/>
-                          <div className="mdc-select__menu mdc-menu mdc-menu-surface">
-                            <ul className="mdc-list">
-                              <li className="mdc-list-item" data-value={this.state.format === 'TEI' ? TEI_CURRENT : MEI_CURRENT}>current ({this.state.format === 'TEI' || this.state.format === undefined ? TEI_VERSIONS[0] : MEI_CURRENT})</li>
-                              {
-                                (this.state.format === 'TEI' ? TEI_VERSIONS : MEI_VERSIONS).map((v, i) => {
-                                  if (i === 0) { return '' } // skip current version
-                                  return <li className="mdc-list-item" data-value={v} key={`lv${i}`} tabIndex={i}>{v}</li>
-                                })
-                              }
-                            </ul>
-                          </div>
-                          <span className="mdc-floating-label">Version</span>
-                          <div className="mdc-line-ripple"/>
-                        </div>
+        <div>
+          <div className="romajs-hero">
+            <div className="romajs-homebox mdc-card mdc-elevation--z10">
+              <section className="mdc-card__primary">
+                <nav id="basic-tab-bar" className="mdc-tab-bar" ref="tabs">
+                  <a className="mdc-tab mdc-tab--active" tabIndex={0}>{i18n('Select ODD')}</a>
+                  <a className="mdc-tab" tabIndex={0}>{i18n('Upload ODD')}</a>
+                  <span className="mdc-tab-bar__indicator" style={{transform: 'translateX(160px) scale(0.333333, 1)', visibility: 'visible'}}/>
+                </nav>
+                <div className="romajs-tabPanels">
+                  <div className="romajs-tabPanel" role="tabpanel" style={this._setActivePanel(0)}>
+                    <h2 className="mdc-typography--title">{i18n('Select ODD')}</h2>
+                    <div className="mdc-select" ref="chooseodd" style={{width: '65%'}}>
+                      <input type="hidden" name="enhanced-select"/>
+                      <i className="mdc-select__dropdown-icon"/>
+                      <div className="mdc-select__selected-text"/>
+                      <div className="mdc-select__menu mdc-menu mdc-menu-surface">
+                        <ul className="mdc-list">{
+                          this.state.odds.map((odd, i) => {
+                            return (<li className="mdc-list-item" data-value={odd.label} key={`l${i}`} tabIndex={i}>{
+                              i18n(odd.label)
+                            }</li>)
+                          })
+                        }</ul>
                       </div>
-                      <div className="romajs-tabPanel" role="tabpanel" style={this._setActivePanel(1)}>
-                        <h2 className="mdc-typography--title">{i18n('Upload ODD')}</h2>
-                        <input type="file" id="files" accept=".xml,.tei,.odd" onChange={e => {
-                          this.setState({selectedFile: e.target.files.length > 0 ? e.target.files : undefined})
-                        }}/>
-                      </div>
+                      <span className="mdc-floating-label">{i18n('Choose a preset')}</span>
+                      <div className="mdc-line-ripple"/>
                     </div>
-                  </section>
-                  <section className="mdc-card__actions">
-                    <button className="mdc-button mdc-button--compact mdc-card__action" onClick={this.state.start} {...disabled}>{i18n('Start')}</button>
-                    <button className="mdc-button mdc-button--compact mdc-card__action" id="test"
-                      onClick={this.props.loadTestData} {...disabled} style={{display: 'none'}}>(Test: Skip TEIGarage)</button>
-                  </section>
+                    <div className="mdc-select" ref="chooseversion" style={{width: '25%', marginLeft: '5%'}}>
+                      <input type="hidden" name="enhanced-select"/>
+                      <i className="mdc-select__dropdown-icon"/>
+                      <div className="mdc-select__selected-text"/>
+                      <div className="mdc-select__menu mdc-menu mdc-menu-surface">
+                        <ul className="mdc-list">
+                          <li className="mdc-list-item" data-value={this.state.format === 'TEI' ? TEI_CURRENT : MEI_CURRENT}>current ({this.state.format === 'TEI' || this.state.format === undefined ? TEI_VERSIONS[0] : MEI_CURRENT})</li>
+                          {
+                            (this.state.format === 'TEI' ? TEI_VERSIONS : MEI_VERSIONS).map((v, i) => {
+                              if (i === 0) { return '' } // skip current version
+                              return <li className="mdc-list-item" data-value={v} key={`lv${i}`} tabIndex={i}>{v}</li>
+                            })
+                          }
+                        </ul>
+                      </div>
+                      <span className="mdc-floating-label">Version</span>
+                      <div className="mdc-line-ripple"/>
+                    </div>
+                  </div>
+                  <div className="romajs-tabPanel" role="tabpanel" style={this._setActivePanel(1)}>
+                    <h2 className="mdc-typography--title">{i18n('Upload ODD')}</h2>
+                    <input type="file" id="files" accept=".xml,.tei,.odd" onChange={e => {
+                      this.setState({selectedFile: e.target.files.length > 0 ? e.target.files : undefined})
+                    }}/>
+                  </div>
                 </div>
+              </section>
+              <section className="mdc-card__actions">
+                <button className="mdc-button mdc-button--compact mdc-card__action" onClick={this.state.start} {...disabled}>{i18n('Start')}</button>
+                <button className="mdc-button mdc-button--compact mdc-card__action" id="test"
+                  onClick={this.props.loadTestData} {...disabled} style={{display: 'none'}}>(Test: Skip TEIGarage)</button>
+              </section>
+            </div>
+          </div>
+          <div className="romajs-homeText-container">
+            <div className="romajs-homeText">
+              <div>
+                <h2 className="mdc-typography--headline3">Roma</h2>
+                <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('intro')}} />
+                <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('antiqua')}} />
               </div>
-              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6" style={{backgroundColor: '#d9d9d9'}}>
-                <div className="romajs-homeText">
-                  <div>
-                    <h2 className="mdc-typography--headline3">Roma</h2>
-                    <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('intro')}} />
-                    <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('antiqua')}} />
-                  </div>
-                  <div>
-                    <h2 className="mdc-typography--headline4">{i18n('What it is supposed to do')}</h2>
-                    <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('does')}} />
-                  </div>
-                  <div>
-                    <h2 className="mdc-typography--headline4">{i18n('What it does not do')}</h2>
-                    <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('doesnot')}} />
-                  </div>
-                  <div>
-                    <h2 className="mdc-typography--headline4">{i18n('Known issues')}</h2>
-                    <ul className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('known')}}/>
-                  </div>
-                  <div>
-                    <h2 className="mdc-typography--headline4">{i18n('Contribute')}</h2>
-                    <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('contrib')}} />
-                  </div>
-                  <div>
-                    <h2 className="mdc-typography--headline4">{i18n('Contributors')}</h2>
-                    <h3 className="mdc-typography--headline5">{i18n('Development')}</h3>
-                    <ul className="mdc-list">
-                      <li><span className="mdc-list-item__text">Raff Viglianti (lead)</span></li>
-                      <li><span className="mdc-list-item__text">Peter Stadler</span></li>
-                      <li><span className="mdc-list-item__text">Bryan Wang</span></li>
-                    </ul>
-                    <h3 className="mdc-typography--headline5">{i18n('Localization')}</h3>
-                    <ul className="mdc-list">
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">ES</span>Gimena del Rio Riande</li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Jun Ogawa, Center for Open Data in the Humanities / CODH</li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Kiyonori Nagasaki, International Institute for Digital Humanities</li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">FR</span>Lou Burnard</li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span><span>Natsuko Nakagawa, National Institute for Japanese Language and Linguistics</span></li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Shintaro Seki, Graduate School of Humanities and Sociology, The University of Tokyo</li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>So Miyagawa, National Institute for Japanese Language and Linguistics</li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">IT</span>Raff Viglianti</li>
-                      <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Yuna Murata, National Diet Library</li>
-                    </ul>
-                  </div>
-                </div>
+              <div>
+                <h2 className="mdc-typography--headline4">{i18n('What it is supposed to do')}</h2>
+                <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('does')}} />
+              </div>
+              <div>
+                <h2 className="mdc-typography--headline4">{i18n('What it does not do')}</h2>
+                <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('doesnot')}} />
+              </div>
+              <div>
+                <h2 className="mdc-typography--headline4">{i18n('Known issues')}</h2>
+                <ul className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('known')}}/>
+              </div>
+              <div>
+                <h2 className="mdc-typography--headline4">{i18n('Contribute')}</h2>
+                <p className="mdc-typography--body1" dangerouslySetInnerHTML={{__html: i18n('contrib')}} />
+              </div>
+              <div>
+                <h2 className="mdc-typography--headline4">{i18n('Contributors')}</h2>
+                <h3 className="mdc-typography--headline5">{i18n('Development')}</h3>
+                <ul className="mdc-list">
+                  <li><span className="mdc-list-item__text">Raff Viglianti (lead)</span></li>
+                  <li><span className="mdc-list-item__text">Peter Stadler</span></li>
+                  <li><span className="mdc-list-item__text">Bryan Wang</span></li>
+                </ul>
+                <h3 className="mdc-typography--headline5">{i18n('Localization')}</h3>
+                <ul className="mdc-list">
+                  <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">ES</span>Gimena del Rio Riande</li>
+                  <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Jun Ogawa, Center for Open Data in the Humanities / CODH</li>
+                  <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Kiyonori Nagasaki, International Institute for Digital Humanities</li>
+                  <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">FR</span>Lou Burnard</li>
+                  <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span><span>Natsuko Nakagawa, National Institute for Japanese Language and Linguistics</span></li>
+                  <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Shintaro Seki, Graduate School of Humanities and Sociology, The University of Tokyo</li>
+                  <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>So Miyagawa, National Institute for Japanese Language and Linguistics</li>
+                  <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">IT</span>Raff Viglianti</li>
+                  <li className="romajs-credits"><span className="mdc-list-item__graphic" aria-hidden="true">JA</span>Yuna Murata, National Diet Library</li>
+                </ul>
               </div>
             </div>
           </div>
