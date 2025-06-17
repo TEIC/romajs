@@ -29,8 +29,9 @@ export default class ContentModel extends Component {
             sortedClasses.map((c, pos) => {
               return (<li key={`c${pos}`} className="mdc-list-item">
                 <span className="mdc-list-item__graphic">
-                  <i className="material-icons romajs-clickable" onClick={() =>
-                    this.props.deleteElementModelClass(this.props.element.ident, c)}>clear</i>
+                  <i className="material-icons romajs-clickable" tabIndex={0}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.deleteElementModelClass(this.props.element.ident, c)}
+                    onClick={() => this.props.deleteElementModelClass(this.props.element.ident, c)}>clear</i>
                 </span>
                 <span className="mdc-list-item__text">
                   <span className="mdc-list-item__primary-text">{c}</span>

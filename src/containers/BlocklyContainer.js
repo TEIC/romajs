@@ -5,10 +5,10 @@ import { clone } from '../utils/clone'
 
 const flattenContentModel = (cnt, flattened = [], depth = 1) => {
   cnt.map(c => {
+    let copy = clone(c)
     switch (c.type) {
       case 'sequence':
       case 'alternate':
-        let copy = clone(c)
         copy.depth = depth
         const content = copy.content.slice(0)
         copy.content = true
