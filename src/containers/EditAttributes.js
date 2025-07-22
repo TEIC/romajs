@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   const localElement = state.odd.localsource.json.elements.filter(le => (le.ident === element.ident))[0]
 
   let deletedAttributesFromClasses = new Set()
+  const flattenedAttList = []
 
   const getClasses = (classNames, sub = false, from = '') => {
     // Get attribute classes
@@ -87,6 +88,8 @@ const mapStateToProps = (state, ownProps) => {
           tempAcc = tempAcc.concat(getClasses(Array.from(subClasses), true, curClass.ident))
         }
 
+        flattenedAttList.push(...curClass.attributes.map(a => a.ident))
+
         // store list of deleted attributes
         deletedAttributesFromClasses = new Set([...deletedAttributesFromClasses, ...curClass.deletedAttributes])
         return tempAcc
@@ -120,10 +123,14 @@ const mapStateToProps = (state, ownProps) => {
   })
 
   for (const att of element.attributes) {
+    // If the attribute is already listed in a class, don't show it.
+    if (flattenedAttList.indexOf(att.ident) !== -1) {
+      att.onElement = false
+    }
     // Check for deleted attributes that were defined on the element only
     // ie are not inherited from a class.
     if (att.mode === 'delete' && att.onElement && !att._isNew) {
-      att.shortDesc = localElement.attributes.filter(a => (a.ident === att.ident))[0].shortDesc
+      att.shortDesc = (localElement.attributes.filter(a => (a.ident === att.ident))[0] || {}).shortDesc
       att.deleted = true
     } else if (deletedAttributesFromClasses.has(att.ident)) {
       // Skip this attribute if it's modifying a class element
