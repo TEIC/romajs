@@ -25,13 +25,13 @@ const mapStateToProps = (state, ownProps) => {
         const curClass = clone(classToClone)
         curClass.sub = sub
         curClass.from = from
-        curClass.deletedAttributes = new Set()
+        curClass.deletedAttributes = new Map()
         // We check against the localsource to obtain attributes that have been deleted
         // (ie do not appear in customization)
         if (localClass) {
           for (const localAtt of localClass.attributes) {
             if (!classToClone.attributes.filter((a) => (a.ident === localAtt.ident))[0]) {
-              curClass.deletedAttributes.add(localAtt.ident)
+              curClass.deletedAttributes.set(localAtt.ident, {fromCustomizationODD: true})
               curClass.attributes.push(Object.assign({}, localAtt, {mode: 'delete', deleted: true, overridden: false, deletedOnClass: true}))
             }
           }
@@ -41,7 +41,7 @@ const mapStateToProps = (state, ownProps) => {
           if (att.mode === 'delete') {
             // Also keep track of attributes marked to be deleted (mode = delete) in the current session
             // and adjust their data model for the UI
-            curClass.deletedAttributes.add(att.ident)
+            curClass.deletedAttributes.set(att.ident, {fromCustomizationODD: false})
             att.deleted = true
             att.overridden = false
             att.deletedOnClass = true
@@ -59,7 +59,7 @@ const mapStateToProps = (state, ownProps) => {
             att.mode = redefinedAtt.mode
             if (redefinedAtt.mode === 'delete') {
               att.deleted = true
-              curClass.deletedAttributes.add(att.ident)
+              curClass.deletedAttributes.set(att.ident, {fromCustomizationODD: true})
             } else if (redefinedAtt.mode === 'change' || redefinedAtt.mode === 'add') {
               curClass.deletedAttributes.delete(att.ident)
               // TODO: setting overridden when _changed is NOT specified seems risky.
@@ -115,6 +115,23 @@ const mapStateToProps = (state, ownProps) => {
 
   if (element.classes) {
     attsfromClasses = getClasses(element.classes.atts)
+  }
+
+  // Find out deleted class memberships and add them so that they can be restored by user.
+  if (localElement.classes && localElement.classes.atts) {
+    const computedClasses = new Set(attsfromClasses.map(c => c.ident))
+    const deletedClassesNames = localElement.classes.atts.filter(c => !computedClasses.has(c))
+    const deletedClasses = getClasses(deletedClassesNames)
+    attsfromClasses = attsfromClasses.concat(deletedClasses.map(cl => {
+      cl.inactive = true
+      cl.attributes.forEach(a => {
+        a.mode = 'delete'
+        a.deleted = true
+        a.overridden = false
+        cl.deletedAttributes.set(a.ident, {fromCustomizationODD: true})
+      })
+      return cl
+    }))
   }
 
   // Sort classes based on active/inactive

@@ -47,6 +47,8 @@ function markChange(element, whatChanged) {
 function restoreClassAttributeDeletedOnClass(element, className, attName, localsource, customization) {
   const localClass = localsource.classes.attributes.filter(c => (c.ident === className))[0]
   const attribute = localClass.attributes.filter(a => a.ident === attName)[0]
+  // This restores a class attribute that is explicitly removed on a class (eg from an uploaded customization).
+  // We need a case for when the attribute was removed in a session and the user changes their mind.
   customization.elements.forEach(m => {
     if (m.ident === element) {
       m.attributes.push(Object.assign({}, attribute, {
@@ -298,10 +300,13 @@ export function oddElements(state, action) {
             m.attributes = Array.from(cl.attributes)
           }
           // If there are deleted attributes on the class, they need to be marked as changed
-          if (action.deletedAttributes.length > 0) {
-            for (const attName of action.deletedAttributes) {
-              restoreClassAttributeDeletedOnClass(action.element, action.className, attName, localsource, customization)
-            }
+          if (action.deletedAttributes.size > 0) {
+            action.deleteAttributes.forEach(({fromCustomizationODD, attName}) => {
+              // ... but only if it's not a temporary change from the UI.
+              if (fromCustomizationODD) {
+                restoreClassAttributeDeletedOnClass(action.element, action.className, attName, localsource, customization)
+              }
+            })
           }
           markChange(m, 'attributes')
         }
