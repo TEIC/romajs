@@ -1198,7 +1198,7 @@
       "ja": "不可能な操作"
     },
     "doesnot": {
-      "en": "The conversions of the ODD customisation to other formats (both schemas and documentation formats) is handled by passing the document to the TEI-C’s TEIGarage service. In addition there are a number of tasks that this version of Roma does not yet handle, including: <ul><li><strong>No support for RelaxNG content models.</strong> Only PureODD is supported (that is, ODD expressed only with TEI elements).</li><li><strong>No support for <code>@source</code> attributes.</strong> Currently only the latest stable version of the TEI is used by this tool.</li></ul>",
+      "en": "The conversions of the ODD customisation to other formats (both schemas and documentation formats) is handled by passing the document to the TEI-C’s TEIGarage service. In addition there are a number of tasks that this version of Roma does not yet handle, including: <ul><li><strong>No support for RelaxNG content models.</strong> Only PureODD is supported (that is, ODD expressed only with TEI elements).</li><li><strong>No support for <code>@source</code> attributes.</strong> Currently only the latest stable version of the TEI is used by this tool.</li><li><strong>No support for images in documentation.</strong> If you need to generate documentation with images, dowload your ODD and transform it with <a href=\"https://teigarage.tei-c.org\">TEIGarage.</li></ul>",
       "it": "Le conversioni della personalizzazione ODD in altri formati (sia schemi che formati di documentazione) sono gestite passando il documento al servizio TEIGarage della TEI-C. Inoltre ci sono una serie di operazioni che questa versione di Roma non gestisce, tra cui: <ul><li>Nessun supporto per i modelli di contenuto RelaxNG.</li> <li>È supportato solo PureODD (cioè ODD espresso solo con element TEI).</li> <li>Nessun supporto per gli attributi @source.</li> <li>Al momento solo l'ultima versione stabile della TEI è utilizzata da questo strumento.</li></ul>",
       "fr": "Pour convertir du format ODD vers un format de documentation ou un schéma, Roma se sert du service TEIGarage fourni par le TEI-C. Quelques fonctionnalités  ne sont pas encore prises en charge per cette version du logiciel, notamment: <ul><li><strong>Les modèles de contenu doivent etre exprimées uniquement en format ODD : leur expression en RELAX NG n'est pas supportée. </li><li>Comme source de définition des composants TEI, seule la version courante de la TEI n'est permise: l'usage de l'attribut @source pour varier cela donc n'est pas supporté.</li></ul>",
       "de": "Die Konvertierung der ODD-Anpassung in andere Formate (sowohl Schemata als auch Dokumentationsformate) erfolgt durch Übergabe des Dokuments an den TEI-C-Dienst TEIGarage. Darüber hinaus gibt es eine Reihe von Aufgaben, die diese Version von Roma noch nicht verarbeitet, darunter: <ul><li><strong>Keine Unterstützung für RelaxNG-Inhaltsmodelle.</strong> Nur PureODD wird unterstützt (d.h. ODD, das nur mit TEI-Elementen ausgedrückt wird).</li><li><strong>Keine Unterstützung von <code>@source</code>-Attributen.</strong> Derzeit wird nur die letzte stabile Version der TEI von diesem Werkzeug verwendet.</li></ul>",
@@ -1217,14 +1217,14 @@
       "ja": "既存の問題"
     },
     "known": {
-      "en": "<li>If Roma crashes while loading an existing ODD or template customization, refresh or reload your browser.</li><li>In Safari, reloading a page may cause data loss due to the default limit to local storage memory.</li>",
-      "it": "<li>Se Roma si blocca durante il caricamento di un ODD esistente o di una personalizzazione del modello, aggiornare o ricaricare il browser.</li><li>In Safari, il ricaricamento di una pagina può causare la perdita di dati a causa della memoria limitata.</li>",
-      "fr": "<li>Si Roma se bloque en essayant de charger un ODD existant, ou un template, essayez de relancer votre navigateur web</li><li>Avec Safari, un rechargement risque de perdre des informations à cause du stockage limite des donnees</li>",
-      "de": "Wenn Roma beim Laden einer bestehenden ODD-Datei oder einer Vorlage abstürzt, aktualisieren Sie Ihren Browser oder laden Sie ihn neu. In Safari kann das Neuladen einer Seite aufgrund des begrenzten Datenspeichers zu Datenverlusten führen.",
+      "en": "<li>If Roma crashes while loading an existing ODD or template customization, refresh or reload your browser.</li>",
+      "it": "<li>Se Roma si blocca durante il caricamento di un ODD esistente o di una personalizzazione del modello, aggiornare o ricaricare il browser.</li>",
+      "fr": "<li>Si Roma se bloque en essayant de charger un ODD existant, ou un template, essayez de relancer votre navigateur web</li>",
+      "de": "Wenn Roma beim Laden einer bestehenden ODD-Datei oder einer Vorlage abstürzt, aktualisieren Sie Ihren Browser oder laden Sie ihn neu.",
       "pt-notchecked": "conhecido",
       "zh-notchecked": "已知",
-      "es": "<li>Si Roma falla mientras carga un ODD existente o una plantilla personalizada, actualice o vuelva a cargar su navegador.</li><li>En Safari, recargar una página puede provocar la pérdida de datos debido a la memoria limitada.</li>",
-      "ja": "<li>Romaが既存のODDやテンプレートのカスタマイズを読み込む際に停止してしまう場合は、ブラウザを更新するか再読み込みしてください。</li><li>Safariでは、ページを再読み込みすると、データストレージの制限によりデータが失われる場合があります。</li>"
+      "es": "<li>Si Roma falla mientras carga un ODD existente o una plantilla personalizada, actualice o vuelva a cargar su navegador.</li>",
+      "ja": "<li>Romaが既存のODDやテンプレートのカスタマイズを読み込む際に停止してしまう場合は、ブラウザを更新するか再読み込みしてください。</li>"
     },
     "Contribute": {
       "it": "Per contribuire",
