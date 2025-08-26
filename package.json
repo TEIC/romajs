@@ -1,6 +1,6 @@
 {
   "name": "romajs",
-  "version": "1.3.0",
+  "version": "1.3.1a",
   "description": "Roma: an ODD customization tool in React+Redux",
   "type": "module",
   "main": "index.js",
