@@ -1,6 +1,8 @@
 // This is meant to be a temporary solution until metadata about ODD_based schemas can be shared more reliably.
 
 export const TEI_VERSIONS = [
+  '4.10.2', '4.10.1',
+  '4.10.0',
   '4.9.0', '4.8.1',
   '4.8.0', '4.7.0',
   '4.6.0', '4.5.0',
