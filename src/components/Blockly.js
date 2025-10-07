@@ -116,7 +116,6 @@ export default class BlocklyRomaJsEditor extends Component {
     const blocksByDepth = {}
     // Track the statement at each depth level
     const stmtByDepth = { 0: start }
-    
     for (const c of cnt) {
       if (c.depth > depth) {
         // Needs nesting: add to current block's statement
@@ -151,7 +150,6 @@ export default class BlocklyRomaJsEditor extends Component {
       } else if (c.depth < depth) {
         // Going back up - need to find the right parent statement and append there
         const parentStmt = stmtByDepth[c.depth - 1]
-        
         if (parentStmt) {
           // Find the last block in the parent statement
           let lastBlock = parentStmt.querySelector(':scope > block')
@@ -159,7 +157,6 @@ export default class BlocklyRomaJsEditor extends Component {
             while (lastBlock.querySelector(':scope > next > block')) {
               lastBlock = lastBlock.querySelector(':scope > next > block')
             }
-            
             const block = this.createBlock(c)
             const newStmt = this.createStmt(c, block)
             // Create element next

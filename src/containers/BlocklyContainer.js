@@ -5,7 +5,7 @@ import { clone } from '../utils/clone'
 
 const flattenContentModel = (cnt, flattened = [], depth = 1) => {
   cnt.forEach(c => {
-    let copy = clone(c)
+    const copy = clone(c)
     switch (c.type) {
       case 'sequence':
       case 'alternate':
