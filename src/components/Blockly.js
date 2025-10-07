@@ -50,7 +50,6 @@ export default class BlocklyRomaJsEditor extends Component {
     this.blocklyXml = xmlParser.parseFromString(templateXml, 'text/xml')
     this.processContent(props.flattenedContent, this.blocklyXml.getElementById('start'))
     const initialXml = xmlSerializer.serializeToString(this.blocklyXml)
-    console.log(initialXml)
     this.state = {
       initialXml,
       pickerOptions: [],
