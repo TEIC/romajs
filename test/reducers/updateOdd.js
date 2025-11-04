@@ -260,6 +260,78 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     })[0].getAttribute('except')).toNotExist()
   })
 
+  it('should not modify @except when a new element with the same name and different ns is added', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+
+    // Change ODD data for testing
+    const testXml = customizationXML.cloneNode(true)
+    const transcr = testXml.createElement('moduleRef')
+    transcr.setAttribute('key', 'transcr')
+    transcr.setAttribute('except', 'transpose')
+    const newTranspose = testXml.createElement('elementSpec')
+    newTranspose.setAttribute('module', 'transcr')
+    newTranspose.setAttribute('ident', 'transpose')
+    newTranspose.setAttribute('ns', 'http://www.example.org/ns/tei_all')
+    newTranspose.setAttribute('mode', 'add')
+    const contentEl = testXml.createElement('content')
+    const emptyEl = testXml.createElement('empty')
+    contentEl.appendChild(emptyEl)
+    newTranspose.appendChild(contentEl)
+    testXml.getElementsByTagName('schemaSpec')[0].appendChild(transcr)
+    testXml.getElementsByTagName('schemaSpec')[0].appendChild(newTranspose)
+    const testXmlString = serializer.serializeToString(testXml)
+
+    // Update JSON data accordingly
+    customJson.modules.push(
+      localJson.modules.filter(x => (x.ident === 'transcr'))[0]
+    )
+    customJson.elements.push(
+      ...localJson.elements.filter(x => {
+        return x.module === 'transcr' && x.ident !== 'transpose'
+      })
+    )
+
+    const transposeJson = {
+      ident: 'transpose',
+      ns: 'http://xmlschema.huygens.knaw.nl/ns/editem',
+      type: 'elementSpec',
+      module: 'transcr',
+      desc: [],
+      shortDesc: '',
+      gloss: [],
+      altIdent: [],
+      classes: {
+        model: [],
+        atts: [],
+        unknown: []
+      },
+      attributes: [],
+      content: [
+        {
+          type: 'empty'
+        }
+      ]
+    }
+
+    customJson.elements.push(transposeJson)
+
+    const state = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: testXmlString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    const xml = parser.parseFromString(state.odd.customization.updatedXml)
+
+    expect(Array.from(xml.getElementsByTagName('moduleRef')).filter(m => {
+      return m.getAttribute('key') === 'transcr'
+    })[0].getAttribute('except')).toExist()
+  })
+
   it('should include elements by removing elementSpec[@mode=delete]', () => {
     customJson = JSON.parse(customization)
     localJson = JSON.parse(localsource)
