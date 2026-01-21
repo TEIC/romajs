@@ -6,8 +6,8 @@ import { isMemberExplicitlyDeleted, ODDCache } from './odd/utils'
 
 const oddCache = new ODDCache()
 
-function getElementByIdent(source, ident) {
-  return source.elements.filter(m => { return m.ident === ident })[0]
+function getElementByIdentNS(source, ident, ns) {
+  return source.elements.filter(m => { return m.ident === ident && m.ns === ns })[0]
 }
 
 function getClassByIdent(source, ident, type) {
@@ -91,7 +91,7 @@ export function oddModules(state, action) {
       return Object.assign(state, {customization: customizationObj})
     case INCLUDE_ELEMENTS:
       for (const el of action.elements) {
-        const localEl = getElementByIdent(localsource, el)
+        const localEl = getElementByIdentNS(localsource, el.name, el.ns)
         const newEl = clone(localEl)
         newEl._changed = ['all']
         // Make sure to add only references to classes that are not explicitly removed
@@ -114,7 +114,7 @@ export function oddModules(state, action) {
             return acc
           }, [])
         }
-        if (!getElementByIdent(customization, el)) {
+        if (!getElementByIdentNS(customization, el.name, el.ns)) {
           customization.elements.push(newEl)
         }
         // If the module for the added element was not selected, do it now.
@@ -126,9 +126,9 @@ export function oddModules(state, action) {
       return Object.assign(state, {customization: customizationObj})
     case EXCLUDE_ELEMENTS:
       for (const el of action.elements) {
-        const localEl = getElementByIdent(localsource, el)
+        const localEl = getElementByIdentNS(localsource, el.name, el.ns)
         customization.elements = customization.elements.reduce((acc, m) => {
-          if (m.ident !== el) {
+          if (m.ident !== el.name || (m.ident === el.name && m.ns !== el.ns)) {
             acc.push(m)
           }
           return acc
@@ -138,6 +138,7 @@ export function oddModules(state, action) {
           const moduleElements = customization.elements.filter(x => {
             return x.module === localEl.module
           })
+
 
           if (moduleElements.length === 0) {
             customization.modules = customization.modules.reduce((acc, m) => {

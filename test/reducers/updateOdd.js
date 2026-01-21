@@ -144,7 +144,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       selectedOdd: ''
     }, {
       type: 'INCLUDE_ELEMENTS',
-      elements: ['charDecl']
+      elements: [{name: 'charDecl'}]
     })
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
@@ -167,7 +167,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       selectedOdd: ''
     }, {
       type: 'INCLUDE_ELEMENTS',
-      elements: ['char']
+      elements: [{name: 'char'}]
     })
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
@@ -208,7 +208,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       selectedOdd: ''
     }, {
       type: 'INCLUDE_ELEMENTS',
-      elements: ['charDecl']
+      elements: [{name: 'charDecl'}]
     })
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
@@ -249,7 +249,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       selectedOdd: ''
     }, {
       type: 'INCLUDE_ELEMENTS',
-      elements: ['charDecl']
+      elements: [{name: 'charDecl'}]
     })
     const state = romajsApp(firstState, {
       type: 'UPDATE_CUSTOMIZATION_ODD'
@@ -365,7 +365,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       selectedOdd: ''
     }, {
       type: 'INCLUDE_ELEMENTS',
-      elements: ['char']
+      elements: [{name: 'char'}]
     })
 
     const state = romajsApp(firstState, {
@@ -1733,7 +1733,7 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
       selectedOdd: ''
     }, {
       type: 'INCLUDE_ELEMENTS',
-      elements: ['lg']
+      elements: [{name: 'lg'}]
     })
     const secondState = romajsApp(firstState, {
       type: 'ADD_ELEMENT_ATTRIBUTE_CLASS',
@@ -1773,7 +1773,6 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     })
     const xml = parser.parseFromString(state.odd.customization.updatedXml)
     const newSchemaSpec = xml.getElementsByTagName('schemaSpec')[0]
-    console.log(newSchemaSpec.getAttribute('start'))
     expect(newSchemaSpec.getAttribute('start')).toNotContain('excluded_element')
   })
 })
