@@ -1,5 +1,7 @@
 import safeSelect from '../../utils/safeSelect'
 
+const defaultExceptions = ['http://www.tei-c.org/ns/1.0', 'http://www.tei-c.org/ns/Examples']
+
 export function mergeElements(localsource, customization, odd) {
   // This function compares the original ODD and the customization to locate
   // changes in element selection via moduleRef or elementRef. It applies those changes and returns a new ODD.
@@ -60,10 +62,7 @@ export function mergeElements(localsource, customization, odd) {
   allOddElements = new Set(allOddElements)
 
   // Get all elements from the state for comparison
-  const customizationElements = customization.elements.reduce((acc, x) => {
-    acc.push(x)
-    return acc
-  }, [])
+  const customizationElements = customization.elements
 
   // remove elements
   for (const el of Array.from(allOddElements)) {
@@ -115,6 +114,16 @@ export function mergeElements(localsource, customization, odd) {
 
   // add elements
   for (const el of customizationElements) {
+    // check that element's ns is declared on schemaSpec/@defaultExceptions
+    if (el.ns && !defaultExceptions.includes(el.ns)) { // no need to add default values
+      const exceptions = schemaSpec.getAttribute('defaultExceptions')
+      if (!exceptions) {
+        schemaSpec.setAttribute('defaultExceptions', [...defaultExceptions, el.ns].join(' '))
+      } else {
+        const namespaces = new Set([...exceptions.split(/\s+/), ...defaultExceptions, el.ns])
+        schemaSpec.setAttribute('defaultExceptions', Array.from(namespaces).join(' '))
+      }
+    }
     // locate local el based on ident and ns.
     const localEl = localsource.elements.filter(x => (x.ident === el.ident && x.ns === el.ns))[0]
     if (!allOddElements.has(el.ident) && localEl) {

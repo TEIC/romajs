@@ -377,6 +377,29 @@ describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
     })[0]).toNotExist()
   })
 
+  it('should add or modify schemaSpec/@defaultExceptions when new namespace elements are added', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+    const firstState = romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'CREATE_NEW_ELEMENT',
+      name: 'test',
+      module: 'tei',
+      ns: 'http://www.example.org/ns/newelement'
+    })
+    const state = romajsApp(firstState, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+    const xml = parser.parseFromString(state.odd.customization.updatedXml)
+    expect(xml.getElementsByTagName('schemaSpec')[0].getAttribute('defaultExceptions'))
+      .toEqual('http://www.tei-c.org/ns/1.0 http://www.tei-c.org/ns/Examples http://www.example.org/ns/newelement')
+  })
+
   // ELEMENT DOCUMENTATION
 
   it('should change an element\'s documentation (desc, no previous change)', () => {
