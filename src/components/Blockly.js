@@ -112,15 +112,23 @@ export default class BlocklyRomaJsEditor extends Component {
     let depth = 0
     let stmt = start
     let curBlock = null
+    // Track the last block at each depth level
+    const blocksByDepth = {}
+    // Track the statement at each depth level
+    const stmtByDepth = { 0: start }
     for (const c of cnt) {
       if (c.depth > depth) {
         // Needs nesting: add to current block's statement
         const block = this.createBlock(c)
         const newStmt = this.createStmt(c, block)
         stmt.appendChild(block)
-        // Update globals
-        stmt = newStmt ? newStmt : stmt
+        // Update tracking
+        if (newStmt) {
+          stmtByDepth[c.depth] = newStmt
+          stmt = newStmt
+        }
         curBlock = block
+        blocksByDepth[c.depth] = block
         depth = c.depth
       } else if (c.depth === depth) {
         // Create a next element within the current block
@@ -129,28 +137,43 @@ export default class BlocklyRomaJsEditor extends Component {
         // Create element next
         const next = this.blocklyXml.createElement('next')
         next.appendChild(block)
-        // Append to current blocks
+        // Append to current block
         curBlock.appendChild(next)
-        // Update globals
-        stmt = newStmt ? newStmt : stmt
+        // Update tracking
+        if (newStmt) {
+          stmtByDepth[c.depth] = newStmt
+          stmt = newStmt
+        }
         curBlock = block
+        blocksByDepth[c.depth] = block
         depth = c.depth
       } else if (c.depth < depth) {
-        // Go back up to necessary depth ancestor::statement/block and create a next element
-        // const oldBlock = stmt.parentNode.closest('statement').getElementsByTagName('block')[0]
-        const oldStmt = start.querySelectorAll(`statement[depth='${c.depth - 1}']`)
-        const oldBlock = oldStmt[oldStmt.length - 1].getElementsByTagName('block')[0]
-        const block = this.createBlock(c)
-        const newStmt = this.createStmt(c, block)
-        // Create element next
-        const next = this.blocklyXml.createElement('next')
-        next.appendChild(block)
-        // Append to old block
-        oldBlock.appendChild(next)
-        // Update globals
-        stmt = newStmt ? newStmt : stmt
-        curBlock = block
-        depth = c.depth
+        // Going back up - need to find the right parent statement and append there
+        const parentStmt = stmtByDepth[c.depth - 1]
+        if (parentStmt) {
+          // Find the last block in the parent statement
+          let lastBlock = parentStmt.querySelector(':scope > block')
+          if (lastBlock) {
+            while (lastBlock.querySelector(':scope > next > block')) {
+              lastBlock = lastBlock.querySelector(':scope > next > block')
+            }
+            const block = this.createBlock(c)
+            const newStmt = this.createStmt(c, block)
+            // Create element next
+            const next = this.blocklyXml.createElement('next')
+            next.appendChild(block)
+            // Append to last block in parent statement
+            lastBlock.appendChild(next)
+            // Update tracking
+            if (newStmt) {
+              stmtByDepth[c.depth] = newStmt
+              stmt = newStmt
+            }
+            curBlock = block
+            blocksByDepth[c.depth] = block
+            depth = c.depth
+          }
+        }
       }
     }
   }
@@ -261,6 +284,7 @@ export default class BlocklyRomaJsEditor extends Component {
         toolboxConfiguration={config}
         initialXml={this.state.initialXml}
         onXmlChange={handleXmlChange}
+        onImportXmlError={(e) => console.log('error', e, this.state.initialXml)}
       />
     </div>)
   }

@@ -1586,6 +1586,18 @@
       "ja": "これにより、モジュール全体がカスタマイズから削除されます。このモジュールのメンバーに対するすべての変更は失われます。本当に続けますか？"
     }
   },
+  "Member": {
+    "q": {
+      "en": "This item was added in the customization. Excluding it will delete it from the customization. Are you sure?",
+      "it-notchecked": "This item was added in the customization. Excluding it will delete it from the customization. Are you sure?",
+      "fr-notchecked": "This item was added in the customization. Excluding it will delete it from the customization. Are you sure?",
+      "de-notchecked": "This item was added in the customization. Excluding it will delete it from the customization. Are you sure?",
+      "pt-notchecked": "This item was added in the customization. Excluding it will delete it from the customization. Are you sure?",
+      "zh-notchecked": "This item was added in the customization. Excluding it will delete it from the customization. Are you sure?",
+      "es-notchecked": "This item was added in the customization. Excluding it will delete it from the customization. Are you sure?",
+      "ja-notchecked": "This item was added in the customization. Excluding it will delete it from the customization. Are you sure?"
+    }
+  },
   "ValList": {
     "Default (open)": {
       "it": "Predefinito (aperta)",

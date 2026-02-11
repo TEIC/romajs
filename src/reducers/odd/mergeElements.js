@@ -1,5 +1,7 @@
 import safeSelect from '../../utils/safeSelect'
 
+const defaultExceptions = ['http://www.tei-c.org/ns/1.0', 'http://www.tei-c.org/ns/Examples']
+
 export function mergeElements(localsource, customization, odd) {
   // This function compares the original ODD and the customization to locate
   // changes in element selection via moduleRef or elementRef. It applies those changes and returns a new ODD.
@@ -60,14 +62,11 @@ export function mergeElements(localsource, customization, odd) {
   allOddElements = new Set(allOddElements)
 
   // Get all elements from the state for comparison
-  const customizationElements = customization.elements.reduce((acc, x) => {
-    acc.push(x.ident)
-    return acc
-  }, [])
+  const customizationElements = customization.elements
 
   // remove elements
   for (const el of Array.from(allOddElements)) {
-    if (customizationElements.indexOf(el) === -1) {
+    if (customizationElements.map(x => x.ident).indexOf(el) === -1) {
       console.log('removing ' + el)
       const localEl = localsource.elements.filter(x => (x.ident === el))[0]
       if (localEl) {
@@ -115,8 +114,19 @@ export function mergeElements(localsource, customization, odd) {
 
   // add elements
   for (const el of customizationElements) {
-    const localEl = localsource.elements.filter(x => (x.ident === el))[0]
-    if (!allOddElements.has(el) && localEl) {
+    // check that element's ns is declared on schemaSpec/@defaultExceptions
+    if (el.ns && !defaultExceptions.includes(el.ns)) { // no need to add default values
+      const exceptions = schemaSpec.getAttribute('defaultExceptions')
+      if (!exceptions) {
+        schemaSpec.setAttribute('defaultExceptions', [...defaultExceptions, el.ns].join(' '))
+      } else {
+        const namespaces = new Set([...exceptions.split(/\s+/), ...defaultExceptions, el.ns])
+        schemaSpec.setAttribute('defaultExceptions', Array.from(namespaces).join(' '))
+      }
+    }
+    // locate local el based on ident and ns.
+    const localEl = localsource.elements.filter(x => (x.ident === el.ident && x.ns === el.ns))[0]
+    if (!allOddElements.has(el.ident) && localEl) {
       const mod = localEl.module
       // adjust @include or @except
       const moduleRef = moduleRefs.filter(m => (m.getAttribute('key') === mod))[0]
@@ -127,10 +137,10 @@ export function mergeElements(localsource, customization, odd) {
         const include = moduleRef.getAttribute('include')
         const except = moduleRef.getAttribute('except')
         if (include) {
-          moduleRef.setAttribute('include', `${include} ${el}`)
+          moduleRef.setAttribute('include', `${include} ${el.ident}`)
         } else if (except) {
           const exceptParts = except.match(/\S+/g)
-          exceptParts.splice(exceptParts.indexOf(el), 1)
+          exceptParts.splice(exceptParts.indexOf(el.ident), 1)
           const exceptString = exceptParts.join(' ')
           if (exceptString) {
             moduleRef.setAttribute('except', exceptString)
@@ -138,13 +148,13 @@ export function mergeElements(localsource, customization, odd) {
             moduleRef.removeAttribute('except')
           }
         } else {
-          moduleRef.setAttribute('include', el)
+          moduleRef.setAttribute('include', el.ident)
         }
       } else {
         // create moduleRef
         const newModuleRef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'moduleRef')
         newModuleRef.setAttribute('key', mod)
-        newModuleRef.setAttribute('include', el)
+        newModuleRef.setAttribute('include', el.ident)
         schemaSpec.append(newModuleRef)
         // add to list of existing moduleRefs
         moduleRefs.unshift(newModuleRef)

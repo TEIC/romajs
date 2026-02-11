@@ -4,8 +4,8 @@ import { updateContentModel } from '../actions/elements'
 import { clone } from '../utils/clone'
 
 const flattenContentModel = (cnt, flattened = [], depth = 1) => {
-  cnt.map(c => {
-    let copy = clone(c)
+  cnt.forEach(c => {
+    const copy = clone(c)
     switch (c.type) {
       case 'sequence':
       case 'alternate':
@@ -13,10 +13,10 @@ const flattenContentModel = (cnt, flattened = [], depth = 1) => {
         const content = copy.content.slice(0)
         copy.content = true
         flattened.push(copy)
+        // Process children at depth + 1
         flattenContentModel(content, flattened, depth + 1)
         break
       default:
-        copy = clone(c)
         copy.depth = depth
         flattened.push(copy)
     }

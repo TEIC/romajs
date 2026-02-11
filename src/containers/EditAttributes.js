@@ -118,7 +118,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   // Find out deleted class memberships and add them so that they can be restored by user.
-  if (localElement.classes && localElement.classes.atts) {
+  if (localElement && localElement.classes && localElement.classes.atts) {
     const computedClasses = new Set(attsfromClasses.map(c => c.ident))
     const deletedClassesNames = localElement.classes.atts.filter(c => !computedClasses.has(c))
     const deletedClasses = getClasses(deletedClassesNames)

@@ -95,7 +95,7 @@ describe('ODD modules operation reducers', () => {
       selectedOdd: ''
     }, {
       type: 'INCLUDE_ELEMENTS',
-      elements: ['camera', 'p']
+      elements: [{name: 'camera'}, {name: 'p'}]
     })
 
     expect(state.odd.customization.json.elements.filter(
@@ -118,7 +118,7 @@ describe('ODD modules operation reducers', () => {
       selectedOdd: ''
     }, {
       type: 'EXCLUDE_ELEMENTS',
-      elements: ['TEI', 'back', 'body', 'div', 'front', 'text']
+      elements: [{name: 'TEI'}, {name: 'back'}, {name: 'body'}, {name: 'div'}, {name: 'front'}, {name: 'text'}]
     })
 
     expect(state.odd.customization.json.elements.filter(

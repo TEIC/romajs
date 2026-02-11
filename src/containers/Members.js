@@ -24,7 +24,7 @@ const mapStateToProps = (state) => {
     const customMembers = memberSubType ? customization[memberType][memberSubType] : customization[memberType]
     const members =  localMembers.reduce((acc, localMember) => {
       let member = Object.assign({}, localMember)
-      const customMember = customMembers.filter(m => (m.ident === localMember.ident))[0]
+      const customMember = customMembers.filter(m => (m.ident === localMember.ident && m.ns === localMember.ns))[0]
       if (customMember) {
         member = Object.assign({}, customMember)
         member.selected = true
@@ -43,13 +43,12 @@ const mapStateToProps = (state) => {
       acc.push(member)
       return acc
     }, [])
-    // Identify members defined in the customizion ONLY.
+    // Identify members defined in the customization ONLY.
     const a = customMembers.reduce((acc, customMember) => {
-      if (!localMembers.filter(m => (m.ident === customMember.ident))[0]) {
+      if (!localMembers.filter(m => (m.ident === customMember.ident && m.ns === customMember.ns))[0]) {
         customMember.isNew = true
         customMember.selected = true
         customMember.module_selected = true
-        // customMember.visible = true
         customMember.type = memberType
         customMember.subType = memberSubType
         acc.push(customMember)
@@ -121,6 +120,18 @@ const mapStateToProps = (state) => {
       }
     })
   }
+
+  // mark duplicate idents to deactivate certain functions
+  allMembers = allMembers.map(member => {
+    const duplicates = allMembers.filter(m => (m.ident === member.ident))
+    if (duplicates.length > 1) {
+      member.duplicate = true
+    } else {
+      member.duplicate = false
+    }
+    return member
+  })
+
   return {
     members: allMembers, visibleMemberTypes, language: state.ui.language, sortBy: state.ui.sortMembersBy || 'element'
   }
@@ -128,11 +139,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleItem: (name, selected, type) => {
+    toggleItem: (name, selected, type, ns = undefined) => {
       if (selected) {
         switch (type) {
           case 'element':
-            dispatch(excludeElements([name], type))
+            dispatch(excludeElements([{name, ns}], type))
             break
           case 'attributes':
           case 'models':
@@ -148,7 +159,7 @@ const mapDispatchToProps = (dispatch) => {
       } else {
         switch (type) {
           case 'element':
-            dispatch(includeElements([name], type))
+            dispatch(includeElements([{name, ns}], type))
             break
           case 'attributes':
           case 'models':

@@ -45,9 +45,10 @@ export default class MembersList extends Component {
       members = (<ul key="list" className="mdc-list mdc-list--two-line romajs-itemlist">
         {this.props.members.map(member => {
           return (<Member
-            key={member.ident}
+            key={`${member.ident}${member.ns ? member.ns : ''}`}
             {...member}
             toggleItem={this.props.toggleItem}
+            language={this.props.language}
           />)
         }
         )}
@@ -90,10 +91,12 @@ MembersList.propTypes = {
     selected: PropTypes.bool.isRequired,
     highlight: PropTypes.string,
     ident: PropTypes.string.isRequired,
+    duplicate: PropTypes.bool.isRequired,
     shortDesc: PropTypes.string.isRequired,
     desc: PropTypes.array.isRequired,
     module: PropTypes.string.isRequired,
-    module_selected: PropTypes.bool.isRequired
+    module_selected: PropTypes.bool.isRequired,
+    isNew: PropTypes.bool
   }).isRequired).isRequired,
   toggleItem: PropTypes.func.isRequired,
   clearUiData: PropTypes.func.isRequired,

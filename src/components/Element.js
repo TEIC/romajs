@@ -125,7 +125,7 @@ export default class Element extends Component {
         <span tabIndex={0} className="mdc-chip romajs-clickable"
           onClick={() => this.props.navigateTo(this.baseurl)}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && this.props.navigateTo(this.baseurl)}>
-          <span className="mdc-chip__text">&lt;{this.props.element.ident}&gt;</span>
+          <span className="mdc-chip__text">&lt;{this.props.element.ident}&gt;{this.props.element.ns ? ` {${this.props.element.ns}}` : ''}</span>
           <i className="material-icons mdc-chip__icon mdc-chip__icon--leading">{arrow}</i>
         </span>
         {trail}
@@ -141,13 +141,13 @@ export default class Element extends Component {
     </div>,
     <main key="main">
       <div className="romajs-form">
-        <h1 className="mdc-typography--headline mdc-typography--headline4">&lt;{this.props.element.ident}&gt;</h1>
+        <h1 className="mdc-typography--headline mdc-typography--headline4">&lt;{this.props.element.ident}&gt;{this.props.element.ns ? ` {${this.props.element.ns}}` : ''}</h1>
         <h2 className="mdc-typography--headline mdc-typography--subtitle1">{this.props.element.shortDesc}</h2>
         {content}
       </div>
     </main>,
     <RevertDialog key="rd" show={this.state.showRevertDialog} hide={() => {this.setState({showRevertDialog: false})}}
-      memberLabel={`<${this.props.element.ident}>`} member={this.props.element.ident} isNew={this.props.element._isNew || false}
+      memberLabel={`<${this.props.element.ident}>${this.props.element.ns ? ` {${this.props.element.ns}}` : ''}`} member={this.props.element.ident} isNew={this.props.element._isNew || false}
       discard={this.props.discardChanges} revert={this.props.revertToSource}
       language={this.props.language} />
     ]
