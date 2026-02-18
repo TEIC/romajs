@@ -55,7 +55,7 @@ export default class ContentModel extends Component {
             dangerouslySetInnerHTML={{__html: i18n('ExtendedHelperText')}} />
         </div>
         <div className="mdc-layout-grid__cell--span-8">
-          {this.props.element.content[0].type === 'rng'
+          {this.props.element.content[0] && this.props.element.content[0].type === 'rng'
             ? <Rng language={this.props.language} rngContent={this.props.element.content[0].rngContent}/>
             : <BlocklyContainer element={this.props.element}/>
           }
