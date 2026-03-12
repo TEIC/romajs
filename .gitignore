@@ -66,3 +66,6 @@ Temporary Items
 .apdisk
 
 .env
+
+# Webstorm idea directory
+.idea/
