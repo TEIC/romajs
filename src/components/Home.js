@@ -178,17 +178,13 @@ export default class Home extends Component {
     this.selectVersion = new MDCSelect(this.refs.chooseversion_upload)
     this.selectVersion.foundation_.setSelectedIndex(0)
     this.selectVersion.listen('MDCSelect:change', () => {
-      this.setState({version: this.selectVersion.value},
-        this._updateCustomizationUrl
-      )
+      this.setState({version: this.selectVersion.value}, () => {})
     })
 
     const selectFormat = new MDCSelect(this.refs.chooseformat_upload)
     selectFormat.foundation_.setSelectedIndex(0)
     selectFormat.listen('MDCSelect:change', () => {
-      this.setState({format: selectFormat.value},
-        this._updateCustomizationUrl
-      )
+      this.setState({format: selectFormat.value}, () => {})
     })
   }
 
