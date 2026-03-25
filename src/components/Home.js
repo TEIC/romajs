@@ -174,6 +174,22 @@ export default class Home extends Component {
         this._updateCustomizationUrl
       )
     })
+
+    this.selectVersion = new MDCSelect(this.refs.chooseversion_upload)
+    this.selectVersion.foundation_.setSelectedIndex(0)
+    this.selectVersion.listen('MDCSelect:change', () => {
+      this.setState({version: this.selectVersion.value},
+        this._updateCustomizationUrl
+      )
+    })
+
+    const selectFormat = new MDCSelect(this.refs.chooseformat_upload)
+    selectFormat.foundation_.setSelectedIndex(0)
+    selectFormat.listen('MDCSelect:change', () => {
+      this.setState({format: selectFormat.value},
+        this._updateCustomizationUrl
+      )
+    })
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -266,9 +282,43 @@ export default class Home extends Component {
                   </div>
                   <div className="romajs-tabPanel" role="tabpanel" style={this._setActivePanel(1)}>
                     <h2 className="mdc-typography--title">{i18n('Upload ODD')}</h2>
-                    <input type="file" id="files" accept=".xml,.tei,.odd" onChange={e => {
+                    <div style={{width: '33%', display:'inline-flex'}}>
+                      <input type="file" id="files" accept=".xml,.tei,.odd" onChange={e => {
                       this.setState({selectedFile: e.target.files.length > 0 ? e.target.files : undefined})
                     }}/>
+                    </div>
+                    <div className="mdc-select" ref="chooseformat_upload" style={{width: '25%'}}>
+                      <input type="hidden" name="enhanced-select"/>
+                      <i className="mdc-select__dropdown-icon"/>
+                      <div className="mdc-select__selected-text"/>
+                      <div className="mdc-select__menu mdc-menu mdc-menu-surface">
+                        <ul className="mdc-list">
+                          <li className="mdc-list-item" data-value="TEI" tabIndex={0}>TEI</li>
+                          <li className="mdc-list-item" data-value="MEI" tabIndex={1}>MEI</li>
+                        </ul>
+                      </div>
+                      <span className="mdc-floating-label">Format</span>
+                      <div className="mdc-line-ripple"/>
+                    </div>
+                    
+                    <div className="mdc-select" ref="chooseversion_upload" style={{width: '33%', marginLeft: '5%'}}>
+                      <input type="hidden" name="enhanced-select"/>
+                      <i className="mdc-select__dropdown-icon"/>
+                      <div className="mdc-select__selected-text"/>
+                      <div className="mdc-select__menu mdc-menu mdc-menu-surface">
+                        <ul className="mdc-list">
+                          <li className="mdc-list-item" data-value={this.state.format === 'TEI' ? TEI_CURRENT : MEI_CURRENT}>current ({this.state.format === 'TEI' || this.state.format === undefined ? TEI_VERSIONS[0] : MEI_CURRENT})</li>
+                          {
+                            (this.state.format === 'TEI' ? TEI_VERSIONS : MEI_VERSIONS).map((v, i) => {
+                              if (i === 0) { return '' } // skip current version
+                              return <li className="mdc-list-item" data-value={v} key={`lv${i}`} tabIndex={i}>{v}</li>
+                            })
+                          }
+                        </ul>
+                      </div>
+                      <span className="mdc-floating-label">Version</span>
+                      <div className="mdc-line-ripple"/>
+                    </div>
                   </div>
                 </div>
               </section>
