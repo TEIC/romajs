@@ -282,10 +282,10 @@ export default class Home extends Component {
                   </div>
                   <div className="romajs-tabPanel" role="tabpanel" style={this._setActivePanel(1)}>
                     <h2 className="mdc-typography--title">{i18n('Upload ODD')}</h2>
-                    <div style={{width: '33%', display:'inline-flex'}}>
+                    <div style={{width: '33%', display: 'inline-flex'}}>
                       <input type="file" id="files" accept=".xml,.tei,.odd" onChange={e => {
-                      this.setState({selectedFile: e.target.files.length > 0 ? e.target.files : undefined})
-                    }}/>
+                        this.setState({selectedFile: e.target.files.length > 0 ? e.target.files : undefined})
+                      }}/>
                     </div>
                     <div className="mdc-select" ref="chooseformat_upload" style={{width: '25%'}}>
                       <input type="hidden" name="enhanced-select"/>
@@ -300,7 +300,6 @@ export default class Home extends Component {
                       <span className="mdc-floating-label">Format</span>
                       <div className="mdc-line-ripple"/>
                     </div>
-                    
                     <div className="mdc-select" ref="chooseversion_upload" style={{width: '33%', marginLeft: '5%'}}>
                       <input type="hidden" name="enhanced-select"/>
                       <i className="mdc-select__dropdown-icon"/>
