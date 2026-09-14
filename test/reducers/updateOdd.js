@@ -13,6 +13,19 @@ let customJson = null
 let localJson = null
 
 describe('Update Customization (handles UPDATE_CUSTOMIZATION_ODD)', () => {
+  it('should validate', () => {
+    customJson = JSON.parse(customization)
+    localJson = JSON.parse(localsource)
+    romajsApp({
+      odd: {
+        customization: { isFetching: false, json: customJson, xml: customizationXMLString },
+        localsource: { isFetching: false, json: localJson }
+      },
+      selectedOdd: ''
+    }, {
+      type: 'UPDATE_CUSTOMIZATION_ODD'
+    })
+  })
   // MODULES
 
   it('should add modules', () => {
