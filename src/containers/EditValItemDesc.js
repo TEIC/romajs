@@ -2,18 +2,13 @@ import { connect } from 'react-redux'
 import Desc from '../components/Desc'
 import { updateAttributeDocs } from '../actions/attributes'
 import { setValid } from '../actions/interface'
+import expandSelfClosing from '../utils/expandSelfClosing'
 
 const mapStateToProps = (state, ownProps) => {
   // Special case for valDesc, which acts just like desc, but has a different name
   const desc = ownProps.attribute.valList.valItem.filter(vi => vi.ident === ownProps.valItem)[0].desc
   // Expand self closing descs
-  const expandedDesc = desc.map(d => {
-    const selfCloseMatch = new RegExp(`<([^>]+?)\\s([^>]*?)/>`).exec(d)
-    if (selfCloseMatch) {
-      return `<${selfCloseMatch[1]} ${selfCloseMatch[2]}></${selfCloseMatch[1]}>`
-    }
-    return d
-  })
+  const expandedDesc = desc.map(expandSelfClosing)
   return {
     ident: ownProps.valItem,
     desc: expandedDesc,

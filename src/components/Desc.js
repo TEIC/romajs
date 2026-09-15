@@ -29,24 +29,29 @@ export default class Desc extends Component {
   }
 
   setupEditors = () => {
-    this.aceEditors.forEach((reactAceComponent, descIndex) => {
+    this.aceEditors.forEach((reactAceComponent) => {
       const editor = reactAceComponent.editor
       if (!editor._amSetUp) {
         editor._amSetUp = true
         editor.setOption('wrap', true)
 
         const getRootElRanges = () => {
-          // Determine character range of root opening and closing tag
-          const descLines = this.props.desc[descIndex].split(/\r\n|[\n\v\f\r\x85\u2028\u2029]/)
+          // Determine character range of root opening and closing tag.
+          const descLines = editor.session.getValue().split(/\r\n|[\n\v\f\r\x85\u2028\u2029]/)
 
           const openingTagMatch = new RegExp(`<${this.descTag}[^>]*?>`).exec(descLines[0])
+          const closingTagMatch = new RegExp(`<\/${this.descTag}\s*?>`).exec(descLines[descLines.length - 1])
+          // Mid-edit the markup can be momentarily incomplete; leave the cursor alone.
+          if (!openingTagMatch || !closingTagMatch) {
+            return null
+          }
+
           const openingTag = {
             row: 0,
             start: openingTagMatch.index,
             end: openingTagMatch.index + openingTagMatch[0].length
           }
 
-          const closingTagMatch = new RegExp(`<\/${this.descTag}\s*?>`).exec(descLines[descLines.length - 1])
           const closingTag = {
             row: descLines.length - 1,
             start: closingTagMatch.index,
@@ -56,16 +61,15 @@ export default class Desc extends Component {
           return {openingTag, closingTag}
         }
 
-        let rootElRanges = getRootElRanges()
-        let openingTagRange = rootElRanges.openingTag
-        let closingTagRange = rootElRanges.closingTag
-
         // Override selectall to make sure root element tags are not selected
         editor.commands.addCommand({
           name: 'selectall',
           bindKey: {win: 'Ctrl-A', mac: 'Command-A'},
           exec: function(ed) {
             const ranges = getRootElRanges()
+            if (!ranges) {
+              return
+            }
             const dummyRange = ed.session.selection.getRange()
             dummyRange.start.row = ranges.openingTag.row
             dummyRange.start.column = ranges.openingTag.end
@@ -91,15 +95,6 @@ export default class Desc extends Component {
           }
         })
 
-        // Force cursor and anchor to not get into root element tags.
-        editor.session.on('change', () => {
-          if (editor.session.getValue() !== '') {
-            rootElRanges = getRootElRanges()
-            openingTagRange = rootElRanges.openingTag
-            closingTagRange = rootElRanges.closingTag
-          }
-        })
-
         editor.session.$worker.on('error', (e) => {
           if (e.data.length > 0) {
             editor.container.style.border = '5px solid red'
@@ -110,15 +105,33 @@ export default class Desc extends Component {
           }
         })
 
+        // Move the caret to a safe spot inside the root element.
+        const clampCaretTo = (row, column) => {
+          const selection = editor.session.selection
+          if (selection.$isEmpty) {
+            selection.moveCursorTo(row, column)
+            return
+          }
+          selection.moveCursorTo(row, column)
+          const anchor = selection.getSelectionAnchor()
+          if (anchor.row === row && anchor.column === column) {
+            // clamping collapsed the selection; go back to being a plain caret
+            selection.clearSelection()
+          }
+        }
+
+        // Force cursor and anchor to not get into root element tags.
         const preventHomeEnd = () => {
+          const ranges = getRootElRanges()
+          if (!ranges) {
+            return
+          }
           const cursor = editor.session.selection.getCursor()
           const lines = editor.session.getLength() - 1
           if (cursor.row === lines && cursor.column === editor.session.getLine(lines).length) {
-            editor.session.selection.setSelectionAnchor(closingTagRange.row, closingTagRange.start)
-            editor.session.selection.moveCursorTo(closingTagRange.row, closingTagRange.start)
+            clampCaretTo(ranges.closingTag.row, ranges.closingTag.start)
           } else if (cursor.row === 0 && cursor.column === 0) {
-            editor.session.selection.setSelectionAnchor(openingTagRange.row, openingTagRange.end)
-            editor.session.selection.moveCursorTo(openingTagRange.row, openingTagRange.end)
+            clampCaretTo(ranges.openingTag.row, ranges.openingTag.end)
           }
         }
 
@@ -127,6 +140,12 @@ export default class Desc extends Component {
         })
 
         editor.session.selection.on('changeCursor', () => {
+          const ranges = getRootElRanges()
+          if (!ranges) {
+            return
+          }
+          const openingTagRange = ranges.openingTag
+          const closingTagRange = ranges.closingTag
           const cursor = editor.session.selection.getCursor()
           const anchor = editor.session.selection.getSelectionAnchor()
           if (cursor.row === openingTagRange.row) {
@@ -139,15 +158,18 @@ export default class Desc extends Component {
               editor.session.selection.moveCursorTo(closingTagRange.row, closingTagRange.start)
             }
           }
-          if (anchor.row === openingTagRange.row) {
-            if (anchor.column >= openingTagRange.start && anchor.column < openingTagRange.end) {
-              editor.session.selection.moveCursorTo(openingTagRange.row, openingTagRange.end)
-              editor.session.selection.setSelectionAnchor(openingTagRange.row, openingTagRange.end)
+          // While the selection is empty the anchor is irrelevant
+          if (!editor.session.selection.$isEmpty) {
+            if (anchor.row === openingTagRange.row) {
+              if (anchor.column >= openingTagRange.start && anchor.column < openingTagRange.end) {
+                editor.session.selection.moveCursorTo(openingTagRange.row, openingTagRange.end)
+                editor.session.selection.setSelectionAnchor(openingTagRange.row, openingTagRange.end)
+              }
             }
-          }
-          if (anchor.row === closingTagRange.row) {
-            if (anchor.column > closingTagRange.start) {
-              editor.session.selection.setSelectionAnchor(closingTagRange.row, closingTagRange.start)
+            if (anchor.row === closingTagRange.row) {
+              if (anchor.column > closingTagRange.start) {
+                editor.session.selection.setSelectionAnchor(closingTagRange.row, closingTagRange.start)
+              }
             }
           }
           preventHomeEnd()
@@ -165,14 +187,20 @@ export default class Desc extends Component {
   }
 
   updateText(pos, input) {
-    let output = input
-    if (input.includes('versionDate=')) {
-      const updatedText = input.replace(/([dD])esc(.*?)versionDate="[^""]+"/, `$1esc$2${this.newDate}`)
-      if (input !== updatedText) {
-        output = updatedText
-      }
+    // Store what the editor holds.
+    this.props.update(this.props.ident, input, pos, this.props.valItem)
+  }
+
+  // Stamp the current date once editing is done.
+  stampVersionDate = (pos) => {
+    const input = this.props.desc[pos]
+    if (!input || !input.includes('versionDate=')) {
+      return
     }
-    this.props.update(this.props.ident, output, pos, this.props.valItem)
+    const updatedText = input.replace(/([dD])esc(.*?)versionDate="[^"]+"/, `$1esc$2${this.newDate}`)
+    if (input !== updatedText) {
+      this.props.update(this.props.ident, updatedText, pos, this.props.valItem)
+    }
   }
 
   createNew = () => {
@@ -217,6 +245,7 @@ export default class Desc extends Component {
                 showPrintMargin={false}
                 showGutter
                 onChange={(text) => this.updateText(pos, text)}
+                onBlur={() => this.stampVersionDate(pos)}
                 highlightActiveLine
                 value={d}
                 height="100px"
