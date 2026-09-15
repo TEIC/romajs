@@ -35,6 +35,7 @@ import { oddClasses } from './classes'
 import { oddAttributes } from './attributes'
 import { oddDatatypes } from './datatypes'
 import { updateOdd } from './updateOdd'
+import { resolveValLists } from './odd/resolveValLists'
 import { ui } from  './interface'
 import * as fileSaver from 'file-saver'
 import teigarage from '../utils/teigarage'
@@ -177,6 +178,25 @@ function customization(state = {
   }
 }
 
+function resolveImportedValLists(state) {
+  // The customization JSON and the localsource are fetched separately, so the value lists
+  // of an uploaded customization can only be reconstructed once both have arrived.
+  const cust = state.customization
+  const local = state.localsource
+  if (!cust || !local || !cust.json || !cust.xml || !local.json || cust._valListsResolved) {
+    return state
+  }
+  let oddData = parser.parseFromString(cust.xml, 'text/xml')
+  if (typeof global !== 'undefined' && global.uselocaldom) {
+    // switch from browser to local DOM
+    oddData = global.uselocaldom(oddData)
+  }
+  const json = resolveValLists(oddData, clone(cust.json), local.json)
+  return Object.assign({}, state, {
+    customization: Object.assign({}, cust, {json, orig: clone(json), _valListsResolved: true})
+  })
+}
+
 function odd(state = {}, action) {
   let filename = ''
   switch (action.type) {
@@ -210,6 +230,9 @@ function odd(state = {}, action) {
         })
       return state
     case RECEIVE_LOCAL_SOURCE:
+      return resolveImportedValLists(Object.assign({}, state,
+        {localsource: localSource(state.localsource, action)}
+      ))
     case REQUEST_LOCAL_SOURCE:
       return Object.assign({}, state,
         {localsource: localSource(state.localsource, action)}
@@ -217,10 +240,13 @@ function odd(state = {}, action) {
     case REQUEST_ODD:
     case RECEIVE_ODD:
     case REQUEST_ODD_JSON:
-    case RECEIVE_ODD_JSON:
       return Object.assign({}, state,
         {customization: customization(state.customization, action)}
       )
+    case RECEIVE_ODD_JSON:
+      return resolveImportedValLists(Object.assign({}, state,
+        {customization: customization(state.customization, action)}
+      ))
     case SET_ODD_SETTING:
     case APPLY_ODD_SETTINGS:
       return Object.assign({}, oddSettings(state, action))

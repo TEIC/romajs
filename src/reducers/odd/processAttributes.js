@@ -1,5 +1,9 @@
 import { processDocEls } from './processDocEls'
-import { insertBetween } from './utils'
+import { insertBetween, findLocalAttribute } from './utils'
+
+function elName(el) {
+  return el.localName || el.tagName
+}
 
 function createAttribute(attList, att, odd) {
   const attDef = odd.createElementNS('http://www.tei-c.org/ns/1.0', 'attDef')
@@ -339,8 +343,18 @@ export function processAttributes(specElement, specData, localData, localsource,
             comparisonAtt = localAtt ? localAtt : localsource.classes.attributes
               .filter(lc => lc.ident === att._fromClass)[0].attributes
               .filter(lca => lca.ident === att.ident)[0]
+          } else if (!localAtt && att.mode === 'change') {
+            // An attDef in mode change redefines an attribute the member already has, so if the
+            // localsource doesn't define it on the member itself it must come from one of its
+            // classes. This happens with an uploaded customization, where _fromClass is unknown:
+            // without a comparison the customization's own deletions would be silently dropped.
+            comparisonAtt = findLocalAttribute(
+              localsource,
+              elName(specElement) === 'classSpec' ? 'class' : 'element',
+              specData.ident, att.ident, specData
+            )
           }
-          if (!isDefined && !att._fromClass) {
+          if (!isDefined && !att._fromClass && !comparisonAtt) {
             // We are updating a new attribute defined on this customization
             const attDef = attList.querySelector(`attDef[ident='${att.ident}']`)
             if (attDef) {

@@ -97,3 +97,55 @@ export class ODDCache {
     }
   }
 }
+
+export function findAttributeInClasses(localsource, classNames, attIdent, seen = new Set()) {
+  // Look for an attribute definition in the given attribute classes, following class inheritance.
+  for (const className of classNames) {
+    if (seen.has(className)) {
+      continue
+    }
+    seen.add(className)
+    const localClass = localsource.classes.attributes.filter(c => c.ident === className)[0]
+    if (!localClass) {
+      continue
+    }
+    const att = (localClass.attributes || []).filter(a => a.ident === attIdent)[0]
+    if (att) {
+      return att
+    }
+    if (localClass.classes && localClass.classes.atts) {
+      const inherited = findAttributeInClasses(localsource, localClass.classes.atts, attIdent, seen)
+      if (inherited) {
+        return inherited
+      }
+    }
+  }
+  return null
+}
+
+export function findLocalAttribute(localsource, memberType, ident, attIdent, customMember) {
+  // Find the localsource definition of an attribute on a member, whether the attribute is
+  // defined on the member itself or inherited from one of its attribute classes.
+  let localMember = null
+  const classNames = new Set()
+  if (memberType === 'element') {
+    localMember = localsource.elements.filter(e => e.ident === ident)[0]
+    for (const m of [localMember, customMember]) {
+      if (m && m.classes && m.classes.atts) {
+        m.classes.atts.forEach(c => classNames.add(c))
+      }
+    }
+  } else {
+    localMember = localsource.classes.attributes.filter(c => c.ident === ident)[0]
+    if (localMember && localMember.classes && localMember.classes.atts) {
+      localMember.classes.atts.forEach(c => classNames.add(c))
+    }
+  }
+  if (localMember) {
+    const own = (localMember.attributes || []).filter(a => a.ident === attIdent)[0]
+    if (own) {
+      return own
+    }
+  }
+  return findAttributeInClasses(localsource, Array.from(classNames), attIdent)
+}
